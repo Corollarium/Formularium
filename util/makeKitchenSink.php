@@ -108,6 +108,7 @@ $frameworks = [
     ['HTML'],
     ['HTML', 'Bulma'],
     ['HTML', 'Bootstrap'],
+    ['HTML', 'Materialize'],
 ];
 foreach ($frameworks as $framework) {
     $name = join('', $framework);
