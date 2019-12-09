@@ -78,8 +78,7 @@ function kitchenSink($frameworkName)
         [
             'name' => 'TestModel',
             'fields' => $fields
-        ],
-        $framework
+        ]
     );
 
     // TODO: values
