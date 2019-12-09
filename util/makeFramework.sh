@@ -15,9 +15,9 @@ namespace Formularium\Frontend\\${FRAMEWORK};
 
 class Framework extends \Formularium\Framework
 {
-    public function __construct($name = '{{$FRAMEWORK}}')
+    public function __construct(string \$name = '${FRAMEWORK}')
     {
-        parent::__construct($name);
+        parent::__construct(\$name);
     }
 }
 EOF
