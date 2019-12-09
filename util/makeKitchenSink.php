@@ -59,6 +59,7 @@ function kitchenSink($frameworkName)
             Renderable_string::MIN_LENGTH => 3,
             Renderable_string::MAX_LENGTH => 30,
             Renderable::LABEL => 'Type string',
+            Renderable::COMMENT => 'Some text explaining this field',
             Renderable::PLACEHOLDER => "Type here"
         ],
     ];
@@ -87,7 +88,9 @@ function kitchenSink($frameworkName)
     $html .= '</div><div><h2>Editable</h2>';
     $html .= $model->editable();
 
-    $html .= "</div></div></body></html>";
+    $html .= "</div></div>";
+    $html .= FrameworkComposer::htmlFooter();
+    $html .= "</body></html>";
     return $html;
 }
 
@@ -104,6 +107,7 @@ $index = "<!DOCTYPE html>
 $frameworks = [
     ['HTML'],
     ['HTML', 'Bulma'],
+    ['HTML', 'Bootstrap'],
 ];
 foreach ($frameworks as $framework) {
     $name = join('', $framework);

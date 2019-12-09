@@ -35,15 +35,22 @@ class Renderable_bool extends \Formularium\Renderable
         }
 
         $format = $field->getExtension(static::FORMAT_CHOOSER, static::FORMAT_CHOOSER_SELECT);
+        
         if ($field->getExtension('required', false)) {
             if ($format == static::FORMAT_CHOOSER_SELECT) {
-                return $this->editableSelect($value, $field, $previous);
+                $element = $this->editableSelect($value, $field, $previous);
             } else {
-                return $this->editableRadio($value, $field, $previous);
+                $element = $this->editableRadio($value, $field, $previous);
             }
         } else {
-            return $this->editableSelect($value, $field, $previous);
+            $element = $this->editableSelect($value, $field, $previous);
         }
+        $container = new HTMLElement('div', [], $element);
+        $extensions = $field->getExtensions();
+        if (array_key_exists('label', $extensions)) {
+            $container->prependContent(new HTMLElement('label', ['for' => $element->getAttribute('id')], $extensions['label']));
+        }
+        return $container;
     }
 
     /**

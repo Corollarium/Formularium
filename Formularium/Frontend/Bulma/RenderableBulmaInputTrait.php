@@ -27,6 +27,12 @@ trait RenderableBulmaInputTrait
                 'class' => 'label',
             ]);
         }
+        $comment = $previous->get('div.comment');
+        if ($comment) {
+            $comment[0]->setTag('p')->setAttributes([
+                'class' => 'help',
+            ]);
+        }
         return $previous;
     }
 }

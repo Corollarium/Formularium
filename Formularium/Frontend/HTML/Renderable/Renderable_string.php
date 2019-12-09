@@ -3,6 +3,7 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
+use Formularium\Frontend\HTML\Framework;
 use Formularium\HTMLElement;
 
 class Renderable_string extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
@@ -20,6 +21,7 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
         $extensions = $f->getExtensions();
         $validators = $f->getValidators();
         $input->setAttributes([
+            'id' => $f->getName() . Framework::counter(),
             'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'text'),
             'name' => $f->getName(),
             'class' => '',
@@ -54,7 +56,10 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
 
         $container = new HTMLElement('div', [], $input);
         if (array_key_exists('label', $extensions)) {
-            $container->prependContent(new HTMLElement('label', [], $extensions['label']));
+            $container->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id')], $extensions['label']));
+        }
+        if (array_key_exists('comment', $extensions)) {
+            $container->appendContent(new HTMLElement('div', ['class' => 'comment'], $extensions['comment']));
         }
         return $container;
     }

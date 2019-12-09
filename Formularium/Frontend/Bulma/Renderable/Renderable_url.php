@@ -2,9 +2,6 @@
 
 namespace Formularium\Frontend\Bulma\Renderable;
 
-use Formularium\Frontend\Bulma\RenderableBulmaInputTrait;
-
-class Renderable_url extends \Formularium\Renderable
+class Renderable_url extends Renderable_string
 {
-    use RenderableBulmaInputTrait;
 }

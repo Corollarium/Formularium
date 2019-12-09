@@ -57,6 +57,15 @@ class FrameworkComposer
         return join("\n", $head);
     }
 
+    public static function htmlFooter(): string
+    {
+        $head = [];
+        foreach (static::get() as $framework) {
+            $head[] = $framework->htmlFooter();
+        }
+        return join("\n", $head);
+    }
+
     /**
      * Renders a Model with the loaded frameworks.
      *

@@ -4,6 +4,12 @@ namespace Formularium\Frontend\HTML;
 
 class Framework extends \Formularium\Framework
 {
+    public static function counter()
+    {
+        static $counter = 0;
+        return $counter++;
+    }
+
     public function __construct(string $name = 'HTML')
     {
         parent::__construct($name);
