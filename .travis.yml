@@ -26,7 +26,8 @@ jobs:
 
   include:
     - stage: Quality assurance
-      env: CODE_COVERAGE
+      env: 
+        - CODE_COVERAGE=yes
       # before_script:
       #   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
       #   - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
