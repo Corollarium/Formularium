@@ -7,9 +7,9 @@ use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Respect\Validation\Validator as v;
 
-class Datatype_phone extends Datatype_string
+class Datatype_domain extends Datatype_string
 {
-    public function __construct(string $typename = 'phone', string $basetype = 'string')
+    public function __construct(string $typename = 'domain', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }
