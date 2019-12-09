@@ -2,6 +2,7 @@
     "name": "corollarium/formularium",
     "type": "library",
     "license": "MIT",
+    "version": "0.1.0",
     "autoload": {
         "psr-4": {
             "Formularium\\": "Formularium/"
