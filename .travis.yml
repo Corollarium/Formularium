@@ -15,10 +15,23 @@ before_script:
 script:
   - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 
-after_script:
-    - |
-      if [[ $COVERAGE == true && $TRAVIS_BRANCH == "master" ]]; then
-        vendor/bin/phpunit --coverage-clover coverage.xml
-        wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
-        php php-coveralls.phar --verbose
-      fi
+
+jobs:
+  allow_failures:
+    - php: nightly
+
+  include:
+    - stage: Quality assurance
+      env: CODE_COVERAGE
+      # before_script:
+      #   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
+      #   - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
+      script: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
+      after_script:
+        - wget https://scrutinizer-ci.com/ocular.phar
+        - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
+
+    - stage: Quality assurance
+      env: STATIC_ANALYSIS
+      install: travis_retry composer install
+      script: vendor/bin/phpstan analyze Formularium
