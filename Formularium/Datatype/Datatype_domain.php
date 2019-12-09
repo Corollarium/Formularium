@@ -19,14 +19,14 @@ class Datatype_domain extends Datatype_string
         
         $value = mb_strtolower($value);
 
-        if ($value === '' || v::phone()->validate($value)) {
+        if ($value === '' || v::domain()->validate($value)) {
             return $value;
         }
-        throw new ValidatorException('Invalid phone value' . $value);
+        throw new ValidatorException('Invalid domain value');
     }
 
     public function getRandom(array $params = [])
     {
-        return static::faker()->e164PhoneNumber;
+        return static::faker()->domainName;
     }
 }
