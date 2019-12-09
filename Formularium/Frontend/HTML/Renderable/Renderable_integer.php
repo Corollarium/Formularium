@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\HTML\Renderable;
 
+use Formularium\Datatype\Datatype_integer;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Frontend\HTML\HTMLElement;

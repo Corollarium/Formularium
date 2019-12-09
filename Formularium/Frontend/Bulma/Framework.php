@@ -6,7 +6,7 @@ use Formularium\Model;
 
 class Framework extends \Formularium\Frontend\HTML\Framework
 {
-    public function __construct($name = 'Bulma')
+    public function __construct(string $name = 'Bulma')
     {
         parent::__construct($name);
     }

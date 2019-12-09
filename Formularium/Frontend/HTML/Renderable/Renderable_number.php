@@ -17,7 +17,7 @@ class Renderable_number extends \Formularium\Renderable implements \Formularium\
     {
         $input = new HTMLElement('input');
         /**
-         * @var Datatype_number $datatype
+         * @var \Formularium\Datatype\Datatype_number $datatype
          */
         $datatype = $f->getDatatype();
     

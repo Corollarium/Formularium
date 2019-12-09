@@ -11,12 +11,12 @@ class Datatype_date extends \Formularium\Datatype
     const MIN = "min";
     const MAX = "max";
 
-    public function __construct($typename = 'date', $basetype = 'date')
+    public function __construct(string $typename = 'date', string $basetype = 'date')
     {
         parent::__construct($typename, $basetype);
     }
 
-    public static function time($time)
+    public static function time(string $time): string
     {
         return date('Y-m-d', $time);
     }

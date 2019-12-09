@@ -17,12 +17,14 @@
         "respect/validation": "^1.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": "^7",
+        "phpstan/phpstan": "^0.12.2"
     },
     "scripts": {
         "make:datatype": "bash ./util/makeDatatype.sh",
         "make:framework": "bash ./util/makeframework.sh",
         "makeKitchenSink": "php ./util/makeKitchenSink.php",
+        "stan": "vendor/bin/phpstan analyse Formularium",
         "coverage": "mkdir build 2> /dev/null && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-html build/coverage-report tests/",
         "test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
     }

@@ -6,11 +6,10 @@ use Formularium\Model;
 
 class Framework extends \Formularium\Framework
 {
-    public function __construct($name = 'Vue')
+    public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
     }
-
     public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
         $data = [];
@@ -28,6 +27,7 @@ class Framework extends \Formularium\Framework
             $data[$name] = $field->getDatatype()->getDefault();
         }
 
+        $editableForm = join('', $elements);
         $jsonData = json_encode($data);
 
         return <<<EOF

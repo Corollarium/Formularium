@@ -6,7 +6,7 @@ class Datatype_text extends Datatype_string
 {
     protected $MAX_STRING_SIZE = 1024000;
 
-    public function __construct($typename = 'text', $basetype = 'string')
+    public function __construct(string $typename = 'text', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

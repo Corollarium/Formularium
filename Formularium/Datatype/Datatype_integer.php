@@ -12,7 +12,7 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
     protected $minvalue = -2147483648;
     protected $maxvalue = 2147483647;
     
-    public function __construct($typename = 'integer', $basetype = 'number')
+    public function __construct(string $typename = 'integer', string $basetype = 'number')
     {
         parent::__construct($typename, $basetype);
     }

@@ -10,7 +10,7 @@ use Respect\Validation\Validator as V;
 
 class Datatype_json extends Datatype_text
 {
-    public function __construct($typename = 'json', $basetype = 'text')
+    public function __construct(string $typename = 'json', string $basetype = 'text')
     {
         parent::__construct($typename, $basetype);
     }

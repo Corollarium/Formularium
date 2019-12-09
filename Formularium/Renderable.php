@@ -11,9 +11,9 @@ abstract class Renderable implements RenderableParameter
     /**
      * Factory.
      *
-     * @param string $datatype
-     * @param string $framework
-     * @return Datatype
+     * @param string|Datatype $datatype
+     * @param string|Framework $framework
+     * @return Renderable
      */
     public static function factory($datatype, $framework): Renderable
     {
@@ -30,7 +30,23 @@ abstract class Renderable implements RenderableParameter
         return new $class();
     }
 
+    /**
+     * Renders a view-only version of this renderable.
+     *
+     * @param mixed $value The value to render.
+     * @param Field $field The field.
+     * @param HTMLElement $previous The HTML coming from the previous composer.
+     * @return HTMLElement The HTML rendered.
+     */
     abstract public function viewable($value, Field $field, HTMLElement $previous) : HTMLElement;
 
+    /**
+     * Renders a form editable version of this renderable
+     *
+     * @param mixed $value The value to render.
+     * @param Field $field The field.
+     * @param HTMLElement $previous The HTML coming from the previous composer.
+     * @return HTMLElement The HTML rendered.
+     */
     abstract public function editable($value, Field $field, HTMLElement $previous) : HTMLElement;
 }

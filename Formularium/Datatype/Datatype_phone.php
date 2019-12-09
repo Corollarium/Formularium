@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 
 class Datatype_phone extends Datatype_string
 {
-    public function __construct($typename = 'phone', $basetype = 'string')
+    public function __construct(string $typename = 'phone', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

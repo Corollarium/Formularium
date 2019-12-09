@@ -9,7 +9,7 @@ use Respect\Validation\Validator;
 
 class Datatype_email extends Datatype_string
 {
-    public function __construct($typename = 'email', $basetype = 'string')
+    public function __construct(string $typename = 'email', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

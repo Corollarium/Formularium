@@ -7,20 +7,18 @@ php:
 
 # Commands to be run before your environment runs.
 before_script:
- - composer self-update
- - composer install --prefer-source --no-interaction --dev
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+   # disable xdebug if not coverage
+  - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
 
 script:
   - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 
-jobs:
-  include:
-    - stage: Quality assurance
-      env: CODE_COVERAGE
-      before_script:
-        - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
-        - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
-      script: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
-      after_script:
-        - wget https://scrutinizer-ci.com/ocular.phar
-        - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
+after_script:
+    - |
+      if [[ $COVERAGE == true && $TRAVIS_BRANCH == "master" ]]; then
+        vendor/bin/phpunit --coverage-clover coverage.xml
+        wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+        php php-coveralls.phar --verbose
+      fi

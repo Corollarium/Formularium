@@ -8,7 +8,7 @@ use Respect\Validation\Validator;
 
 class Datatype_url extends \Formularium\Datatype
 {
-    public function __construct($typename = 'url', $basetype = 'url')
+    public function __construct(string $typename = 'url', string $basetype = 'url')
     {
         parent::__construct($typename, $basetype);
     }

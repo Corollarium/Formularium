@@ -48,6 +48,12 @@ class Renderable_bool extends \Formularium\Renderable
         }
     }
 
+    /**
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     protected function editableRadio($value, Field $field, HTMLElement $previous): HTMLElement
     {
         if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getExtensions())) {
@@ -65,8 +71,7 @@ class Renderable_bool extends \Formularium\Renderable
             if ($value !== null && $v == $value) {
                 $input->addAttribute('checked', 'checked');
             }
-            $elementname = 'loh:' . $this->name . '[' . $attrid . '][value]' .
-                    '[' . $attrid . ']';
+            $elementname = $field->getName(); // 'loh:' . $this->name . '[' . $attrid . '][value]' . '[' . $attrid . ']';
             $id = $elementname . $idcounter++;
             $input->addAttributes([
                 'name' => $elementname,
@@ -94,6 +99,12 @@ class Renderable_bool extends \Formularium\Renderable
         return $element;
     }
 
+    /**
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     protected function editableSelect($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $element = new HTMLElement('select');

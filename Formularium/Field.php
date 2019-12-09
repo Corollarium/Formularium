@@ -78,7 +78,12 @@ class Field
         return $this->extensions;
     }
 
-    public function getExtension($name, $default)
+    /**
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getExtension(string $name, $default)
     {
         return $this->extensions[$name] ?? $default;
     }

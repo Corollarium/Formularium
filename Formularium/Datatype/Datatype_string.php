@@ -10,7 +10,7 @@ class Datatype_string extends \Formularium\Datatype
     const MAX_LENGTH = "max_length";
     protected $MAX_STRING_SIZE = 1024;
 
-    public function __construct($typename = 'string', $basetype = 'string')
+    public function __construct(string $typename = 'string', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

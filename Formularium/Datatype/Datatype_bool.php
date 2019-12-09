@@ -8,7 +8,7 @@ use Formularium\Field;
 
 class Datatype_bool extends \Formularium\Datatype
 {
-    public function __construct($typename = 'bool', $basetype = 'bool')
+    public function __construct(string $typename = 'bool', string $basetype = 'bool')
     {
         parent::__construct($typename, $basetype);
     }

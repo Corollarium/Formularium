@@ -24,7 +24,6 @@ abstract class Datatype
      * Factory.
      *
      * @param string $datatype
-     * @param string $framework
      * @return Datatype
      */
     public static function factory(string $datatype): Datatype
@@ -36,7 +35,7 @@ abstract class Datatype
         return new $class();
     }
 
-    protected function __construct($name = '', $basetype = '')
+    protected function __construct(string $name = '', string $basetype = '')
     {
         $this->name = $name;
         $this->basetype = $basetype;
@@ -47,7 +46,7 @@ abstract class Datatype
      * locale, etc.
      *
      * @param mixed $value
-     * @param Field $f
+     * @param Field $field
      * @return mixed
      */
     public function format($value, Field $field)
@@ -58,38 +57,38 @@ abstract class Datatype
     /**
      * Checks if $value is a valid value for this datatype considering the validators.
      *
-     * @param any $value
-     * @param array $validators
+     * @param mixed $value
+     * @param Field $field
      * @throws Exception If invalid, with the message.
-     * @return void
+     * @return mixed
      */
     abstract public function validate($value, Field $field);
 
     /**
      * Returns a random valid value for this datatype, considering the validators
      *
-     * @param array $params
+     * @param array $validators
      * @throws Exception If cannot generate a random value.
-     * @return any
+     * @return mixed
      */
     abstract public function getRandom(array $validators = []);
 
     /**
      * Returns a default value. Used to build new editable forms, for example.
      *
-     * @return any
+     * @return mixed
      */
     public function getDefault()
     {
         return '';
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getBasetype()
+    public function getBasetype(): string
     {
         return $this->basetype;
     }

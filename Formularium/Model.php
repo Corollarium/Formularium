@@ -22,31 +22,52 @@ class Model
      * @param string $name
      * @throws Exception
      */
-    protected function __construct(string $name = '', $framework = 'HTML')
+    protected function __construct(string $name = '')
     {
         $this->name = $name;
     }
 
-    public static function fromStruct(array $struct, $framework = 'HTML') : Model
+    /**
+     * Loads model from JSON file.
+     *
+     * @param array $struct
+     * @return Model
+     */
+    public static function fromStruct(array $struct) : Model
     {
-        $m = new static('', $framework);
+        $m = new self('');
         $m->parseStruct($struct);
         return $m;
     }
 
-    public static function fromJSONFile(string $name, $framework = 'HTML') : Model
+    /**
+     * Loads model from JSON file.
+     *
+     * @param string $name The JSON filename.
+     * @return Model
+     */
+    public static function fromJSONFile(string $name) : Model
     {
         $json = file_get_contents($name); // TODO: path
         if ($json === false) {
             throw new Exception('File not found');
         }
-        return static::fromJSON($json, $framework);
+        return static::fromJSON($json);
     }
 
-    public static function fromJSON(string $json, $framework = 'HTML') : Model
+    /**
+     * Loads model from JSON string
+     *
+     * @param string $json The JSON string.
+     * @return Model
+     */
+    public static function fromJSON(string $json) : Model
     {
         $data = \json_decode($json, true);
-        $m = new static('', $framework);
+        if ($data === null) {
+            throw new Exception('Invalid JSON format');
+        }
+        $m = new self('');
         $m->parseStruct($data);
         return $m;
     }
@@ -56,33 +77,36 @@ class Model
         return $this->name;
     }
 
-    public function getFramework(): Framework
-    {
-        return $this->framework;
-    }
-
     public function getFields() : array
     {
         return $this->fields;
     }
 
-    protected function validate($data): array
+    /**
+     * Validates a set of data against this model.
+     *
+     * @param array $data A field name => data array.
+     * @return array
+     */
+    protected function validate(array $data): array
     {
         $validate = [];
+        $errors = [];
         foreach ($data as $name => $d) {
             if (!array_key_exists($name, $this->fields)) {
-                $validate[$name] = [
+                $errors[$name] = [
                     "Field $name does not exist in this model"
                 ];
                 continue;
             }
             $field = $this->fields[$name];
-            $v = $field->getDatatype()->validate($d, $field);
-            if ($v) {
-                $validate[$name] = $v;
+            try {
+                $validate[$name] = $field->getDatatype()->validate($d, $field);
+            } catch (Exception $e) {
+                $errors[$name] = $e->getMessage();
             }
         }
-        return $validate;
+        return ['validated' => $validate, 'errors' => $errors];
     }
 
     public function viewable(): string
@@ -98,15 +122,12 @@ class Model
     /**
      * Parses struct
      *
-     * @param string $file
+     * @param array $data
      * @throws Exception
      * @return void
      */
-    protected function parseStruct($data)
+    protected function parseStruct(array $data)
     {
-        if ($data === null) {
-            throw new Exception('Invalid JSON format');
-        }
         if (!array_key_exists('name', $data)) {
             throw new Exception('Missing name in model');
         }

@@ -9,7 +9,7 @@ class DataType_uuid extends DataType_string
 {
     const UUID_REGEX = '^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$';
 
-    public function __construct($typename = 'uuid', $basetype = 'string')
+    public function __construct(string $typename = 'uuid', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

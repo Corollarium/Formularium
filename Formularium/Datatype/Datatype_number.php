@@ -9,7 +9,7 @@ abstract class Datatype_number extends \Formularium\Datatype
     const MIN = "min";
     const MAX = "max";
 
-    public function __construct($typename = 'number', $basetype = 'number')
+    public function __construct(string $typename = 'number', string $basetype = 'number')
     {
         parent::__construct($typename, $basetype);
     }

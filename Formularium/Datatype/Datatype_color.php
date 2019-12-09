@@ -9,7 +9,7 @@ use Respect\Validation\Validator;
 
 class Datatype_color extends Datatype_string
 {
-    public function __construct($typename = 'color', $basetype = 'string')
+    public function __construct(string $typename = 'color', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

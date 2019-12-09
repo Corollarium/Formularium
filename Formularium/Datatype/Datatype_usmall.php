@@ -7,7 +7,7 @@ class Datatype_usmall extends Datatype_integer
     protected $minvalue = 0;
     protected $maxvalue = 65536;
 
-    public function __construct($typename = 'usmall', $basetype = 'integer')
+    public function __construct(string $typename = 'usmall', string $basetype = 'integer')
     {
         parent::__construct($typename, $basetype);
     }

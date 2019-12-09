@@ -8,9 +8,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Renderer;
 
 abstract class Framework
 {
+    /**
+     * @var string
+     */
     protected $name;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
@@ -29,7 +32,7 @@ abstract class Framework
         return Renderable::factory($datatype, $this);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -45,11 +48,23 @@ abstract class Framework
         return '';
     }
 
+    /**
+     * @param Model $m
+     * @param HTMLElement[] $elements
+     * @param string $previousCompose
+     * @return string
+     */
     public function editableCompose(Model $m, array $elements, string $previousCompose) : string
     {
         return $previousCompose;
     }
 
+    /**
+     * @param Model $m
+     * @param HTMLElement[] $elements
+     * @param string $previousCompose
+     * @return string
+     */
     public function viewableCompose(Model $m, array $elements, string $previousCompose) : string
     {
         return $previousCompose;

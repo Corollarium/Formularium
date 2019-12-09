@@ -9,7 +9,7 @@ use Respect\Validation\Validator as V;
 
 class Datatype_float extends \Formularium\Datatype\Datatype_number
 {
-    public function __construct($typename = 'float', $basetype = 'number')
+    public function __construct(string $typename = 'float', string $basetype = 'number')
     {
         parent::__construct($typename, $basetype);
     }
