@@ -1,14 +1,18 @@
 {
-    "name": "corollarium/formularium",
+    "name": "Corollarium/Formularium",
+    "description": "Form validation and generation for PHP with custom frontend generators",
     "type": "library",
     "license": "MIT",
     "version": "0.1.0",
+    "keywords": ["form"],
+    "homepage": "https://github.com/Corollarium/Formularium",
     "autoload": {
         "psr-4": {
             "Formularium\\": "Formularium/"
         }
     },
     "require": {
+        "php": ">=7.1.0",
         "fzaninotto/faker": "^1.9",
         "respect/validation": "^1.1"
     },
