@@ -6,7 +6,7 @@ use Formularium\Field;
 use Formularium\Frontend\Vue\RenderableVueTrait;
 use Formularium\HTMLElement;
 
-class Renderable_uinteger extends \Formularium\Renderable
+class Renderable_bool extends \Formularium\Renderable
 {
     use RenderableVueTrait;
 }
