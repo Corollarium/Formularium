@@ -3,6 +3,7 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
+use Formularium\Frontend\HTML\Framework;
 use Formularium\HTMLElement;
 
 class Renderable_bool extends \Formularium\Renderable
@@ -78,6 +79,7 @@ class Renderable_bool extends \Formularium\Renderable
             $elementname = $field->getName(); // 'loh:' . $this->name . '[' . $attrid . '][value]' . '[' . $attrid . ']';
             $id = $elementname . $idcounter++;
             $input->addAttributes([
+                'id' => $field->getName() . Framework::counter(),
                 'name' => $elementname,
                 'data-attribute' => $field->getName(),
                 'data-datatype' => $field->getDatatype()->getName(),
@@ -114,7 +116,7 @@ class Renderable_bool extends \Formularium\Renderable
         $element = new HTMLElement('select');
         $extensions = $field->getExtensions();
         $element->setAttributes([
-            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'text'),
+            'id' => $field->getName() . Framework::counter(),
             'name' => $field->getName(),
             'class' => '',
             'data-attribute' => $field->getName(),
