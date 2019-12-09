@@ -11,7 +11,7 @@ before_script:
  - composer install --prefer-source --no-interaction --dev
 
 script:
-  - vendor/bin/phpunit --testsuite=unit --verbose --colors
+  - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 
 jobs:
   include:
