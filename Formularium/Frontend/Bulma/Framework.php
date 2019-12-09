@@ -2,8 +2,6 @@
 
 namespace Formularium\Frontend\Bulma;
 
-use Formularium\Model;
-
 class Framework extends \Formularium\Frontend\HTML\Framework
 {
     public function __construct(string $name = 'Bulma')

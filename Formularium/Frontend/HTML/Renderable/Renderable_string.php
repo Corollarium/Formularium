@@ -7,9 +7,9 @@ use Formularium\Frontend\HTML\HTMLElement;
 
 class Renderable_string extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
-    const MIN_LENGTH = "min_length";
-    const MAX_LENGTH = "max_length";
-    const MAX_STRING_SIZE = 1024;
+    public const MIN_LENGTH = "min_length";
+    public const MAX_LENGTH = "max_length";
+    public const MAX_STRING_SIZE = 1024;
     
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
@@ -20,7 +20,7 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
         $extensions = $f->getExtensions();
         $validators = $f->getValidators();
         $input->setAttributes([
-            'type' => (($extensions[static::HIDDEN] ?? false) ? 'hidden' : 'text'),
+            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'text'),
             'name' => $f->getName(),
             'class' => '',
             'data-attribute' => $f->getName(),
@@ -34,7 +34,7 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
         if (isset($extensions[static::PLACEHOLDER])) {
             $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
         }
-        foreach (array(static::DISABLED, static::READONLY, static::REQUIRED) as $v) {
+        foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
             if ($f->getExtension($v, false)) {
                 $input->setAttribute($v, $v);
             }

@@ -2,10 +2,8 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
-use Respect\Validation\Validator;
 
 class Datatype_color extends Datatype_string
 {

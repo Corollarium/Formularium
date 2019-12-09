@@ -13,25 +13,25 @@ class HTMLElement
      * This is an associative array wich:
      *     key is the attribute and
      *     value is the array with attributes values
-     * @var array $attributes
+     * @var array
      */
-    protected $attributes = array();
+    protected $attributes = [];
 
     /**
      * Tag name
-     * @var string $tag
+     * @var string
      */
     protected $tag;
 
     /**
      * The content of Element
-     * @var array $content
+     * @var array
      */
-    protected $content = array();
+    protected $content = [];
 
     /**
      * If this tag has no children, still render it?
-     * @var boolean $renderIfEmpty
+     * @var boolean
      */
     protected $renderIfEmpty = true;
 
@@ -127,7 +127,7 @@ class HTMLElement
 
     public function isEmpty(): bool
     {
-        return (count($this->content) > 0);
+        return count($this->content) > 0;
     }
 
     /**
@@ -147,7 +147,7 @@ class HTMLElement
      */
     public function setAttribute(string $name, $value): HTMLElement
     {
-        $this->setAttributes(array($name => $value), true);
+        $this->setAttributes([$name => $value], true);
         return $this;
     }
 
@@ -159,7 +159,7 @@ class HTMLElement
      */
     public function addAttribute(string $name, $value): HTMLElement
     {
-        $this->setAttributes(array($name => $value), false);
+        $this->setAttributes([$name => $value], false);
         return $this;
     }
 
@@ -172,20 +172,20 @@ class HTMLElement
      * @return HTMLElement Itself
      *
      */
-    public function setAttributes(array $attributes, $overwrite=true): HTMLElement
+    public function setAttributes(array $attributes, $overwrite = true): HTMLElement
     {
         foreach ($attributes as $atrib => $value) {
             if (is_array($value)) {
                 $values = $value;
             } else {
-                $values = array($value);
+                $values = [$value];
             }
 
             if ($overwrite) {
                 $this->attributes[$atrib] = $values;
             } else {
                 if (empty($this->attributes[$atrib])) {
-                    $this->attributes[$atrib] = array();
+                    $this->attributes[$atrib] = [];
                 }
 
                 $this->attributes[$atrib] = array_merge($this->attributes[$atrib], $values);
@@ -227,7 +227,7 @@ class HTMLElement
     {
         // TODO Don't work with reference objects, change it
         if (!is_array($content)) {
-            $content = array($content);
+            $content = [$content];
         }
 
         if ($raw == false) {
@@ -286,18 +286,18 @@ class HTMLElement
      */
     public function get(string $selector)
     {
-        $tag  = null;
+        $tag = null;
         $attr = null;
-        $val  = null;
+        $val = null;
 
         // Define what could be found
         $selector = trim($selector);
         if ($selector[0] == "#") {
             $attr = "id";
-            $val  = mb_substr($selector, 1);
+            $val = mb_substr($selector, 1);
         } elseif ($selector[0] == ".") {
             $attr = "class";
-            $val  = mb_substr($selector, 1);
+            $val = mb_substr($selector, 1);
         } elseif (mb_strpos($selector, "=") !== false) {
             list($attr, $val) = explode("=", $selector);
         } elseif (mb_strpos($selector, "#") !== false) {
@@ -339,9 +339,9 @@ class HTMLElement
     protected function getInternal($element, $tag, $attr, $val)
     {
         if ($this->match($element, $tag, $attr, $val)) {
-            $return = array($element);
+            $return = [$element];
         } else {
-            $return = array();
+            $return = [];
         }
 
         foreach ($element->getContent() as $content) {
@@ -439,7 +439,7 @@ class HTMLElement
         //If dont HTML tags with no closing
         if (!empty($this->tag) && !in_array(
             $this->tag,
-            array('img','hr','br','input','meta','col','command','link','param','source','embed')
+            ['img', 'hr', 'br', 'input', 'meta', 'col', 'command', 'link', 'param', 'source', 'embed']
         )
         ) {
             $data[] = '</' . htmlspecialchars($this->tag) . '>';
@@ -469,7 +469,7 @@ class HTMLElement
      */
     public function clearAttributes(): HTMLElement
     {
-        $this->attributes = array();
+        $this->attributes = [];
         return $this;
     }
 
@@ -479,7 +479,7 @@ class HTMLElement
      */
     public function clearContent(): HTMLElement
     {
-        $this->content = array();
+        $this->content = [];
         return $this;
     }
 }

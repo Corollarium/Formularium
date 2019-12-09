@@ -2,7 +2,6 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Datatype\Datatype_string;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Respect\Validation\Validator as v;
@@ -23,7 +22,7 @@ class Datatype_phone extends Datatype_string
         if ($value === '' || v::phone()->validate($value)) {
             return $value;
         }
-        throw new ValidatorException('Invalid phone value'. $value);
+        throw new ValidatorException('Invalid phone value' . $value);
     }
 
     public function getRandom(array $params = [])

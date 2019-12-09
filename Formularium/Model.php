@@ -3,7 +3,6 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
-use Formularium\Framework;
 
 class Model
 {
@@ -33,7 +32,7 @@ class Model
      * @param array $struct
      * @return Model
      */
-    public static function fromStruct(array $struct) : Model
+    public static function fromStruct(array $struct): Model
     {
         $m = new self('');
         $m->parseStruct($struct);
@@ -46,7 +45,7 @@ class Model
      * @param string $name The JSON filename.
      * @return Model
      */
-    public static function fromJSONFile(string $name) : Model
+    public static function fromJSONFile(string $name): Model
     {
         $json = file_get_contents($name); // TODO: path
         if ($json === false) {
@@ -61,7 +60,7 @@ class Model
      * @param string $json The JSON string.
      * @return Model
      */
-    public static function fromJSON(string $json) : Model
+    public static function fromJSON(string $json): Model
     {
         $data = \json_decode($json, true);
         if ($data === null) {
@@ -77,7 +76,7 @@ class Model
         return $this->name;
     }
 
-    public function getFields() : array
+    public function getFields(): array
     {
         return $this->fields;
     }

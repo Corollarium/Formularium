@@ -3,7 +3,6 @@
 namespace Formularium\Datatype;
 
 use Formularium\Datatype;
-use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Respect\Validation\Validator as V;

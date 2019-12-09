@@ -4,7 +4,6 @@ namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Field;
-use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Frontend\HTML\HTMLElement;
 
 class Renderable_integer extends Renderable_number
@@ -14,9 +13,7 @@ class Renderable_integer extends Renderable_number
         $element = parent::editable($value, $field, $previous);
         $input = $element->get('input')[0];
         
-        /**
-         * @var Datatype_integer $datatype
-         */
+        /** @var Datatype_integer $datatype */
         $datatype = $field->getDatatype();
         $validators = $field->getValidators();
 

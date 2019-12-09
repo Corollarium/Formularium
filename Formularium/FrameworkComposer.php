@@ -2,9 +2,7 @@
 
 namespace Formularium;
 
-use Formularium\Exception\Exception;
 use Formularium\Frontend\HTML\HTMLElement;
-use Respect\Validation\Rules\StringType;
 
 class FrameworkComposer
 {
@@ -50,7 +48,7 @@ class FrameworkComposer
      *
      * @return string
      */
-    public static function htmlHead() : string
+    public static function htmlHead(): string
     {
         $head = [];
         foreach (static::get() as $framework) {

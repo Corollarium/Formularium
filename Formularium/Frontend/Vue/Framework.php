@@ -2,8 +2,6 @@
 
 namespace Formularium\Frontend\Vue;
 
-use Formularium\Model;
-
 class Framework extends \Formularium\Framework
 {
     public function __construct(string $name = 'Vue')

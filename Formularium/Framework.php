@@ -4,7 +4,6 @@ namespace Formularium;
 
 use Formularium\Exception\Exception;
 use Formularium\Frontend\HTML\HTMLElement;
-use SebastianBergmann\CodeCoverage\Report\Html\Renderer;
 
 abstract class Framework
 {
@@ -54,7 +53,7 @@ abstract class Framework
      * @param string $previousCompose
      * @return string
      */
-    public function editableCompose(Model $m, array $elements, string $previousCompose) : string
+    public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
         return $previousCompose;
     }
@@ -65,7 +64,7 @@ abstract class Framework
      * @param string $previousCompose
      * @return string
      */
-    public function viewableCompose(Model $m, array $elements, string $previousCompose) : string
+    public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
         return $previousCompose;
     }

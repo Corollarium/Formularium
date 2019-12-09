@@ -3,7 +3,6 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
-use Formularium\Framework;
 use Formularium\Frontend\HTML\HTMLElement;
 
 abstract class Renderable implements RenderableParameter
@@ -38,7 +37,7 @@ abstract class Renderable implements RenderableParameter
      * @param HTMLElement $previous The HTML coming from the previous composer.
      * @return HTMLElement The HTML rendered.
      */
-    abstract public function viewable($value, Field $field, HTMLElement $previous) : HTMLElement;
+    abstract public function viewable($value, Field $field, HTMLElement $previous): HTMLElement;
 
     /**
      * Renders a form editable version of this renderable
@@ -48,5 +47,5 @@ abstract class Renderable implements RenderableParameter
      * @param HTMLElement $previous The HTML coming from the previous composer.
      * @return HTMLElement The HTML rendered.
      */
-    abstract public function editable($value, Field $field, HTMLElement $previous) : HTMLElement;
+    abstract public function editable($value, Field $field, HTMLElement $previous): HTMLElement;
 }

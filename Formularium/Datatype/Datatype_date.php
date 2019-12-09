@@ -2,14 +2,14 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Field;
 use Formularium\Exception\ValidatorException;
+use Formularium\Field;
 use Respect\Validation\Validator;
 
 class Datatype_date extends \Formularium\Datatype
 {
-    const MIN = "min";
-    const MAX = "max";
+    public const MIN = "min";
+    public const MAX = "max";
 
     public function __construct(string $typename = 'date', string $basetype = 'date')
     {

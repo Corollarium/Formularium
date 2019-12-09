@@ -7,9 +7,9 @@ use Formularium\Frontend\HTML\HTMLElement;
 
 class Renderable_bool extends \Formularium\Renderable
 {
-    const FORMAT_CHOOSER = 'format_chooser';
-    const FORMAT_CHOOSER_SELECT = 'format_chooser_select';
-    const FORMAT_CHOOSER_RADIO = 'format_chooser_radio';
+    public const FORMAT_CHOOSER = 'format_chooser';
+    public const FORMAT_CHOOSER_SELECT = 'format_chooser_select';
+    public const FORMAT_CHOOSER_RADIO = 'format_chooser_radio';
 
     use \Formularium\Frontend\HTML\RenderableViewableTrait {
         viewable as _viewable;
@@ -17,8 +17,6 @@ class Renderable_bool extends \Formularium\Renderable
     
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $formatedV = '';
-        $dataV = '';
         $formatted = $field->getDatatype()->format($value, $field);
 
         return $this->_viewable($formatted, $field, $previous);
@@ -57,12 +55,11 @@ class Renderable_bool extends \Formularium\Renderable
     protected function editableRadio($value, Field $field, HTMLElement $previous): HTMLElement
     {
         if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getExtensions())) {
-            $value =  $field->getExtensions()[static::DEFAULTVALUE];
+            $value = $field->getExtensions()[static::DEFAULTVALUE];
         }
 
         $element = new HTMLElement('ul');
 
-        $attrid = -1; // TODO: should work because it's unique
         $idcounter = 1;
         foreach ([true => 'True', false => 'False'] as $v => $label) {
             $input = new HTMLElement('input');
@@ -83,7 +80,7 @@ class Renderable_bool extends \Formularium\Renderable
                 'title' => $field->getExtension(static::LABEL, '')
             ]);
 
-            foreach (array(static::DISABLED, static::READONLY, static::REQUIRED) as $v) {
+            foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
                 if ($field->getExtension($v, false)) {
                     $input->setAttribute($v, $v);
                 }
@@ -109,9 +106,8 @@ class Renderable_bool extends \Formularium\Renderable
     {
         $element = new HTMLElement('select');
         $extensions = $field->getExtensions();
-        $validators = $field->getValidators();
         $element->setAttributes([
-            'type' => (($extensions[static::HIDDEN] ?? false) ? 'hidden' : 'text'),
+            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'text'),
             'name' => $field->getName(),
             'class' => '',
             'data-attribute' => $field->getName(),
@@ -120,9 +116,9 @@ class Renderable_bool extends \Formularium\Renderable
             'title' => $field->getExtension(static::LABEL, '')
         ]);
 
-        $optionEmpty = new HTMLElement('option', array('value' => ''), '', true);
-        $optionTrue = new HTMLElement('option', array('value' => 'true'), 'True', true);
-        $optionFalse = new HTMLElement('option', array('value' => 'false'), 'False', true);
+        $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
+        $optionTrue = new HTMLElement('option', ['value' => 'true'], 'True', true);
+        $optionFalse = new HTMLElement('option', ['value' => 'false'], 'False', true);
 
         if ($value) {
             $optionTrue->setAttribute('selected', 'selected');
@@ -136,7 +132,7 @@ class Renderable_bool extends \Formularium\Renderable
         $element->addContent($optionFalse);
         $element->addContent($optionTrue);
 
-        foreach (array(static::DISABLED, static::READONLY, static::REQUIRED) as $v) {
+        foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
             if ($field->getExtension($v, false)) {
                 $element->setAttribute($v, $v);
             }

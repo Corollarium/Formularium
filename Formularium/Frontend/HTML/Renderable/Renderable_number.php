@@ -7,24 +7,22 @@ use Formularium\Frontend\HTML\HTMLElement;
 
 class Renderable_number extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
-    const STEP = 'step';
-    const MIN = "min";
-    const MAX = "max";
+    public const STEP = 'step';
+    public const MIN = "min";
+    public const MAX = "max";
 
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
     public function editable($value, Field $f, HTMLElement $previous): HTMLElement
     {
         $input = new HTMLElement('input');
-        /**
-         * @var \Formularium\Datatype\Datatype_number $datatype
-         */
+        /** @var \Formularium\Datatype\Datatype_number $datatype */
         $datatype = $f->getDatatype();
     
         $extensions = $f->getExtensions();
         $validators = $f->getValidators();
         $input->setAttributes([
-            'type' => (($extensions[static::HIDDEN] ?? false) ? 'hidden' : 'number'),
+            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'number'),
             'name' => $f->getName(),
             'class' => '',
             'data-attribute' => $f->getName(),
@@ -37,7 +35,7 @@ class Renderable_number extends \Formularium\Renderable implements \Formularium\
         if (isset($extensions[static::PLACEHOLDER])) {
             $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
         }
-        foreach (array(static::DISABLED, static::READONLY, static::REQUIRED) as $v) {
+        foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
             if ($f->getExtension($v, false)) {
                 $input->setAttribute($v, $v);
             }

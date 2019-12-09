@@ -3,7 +3,6 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
-use Formularium\Framework;
 
 abstract class Datatype
 {

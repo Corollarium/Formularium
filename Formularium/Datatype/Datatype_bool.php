@@ -2,7 +2,6 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 
@@ -25,8 +24,7 @@ class Datatype_bool extends \Formularium\Datatype
 
     public function format($value, Field $f)
     {
-        $string = ($value == true ? 'True' : 'False');
-        return $string;
+        return $value == true ? 'True' : 'False';
     }
 
     public function validate($value, Field $f)
@@ -40,6 +38,6 @@ class Datatype_bool extends \Formularium\Datatype
                 throw new ValidatorException('Invalid boolean value');
             }
         }
-        return ($value == true);
+        return $value == true;
     }
 }

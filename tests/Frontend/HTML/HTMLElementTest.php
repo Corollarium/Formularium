@@ -126,12 +126,6 @@ final class HTMLElementTest extends TestCase
 
         $ret = $div->getElements('', 'title', '');
         $this->assertTrue(empty($ret));
-
-        ob_start();
-        $div->showHTML();
-        $data = ob_get_contents();
-        ob_end_clean();
-        //TODO
     }
 
     public function testRaw()
