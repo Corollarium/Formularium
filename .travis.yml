@@ -1,0 +1,26 @@
+sudo: false
+language: php
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+
+# Commands to be run before your environment runs.
+before_script:
+ - composer self-update
+ - composer install --prefer-source --no-interaction --dev
+
+script:
+  - vendor/bin/phpunit --testsuite=unit --verbose --colors
+
+jobs:
+  include:
+    - stage: Quality assurance
+      env: CODE_COVERAGE
+      before_script:
+        - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
+        - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
+      script: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
+      after_script:
+        - wget https://scrutinizer-ci.com/ocular.phar
+        - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
