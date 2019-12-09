@@ -16,7 +16,7 @@ class Datatype_date extends \Formularium\Datatype
         parent::__construct($typename, $basetype);
     }
 
-    public static function time(string $time): string
+    public static function time(int $time): string
     {
         return date('Y-m-d', $time);
     }
