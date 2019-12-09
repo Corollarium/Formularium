@@ -42,7 +42,7 @@ do
 namespace Formularium\Frontend\\${FRAMEWORK}\Renderable;
 
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 class ${RENDERABLENAME} extends \Formularium\Renderable
 {

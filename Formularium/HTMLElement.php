@@ -1,6 +1,6 @@
 <?php
 
-namespace Formularium\Frontend\HTML;
+namespace Formularium;
 
 /**
  * Class that encapsule DOM elements. Similar to PHP DOMElement but more flexible.

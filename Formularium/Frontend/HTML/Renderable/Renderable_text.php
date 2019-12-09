@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 class Renderable_text extends Renderable_string
 {

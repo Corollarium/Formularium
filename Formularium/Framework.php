@@ -3,7 +3,7 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 abstract class Framework
 {

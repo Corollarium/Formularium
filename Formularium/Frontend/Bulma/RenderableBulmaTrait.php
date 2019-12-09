@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Bulma;
 
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 trait RenderableBulmaTrait
 {

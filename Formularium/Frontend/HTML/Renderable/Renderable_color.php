@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 class Renderable_color extends Renderable_string
 {

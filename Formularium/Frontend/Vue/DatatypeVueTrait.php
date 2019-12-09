@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Vue;
 
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 trait DatatypeVueTrait
 {

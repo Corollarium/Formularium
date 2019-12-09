@@ -4,7 +4,7 @@ namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 class Renderable_integer extends Renderable_number
 {

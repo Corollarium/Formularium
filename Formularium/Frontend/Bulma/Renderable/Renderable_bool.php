@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Bulma\Renderable;
 
 use Formularium\Field;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 class Renderable_bool extends \Formularium\Renderable
 {

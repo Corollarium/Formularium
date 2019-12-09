@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 final class HTMLElementTest extends TestCase
 {

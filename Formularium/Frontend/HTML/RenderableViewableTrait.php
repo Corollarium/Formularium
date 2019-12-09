@@ -3,6 +3,7 @@
 namespace Formularium\Frontend\HTML;
 
 use Formularium\Field;
+use Formularium\HTMLElement;
 use Formularium\Renderable;
 
 trait RenderableViewableTrait

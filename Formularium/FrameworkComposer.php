@@ -2,7 +2,7 @@
 
 namespace Formularium;
 
-use Formularium\Frontend\HTML\HTMLElement;
+use Formularium\HTMLElement;
 
 class FrameworkComposer
 {
