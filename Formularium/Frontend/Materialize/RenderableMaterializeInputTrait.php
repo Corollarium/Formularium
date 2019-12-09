@@ -24,11 +24,11 @@ trait RenderableMaterializeInputTrait
         ]);
         $newContent[] = $input[0];
         $label = $previous->get('label');
-        if ($label) {
+        if (!empty($label)) {
             $newContent[] = $label[0];
         }
         $comment = $previous->get('div.comment');
-        if ($comment) {
+        if (!empty($comment)) {
             $comment[0]->setTag('span')->setAttributes([
                 'class' => 'helper-text',
                 'data-error' => "wrong",
