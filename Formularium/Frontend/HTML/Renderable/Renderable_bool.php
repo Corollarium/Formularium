@@ -89,9 +89,9 @@ class Renderable_bool extends \Formularium\Renderable
                 'title' => $field->getExtension(static::LABEL, '')
             ]);
 
-            foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
-                if ($field->getExtension($v, false)) {
-                    $input->setAttribute($v, $v);
+            foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $p) {
+                if ($field->getExtension($p, false)) {
+                    $input->setAttribute($p, $p);
                 }
             }
     
