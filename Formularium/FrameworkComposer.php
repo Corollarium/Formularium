@@ -76,7 +76,7 @@ class FrameworkComposer
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
-            $values = '';  // TODO: values?
+            $values = ''; // TODO: values?
             $html = new HTMLElement('');
             foreach (static::get() as $framework) {
                 $r = $framework->getRenderable($field->getDatatype());
@@ -96,7 +96,7 @@ class FrameworkComposer
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
-            $values = '';  // TODO: values?
+            $values = ''; // TODO: values?
             $html = new HTMLElement('');
             foreach (static::get() as $framework) {
                 $r = $framework->getRenderable($field->getDatatype());

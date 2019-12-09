@@ -29,7 +29,7 @@ function kitchenSink($frameworkName)
 
     $fields = [];
     $datatypes = array_map(
-        function ($x) {
+        function($x) {
             return str_replace('Datatype_', '', str_replace('.php', '', $x));
         },
         array_diff(scandir(__DIR__ . '/../Formularium/Datatype/'), array('.', '..'))
@@ -37,7 +37,7 @@ function kitchenSink($frameworkName)
     // TODO: avoid abstract classes
     $datatypes = array_filter(
         $datatypes,
-        function ($t) {
+        function($t) {
             return ($t !== 'number');
         }
     );

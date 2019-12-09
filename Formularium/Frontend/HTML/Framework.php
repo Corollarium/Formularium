@@ -17,14 +17,14 @@ class Framework extends \Formularium\Framework
 
     public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
-        return join('', array_map(function ($e) {
+        return join('', array_map(function($e) {
             return $e->__toString();
         }, $elements));
     }
 
     public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
-        return join('', array_map(function ($e) {
+        return join('', array_map(function($e) {
             return $e->__toString();
         }, $elements));
     }

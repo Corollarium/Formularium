@@ -18,8 +18,8 @@ trait DatatypeRandomTrait
         $source = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $sourceLen = mb_strlen($source);
         $numberOfLetters = rand($minLetters, $maxletters);
-        for ($i = 0; $i < $numberOfLetters-1; $i++) {
-            $pattern .= $source[rand(0, $sourceLen-1)];
+        for ($i = 0; $i < $numberOfLetters - 1; $i++) {
+            $pattern .= $source[rand(0, $sourceLen - 1)];
         }
         return $pattern;
     }

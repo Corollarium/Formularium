@@ -12,7 +12,7 @@ class Framework extends \Formularium\Framework
     {
         $data = [];
         foreach ($m->getFields() as $f) {
-            $values = '';  // TODO: values?
+            $values = ''; // TODO: values?
             $data[] = $f->viewable($values);
         }
         return join('', $data);
