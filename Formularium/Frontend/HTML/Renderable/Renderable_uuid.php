@@ -1,0 +1,21 @@
+<?php
+
+namespace Formularium\Frontend\HTML\Renderable;
+
+use Formularium\Datatype\DataType_uuid;
+use Formularium\Field;
+use Formularium\Frontend\HTML\HTMLElement;
+
+class Renderable_uuid extends Renderable_string
+{
+    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    {
+        $element = parent::editable($value, $field, $previous);
+    
+        $element->get('input')[0]->setAttribute(
+            'pattern',
+            DataType_uuid::UUID_REGEX
+        );
+        return $element;
+    }
+}

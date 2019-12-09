@@ -1,0 +1,24 @@
+{
+    "name": "corollarium/formularium",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Formularium\\": "Formularium/"
+        }
+    },
+    "require": {
+        "fzaninotto/faker": "^1.9",
+        "respect/validation": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "scripts": {
+        "make:datatype": "bash ./util/makeDatatype.sh",
+        "make:framework": "bash ./util/makeframework.sh",
+        "makeKitchenSink": "php ./util/makeKitchenSink.php",
+        "coverage": "mkdir build 2> /dev/null && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-html build/coverage-report tests/",
+        "test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
+    }
+}
