@@ -23,7 +23,7 @@
     },
     "scripts": {
         "make:datatype": "bash ./util/makeDatatype.sh",
-        "make:framework": "bash ./util/makeframework.sh",
+        "make:framework": "bash ./util/makeFramework.sh",
         "makeKitchenSink": "php ./util/makeKitchenSink.php",
         "format": "vendor/bin/ecs check Formularium/ --level clean-code --fix && vendor/bin/ecs check Formularium/ --level psr12 --fix",
         "stan": "vendor/bin/phpstan analyse Formularium",
