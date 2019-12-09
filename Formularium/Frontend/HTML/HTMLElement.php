@@ -3,9 +3,8 @@
 namespace Formularium\Frontend\HTML;
 
 /**
- * Class that encapsule DOM elements. Similar to DOMElement but more flexible.
- * Not used for parsing, but to build HTML.
- *
+ * Class that encapsule DOM elements. Similar to PHP DOMElement but more flexible.
+ * This is not used for parsing, but to build HTML.
  */
 class HTMLElement
 {
@@ -46,7 +45,7 @@ class HTMLElement
      *                - array with others elements or text
      * @param boolean $raw If true, do not escape content.
      */
-    public function __construct($tag, array $attributes = [], $content = '', $raw = false)
+    public function __construct(string $tag, array $attributes = [], $content = '', $raw = false)
     {
         $this->tag = $tag;
 
@@ -57,9 +56,20 @@ class HTMLElement
         }
     }
 
-    public static function factory($tag, array $attributes = [], $content = '', $raw = false): HTMLElement
+    /**
+     * Create a HTML Element
+     * @param string $tag The tag name of Element
+     * @param array $attributes The attribute with values
+     * @param mixed $content The content of element, can be:
+     *                - string (with text content)
+     *                - HTMLElement
+     *                - array with others elements or text
+     * @param boolean $raw If true, do not escape content.
+     * @return HTMLElement
+     */
+    public static function factory(string $tag, array $attributes = [], $content = '', $raw = false): HTMLElement
     {
-        return new static($tag, $attributes, $content, $raw);
+        return new self($tag, $attributes, $content, $raw);
     }
 
     /**
@@ -67,10 +77,12 @@ class HTMLElement
      * no contents or children)
      *
      * @param boolean $val
+     * @return HTMLElement Itself
      */
-    public function setRenderIfEmpty($val)
+    public function setRenderIfEmpty(bool $val): HTMLElement
     {
         $this->renderIfEmpty = $val;
+        return $this;
     }
 
     /**
@@ -99,12 +111,9 @@ class HTMLElement
      * @param string $name The name of attribute
      * @return array Return the list of values, if attribute don't exist return empty array
      */
-    public function getAttributeValue($name)
+    public function getAttribute($name): array
     {
-        if (empty($this->attributes[$name])) {
-            return array();
-        }
-        return $this->attributes[$name];
+        return $this->attributes[$name] ?? [];
     }
 
     /**
@@ -116,16 +125,16 @@ class HTMLElement
         return $this->content;
     }
 
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return (count($this->content) > 0);
     }
 
     /**
      *
-     * @return number
+     * @return int
      */
-    public function getCountChildren()
+    public function getCountChildren(): int
     {
         return count($this->content);
     }
@@ -136,7 +145,7 @@ class HTMLElement
      * @param mixed $value Can be a string or array of string
      * @return HTMLElement Itself
      */
-    public function setAttribute($name, $value)
+    public function setAttribute(string $name, $value): HTMLElement
     {
         $this->setAttributes(array($name => $value), true);
         return $this;
@@ -148,7 +157,7 @@ class HTMLElement
      * @param mixed $value Can be a string or array of string
      * @return HTMLElement Itself
      */
-    public function addAttribute($name, $value)
+    public function addAttribute(string $name, $value): HTMLElement
     {
         $this->setAttributes(array($name => $value), false);
         return $this;
@@ -163,7 +172,7 @@ class HTMLElement
      * @return HTMLElement Itself
      *
      */
-    public function setAttributes(array $attributes, $overwrite=true)
+    public function setAttributes(array $attributes, $overwrite=true): HTMLElement
     {
         foreach ($attributes as $atrib => $value) {
             if (is_array($value)) {
@@ -185,7 +194,7 @@ class HTMLElement
         return $this;
     }
 
-    public function removeAttribute($attribute)
+    public function removeAttribute(string $attribute): HTMLElement
     {
         if (array_key_exists($attribute, $this->attributes)) {
             unset($this->attributes[$attribute]);
@@ -198,7 +207,7 @@ class HTMLElement
      * @see setAttributes
      * @return HTMLElement Itself
      */
-    public function addAttributes($attributes)
+    public function addAttributes(array $attributes): HTMLElement
     {
         $this->setAttributes($attributes, false);
         return $this;
@@ -214,7 +223,7 @@ class HTMLElement
      * @param bool $raw If true, this is raw content (html) and should not be escaped.
      * @return HTMLElement Itself
      */
-    public function setContent($content, $overwrite = true, $raw = false, $prepend = false)
+    public function setContent($content, $overwrite = true, $raw = false, $prepend = false): HTMLElement
     {
         // TODO Don't work with reference objects, change it
         if (!is_array($content)) {
@@ -246,22 +255,20 @@ class HTMLElement
      * @see setContent
      * @return HTMLElement Itself
      */
-    public function addContent($content, $raw = false)
-    {
-        // TODO Don't work with reference objects, change it
-        $this->setContent($content, false, $raw);
-        return $this;
-    }
-
-    public function appendContent($content, $raw = false)
+    public function addContent($content, bool $raw = false): HTMLElement
     {
         $this->setContent($content, false, $raw);
         return $this;
     }
 
-    public function prependContent($content, $raw = false)
+    public function appendContent($content, bool $raw = false): HTMLElement
     {
-        // TODO Don't work with reference objects, change it
+        $this->setContent($content, false, $raw);
+        return $this;
+    }
+
+    public function prependContent($content, bool $raw = false): HTMLElement
+    {
         $this->setContent($content, false, $raw, true);
         return $this;
     }
@@ -275,9 +282,9 @@ class HTMLElement
      * 						'a=v' - Select elements with 'a' attribute with 'v' value
      * 						'e#i' - Select elements 'e' with id attribute 'i'
      * 						'e.c' - Select elements 'e' with class attribute 'c'
-     * @return array of Html_Elmement
+     * @return HTMLElement[]
      */
-    public function get($selector)
+    public function get(string $selector)
     {
         $tag  = null;
         $attr = null;
@@ -314,7 +321,7 @@ class HTMLElement
      * @param string $tag tag of search
      * @param string $attr attribute of search
      * @param string $val value of attribute search
-     * @return array of Html_Elmement
+     * @return HTMLElement[]
      */
     public function getElements($tag, $attr, $val)
     {
@@ -327,7 +334,7 @@ class HTMLElement
      * @param string $tag Tag or null value to compare
      * @param string $attr Attribute name or null value to compare
      * @param string $val Value of attribute or null value to compare
-     * @return array of Html_Elmement
+     * @return HTMLElement[]
      */
     protected function getInternal($element, $tag, $attr, $val)
     {
@@ -354,7 +361,7 @@ class HTMLElement
      * @param string $val Value of attribute or null value to compare
      * @return boolean - true when satisfy and false otherwise
      */
-    protected function match(HTMLElement $element, $tag, $attr, $val)
+    protected function match(HTMLElement $element, $tag, $attr, $val): bool
     {
         if (!empty($tag)) {
             if ($element->getTag() != $tag) {
@@ -366,7 +373,7 @@ class HTMLElement
         }
 
         if (!empty($attr)) {
-            $values = $element->getAttributeValue($attr);
+            $values = $element->getAttribute($attr);
             if (count($values) == 0) {
                 return false;
             }
@@ -379,7 +386,7 @@ class HTMLElement
         return true;
     }
 
-    public function getRenderHTML()
+    public function getRenderHTML(): string
     {
         return $this->__toString();
     }
@@ -399,10 +406,6 @@ class HTMLElement
         $data = [];
         if (!empty($this->tag)) {
             $data[] = '<' . htmlspecialchars($this->tag);
-
-            // TODO: Use moustache instead!
-            /* $this->render('<{{tag}} {{#attributes}}{{name}}="{{value}}"{{/attributes}}>{{#content}}
-             * {{item}}{{/content}}</{{tag}}>'); */
 
             foreach ($this->attributes as $atrib => $value) {
                 $data[] = ' ' . $atrib . '="' . htmlspecialchars(implode(' ', $value)) . '"';
@@ -446,15 +449,6 @@ class HTMLElement
     }
 
     /**
-     * Show/Print the html element and all children
-     */
-    public function showHTML()
-    {
-        echo $this->getRenderHTML();
-    }
-
-
-    /**
      * Clone HTMLElement object and its child
      * @return Object HTMLElement
      */
@@ -470,11 +464,10 @@ class HTMLElement
         }
     }
 
-
     /**
      * Clear All Attributes
      */
-    public function clearAttributes()
+    public function clearAttributes(): HTMLElement
     {
         $this->attributes = array();
         return $this;
@@ -484,7 +477,7 @@ class HTMLElement
     /**
      * Clear All Content
      */
-    public function clearContent()
+    public function clearContent(): HTMLElement
     {
         $this->content = array();
         return $this;

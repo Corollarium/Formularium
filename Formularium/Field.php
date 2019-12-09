@@ -44,7 +44,6 @@ class Field
      * @param string|Datatype $datatype
      * @param array $extensions
      * @param array $validators
-     * @param string $framework
      */
     public function __construct(string $name, $datatype, array $extensions = [], array $validators = [])
     {
