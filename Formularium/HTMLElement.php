@@ -2,6 +2,8 @@
 
 namespace Formularium;
 
+use PHP_CodeSniffer\Generators\HTML;
+
 /**
  * Class that encapsule DOM elements. Similar to PHP DOMElement but more flexible.
  * This is not used for parsing, but to build HTML.
@@ -404,66 +406,81 @@ class HTMLElement
         return true;
     }
 
-    public function getRenderHTML(): string
+    public function __toString()
     {
-        return $this->__toString();
+        return $this->getRenderHTML();
     }
     
     /**
      * Return the html element code including all children
      * @return string (html code)
      */
-    public function __toString()
+    public function getRenderHTML($indentString = '  ', $level = 0): string
     {
+        // skip empty non renderable
         if ($this->renderIfEmpty === false) {
             if (!count($this->content)) {
                 return '';
             }
         }
 
+        // start
         $data = [];
-        if (!empty($this->tag)) {
-            $data[] = '<' . htmlspecialchars($this->tag);
 
+        // if this is not empty, the tag
+        if (!empty($this->tag)) {
+            $open = [];
+            $open[] = ($level > 0 ? $indentString : '') . // initial indentation
+                '<' . htmlspecialchars($this->tag);
+
+            // render tag attributes
             foreach ($this->attributes as $atrib => $value) {
-                $data[] = ' ' . $atrib . '="' . htmlspecialchars(implode(' ', $value)) . '"';
+                $open[] = $atrib . '="' . htmlspecialchars(implode(' ', $value)) . '"';
             }
-            $data[] = '>';
+            $data[] = join(' ', $open) . '>';
         }
 
+        // recurse
         $contentdata = [];
         $emptyfieldset = ($this->tag == 'fieldset'); // avoid rendering fieldset with only a "legend"
         foreach ($this->content as $content) {
             if ($content instanceof HTMLElement) {
-                $c = $content->getRenderHTML();
+                $c = $content->getRenderHTML($indentString, $level + 1);
                 if ($this->tag == 'fieldset' and $content->getTag() != 'legend' and $c) {
                     $emptyfieldset = false;
                 }
                 $contentdata[] = $c;
             } else {
                 $emptyfieldset = false;
-                $contentdata[] = $content;
+                $contentdata[] = $indentString . $content;
             }
         }
 
+        // handle special empty cases
         if ($emptyfieldset) {
             return '';
         } elseif ($contentdata == [] && $this->renderIfEmpty === false) {
             return '';
         }
 
+        // join content
         $data = array_merge($data, $contentdata);
 
-        //If dont HTML tags with no closing
-        if (!empty($this->tag) && !in_array(
-            $this->tag,
-            ['img', 'hr', 'br', 'input', 'meta', 'col', 'command', 'link', 'param', 'source', 'embed']
-        )
+        // handle closing
+        if (!empty($this->tag)
+            && !in_array(
+                $this->tag,
+                ['img', 'hr', 'br', 'input', 'meta', 'col', 'command', 'link', 'param', 'source', 'embed']
+            )
         ) {
             $data[] = '</' . htmlspecialchars($this->tag) . '>';
         }
 
-        return implode("", $data);
+        if ($indentString && $level === 0) {
+            $data[] = "\n";
+        }
+
+        return implode(($indentString ? "\n" : '') . str_repeat($indentString, $level), $data);
     }
 
     /**
@@ -498,6 +515,63 @@ class HTMLElement
     public function clearContent(): HTMLElement
     {
         $this->content = [];
+        return $this;
+    }
+
+    /**
+     * Similar to array_walk(). Applied to this HTMLElement and all its children.
+     * Does not call text content.
+     *
+     * @param callable $f
+     * @return HTMLElement self
+     */
+    public function walk(callable $f): HTMLElement
+    {
+        $f($this);
+        foreach ($this->content as $content) {
+            if ($content instanceof HTMLElement) {
+                $content->walk($f);
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Similar to array_map(). Calls for text content too.
+     *
+     * @param callable $f
+     * @return HTMLElement
+     */
+    public function map(callable $f): array
+    {
+        $data = [$f($this)];
+        foreach ($this->content as $content) {
+            if ($content instanceof HTMLElement) {
+                $data = array_merge($data, $content->map($f));
+            } else {
+                $data[] = $f($content);
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * Similar to array_filter().
+     *
+     * @param callable $f
+     * @return HTMLElement
+     */
+    public function filter(callable $f): HTMLElement
+    {
+        foreach ($this->content as $key => $content) {
+            if ($content instanceof HTMLElement) {
+                if (!$f($content)) {
+                    unset($this->content[$key]);
+                } else {
+                    $content->filter($f);
+                }
+            }
+        }
         return $this;
     }
 }

@@ -11,41 +11,41 @@ final class HTMLElementTest extends TestCase
     {
         $html = new HTMLElement('div');
         $htmldata = '<div></div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $html = new HTMLElement('img');
         $htmldata = '<img>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
     }
 
     public function testAttributes()
     {
         $html = new HTMLElement('div', array('id'=>'testID'));
         $htmldata = '<div id="testID"></div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $html = new HTMLElement('div', array('id'=>'testID', 'class'=>'testClass'));
         $htmldata = '<div id="testID" class="testClass"></div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $classes = array('testClass1','testClass2');
         $html = new HTMLElement('div', array('id'=>'testID', 'class'=> $classes));
         $htmldata1 = '<div id="testID" class="testClass1 testClass2"></div>';
-        $this->assertEquals($htmldata1, $html->getRenderHTML());
+        $this->assertEquals($htmldata1, $html->getRenderHTML(''));
 
         // Overwrite the attribute value
         $html->setAttribute('class', 'testClass');
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         // Dont overwrite the attribute values
         $html->addAttributes(array('class' => $classes));
         $htmldata2 = '<div id="testID" class="testClass testClass1 testClass2"></div>';
-        $this->assertEquals($htmldata2, $html->getRenderHTML());
+        $this->assertEquals($htmldata2, $html->getRenderHTML(''));
 
         // ADD new atribute value
         $html->addAttribute('title', "this is a title");
         $htmldata2 = '<div id="testID" class="testClass testClass1 testClass2" title="this is a title"></div>';
-        $this->assertEquals($htmldata2, $html->getRenderHTML());
+        $this->assertEquals($htmldata2, $html->getRenderHTML(''));
     }
 
     public function testContent()
@@ -54,29 +54,29 @@ final class HTMLElementTest extends TestCase
 
         $html = new HTMLElement('div', array(), $texto);
         $htmldata = '<div>' . $texto .'</div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $html2 = new HTMLElement('div', array(), $html);
         $htmldata = '<div><div>' . $texto .'</div></div>';
-        $this->assertEquals($htmldata, $html2->getRenderHTML());
+        $this->assertEquals($htmldata, $html2->getRenderHTML(''));
 
         $html3 = new HTMLElement('body', array(), $html2);
         $htmldata = '<body><div><div>' . $texto .'</div></div></body>';
-        $this->assertEquals($htmldata, $html3->getRenderHTML());
+        $this->assertEquals($htmldata, $html3->getRenderHTML(''));
 
         $html = new HTMLElement('div', array(), array($texto, $html2));
         $htmldata = '<div>' . $texto . '<div><div>' . $texto .'</div></div></div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $img = '<img src="test.jpg">';
         $html->setContent(new HTMLElement('img', array('src' => 'test.jpg')), false);
         $htmldata = '<div>' . $texto . '<div><div>' . $texto . '</div></div>' . $img . '</div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $img = '<img src="test.jpg">';
         $html->setContent(new HTMLElement('img', array('src' => 'test.jpg')));
         $htmldata = '<div>' . $img . '</div>';
-        $this->assertEquals($htmldata, $html->getRenderHTML());
+        $this->assertEquals($htmldata, $html->getRenderHTML(''));
     }
 
     public function testGet()
@@ -135,10 +135,9 @@ final class HTMLElementTest extends TestCase
             array('id' => '32')
         );
         $e->addContent('&nbsp;', true);
-        $html = $e->getRenderHTML();
+        $html = $e->getRenderHTML('');
         $this->assertEquals('<div id="32">&nbsp;</div>', $html);
     }
-
 
     public function testClear()
     {
@@ -148,7 +147,79 @@ final class HTMLElementTest extends TestCase
         );
         $e->addContent('&nbsp;', true);
         $e->clearContent();
-        $html = $e->getRenderHTML();
+        $html = $e->getRenderHTML('');
         $this->assertEquals('<div id="32"></div>', $html);
+    }
+
+    public function testMap()
+    {
+        $e = new HTMLElement(
+            'div',
+            ['id' => '32'],
+            [
+                new HTMLElement(
+                    'span',
+                    ['id' => '23'],
+                    ['data']
+                )
+            ]
+        );
+        $map = $e->map(
+            function ($e) {
+                if ($e instanceof HTMLElement) {
+                    return $e->getTag();
+                }
+                return $e;
+            }
+        );
+        $this->assertEquals(['div', 'span', 'data'], $map);
+    }
+
+    public function testFilter()
+    {
+        $e = new HTMLElement(
+            'div',
+            ['id' => '32'],
+            [
+                new HTMLElement(
+                    'span',
+                    ['id' => '23'],
+                    ['data']
+                )
+            ]
+        );
+        $e->filter(
+            function ($e) {
+                if ($e instanceof HTMLElement && $e->getTag() === 'span') {
+                    return false;
+                }
+                return true;
+            }
+        );
+        $this->assertEmpty($e->getContent());
+    }
+
+    public function testWalk()
+    {
+        $e = new HTMLElement(
+            'div',
+            ['id' => '32'],
+            [
+                new HTMLElement(
+                    'span',
+                    ['id' => '23'],
+                    ['data']
+                )
+            ]
+        );
+        $map = $e->walk(
+            function ($e) {
+                if ($e instanceof HTMLElement) {
+                    $e->setTag('section');
+                }
+            }
+        );
+        $this->assertEquals('section', $e->getTag());
+        $this->assertEquals('section', $e->getContent()[0]->getTag());
     }
 }
