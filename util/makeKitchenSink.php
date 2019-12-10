@@ -82,18 +82,18 @@ function kitchenSink($frameworkName)
     );
 
     // TODO: values
-    $html .= '<div><h2>Viewable</h2>';
+    $html .= "<div><h2>Viewable</h2>\n";
     $html .= $model->viewable();
-    $html .= '</div><div><h2>Editable</h2>';
+    $html .= "</div><div><h2>Editable</h2>\n";
     $html .= $model->editable();
 
-    $html .= "</div></div>";
+    $html .= "</div></div>\n";
     $html .= FrameworkComposer::htmlFooter();
     $html .= "</body></html>";
     return $html;
 }
 
-@mkdir(__DIR__ . '/../out/');
+@mkdir(__DIR__ . '/../build/');
 $path = __DIR__ . '/../Formularium/Frontend/';
 $dir = scandir($path);
 if ($dir === false) {
@@ -114,13 +114,14 @@ $frameworks = [
     ['HTML', 'Bootstrap'],
     ['HTML', 'Materialize'],
     ['HTML', 'Bulma', 'Vue'],
+    ['HTML', 'Buefy', 'Vue'],
 ];
 foreach ($frameworks as $framework) {
     $name = join('', $framework);
     echo "Building $name...\n";
     $html = kitchenSink($framework);
-    file_put_contents(__DIR__ . '/../out/' . $name . '.html', $html);
+    file_put_contents(__DIR__ . '/../build/' . $name . '.html', $html);
     $index .= "<li><a href='{$name}.html'>$name</a></li>";
 }
 $index .= "</ul></body></html>";
-file_put_contents(__DIR__ . '/../out/index.html', $index);
+file_put_contents(__DIR__ . '/../build/index.html', $index);
