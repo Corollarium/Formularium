@@ -32,6 +32,8 @@ trait RenderableBuefyInputTrait
                         $e->setTag('b-input');
                     } elseif ($e->getTag() === 'select') {
                         $e->setTag('b-select');
+                    } elseif ($e->getTag() === 'textarea') {
+                        $e->setTag('b-input')->setAttribute('type', 'textarea');
                     }
                 }
             }

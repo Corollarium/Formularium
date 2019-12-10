@@ -86,5 +86,6 @@ Formularium is built in a way that generators can be chained, so you can combine
     - Bulma
     - Bootstrap
     - Materialize
+    - Buefy
 - JS Frameworks/validators:
     - Vue
