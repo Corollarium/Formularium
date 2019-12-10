@@ -21,6 +21,60 @@ Install with composer:
 composer required Corollarium/Formularium
 ```
 
+```php
+// set your framework composition statically.
+// For example, this builds HTML using Bootstrap as CSS and the Vue framework.
+FrameworkComposer::set(['HTML', 'Bootstrap', 'Vue']);
+
+// build the model from data description. You can use a JSON file as well.
+$modelData = [
+    'name' => 'TestModel',
+    'fields' => [
+        'myString' => [
+            'datatype' => 'string',
+            'extensions' => [
+                Renderable_string::MIN_LENGTH => 3,
+                Renderable_string::MAX_LENGTH => 30,
+                Renderable::LABEL => 'This is some string',
+                Renderable::COMMENT => 'Some text explaining this field',
+                Renderable::PLACEHOLDER => "Type here"
+            ]
+        ],
+        'someInteger' => [
+            'datatype' => 'integer',
+            'extensions' => [
+                Datatype_integer::MIN => 4,
+                Datatype_integer::MAX => 30,
+                Renderable_number::STEP => 2,
+                Renderable::LABEL => 'Some integer',
+                Renderable::PLACEHOLDER => "Type here"
+            ]
+        ]
+    ]
+];
+$model = Model::fromStruct($modelData);
+
+// validate some data
+$data = [
+    'myString' => 'some string here',
+    'someInteger' => 32
+];
+$validation = $model->validate($data);
+if (!empty($validation['errors'])) {
+    foreach ($validation['errors'] as $fieldName => $error) {
+        echo "$fieldName has an error: $error\n";
+    }
+}
+// get data after validation
+$validated = $validation['validated'];
+
+// render a form 
+echo $model->editable($data);
+
+// render a view
+echo $model->viewable($data);
+```
+
 ## Supported frontend generators
 
 Formularium is built in a way that generators can be chained, so you can combine a basic HTML form generator, with a CSS framework and a JS validator, or possibly get the form into a Vue or React component. We provide a number of frontend plugins and you can easily extend with your own (and submit a PR!)
@@ -30,8 +84,7 @@ Formularium is built in a way that generators can be chained, so you can combine
     - Pure HTML
 - CSS Frameworks:
     - Bulma
-    - Bootstrap 
+    - Bootstrap
+    - Materialize
 - JS Frameworks/validators:
     - Vue
-
-## Related
