@@ -10,6 +10,7 @@ trait RenderableBulmaTrait
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         /** @var HTMLElement $base */
+        /** @scrutinizer ignore-call */
         $base = $this->_editable($value, $field, $previous);
         $base->addAttribute('class', "control");
         return HTMLElement::factory(
