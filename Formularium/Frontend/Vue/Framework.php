@@ -77,7 +77,7 @@ var app = new Vue({
 console.log(app);
 EOF;
             $s = new HTMLElement('script', [], $script, true);
-            return new HTMLElement('div', [], [$t, $s]);
+            return HTMLElement::factory('div', [], [$t, $s])->getRenderHTML();
         }
     }
 }

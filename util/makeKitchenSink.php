@@ -89,7 +89,9 @@ function kitchenSink($frameworkName)
     $html .= "<div><h2>Viewable</h2>\n";
     $html .= $model->viewable([]);
     $html .= "</div><div><h2>Editable</h2>\n";
+    $html .= '<form>'; // TODO: parsley requires data-
     $html .= $model->editable();
+    $html .= '<button type="submit">Send</button></form>';
 
     $html .= "</div></div>\n";
     $html .= FrameworkComposer::htmlFooter();
@@ -116,6 +118,7 @@ $frameworks = [
     ['HTML'],
     ['HTML', 'Bulma'],
     ['HTML', 'Bootstrap'],
+    ['HTML', 'Bootstrap', 'Parsley'],
     ['HTML', 'Materialize'],
     ['HTML', 'Bulma', 'Vue'],
     ['HTML', 'Buefy', 'Vue'],
