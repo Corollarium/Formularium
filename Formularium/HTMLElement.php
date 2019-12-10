@@ -230,7 +230,7 @@ class HTMLElement
             $content = [$content];
         }
 
-        if ($raw == false) {
+        if ($raw === false) {
             foreach ($content as &$item) {
                 if (is_string($item)) {
                     $item = htmlspecialchars($item);
@@ -397,7 +397,7 @@ class HTMLElement
      */
     public function __toString()
     {
-        if ($this->renderIfEmpty == false) {
+        if ($this->renderIfEmpty === false) {
             if (!count($this->content)) {
                 return '';
             }
@@ -430,7 +430,7 @@ class HTMLElement
 
         if ($emptyfieldset) {
             return '';
-        } elseif ($contentdata == [] && $this->renderIfEmpty == false) {
+        } elseif ($contentdata == [] && $this->renderIfEmpty === false) {
             return '';
         }
 

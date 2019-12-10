@@ -2,7 +2,7 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Exception\Exception;
+use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Respect\Validation\Validator;
 
@@ -25,6 +25,13 @@ class Datatype_url extends \Formularium\Datatype
         return $value;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $value
+     * @throws ValidatorException
+     * @return void
+     */
     public function validateURL($value)
     {
         if ($value == 'http://' || $value == 'https://' || $value == '') {
@@ -34,9 +41,9 @@ class Datatype_url extends \Formularium\Datatype
         $protocol = mb_strtolower(mb_substr($value, 0, 8));
         if (substr($protocol, 0, 7) !== 'http://' && substr($protocol, 0, 8) !== 'https://') {
             if (mb_stripos($value, '://') !== false) {
-                throw new Exception('Invalid url');
+                throw new ValidatorException('Invalid url');
             } elseif (preg_match('/^([A-Za-z0-9]+):/', $value)) {
-                throw new Exception('Invalid url');
+                throw new ValidatorException('Invalid url');
             } else {
                 $value = 'http://' . $value;
             }
@@ -63,7 +70,7 @@ class Datatype_url extends \Formularium\Datatype
             // not required ->key('query',  Validator::notEmpty())
             ->validate($parsed);
         if (!$validurl) {
-            throw new Exception('Invalid url');
+            throw new ValidatorException('Invalid url');
         }
     }
 }

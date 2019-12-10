@@ -8,7 +8,18 @@ use Respect\Validation\Validator as V;
 
 class Datatype_integer extends \Formularium\Datatype\Datatype_number
 {
+    /**
+     * min acceptable value
+     *
+     * @var integer
+     */
     protected $minvalue = -2147483648;
+
+    /**
+     * Max acceptable value
+     *
+     * @var integer
+     */
     protected $maxvalue = 2147483647;
     
     public function __construct(string $typename = 'integer', string $basetype = 'number')
@@ -16,12 +27,12 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
         parent::__construct($typename, $basetype);
     }
 
-    public function getMinValue()
+    public function getMinValue(): int
     {
         return $this->minvalue;
     }
 
-    public function getMaxValue()
+    public function getMaxValue(): int
     {
         return $this->maxvalue;
     }

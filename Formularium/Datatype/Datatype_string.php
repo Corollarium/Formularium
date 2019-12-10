@@ -8,6 +8,9 @@ class Datatype_string extends \Formularium\Datatype
 {
     const MIN_LENGTH = "min_length";
     const MAX_LENGTH = "max_length";
+    /**
+     *  @var integer
+     */
     protected $MAX_STRING_SIZE = 1024;
 
     public function __construct(string $typename = 'string', string $basetype = 'string')
@@ -26,6 +29,9 @@ class Datatype_string extends \Formularium\Datatype
     {
         // avoid invalid encoding attack
         $data = iconv("UTF-8", "UTF-8//IGNORE", $value);
+        if ($data === false) {
+            throw new \Formularium\Exception\ValidatorException('Invalid encoding in string.');
+        }
         $text = preg_replace('/<[^>]*>/', '', $data);
 
         $validators = $f->getValidators();
@@ -34,13 +40,10 @@ class Datatype_string extends \Formularium\Datatype
                 throw new \Formularium\Exception\ValidatorException('String is too short.');
             }
         }
-        if (array_key_exists(self::MAX_LENGTH, $validators)) {
-            if (mb_strlen($text) > $validators[self::MAX_LENGTH]) {
-                throw new \Formularium\Exception\ValidatorException('String is too long.');
-            }
+        $maxlength = $validators[self::MAX_LENGTH] ?? $this->MAX_STRING_SIZE;
+        if (mb_strlen($text) > $validators[self::MAX_LENGTH]) {
+            throw new \Formularium\Exception\ValidatorException('String is too long.');
         }
-        
-        // TODO: cut if > MAX_STRING_SIZE
 
         return $text;
     }
