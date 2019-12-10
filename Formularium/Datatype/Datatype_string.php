@@ -41,7 +41,7 @@ class Datatype_string extends \Formularium\Datatype
             }
         }
         $maxlength = $validators[self::MAX_LENGTH] ?? $this->MAX_STRING_SIZE;
-        if (mb_strlen($text) > $validators[self::MAX_LENGTH]) {
+        if (mb_strlen($text) > $maxlength) {
             throw new \Formularium\Exception\ValidatorException('String is too long.');
         }
 
