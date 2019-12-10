@@ -46,10 +46,14 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
 
     public function validate($value, Field $f)
     {
+        $validators = $f->getValidators();
+        $min = $validators[static::MIN] ?? $this->minvalue;
+        $max = $validators[static::MAX] ?? $this->maxvalue;
+
         if ($value == '') {
             return $value;
-        } elseif (!V::intVal()->between($this->minvalue, $this->maxvalue, true)->validate($value)) {
-            throw new ValidatorException('Invalid integer value');
+        } elseif (!V::intVal()->between($min, $max, true)->validate($value)) {
+            throw new ValidatorException("Invalid integer value, must be between $min and $max");
         }
 
         return $value;

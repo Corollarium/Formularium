@@ -8,6 +8,8 @@ abstract class Datatype
 {
     use DatatypeRandomTrait;
 
+    public const REQUIRED = "required";
+
     /**
      * @var string
      */

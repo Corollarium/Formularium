@@ -72,15 +72,15 @@ class FrameworkComposer
      * @param Model $m
      * @return string
      */
-    public static function viewable(Model $m): string
+    public static function viewable(Model $m, array $modelData): string
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
-            $values = ''; // TODO: values?
+            $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
             foreach (static::get() as $framework) {
                 $r = $framework->getRenderable($field->getDatatype());
-                $x = $r->viewable($values, $field, $html);
+                $x = $r->viewable($value, $field, $html);
                 $html = $x;
             }
             $elements[$field->getName()] = $html;
@@ -92,15 +92,15 @@ class FrameworkComposer
         return $output;
     }
 
-    public static function editable(Model $m): string
+    public static function editable(Model $m, array $modelData): string
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
-            $values = ''; // TODO: values?
+            $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
             foreach (static::get() as $framework) {
                 $r = $framework->getRenderable($field->getDatatype());
-                $html = $r->editable($values, $field, $html);
+                $html = $r->editable($value, $field, $html);
             }
             $elements[$field->getName()] = $html;
         }

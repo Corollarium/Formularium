@@ -17,8 +17,8 @@ class Renderable_integer extends Renderable_number
         $datatype = $field->getDatatype();
         $validators = $field->getValidators();
 
-        $input->setAttribute('min', $validators[static::MIN] ?? $datatype->getMinValue());
-        $input->setAttribute('max', $validators[static::MAX] ?? $datatype->getMaxValue());
+        $input->setAttribute('min', $validators[Datatype_integer::MIN] ?? $datatype->getMinValue());
+        $input->setAttribute('max', $validators[Datatype_integer::MAX] ?? $datatype->getMaxValue());
     
         return $element;
     }

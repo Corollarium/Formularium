@@ -2,14 +2,13 @@
 
 namespace Formularium\Frontend\HTML\Renderable;
 
+use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\HTMLElement;
 
 class Renderable_string extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
-    public const MIN_LENGTH = "min_length";
-    public const MAX_LENGTH = "max_length";
     public const MAX_STRING_SIZE = 1024;
     
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
@@ -42,13 +41,13 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
             }
         }
 
-        if (array_key_exists(static::MIN_LENGTH, $validators)) {
-            $input->setAttribute('minlength', $validators[static::MIN_LENGTH]);
+        if (array_key_exists(Datatype_string::MIN_LENGTH, $validators)) {
+            $input->setAttribute('minlength', $validators[Datatype_string::MIN_LENGTH]);
         }
-        if (array_key_exists(static::MAX_LENGTH, $validators)
-            && $validators[static::MAX_LENGTH] < static::MAX_STRING_SIZE
+        if (array_key_exists(Datatype_string::MAX_LENGTH, $validators)
+            && $validators[Datatype_string::MAX_LENGTH] < static::MAX_STRING_SIZE // TODO: datatype
         ) {
-            $input->setAttribute('maxlength', $validators[static::MAX_LENGTH]);
+            $input->setAttribute('maxlength', $validators[Datatype_string::MAX_LENGTH]);
         }
         if (isset($extensions[static::NO_AUTOCOMPLETE])) {
             $input->setAttribute('autocomplete', 'off');

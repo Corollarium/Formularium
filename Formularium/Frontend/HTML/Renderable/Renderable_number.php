@@ -9,8 +9,6 @@ use Formularium\HTMLElement;
 class Renderable_number extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
     public const STEP = 'step';
-    public const MIN = "min";
-    public const MAX = "max";
 
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
@@ -53,6 +51,9 @@ class Renderable_number extends \Formularium\Renderable implements \Formularium\
         $container = new HTMLElement(Framework::getEditableContainerTag(), [], $input);
         if (array_key_exists('label', $extensions)) {
             $container->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id')], $extensions['label']));
+        }
+        if (array_key_exists('comment', $extensions)) {
+            $container->appendContent(new HTMLElement('div', ['class' => 'comment'], $extensions['comment']));
         }
         return $container;
     }

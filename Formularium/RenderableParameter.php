@@ -16,6 +16,5 @@ interface RenderableParameter
     const NAME = 'name'; // overrides the html "name" attribute. If you want to do something really special with this data
     const PLACEHOLDER = 'placeholder'; // used to fill html's placeholder field
     const READONLY = 'readonly';
-    const REQUIRED = 'required'; // must be filled
     const UNIQUE = 'unique'; // must be a unique value in database (no other value can be equal)
 }

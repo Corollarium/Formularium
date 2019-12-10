@@ -37,7 +37,7 @@ class Renderable_bool extends \Formularium\Renderable
 
         $format = $field->getExtension(static::FORMAT_CHOOSER, static::FORMAT_CHOOSER_SELECT);
         
-        if ($field->getExtension('required', false)) {
+        if ($field->getExtension(static::REQUIRED, false)) {
             if ($format == static::FORMAT_CHOOSER_SELECT) {
                 $element = $this->editableSelect($value, $field, $previous);
             } else {
