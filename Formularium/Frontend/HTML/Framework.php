@@ -4,7 +4,18 @@ namespace Formularium\Frontend\HTML;
 
 class Framework extends \Formularium\Framework
 {
+    /**
+     * The tag used as container for fields in viewable()
+     *
+     * @var string
+     */
     protected static $viewableContainerTag = 'div';
+
+    /**
+     * The tag used as container for fields in editable()
+     *
+     * @var string
+     */
     protected static $editableContainerTag = 'div';
 
     public function __construct(string $name = 'HTML')

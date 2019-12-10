@@ -19,13 +19,6 @@ class Framework extends \Formularium\Framework
             HTMLElement::factory('script', ['src' => "https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"])
         ]);
     }
-
-    public function form(HTMLElement $form)
-    {
-        $form->setAttributes([
-            'data-parsley-success-class' => 'asdfasdf'
-        ]);
-    }
  
     public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {

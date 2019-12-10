@@ -415,6 +415,9 @@ class HTMLElement
     
     /**
      * Return the html element code including all children
+     *
+     * @param string $indentString String used to indent HTML code. Use '' for a compact version.
+     * @param integer $level The current indentation level.
      * @return string (html code)
      */
     public function getRenderHTML($indentString = '  ', $level = 0): string
