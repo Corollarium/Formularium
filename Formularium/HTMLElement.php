@@ -221,6 +221,7 @@ class HTMLElement
      *                - array with others elements or text
      * @param bool $overwrite if true overwrite content otherwise append the content
      * @param bool $raw If true, this is raw content (html) and should not be escaped.
+     * @param bool $prepend If true prepend instead of appending
      * @return HTMLElement Itself
      */
     public function setContent($content, $overwrite = true, $raw = false, $prepend = false): HTMLElement
@@ -253,6 +254,7 @@ class HTMLElement
     /**
      * Aliases to HTMLElement::setContent($content, false);
      * @see setContent
+     * @param string|HTMLElement|string[]|HTMLElement[] $content
      * @return HTMLElement Itself
      */
     public function addContent($content, bool $raw = false): HTMLElement
@@ -264,6 +266,7 @@ class HTMLElement
     /**
      * Appends content nodes to the bottom of this element.
      *
+     * @see setContent
      * @param string|HTMLElement|string[]|HTMLElement[] $content
      * @param boolean $raw
      * @return HTMLElement
@@ -277,6 +280,7 @@ class HTMLElement
     /**
      * Prepends content nodes to the beginning of this element.
      *
+     * @see setContent
      * @param string|HTMLElement|string[]|HTMLElement[] $content
      * @param boolean $raw
      * @return HTMLElement
@@ -330,14 +334,14 @@ class HTMLElement
     /**
      * Find and return elements based in $tag, $attr, $val
      * The $tag or $attr must be a value
-     * @see too HTMLElement::get
-     * @param HTMLElement $element if null $elemnt = $this
+     *
+     * @see HTMLElement::get
      * @param string $tag tag of search
      * @param string $attr attribute of search
      * @param string $val value of attribute search
      * @return HTMLElement[]
      */
-    public function getElements($tag, $attr, $val)
+    public function getElements(string $tag, string $attr, string $val)
     {
         return $this->getInternal($this, $tag, $attr, $val);
     }
@@ -350,7 +354,7 @@ class HTMLElement
      * @param string $val Value of attribute or null value to compare
      * @return HTMLElement[]
      */
-    protected function getInternal($element, $tag, $attr, $val)
+    protected function getInternal(HTMLElement $element, string $tag = null, string $attr = null, string $val = null)
     {
         if ($this->match($element, $tag, $attr, $val)) {
             $return = [$element];
