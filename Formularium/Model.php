@@ -93,9 +93,7 @@ class Model
         $errors = [];
         foreach ($data as $name => $d) {
             if (!array_key_exists($name, $this->fields)) {
-                $errors[$name] = [
-                    "Field $name does not exist in this model"
-                ];
+                $errors[$name] = "Field $name does not exist in this model";
                 continue;
             }
             $field = $this->fields[$name];
