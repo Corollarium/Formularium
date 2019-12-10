@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Formularium\Datatype;
+use Formularium\Datatype\Datatype_integer;
 use Formularium\Exception\Exception;
 use Formularium\Model;
 use PHPUnit\Framework\TestCase;
@@ -75,5 +77,35 @@ EOF;
         $m = Model::fromJSON($json);
         $this->assertEquals('ModelTest', $m->getName());
         $this->assertIsArray($m->getFields());
+    }
+
+    public function testValidate()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someInteger' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Datatype_integer::MIN => 4,
+                        Datatype_integer::MAX => 30,
+                        Datatype::REQUIRED => true,
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // required
+        $v = $model->validate([]);
+        $this->assertArrayHasKey('someInteger', $v['errors']);
+
+        // min
+        $v = $model->validate(['someInteger' => 1]);
+        $this->assertArrayHasKey('someInteger', $v['errors']);
+
+        // ok
+        $v = $model->validate(['someInteger' => 6]);
+        $this->assertEmpty($v['errors']);
     }
 }

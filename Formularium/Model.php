@@ -87,7 +87,7 @@ class Model
      * @param array $data A field name => data array.
      * @return array
      */
-    protected function validate(array $data): array
+    public function validate(array $data): array
     {
         $validate = [];
         $errors = [];
@@ -103,17 +103,34 @@ class Model
                 $errors[$name] = $e->getMessage();
             }
         }
+        foreach ($this->fields as $name => $field) {
+            if (($field->getValidators()[Datatype::REQUIRED] ?? false) && !array_key_exists($name, $validate)) {
+                $errors[$name] = "Field $name is missing";
+            }
+        }
         return ['validated' => $validate, 'errors' => $errors];
     }
 
-    public function viewable(): string
+    /**
+     * Renders a readonly view of the model with given data.
+     *
+     * @param array $modelData
+     * @return string
+     */
+    public function viewable(array $modelData): string
     {
-        return FrameworkComposer::viewable($this);
+        return FrameworkComposer::viewable($this, $modelData);
     }
 
-    public function editable(): string
+    /**
+     * Renders a form view of the model with given data.
+     *
+     * @param array $modelData
+     * @return string
+     */
+    public function editable(array $modelData = []): string
     {
-        return FrameworkComposer::editable($this);
+        return FrameworkComposer::editable($this, $modelData);
     }
 
     /**
