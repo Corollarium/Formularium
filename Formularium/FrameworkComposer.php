@@ -50,20 +50,20 @@ class FrameworkComposer
      */
     public static function htmlHead(): string
     {
-        $head = [];
+        $head = new HTMLElement('');
         foreach (static::get() as $framework) {
-            $head[] = $framework->htmlHead();
+            $framework->htmlHead($head);
         }
-        return join("\n", $head);
+        return $head->getRenderHTML();
     }
 
     public static function htmlFooter(): string
     {
-        $head = [];
+        $footer = new HTMLElement('');
         foreach (static::get() as $framework) {
-            $head[] = $framework->htmlFooter();
+            $framework->htmlFooter($footer);
         }
-        return join("\n", $head);
+        return $footer->getRenderHTML();
     }
 
     /**

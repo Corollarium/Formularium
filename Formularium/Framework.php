@@ -40,11 +40,11 @@ abstract class Framework
      * Returns a string with the <head> HTML to generate standalone files.
      * This is used by the kitchensink generator.
      *
-     * @return string
+     * @param HTMLElement $head
+     * @return void
      */
-    public function htmlHead(): string
+    public function htmlHead(HTMLElement &$head)
     {
-        return '';
     }
 
     /**
@@ -53,9 +53,8 @@ abstract class Framework
      *
      * @return string
      */
-    public function htmlFooter(): string
+    public function htmlFooter(HTMLElement &$head)
     {
-        return '';
     }
 
     /**

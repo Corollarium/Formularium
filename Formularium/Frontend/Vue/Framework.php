@@ -26,10 +26,11 @@ class Framework extends \Formularium\Framework
         return $this;
     }
 
-    public function htmlHead(): string
+    public function htmlHead(HTMLElement &$head)
     {
-        return '<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>';
-        // return '<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>';
+        $head->prependContent(
+            HTMLElement::factory('script', ['src' => "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"])
+        );
     }
 
     public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string

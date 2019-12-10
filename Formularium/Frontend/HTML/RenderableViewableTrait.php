@@ -11,7 +11,7 @@ trait RenderableViewableTrait
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         return HTMLElement::factory(
-            'div',
+            Framework::getViewableContainerTag(),
             [],
             [
                 HTMLElement::factory(

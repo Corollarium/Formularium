@@ -54,7 +54,7 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
             $input->setAttribute('autocomplete', 'off');
         }
 
-        $container = new HTMLElement('div', [], $input);
+        $container = new HTMLElement(Framework::getEditableContainerTag(), [], $input);
         if (array_key_exists('label', $extensions)) {
             $container->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id')], $extensions['label']));
         }
