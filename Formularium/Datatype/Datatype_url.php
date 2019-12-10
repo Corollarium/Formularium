@@ -59,7 +59,7 @@ class Datatype_url extends \Formularium\Datatype
         }
     
         $parsed = parse_url($value);
-        if ($parsed && array_key_exists('path', $parsed)) {
+        if (!empty($parsed) && array_key_exists('path', $parsed)) {
             $parsed['path'] = str_replace('%2F', '/', urlencode(utf8_encode($parsed['path'])));
         }
     

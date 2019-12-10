@@ -30,7 +30,7 @@ trait RenderableBootstrapInputTrait
             'class' => 'form-control',
         ]);
         $comment = $previous->get('div.comment');
-        if ($comment) {
+        if (!empty($comment)) {
             $comment[0]->setTag('small')->setAttributes([
                 'class' => 'form-text text-muted',
             ]);

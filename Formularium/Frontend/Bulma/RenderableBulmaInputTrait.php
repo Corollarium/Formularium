@@ -30,13 +30,13 @@ trait RenderableBulmaInputTrait
             'class' => 'input',
         ]);
         $label = $previous->get('label');
-        if ($label) {
+        if (!empty($label)) {
             $label[0]->setAttributes([
                 'class' => 'label',
             ]);
         }
         $comment = $previous->get('div.comment');
-        if ($comment) {
+        if (!empty($comment)) {
             $comment[0]->setTag('p')->setAttributes([
                 'class' => 'help',
             ]);

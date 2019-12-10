@@ -13,7 +13,7 @@ use Formularium\Renderable;
 
 function kitchenSink($frameworkName)
 {
-    $framework = FrameworkComposer::set($frameworkName);
+    FrameworkComposer::set($frameworkName);
     $head = FrameworkComposer::htmlHead();
 
     $html = "<!DOCTYPE html>
@@ -95,7 +95,12 @@ function kitchenSink($frameworkName)
 
 @mkdir(__DIR__ . '/../out/');
 $path = __DIR__ . '/../Formularium/Frontend/';
-$frameworks = array_diff(scandir($path), array('.', '..'));
+$dir = scandir($path);
+if ($dir === false) {
+    echo 'Cannot find frontend';
+    return 1;
+}
+$frameworks = array_diff($dir, array('.', '..'));
 $index = "<!DOCTYPE html>
 <html>
 <head>

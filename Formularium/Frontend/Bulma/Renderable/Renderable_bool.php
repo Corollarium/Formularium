@@ -31,7 +31,7 @@ class Renderable_bool extends \Formularium\Renderable
             'class' => 'select',
         ]);
         $label = $previous->get('label');
-        if ($label) {
+        if (!empty($label)) {
             $label[0]->setAttributes([
                 'class' => 'label',
             ]);
