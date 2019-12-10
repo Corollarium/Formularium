@@ -22,6 +22,7 @@ class FrameworkComposer
 
     /**
      * @param Framework[] $frameworks
+     * @return void
      */
     public static function set(array $frameworks = [])
     {
@@ -29,18 +30,17 @@ class FrameworkComposer
         foreach ($frameworks as $f) {
             static::append($f);
         }
-        return __CLASS__;
     }
 
     /**
      * Appends a framework to the queue
      *
      * @param string|Framework $framework
+     * @return void
      */
     public static function append($framework)
     {
         static::$frameworks[] = ($framework instanceof Framework ? $framework : Framework::factory($framework));
-        return __CLASS__;
     }
 
     /**

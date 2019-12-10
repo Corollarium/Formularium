@@ -3,16 +3,27 @@
 namespace Formularium\Frontend\Vue;
 
 use Formularium\HTMLElement;
-use PHP_CodeSniffer\Generators\HTML;
 
 class Framework extends \Formularium\Framework
 {
     const VUE_MODE_SINGLE_FILE = 'VUE_MODE_SINGLE_FILE';
     const VUE_MODE_EMBEDDED = 'VUE_MODE_EMBEDDED';
 
+    /**
+     * @var string
+     */
+    protected $mode;
+
     public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
+        $this->mode = self::VUE_MODE_EMBEDDED;
+    }
+
+    public function setMode(string $mode): Framework
+    {
+        $this->mode = $mode;
+        return $this;
     }
 
     public function htmlHead(): string
@@ -36,8 +47,7 @@ class Framework extends \Formularium\Framework
         $editableForm = join('', $elements);
         $jsonData = json_encode($data);
 
-        $mode = self::VUE_MODE_EMBEDDED;
-        if ($mode === self::VUE_MODE_SINGLE_FILE) {
+        if ($this->mode === self::VUE_MODE_SINGLE_FILE) {
             return <<<EOF
 <template>
 <div>
