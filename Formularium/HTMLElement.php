@@ -523,7 +523,7 @@ class HTMLElement
 
     /**
      * Similar to array_walk(). Applied to this HTMLElement and all its children.
-     * Does not call text content.
+     * Does not call callback for text content.
      *
      * @param callable $f
      * @return HTMLElement self
@@ -540,10 +540,10 @@ class HTMLElement
     }
 
     /**
-     * Similar to array_map(). Calls for text content too.
+     * Similar to array_map(). Calls callback for text content too.
      *
      * @param callable $f
-     * @return HTMLElement
+     * @return array
      */
     public function map(callable $f): array
     {
@@ -560,6 +560,7 @@ class HTMLElement
 
     /**
      * Similar to array_filter().
+     * Does not call callback for text content.
      *
      * @param callable $f
      * @return HTMLElement
