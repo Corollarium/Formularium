@@ -79,13 +79,14 @@ echo $model->viewable($data);
 
 Formularium is built in a way that generators can be chained, so you can combine a basic HTML form generator, with a CSS framework and a JS validator, or possibly get the form into a Vue or React component. We provide a number of frontend plugins and you can easily extend with your own (and submit a PR!)
 
-
 - Base generators:
     - Pure HTML
 - CSS Frameworks:
-    - Bulma
-    - Bootstrap
-    - Materialize
-    - Buefy
+    - [Bulma](https://bulma.io)
+    - [Bootstrap](https://getbootstrap.com/)
+    - [Materialize](https://materializecss.com/)
+    - [Buefy](https://buefy.github.io/)
 - JS Frameworks/validators:
-    - Vue
+    - [Vue](https://vuejs.org)
+    - [React](https://reactjs.org)
+    - [Parsley](https://parsleyjs.org/)

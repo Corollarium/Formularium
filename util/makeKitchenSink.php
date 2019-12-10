@@ -123,6 +123,7 @@ $frameworks = [
     ['HTML', 'Bulma', 'Vue'],
     ['HTML', 'Buefy', 'Vue'],
     ['HTML', 'React'],
+    ['HTML', 'Bootstrap', 'React'],
 ];
 foreach ($frameworks as $framework) {
     $name = join('', $framework);
