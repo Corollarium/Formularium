@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\HTML\Renderable;
 
-use Formularium\Datatype\DataType_uuid;
+use Formularium\Datatype\Datatype_uuid;
 use Formularium\Field;
 use Formularium\HTMLElement;
 

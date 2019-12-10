@@ -4,7 +4,12 @@ namespace Formularium\Frontend\HTML;
 
 class Framework extends \Formularium\Framework
 {
-    public static function counter()
+    /**
+     * Static counter to generate unique ids.
+     *
+     * @return integer
+     */
+    public static function counter(): int
     {
         static $counter = 0;
         return $counter++;
@@ -17,14 +22,14 @@ class Framework extends \Formularium\Framework
 
     public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
-        return join('', array_map(function($e) {
+        return join('', array_map(function ($e) {
             return $e->__toString();
         }, $elements));
     }
 
     public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
-        return join('', array_map(function($e) {
+        return join('', array_map(function ($e) {
             return $e->__toString();
         }, $elements));
     }

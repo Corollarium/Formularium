@@ -35,7 +35,7 @@ class Datatype_url extends \Formularium\Datatype
     public function validateURL($value)
     {
         if ($value == 'http://' || $value == 'https://' || $value == '') {
-            return true;
+            return;
         }
     
         $protocol = mb_strtolower(mb_substr($value, 0, 8));
