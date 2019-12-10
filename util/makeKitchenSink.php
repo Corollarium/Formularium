@@ -100,6 +100,7 @@ function kitchenSink($frameworkName)
 }
 
 @mkdir(__DIR__ . '/../build/');
+@mkdir(__DIR__ . '/../build/kitchensink/');
 $path = __DIR__ . '/../Formularium/Frontend/';
 $dir = scandir($path);
 if ($dir === false) {
@@ -129,8 +130,8 @@ foreach ($frameworks as $framework) {
     $name = join('', $framework);
     echo "Building $name...\n";
     $html = kitchenSink($framework);
-    file_put_contents(__DIR__ . '/../build/' . $name . '.html', $html);
+    file_put_contents(__DIR__ . '/../build/kitchensink/' . $name . '.html', $html);
     $index .= "<li><a href='{$name}.html'>$name</a></li>";
 }
 $index .= "</ul></body></html>";
-file_put_contents(__DIR__ . '/../build/index.html', $index);
+file_put_contents(__DIR__ . '/../build/kitchensink/index.html', $index);
