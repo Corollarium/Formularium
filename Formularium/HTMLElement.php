@@ -10,6 +10,8 @@ use PHP_CodeSniffer\Generators\HTML;
  */
 class HTMLElement
 {
+    const STANDALONE_TAGS = ['img', 'hr', 'br', 'input', 'meta', 'col', 'command', 'link', 'param', 'source', 'embed'];
+
     /**
      * The HTML attributes and respectives values
      * This is an associative array wich:
@@ -299,7 +301,7 @@ class HTMLElement
      *						'eee' - Select elements 'eee' (with tag)
      * 						'#ii' - Select a element with id attribute 'ii'
      * 						'.cc' - Select elements with class attribute 'cc'
-     * 						'a=v' - Select elements with 'a' attribute with 'v' value
+     * 						'[a=v]' - Select elements with 'a' attribute with 'v' value
      * 						'e#i' - Select elements 'e' with id attribute 'i'
      * 						'e.c' - Select elements 'e' with class attribute 'c'
      * @return HTMLElement[]
@@ -319,7 +321,7 @@ class HTMLElement
             $attr = "class";
             $val = mb_substr($selector, 1);
         } elseif (mb_strpos($selector, "=") !== false) {
-            list($attr, $val) = explode("=", $selector);
+            list($attr, $val) = explode("=", substr($selector, 1, -1));
         } elseif (mb_strpos($selector, "#") !== false) {
             $attr = "id";
             list($tag, $val) = explode("#", $selector);
@@ -417,6 +419,7 @@ class HTMLElement
      */
     public function getRenderHTML($indentString = '  ', $level = 0): string
     {
+
         // skip empty non renderable
         if ($this->renderIfEmpty === false) {
             if (!count($this->content)) {
@@ -437,7 +440,7 @@ class HTMLElement
             foreach ($this->attributes as $atrib => $value) {
                 $open[] = $atrib . '="' . htmlspecialchars(implode(' ', $value)) . '"';
             }
-            $data[] = join(' ', $open) . '>';
+            $data[] = join(' ', $open) . (in_array($this->tag, self::STANDALONE_TAGS) ? '/>' : '>');
         }
 
         // recurse
@@ -468,10 +471,7 @@ class HTMLElement
 
         // handle closing
         if (!empty($this->tag)
-            && !in_array(
-                $this->tag,
-                ['img', 'hr', 'br', 'input', 'meta', 'col', 'command', 'link', 'param', 'source', 'embed']
-            )
+            && !in_array($this->tag, self::STANDALONE_TAGS)
         ) {
             $data[] = '</' . htmlspecialchars($this->tag) . '>';
         }

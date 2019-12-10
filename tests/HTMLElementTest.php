@@ -14,7 +14,7 @@ final class HTMLElementTest extends TestCase
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $html = new HTMLElement('img');
-        $htmldata = '<img>';
+        $htmldata = '<img/>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
     }
 
@@ -68,12 +68,12 @@ final class HTMLElementTest extends TestCase
         $htmldata = '<div>' . $texto . '<div><div>' . $texto .'</div></div></div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
-        $img = '<img src="test.jpg">';
+        $img = '<img src="test.jpg"/>';
         $html->setContent(new HTMLElement('img', array('src' => 'test.jpg')), false);
         $htmldata = '<div>' . $texto . '<div><div>' . $texto . '</div></div>' . $img . '</div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
-        $img = '<img src="test.jpg">';
+        $img = '<img src="test.jpg"/>';
         $html->setContent(new HTMLElement('img', array('src' => 'test.jpg')));
         $htmldata = '<div>' . $img . '</div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
@@ -108,7 +108,7 @@ final class HTMLElementTest extends TestCase
         $this->assertEquals(1, count($ret));
         $this->assertEquals($img, $ret[0]);
 
-        $ret = $div->get('href=teste.html');
+        $ret = $div->get('[href=teste.html]');
         $this->assertEquals(1, count($ret));
         $this->assertEquals($a, $ret[0]);
 
