@@ -19,18 +19,6 @@ before_script:
 script:
   - vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 
-before_deploy:
-  - php util/makeKitchenSink.php
-
-deploy:
-  provider: pages:git
-  cleanup: true
-  edge: true
-  local_dir: build/kitchensink
-  on: 
-    repo: Corollarium/Formularium
-    branch: gh-pages
-
 jobs:
   allow_failures:
     - php: nightly
@@ -51,3 +39,16 @@ jobs:
       env: STATIC_ANALYSIS
       install: travis_retry composer install
       script: vendor/bin/phpstan analyze Formularium
+
+    - stage: Publish kitchen sink
+      env: KITCHEN_SINK
+      before_deploy:
+        - php util/makeKitchenSink.php
+      deploy:
+        provider: pages:git
+        cleanup: true
+        edge: true
+        local_dir: build/kitchensink
+        on: 
+          repo: Corollarium/Formularium
+          branch: gh-pages
