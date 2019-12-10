@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\HTML\Renderable;
 
+use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
@@ -35,7 +36,10 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
         if (isset($extensions[static::PLACEHOLDER])) {
             $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
         }
-        foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
+        if ($validators[Datatype::REQUIRED] ?? false) {
+            $input->setAttribute('required', 'required');
+        }
+        foreach ([static::DISABLED, static::READONLY] as $v) {
             if ($f->getExtension($v, false)) {
                 $input->setAttribute($v, $v);
             }

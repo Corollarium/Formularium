@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\HTML\Renderable;
 
+use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\HTMLElement;
@@ -37,7 +38,7 @@ class Renderable_bool extends \Formularium\Renderable
 
         $format = $field->getExtension(static::FORMAT_CHOOSER, static::FORMAT_CHOOSER_SELECT);
         
-        if ($field->getExtension(static::REQUIRED, false)) {
+        if ($field->getValidators()[Datatype::REQUIRED] ?? false) {
             if ($format == static::FORMAT_CHOOSER_SELECT) {
                 $element = $this->editableSelect($value, $field, $previous);
             } else {
@@ -114,7 +115,6 @@ class Renderable_bool extends \Formularium\Renderable
     protected function editableSelect($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $element = new HTMLElement('select');
-        $extensions = $field->getExtensions();
         $element->setAttributes([
             'id' => $field->getName() . Framework::counter(),
             'name' => $field->getName(),
@@ -135,13 +135,13 @@ class Renderable_bool extends \Formularium\Renderable
             $optionFalse->setAttribute('selected', 'selected');
         }
 
-        if ($field->getExtension('required', false)) {
+        if ($field->getValidators()[Datatype::REQUIRED] ?? false) {
             $element->addContent($optionEmpty);
         }
         $element->addContent($optionFalse);
         $element->addContent($optionTrue);
 
-        foreach ([static::DISABLED, static::READONLY, static::REQUIRED] as $v) {
+        foreach ([static::DISABLED, static::READONLY] as $v) {
             if ($field->getExtension($v, false)) {
                 $element->setAttribute($v, $v);
             }

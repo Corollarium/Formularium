@@ -55,9 +55,11 @@ function kitchenSink($frameworkName)
     // improve a few:
     $fields['string'] = [
         'datatype' => 'string',
+        'validators' => [
+            Datatype_string::MIN_LENGTH => 3,
+            Datatype_string::MAX_LENGTH => 30,
+        ],
         'extensions' => [
-            Renderable_string::MIN_LENGTH => 3,
-            Renderable_string::MAX_LENGTH => 30,
             Renderable::LABEL => 'Type string',
             Renderable::COMMENT => 'Some text explaining this field',
             Renderable::PLACEHOLDER => "Type here"
@@ -65,9 +67,11 @@ function kitchenSink($frameworkName)
     ];
     $fields['integer'] = [
         'datatype' => 'integer',
-        'extensions' => [
+        'validators' => [
             Datatype_integer::MIN => 4,
             Datatype_integer::MAX => 30,
+        ],
+        'extensions' => [
             Renderable_number::STEP => 2,
             Renderable::LABEL => 'Type integer',
             Renderable::PLACEHOLDER => "Type here"
@@ -83,7 +87,7 @@ function kitchenSink($frameworkName)
 
     // TODO: values
     $html .= "<div><h2>Viewable</h2>\n";
-    $html .= $model->viewable();
+    $html .= $model->viewable([]);
     $html .= "</div><div><h2>Editable</h2>\n";
     $html .= $model->editable();
 
