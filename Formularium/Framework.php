@@ -51,7 +51,8 @@ abstract class Framework
      * Returns a string with things to add to the footer of the page (such as scripts)
      * This is used by the kitchensink generator.
      *
-     * @return string
+     * @param HTMLElement $head
+     * @return void
      */
     public function htmlFooter(HTMLElement &$head)
     {
