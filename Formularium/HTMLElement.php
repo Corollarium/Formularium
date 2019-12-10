@@ -215,7 +215,7 @@ class HTMLElement
 
     /**
      * Set content (dom objects or texts) to element
-     * @param mixed $content The content of element, can be:
+     * @param string|HTMLElement|string[]|HTMLElement[] $content The content of element, can be:
      *                - string (with text content)
      *                - HTMLElement
      *                - array with others elements or text
@@ -261,12 +261,26 @@ class HTMLElement
         return $this;
     }
 
+    /**
+     * Appends content nodes to the bottom of this element.
+     *
+     * @param string|HTMLElement|string[]|HTMLElement[] $content
+     * @param boolean $raw
+     * @return HTMLElement
+     */
     public function appendContent($content, bool $raw = false): HTMLElement
     {
         $this->setContent($content, false, $raw);
         return $this;
     }
 
+    /**
+     * Prepends content nodes to the beginning of this element.
+     *
+     * @param string|HTMLElement|string[]|HTMLElement[] $content
+     * @param boolean $raw
+     * @return HTMLElement
+     */
     public function prependContent($content, bool $raw = false): HTMLElement
     {
         $this->setContent($content, false, $raw, true);

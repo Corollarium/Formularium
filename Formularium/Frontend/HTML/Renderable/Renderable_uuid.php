@@ -11,7 +11,7 @@ class Renderable_uuid extends Renderable_string
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $element = parent::editable($value, $field, $previous);
-        $element->get('input')[0]->setAttribute('pattern', DataType_uuid::UUID_REGEX);
+        $element->get('input')[0]->setAttribute('pattern', Datatype_uuid::UUID_REGEX);
         return $element;
     }
 }
