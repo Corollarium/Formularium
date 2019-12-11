@@ -7,7 +7,7 @@ use Formularium\HTMLElement;
 
 abstract class Renderable extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
-    protected function container($content, Field $field): HTMLElement
+    protected function container(HTMLElement $content, Field $field): HTMLElement
     {
         $extensions = $field->getExtensions();
         $container = new HTMLElement(Framework::getEditableContainerTag(), [], $content);
