@@ -44,10 +44,12 @@ jobs:
       env: KITCHEN_SINK
       before_deploy:
         - php util/makeKitchenSink.php
+        - composer coverage
+        - composer apidoc
       script: skip
       deploy:
         provider: pages:git
         token: ${GITHUB_TOKEN}
         cleanup: true
         edge: true
-        local_dir: build/kitchensink
+        local_dir: docs/

@@ -27,7 +27,8 @@
         "makeKitchenSink": "php ./util/makeKitchenSink.php",
         "format": "vendor/bin/ecs check Formularium/ --level clean-code --fix && vendor/bin/ecs check Formularium/ --level psr12 --fix",
         "stan": "vendor/bin/phpstan analyse Formularium",
-        "coverage": "mkdir build 2> /dev/null && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-html build/coverage-report tests/",
+        "apidoc": "echo TODO",
+        "coverage": "mkdir build 2> /dev/null && ./vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-html docs/coverage-report tests/",
         "test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
     }
 }
