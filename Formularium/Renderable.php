@@ -24,7 +24,12 @@ abstract class Renderable implements RenderableParameter
         }
 
         $frameworkClassname = get_class($framework);
-        $ns = '\\' . substr($frameworkClassname, 0, strrpos($frameworkClassname, '\\'));
+        $lastpos = strrpos($frameworkClassname, '\\');
+        if ($lastpos === false) {
+            $ns = '';
+        } else {
+            $ns = '\\' . substr($frameworkClassname, 0, $lastpos);
+        }
         $class = "$ns\\Renderable\\Renderable_$datatypeName";
         if (!class_exists($class)) {
             $basetype = $datatype->getBasetype();

@@ -318,7 +318,7 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
         ['ZW', 'ZWE', '716'], // Zimbabwe
     ];
 
-    private function setChoices($code)
+    private function setChoices(string $code): void
     {
         $this->choices = array_column(self::COUNTRY_CODES, self::SET_INDEXES[$code]);
     }

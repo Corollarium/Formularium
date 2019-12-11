@@ -23,10 +23,17 @@ abstract class Datatype_choice extends \Formularium\Datatype
     {
         $total = $params['total'] ?? 1;
         if ($total == 1) {
-            return  $this->choices[array_rand($this->choices, 1)];
+            /**
+             * @var string $index
+             */
+            $index = array_rand($this->choices, 1);
+            return $this->choices[$index];
         } else {
             $choiceValues = [];
-            $rand_keys = $total == 1 ? [] : array_rand($this->choices, $total);
+            /**
+             * @var array $rand_keys
+             */
+            $rand_keys = array_rand($this->choices, $total);
             foreach ($rand_keys as $r) {
                 $choiceValues[] = $this->choices[$r];
             }

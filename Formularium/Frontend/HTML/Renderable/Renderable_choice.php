@@ -56,7 +56,7 @@ class Renderable_choice extends Renderable
         $element = new HTMLElement(Framework::getEditableContainerTag(), ['class' => 'formularium-radio-group']);
 
         /**
-         * @var Datatype_choice $field
+         * @var Datatype_choice $datatype
          */
         $datatype = $field->getDatatype();
         foreach ($datatype->getChoices() as $v => $label) {
@@ -124,7 +124,7 @@ class Renderable_choice extends Renderable
 
         $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
         /**
-         * @var Datatype_choice $field
+         * @var Datatype_choice $datatype
          */
         $datatype = $field->getDatatype();
 
