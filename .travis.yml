@@ -42,12 +42,10 @@ jobs:
         - CODE_COVERAGE=yes
         - DOCUMENTATION=yes
       before_deploy:
-        - pwd
-        - ls
         - php util/makeKitchenSink.php
         - composer coverage
         - composer apidoc
-        - ls docs
+        - touch docs/coverage-report/.nojekyll
       script: skip
       deploy:
         provider: pages:git
