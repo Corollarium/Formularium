@@ -51,7 +51,7 @@ abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
             $datatype = $this->getDataType();
             $validated = '';
             try {
-                $f = new Field($datatype->getName(), $datatype);
+                $f = new Field($datatype->getName(), $datatype, [], $validators);
                 $validated = $datatype->validate($value, $f);
             } catch (Exception $e) {
                 $this->assertFalse(true, $e->getMessage() . '. Value: ' . print_r($value, true));

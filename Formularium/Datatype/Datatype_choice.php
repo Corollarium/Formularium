@@ -21,7 +21,17 @@ abstract class Datatype_choice extends \Formularium\Datatype
 
     public function getRandom(array $params = [])
     {
-        throw new ValidatorException('Not implemented');
+        $total = $params['total'] ?? 1;
+        if ($total == 1) {
+            return  $this->choices[array_rand($this->choices, 1)];
+        } else {
+            $choiceValues = [];
+            $rand_keys = $total == 1 ? [] : array_rand($this->choices, $total);
+            foreach ($rand_keys as $r) {
+                $choiceValues[] = $this->choices[$r];
+            }
+            return $choiceValues;
+        }
     }
 
     public function validate($value, Field $f)
@@ -29,7 +39,7 @@ abstract class Datatype_choice extends \Formularium\Datatype
         if (!is_string($value) && !is_int($value)) {
             throw new ValidatorException('Invalid choice value ' . htmlspecialchars(print_r($value, true)));
         }
-        if ($value || in_array($value, $this->choices)) {
+        if ($value === '' || in_array($value, $this->choices)) {
             return $value;
         }
         throw new ValidatorException('Invalid choice value set: ' . htmlspecialchars((string)$value));
