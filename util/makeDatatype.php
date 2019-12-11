@@ -9,7 +9,7 @@ $longopts  = array(
 );
 $options = getopt($shortopts, $longopts);
 if (empty($options)) {
-    echo "--datatype=xx [--basetype=xx] [--path=xx]\n";
+    echo "Syntax: --datatype=xx [--basetype=xx] [--path=xx]\n";
     return 1;
 }
 
