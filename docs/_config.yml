@@ -1,2 +1,5 @@
 include: 
-  - coverage-report
+  - coverage-report/
+
+keep_files:
+  - coverage-report/
