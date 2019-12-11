@@ -29,7 +29,7 @@ trait RenderableBootstrapInputTrait
         $input[0]->setAttributes([
             'class' => 'form-control',
         ]);
-        $comment = $previous->get('div.comment');
+        $comment = $previous->get('.formularium-comment');
         if (!empty($comment)) {
             $comment[0]->setTag('small')->setAttributes([
                 'class' => 'form-text text-muted',

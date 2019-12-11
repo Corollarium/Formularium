@@ -35,7 +35,7 @@ trait RenderableBulmaInputTrait
                 'class' => 'label',
             ]);
         }
-        $comment = $previous->get('div.comment');
+        $comment = $previous->get('.formularium-comment');
         if (!empty($comment)) {
             $comment[0]->setTag('p')->setAttributes([
                 'class' => 'help',

@@ -5,14 +5,6 @@ namespace Formularium\Frontend\Bulma\Renderable;
 use Formularium\Field;
 use Formularium\HTMLElement;
 
-class Renderable_countrycode extends \Formularium\Renderable
+class Renderable_countrycode extends Renderable_choice
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
-    {
-        return $previous;
-    }
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
-    {
-        return $previous;
-    }
 }

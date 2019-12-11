@@ -545,12 +545,12 @@ class HTMLElement
      * @param callable $f
      * @return array
      */
-    public function map(callable $f): array
+    public function map(callable $f, bool $recurse = true): array
     {
         $data = [$f($this)];
         foreach ($this->content as $content) {
-            if ($content instanceof HTMLElement) {
-                $data = array_merge($data, $content->map($f));
+            if ($recurse && $content instanceof HTMLElement) {
+                $data = array_merge($data, $content->map($f, $recurse));
             } else {
                 $data[] = $f($content);
             }
@@ -565,14 +565,14 @@ class HTMLElement
      * @param callable $f
      * @return HTMLElement
      */
-    public function filter(callable $f): HTMLElement
+    public function filter(callable $f, bool $recurse = true): HTMLElement
     {
         foreach ($this->content as $key => $content) {
             if ($content instanceof HTMLElement) {
                 if (!$f($content)) {
                     unset($this->content[$key]);
-                } else {
-                    $content->filter($f);
+                } elseif ($recurse) {
+                    $content->filter($f, $recurse);
                 }
             }
         }

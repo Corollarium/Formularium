@@ -11,11 +11,11 @@ abstract class Renderable extends \Formularium\Renderable implements \Formulariu
     {
         $extensions = $field->getExtensions();
         $container = new HTMLElement(Framework::getEditableContainerTag(), [], $content);
-        if (array_key_exists('label', $extensions)) {
-            $container->prependContent(new HTMLElement('label', ['for' => $content->getAttribute('id')], $extensions['label']));
+        if (array_key_exists(Renderable::LABEL, $extensions)) {
+            $container->prependContent(new HTMLElement('label', ['for' => $content->getAttribute('id'), 'class' => 'formularium-label'], $extensions[Renderable::LABEL]));
         }
-        if (array_key_exists('comment', $extensions)) {
-            $container->appendContent(new HTMLElement('div', ['class' => 'comment'], $extensions['comment']));
+        if (array_key_exists(Renderable::COMMENT, $extensions)) {
+            $container->appendContent(new HTMLElement('div', ['class' => 'formularium-comment'], $extensions[Renderable::COMMENT]));
         }
         return $container;
     }

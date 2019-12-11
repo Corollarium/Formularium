@@ -35,7 +35,7 @@ class Renderable_bool extends \Formularium\Renderable
         if (!empty($label)) {
             $newContent[] = $label[0];
         }
-        $comment = $previous->get('div.comment');
+        $comment = $previous->get('.formularium-comment');
         if (!empty($comment)) {
             $comment[0]->setTag('span')->setAttributes([
                 'class' => 'helper-text',

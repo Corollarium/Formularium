@@ -22,10 +22,29 @@ trait RenderableBulmaTrait
         /** @var HTMLElement $base */
         $base = $this->_editable($value, $field, $previous);
         $base->addAttribute('class', "control");
-        return HTMLElement::factory(
+
+        // add a div.field container
+        $container = HTMLElement::factory(
             'div',
             ['class' => "field"],
             $base
         );
+
+        // move the main label to the div.field container
+        $label = $base->get('label.formularium-label');
+        if (!empty($label)) {
+            // delete
+            $base->filter(function ($e) {
+                return !($e->getTag() === 'label' && $e->getAttribute('class') === ['formularium-label']);
+            });
+            // fix class
+            $label[0]->setAttributes([
+                'class' => 'label',
+            ]);
+            // prepend
+            $container->prependContent($label[0]);
+        }
+
+        return $container;
     }
 }

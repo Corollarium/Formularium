@@ -53,9 +53,8 @@ class Renderable_choice extends Renderable
             $value = $field->getExtensions()[static::DEFAULTVALUE];
         }
 
-        $element = new HTMLElement('div', ['class' => 'formularium-radio-group']);
+        $element = new HTMLElement(Framework::getEditableContainerTag(), ['class' => 'formularium-radio-group']);
 
-        $idcounter = 1;
         /**
          * @var Datatype_choice $field
          */
@@ -95,11 +94,12 @@ class Renderable_choice extends Renderable
                 ],
                 [
                     $input,
-                    new HTMLElement('label', ['class' => 'formularium-radio-label', 'for' => $id], [$label])
+                    new HTMLElement('label', ['class' => 'formularium-radio-label', 'for' => $id], [HTMLElement::factory('span', [], $label)])
                 ]
             );
             $element->addContent($li);
         }
+
         return $element;
     }
 

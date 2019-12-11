@@ -3,6 +3,7 @@
 namespace Formularium\Frontend\Buefy;
 
 use Formularium\Field;
+use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
 trait RenderableBuefyTrait
@@ -25,18 +26,18 @@ trait RenderableBuefyTrait
         $extensions = $field->getExtensions();
         $base->setTag('b-field');
 
-        if (array_key_exists('label', $extensions)) {
-            $base->setAttribute('label', $extensions['label']);
+        if (array_key_exists(Renderable::LABEL, $extensions)) {
+            $base->setAttribute('label', $extensions[Renderable::LABEL]);
         }
-        if (array_key_exists('comment', $extensions)) {
-            $base->setAttribute('message', $extensions['comment']);
+        if (array_key_exists(Renderable::COMMENT, $extensions)) {
+            $base->setAttribute('message', $extensions[Renderable::COMMENT]);
         }
         $base->filter(function ($e) {
             if ($e instanceof HTMLElement) {
                 if ($e->getTag() === 'label') {
                     return false;
                 }
-                if ($e->getTag() === 'div' && $e->getAttribute('class') === ['comment']) {
+                if ($e->getTag() === 'div' && $e->getAttribute('class') === ['formularium-comment']) {
                     return false;
                 }
             }
