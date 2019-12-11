@@ -40,7 +40,7 @@ use Formularium\Exception\ValidatorException;
 
 class Datatype_${datatypeLower} extends ${basetypeClass}
 {
-    public function __construct(\$typename = '${datatypeLower}', \$basetype = '$basetype')
+    public function __construct(string \$typename = '${datatypeLower}', string \$basetype = '$basetype')
     {
         parent::__construct(\$typename, \$basetype);
     }

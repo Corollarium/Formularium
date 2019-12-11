@@ -14,7 +14,7 @@ abstract class Datatype_choice extends \Formularium\Datatype
      */
     protected $choices = [];
 
-    public function __construct($typename = 'choice', $basetype = 'choice')
+    public function __construct(string $typename = 'choice', string $basetype = 'choice')
     {
         parent::__construct($typename, $basetype);
     }
@@ -27,11 +27,11 @@ abstract class Datatype_choice extends \Formularium\Datatype
     public function validate($value, Field $f)
     {
         if (!is_string($value) && !is_int($value)) {
-            throw new ValidatorException('Invalid choice value ' . htmlspecialchars($value));
+            throw new ValidatorException('Invalid choice value ' . htmlspecialchars(print_r($value, true)));
         }
         if ($value || in_array($value, $this->choices)) {
             return $value;
         }
-        throw new ValidatorException('Invalid choice value set: ' . htmlspecialchars($value));
+        throw new ValidatorException('Invalid choice value set: ' . htmlspecialchars((string)$value));
     }
 }

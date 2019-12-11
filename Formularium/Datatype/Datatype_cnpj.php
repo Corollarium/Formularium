@@ -8,7 +8,7 @@ use Respect\Validation\Validator;
 
 class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
 {
-    public function __construct($typename = 'cnpj', $basetype = 'string')
+    public function __construct(string $typename = 'cnpj', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }
