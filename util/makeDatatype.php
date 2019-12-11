@@ -19,7 +19,7 @@ $basetype = $options['basetype'] ?? $datatypeLower;
 $basetypeClass = (array_key_exists('basetype', $options) ? '\\Formularium\\Datatype\\Datatype_' . $basetype : '\\Formularium\\Datatype');
 $path = $options['path'] ?? "Formularium/Datatype/" ;
 $filename =  $path . "/Datatype_${datatypeLower}.php";
-$generateTest = $options['test'] ?? false;
+$generateTest = array_key_exists('test', $options);
 
 if (!is_dir($path)) {
     echo "Path $path does not exist.\n";
@@ -50,7 +50,7 @@ class Datatype_${datatypeLower} extends ${basetypeClass}
         throw new ValidatorException('Not implemented');
     }
 
-    public function validate(\$value, Field \$f)
+    public function validate(\$value, Field \$field)
     {
         throw new ValidatorException('Not implemented');
     }
