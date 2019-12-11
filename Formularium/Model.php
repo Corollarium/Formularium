@@ -104,7 +104,10 @@ class Model
             }
         }
         foreach ($this->fields as $name => $field) {
-            if (($field->getValidators()[Datatype::REQUIRED] ?? false) && !array_key_exists($name, $validate)) {
+            if (($field->getValidators()[Datatype::REQUIRED] ?? false)
+                && !array_key_exists($name, $validate)
+                && !array_key_exists($name, $errors)
+            ) {
                 $errors[$name] = "Field $name is missing";
             }
         }
