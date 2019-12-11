@@ -4,7 +4,6 @@ namespace Formularium\Frontend\HTML;
 
 use Formularium\Field;
 use Formularium\HTMLElement;
-use Formularium\Renderable;
 
 trait RenderableViewableTrait
 {
@@ -17,7 +16,7 @@ trait RenderableViewableTrait
                 HTMLElement::factory(
                     'span',
                     [],
-                    $field->getExtension(Renderable::LABEL, '')
+                    $field->getExtension(\Formularium\Renderable::LABEL, '')
                 ),
                 HTMLElement::factory(
                     'span',
