@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+
+</head>
+<body>
+<div class='container'>
+    <h1>HTML/Materialize</h1><div><h2>Viewable</h2>
+<section class="section"><div class="container"><div>
+  <span>
+    Type bool
+  </span>
+  <span>
+    False
+  </span>
+</div>
+
+<div>
+  <span>
+    Type cnpj
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type color
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type date
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type datetime
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type domain
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type email
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type float
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type integer
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type json
+  </span>
+  <span>
+    {}
+  </span>
+</div>
+
+<div>
+  <span>
+    Type phone
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type string
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type text
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type uinteger
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type url
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type usmall
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type uuid
+  </span>
+  <span>
+  </span>
+</div>
+
+</div></section></div><div><h2>Editable</h2>
+<form><section class="section"><div class="container"><div class="row">
+  <div class="input-field col s12">
+    <select id="bool68" name="bool" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool">
+      <option value="false" selected="selected">
+        False
+      </option>
+      <option value="true">
+        True
+      </option>
+    </select>
+    <label for="bool68">
+      Type bool
+    </label>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('#bool68');
+                console.log(elems);
+                var options = {};
+                var instances = M.FormSelect.init(elems, options);
+            });
+    </script>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="cnpj69" type="text" name="cnpj" class="validate" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" value="" maxlength="1024" title="Type cnpj"/>
+    <label for="cnpj69">
+      Type cnpj
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="color70" type="color" name="color" class="validate" data-attribute="color" data-datatype="color" data-basetype="string" value="" maxlength="1024" title="Type color"/>
+    <label for="color70">
+      Type color
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="date71" type="text" name="date" class="datepicker" data-attribute="date" data-datatype="date" data-basetype="date" value="" maxlength="1024" title="Type date"/>
+    <label for="date71">
+      Type date
+    </label>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+                    var elems = document.querySelectorAll('#date71');
+                    var options = {'format': 'yyyy-mm-dd'};
+                    var instances = M.Datepicker.init(elems, options);
+                });
+  </script>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <p id="datetime72" type="datetime" name="datetime" class="validate" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" value="" maxlength="1024" title="Type datetime">
+      Materialize does not have a datetime picker.
+    </p>
+    <label for="datetime72">
+      Type datetime
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="domain73" type="text" name="domain" class="validate" data-attribute="domain" data-datatype="domain" data-basetype="string" value="" maxlength="1024" title="Type domain"/>
+    <label for="domain73">
+      Type domain
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="email74" type="email" name="email" class="validate" data-attribute="email" data-datatype="email" data-basetype="string" value="" maxlength="1024" title="Type email"/>
+    <label for="email74">
+      Type email
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="float75" type="number" name="float" class="validate" data-attribute="float" data-datatype="float" data-basetype="number" value="" title="Type float"/>
+    <label for="float75">
+      Type float
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="integer76" type="number" name="integer" class="validate" data-attribute="integer" data-datatype="integer" data-basetype="number" value="" title="Type integer" placeholder="Type here" min="4" max="30"/>
+    <label for="integer76">
+      Type integer
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <label for="json77">
+      Type json
+    </label>
+    <textarea id="json77" type="text" name="json" class="materialize-textarea" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024" title="Type json">
+    </textarea>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="phone78" type="tel" name="phone" class="validate" data-attribute="phone" data-datatype="phone" data-basetype="string" value="" maxlength="1024" title="Type phone"/>
+    <label for="phone78">
+      Type phone
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="string79" type="text" name="string" class="validate" data-attribute="string" data-datatype="string" data-basetype="string" value="" maxlength="30" title="Type string" placeholder="Type here" minlength="3"/>
+    <label for="string79">
+      Type string
+    </label>
+    <span class="helper-text" data-error="wrong" data-success="right">
+      Some text explaining this field
+    </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <label for="text80">
+      Type text
+    </label>
+    <textarea id="text80" type="text" name="text" class="materialize-textarea" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024" title="Type text">
+    </textarea>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="uinteger81" type="number" name="uinteger" class="validate" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" value="" title="Type uinteger" min="0" max="4294967296"/>
+    <label for="uinteger81">
+      Type uinteger
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="url82" type="url" name="url" class="validate" data-attribute="url" data-datatype="url" data-basetype="url" value="" maxlength="1024" title="Type url"/>
+    <label for="url82">
+      Type url
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="usmall83" type="number" name="usmall" class="validate" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" value="" title="Type usmall" min="0" max="65536"/>
+    <label for="usmall83">
+      Type usmall
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
+    <input id="uuid84" type="text" name="uuid" class="validate" data-attribute="uuid" data-datatype="uuid" data-basetype="string" value="" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$"/>
+    <label for="uuid84">
+      Type uuid
+    </label>
+  </div>
+</div>
+
+</div></section><button type="submit">Send</button></form></div></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+  </script>
+
+</body></html>

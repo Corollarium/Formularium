@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"/>
+
+
+</head>
+<body>
+<div class='container'>
+    <h1>HTML/Bulma/Vue</h1><div><h2>Viewable</h2>
+<div>
+  <span>
+    Type bool
+  </span>
+  <span>
+    False
+  </span>
+</div>
+
+<div>
+  <span>
+    Type cnpj
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type color
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type date
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type datetime
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type domain
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type email
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type float
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type integer
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type json
+  </span>
+  <span>
+    {}
+  </span>
+</div>
+
+<div>
+  <span>
+    Type phone
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type string
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type text
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type uinteger
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type url
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type usmall
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type uuid
+  </span>
+  <span>
+  </span>
+</div>
+
+</div><div><h2>Editable</h2>
+<form><div>
+  <div id="vueapp">
+    <div class="field">
+  <div class="control">
+    <label for="bool85" class="label">
+      Type bool
+    </label>
+    <select id="bool85" name="bool" class="select" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" v-model="bool">
+      <option value="false" selected="selected">
+        False
+      </option>
+      <option value="true">
+        True
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="cnpj86" class="label">
+      Type cnpj
+    </label>
+    <input id="cnpj86" type="text" name="cnpj" class="input" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" maxlength="1024" title="Type cnpj" v-model="cnpj"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="color87" class="label">
+      Type color
+    </label>
+    <input id="color87" type="color" name="color" class="input" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="date88" class="label">
+      Type date
+    </label>
+    <input id="date88" type="date" name="date" class="input" data-attribute="date" data-datatype="date" data-basetype="date" maxlength="1024" title="Type date" v-model="date"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="datetime89" class="label">
+      Type datetime
+    </label>
+    <input id="datetime89" type="datetime" name="datetime" class="input" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" maxlength="1024" title="Type datetime" v-model="datetime"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="domain90" class="label">
+      Type domain
+    </label>
+    <input id="domain90" type="text" name="domain" class="input" data-attribute="domain" data-datatype="domain" data-basetype="string" maxlength="1024" title="Type domain" v-model="domain"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="email91" class="label">
+      Type email
+    </label>
+    <input id="email91" type="email" name="email" class="input" data-attribute="email" data-datatype="email" data-basetype="string" maxlength="1024" title="Type email" v-model="email"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="float92" class="label">
+      Type float
+    </label>
+    <input id="float92" type="number" name="float" class="input" data-attribute="float" data-datatype="float" data-basetype="number" title="Type float" v-model="float"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="integer93" class="label">
+      Type integer
+    </label>
+    <input id="integer93" type="number" name="integer" class="input" data-attribute="integer" data-datatype="integer" data-basetype="number" title="Type integer" placeholder="Type here" min="4" max="30" v-model="integer"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="json94" class="label">
+      Type json
+    </label>
+    <textarea id="json94" type="text" name="json" class="textarea" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024" title="Type json" v-model="json">
+    </textarea>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="phone95" class="label">
+      Type phone
+    </label>
+    <input id="phone95" type="tel" name="phone" class="input" data-attribute="phone" data-datatype="phone" data-basetype="string" maxlength="1024" title="Type phone" v-model="phone"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="string96" class="label">
+      Type string
+    </label>
+    <input id="string96" type="text" name="string" class="input" data-attribute="string" data-datatype="string" data-basetype="string" maxlength="30" title="Type string" placeholder="Type here" minlength="3" v-model="string"/>
+    <p class="help">
+      Some text explaining this field
+    </p>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="text97" class="label">
+      Type text
+    </label>
+    <textarea id="text97" type="text" name="text" class="textarea" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024" title="Type text" v-model="text">
+    </textarea>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="uinteger98" class="label">
+      Type uinteger
+    </label>
+    <input id="uinteger98" type="number" name="uinteger" class="input" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" title="Type uinteger" min="0" max="4294967296" v-model="uinteger"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="url99" class="label">
+      Type url
+    </label>
+    <input id="url99" type="url" name="url" class="input" data-attribute="url" data-datatype="url" data-basetype="url" maxlength="1024" title="Type url" v-model="url"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="usmall100" class="label">
+      Type usmall
+    </label>
+    <input id="usmall100" type="number" name="usmall" class="input" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" title="Type usmall" min="0" max="65536" v-model="usmall"/>
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <label for="uuid101" class="label">
+      Type uuid
+    </label>
+    <input id="uuid101" type="text" name="uuid" class="input" data-attribute="uuid" data-datatype="uuid" data-basetype="string" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" v-model="uuid"/>
+  </div>
+</div>
+
+
+  </div>
+  <script>
+                console.log("asdfasd");
+var app = new Vue({
+    el: '#vueapp',
+    data: {"bool":false,"cnpj":"","color":"","date":"","datetime":"","domain":"","email":"","float":"","integer":"","json":"{}","phone":"","string":"","text":"","uinteger":"","url":"","usmall":"","uuid":""}
+});
+console.log(app);
+  </script>
+</div>
+
+<button type="submit">Send</button></form></div></div>
+
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+      <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin="">
+  </script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin="">
+  </script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin="">
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+
+</head>
+<body>
+<div class='container'>
+    <h1>HTML/Bootstrap/React</h1><div><h2>Viewable</h2>
+<section class="section"><div class="container"><div>
+  <span>
+    Type bool
+  </span>
+  <span>
+    False
+  </span>
+</div>
+
+<div>
+  <span>
+    Type cnpj
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type color
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type date
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type datetime
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type domain
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type email
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type float
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type integer
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type json
+  </span>
+  <span>
+    {}
+  </span>
+</div>
+
+<div>
+  <span>
+    Type phone
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type string
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type text
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type uinteger
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type url
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type usmall
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type uuid
+  </span>
+  <span>
+  </span>
+</div>
+
+</div></section></div><div><h2>Editable</h2>
+<form>  <div id="reactapp">
+  </div>
+  <script type="text/babel">
+    'use strict';
+
+const e = React.createElement;
+
+class TestModelComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {"bool":false,"cnpj":"","color":"","date":"","datetime":"","domain":"","email":"","float":"","integer":"","json":"{}","phone":"","string":"","text":"","uinteger":"","url":"","usmall":"","uuid":""};
+   
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+    
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+            [name]: value
+        });
+    }
+    
+    render() {
+        return (
+        <form>
+            <div className="form-group">
+  <label htmlFor="bool136">
+    Type bool
+  </label>
+  <select id="bool136" name="bool" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" value="false" onChange={this.handleInputChange} className="form-control">
+    <option value="false">
+      False
+    </option>
+    <option value="true">
+      True
+    </option>
+  </select>
+</div>
+
+<div className="form-group">
+  <label htmlFor="cnpj137">
+    Type cnpj
+  </label>
+  <input id="cnpj137" type="text" name="cnpj" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" value={this.state.cnpj} title="Type cnpj" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="color138">
+    Type color
+  </label>
+  <input id="color138" type="color" name="color" data-attribute="color" data-datatype="color" data-basetype="string" value={this.state.color} title="Type color" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="date139">
+    Type date
+  </label>
+  <input id="date139" type="date" name="date" data-attribute="date" data-datatype="date" data-basetype="date" value={this.state.date} title="Type date" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="datetime140">
+    Type datetime
+  </label>
+  <input id="datetime140" type="datetime" name="datetime" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" value={this.state.datetime} title="Type datetime" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="domain141">
+    Type domain
+  </label>
+  <input id="domain141" type="text" name="domain" data-attribute="domain" data-datatype="domain" data-basetype="string" value={this.state.domain} title="Type domain" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="email142">
+    Type email
+  </label>
+  <input id="email142" type="email" name="email" data-attribute="email" data-datatype="email" data-basetype="string" value={this.state.email} title="Type email" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="float143">
+    Type float
+  </label>
+  <input id="float143" type="number" name="float" data-attribute="float" data-datatype="float" data-basetype="number" value={this.state.float} title="Type float" onChange={this.handleInputChange} className="form-control"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="integer144">
+    Type integer
+  </label>
+  <input id="integer144" type="number" name="integer" data-attribute="integer" data-datatype="integer" data-basetype="number" value={this.state.integer} title="Type integer" placeholder="Type here" min="4" max="30" onChange={this.handleInputChange} className="form-control"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="json145">
+    Type json
+  </label>
+  <textarea id="json145" type="text" name="json" data-attribute="json" data-datatype="json" data-basetype="text" value={this.state.json} title="Type json" onChange={this.handleInputChange} className="form-control" maxLength="1024">
+  </textarea>
+</div>
+
+<div className="form-group">
+  <label htmlFor="phone146">
+    Type phone
+  </label>
+  <input id="phone146" type="tel" name="phone" data-attribute="phone" data-datatype="phone" data-basetype="string" value={this.state.phone} title="Type phone" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="string147">
+    Type string
+  </label>
+  <input id="string147" type="text" name="string" data-attribute="string" data-datatype="string" data-basetype="string" value={this.state.string} title="Type string" placeholder="Type here" onChange={this.handleInputChange} className="form-control" minLength="3" maxLength="30"/>
+  <small className="form-text text-muted">
+    Some text explaining this field
+  </small>
+</div>
+
+<div className="form-group">
+  <label htmlFor="text148">
+    Type text
+  </label>
+  <textarea id="text148" type="text" name="text" data-attribute="text" data-datatype="text" data-basetype="string" value={this.state.text} title="Type text" onChange={this.handleInputChange} className="form-control" maxLength="1024">
+  </textarea>
+</div>
+
+<div className="form-group">
+  <label htmlFor="uinteger149">
+    Type uinteger
+  </label>
+  <input id="uinteger149" type="number" name="uinteger" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" value={this.state.uinteger} title="Type uinteger" min="0" max="4294967296" onChange={this.handleInputChange} className="form-control"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="url150">
+    Type url
+  </label>
+  <input id="url150" type="url" name="url" data-attribute="url" data-datatype="url" data-basetype="url" value={this.state.url} title="Type url" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="usmall151">
+    Type usmall
+  </label>
+  <input id="usmall151" type="number" name="usmall" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" value={this.state.usmall} title="Type usmall" min="0" max="65536" onChange={this.handleInputChange} className="form-control"/>
+</div>
+
+<div className="form-group">
+  <label htmlFor="uuid152">
+    Type uuid
+  </label>
+  <input id="uuid152" type="text" name="uuid" data-attribute="uuid" data-datatype="uuid" data-basetype="string" value={this.state.uuid} title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+
+        </form>
+        );
+    }
+}
+
+const domContainer = document.querySelector('#reactapp');
+ReactDOM.render(e(TestModelComponent), domContainer);
+  </script>
+
+<button type="submit">Send</button></form></div></div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
+</body></html>
