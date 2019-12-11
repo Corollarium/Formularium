@@ -43,6 +43,9 @@ jobs:
     - stage: Publish kitchen sink
       env: KITCHEN_SINK
       before_deploy:
+        - pwd
+        - ls
+        - ls docs
         - php util/makeKitchenSink.php
         - composer coverage
         - composer apidoc
