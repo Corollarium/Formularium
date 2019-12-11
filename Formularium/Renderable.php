@@ -11,10 +11,10 @@ abstract class Renderable implements RenderableParameter
      * Factory.
      *
      * @param string|Datatype $datatype
-     * @param string|Framework $framework
+     * @param Framework $framework
      * @return Renderable
      */
-    public static function factory($datatype, $framework): Renderable
+    public static function factory($datatype, Framework $framework): Renderable
     {
         if ($datatype instanceof Datatype) {
             $datatypeName = $datatype->getName();
@@ -23,16 +23,15 @@ abstract class Renderable implements RenderableParameter
             $datatype = Datatype::factory($datatypeName);
         }
 
-        if ($framework instanceof Framework) {
-            $framework = $framework->getName();
-        }
-        $class = "\\Formularium\\Frontend\\$framework\\Renderable\\Renderable_$datatypeName";
+        $frameworkClassname = get_class($framework);
+        $ns = '\\' . substr($frameworkClassname, 0, strrpos($frameworkClassname, '\\'));
+        $class = "$ns\\Renderable\\Renderable_$datatypeName";
         if (!class_exists($class)) {
             $basetype = $datatype->getBasetype();
-            $class = "\\Formularium\\Frontend\\$framework\\Renderable\\Renderable_$basetype";
+            $class = "$ns\\Renderable\\Renderable_$basetype";
         }
         if (!class_exists($class)) {
-            throw new Exception("Invalid datatype '$datatypeName' for $framework");
+            throw new Exception("Invalid datatype '$datatypeName' for {$framework->getName()}");
         }
         return new $class();
     }
