@@ -72,6 +72,16 @@ class Field
         return $this->validators;
     }
 
+    /**
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getValidator(string $name, $default)
+    {
+        return $this->validators[$name] ?? $default;
+    }
+
     public function getExtensions(): array
     {
         return $this->extensions;
