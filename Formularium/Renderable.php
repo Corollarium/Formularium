@@ -17,14 +17,22 @@ abstract class Renderable implements RenderableParameter
     public static function factory($datatype, $framework): Renderable
     {
         if ($datatype instanceof Datatype) {
-            $datatype = $datatype->getName();
+            $datatypeName = $datatype->getName();
+        } else {
+            $datatypeName = $datatype;
+            $datatype = Datatype::factory($datatypeName);
         }
+
         if ($framework instanceof Framework) {
             $framework = $framework->getName();
         }
-        $class = "\\Formularium\\Frontend\\$framework\\Renderable\\Renderable_$datatype";
+        $class = "\\Formularium\\Frontend\\$framework\\Renderable\\Renderable_$datatypeName";
         if (!class_exists($class)) {
-            throw new Exception("Invalid datatype '$datatype' for $framework");
+            $basetype = $datatype->getBasetype();
+            $class = "\\Formularium\\Frontend\\$framework\\Renderable\\Renderable_$basetype";
+        }
+        if (!class_exists($class)) {
+            throw new Exception("Invalid datatype '$datatypeName' for $framework");
         }
         return new $class();
     }

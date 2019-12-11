@@ -22,7 +22,7 @@
         "symplify/easy-coding-standard": "^6.1"
     },
     "scripts": {
-        "make:datatype": "bash ./util/makeDatatype.sh",
+        "make:datatype": "php ./util/makeDatatype.php",
         "make:framework": "bash ./util/makeFramework.sh",
         "makeKitchenSink": "php ./util/makeKitchenSink.php",
         "format": "vendor/bin/ecs check Formularium/ --level clean-code --fix && vendor/bin/ecs check Formularium/ --level psr12 --fix",

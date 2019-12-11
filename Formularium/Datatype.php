@@ -31,6 +31,9 @@ abstract class Datatype
     {
         $class = "\\Formularium\\Datatype\\Datatype_$datatype";
         if (!class_exists($class)) {
+            $class = "\\Datatype_$datatype";
+        }
+        if (!class_exists($class)) {
             throw new Exception("Invalid datatype $datatype");
         }
         return new $class();
