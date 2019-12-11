@@ -1,9 +1,0 @@
-parameters:
-  fileExtensions:
-    - php
-    - phpt
-  level: 7
-  paths:
-    - Formularium/
-    - tests/
-  checkMissingIterableValueType: false
