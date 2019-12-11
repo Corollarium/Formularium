@@ -12,7 +12,7 @@ final class RenderableTest extends TestCase
 {
     public function testFactory()
     {
-        $r = Renderable::factory('string', 'HTML');
+        $r = Renderable::factory('string', Framework::factory('HTML'));
         $this->assertInstanceOf(Renderable::class, $r);
     }
     
@@ -25,12 +25,6 @@ final class RenderableTest extends TestCase
     public function testFactoryFail()
     {
         $this->expectException(Exception::class);
-        Renderable::factory('stringasdf', 'HTML');
-    }
-    
-    public function testFactoryFail2()
-    {
-        $this->expectException(Exception::class);
-        Renderable::factory('string', 'asdfasdf');
+        Renderable::factory('stringasdf', Framework::factory('HTML'));
     }
 }
