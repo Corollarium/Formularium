@@ -27,9 +27,6 @@ jobs:
     - stage: Quality assurance
       env: 
         - CODE_COVERAGE=yes
-      # before_script:
-      #   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
-      #   - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
       script: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
       after_script:
         - wget https://scrutinizer-ci.com/ocular.phar
@@ -41,14 +38,16 @@ jobs:
       script: vendor/bin/phpstan analyze Formularium
 
     - stage: Publish kitchen sink
-      env: KITCHEN_SINK
+      env: 
+        - CODE_COVERAGE=yes
+        - DOCUMENTATION=yes
       before_deploy:
         - pwd
         - ls
-        - ls docs
         - php util/makeKitchenSink.php
         - composer coverage
         - composer apidoc
+        - ls docs
       script: skip
       deploy:
         provider: pages:git
