@@ -5,9 +5,10 @@ namespace Formularium\Frontend\HTML\Renderable;
 use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
+use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
-class Renderable_number extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
+class Renderable_number extends Renderable
 {
     public const STEP = 'step';
 
@@ -52,13 +53,6 @@ class Renderable_number extends \Formularium\Renderable implements \Formularium\
             $input->setAttribute('autocomplete', 'off');
         }
     
-        $container = new HTMLElement(Framework::getEditableContainerTag(), [], $input);
-        if (array_key_exists('label', $extensions)) {
-            $container->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id')], $extensions['label']));
-        }
-        if (array_key_exists('comment', $extensions)) {
-            $container->appendContent(new HTMLElement('div', ['class' => 'comment'], $extensions['comment']));
-        }
-        return $container;
+        return $this->container($input, $f);
     }
 }

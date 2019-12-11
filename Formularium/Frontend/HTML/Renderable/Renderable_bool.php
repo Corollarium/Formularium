@@ -5,9 +5,10 @@ namespace Formularium\Frontend\HTML\Renderable;
 use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
+use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
-class Renderable_bool extends \Formularium\Renderable
+class Renderable_bool extends Renderable
 {
     public const FORMAT_CHOOSER = 'format_chooser';
     public const FORMAT_CHOOSER_SELECT = 'format_chooser_select';
@@ -47,12 +48,8 @@ class Renderable_bool extends \Formularium\Renderable
         } else {
             $element = $this->editableSelect($value, $field, $previous);
         }
-        $container = new HTMLElement('div', [], $element);
-        $extensions = $field->getExtensions();
-        if (array_key_exists('label', $extensions)) {
-            $container->prependContent(new HTMLElement('label', ['for' => $element->getAttribute('id')], $extensions['label']));
-        }
-        return $container;
+
+        return $this->container($element, $field);
     }
 
     /**

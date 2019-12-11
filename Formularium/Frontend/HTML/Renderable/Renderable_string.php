@@ -6,9 +6,10 @@ use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
+use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
-class Renderable_string extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
+class Renderable_string extends Renderable
 {
     public const MAX_STRING_SIZE = 1024;
     
@@ -57,13 +58,6 @@ class Renderable_string extends \Formularium\Renderable implements \Formularium\
             $input->setAttribute('autocomplete', 'off');
         }
 
-        $container = new HTMLElement(Framework::getEditableContainerTag(), [], $input);
-        if (array_key_exists('label', $extensions)) {
-            $container->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id')], $extensions['label']));
-        }
-        if (array_key_exists('comment', $extensions)) {
-            $container->appendContent(new HTMLElement('div', ['class' => 'comment'], $extensions['comment']));
-        }
-        return $container;
+        return $this->container($input, $f);
     }
 }

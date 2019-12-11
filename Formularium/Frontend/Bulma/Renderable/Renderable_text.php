@@ -13,9 +13,12 @@ class Renderable_text extends Renderable_string
         $previous->get('textarea')[0]->setAttributes([
             'class' => 'textarea',
         ]);
-        $previous->get('label')[0]->setAttributes([
-            'class' => 'label',
-        ]);
+        $label = $previous->get('label');
+        if (!empty($label)) {
+            $label [0]->setAttributes([
+                'class' => 'label',
+            ]);
+        }
         return $previous;
     }
 }
