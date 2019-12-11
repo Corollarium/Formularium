@@ -26,7 +26,12 @@ trait RenderableBulmaTrait
         // add a div.field container
         $container = HTMLElement::factory(
             'div',
-            ['class' => "field"],
+            [
+                'class' => "field",
+                'data-attribute' => $field->getName(),
+                'data-datatype' => $field->getDatatype()->getName(),
+                'data-basetype' => $field->getDatatype()->getBasetype()
+            ],
             $base
         );
 

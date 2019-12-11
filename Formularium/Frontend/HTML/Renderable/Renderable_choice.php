@@ -75,7 +75,8 @@ class Renderable_choice extends Renderable
                 'data-datatype' => $datatype->getName(),
                 'data-basetype' => $datatype->getBasetype(),
                 'value' => $value,
-                'type' => 'radio'
+                'type' => 'radio',
+                'title' => $label
             ]);
 
             if ($field->getValidators()[Datatype::REQUIRED] ?? false) {

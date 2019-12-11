@@ -29,7 +29,13 @@ trait RenderableBuefyInputTrait
             function ($e) {
                 if ($e instanceof HTMLElement) {
                     if ($e->getTag() === 'input') {
-                        $e->setTag('b-input');
+                        if (($e->getAttribute('type')[0] ?? '') === 'radio') {
+                            $e->setTag('b-radio')
+                                ->setAttribute('native-value', $e->getAttribute('value'))
+                                ->setContent($e->getAttribute('title'));
+                        } else {
+                            $e->setTag('b-input');
+                        }
                     } elseif ($e->getTag() === 'select') {
                         $e->setTag('b-select');
                     } elseif ($e->getTag() === 'textarea') {

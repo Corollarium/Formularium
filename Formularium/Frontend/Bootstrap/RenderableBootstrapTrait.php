@@ -21,7 +21,12 @@ trait RenderableBootstrapTrait
     {
         /** @var HTMLElement $base */
         $base = $this->_editable($value, $field, $previous);
-        $base->addAttribute('class', "form-group");
+        $base->addAttributes([
+            'class' => "form-group",
+            'data-attribute' => $field->getName(),
+            'data-datatype' => $field->getDatatype()->getName(),
+            'data-basetype' => $field->getDatatype()->getBasetype()
+        ]);
         return $base;
     }
 }

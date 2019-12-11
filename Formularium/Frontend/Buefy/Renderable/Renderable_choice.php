@@ -6,7 +6,7 @@ use Formularium\Field;
 use Formularium\Frontend\Buefy\RenderableBuefyInputTrait;
 use Formularium\HTMLElement;
 
-class Renderable_countrycode extends Renderable_choice
+class Renderable_choice extends \Formularium\Renderable
 {
     use RenderableBuefyInputTrait;
 }
