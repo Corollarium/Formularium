@@ -9,7 +9,7 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin="">
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 
 
 </head>
@@ -36,6 +36,14 @@
 <div>
   <span>
     Type color
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Type countrycode
   </span>
   <span>
   </span>
@@ -154,6 +162,22 @@
   </span>
 </div>
 
+<div>
+  <span>
+    Country code - radio choice
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Country code - select choice
+  </span>
+  <span>
+  </span>
+</div>
+
 </div></section></div><div><h2>Editable</h2>
 <form>  <div id="reactapp">
   </div>
@@ -165,7 +189,7 @@ const e = React.createElement;
 class TestModelComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {"bool":false,"cnpj":"","color":"","date":"","datetime":"","domain":"","email":"","float":"","integer":"","json":"{}","phone":"","string":"","text":"","uinteger":"","url":"","usmall":"","uuid":""};
+        this.state = {"bool":false,"cnpj":"","color":"","countrycode":"","date":"","datetime":"","domain":"","email":"","float":"","integer":"","json":"{}","phone":"","string":"","text":"","uinteger":"","url":"","usmall":"","uuid":"","countrycoderadio":"","countrycodeselect":""};
    
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -184,10 +208,10 @@ class TestModelComponent extends React.Component {
         return (
         <form>
             <div className="form-group">
-  <label htmlFor="bool136">
+  <label htmlFor="bool2392" className="formularium-label">
     Type bool
   </label>
-  <select id="bool136" name="bool" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" value="false" onChange={this.handleInputChange} className="form-control">
+  <select id="bool2392" name="bool" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" value="false" onChange={this.handleInputChange} className="form-control">
     <option value="false">
       False
     </option>
@@ -197,121 +221,4065 @@ class TestModelComponent extends React.Component {
   </select>
 </div>
 
-<div className="form-group">
-  <label htmlFor="cnpj137">
+<div>
+  <label htmlFor="cnpj2393" className="formularium-label">
     Type cnpj
   </label>
-  <input id="cnpj137" type="text" name="cnpj" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" value={this.state.cnpj} title="Type cnpj" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="cnpj2393" type="text" name="cnpj" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" value={this.state.cnpj} title="Type cnpj" onChange={this.handleInputChange} className="" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="color138">
+  <label htmlFor="color2394" className="formularium-label">
     Type color
   </label>
-  <input id="color138" type="color" name="color" data-attribute="color" data-datatype="color" data-basetype="string" value={this.state.color} title="Type color" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="color2394" type="color" name="color" data-attribute="color" data-datatype="color" data-basetype="string" value={this.state.color} title="Type color" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="date139">
+  <label htmlFor="countrycode2395" className="formularium-label">
+    Type countrycode
+  </label>
+  <select id="countrycode2395" name="countrycode" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode" value="0" onChange={this.handleInputChange} className=" custom-select">
+    <option value="0">
+      AND
+    </option>
+    <option value="1">
+      ARE
+    </option>
+    <option value="2">
+      AFG
+    </option>
+    <option value="3">
+      ATG
+    </option>
+    <option value="4">
+      AFI
+    </option>
+    <option value="5">
+      AIA
+    </option>
+    <option value="6">
+      ALB
+    </option>
+    <option value="7">
+      ARM
+    </option>
+    <option value="8">
+      ANT
+    </option>
+    <option value="9">
+      AGO
+    </option>
+    <option value="10">
+      ATA
+    </option>
+    <option value="11">
+      ARG
+    </option>
+    <option value="12">
+      ASM
+    </option>
+    <option value="13">
+      AUT
+    </option>
+    <option value="14">
+      AUS
+    </option>
+    <option value="15">
+      ABW
+    </option>
+    <option value="16">
+      ALA
+    </option>
+    <option value="17">
+      AZE
+    </option>
+    <option value="18">
+      BIH
+    </option>
+    <option value="19">
+      BRB
+    </option>
+    <option value="20">
+      BGD
+    </option>
+    <option value="21">
+      BEL
+    </option>
+    <option value="22">
+      BFA
+    </option>
+    <option value="23">
+      BGR
+    </option>
+    <option value="24">
+      BHR
+    </option>
+    <option value="25">
+      BDI
+    </option>
+    <option value="26">
+      BEN
+    </option>
+    <option value="27">
+      BLM
+    </option>
+    <option value="28">
+      BMU
+    </option>
+    <option value="29">
+      BRN
+    </option>
+    <option value="30">
+      BOL
+    </option>
+    <option value="31">
+      ATB
+    </option>
+    <option value="32">
+      BES
+    </option>
+    <option value="33">
+      BRA
+    </option>
+    <option value="34">
+      BHS
+    </option>
+    <option value="35">
+      BTN
+    </option>
+    <option value="36">
+      BUR
+    </option>
+    <option value="37">
+      BVT
+    </option>
+    <option value="38">
+      BWA
+    </option>
+    <option value="39">
+      BLR
+    </option>
+    <option value="40">
+      BYS
+    </option>
+    <option value="41">
+      BLZ
+    </option>
+    <option value="42">
+      CAN
+    </option>
+    <option value="43">
+      CCK
+    </option>
+    <option value="44">
+      COD
+    </option>
+    <option value="45">
+      CAF
+    </option>
+    <option value="46">
+      COG
+    </option>
+    <option value="47">
+      CHE
+    </option>
+    <option value="48">
+      CIV
+    </option>
+    <option value="49">
+      COK
+    </option>
+    <option value="50">
+      CHL
+    </option>
+    <option value="51">
+      CMR
+    </option>
+    <option value="52">
+      CHN
+    </option>
+    <option value="53">
+      COL
+    </option>
+    <option value="54">
+      CRI
+    </option>
+    <option value="55">
+      CSK
+    </option>
+    <option value="56">
+      SCG
+    </option>
+    <option value="57">
+      CTE
+    </option>
+    <option value="58">
+      CUB
+    </option>
+    <option value="59">
+      CPV
+    </option>
+    <option value="60">
+      CUW
+    </option>
+    <option value="61">
+      CXR
+    </option>
+    <option value="62">
+      CYP
+    </option>
+    <option value="63">
+      CZE
+    </option>
+    <option value="64">
+      DDR
+    </option>
+    <option value="65">
+      DEU
+    </option>
+    <option value="66">
+      DJI
+    </option>
+    <option value="67">
+      DNK
+    </option>
+    <option value="68">
+      DMA
+    </option>
+    <option value="69">
+      DOM
+    </option>
+    <option value="70">
+      DHY
+    </option>
+    <option value="71">
+      DZA
+    </option>
+    <option value="72">
+      ECU
+    </option>
+    <option value="73">
+      EST
+    </option>
+    <option value="74">
+      EGY
+    </option>
+    <option value="75">
+      ESH
+    </option>
+    <option value="76">
+      ERI
+    </option>
+    <option value="77">
+      ESP
+    </option>
+    <option value="78">
+      ETH
+    </option>
+    <option value="79">
+      FIN
+    </option>
+    <option value="80">
+      FJI
+    </option>
+    <option value="81">
+      FLK
+    </option>
+    <option value="82">
+      FSM
+    </option>
+    <option value="83">
+      FRO
+    </option>
+    <option value="84">
+      ATF
+    </option>
+    <option value="85">
+      FRA
+    </option>
+    <option value="86">
+      FXX
+    </option>
+    <option value="87">
+      GAB
+    </option>
+    <option value="88">
+      GBR
+    </option>
+    <option value="89">
+      GRD
+    </option>
+    <option value="90">
+      GEL
+    </option>
+    <option value="91">
+      GEO
+    </option>
+    <option value="92">
+      GUF
+    </option>
+    <option value="93">
+      GGY
+    </option>
+    <option value="94">
+      GHA
+    </option>
+    <option value="95">
+      GIB
+    </option>
+    <option value="96">
+      GRL
+    </option>
+    <option value="97">
+      GMB
+    </option>
+    <option value="98">
+      GIN
+    </option>
+    <option value="99">
+      GLP
+    </option>
+    <option value="100">
+      GNQ
+    </option>
+    <option value="101">
+      GRC
+    </option>
+    <option value="102">
+      SGS
+    </option>
+    <option value="103">
+      GTM
+    </option>
+    <option value="104">
+      GUM
+    </option>
+    <option value="105">
+      GNB
+    </option>
+    <option value="106">
+      GUY
+    </option>
+    <option value="107">
+      HKG
+    </option>
+    <option value="108">
+      HMD
+    </option>
+    <option value="109">
+      HND
+    </option>
+    <option value="110">
+      HRV
+    </option>
+    <option value="111">
+      HTI
+    </option>
+    <option value="112">
+      HUN
+    </option>
+    <option value="113">
+      HVO
+    </option>
+    <option value="114">
+      IDN
+    </option>
+    <option value="115">
+      IRL
+    </option>
+    <option value="116">
+      ISR
+    </option>
+    <option value="117">
+      IMN
+    </option>
+    <option value="118">
+      IND
+    </option>
+    <option value="119">
+      IOT
+    </option>
+    <option value="120">
+      IRQ
+    </option>
+    <option value="121">
+      IRN
+    </option>
+    <option value="122">
+      ISL
+    </option>
+    <option value="123">
+      ITA
+    </option>
+    <option value="124">
+      JEY
+    </option>
+    <option value="125">
+      JAM
+    </option>
+    <option value="126">
+      JOR
+    </option>
+    <option value="127">
+      JPN
+    </option>
+    <option value="128">
+      JTN
+    </option>
+    <option value="129">
+      KEN
+    </option>
+    <option value="130">
+      KGZ
+    </option>
+    <option value="131">
+      KHM
+    </option>
+    <option value="132">
+      KIR
+    </option>
+    <option value="133">
+      COM
+    </option>
+    <option value="134">
+      KNA
+    </option>
+    <option value="135">
+      PRK
+    </option>
+    <option value="136">
+      KOR
+    </option>
+    <option value="137">
+      KWT
+    </option>
+    <option value="138">
+      CYM
+    </option>
+    <option value="139">
+      KAZ
+    </option>
+    <option value="140">
+      LAO
+    </option>
+    <option value="141">
+      LBN
+    </option>
+    <option value="142">
+      LCA
+    </option>
+    <option value="143">
+      LIE
+    </option>
+    <option value="144">
+      LKA
+    </option>
+    <option value="145">
+      LBR
+    </option>
+    <option value="146">
+      LSO
+    </option>
+    <option value="147">
+      LTU
+    </option>
+    <option value="148">
+      LUX
+    </option>
+    <option value="149">
+      LVA
+    </option>
+    <option value="150">
+      LBY
+    </option>
+    <option value="151">
+      MAR
+    </option>
+    <option value="152">
+      MCO
+    </option>
+    <option value="153">
+      MDA
+    </option>
+    <option value="154">
+      MNE
+    </option>
+    <option value="155">
+      MAF
+    </option>
+    <option value="156">
+      MDG
+    </option>
+    <option value="157">
+      MHL
+    </option>
+    <option value="158">
+      MID
+    </option>
+    <option value="159">
+      MKD
+    </option>
+    <option value="160">
+      MLI
+    </option>
+    <option value="161">
+      MMR
+    </option>
+    <option value="162">
+      MNG
+    </option>
+    <option value="163">
+      MAC
+    </option>
+    <option value="164">
+      MNP
+    </option>
+    <option value="165">
+      MTQ
+    </option>
+    <option value="166">
+      MRT
+    </option>
+    <option value="167">
+      MSR
+    </option>
+    <option value="168">
+      MLT
+    </option>
+    <option value="169">
+      MUS
+    </option>
+    <option value="170">
+      MDV
+    </option>
+    <option value="171">
+      MWI
+    </option>
+    <option value="172">
+      MEX
+    </option>
+    <option value="173">
+      MYS
+    </option>
+    <option value="174">
+      MOZ
+    </option>
+    <option value="175">
+      NAM
+    </option>
+    <option value="176">
+      NCL
+    </option>
+    <option value="177">
+      NER
+    </option>
+    <option value="178">
+      NFK
+    </option>
+    <option value="179">
+      NGA
+    </option>
+    <option value="180">
+      NHB
+    </option>
+    <option value="181">
+      NIC
+    </option>
+    <option value="182">
+      NLD
+    </option>
+    <option value="183">
+      NOR
+    </option>
+    <option value="184">
+      NPL
+    </option>
+    <option value="185">
+      ATN
+    </option>
+    <option value="186">
+      NRU
+    </option>
+    <option value="187">
+      NTZ
+    </option>
+    <option value="188">
+      NIU
+    </option>
+    <option value="189">
+      NZL
+    </option>
+    <option value="190">
+      OMN
+    </option>
+    <option value="191">
+      PAN
+    </option>
+    <option value="192">
+      PCI
+    </option>
+    <option value="193">
+      PER
+    </option>
+    <option value="194">
+      PYF
+    </option>
+    <option value="195">
+      PNG
+    </option>
+    <option value="196">
+      PHL
+    </option>
+    <option value="197">
+      PAK
+    </option>
+    <option value="198">
+      POL
+    </option>
+    <option value="199">
+      SPM
+    </option>
+    <option value="200">
+      PCN
+    </option>
+    <option value="201">
+      PRI
+    </option>
+    <option value="202">
+      PSE
+    </option>
+    <option value="203">
+      PRT
+    </option>
+    <option value="204">
+      PUS
+    </option>
+    <option value="205">
+      PLW
+    </option>
+    <option value="206">
+      PRY
+    </option>
+    <option value="207">
+      PCZ
+    </option>
+    <option value="208">
+      QAT
+    </option>
+    <option value="209">
+      REU
+    </option>
+    <option value="210">
+      RHO
+    </option>
+    <option value="211">
+      ROU
+    </option>
+    <option value="212">
+      SRB
+    </option>
+    <option value="213">
+      RUS
+    </option>
+    <option value="214">
+      RWA
+    </option>
+    <option value="215">
+      SAU
+    </option>
+    <option value="216">
+      SLB
+    </option>
+    <option value="217">
+      SYC
+    </option>
+    <option value="218">
+      SDN
+    </option>
+    <option value="219">
+      SWE
+    </option>
+    <option value="220">
+      SGP
+    </option>
+    <option value="221">
+      SHN
+    </option>
+    <option value="222">
+      SVN
+    </option>
+    <option value="223">
+      SJM
+    </option>
+    <option value="224">
+      SKM
+    </option>
+    <option value="225">
+      SVK
+    </option>
+    <option value="226">
+      SLE
+    </option>
+    <option value="227">
+      SMR
+    </option>
+    <option value="228">
+      SEN
+    </option>
+    <option value="229">
+      SOM
+    </option>
+    <option value="230">
+      SUR
+    </option>
+    <option value="231">
+      SSD
+    </option>
+    <option value="232">
+      STP
+    </option>
+    <option value="233">
+      SUN
+    </option>
+    <option value="234">
+      SLV
+    </option>
+    <option value="235">
+      SXM
+    </option>
+    <option value="236">
+      SYR
+    </option>
+    <option value="237">
+      SWZ
+    </option>
+    <option value="238">
+      TCA
+    </option>
+    <option value="239">
+      TCD
+    </option>
+    <option value="240">
+      ATF
+    </option>
+    <option value="241">
+      TGO
+    </option>
+    <option value="242">
+      THA
+    </option>
+    <option value="243">
+      TJK
+    </option>
+    <option value="244">
+      TKL
+    </option>
+    <option value="245">
+      TLS
+    </option>
+    <option value="246">
+      TKM
+    </option>
+    <option value="247">
+      TUN
+    </option>
+    <option value="248">
+      TON
+    </option>
+    <option value="249">
+      TMP
+    </option>
+    <option value="250">
+      TUR
+    </option>
+    <option value="251">
+      TTO
+    </option>
+    <option value="252">
+      TUV
+    </option>
+    <option value="253">
+      TWN
+    </option>
+    <option value="254">
+      TZA
+    </option>
+    <option value="255">
+      UKR
+    </option>
+    <option value="256">
+      UGA
+    </option>
+    <option value="257">
+      UMI
+    </option>
+    <option value="258">
+      USA
+    </option>
+    <option value="259">
+      URY
+    </option>
+    <option value="260">
+      UZB
+    </option>
+    <option value="261">
+      VAT
+    </option>
+    <option value="262">
+      VCT
+    </option>
+    <option value="263">
+      VDR
+    </option>
+    <option value="264">
+      VEN
+    </option>
+    <option value="265">
+      VGB
+    </option>
+    <option value="266">
+      VIR
+    </option>
+    <option value="267">
+      VNM
+    </option>
+    <option value="268">
+      VUT
+    </option>
+    <option value="269">
+      WLF
+    </option>
+    <option value="270">
+      WAK
+    </option>
+    <option value="271">
+      WSM
+    </option>
+    <option value="272">
+      YMD
+    </option>
+    <option value="273">
+      YEM
+    </option>
+    <option value="274">
+      MYT
+    </option>
+    <option value="275">
+      YUG
+    </option>
+    <option value="276">
+      ZAF
+    </option>
+    <option value="277">
+      ZMB
+    </option>
+    <option value="278">
+      ZAR
+    </option>
+    <option value="279">
+      ZWE
+    </option>
+  </select>
+</div>
+
+<div className="form-group">
+  <label htmlFor="date2396" className="formularium-label">
     Type date
   </label>
-  <input id="date139" type="date" name="date" data-attribute="date" data-datatype="date" data-basetype="date" value={this.state.date} title="Type date" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="date2396" type="date" name="date" data-attribute="date" data-datatype="date" data-basetype="date" value={this.state.date} title="Type date" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="datetime140">
+  <label htmlFor="datetime2397" className="formularium-label">
     Type datetime
   </label>
-  <input id="datetime140" type="datetime" name="datetime" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" value={this.state.datetime} title="Type datetime" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="datetime2397" type="datetime" name="datetime" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" value={this.state.datetime} title="Type datetime" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="domain141">
+  <label htmlFor="domain2398" className="formularium-label">
     Type domain
   </label>
-  <input id="domain141" type="text" name="domain" data-attribute="domain" data-datatype="domain" data-basetype="string" value={this.state.domain} title="Type domain" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="domain2398" type="text" name="domain" data-attribute="domain" data-datatype="domain" data-basetype="string" value={this.state.domain} title="Type domain" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="email142">
+  <label htmlFor="email2399" className="formularium-label">
     Type email
   </label>
-  <input id="email142" type="email" name="email" data-attribute="email" data-datatype="email" data-basetype="string" value={this.state.email} title="Type email" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="email2399" type="email" name="email" data-attribute="email" data-datatype="email" data-basetype="string" value={this.state.email} title="Type email" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="float143">
+  <label htmlFor="float2400" className="formularium-label">
     Type float
   </label>
-  <input id="float143" type="number" name="float" data-attribute="float" data-datatype="float" data-basetype="number" value={this.state.float} title="Type float" onChange={this.handleInputChange} className="form-control"/>
+  <input id="float2400" type="number" name="float" data-attribute="float" data-datatype="float" data-basetype="number" value={this.state.float} title="Type float" onChange={this.handleInputChange} className="form-control"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="integer144">
+  <label htmlFor="integer2401" className="formularium-label">
     Type integer
   </label>
-  <input id="integer144" type="number" name="integer" data-attribute="integer" data-datatype="integer" data-basetype="number" value={this.state.integer} title="Type integer" placeholder="Type here" min="4" max="30" onChange={this.handleInputChange} className="form-control"/>
+  <input id="integer2401" type="number" name="integer" data-attribute="integer" data-datatype="integer" data-basetype="number" value={this.state.integer} title="Type integer" placeholder="Type here" min="4" max="30" onChange={this.handleInputChange} className="form-control"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="json145">
+  <label htmlFor="json2402" className="formularium-label">
     Type json
   </label>
-  <textarea id="json145" type="text" name="json" data-attribute="json" data-datatype="json" data-basetype="text" value={this.state.json} title="Type json" onChange={this.handleInputChange} className="form-control" maxLength="1024">
+  <textarea id="json2402" type="text" name="json" data-attribute="json" data-datatype="json" data-basetype="text" value={this.state.json} title="Type json" onChange={this.handleInputChange} className="form-control" maxLength="1024">
   </textarea>
 </div>
 
 <div className="form-group">
-  <label htmlFor="phone146">
+  <label htmlFor="phone2403" className="formularium-label">
     Type phone
   </label>
-  <input id="phone146" type="tel" name="phone" data-attribute="phone" data-datatype="phone" data-basetype="string" value={this.state.phone} title="Type phone" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="phone2403" type="tel" name="phone" data-attribute="phone" data-datatype="phone" data-basetype="string" value={this.state.phone} title="Type phone" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="string147">
+  <label htmlFor="string2404" className="formularium-label">
     Type string
   </label>
-  <input id="string147" type="text" name="string" data-attribute="string" data-datatype="string" data-basetype="string" value={this.state.string} title="Type string" placeholder="Type here" onChange={this.handleInputChange} className="form-control" minLength="3" maxLength="30"/>
+  <input id="string2404" type="text" name="string" data-attribute="string" data-datatype="string" data-basetype="string" value={this.state.string} title="Type string" placeholder="Type here" onChange={this.handleInputChange} className="form-control" minLength="3" maxLength="30"/>
   <small className="form-text text-muted">
     Some text explaining this field
   </small>
 </div>
 
 <div className="form-group">
-  <label htmlFor="text148">
+  <label htmlFor="text2405" className="formularium-label">
     Type text
   </label>
-  <textarea id="text148" type="text" name="text" data-attribute="text" data-datatype="text" data-basetype="string" value={this.state.text} title="Type text" onChange={this.handleInputChange} className="form-control" maxLength="1024">
+  <textarea id="text2405" type="text" name="text" data-attribute="text" data-datatype="text" data-basetype="string" value={this.state.text} title="Type text" onChange={this.handleInputChange} className="form-control" maxLength="1024">
   </textarea>
 </div>
 
 <div className="form-group">
-  <label htmlFor="uinteger149">
+  <label htmlFor="uinteger2406" className="formularium-label">
     Type uinteger
   </label>
-  <input id="uinteger149" type="number" name="uinteger" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" value={this.state.uinteger} title="Type uinteger" min="0" max="4294967296" onChange={this.handleInputChange} className="form-control"/>
+  <input id="uinteger2406" type="number" name="uinteger" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" value={this.state.uinteger} title="Type uinteger" min="0" max="4294967296" onChange={this.handleInputChange} className="form-control"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="url150">
+  <label htmlFor="url2407" className="formularium-label">
     Type url
   </label>
-  <input id="url150" type="url" name="url" data-attribute="url" data-datatype="url" data-basetype="url" value={this.state.url} title="Type url" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="url2407" type="url" name="url" data-attribute="url" data-datatype="url" data-basetype="url" value={this.state.url} title="Type url" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="usmall151">
+  <label htmlFor="usmall2408" className="formularium-label">
     Type usmall
   </label>
-  <input id="usmall151" type="number" name="usmall" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" value={this.state.usmall} title="Type usmall" min="0" max="65536" onChange={this.handleInputChange} className="form-control"/>
+  <input id="usmall2408" type="number" name="usmall" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" value={this.state.usmall} title="Type usmall" min="0" max="65536" onChange={this.handleInputChange} className="form-control"/>
 </div>
 
 <div className="form-group">
-  <label htmlFor="uuid152">
+  <label htmlFor="uuid2409" className="formularium-label">
     Type uuid
   </label>
-  <input id="uuid152" type="text" name="uuid" data-attribute="uuid" data-datatype="uuid" data-basetype="string" value={this.state.uuid} title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+  <input id="uuid2409" type="text" name="uuid" data-attribute="uuid" data-datatype="uuid" data-basetype="string" value={this.state.uuid} title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" onChange={this.handleInputChange} className="form-control" maxLength="1024"/>
+</div>
+
+<div className="form-group">
+  <label for="" className="formularium-label">
+    Country code - radio choice
+  </label>
+  <div className="formularium-radio-group">
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input checked="checked" id="countrycoderadio2410" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2410" className="formularium-radio-label custom-control-label">
+        <span>
+          AND
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2411" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2411" className="formularium-radio-label custom-control-label">
+        <span>
+          ARE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2412" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2412" className="formularium-radio-label custom-control-label">
+        <span>
+          AFG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2413" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2413" className="formularium-radio-label custom-control-label">
+        <span>
+          ATG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2414" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2414" className="formularium-radio-label custom-control-label">
+        <span>
+          AFI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2415" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2415" className="formularium-radio-label custom-control-label">
+        <span>
+          AIA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2416" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2416" className="formularium-radio-label custom-control-label">
+        <span>
+          ALB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2417" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2417" className="formularium-radio-label custom-control-label">
+        <span>
+          ARM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2418" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2418" className="formularium-radio-label custom-control-label">
+        <span>
+          ANT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2419" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2419" className="formularium-radio-label custom-control-label">
+        <span>
+          AGO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2420" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2420" className="formularium-radio-label custom-control-label">
+        <span>
+          ATA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2421" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2421" className="formularium-radio-label custom-control-label">
+        <span>
+          ARG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2422" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2422" className="formularium-radio-label custom-control-label">
+        <span>
+          ASM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2423" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2423" className="formularium-radio-label custom-control-label">
+        <span>
+          AUT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2424" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2424" className="formularium-radio-label custom-control-label">
+        <span>
+          AUS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2425" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2425" className="formularium-radio-label custom-control-label">
+        <span>
+          ABW
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2426" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2426" className="formularium-radio-label custom-control-label">
+        <span>
+          ALA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2427" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2427" className="formularium-radio-label custom-control-label">
+        <span>
+          AZE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2428" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2428" className="formularium-radio-label custom-control-label">
+        <span>
+          BIH
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2429" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2429" className="formularium-radio-label custom-control-label">
+        <span>
+          BRB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2430" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2430" className="formularium-radio-label custom-control-label">
+        <span>
+          BGD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2431" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2431" className="formularium-radio-label custom-control-label">
+        <span>
+          BEL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2432" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2432" className="formularium-radio-label custom-control-label">
+        <span>
+          BFA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2433" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2433" className="formularium-radio-label custom-control-label">
+        <span>
+          BGR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2434" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2434" className="formularium-radio-label custom-control-label">
+        <span>
+          BHR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2435" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2435" className="formularium-radio-label custom-control-label">
+        <span>
+          BDI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2436" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2436" className="formularium-radio-label custom-control-label">
+        <span>
+          BEN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2437" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2437" className="formularium-radio-label custom-control-label">
+        <span>
+          BLM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2438" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2438" className="formularium-radio-label custom-control-label">
+        <span>
+          BMU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2439" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2439" className="formularium-radio-label custom-control-label">
+        <span>
+          BRN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2440" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2440" className="formularium-radio-label custom-control-label">
+        <span>
+          BOL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2441" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2441" className="formularium-radio-label custom-control-label">
+        <span>
+          ATB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2442" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2442" className="formularium-radio-label custom-control-label">
+        <span>
+          BES
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2443" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2443" className="formularium-radio-label custom-control-label">
+        <span>
+          BRA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2444" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2444" className="formularium-radio-label custom-control-label">
+        <span>
+          BHS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2445" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2445" className="formularium-radio-label custom-control-label">
+        <span>
+          BTN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2446" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2446" className="formularium-radio-label custom-control-label">
+        <span>
+          BUR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2447" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2447" className="formularium-radio-label custom-control-label">
+        <span>
+          BVT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2448" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2448" className="formularium-radio-label custom-control-label">
+        <span>
+          BWA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2449" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2449" className="formularium-radio-label custom-control-label">
+        <span>
+          BLR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2450" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2450" className="formularium-radio-label custom-control-label">
+        <span>
+          BYS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2451" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2451" className="formularium-radio-label custom-control-label">
+        <span>
+          BLZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2452" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2452" className="formularium-radio-label custom-control-label">
+        <span>
+          CAN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2453" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2453" className="formularium-radio-label custom-control-label">
+        <span>
+          CCK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2454" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2454" className="formularium-radio-label custom-control-label">
+        <span>
+          COD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2455" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2455" className="formularium-radio-label custom-control-label">
+        <span>
+          CAF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2456" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2456" className="formularium-radio-label custom-control-label">
+        <span>
+          COG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2457" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2457" className="formularium-radio-label custom-control-label">
+        <span>
+          CHE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2458" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2458" className="formularium-radio-label custom-control-label">
+        <span>
+          CIV
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2459" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2459" className="formularium-radio-label custom-control-label">
+        <span>
+          COK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2460" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2460" className="formularium-radio-label custom-control-label">
+        <span>
+          CHL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2461" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2461" className="formularium-radio-label custom-control-label">
+        <span>
+          CMR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2462" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2462" className="formularium-radio-label custom-control-label">
+        <span>
+          CHN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2463" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2463" className="formularium-radio-label custom-control-label">
+        <span>
+          COL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2464" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2464" className="formularium-radio-label custom-control-label">
+        <span>
+          CRI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2465" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2465" className="formularium-radio-label custom-control-label">
+        <span>
+          CSK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2466" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2466" className="formularium-radio-label custom-control-label">
+        <span>
+          SCG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2467" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2467" className="formularium-radio-label custom-control-label">
+        <span>
+          CTE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2468" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2468" className="formularium-radio-label custom-control-label">
+        <span>
+          CUB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2469" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2469" className="formularium-radio-label custom-control-label">
+        <span>
+          CPV
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2470" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2470" className="formularium-radio-label custom-control-label">
+        <span>
+          CUW
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2471" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2471" className="formularium-radio-label custom-control-label">
+        <span>
+          CXR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2472" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2472" className="formularium-radio-label custom-control-label">
+        <span>
+          CYP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2473" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2473" className="formularium-radio-label custom-control-label">
+        <span>
+          CZE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2474" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2474" className="formularium-radio-label custom-control-label">
+        <span>
+          DDR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2475" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2475" className="formularium-radio-label custom-control-label">
+        <span>
+          DEU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2476" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2476" className="formularium-radio-label custom-control-label">
+        <span>
+          DJI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2477" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2477" className="formularium-radio-label custom-control-label">
+        <span>
+          DNK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2478" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2478" className="formularium-radio-label custom-control-label">
+        <span>
+          DMA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2479" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2479" className="formularium-radio-label custom-control-label">
+        <span>
+          DOM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2480" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2480" className="formularium-radio-label custom-control-label">
+        <span>
+          DHY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2481" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2481" className="formularium-radio-label custom-control-label">
+        <span>
+          DZA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2482" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2482" className="formularium-radio-label custom-control-label">
+        <span>
+          ECU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2483" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2483" className="formularium-radio-label custom-control-label">
+        <span>
+          EST
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2484" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2484" className="formularium-radio-label custom-control-label">
+        <span>
+          EGY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2485" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2485" className="formularium-radio-label custom-control-label">
+        <span>
+          ESH
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2486" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2486" className="formularium-radio-label custom-control-label">
+        <span>
+          ERI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2487" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2487" className="formularium-radio-label custom-control-label">
+        <span>
+          ESP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2488" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2488" className="formularium-radio-label custom-control-label">
+        <span>
+          ETH
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2489" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2489" className="formularium-radio-label custom-control-label">
+        <span>
+          FIN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2490" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2490" className="formularium-radio-label custom-control-label">
+        <span>
+          FJI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2491" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2491" className="formularium-radio-label custom-control-label">
+        <span>
+          FLK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2492" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2492" className="formularium-radio-label custom-control-label">
+        <span>
+          FSM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2493" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2493" className="formularium-radio-label custom-control-label">
+        <span>
+          FRO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2494" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2494" className="formularium-radio-label custom-control-label">
+        <span>
+          ATF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2495" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2495" className="formularium-radio-label custom-control-label">
+        <span>
+          FRA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2496" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2496" className="formularium-radio-label custom-control-label">
+        <span>
+          FXX
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2497" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2497" className="formularium-radio-label custom-control-label">
+        <span>
+          GAB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2498" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2498" className="formularium-radio-label custom-control-label">
+        <span>
+          GBR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2499" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2499" className="formularium-radio-label custom-control-label">
+        <span>
+          GRD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2500" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2500" className="formularium-radio-label custom-control-label">
+        <span>
+          GEL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2501" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2501" className="formularium-radio-label custom-control-label">
+        <span>
+          GEO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2502" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2502" className="formularium-radio-label custom-control-label">
+        <span>
+          GUF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2503" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2503" className="formularium-radio-label custom-control-label">
+        <span>
+          GGY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2504" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2504" className="formularium-radio-label custom-control-label">
+        <span>
+          GHA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2505" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2505" className="formularium-radio-label custom-control-label">
+        <span>
+          GIB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2506" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2506" className="formularium-radio-label custom-control-label">
+        <span>
+          GRL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2507" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2507" className="formularium-radio-label custom-control-label">
+        <span>
+          GMB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2508" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2508" className="formularium-radio-label custom-control-label">
+        <span>
+          GIN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2509" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2509" className="formularium-radio-label custom-control-label">
+        <span>
+          GLP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2510" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2510" className="formularium-radio-label custom-control-label">
+        <span>
+          GNQ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2511" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2511" className="formularium-radio-label custom-control-label">
+        <span>
+          GRC
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2512" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2512" className="formularium-radio-label custom-control-label">
+        <span>
+          SGS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2513" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2513" className="formularium-radio-label custom-control-label">
+        <span>
+          GTM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2514" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2514" className="formularium-radio-label custom-control-label">
+        <span>
+          GUM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2515" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2515" className="formularium-radio-label custom-control-label">
+        <span>
+          GNB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2516" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2516" className="formularium-radio-label custom-control-label">
+        <span>
+          GUY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2517" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2517" className="formularium-radio-label custom-control-label">
+        <span>
+          HKG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2518" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2518" className="formularium-radio-label custom-control-label">
+        <span>
+          HMD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2519" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2519" className="formularium-radio-label custom-control-label">
+        <span>
+          HND
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2520" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2520" className="formularium-radio-label custom-control-label">
+        <span>
+          HRV
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2521" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2521" className="formularium-radio-label custom-control-label">
+        <span>
+          HTI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2522" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2522" className="formularium-radio-label custom-control-label">
+        <span>
+          HUN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2523" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2523" className="formularium-radio-label custom-control-label">
+        <span>
+          HVO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2524" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2524" className="formularium-radio-label custom-control-label">
+        <span>
+          IDN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2525" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2525" className="formularium-radio-label custom-control-label">
+        <span>
+          IRL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2526" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2526" className="formularium-radio-label custom-control-label">
+        <span>
+          ISR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2527" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2527" className="formularium-radio-label custom-control-label">
+        <span>
+          IMN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2528" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2528" className="formularium-radio-label custom-control-label">
+        <span>
+          IND
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2529" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2529" className="formularium-radio-label custom-control-label">
+        <span>
+          IOT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2530" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2530" className="formularium-radio-label custom-control-label">
+        <span>
+          IRQ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2531" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2531" className="formularium-radio-label custom-control-label">
+        <span>
+          IRN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2532" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2532" className="formularium-radio-label custom-control-label">
+        <span>
+          ISL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2533" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2533" className="formularium-radio-label custom-control-label">
+        <span>
+          ITA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2534" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2534" className="formularium-radio-label custom-control-label">
+        <span>
+          JEY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2535" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2535" className="formularium-radio-label custom-control-label">
+        <span>
+          JAM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2536" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2536" className="formularium-radio-label custom-control-label">
+        <span>
+          JOR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2537" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2537" className="formularium-radio-label custom-control-label">
+        <span>
+          JPN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2538" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2538" className="formularium-radio-label custom-control-label">
+        <span>
+          JTN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2539" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2539" className="formularium-radio-label custom-control-label">
+        <span>
+          KEN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2540" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2540" className="formularium-radio-label custom-control-label">
+        <span>
+          KGZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2541" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2541" className="formularium-radio-label custom-control-label">
+        <span>
+          KHM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2542" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2542" className="formularium-radio-label custom-control-label">
+        <span>
+          KIR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2543" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2543" className="formularium-radio-label custom-control-label">
+        <span>
+          COM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2544" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2544" className="formularium-radio-label custom-control-label">
+        <span>
+          KNA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2545" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2545" className="formularium-radio-label custom-control-label">
+        <span>
+          PRK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2546" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2546" className="formularium-radio-label custom-control-label">
+        <span>
+          KOR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2547" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2547" className="formularium-radio-label custom-control-label">
+        <span>
+          KWT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2548" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2548" className="formularium-radio-label custom-control-label">
+        <span>
+          CYM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2549" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2549" className="formularium-radio-label custom-control-label">
+        <span>
+          KAZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2550" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2550" className="formularium-radio-label custom-control-label">
+        <span>
+          LAO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2551" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2551" className="formularium-radio-label custom-control-label">
+        <span>
+          LBN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2552" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2552" className="formularium-radio-label custom-control-label">
+        <span>
+          LCA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2553" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2553" className="formularium-radio-label custom-control-label">
+        <span>
+          LIE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2554" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2554" className="formularium-radio-label custom-control-label">
+        <span>
+          LKA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2555" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2555" className="formularium-radio-label custom-control-label">
+        <span>
+          LBR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2556" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2556" className="formularium-radio-label custom-control-label">
+        <span>
+          LSO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2557" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2557" className="formularium-radio-label custom-control-label">
+        <span>
+          LTU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2558" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2558" className="formularium-radio-label custom-control-label">
+        <span>
+          LUX
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2559" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2559" className="formularium-radio-label custom-control-label">
+        <span>
+          LVA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2560" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2560" className="formularium-radio-label custom-control-label">
+        <span>
+          LBY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2561" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2561" className="formularium-radio-label custom-control-label">
+        <span>
+          MAR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2562" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2562" className="formularium-radio-label custom-control-label">
+        <span>
+          MCO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2563" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2563" className="formularium-radio-label custom-control-label">
+        <span>
+          MDA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2564" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2564" className="formularium-radio-label custom-control-label">
+        <span>
+          MNE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2565" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2565" className="formularium-radio-label custom-control-label">
+        <span>
+          MAF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2566" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2566" className="formularium-radio-label custom-control-label">
+        <span>
+          MDG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2567" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2567" className="formularium-radio-label custom-control-label">
+        <span>
+          MHL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2568" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2568" className="formularium-radio-label custom-control-label">
+        <span>
+          MID
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2569" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2569" className="formularium-radio-label custom-control-label">
+        <span>
+          MKD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2570" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2570" className="formularium-radio-label custom-control-label">
+        <span>
+          MLI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2571" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2571" className="formularium-radio-label custom-control-label">
+        <span>
+          MMR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2572" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2572" className="formularium-radio-label custom-control-label">
+        <span>
+          MNG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2573" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2573" className="formularium-radio-label custom-control-label">
+        <span>
+          MAC
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2574" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2574" className="formularium-radio-label custom-control-label">
+        <span>
+          MNP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2575" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2575" className="formularium-radio-label custom-control-label">
+        <span>
+          MTQ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2576" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2576" className="formularium-radio-label custom-control-label">
+        <span>
+          MRT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2577" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2577" className="formularium-radio-label custom-control-label">
+        <span>
+          MSR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2578" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2578" className="formularium-radio-label custom-control-label">
+        <span>
+          MLT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2579" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2579" className="formularium-radio-label custom-control-label">
+        <span>
+          MUS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2580" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2580" className="formularium-radio-label custom-control-label">
+        <span>
+          MDV
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2581" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2581" className="formularium-radio-label custom-control-label">
+        <span>
+          MWI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2582" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2582" className="formularium-radio-label custom-control-label">
+        <span>
+          MEX
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2583" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2583" className="formularium-radio-label custom-control-label">
+        <span>
+          MYS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2584" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2584" className="formularium-radio-label custom-control-label">
+        <span>
+          MOZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2585" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2585" className="formularium-radio-label custom-control-label">
+        <span>
+          NAM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2586" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2586" className="formularium-radio-label custom-control-label">
+        <span>
+          NCL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2587" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2587" className="formularium-radio-label custom-control-label">
+        <span>
+          NER
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2588" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2588" className="formularium-radio-label custom-control-label">
+        <span>
+          NFK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2589" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2589" className="formularium-radio-label custom-control-label">
+        <span>
+          NGA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2590" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2590" className="formularium-radio-label custom-control-label">
+        <span>
+          NHB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2591" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2591" className="formularium-radio-label custom-control-label">
+        <span>
+          NIC
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2592" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2592" className="formularium-radio-label custom-control-label">
+        <span>
+          NLD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2593" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2593" className="formularium-radio-label custom-control-label">
+        <span>
+          NOR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2594" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2594" className="formularium-radio-label custom-control-label">
+        <span>
+          NPL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2595" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2595" className="formularium-radio-label custom-control-label">
+        <span>
+          ATN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2596" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2596" className="formularium-radio-label custom-control-label">
+        <span>
+          NRU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2597" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2597" className="formularium-radio-label custom-control-label">
+        <span>
+          NTZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2598" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2598" className="formularium-radio-label custom-control-label">
+        <span>
+          NIU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2599" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2599" className="formularium-radio-label custom-control-label">
+        <span>
+          NZL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2600" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2600" className="formularium-radio-label custom-control-label">
+        <span>
+          OMN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2601" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2601" className="formularium-radio-label custom-control-label">
+        <span>
+          PAN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2602" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2602" className="formularium-radio-label custom-control-label">
+        <span>
+          PCI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2603" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2603" className="formularium-radio-label custom-control-label">
+        <span>
+          PER
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2604" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2604" className="formularium-radio-label custom-control-label">
+        <span>
+          PYF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2605" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2605" className="formularium-radio-label custom-control-label">
+        <span>
+          PNG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2606" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2606" className="formularium-radio-label custom-control-label">
+        <span>
+          PHL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2607" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2607" className="formularium-radio-label custom-control-label">
+        <span>
+          PAK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2608" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2608" className="formularium-radio-label custom-control-label">
+        <span>
+          POL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2609" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2609" className="formularium-radio-label custom-control-label">
+        <span>
+          SPM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2610" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2610" className="formularium-radio-label custom-control-label">
+        <span>
+          PCN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2611" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2611" className="formularium-radio-label custom-control-label">
+        <span>
+          PRI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2612" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2612" className="formularium-radio-label custom-control-label">
+        <span>
+          PSE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2613" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2613" className="formularium-radio-label custom-control-label">
+        <span>
+          PRT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2614" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2614" className="formularium-radio-label custom-control-label">
+        <span>
+          PUS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2615" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2615" className="formularium-radio-label custom-control-label">
+        <span>
+          PLW
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2616" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2616" className="formularium-radio-label custom-control-label">
+        <span>
+          PRY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2617" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2617" className="formularium-radio-label custom-control-label">
+        <span>
+          PCZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2618" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2618" className="formularium-radio-label custom-control-label">
+        <span>
+          QAT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2619" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2619" className="formularium-radio-label custom-control-label">
+        <span>
+          REU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2620" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2620" className="formularium-radio-label custom-control-label">
+        <span>
+          RHO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2621" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2621" className="formularium-radio-label custom-control-label">
+        <span>
+          ROU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2622" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2622" className="formularium-radio-label custom-control-label">
+        <span>
+          SRB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2623" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2623" className="formularium-radio-label custom-control-label">
+        <span>
+          RUS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2624" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2624" className="formularium-radio-label custom-control-label">
+        <span>
+          RWA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2625" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2625" className="formularium-radio-label custom-control-label">
+        <span>
+          SAU
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2626" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2626" className="formularium-radio-label custom-control-label">
+        <span>
+          SLB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2627" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2627" className="formularium-radio-label custom-control-label">
+        <span>
+          SYC
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2628" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2628" className="formularium-radio-label custom-control-label">
+        <span>
+          SDN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2629" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2629" className="formularium-radio-label custom-control-label">
+        <span>
+          SWE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2630" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2630" className="formularium-radio-label custom-control-label">
+        <span>
+          SGP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2631" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2631" className="formularium-radio-label custom-control-label">
+        <span>
+          SHN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2632" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2632" className="formularium-radio-label custom-control-label">
+        <span>
+          SVN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2633" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2633" className="formularium-radio-label custom-control-label">
+        <span>
+          SJM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2634" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2634" className="formularium-radio-label custom-control-label">
+        <span>
+          SKM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2635" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2635" className="formularium-radio-label custom-control-label">
+        <span>
+          SVK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2636" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2636" className="formularium-radio-label custom-control-label">
+        <span>
+          SLE
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2637" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2637" className="formularium-radio-label custom-control-label">
+        <span>
+          SMR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2638" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2638" className="formularium-radio-label custom-control-label">
+        <span>
+          SEN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2639" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2639" className="formularium-radio-label custom-control-label">
+        <span>
+          SOM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2640" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2640" className="formularium-radio-label custom-control-label">
+        <span>
+          SUR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2641" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2641" className="formularium-radio-label custom-control-label">
+        <span>
+          SSD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2642" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2642" className="formularium-radio-label custom-control-label">
+        <span>
+          STP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2643" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2643" className="formularium-radio-label custom-control-label">
+        <span>
+          SUN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2644" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2644" className="formularium-radio-label custom-control-label">
+        <span>
+          SLV
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2645" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2645" className="formularium-radio-label custom-control-label">
+        <span>
+          SXM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2646" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2646" className="formularium-radio-label custom-control-label">
+        <span>
+          SYR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2647" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2647" className="formularium-radio-label custom-control-label">
+        <span>
+          SWZ
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2648" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2648" className="formularium-radio-label custom-control-label">
+        <span>
+          TCA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2649" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2649" className="formularium-radio-label custom-control-label">
+        <span>
+          TCD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2650" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2650" className="formularium-radio-label custom-control-label">
+        <span>
+          ATF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2651" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2651" className="formularium-radio-label custom-control-label">
+        <span>
+          TGO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2652" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2652" className="formularium-radio-label custom-control-label">
+        <span>
+          THA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2653" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2653" className="formularium-radio-label custom-control-label">
+        <span>
+          TJK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2654" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2654" className="formularium-radio-label custom-control-label">
+        <span>
+          TKL
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2655" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2655" className="formularium-radio-label custom-control-label">
+        <span>
+          TLS
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2656" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2656" className="formularium-radio-label custom-control-label">
+        <span>
+          TKM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2657" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2657" className="formularium-radio-label custom-control-label">
+        <span>
+          TUN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2658" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2658" className="formularium-radio-label custom-control-label">
+        <span>
+          TON
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2659" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2659" className="formularium-radio-label custom-control-label">
+        <span>
+          TMP
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2660" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2660" className="formularium-radio-label custom-control-label">
+        <span>
+          TUR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2661" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2661" className="formularium-radio-label custom-control-label">
+        <span>
+          TTO
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2662" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2662" className="formularium-radio-label custom-control-label">
+        <span>
+          TUV
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2663" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2663" className="formularium-radio-label custom-control-label">
+        <span>
+          TWN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2664" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2664" className="formularium-radio-label custom-control-label">
+        <span>
+          TZA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2665" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2665" className="formularium-radio-label custom-control-label">
+        <span>
+          UKR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2666" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2666" className="formularium-radio-label custom-control-label">
+        <span>
+          UGA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2667" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2667" className="formularium-radio-label custom-control-label">
+        <span>
+          UMI
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2668" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2668" className="formularium-radio-label custom-control-label">
+        <span>
+          USA
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2669" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2669" className="formularium-radio-label custom-control-label">
+        <span>
+          URY
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2670" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2670" className="formularium-radio-label custom-control-label">
+        <span>
+          UZB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2671" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2671" className="formularium-radio-label custom-control-label">
+        <span>
+          VAT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2672" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2672" className="formularium-radio-label custom-control-label">
+        <span>
+          VCT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2673" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2673" className="formularium-radio-label custom-control-label">
+        <span>
+          VDR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2674" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2674" className="formularium-radio-label custom-control-label">
+        <span>
+          VEN
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2675" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2675" className="formularium-radio-label custom-control-label">
+        <span>
+          VGB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2676" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2676" className="formularium-radio-label custom-control-label">
+        <span>
+          VIR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2677" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2677" className="formularium-radio-label custom-control-label">
+        <span>
+          VNM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2678" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2678" className="formularium-radio-label custom-control-label">
+        <span>
+          VUT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2679" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2679" className="formularium-radio-label custom-control-label">
+        <span>
+          WLF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2680" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2680" className="formularium-radio-label custom-control-label">
+        <span>
+          WAK
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2681" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2681" className="formularium-radio-label custom-control-label">
+        <span>
+          WSM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2682" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2682" className="formularium-radio-label custom-control-label">
+        <span>
+          YMD
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2683" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2683" className="formularium-radio-label custom-control-label">
+        <span>
+          YEM
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2684" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2684" className="formularium-radio-label custom-control-label">
+        <span>
+          MYT
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2685" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2685" className="formularium-radio-label custom-control-label">
+        <span>
+          YUG
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2686" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2686" className="formularium-radio-label custom-control-label">
+        <span>
+          ZAF
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2687" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2687" className="formularium-radio-label custom-control-label">
+        <span>
+          ZMB
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2688" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2688" className="formularium-radio-label custom-control-label">
+        <span>
+          ZAR
+        </span>
+      </label>
+    </div>
+    <div className="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio2689" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value={this.state.countrycoderadio} type="radio" onChange={this.handleInputChange} className="custom-control-input"/>
+      <label htmlFor="countrycoderadio2689" className="formularium-radio-label custom-control-label">
+        <span>
+          ZWE
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div className="form-group">
+  <label htmlFor="countrycodeselect2690" className="formularium-label">
+    Country code - select choice
+  </label>
+  <select id="countrycodeselect2690" name="countrycodeselect" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice" value="0" onChange={this.handleInputChange} className=" custom-select">
+    <option value="0">
+      AND
+    </option>
+    <option value="1">
+      ARE
+    </option>
+    <option value="2">
+      AFG
+    </option>
+    <option value="3">
+      ATG
+    </option>
+    <option value="4">
+      AFI
+    </option>
+    <option value="5">
+      AIA
+    </option>
+    <option value="6">
+      ALB
+    </option>
+    <option value="7">
+      ARM
+    </option>
+    <option value="8">
+      ANT
+    </option>
+    <option value="9">
+      AGO
+    </option>
+    <option value="10">
+      ATA
+    </option>
+    <option value="11">
+      ARG
+    </option>
+    <option value="12">
+      ASM
+    </option>
+    <option value="13">
+      AUT
+    </option>
+    <option value="14">
+      AUS
+    </option>
+    <option value="15">
+      ABW
+    </option>
+    <option value="16">
+      ALA
+    </option>
+    <option value="17">
+      AZE
+    </option>
+    <option value="18">
+      BIH
+    </option>
+    <option value="19">
+      BRB
+    </option>
+    <option value="20">
+      BGD
+    </option>
+    <option value="21">
+      BEL
+    </option>
+    <option value="22">
+      BFA
+    </option>
+    <option value="23">
+      BGR
+    </option>
+    <option value="24">
+      BHR
+    </option>
+    <option value="25">
+      BDI
+    </option>
+    <option value="26">
+      BEN
+    </option>
+    <option value="27">
+      BLM
+    </option>
+    <option value="28">
+      BMU
+    </option>
+    <option value="29">
+      BRN
+    </option>
+    <option value="30">
+      BOL
+    </option>
+    <option value="31">
+      ATB
+    </option>
+    <option value="32">
+      BES
+    </option>
+    <option value="33">
+      BRA
+    </option>
+    <option value="34">
+      BHS
+    </option>
+    <option value="35">
+      BTN
+    </option>
+    <option value="36">
+      BUR
+    </option>
+    <option value="37">
+      BVT
+    </option>
+    <option value="38">
+      BWA
+    </option>
+    <option value="39">
+      BLR
+    </option>
+    <option value="40">
+      BYS
+    </option>
+    <option value="41">
+      BLZ
+    </option>
+    <option value="42">
+      CAN
+    </option>
+    <option value="43">
+      CCK
+    </option>
+    <option value="44">
+      COD
+    </option>
+    <option value="45">
+      CAF
+    </option>
+    <option value="46">
+      COG
+    </option>
+    <option value="47">
+      CHE
+    </option>
+    <option value="48">
+      CIV
+    </option>
+    <option value="49">
+      COK
+    </option>
+    <option value="50">
+      CHL
+    </option>
+    <option value="51">
+      CMR
+    </option>
+    <option value="52">
+      CHN
+    </option>
+    <option value="53">
+      COL
+    </option>
+    <option value="54">
+      CRI
+    </option>
+    <option value="55">
+      CSK
+    </option>
+    <option value="56">
+      SCG
+    </option>
+    <option value="57">
+      CTE
+    </option>
+    <option value="58">
+      CUB
+    </option>
+    <option value="59">
+      CPV
+    </option>
+    <option value="60">
+      CUW
+    </option>
+    <option value="61">
+      CXR
+    </option>
+    <option value="62">
+      CYP
+    </option>
+    <option value="63">
+      CZE
+    </option>
+    <option value="64">
+      DDR
+    </option>
+    <option value="65">
+      DEU
+    </option>
+    <option value="66">
+      DJI
+    </option>
+    <option value="67">
+      DNK
+    </option>
+    <option value="68">
+      DMA
+    </option>
+    <option value="69">
+      DOM
+    </option>
+    <option value="70">
+      DHY
+    </option>
+    <option value="71">
+      DZA
+    </option>
+    <option value="72">
+      ECU
+    </option>
+    <option value="73">
+      EST
+    </option>
+    <option value="74">
+      EGY
+    </option>
+    <option value="75">
+      ESH
+    </option>
+    <option value="76">
+      ERI
+    </option>
+    <option value="77">
+      ESP
+    </option>
+    <option value="78">
+      ETH
+    </option>
+    <option value="79">
+      FIN
+    </option>
+    <option value="80">
+      FJI
+    </option>
+    <option value="81">
+      FLK
+    </option>
+    <option value="82">
+      FSM
+    </option>
+    <option value="83">
+      FRO
+    </option>
+    <option value="84">
+      ATF
+    </option>
+    <option value="85">
+      FRA
+    </option>
+    <option value="86">
+      FXX
+    </option>
+    <option value="87">
+      GAB
+    </option>
+    <option value="88">
+      GBR
+    </option>
+    <option value="89">
+      GRD
+    </option>
+    <option value="90">
+      GEL
+    </option>
+    <option value="91">
+      GEO
+    </option>
+    <option value="92">
+      GUF
+    </option>
+    <option value="93">
+      GGY
+    </option>
+    <option value="94">
+      GHA
+    </option>
+    <option value="95">
+      GIB
+    </option>
+    <option value="96">
+      GRL
+    </option>
+    <option value="97">
+      GMB
+    </option>
+    <option value="98">
+      GIN
+    </option>
+    <option value="99">
+      GLP
+    </option>
+    <option value="100">
+      GNQ
+    </option>
+    <option value="101">
+      GRC
+    </option>
+    <option value="102">
+      SGS
+    </option>
+    <option value="103">
+      GTM
+    </option>
+    <option value="104">
+      GUM
+    </option>
+    <option value="105">
+      GNB
+    </option>
+    <option value="106">
+      GUY
+    </option>
+    <option value="107">
+      HKG
+    </option>
+    <option value="108">
+      HMD
+    </option>
+    <option value="109">
+      HND
+    </option>
+    <option value="110">
+      HRV
+    </option>
+    <option value="111">
+      HTI
+    </option>
+    <option value="112">
+      HUN
+    </option>
+    <option value="113">
+      HVO
+    </option>
+    <option value="114">
+      IDN
+    </option>
+    <option value="115">
+      IRL
+    </option>
+    <option value="116">
+      ISR
+    </option>
+    <option value="117">
+      IMN
+    </option>
+    <option value="118">
+      IND
+    </option>
+    <option value="119">
+      IOT
+    </option>
+    <option value="120">
+      IRQ
+    </option>
+    <option value="121">
+      IRN
+    </option>
+    <option value="122">
+      ISL
+    </option>
+    <option value="123">
+      ITA
+    </option>
+    <option value="124">
+      JEY
+    </option>
+    <option value="125">
+      JAM
+    </option>
+    <option value="126">
+      JOR
+    </option>
+    <option value="127">
+      JPN
+    </option>
+    <option value="128">
+      JTN
+    </option>
+    <option value="129">
+      KEN
+    </option>
+    <option value="130">
+      KGZ
+    </option>
+    <option value="131">
+      KHM
+    </option>
+    <option value="132">
+      KIR
+    </option>
+    <option value="133">
+      COM
+    </option>
+    <option value="134">
+      KNA
+    </option>
+    <option value="135">
+      PRK
+    </option>
+    <option value="136">
+      KOR
+    </option>
+    <option value="137">
+      KWT
+    </option>
+    <option value="138">
+      CYM
+    </option>
+    <option value="139">
+      KAZ
+    </option>
+    <option value="140">
+      LAO
+    </option>
+    <option value="141">
+      LBN
+    </option>
+    <option value="142">
+      LCA
+    </option>
+    <option value="143">
+      LIE
+    </option>
+    <option value="144">
+      LKA
+    </option>
+    <option value="145">
+      LBR
+    </option>
+    <option value="146">
+      LSO
+    </option>
+    <option value="147">
+      LTU
+    </option>
+    <option value="148">
+      LUX
+    </option>
+    <option value="149">
+      LVA
+    </option>
+    <option value="150">
+      LBY
+    </option>
+    <option value="151">
+      MAR
+    </option>
+    <option value="152">
+      MCO
+    </option>
+    <option value="153">
+      MDA
+    </option>
+    <option value="154">
+      MNE
+    </option>
+    <option value="155">
+      MAF
+    </option>
+    <option value="156">
+      MDG
+    </option>
+    <option value="157">
+      MHL
+    </option>
+    <option value="158">
+      MID
+    </option>
+    <option value="159">
+      MKD
+    </option>
+    <option value="160">
+      MLI
+    </option>
+    <option value="161">
+      MMR
+    </option>
+    <option value="162">
+      MNG
+    </option>
+    <option value="163">
+      MAC
+    </option>
+    <option value="164">
+      MNP
+    </option>
+    <option value="165">
+      MTQ
+    </option>
+    <option value="166">
+      MRT
+    </option>
+    <option value="167">
+      MSR
+    </option>
+    <option value="168">
+      MLT
+    </option>
+    <option value="169">
+      MUS
+    </option>
+    <option value="170">
+      MDV
+    </option>
+    <option value="171">
+      MWI
+    </option>
+    <option value="172">
+      MEX
+    </option>
+    <option value="173">
+      MYS
+    </option>
+    <option value="174">
+      MOZ
+    </option>
+    <option value="175">
+      NAM
+    </option>
+    <option value="176">
+      NCL
+    </option>
+    <option value="177">
+      NER
+    </option>
+    <option value="178">
+      NFK
+    </option>
+    <option value="179">
+      NGA
+    </option>
+    <option value="180">
+      NHB
+    </option>
+    <option value="181">
+      NIC
+    </option>
+    <option value="182">
+      NLD
+    </option>
+    <option value="183">
+      NOR
+    </option>
+    <option value="184">
+      NPL
+    </option>
+    <option value="185">
+      ATN
+    </option>
+    <option value="186">
+      NRU
+    </option>
+    <option value="187">
+      NTZ
+    </option>
+    <option value="188">
+      NIU
+    </option>
+    <option value="189">
+      NZL
+    </option>
+    <option value="190">
+      OMN
+    </option>
+    <option value="191">
+      PAN
+    </option>
+    <option value="192">
+      PCI
+    </option>
+    <option value="193">
+      PER
+    </option>
+    <option value="194">
+      PYF
+    </option>
+    <option value="195">
+      PNG
+    </option>
+    <option value="196">
+      PHL
+    </option>
+    <option value="197">
+      PAK
+    </option>
+    <option value="198">
+      POL
+    </option>
+    <option value="199">
+      SPM
+    </option>
+    <option value="200">
+      PCN
+    </option>
+    <option value="201">
+      PRI
+    </option>
+    <option value="202">
+      PSE
+    </option>
+    <option value="203">
+      PRT
+    </option>
+    <option value="204">
+      PUS
+    </option>
+    <option value="205">
+      PLW
+    </option>
+    <option value="206">
+      PRY
+    </option>
+    <option value="207">
+      PCZ
+    </option>
+    <option value="208">
+      QAT
+    </option>
+    <option value="209">
+      REU
+    </option>
+    <option value="210">
+      RHO
+    </option>
+    <option value="211">
+      ROU
+    </option>
+    <option value="212">
+      SRB
+    </option>
+    <option value="213">
+      RUS
+    </option>
+    <option value="214">
+      RWA
+    </option>
+    <option value="215">
+      SAU
+    </option>
+    <option value="216">
+      SLB
+    </option>
+    <option value="217">
+      SYC
+    </option>
+    <option value="218">
+      SDN
+    </option>
+    <option value="219">
+      SWE
+    </option>
+    <option value="220">
+      SGP
+    </option>
+    <option value="221">
+      SHN
+    </option>
+    <option value="222">
+      SVN
+    </option>
+    <option value="223">
+      SJM
+    </option>
+    <option value="224">
+      SKM
+    </option>
+    <option value="225">
+      SVK
+    </option>
+    <option value="226">
+      SLE
+    </option>
+    <option value="227">
+      SMR
+    </option>
+    <option value="228">
+      SEN
+    </option>
+    <option value="229">
+      SOM
+    </option>
+    <option value="230">
+      SUR
+    </option>
+    <option value="231">
+      SSD
+    </option>
+    <option value="232">
+      STP
+    </option>
+    <option value="233">
+      SUN
+    </option>
+    <option value="234">
+      SLV
+    </option>
+    <option value="235">
+      SXM
+    </option>
+    <option value="236">
+      SYR
+    </option>
+    <option value="237">
+      SWZ
+    </option>
+    <option value="238">
+      TCA
+    </option>
+    <option value="239">
+      TCD
+    </option>
+    <option value="240">
+      ATF
+    </option>
+    <option value="241">
+      TGO
+    </option>
+    <option value="242">
+      THA
+    </option>
+    <option value="243">
+      TJK
+    </option>
+    <option value="244">
+      TKL
+    </option>
+    <option value="245">
+      TLS
+    </option>
+    <option value="246">
+      TKM
+    </option>
+    <option value="247">
+      TUN
+    </option>
+    <option value="248">
+      TON
+    </option>
+    <option value="249">
+      TMP
+    </option>
+    <option value="250">
+      TUR
+    </option>
+    <option value="251">
+      TTO
+    </option>
+    <option value="252">
+      TUV
+    </option>
+    <option value="253">
+      TWN
+    </option>
+    <option value="254">
+      TZA
+    </option>
+    <option value="255">
+      UKR
+    </option>
+    <option value="256">
+      UGA
+    </option>
+    <option value="257">
+      UMI
+    </option>
+    <option value="258">
+      USA
+    </option>
+    <option value="259">
+      URY
+    </option>
+    <option value="260">
+      UZB
+    </option>
+    <option value="261">
+      VAT
+    </option>
+    <option value="262">
+      VCT
+    </option>
+    <option value="263">
+      VDR
+    </option>
+    <option value="264">
+      VEN
+    </option>
+    <option value="265">
+      VGB
+    </option>
+    <option value="266">
+      VIR
+    </option>
+    <option value="267">
+      VNM
+    </option>
+    <option value="268">
+      VUT
+    </option>
+    <option value="269">
+      WLF
+    </option>
+    <option value="270">
+      WAK
+    </option>
+    <option value="271">
+      WSM
+    </option>
+    <option value="272">
+      YMD
+    </option>
+    <option value="273">
+      YEM
+    </option>
+    <option value="274">
+      MYT
+    </option>
+    <option value="275">
+      YUG
+    </option>
+    <option value="276">
+      ZAF
+    </option>
+    <option value="277">
+      ZMB
+    </option>
+    <option value="278">
+      ZAR
+    </option>
+    <option value="279">
+      ZWE
+    </option>
+  </select>
 </div>
 
 
@@ -325,11 +4293,11 @@ ReactDOM.render(e(TestModelComponent), domContainer);
   </script>
 
 <button type="submit">Send</button></form></div></div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 
 </body></html>

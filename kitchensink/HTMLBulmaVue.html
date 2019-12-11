@@ -39,6 +39,14 @@
 
 <div>
   <span>
+    Type countrycode
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
     Type date
   </span>
   <span>
@@ -150,15 +158,31 @@
   </span>
 </div>
 
+<div>
+  <span>
+    Country code - radio choice
+  </span>
+  <span>
+  </span>
+</div>
+
+<div>
+  <span>
+    Country code - select choice
+  </span>
+  <span>
+  </span>
+</div>
+
 </div><div><h2>Editable</h2>
 <form><div>
   <div id="vueapp">
     <div class="field">
   <div class="control">
-    <label for="bool85" class="label">
+    <label for="bool1495" class="label">
       Type bool
     </label>
-    <select id="bool85" name="bool" class="select" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" v-model="bool">
+    <select id="bool1495" name="bool" class="select" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" v-model="bool">
       <option value="false" selected="selected">
         False
       </option>
@@ -171,101 +195,953 @@
 
 <div class="field">
   <div class="control">
-    <label for="cnpj86" class="label">
+    <label for="cnpj1496" class="label">
       Type cnpj
     </label>
-    <input id="cnpj86" type="text" name="cnpj" class="input" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" maxlength="1024" title="Type cnpj" v-model="cnpj"/>
+    <input id="cnpj1496" type="text" name="cnpj" class="input" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" maxlength="1024" title="Type cnpj" v-model="cnpj"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="color87" class="label">
+    <label for="color1497" class="label">
       Type color
     </label>
-    <input id="color87" type="color" name="color" class="input" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
+    <input id="color1497" type="color" name="color" class="input" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
+  </div>
+</div>
+
+<div class="field">
+  <label for="countrycode1498" class="label">
+    Type countrycode
+  </label>
+  <div class="control">
+    <div id="countrycode1498" name="countrycode" class="select" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode">
+      <select id="countrycode1498" name="countrycode" class="" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode" v-model="countrycode">
+        <option value="0" selected="selected">
+          AND
+        </option>
+        <option value="1">
+          ARE
+        </option>
+        <option value="2">
+          AFG
+        </option>
+        <option value="3">
+          ATG
+        </option>
+        <option value="4">
+          AFI
+        </option>
+        <option value="5">
+          AIA
+        </option>
+        <option value="6">
+          ALB
+        </option>
+        <option value="7">
+          ARM
+        </option>
+        <option value="8">
+          ANT
+        </option>
+        <option value="9">
+          AGO
+        </option>
+        <option value="10">
+          ATA
+        </option>
+        <option value="11">
+          ARG
+        </option>
+        <option value="12">
+          ASM
+        </option>
+        <option value="13">
+          AUT
+        </option>
+        <option value="14">
+          AUS
+        </option>
+        <option value="15">
+          ABW
+        </option>
+        <option value="16">
+          ALA
+        </option>
+        <option value="17">
+          AZE
+        </option>
+        <option value="18">
+          BIH
+        </option>
+        <option value="19">
+          BRB
+        </option>
+        <option value="20">
+          BGD
+        </option>
+        <option value="21">
+          BEL
+        </option>
+        <option value="22">
+          BFA
+        </option>
+        <option value="23">
+          BGR
+        </option>
+        <option value="24">
+          BHR
+        </option>
+        <option value="25">
+          BDI
+        </option>
+        <option value="26">
+          BEN
+        </option>
+        <option value="27">
+          BLM
+        </option>
+        <option value="28">
+          BMU
+        </option>
+        <option value="29">
+          BRN
+        </option>
+        <option value="30">
+          BOL
+        </option>
+        <option value="31">
+          ATB
+        </option>
+        <option value="32">
+          BES
+        </option>
+        <option value="33">
+          BRA
+        </option>
+        <option value="34">
+          BHS
+        </option>
+        <option value="35">
+          BTN
+        </option>
+        <option value="36">
+          BUR
+        </option>
+        <option value="37">
+          BVT
+        </option>
+        <option value="38">
+          BWA
+        </option>
+        <option value="39">
+          BLR
+        </option>
+        <option value="40">
+          BYS
+        </option>
+        <option value="41">
+          BLZ
+        </option>
+        <option value="42">
+          CAN
+        </option>
+        <option value="43">
+          CCK
+        </option>
+        <option value="44">
+          COD
+        </option>
+        <option value="45">
+          CAF
+        </option>
+        <option value="46">
+          COG
+        </option>
+        <option value="47">
+          CHE
+        </option>
+        <option value="48">
+          CIV
+        </option>
+        <option value="49">
+          COK
+        </option>
+        <option value="50">
+          CHL
+        </option>
+        <option value="51">
+          CMR
+        </option>
+        <option value="52">
+          CHN
+        </option>
+        <option value="53">
+          COL
+        </option>
+        <option value="54">
+          CRI
+        </option>
+        <option value="55">
+          CSK
+        </option>
+        <option value="56">
+          SCG
+        </option>
+        <option value="57">
+          CTE
+        </option>
+        <option value="58">
+          CUB
+        </option>
+        <option value="59">
+          CPV
+        </option>
+        <option value="60">
+          CUW
+        </option>
+        <option value="61">
+          CXR
+        </option>
+        <option value="62">
+          CYP
+        </option>
+        <option value="63">
+          CZE
+        </option>
+        <option value="64">
+          DDR
+        </option>
+        <option value="65">
+          DEU
+        </option>
+        <option value="66">
+          DJI
+        </option>
+        <option value="67">
+          DNK
+        </option>
+        <option value="68">
+          DMA
+        </option>
+        <option value="69">
+          DOM
+        </option>
+        <option value="70">
+          DHY
+        </option>
+        <option value="71">
+          DZA
+        </option>
+        <option value="72">
+          ECU
+        </option>
+        <option value="73">
+          EST
+        </option>
+        <option value="74">
+          EGY
+        </option>
+        <option value="75">
+          ESH
+        </option>
+        <option value="76">
+          ERI
+        </option>
+        <option value="77">
+          ESP
+        </option>
+        <option value="78">
+          ETH
+        </option>
+        <option value="79">
+          FIN
+        </option>
+        <option value="80">
+          FJI
+        </option>
+        <option value="81">
+          FLK
+        </option>
+        <option value="82">
+          FSM
+        </option>
+        <option value="83">
+          FRO
+        </option>
+        <option value="84">
+          ATF
+        </option>
+        <option value="85">
+          FRA
+        </option>
+        <option value="86">
+          FXX
+        </option>
+        <option value="87">
+          GAB
+        </option>
+        <option value="88">
+          GBR
+        </option>
+        <option value="89">
+          GRD
+        </option>
+        <option value="90">
+          GEL
+        </option>
+        <option value="91">
+          GEO
+        </option>
+        <option value="92">
+          GUF
+        </option>
+        <option value="93">
+          GGY
+        </option>
+        <option value="94">
+          GHA
+        </option>
+        <option value="95">
+          GIB
+        </option>
+        <option value="96">
+          GRL
+        </option>
+        <option value="97">
+          GMB
+        </option>
+        <option value="98">
+          GIN
+        </option>
+        <option value="99">
+          GLP
+        </option>
+        <option value="100">
+          GNQ
+        </option>
+        <option value="101">
+          GRC
+        </option>
+        <option value="102">
+          SGS
+        </option>
+        <option value="103">
+          GTM
+        </option>
+        <option value="104">
+          GUM
+        </option>
+        <option value="105">
+          GNB
+        </option>
+        <option value="106">
+          GUY
+        </option>
+        <option value="107">
+          HKG
+        </option>
+        <option value="108">
+          HMD
+        </option>
+        <option value="109">
+          HND
+        </option>
+        <option value="110">
+          HRV
+        </option>
+        <option value="111">
+          HTI
+        </option>
+        <option value="112">
+          HUN
+        </option>
+        <option value="113">
+          HVO
+        </option>
+        <option value="114">
+          IDN
+        </option>
+        <option value="115">
+          IRL
+        </option>
+        <option value="116">
+          ISR
+        </option>
+        <option value="117">
+          IMN
+        </option>
+        <option value="118">
+          IND
+        </option>
+        <option value="119">
+          IOT
+        </option>
+        <option value="120">
+          IRQ
+        </option>
+        <option value="121">
+          IRN
+        </option>
+        <option value="122">
+          ISL
+        </option>
+        <option value="123">
+          ITA
+        </option>
+        <option value="124">
+          JEY
+        </option>
+        <option value="125">
+          JAM
+        </option>
+        <option value="126">
+          JOR
+        </option>
+        <option value="127">
+          JPN
+        </option>
+        <option value="128">
+          JTN
+        </option>
+        <option value="129">
+          KEN
+        </option>
+        <option value="130">
+          KGZ
+        </option>
+        <option value="131">
+          KHM
+        </option>
+        <option value="132">
+          KIR
+        </option>
+        <option value="133">
+          COM
+        </option>
+        <option value="134">
+          KNA
+        </option>
+        <option value="135">
+          PRK
+        </option>
+        <option value="136">
+          KOR
+        </option>
+        <option value="137">
+          KWT
+        </option>
+        <option value="138">
+          CYM
+        </option>
+        <option value="139">
+          KAZ
+        </option>
+        <option value="140">
+          LAO
+        </option>
+        <option value="141">
+          LBN
+        </option>
+        <option value="142">
+          LCA
+        </option>
+        <option value="143">
+          LIE
+        </option>
+        <option value="144">
+          LKA
+        </option>
+        <option value="145">
+          LBR
+        </option>
+        <option value="146">
+          LSO
+        </option>
+        <option value="147">
+          LTU
+        </option>
+        <option value="148">
+          LUX
+        </option>
+        <option value="149">
+          LVA
+        </option>
+        <option value="150">
+          LBY
+        </option>
+        <option value="151">
+          MAR
+        </option>
+        <option value="152">
+          MCO
+        </option>
+        <option value="153">
+          MDA
+        </option>
+        <option value="154">
+          MNE
+        </option>
+        <option value="155">
+          MAF
+        </option>
+        <option value="156">
+          MDG
+        </option>
+        <option value="157">
+          MHL
+        </option>
+        <option value="158">
+          MID
+        </option>
+        <option value="159">
+          MKD
+        </option>
+        <option value="160">
+          MLI
+        </option>
+        <option value="161">
+          MMR
+        </option>
+        <option value="162">
+          MNG
+        </option>
+        <option value="163">
+          MAC
+        </option>
+        <option value="164">
+          MNP
+        </option>
+        <option value="165">
+          MTQ
+        </option>
+        <option value="166">
+          MRT
+        </option>
+        <option value="167">
+          MSR
+        </option>
+        <option value="168">
+          MLT
+        </option>
+        <option value="169">
+          MUS
+        </option>
+        <option value="170">
+          MDV
+        </option>
+        <option value="171">
+          MWI
+        </option>
+        <option value="172">
+          MEX
+        </option>
+        <option value="173">
+          MYS
+        </option>
+        <option value="174">
+          MOZ
+        </option>
+        <option value="175">
+          NAM
+        </option>
+        <option value="176">
+          NCL
+        </option>
+        <option value="177">
+          NER
+        </option>
+        <option value="178">
+          NFK
+        </option>
+        <option value="179">
+          NGA
+        </option>
+        <option value="180">
+          NHB
+        </option>
+        <option value="181">
+          NIC
+        </option>
+        <option value="182">
+          NLD
+        </option>
+        <option value="183">
+          NOR
+        </option>
+        <option value="184">
+          NPL
+        </option>
+        <option value="185">
+          ATN
+        </option>
+        <option value="186">
+          NRU
+        </option>
+        <option value="187">
+          NTZ
+        </option>
+        <option value="188">
+          NIU
+        </option>
+        <option value="189">
+          NZL
+        </option>
+        <option value="190">
+          OMN
+        </option>
+        <option value="191">
+          PAN
+        </option>
+        <option value="192">
+          PCI
+        </option>
+        <option value="193">
+          PER
+        </option>
+        <option value="194">
+          PYF
+        </option>
+        <option value="195">
+          PNG
+        </option>
+        <option value="196">
+          PHL
+        </option>
+        <option value="197">
+          PAK
+        </option>
+        <option value="198">
+          POL
+        </option>
+        <option value="199">
+          SPM
+        </option>
+        <option value="200">
+          PCN
+        </option>
+        <option value="201">
+          PRI
+        </option>
+        <option value="202">
+          PSE
+        </option>
+        <option value="203">
+          PRT
+        </option>
+        <option value="204">
+          PUS
+        </option>
+        <option value="205">
+          PLW
+        </option>
+        <option value="206">
+          PRY
+        </option>
+        <option value="207">
+          PCZ
+        </option>
+        <option value="208">
+          QAT
+        </option>
+        <option value="209">
+          REU
+        </option>
+        <option value="210">
+          RHO
+        </option>
+        <option value="211">
+          ROU
+        </option>
+        <option value="212">
+          SRB
+        </option>
+        <option value="213">
+          RUS
+        </option>
+        <option value="214">
+          RWA
+        </option>
+        <option value="215">
+          SAU
+        </option>
+        <option value="216">
+          SLB
+        </option>
+        <option value="217">
+          SYC
+        </option>
+        <option value="218">
+          SDN
+        </option>
+        <option value="219">
+          SWE
+        </option>
+        <option value="220">
+          SGP
+        </option>
+        <option value="221">
+          SHN
+        </option>
+        <option value="222">
+          SVN
+        </option>
+        <option value="223">
+          SJM
+        </option>
+        <option value="224">
+          SKM
+        </option>
+        <option value="225">
+          SVK
+        </option>
+        <option value="226">
+          SLE
+        </option>
+        <option value="227">
+          SMR
+        </option>
+        <option value="228">
+          SEN
+        </option>
+        <option value="229">
+          SOM
+        </option>
+        <option value="230">
+          SUR
+        </option>
+        <option value="231">
+          SSD
+        </option>
+        <option value="232">
+          STP
+        </option>
+        <option value="233">
+          SUN
+        </option>
+        <option value="234">
+          SLV
+        </option>
+        <option value="235">
+          SXM
+        </option>
+        <option value="236">
+          SYR
+        </option>
+        <option value="237">
+          SWZ
+        </option>
+        <option value="238">
+          TCA
+        </option>
+        <option value="239">
+          TCD
+        </option>
+        <option value="240">
+          ATF
+        </option>
+        <option value="241">
+          TGO
+        </option>
+        <option value="242">
+          THA
+        </option>
+        <option value="243">
+          TJK
+        </option>
+        <option value="244">
+          TKL
+        </option>
+        <option value="245">
+          TLS
+        </option>
+        <option value="246">
+          TKM
+        </option>
+        <option value="247">
+          TUN
+        </option>
+        <option value="248">
+          TON
+        </option>
+        <option value="249">
+          TMP
+        </option>
+        <option value="250">
+          TUR
+        </option>
+        <option value="251">
+          TTO
+        </option>
+        <option value="252">
+          TUV
+        </option>
+        <option value="253">
+          TWN
+        </option>
+        <option value="254">
+          TZA
+        </option>
+        <option value="255">
+          UKR
+        </option>
+        <option value="256">
+          UGA
+        </option>
+        <option value="257">
+          UMI
+        </option>
+        <option value="258">
+          USA
+        </option>
+        <option value="259">
+          URY
+        </option>
+        <option value="260">
+          UZB
+        </option>
+        <option value="261">
+          VAT
+        </option>
+        <option value="262">
+          VCT
+        </option>
+        <option value="263">
+          VDR
+        </option>
+        <option value="264">
+          VEN
+        </option>
+        <option value="265">
+          VGB
+        </option>
+        <option value="266">
+          VIR
+        </option>
+        <option value="267">
+          VNM
+        </option>
+        <option value="268">
+          VUT
+        </option>
+        <option value="269">
+          WLF
+        </option>
+        <option value="270">
+          WAK
+        </option>
+        <option value="271">
+          WSM
+        </option>
+        <option value="272">
+          YMD
+        </option>
+        <option value="273">
+          YEM
+        </option>
+        <option value="274">
+          MYT
+        </option>
+        <option value="275">
+          YUG
+        </option>
+        <option value="276">
+          ZAF
+        </option>
+        <option value="277">
+          ZMB
+        </option>
+        <option value="278">
+          ZAR
+        </option>
+        <option value="279">
+          ZWE
+        </option>
+      </select>
+    </div>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="date88" class="label">
+    <label for="date1499" class="label">
       Type date
     </label>
-    <input id="date88" type="date" name="date" class="input" data-attribute="date" data-datatype="date" data-basetype="date" maxlength="1024" title="Type date" v-model="date"/>
+    <input id="date1499" type="date" name="date" class="input" data-attribute="date" data-datatype="date" data-basetype="date" maxlength="1024" title="Type date" v-model="date"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="datetime89" class="label">
+    <label for="datetime1500" class="label">
       Type datetime
     </label>
-    <input id="datetime89" type="datetime" name="datetime" class="input" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" maxlength="1024" title="Type datetime" v-model="datetime"/>
+    <input id="datetime1500" type="datetime" name="datetime" class="input" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" maxlength="1024" title="Type datetime" v-model="datetime"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="domain90" class="label">
+    <label for="domain1501" class="label">
       Type domain
     </label>
-    <input id="domain90" type="text" name="domain" class="input" data-attribute="domain" data-datatype="domain" data-basetype="string" maxlength="1024" title="Type domain" v-model="domain"/>
+    <input id="domain1501" type="text" name="domain" class="input" data-attribute="domain" data-datatype="domain" data-basetype="string" maxlength="1024" title="Type domain" v-model="domain"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="email91" class="label">
+    <label for="email1502" class="label">
       Type email
     </label>
-    <input id="email91" type="email" name="email" class="input" data-attribute="email" data-datatype="email" data-basetype="string" maxlength="1024" title="Type email" v-model="email"/>
+    <input id="email1502" type="email" name="email" class="input" data-attribute="email" data-datatype="email" data-basetype="string" maxlength="1024" title="Type email" v-model="email"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="float92" class="label">
+    <label for="float1503" class="label">
       Type float
     </label>
-    <input id="float92" type="number" name="float" class="input" data-attribute="float" data-datatype="float" data-basetype="number" title="Type float" v-model="float"/>
+    <input id="float1503" type="number" name="float" class="input" data-attribute="float" data-datatype="float" data-basetype="number" title="Type float" v-model="float"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="integer93" class="label">
+    <label for="integer1504" class="label">
       Type integer
     </label>
-    <input id="integer93" type="number" name="integer" class="input" data-attribute="integer" data-datatype="integer" data-basetype="number" title="Type integer" placeholder="Type here" min="4" max="30" v-model="integer"/>
+    <input id="integer1504" type="number" name="integer" class="input" data-attribute="integer" data-datatype="integer" data-basetype="number" title="Type integer" placeholder="Type here" min="4" max="30" v-model="integer"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="json94" class="label">
+    <label for="json1505" class="label">
       Type json
     </label>
-    <textarea id="json94" type="text" name="json" class="textarea" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024" title="Type json" v-model="json">
+    <textarea id="json1505" type="text" name="json" class="textarea" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024" title="Type json" v-model="json">
     </textarea>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="phone95" class="label">
+    <label for="phone1506" class="label">
       Type phone
     </label>
-    <input id="phone95" type="tel" name="phone" class="input" data-attribute="phone" data-datatype="phone" data-basetype="string" maxlength="1024" title="Type phone" v-model="phone"/>
+    <input id="phone1506" type="tel" name="phone" class="input" data-attribute="phone" data-datatype="phone" data-basetype="string" maxlength="1024" title="Type phone" v-model="phone"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="string96" class="label">
+    <label for="string1507" class="label">
       Type string
     </label>
-    <input id="string96" type="text" name="string" class="input" data-attribute="string" data-datatype="string" data-basetype="string" maxlength="30" title="Type string" placeholder="Type here" minlength="3" v-model="string"/>
+    <input id="string1507" type="text" name="string" class="input" data-attribute="string" data-datatype="string" data-basetype="string" maxlength="30" title="Type string" placeholder="Type here" minlength="3" v-model="string"/>
     <p class="help">
       Some text explaining this field
     </p>
@@ -274,47 +1150,2589 @@
 
 <div class="field">
   <div class="control">
-    <label for="text97" class="label">
+    <label for="text1508" class="label">
       Type text
     </label>
-    <textarea id="text97" type="text" name="text" class="textarea" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024" title="Type text" v-model="text">
+    <textarea id="text1508" type="text" name="text" class="textarea" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024" title="Type text" v-model="text">
     </textarea>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="uinteger98" class="label">
+    <label for="uinteger1509" class="label">
       Type uinteger
     </label>
-    <input id="uinteger98" type="number" name="uinteger" class="input" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" title="Type uinteger" min="0" max="4294967296" v-model="uinteger"/>
+    <input id="uinteger1509" type="number" name="uinteger" class="input" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" title="Type uinteger" min="0" max="4294967296" v-model="uinteger"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="url99" class="label">
+    <label for="url1510" class="label">
       Type url
     </label>
-    <input id="url99" type="url" name="url" class="input" data-attribute="url" data-datatype="url" data-basetype="url" maxlength="1024" title="Type url" v-model="url"/>
+    <input id="url1510" type="url" name="url" class="input" data-attribute="url" data-datatype="url" data-basetype="url" maxlength="1024" title="Type url" v-model="url"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="usmall100" class="label">
+    <label for="usmall1511" class="label">
       Type usmall
     </label>
-    <input id="usmall100" type="number" name="usmall" class="input" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" title="Type usmall" min="0" max="65536" v-model="usmall"/>
+    <input id="usmall1511" type="number" name="usmall" class="input" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" title="Type usmall" min="0" max="65536" v-model="usmall"/>
   </div>
 </div>
 
 <div class="field">
   <div class="control">
-    <label for="uuid101" class="label">
+    <label for="uuid1512" class="label">
       Type uuid
     </label>
-    <input id="uuid101" type="text" name="uuid" class="input" data-attribute="uuid" data-datatype="uuid" data-basetype="string" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" v-model="uuid"/>
+    <input id="uuid1512" type="text" name="uuid" class="input" data-attribute="uuid" data-datatype="uuid" data-basetype="string" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" v-model="uuid"/>
+  </div>
+</div>
+
+<div class="field">
+  <label for="" class="label">
+    Country code - radio choice
+  </label>
+  <div class="control">
+    <div class="formularium-radio-group">
+      <label class="formularium-radio-label radio" for="countrycoderadio1513">
+        <input checked="checked" id="countrycoderadio1513" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AND
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1514">
+        <input id="countrycoderadio1514" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ARE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1515">
+        <input id="countrycoderadio1515" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AFG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1516">
+        <input id="countrycoderadio1516" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ATG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1517">
+        <input id="countrycoderadio1517" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AFI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1518">
+        <input id="countrycoderadio1518" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AIA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1519">
+        <input id="countrycoderadio1519" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ALB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1520">
+        <input id="countrycoderadio1520" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ARM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1521">
+        <input id="countrycoderadio1521" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ANT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1522">
+        <input id="countrycoderadio1522" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AGO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1523">
+        <input id="countrycoderadio1523" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ATA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1524">
+        <input id="countrycoderadio1524" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ARG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1525">
+        <input id="countrycoderadio1525" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ASM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1526">
+        <input id="countrycoderadio1526" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AUT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1527">
+        <input id="countrycoderadio1527" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AUS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1528">
+        <input id="countrycoderadio1528" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ABW
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1529">
+        <input id="countrycoderadio1529" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ALA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1530">
+        <input id="countrycoderadio1530" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          AZE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1531">
+        <input id="countrycoderadio1531" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BIH
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1532">
+        <input id="countrycoderadio1532" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BRB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1533">
+        <input id="countrycoderadio1533" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BGD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1534">
+        <input id="countrycoderadio1534" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BEL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1535">
+        <input id="countrycoderadio1535" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BFA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1536">
+        <input id="countrycoderadio1536" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BGR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1537">
+        <input id="countrycoderadio1537" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BHR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1538">
+        <input id="countrycoderadio1538" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BDI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1539">
+        <input id="countrycoderadio1539" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BEN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1540">
+        <input id="countrycoderadio1540" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BLM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1541">
+        <input id="countrycoderadio1541" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BMU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1542">
+        <input id="countrycoderadio1542" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BRN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1543">
+        <input id="countrycoderadio1543" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BOL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1544">
+        <input id="countrycoderadio1544" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ATB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1545">
+        <input id="countrycoderadio1545" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BES
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1546">
+        <input id="countrycoderadio1546" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BRA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1547">
+        <input id="countrycoderadio1547" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BHS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1548">
+        <input id="countrycoderadio1548" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BTN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1549">
+        <input id="countrycoderadio1549" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BUR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1550">
+        <input id="countrycoderadio1550" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BVT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1551">
+        <input id="countrycoderadio1551" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BWA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1552">
+        <input id="countrycoderadio1552" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BLR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1553">
+        <input id="countrycoderadio1553" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BYS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1554">
+        <input id="countrycoderadio1554" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          BLZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1555">
+        <input id="countrycoderadio1555" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CAN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1556">
+        <input id="countrycoderadio1556" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CCK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1557">
+        <input id="countrycoderadio1557" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          COD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1558">
+        <input id="countrycoderadio1558" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CAF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1559">
+        <input id="countrycoderadio1559" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          COG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1560">
+        <input id="countrycoderadio1560" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CHE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1561">
+        <input id="countrycoderadio1561" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CIV
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1562">
+        <input id="countrycoderadio1562" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          COK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1563">
+        <input id="countrycoderadio1563" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CHL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1564">
+        <input id="countrycoderadio1564" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CMR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1565">
+        <input id="countrycoderadio1565" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CHN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1566">
+        <input id="countrycoderadio1566" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          COL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1567">
+        <input id="countrycoderadio1567" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CRI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1568">
+        <input id="countrycoderadio1568" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CSK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1569">
+        <input id="countrycoderadio1569" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SCG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1570">
+        <input id="countrycoderadio1570" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CTE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1571">
+        <input id="countrycoderadio1571" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CUB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1572">
+        <input id="countrycoderadio1572" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CPV
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1573">
+        <input id="countrycoderadio1573" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CUW
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1574">
+        <input id="countrycoderadio1574" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CXR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1575">
+        <input id="countrycoderadio1575" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CYP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1576">
+        <input id="countrycoderadio1576" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CZE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1577">
+        <input id="countrycoderadio1577" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DDR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1578">
+        <input id="countrycoderadio1578" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DEU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1579">
+        <input id="countrycoderadio1579" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DJI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1580">
+        <input id="countrycoderadio1580" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DNK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1581">
+        <input id="countrycoderadio1581" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DMA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1582">
+        <input id="countrycoderadio1582" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DOM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1583">
+        <input id="countrycoderadio1583" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DHY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1584">
+        <input id="countrycoderadio1584" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          DZA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1585">
+        <input id="countrycoderadio1585" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ECU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1586">
+        <input id="countrycoderadio1586" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          EST
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1587">
+        <input id="countrycoderadio1587" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          EGY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1588">
+        <input id="countrycoderadio1588" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ESH
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1589">
+        <input id="countrycoderadio1589" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ERI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1590">
+        <input id="countrycoderadio1590" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ESP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1591">
+        <input id="countrycoderadio1591" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ETH
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1592">
+        <input id="countrycoderadio1592" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FIN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1593">
+        <input id="countrycoderadio1593" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FJI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1594">
+        <input id="countrycoderadio1594" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FLK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1595">
+        <input id="countrycoderadio1595" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FSM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1596">
+        <input id="countrycoderadio1596" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FRO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1597">
+        <input id="countrycoderadio1597" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ATF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1598">
+        <input id="countrycoderadio1598" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FRA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1599">
+        <input id="countrycoderadio1599" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          FXX
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1600">
+        <input id="countrycoderadio1600" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GAB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1601">
+        <input id="countrycoderadio1601" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GBR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1602">
+        <input id="countrycoderadio1602" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GRD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1603">
+        <input id="countrycoderadio1603" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GEL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1604">
+        <input id="countrycoderadio1604" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GEO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1605">
+        <input id="countrycoderadio1605" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GUF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1606">
+        <input id="countrycoderadio1606" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GGY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1607">
+        <input id="countrycoderadio1607" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GHA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1608">
+        <input id="countrycoderadio1608" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GIB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1609">
+        <input id="countrycoderadio1609" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GRL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1610">
+        <input id="countrycoderadio1610" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GMB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1611">
+        <input id="countrycoderadio1611" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GIN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1612">
+        <input id="countrycoderadio1612" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GLP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1613">
+        <input id="countrycoderadio1613" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GNQ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1614">
+        <input id="countrycoderadio1614" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GRC
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1615">
+        <input id="countrycoderadio1615" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SGS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1616">
+        <input id="countrycoderadio1616" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GTM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1617">
+        <input id="countrycoderadio1617" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GUM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1618">
+        <input id="countrycoderadio1618" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GNB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1619">
+        <input id="countrycoderadio1619" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          GUY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1620">
+        <input id="countrycoderadio1620" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HKG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1621">
+        <input id="countrycoderadio1621" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HMD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1622">
+        <input id="countrycoderadio1622" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HND
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1623">
+        <input id="countrycoderadio1623" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HRV
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1624">
+        <input id="countrycoderadio1624" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HTI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1625">
+        <input id="countrycoderadio1625" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HUN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1626">
+        <input id="countrycoderadio1626" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          HVO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1627">
+        <input id="countrycoderadio1627" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IDN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1628">
+        <input id="countrycoderadio1628" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IRL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1629">
+        <input id="countrycoderadio1629" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ISR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1630">
+        <input id="countrycoderadio1630" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IMN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1631">
+        <input id="countrycoderadio1631" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IND
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1632">
+        <input id="countrycoderadio1632" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IOT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1633">
+        <input id="countrycoderadio1633" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IRQ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1634">
+        <input id="countrycoderadio1634" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          IRN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1635">
+        <input id="countrycoderadio1635" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ISL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1636">
+        <input id="countrycoderadio1636" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ITA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1637">
+        <input id="countrycoderadio1637" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          JEY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1638">
+        <input id="countrycoderadio1638" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          JAM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1639">
+        <input id="countrycoderadio1639" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          JOR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1640">
+        <input id="countrycoderadio1640" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          JPN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1641">
+        <input id="countrycoderadio1641" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          JTN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1642">
+        <input id="countrycoderadio1642" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KEN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1643">
+        <input id="countrycoderadio1643" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KGZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1644">
+        <input id="countrycoderadio1644" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KHM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1645">
+        <input id="countrycoderadio1645" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KIR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1646">
+        <input id="countrycoderadio1646" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          COM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1647">
+        <input id="countrycoderadio1647" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KNA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1648">
+        <input id="countrycoderadio1648" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PRK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1649">
+        <input id="countrycoderadio1649" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KOR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1650">
+        <input id="countrycoderadio1650" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KWT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1651">
+        <input id="countrycoderadio1651" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          CYM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1652">
+        <input id="countrycoderadio1652" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          KAZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1653">
+        <input id="countrycoderadio1653" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LAO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1654">
+        <input id="countrycoderadio1654" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LBN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1655">
+        <input id="countrycoderadio1655" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LCA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1656">
+        <input id="countrycoderadio1656" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LIE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1657">
+        <input id="countrycoderadio1657" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LKA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1658">
+        <input id="countrycoderadio1658" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LBR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1659">
+        <input id="countrycoderadio1659" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LSO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1660">
+        <input id="countrycoderadio1660" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LTU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1661">
+        <input id="countrycoderadio1661" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LUX
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1662">
+        <input id="countrycoderadio1662" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LVA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1663">
+        <input id="countrycoderadio1663" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          LBY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1664">
+        <input id="countrycoderadio1664" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MAR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1665">
+        <input id="countrycoderadio1665" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MCO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1666">
+        <input id="countrycoderadio1666" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MDA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1667">
+        <input id="countrycoderadio1667" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MNE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1668">
+        <input id="countrycoderadio1668" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MAF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1669">
+        <input id="countrycoderadio1669" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MDG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1670">
+        <input id="countrycoderadio1670" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MHL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1671">
+        <input id="countrycoderadio1671" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MID
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1672">
+        <input id="countrycoderadio1672" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MKD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1673">
+        <input id="countrycoderadio1673" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MLI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1674">
+        <input id="countrycoderadio1674" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MMR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1675">
+        <input id="countrycoderadio1675" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MNG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1676">
+        <input id="countrycoderadio1676" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MAC
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1677">
+        <input id="countrycoderadio1677" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MNP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1678">
+        <input id="countrycoderadio1678" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MTQ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1679">
+        <input id="countrycoderadio1679" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MRT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1680">
+        <input id="countrycoderadio1680" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MSR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1681">
+        <input id="countrycoderadio1681" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MLT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1682">
+        <input id="countrycoderadio1682" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MUS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1683">
+        <input id="countrycoderadio1683" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MDV
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1684">
+        <input id="countrycoderadio1684" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MWI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1685">
+        <input id="countrycoderadio1685" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MEX
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1686">
+        <input id="countrycoderadio1686" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MYS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1687">
+        <input id="countrycoderadio1687" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MOZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1688">
+        <input id="countrycoderadio1688" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NAM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1689">
+        <input id="countrycoderadio1689" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NCL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1690">
+        <input id="countrycoderadio1690" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NER
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1691">
+        <input id="countrycoderadio1691" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NFK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1692">
+        <input id="countrycoderadio1692" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NGA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1693">
+        <input id="countrycoderadio1693" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NHB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1694">
+        <input id="countrycoderadio1694" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NIC
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1695">
+        <input id="countrycoderadio1695" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NLD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1696">
+        <input id="countrycoderadio1696" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NOR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1697">
+        <input id="countrycoderadio1697" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NPL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1698">
+        <input id="countrycoderadio1698" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ATN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1699">
+        <input id="countrycoderadio1699" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NRU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1700">
+        <input id="countrycoderadio1700" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NTZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1701">
+        <input id="countrycoderadio1701" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NIU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1702">
+        <input id="countrycoderadio1702" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          NZL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1703">
+        <input id="countrycoderadio1703" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          OMN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1704">
+        <input id="countrycoderadio1704" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PAN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1705">
+        <input id="countrycoderadio1705" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PCI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1706">
+        <input id="countrycoderadio1706" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PER
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1707">
+        <input id="countrycoderadio1707" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PYF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1708">
+        <input id="countrycoderadio1708" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PNG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1709">
+        <input id="countrycoderadio1709" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PHL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1710">
+        <input id="countrycoderadio1710" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PAK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1711">
+        <input id="countrycoderadio1711" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          POL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1712">
+        <input id="countrycoderadio1712" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SPM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1713">
+        <input id="countrycoderadio1713" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PCN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1714">
+        <input id="countrycoderadio1714" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PRI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1715">
+        <input id="countrycoderadio1715" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PSE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1716">
+        <input id="countrycoderadio1716" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PRT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1717">
+        <input id="countrycoderadio1717" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PUS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1718">
+        <input id="countrycoderadio1718" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PLW
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1719">
+        <input id="countrycoderadio1719" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PRY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1720">
+        <input id="countrycoderadio1720" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          PCZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1721">
+        <input id="countrycoderadio1721" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          QAT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1722">
+        <input id="countrycoderadio1722" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          REU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1723">
+        <input id="countrycoderadio1723" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          RHO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1724">
+        <input id="countrycoderadio1724" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ROU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1725">
+        <input id="countrycoderadio1725" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SRB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1726">
+        <input id="countrycoderadio1726" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          RUS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1727">
+        <input id="countrycoderadio1727" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          RWA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1728">
+        <input id="countrycoderadio1728" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SAU
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1729">
+        <input id="countrycoderadio1729" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SLB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1730">
+        <input id="countrycoderadio1730" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SYC
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1731">
+        <input id="countrycoderadio1731" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SDN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1732">
+        <input id="countrycoderadio1732" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SWE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1733">
+        <input id="countrycoderadio1733" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SGP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1734">
+        <input id="countrycoderadio1734" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SHN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1735">
+        <input id="countrycoderadio1735" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SVN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1736">
+        <input id="countrycoderadio1736" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SJM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1737">
+        <input id="countrycoderadio1737" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SKM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1738">
+        <input id="countrycoderadio1738" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SVK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1739">
+        <input id="countrycoderadio1739" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SLE
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1740">
+        <input id="countrycoderadio1740" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SMR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1741">
+        <input id="countrycoderadio1741" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SEN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1742">
+        <input id="countrycoderadio1742" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SOM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1743">
+        <input id="countrycoderadio1743" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SUR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1744">
+        <input id="countrycoderadio1744" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SSD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1745">
+        <input id="countrycoderadio1745" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          STP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1746">
+        <input id="countrycoderadio1746" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SUN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1747">
+        <input id="countrycoderadio1747" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SLV
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1748">
+        <input id="countrycoderadio1748" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SXM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1749">
+        <input id="countrycoderadio1749" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SYR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1750">
+        <input id="countrycoderadio1750" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          SWZ
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1751">
+        <input id="countrycoderadio1751" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TCA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1752">
+        <input id="countrycoderadio1752" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TCD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1753">
+        <input id="countrycoderadio1753" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ATF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1754">
+        <input id="countrycoderadio1754" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TGO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1755">
+        <input id="countrycoderadio1755" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          THA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1756">
+        <input id="countrycoderadio1756" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TJK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1757">
+        <input id="countrycoderadio1757" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TKL
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1758">
+        <input id="countrycoderadio1758" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TLS
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1759">
+        <input id="countrycoderadio1759" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TKM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1760">
+        <input id="countrycoderadio1760" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TUN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1761">
+        <input id="countrycoderadio1761" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TON
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1762">
+        <input id="countrycoderadio1762" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TMP
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1763">
+        <input id="countrycoderadio1763" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TUR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1764">
+        <input id="countrycoderadio1764" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TTO
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1765">
+        <input id="countrycoderadio1765" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TUV
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1766">
+        <input id="countrycoderadio1766" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TWN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1767">
+        <input id="countrycoderadio1767" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          TZA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1768">
+        <input id="countrycoderadio1768" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          UKR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1769">
+        <input id="countrycoderadio1769" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          UGA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1770">
+        <input id="countrycoderadio1770" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          UMI
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1771">
+        <input id="countrycoderadio1771" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          USA
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1772">
+        <input id="countrycoderadio1772" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          URY
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1773">
+        <input id="countrycoderadio1773" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          UZB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1774">
+        <input id="countrycoderadio1774" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VAT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1775">
+        <input id="countrycoderadio1775" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VCT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1776">
+        <input id="countrycoderadio1776" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VDR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1777">
+        <input id="countrycoderadio1777" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VEN
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1778">
+        <input id="countrycoderadio1778" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VGB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1779">
+        <input id="countrycoderadio1779" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VIR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1780">
+        <input id="countrycoderadio1780" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VNM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1781">
+        <input id="countrycoderadio1781" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          VUT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1782">
+        <input id="countrycoderadio1782" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          WLF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1783">
+        <input id="countrycoderadio1783" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          WAK
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1784">
+        <input id="countrycoderadio1784" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          WSM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1785">
+        <input id="countrycoderadio1785" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          YMD
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1786">
+        <input id="countrycoderadio1786" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          YEM
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1787">
+        <input id="countrycoderadio1787" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          MYT
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1788">
+        <input id="countrycoderadio1788" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          YUG
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1789">
+        <input id="countrycoderadio1789" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ZAF
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1790">
+        <input id="countrycoderadio1790" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ZMB
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1791">
+        <input id="countrycoderadio1791" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ZAR
+        </span>
+      </label>
+      <label class="formularium-radio-label radio" for="countrycoderadio1792">
+        <input id="countrycoderadio1792" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" type="radio" v-model="countrycoderadio"/>
+        <span>
+          ZWE
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <label for="countrycodeselect1793" class="label">
+    Country code - select choice
+  </label>
+  <div class="control">
+    <div id="countrycodeselect1793" name="countrycodeselect" class="select" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice">
+      <select id="countrycodeselect1793" name="countrycodeselect" class="" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice" v-model="countrycodeselect">
+        <option value="0" selected="selected">
+          AND
+        </option>
+        <option value="1">
+          ARE
+        </option>
+        <option value="2">
+          AFG
+        </option>
+        <option value="3">
+          ATG
+        </option>
+        <option value="4">
+          AFI
+        </option>
+        <option value="5">
+          AIA
+        </option>
+        <option value="6">
+          ALB
+        </option>
+        <option value="7">
+          ARM
+        </option>
+        <option value="8">
+          ANT
+        </option>
+        <option value="9">
+          AGO
+        </option>
+        <option value="10">
+          ATA
+        </option>
+        <option value="11">
+          ARG
+        </option>
+        <option value="12">
+          ASM
+        </option>
+        <option value="13">
+          AUT
+        </option>
+        <option value="14">
+          AUS
+        </option>
+        <option value="15">
+          ABW
+        </option>
+        <option value="16">
+          ALA
+        </option>
+        <option value="17">
+          AZE
+        </option>
+        <option value="18">
+          BIH
+        </option>
+        <option value="19">
+          BRB
+        </option>
+        <option value="20">
+          BGD
+        </option>
+        <option value="21">
+          BEL
+        </option>
+        <option value="22">
+          BFA
+        </option>
+        <option value="23">
+          BGR
+        </option>
+        <option value="24">
+          BHR
+        </option>
+        <option value="25">
+          BDI
+        </option>
+        <option value="26">
+          BEN
+        </option>
+        <option value="27">
+          BLM
+        </option>
+        <option value="28">
+          BMU
+        </option>
+        <option value="29">
+          BRN
+        </option>
+        <option value="30">
+          BOL
+        </option>
+        <option value="31">
+          ATB
+        </option>
+        <option value="32">
+          BES
+        </option>
+        <option value="33">
+          BRA
+        </option>
+        <option value="34">
+          BHS
+        </option>
+        <option value="35">
+          BTN
+        </option>
+        <option value="36">
+          BUR
+        </option>
+        <option value="37">
+          BVT
+        </option>
+        <option value="38">
+          BWA
+        </option>
+        <option value="39">
+          BLR
+        </option>
+        <option value="40">
+          BYS
+        </option>
+        <option value="41">
+          BLZ
+        </option>
+        <option value="42">
+          CAN
+        </option>
+        <option value="43">
+          CCK
+        </option>
+        <option value="44">
+          COD
+        </option>
+        <option value="45">
+          CAF
+        </option>
+        <option value="46">
+          COG
+        </option>
+        <option value="47">
+          CHE
+        </option>
+        <option value="48">
+          CIV
+        </option>
+        <option value="49">
+          COK
+        </option>
+        <option value="50">
+          CHL
+        </option>
+        <option value="51">
+          CMR
+        </option>
+        <option value="52">
+          CHN
+        </option>
+        <option value="53">
+          COL
+        </option>
+        <option value="54">
+          CRI
+        </option>
+        <option value="55">
+          CSK
+        </option>
+        <option value="56">
+          SCG
+        </option>
+        <option value="57">
+          CTE
+        </option>
+        <option value="58">
+          CUB
+        </option>
+        <option value="59">
+          CPV
+        </option>
+        <option value="60">
+          CUW
+        </option>
+        <option value="61">
+          CXR
+        </option>
+        <option value="62">
+          CYP
+        </option>
+        <option value="63">
+          CZE
+        </option>
+        <option value="64">
+          DDR
+        </option>
+        <option value="65">
+          DEU
+        </option>
+        <option value="66">
+          DJI
+        </option>
+        <option value="67">
+          DNK
+        </option>
+        <option value="68">
+          DMA
+        </option>
+        <option value="69">
+          DOM
+        </option>
+        <option value="70">
+          DHY
+        </option>
+        <option value="71">
+          DZA
+        </option>
+        <option value="72">
+          ECU
+        </option>
+        <option value="73">
+          EST
+        </option>
+        <option value="74">
+          EGY
+        </option>
+        <option value="75">
+          ESH
+        </option>
+        <option value="76">
+          ERI
+        </option>
+        <option value="77">
+          ESP
+        </option>
+        <option value="78">
+          ETH
+        </option>
+        <option value="79">
+          FIN
+        </option>
+        <option value="80">
+          FJI
+        </option>
+        <option value="81">
+          FLK
+        </option>
+        <option value="82">
+          FSM
+        </option>
+        <option value="83">
+          FRO
+        </option>
+        <option value="84">
+          ATF
+        </option>
+        <option value="85">
+          FRA
+        </option>
+        <option value="86">
+          FXX
+        </option>
+        <option value="87">
+          GAB
+        </option>
+        <option value="88">
+          GBR
+        </option>
+        <option value="89">
+          GRD
+        </option>
+        <option value="90">
+          GEL
+        </option>
+        <option value="91">
+          GEO
+        </option>
+        <option value="92">
+          GUF
+        </option>
+        <option value="93">
+          GGY
+        </option>
+        <option value="94">
+          GHA
+        </option>
+        <option value="95">
+          GIB
+        </option>
+        <option value="96">
+          GRL
+        </option>
+        <option value="97">
+          GMB
+        </option>
+        <option value="98">
+          GIN
+        </option>
+        <option value="99">
+          GLP
+        </option>
+        <option value="100">
+          GNQ
+        </option>
+        <option value="101">
+          GRC
+        </option>
+        <option value="102">
+          SGS
+        </option>
+        <option value="103">
+          GTM
+        </option>
+        <option value="104">
+          GUM
+        </option>
+        <option value="105">
+          GNB
+        </option>
+        <option value="106">
+          GUY
+        </option>
+        <option value="107">
+          HKG
+        </option>
+        <option value="108">
+          HMD
+        </option>
+        <option value="109">
+          HND
+        </option>
+        <option value="110">
+          HRV
+        </option>
+        <option value="111">
+          HTI
+        </option>
+        <option value="112">
+          HUN
+        </option>
+        <option value="113">
+          HVO
+        </option>
+        <option value="114">
+          IDN
+        </option>
+        <option value="115">
+          IRL
+        </option>
+        <option value="116">
+          ISR
+        </option>
+        <option value="117">
+          IMN
+        </option>
+        <option value="118">
+          IND
+        </option>
+        <option value="119">
+          IOT
+        </option>
+        <option value="120">
+          IRQ
+        </option>
+        <option value="121">
+          IRN
+        </option>
+        <option value="122">
+          ISL
+        </option>
+        <option value="123">
+          ITA
+        </option>
+        <option value="124">
+          JEY
+        </option>
+        <option value="125">
+          JAM
+        </option>
+        <option value="126">
+          JOR
+        </option>
+        <option value="127">
+          JPN
+        </option>
+        <option value="128">
+          JTN
+        </option>
+        <option value="129">
+          KEN
+        </option>
+        <option value="130">
+          KGZ
+        </option>
+        <option value="131">
+          KHM
+        </option>
+        <option value="132">
+          KIR
+        </option>
+        <option value="133">
+          COM
+        </option>
+        <option value="134">
+          KNA
+        </option>
+        <option value="135">
+          PRK
+        </option>
+        <option value="136">
+          KOR
+        </option>
+        <option value="137">
+          KWT
+        </option>
+        <option value="138">
+          CYM
+        </option>
+        <option value="139">
+          KAZ
+        </option>
+        <option value="140">
+          LAO
+        </option>
+        <option value="141">
+          LBN
+        </option>
+        <option value="142">
+          LCA
+        </option>
+        <option value="143">
+          LIE
+        </option>
+        <option value="144">
+          LKA
+        </option>
+        <option value="145">
+          LBR
+        </option>
+        <option value="146">
+          LSO
+        </option>
+        <option value="147">
+          LTU
+        </option>
+        <option value="148">
+          LUX
+        </option>
+        <option value="149">
+          LVA
+        </option>
+        <option value="150">
+          LBY
+        </option>
+        <option value="151">
+          MAR
+        </option>
+        <option value="152">
+          MCO
+        </option>
+        <option value="153">
+          MDA
+        </option>
+        <option value="154">
+          MNE
+        </option>
+        <option value="155">
+          MAF
+        </option>
+        <option value="156">
+          MDG
+        </option>
+        <option value="157">
+          MHL
+        </option>
+        <option value="158">
+          MID
+        </option>
+        <option value="159">
+          MKD
+        </option>
+        <option value="160">
+          MLI
+        </option>
+        <option value="161">
+          MMR
+        </option>
+        <option value="162">
+          MNG
+        </option>
+        <option value="163">
+          MAC
+        </option>
+        <option value="164">
+          MNP
+        </option>
+        <option value="165">
+          MTQ
+        </option>
+        <option value="166">
+          MRT
+        </option>
+        <option value="167">
+          MSR
+        </option>
+        <option value="168">
+          MLT
+        </option>
+        <option value="169">
+          MUS
+        </option>
+        <option value="170">
+          MDV
+        </option>
+        <option value="171">
+          MWI
+        </option>
+        <option value="172">
+          MEX
+        </option>
+        <option value="173">
+          MYS
+        </option>
+        <option value="174">
+          MOZ
+        </option>
+        <option value="175">
+          NAM
+        </option>
+        <option value="176">
+          NCL
+        </option>
+        <option value="177">
+          NER
+        </option>
+        <option value="178">
+          NFK
+        </option>
+        <option value="179">
+          NGA
+        </option>
+        <option value="180">
+          NHB
+        </option>
+        <option value="181">
+          NIC
+        </option>
+        <option value="182">
+          NLD
+        </option>
+        <option value="183">
+          NOR
+        </option>
+        <option value="184">
+          NPL
+        </option>
+        <option value="185">
+          ATN
+        </option>
+        <option value="186">
+          NRU
+        </option>
+        <option value="187">
+          NTZ
+        </option>
+        <option value="188">
+          NIU
+        </option>
+        <option value="189">
+          NZL
+        </option>
+        <option value="190">
+          OMN
+        </option>
+        <option value="191">
+          PAN
+        </option>
+        <option value="192">
+          PCI
+        </option>
+        <option value="193">
+          PER
+        </option>
+        <option value="194">
+          PYF
+        </option>
+        <option value="195">
+          PNG
+        </option>
+        <option value="196">
+          PHL
+        </option>
+        <option value="197">
+          PAK
+        </option>
+        <option value="198">
+          POL
+        </option>
+        <option value="199">
+          SPM
+        </option>
+        <option value="200">
+          PCN
+        </option>
+        <option value="201">
+          PRI
+        </option>
+        <option value="202">
+          PSE
+        </option>
+        <option value="203">
+          PRT
+        </option>
+        <option value="204">
+          PUS
+        </option>
+        <option value="205">
+          PLW
+        </option>
+        <option value="206">
+          PRY
+        </option>
+        <option value="207">
+          PCZ
+        </option>
+        <option value="208">
+          QAT
+        </option>
+        <option value="209">
+          REU
+        </option>
+        <option value="210">
+          RHO
+        </option>
+        <option value="211">
+          ROU
+        </option>
+        <option value="212">
+          SRB
+        </option>
+        <option value="213">
+          RUS
+        </option>
+        <option value="214">
+          RWA
+        </option>
+        <option value="215">
+          SAU
+        </option>
+        <option value="216">
+          SLB
+        </option>
+        <option value="217">
+          SYC
+        </option>
+        <option value="218">
+          SDN
+        </option>
+        <option value="219">
+          SWE
+        </option>
+        <option value="220">
+          SGP
+        </option>
+        <option value="221">
+          SHN
+        </option>
+        <option value="222">
+          SVN
+        </option>
+        <option value="223">
+          SJM
+        </option>
+        <option value="224">
+          SKM
+        </option>
+        <option value="225">
+          SVK
+        </option>
+        <option value="226">
+          SLE
+        </option>
+        <option value="227">
+          SMR
+        </option>
+        <option value="228">
+          SEN
+        </option>
+        <option value="229">
+          SOM
+        </option>
+        <option value="230">
+          SUR
+        </option>
+        <option value="231">
+          SSD
+        </option>
+        <option value="232">
+          STP
+        </option>
+        <option value="233">
+          SUN
+        </option>
+        <option value="234">
+          SLV
+        </option>
+        <option value="235">
+          SXM
+        </option>
+        <option value="236">
+          SYR
+        </option>
+        <option value="237">
+          SWZ
+        </option>
+        <option value="238">
+          TCA
+        </option>
+        <option value="239">
+          TCD
+        </option>
+        <option value="240">
+          ATF
+        </option>
+        <option value="241">
+          TGO
+        </option>
+        <option value="242">
+          THA
+        </option>
+        <option value="243">
+          TJK
+        </option>
+        <option value="244">
+          TKL
+        </option>
+        <option value="245">
+          TLS
+        </option>
+        <option value="246">
+          TKM
+        </option>
+        <option value="247">
+          TUN
+        </option>
+        <option value="248">
+          TON
+        </option>
+        <option value="249">
+          TMP
+        </option>
+        <option value="250">
+          TUR
+        </option>
+        <option value="251">
+          TTO
+        </option>
+        <option value="252">
+          TUV
+        </option>
+        <option value="253">
+          TWN
+        </option>
+        <option value="254">
+          TZA
+        </option>
+        <option value="255">
+          UKR
+        </option>
+        <option value="256">
+          UGA
+        </option>
+        <option value="257">
+          UMI
+        </option>
+        <option value="258">
+          USA
+        </option>
+        <option value="259">
+          URY
+        </option>
+        <option value="260">
+          UZB
+        </option>
+        <option value="261">
+          VAT
+        </option>
+        <option value="262">
+          VCT
+        </option>
+        <option value="263">
+          VDR
+        </option>
+        <option value="264">
+          VEN
+        </option>
+        <option value="265">
+          VGB
+        </option>
+        <option value="266">
+          VIR
+        </option>
+        <option value="267">
+          VNM
+        </option>
+        <option value="268">
+          VUT
+        </option>
+        <option value="269">
+          WLF
+        </option>
+        <option value="270">
+          WAK
+        </option>
+        <option value="271">
+          WSM
+        </option>
+        <option value="272">
+          YMD
+        </option>
+        <option value="273">
+          YEM
+        </option>
+        <option value="274">
+          MYT
+        </option>
+        <option value="275">
+          YUG
+        </option>
+        <option value="276">
+          ZAF
+        </option>
+        <option value="277">
+          ZMB
+        </option>
+        <option value="278">
+          ZAR
+        </option>
+        <option value="279">
+          ZWE
+        </option>
+      </select>
+    </div>
   </div>
 </div>
 
@@ -324,7 +3742,7 @@
                 console.log("asdfasd");
 var app = new Vue({
     el: '#vueapp',
-    data: {"bool":false,"cnpj":"","color":"","date":"","datetime":"","domain":"","email":"","float":"","integer":"","json":"{}","phone":"","string":"","text":"","uinteger":"","url":"","usmall":"","uuid":""}
+    data: {"bool":false,"cnpj":"","color":"","countrycode":"","date":"","datetime":"","domain":"","email":"","float":"","integer":"","json":"{}","phone":"","string":"","text":"","uinteger":"","url":"","usmall":"","uuid":"","countrycoderadio":"","countrycodeselect":""}
 });
 console.log(app);
   </script>
