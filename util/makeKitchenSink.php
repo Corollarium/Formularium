@@ -6,6 +6,7 @@ use Formularium\Datatype\Datatype_integer;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Framework;
 use Formularium\FrameworkComposer;
+use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Frontend\HTML\Renderable\Renderable_string;
 use Formularium\Model;
@@ -77,6 +78,20 @@ function kitchenSink($frameworkName)
             Renderable::PLACEHOLDER => "Type here"
         ],
     ];
+    $fields['countrycoderadio'] = [
+        'datatype' => 'countrycode',
+        'extensions' => [
+            Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_RADIO,
+            Renderable::LABEL => 'Country code - radio choice'
+        ],
+    ];
+    $fields['countrycodeselect'] = [
+        'datatype' => 'countrycode',
+        'extensions' => [
+            Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
+            Renderable::LABEL => 'Country code - select choice'
+        ],
+    ];
 
     $model = Model::fromStruct(
         [
@@ -108,13 +123,30 @@ if ($dir === false) {
     return 1;
 }
 $frameworks = array_diff($dir, array('.', '..'));
-$index = "<!DOCTYPE html>
+$index = <<<EOF
+<!DOCTYPE html>
 <html>
 <head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Formularium Kitchen Sink</title>
+    <meta property="og:title" content="Formularium">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Form validation and generation for PHP with custom frontend generators">
+    <meta property="og:description" content="Form validation and generation for PHP with custom frontend generators">
+    <link rel="canonical" href="https://corollarium.github.io/Formularium/">
+    <meta property="og:url" content="https://corollarium.github.io/Formularium/">
+    <meta property="og:site_name" content="Formularium">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<h1>Generator Kitchen Sink</h1>
-<ul>";
+<div class="container">
+<h1>Formularium Kitchen Sink</h1>
+<ul>
+EOF;
 $frameworks = [
     ['HTML'],
     ['HTML', 'Bulma'],
@@ -131,7 +163,12 @@ foreach ($frameworks as $framework) {
     echo "Building $name...\n";
     $html = kitchenSink($framework);
     file_put_contents(__DIR__ . '/../docs/kitchensink/' . $name . '.html', $html);
-    $index .= "<li><a href='{$name}.html'>$name</a></li>";
+    $index .= "<li><a href='{$name}.html'>" . join('+', $framework) . '</a></li>';
 }
-$index .= "</ul></body></html>";
+$index .= "</ul>
+<footer>
+    <a href='https://github.com/Corollarium/Formularium/'>Source code</a> and <a href='https://corollarium.github.io/Formularium/'>Documentation</a>
+</footer>
+</div>
+</body></html>";
 file_put_contents(__DIR__ . '/../docs/kitchensink/index.html', $index);

@@ -34,6 +34,11 @@ abstract class Datatype_choice extends \Formularium\Datatype
         }
     }
 
+    public function getChoices(): array
+    {
+        return $this->choices;
+    }
+
     public function validate($value, Field $f)
     {
         if (!is_string($value) && !is_int($value)) {
