@@ -28,8 +28,9 @@ do
     RENDERABLENAME=$((sed 's|\.php$||i' <<< "$datatype") | sed 's/Datatype/Renderable/')
     FILENAME="Formularium/Frontend/$FRAMEWORK/Renderable/$RENDERABLENAME.php"
 
-    if grep -Fxq "abstract class" "Formularium/Datatype/$datatype"
+    if grep -Fq "abstract class" "Formularium/Datatype/$datatype"
     then
+        echo "Skipping abstract class $datatype"
         continue
     fi
 

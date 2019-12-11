@@ -38,7 +38,7 @@ function kitchenSink($frameworkName)
     $datatypes = array_filter(
         $datatypes,
         function ($t) {
-            return ($t !== 'number');
+            return ($t !== 'number' && $t !== 'choice');
         }
     );
 
