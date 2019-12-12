@@ -3,3 +3,7 @@ include:
 
 keep_files:
   - coverage-report/
+  - coverage-report/.css/
+  - coverage-report/.icons/
+  - coverage-report/.js/
+
