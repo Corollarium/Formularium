@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Materialize;
 
@@ -28,8 +28,8 @@ trait RenderableMaterializeInputTrait
     {
         // add extra classes
         $newContent = [];
-        $input = $previous->get('input');
-        $input[0]->addAttributes([
+        $input = $previous->get('input')[0];
+        $input->addAttributes([
             'class' => 'validate',
         ]);
 
@@ -38,7 +38,7 @@ trait RenderableMaterializeInputTrait
             $input->addAttribute('data-length', $maxlength);
         }
 
-        $newContent[] = $input[0];
+        $newContent[] = $input;
         $label = $previous->get('label');
         if (!empty($label)) {
             $newContent[] = $label[0];
