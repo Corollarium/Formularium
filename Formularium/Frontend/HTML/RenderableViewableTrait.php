@@ -15,12 +15,12 @@ trait RenderableViewableTrait
             [
                 HTMLElement::factory(
                     'span',
-                    [],
+                    ['class' => 'formularium-label'],
                     $field->getExtension(\Formularium\Renderable::LABEL, '')
                 ),
                 HTMLElement::factory(
                     'span',
-                    [],
+                    ['class' => 'formularium-value'],
                     $value
                 )
             ]

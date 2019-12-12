@@ -3,6 +3,7 @@
 namespace Formularium\Frontend\Bootstrap;
 
 use Formularium\Field;
+use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
 trait RenderableBootstrapInputTrait
@@ -26,14 +27,23 @@ trait RenderableBootstrapInputTrait
     {
         // add extra classes
         $input = $previous->get('input');
-        $input[0]->setAttributes([
+        $input[0]->addAttributes([
             'class' => 'form-control',
         ]);
         $comment = $previous->get('.formularium-comment');
         if (!empty($comment)) {
-            $comment[0]->setTag('small')->setAttributes([
+            $comment[0]->setTag('small')->addAttributes([
                 'class' => 'form-text text-muted',
             ]);
+        }
+        $size = $field->getExtension(Renderable::SIZE, '');
+        switch ($size) {
+            case Renderable::SIZE_LARGE:
+                $input[0]->addAttribute('class', 'form-control-lg');
+                break;
+            case Renderable::SIZE_SMALL:
+                $input[0]->addAttribute('class', 'form-control-sm');
+                break;
         }
         return $previous;
     }

@@ -3,6 +3,7 @@
 namespace Formularium\Frontend\Bulma;
 
 use Formularium\Field;
+use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
 trait RenderableBulmaInputTrait
@@ -41,6 +42,17 @@ trait RenderableBulmaInputTrait
                 'class' => 'help',
             ]);
         }
+
+        $size = $field->getExtension(Renderable::SIZE, '');
+        switch ($size) {
+            case Renderable::SIZE_LARGE:
+                $input[0]->addAttribute('class', 'is-large');
+                break;
+            case Renderable::SIZE_SMALL:
+                $input[0]->addAttribute('class', 'is-small');
+                break;
+        }
+
         return $previous;
     }
 }

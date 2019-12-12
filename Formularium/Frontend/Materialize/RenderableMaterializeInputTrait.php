@@ -2,6 +2,8 @@
 
 namespace Formularium\Frontend\Materialize;
 
+use Formularium\Datatype;
+use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\HTMLElement;
 
@@ -27,9 +29,15 @@ trait RenderableMaterializeInputTrait
         // add extra classes
         $newContent = [];
         $input = $previous->get('input');
-        $input[0]->setAttributes([
+        $input[0]->addAttributes([
             'class' => 'validate',
         ]);
+
+        $maxlength = $field->getExtension(Datatype_string::MAX_LENGTH, 0);
+        if ($maxlength > 0) {
+            $input->addAttribute('data-length', $maxlength);
+        }
+
         $newContent[] = $input[0];
         $label = $previous->get('label');
         if (!empty($label)) {
