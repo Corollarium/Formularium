@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium;
 
@@ -12,6 +12,7 @@ interface RenderableParameter
     const DISABLED = 'disabled'; // render, but make it disabled
     const HIDDEN = 'hidden'; // render, but make it hidden
     const ICON = 'icon';
+    const ICON_PACK = 'icon-pack';
     const LABEL = 'label'; // the label if you want to change it.
     const NAME = 'name'; // overrides the html "name" attribute. If you want to do something really special with this data
     const PLACEHOLDER = 'placeholder'; // used to fill html's placeholder field

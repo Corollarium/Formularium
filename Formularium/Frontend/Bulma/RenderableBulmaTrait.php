@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Bulma;
 
@@ -43,7 +43,7 @@ trait RenderableBulmaTrait
                 return !($e->getTag() === 'label' && $e->getAttribute('class') === ['formularium-label']);
             });
             // fix class
-            $label[0]->setAttributes([
+            $label[0]->addAttributes([
                 'class' => 'label',
             ]);
             // prepend

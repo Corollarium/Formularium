@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 require(__DIR__ . '/../vendor/autoload.php');
 
@@ -61,7 +61,9 @@ function kitchenSink($frameworkName)
                 Renderable::LABEL => 'Type string',
                 Renderable::COMMENT => 'Some text explaining this field',
                 Renderable::PLACEHOLDER => "Type here",
-                Renderable::SIZE => Renderable::SIZE_LARGE
+                Renderable::SIZE => Renderable::SIZE_LARGE,
+                Renderable::ICON_PACK => 'fas',
+                Renderable::ICON => 'fa-check'
             ],
         ],
         'myInteger' => [

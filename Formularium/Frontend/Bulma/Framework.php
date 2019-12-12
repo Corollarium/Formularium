@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Bulma;
 
@@ -22,6 +22,11 @@ class Framework extends \Formularium\Frontend\HTML\Framework
                     'rel' => "stylesheet",
                     'href' => "https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css",
                 ]
+            )
+        )->appendContent(
+            HTMLElement::factory(
+                'script',
+                ['defer' => null, 'src' => "https://use.fontawesome.com/releases/v5.3.1/js/all.js"]
             )
         );
     }

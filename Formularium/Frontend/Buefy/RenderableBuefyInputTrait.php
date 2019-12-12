@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Buefy;
 
@@ -53,6 +53,15 @@ trait RenderableBuefyInputTrait
                         case Renderable::SIZE_SMALL:
                             $e->addAttribute('size', 'is-small');
                             break;
+                    }
+
+                    $icon = $field->getExtension(Renderable::ICON, '');
+                    if ($icon) {
+                        $e->addAttribute('icon', str_replace('fa-', '', $icon));
+                    }
+                    $iconPack = $field->getExtension(Renderable::ICON_PACK, '');
+                    if ($iconPack) {
+                        $e->addAttribute('icon-pack', $iconPack);
                     }
                 }
             }

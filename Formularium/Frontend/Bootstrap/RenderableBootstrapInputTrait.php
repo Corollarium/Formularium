@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Bootstrap;
 
@@ -26,8 +26,8 @@ trait RenderableBootstrapInputTrait
     public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         // add extra classes
-        $input = $previous->get('input');
-        $input[0]->addAttributes([
+        $input = $previous->get('input')[0];
+        $input->addAttributes([
             'class' => 'form-control',
         ]);
         $comment = $previous->get('.formularium-comment');
@@ -39,12 +39,44 @@ trait RenderableBootstrapInputTrait
         $size = $field->getExtension(Renderable::SIZE, '');
         switch ($size) {
             case Renderable::SIZE_LARGE:
-                $input[0]->addAttribute('class', 'form-control-lg');
+                $input->addAttribute('class', 'form-control-lg');
                 break;
             case Renderable::SIZE_SMALL:
-                $input[0]->addAttribute('class', 'form-control-sm');
+                $input->addAttribute('class', 'form-control-sm');
                 break;
         }
+
+        $icon = $field->getExtension(Renderable::ICON, '');
+        if ($icon) {
+            $iconData = [];
+            $iconPack = $field->getExtension(Renderable::ICON_PACK, '');
+            if ($iconPack) {
+                $iconData[] = $iconPack;
+            }
+            $iconData[] = $icon;
+            $group = HTMLElement::factory(
+                'div',
+                [ 'class' => "input-group mb-3" ],
+                [
+                    HTMLElement::factory(
+                        'div',
+                        [ 'class' => "input-group-prepend" ],
+                        HTMLElement::factory(
+                            'span',
+                            [ 'class' => "input-group-text" ],
+                            HTMLElement::factory(
+                                'i',
+                                [ 'class' => $iconData ],
+                                []
+                            )
+                        )
+                    ),
+                    clone $input
+                ]
+            );
+            $input->replace($group);
+        }
+
         return $previous;
     }
 }

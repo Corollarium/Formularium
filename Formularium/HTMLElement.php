@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium;
 
@@ -502,6 +502,20 @@ class HTMLElement
         }
     }
 
+    public function replace(HTMLElement $e): void
+    {
+        $this->tag = $e->tag;
+        $this->attributes = $e->attributes;
+        $this->content = $e->content;
+    }
+
+    public function copy(HTMLElement $e): void
+    {
+        $this->tag = $e->tag;
+        $this->attributes = clone $e->attributes;
+        $this->content = clone $e->content;
+    }
+
     /**
      * Clear All Attributes
      */
@@ -563,19 +577,21 @@ class HTMLElement
      * Does not call callback for text content.
      *
      * @param callable $f
-     * @return HTMLElement
+     * @return HTMLElement[] The filtered elements.
      */
-    public function filter(callable $f, bool $recurse = true): HTMLElement
+    public function filter(callable $f, bool $recurse = true): array
     {
+        $deleted = [];
         foreach ($this->content as $key => $content) {
             if ($content instanceof HTMLElement) {
                 if (!$f($content)) {
+                    $deleted[] = $this->content[$key];
                     unset($this->content[$key]);
                 } elseif ($recurse) {
                     $content->filter($f, $recurse);
                 }
             }
         }
-        return $this;
+        return $deleted;
     }
 }

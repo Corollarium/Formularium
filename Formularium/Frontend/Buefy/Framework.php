@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Buefy;
 
@@ -28,6 +28,14 @@ class Framework extends \Formularium\Framework
                 'script',
                 [
                     'src' => "https://unpkg.com/buefy/dist/buefy.min.js",
+                ]
+            )
+        )->appendContent(
+            HTMLElement::factory(
+                'link',
+                [
+                    'rel' => "stylesheet",
+                    'href' => "https://use.fontawesome.com/releases/v5.2.0/css/all.css",
                 ]
             )
         );

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Bulma;
 
@@ -30,15 +30,9 @@ trait RenderableBulmaInputTrait
         $input[0]->setAttributes([
             'class' => 'input',
         ]);
-        $label = $previous->get('label');
-        if (!empty($label)) {
-            $label[0]->setAttributes([
-                'class' => 'label',
-            ]);
-        }
         $comment = $previous->get('.formularium-comment');
         if (!empty($comment)) {
-            $comment[0]->setTag('p')->setAttributes([
+            $comment[0]->setTag('p')->addAttributes([
                 'class' => 'help',
             ]);
         }
@@ -51,6 +45,28 @@ trait RenderableBulmaInputTrait
             case Renderable::SIZE_SMALL:
                 $input[0]->addAttribute('class', 'is-small');
                 break;
+        }
+        $icon = $field->getExtension(Renderable::ICON, '');
+        if ($icon) {
+            $iconData = [];
+            $iconPack = $field->getExtension(Renderable::ICON_PACK, '');
+            if ($iconPack) {
+                $iconData[] = $iconPack;
+            }
+            $iconData[] = $icon;
+            $iconElement = HTMLElement::factory(
+                'span',
+                [ 'class' => "icon is-small is-left" ],
+                [
+                    HTMLElement::factory(
+                        'i',
+                        [ 'class' => $iconData ],
+                        []
+                    )
+                ]
+            );
+            $previous->addAttribute('class', 'has-icons-left');
+            $previous->appendContent($iconElement);
         }
 
         return $previous;
