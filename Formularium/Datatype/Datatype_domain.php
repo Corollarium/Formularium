@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -15,7 +15,7 @@ class Datatype_domain extends Datatype_string
 
     public function validate($value, Field $field)
     {
-        parent::validate($value, $field);
+        $value = parent::validate($value, $field);
         
         $value = mb_strtolower($value);
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -28,7 +28,7 @@ class Datatype_string extends \Formularium\Datatype
     public function validate($value, Field $f)
     {
         // avoid invalid encoding attack
-        $data = iconv("UTF-8", "UTF-8//IGNORE", $value);
+        $data = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
         if ($data === false) {
             throw new \Formularium\Exception\ValidatorException('Invalid encoding in string.');
         }

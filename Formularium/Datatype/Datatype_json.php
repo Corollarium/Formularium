@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -33,6 +33,7 @@ class Datatype_json extends Datatype_text
 
     public function validate($value, Field $f)
     {
+        $value = (string)$value;
         if ($value == "[]") {
             return $value;
         }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -20,7 +20,7 @@ class Datatype_url extends \Formularium\Datatype
 
     public function validate($value, Field $f)
     {
-        $value = trim($value);
+        $value = trim((string)$value);
         $this->validateURL($value);
         return $value;
     }

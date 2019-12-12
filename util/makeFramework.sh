@@ -9,7 +9,7 @@ FILENAME="Formularium/Frontend/$FRAMEWORK/Framework.php"
 if [ ! -f "$FILENAME" ]
 then 
     cat > "$FILENAME" <<EOF
-<?php
+<?php declare(strict_types=1); 
 
 namespace Formularium\Frontend\\${FRAMEWORK};
 
@@ -38,7 +38,7 @@ do
     then
         echo "Generating $FILENAME"
         cat > "$FILENAME" <<EOF
-<?php
+<?php declare(strict_types=1); 
 
 namespace Formularium\Frontend\\${FRAMEWORK}\Renderable;
 

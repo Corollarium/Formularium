@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1); 
 
 $shortopts  = "d:p::b::t";
 $longopts  = array(
@@ -31,7 +31,7 @@ if (file_exists($filename)) {
 }
 
 $datatypeCode = <<<EOF
-<?php
+<?php declare(strict_types=1); 
 
 namespace Formularium\Datatype;
 
@@ -61,7 +61,7 @@ file_put_contents($filename, $datatypeCode);
 if ($generateTest) {
     $testFilename = "tests/Datatype/${datatype}Test.php";
     $testCode = <<<EOF
-<?php
+<?php declare(strict_types=1); 
 
 require_once('DatatypeBaseTestCase.php');
 

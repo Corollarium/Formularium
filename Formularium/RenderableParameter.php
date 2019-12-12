@@ -1,7 +1,10 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace Formularium;
 
+/**
+ * These are parameters passed to Renderable through Field::extensions.
+ */
 interface RenderableParameter
 {
     const COMMENT = 'comment'; // a comment to be printed

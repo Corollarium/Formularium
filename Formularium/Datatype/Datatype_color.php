@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -19,6 +19,9 @@ class Datatype_color extends Datatype_string
 
     public function validate($value, Field $f)
     {
+        if (!is_string($value)) {
+            throw new ValidatorException('Only hexadecimal colors are allowed');
+        }
         $match = preg_match('/^#[0-9A-Fa-f]{6}$/', $value);
         if ($value !== "" && $match !== 1) {
             throw new ValidatorException('Only hexadecimal colors are allowed');

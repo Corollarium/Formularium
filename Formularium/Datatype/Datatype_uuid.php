@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -32,6 +32,7 @@ class Datatype_uuid extends Datatype_string
 
     public function validate($value, Field $field)
     {
+        $value = (string)$value;
         if ($value === '' || preg_match('/' . self::UUID_REGEX . '/i', $value)) {
             return $value;
         }
