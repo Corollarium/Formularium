@@ -509,13 +509,6 @@ class HTMLElement
         $this->content = $e->content;
     }
 
-    public function copy(HTMLElement $e): void
-    {
-        $this->tag = $e->tag;
-        $this->attributes = clone $e->attributes;
-        $this->content = clone $e->content;
-    }
-
     /**
      * Clear All Attributes
      */
