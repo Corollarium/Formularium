@@ -4,6 +4,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Datatype\Datatype_string;
+use Formularium\Field;
 use Formularium\Framework;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
@@ -16,18 +17,11 @@ function kitchenSink($frameworkName)
 {
     FrameworkComposer::set($frameworkName);
     $head = FrameworkComposer::htmlHead();
+    $footer = FrameworkComposer::htmlFooter();
 
-    $html = "<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    {$head}
-</head>
-<body>
-<div class='container'>
-    <h1>" . join('/', $frameworkName) . "</h1>";
-
-
+    /*
+     * kitchen sink fields
+     */
     $fields = [];
     $datatypes = array_map(
         function ($x) {
@@ -53,64 +47,135 @@ function kitchenSink($frameworkName)
         ];
     }
 
-    // improve a few:
-    $fields['string'] = [
-        'datatype' => 'string',
-        'validators' => [
-            Datatype_string::MIN_LENGTH => 3,
-            Datatype_string::MAX_LENGTH => 30,
+    /*
+     * basic demo fiels
+     */
+    $basicFields = [
+        'myString' => [
+            'datatype' => 'string',
+            'validators' => [
+                Datatype_string::MIN_LENGTH => 3,
+                Datatype_string::MAX_LENGTH => 30,
+            ],
+            'extensions' => [
+                Renderable::LABEL => 'Type string',
+                Renderable::COMMENT => 'Some text explaining this field',
+                Renderable::PLACEHOLDER => "Type here",
+                Renderable::SIZE => Renderable::SIZE_LARGE
+            ],
         ],
-        'extensions' => [
-            Renderable::LABEL => 'Type string',
-            Renderable::COMMENT => 'Some text explaining this field',
-            Renderable::PLACEHOLDER => "Type here"
+        'myInteger' => [
+            'datatype' => 'integer',
+            'validators' => [
+                Datatype_integer::MIN => 4,
+                Datatype_integer::MAX => 30,
+            ],
+            'extensions' => [
+                Renderable_number::STEP => 2,
+                Renderable::LABEL => 'Type integer',
+                Renderable::PLACEHOLDER => "Type here"
+            ],
         ],
-    ];
-    $fields['integer'] = [
-        'datatype' => 'integer',
-        'validators' => [
-            Datatype_integer::MIN => 4,
-            Datatype_integer::MAX => 30,
+        'countrycoderadio' => [
+            'datatype' => 'countrycode',
+            'extensions' => [
+                Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_RADIO,
+                Renderable::LABEL => 'Country code - radio choice'
+            ],
         ],
-        'extensions' => [
-            Renderable_number::STEP => 2,
-            Renderable::LABEL => 'Type integer',
-            Renderable::PLACEHOLDER => "Type here"
-        ],
-    ];
-    $fields['countrycoderadio'] = [
-        'datatype' => 'countrycode',
-        'extensions' => [
-            Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_RADIO,
-            Renderable::LABEL => 'Country code - radio choice'
-        ],
-    ];
-    $fields['countrycodeselect'] = [
-        'datatype' => 'countrycode',
-        'extensions' => [
-            Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
-            Renderable::LABEL => 'Country code - select choice'
-        ],
+        'countrycodeselect' => [
+            'datatype' => 'countrycode',
+            'extensions' => [
+                Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
+                Renderable::LABEL => 'Country code - select choice'
+            ],
+        ]
     ];
 
+    // generate basic model
+    $basicModel = Model::fromStruct(
+        [
+            'name' => 'BasicModel',
+            'fields' => $basicFields
+        ]
+    );
+    $basicDemoEditable = $basicModel->editable();
+
+    // generate kitchen sink model
     $model = Model::fromStruct(
         [
             'name' => 'TestModel',
             'fields' => $fields
         ]
     );
+    $randomData = [];
+    foreach ($model->getFields() as $f) {
+        $randomData[$f->getName()] = $f->getDatatype()->getRandom();
+    }
+    $modelViewable = $model->viewable($randomData);
+    $modelEditable = $model->editable();
 
-    // TODO: values
-    $html .= "<div><h2>Viewable</h2>\n";
-    $html .= $model->viewable([]);
-    $html .= "</div><div><h2>Editable</h2>\n";
-    $html .= '<form>'; // TODO: parsley requires data-
-    $html .= $model->editable();
-    $html .= '<button type="submit">Send</button></form>';
+    $title = join('/', $frameworkName);
+    $html = <<<EOF
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>{$title}</title>
+    {$head}
+    <style>
+    h1.kitchen {
+        font-size: 2.5rem;
+    }
+    h2.kitchen {
+        font-size: 2.0rem;
+    }
+    h3.kitchen {
+        font-size: 1.5rem;
+    }
+    h1.kitchen, h2.kitchen, h3.kitchen  {
+        margin-bottom: .5rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    </style>
+</head>
+<body>
+<div class='container'>
+    <h1 class="kitchen">$title</h1>
+    
+    <section>
+        <h2 class="kitchen">Basic demo</h2>
+        <form>
+            $basicDemoEditable
+        </form>
+    </section>
 
-    $html .= "</div></div>\n";
-    $html .= FrameworkComposer::htmlFooter();
-    $html .= "</body></html>";
+    <section>
+        <h2 class="kitchen">Full kitchen sink</h2>
+
+        <div>
+            <h3 class="kitchen">Viewable</h3>
+
+            $modelViewable
+        </div>
+        
+        <div>
+            <h3 class="kitchen">Editable</h3>
+            
+            <form>
+                $modelEditable
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+    <footer style="margin-top: 2em; font-size: small">
+        Generated with <a href="https://github.com/Corollarium/Formularium/">Formularium</a>.
+    </footer>
+</div>
+{$footer}
+</body></html>
+EOF;
     return $html;
 }
 
