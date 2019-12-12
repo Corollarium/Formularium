@@ -1,13 +1,17 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium;
 
 use Formularium\Exception\Exception;
 
+/**
+ * Abstract base class for all datatypes.
+ */
 abstract class Datatype
 {
     use DatatypeRandomTrait;
 
+    // some basic validators
     public const REQUIRED = "required";
 
     /**

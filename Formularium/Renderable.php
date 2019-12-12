@@ -1,10 +1,14 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium;
 
 use Formularium\Exception\Exception;
 use Formularium\HTMLElement;
 
+/**
+ * Abstract base classe to render datatypes. This class should be extended by frontends
+ * for each datatype.
+ */
 abstract class Renderable implements RenderableParameter
 {
     /**
