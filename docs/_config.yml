@@ -1,5 +1,8 @@
 include: 
   - coverage-report/
+  - coverage-report/.css/
+  - coverage-report/.icons/
+  - coverage-report/.js/
 
 keep_files:
   - coverage-report/
