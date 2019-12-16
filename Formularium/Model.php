@@ -118,6 +118,30 @@ class Model
     }
 
     /**
+     * Serializes this model to JSON.
+     *
+     * @return string
+     */
+    public function toJSON(): string
+    {
+        $fields = array_map(
+            function ($f) {
+                return [
+                    'datatype' => $f->getDatatype()->getName(),
+                    'validators' => $f->getValidators(),
+                    'extensions' => $f->getExtensions()
+                ];
+            },
+            $this->fields
+        );
+        $model = [
+            'name' => $this->name,
+            'fields' => $fields
+        ];
+        return json_encode($model);
+    }
+
+    /**
      * Renders a readonly view of the model with given data.
      *
      * @param array $modelData
@@ -137,6 +161,15 @@ class Model
     public function editable(array $modelData = []): string
     {
         return FrameworkComposer::editable($this, $modelData);
+    }
+
+    public function getRandom(): array
+    {
+        $data = [];
+        foreach ($this->fields as $f) {
+            $data[$f->getName()] = $f->getDatatype()->getRandom();
+        }
+        return $data;
     }
 
     /**

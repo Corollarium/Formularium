@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 declare(strict_types=1);
 
@@ -107,5 +107,27 @@ EOF;
         // ok
         $v = $model->validate(['someInteger' => 6]);
         $this->assertEmpty($v['errors']);
+    }
+
+    public function testRandom()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someInteger' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Datatype_integer::MIN => 4,
+                        Datatype_integer::MAX => 30,
+                        Datatype::REQUIRED => true,
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // required
+        $r = $model->getRandom();
+        $this->assertArrayHasKey('someInteger', $r);
     }
 }
