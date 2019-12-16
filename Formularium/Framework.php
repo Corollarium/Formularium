@@ -2,6 +2,7 @@
 
 namespace Formularium;
 
+use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 use Formularium\HTMLElement;
 

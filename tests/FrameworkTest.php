@@ -1,7 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 declare(strict_types=1);
 
+use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 use Formularium\Framework;
 use PHPUnit\Framework\TestCase;
@@ -10,7 +11,7 @@ final class FrameworkTest extends TestCase
 {
     public function testFactoryFail()
     {
-        $this->expectException(Exception::class);
+        $this->expectException(ClassNotFoundException::class);
         Framework::factory("nanana");
     }
 
