@@ -1,7 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium;
 
+use Formularium\Exception\ClassNotFoundException;
 use Formularium\HTMLElement;
 
 class FrameworkComposer
@@ -79,9 +80,13 @@ class FrameworkComposer
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
             foreach (static::get() as $framework) {
-                $r = $framework->getRenderable($field->getDatatype());
-                $x = $r->viewable($value, $field, $html);
-                $html = $x;
+                try {
+                    $r = $framework->getRenderable($field->getDatatype());
+                    $x = $r->viewable($value, $field, $html);
+                    $html = $x;
+                } catch (ClassNotFoundException $e) {
+                    continue; // renderable default
+                }
             }
             $elements[$field->getName()] = $html;
         }
@@ -99,8 +104,12 @@ class FrameworkComposer
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
             foreach (static::get() as $framework) {
-                $r = $framework->getRenderable($field->getDatatype());
-                $html = $r->editable($value, $field, $html);
+                try {
+                    $r = $framework->getRenderable($field->getDatatype());
+                    $html = $r->editable($value, $field, $html);
+                } catch (ClassNotFoundException $e) {
+                    continue; // renderable default
+                }
             }
             $elements[$field->getName()] = $html;
         }

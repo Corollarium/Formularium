@@ -2,6 +2,7 @@
 
 namespace Formularium;
 
+use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 
 /**
@@ -40,7 +41,7 @@ abstract class Datatype
                 $class = "$datatype";
             }
             if (!class_exists($class)) {
-                throw new Exception("Invalid datatype $datatype");
+                throw new ClassNotFoundException("Invalid datatype $datatype");
             }
         }
         return new $class();

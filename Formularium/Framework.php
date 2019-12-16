@@ -25,7 +25,7 @@ abstract class Framework
     {
         $class = "\\Formularium\\Frontend\\$framework\\Framework";
         if (!class_exists($class)) {
-            throw new Exception("Invalid framework $framework");
+            throw new ClassNotFoundException("Invalid framework $framework");
         }
         return new $class();
     }

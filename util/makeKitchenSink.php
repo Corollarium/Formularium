@@ -29,11 +29,12 @@ function kitchenSink($frameworkName)
         },
         array_diff(scandir(__DIR__ . '/../Formularium/Datatype/'), array('.', '..'))
     );
+
     // TODO: avoid abstract classes
     $datatypes = array_filter(
         $datatypes,
         function ($t) {
-            return ($t !== 'number' && $t !== 'choice');
+            return ($t !== 'number' && $t !== 'choice' && $t !== 'association');
         }
     );
 
@@ -215,12 +216,12 @@ $index = <<<EOF
 <ul>
 EOF;
 $frameworks = [
-    ['HTML'],
-    ['HTML', 'Bulma'],
-    ['HTML', 'Bootstrap'],
-    ['HTML', 'Bootstrap', 'Parsley'],
+    ['HTML', 'Quill'],
+    ['HTML', 'Bulma', 'Quill'],
+    ['HTML', 'Bootstrap', 'Quill'],
+    ['HTML', 'Bootstrap', 'Quill', 'Parsley'],
     ['HTML', 'Materialize'],
-    ['HTML', 'Bulma', 'Vue'],
+    ['HTML', 'Bulma', 'Quill', 'Vue'],
     ['HTML', 'Buefy', 'Vue'],
     ['HTML', 'React'],
     ['HTML', 'Bootstrap', 'React'],

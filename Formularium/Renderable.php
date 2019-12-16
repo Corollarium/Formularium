@@ -2,6 +2,7 @@
 
 namespace Formularium;
 
+use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 use Formularium\HTMLElement;
 
@@ -40,7 +41,7 @@ abstract class Renderable implements RenderableParameter
             $class = "$ns\\Renderable\\Renderable_$basetype";
         }
         if (!class_exists($class)) {
-            throw new Exception("Invalid datatype '$datatypeName' for {$framework->getName()}");
+            throw new ClassNotFoundException("Invalid datatype '$datatypeName' for {$framework->getName()}");
         }
         return new $class();
     }

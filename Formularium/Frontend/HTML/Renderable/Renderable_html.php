@@ -5,14 +5,13 @@ namespace Formularium\Frontend\HTML\Renderable;
 use Formularium\Field;
 use Formularium\HTMLElement;
 
-class Renderable_text extends Renderable_string
+class Renderable_html extends Renderable_text
 {
-    public const MAX_STRING_SIZE = 1024000;
-    
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $element = parent::editable($value, $field, $previous);
-        $element->get('input')[0]->setTag('textarea');
+        $textarea = $element->get('textarea')[0];
+        $textarea->addAttribute('class', 'formularium-html-editor');
         return $element;
     }
 }
