@@ -17,24 +17,23 @@ class Datatype_html extends Datatype_text
 
     public function getRandom(array $params = [])
     {
-        return static::faker()->randomHtml();
+        return '<p>HTML <span>' . parent::getRandom() . '</span>' . parent::getRandom() . '</p>';
     }
 
     public function validate($value, Field $field)
     {
-        $data = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
-        if ($data === false) {
+        $text = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
+        if ($text === false) {
             throw new \Formularium\Exception\ValidatorException('Invalid encoding in string.');
         }
-        $text = preg_replace('/<[^>]*>/', '', $data);
 
         $validators = $field->getValidators();
-        if (array_key_exists(self::MIN_LENGTH, $validators)) {
+        if (array_key_exists(static::MIN_LENGTH, $validators)) {
             if (mb_strlen($text) < $validators[self::MIN_LENGTH]) {
                 throw new \Formularium\Exception\ValidatorException('String is too short.');
             }
         }
-        $maxlength = $validators[self::MAX_LENGTH] ?? $this->MAX_STRING_SIZE;
+        $maxlength = $validators[static::MAX_LENGTH] ?? $this->MAX_STRING_SIZE;
         if (mb_strlen($text) > $maxlength) {
             throw new \Formularium\Exception\ValidatorException('String is too long.');
         }
@@ -42,7 +41,7 @@ class Datatype_html extends Datatype_text
         $config = HTMLPurifier_Config::createDefault();
         $config->set('Cache.DefinitionImpl', null);
         $purifier = new HTMLPurifier($config);
-        $clean_html = $purifier->purify($value);
+        $clean_html = $purifier->purify($text);
         return $clean_html;
     }
 }
