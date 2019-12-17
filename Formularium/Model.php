@@ -120,9 +120,9 @@ class Model
     /**
      * Serializes this model to JSON.
      *
-     * @return string
+     * @return array
      */
-    public function toJSON(): string
+    public function serialize(): array
     {
         $fields = array_map(
             function ($f) {
@@ -138,7 +138,12 @@ class Model
             'name' => $this->name,
             'fields' => $fields
         ];
-        return json_encode($model);
+        return $model;
+    }
+
+    public function toJSON(): string
+    {
+        return json_encode($this->serialize());
     }
 
     /**
@@ -168,6 +173,20 @@ class Model
         $data = [];
         foreach ($this->fields as $f) {
             $data[$f->getName()] = $f->getDatatype()->getRandom();
+        }
+        return $data;
+    }
+
+    /**
+     * Returns an array with the default values of each field
+     *
+     * @return array Field name => value
+     */
+    public function getDefault(): array
+    {
+        $data = [];
+        foreach ($this->fields as $f) {
+            $data[$f->getName()] = $f->getDatatype()->getDefault();
         }
         return $data;
     }
