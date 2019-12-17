@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Vue;
 
@@ -12,14 +12,62 @@ class Framework extends \Formularium\Framework
     /**
      * @var string
      */
-    protected $mode;
+    protected $mode = self::VUE_MODE_EMBEDDED;
+
+    /**
+    * The tag used as container for fields in viewable()
+    *
+    * @var string
+    */
+    protected static $viewableContainerTag = 'div';
+
+    /**
+     * The tag used as container for fields in editable()
+     *
+     * @var string
+     */
+    protected static $editableContainerTag = 'div';
+
 
     public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
-        $this->mode = self::VUE_MODE_EMBEDDED;
     }
 
+    public static function getViewableContainerTag(): string
+    {
+        return static::$viewableContainerTag;
+    }
+    
+    /**
+     * @param string $tag
+     * @return void
+     */
+    public static function setViewableContainerTag(string $tag)
+    {
+        static::$viewableContainerTag = $tag;
+    }
+
+    public static function getEditableContainerTag(): string
+    {
+        return static::$editableContainerTag;
+    }
+    
+    /**
+     * @param string $tag
+     * @return void
+     */
+    public static function setEditableContainerTag(string $tag)
+    {
+        static::$editableContainerTag = $tag;
+    }
+    
+    /**
+     * Sets the vue render mode, single file component or embedded
+     *
+     * @param string $mode self::VUE_MODE_EMBEDDED or self::VUE_MODE_SINGLE_FILE
+     * @return Framework
+     */
     public function setMode(string $mode): Framework
     {
         $this->mode = $mode;
@@ -35,25 +83,17 @@ class Framework extends \Formularium\Framework
 
     public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
-        return join('', $elements); // TODO
-    }
-
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
-    {
-        $data = [];
-        foreach ($m->getFields() as $name => $field) {
-            $data[$name] = $field->getDatatype()->getDefault();
-        }
-
-        $editableForm = join('', $elements);
+        $data = $m->getDefault(); // TODO: load data
+        $viewableContainerTag = static::getViewableContainerTag();
+        $viewableForm = join('', $elements);
         $jsonData = json_encode($data);
 
         if ($this->mode === self::VUE_MODE_SINGLE_FILE) {
             return <<<EOF
 <template>
-<div>
-    $editableForm
-</div>
+<$viewableContainerTag>
+    $viewableForm
+</$viewableContainerTag>
 </template>
 <script>
 module.exports = {
@@ -67,14 +107,58 @@ module.exports = {
 EOF;
         } else {
             $id = 'vueapp';
-            $t = new HTMLElement('div', ['id' => $id], $editableForm, true);
+            $t = new HTMLElement($viewableContainerTag, ['id' => $id], $viewableForm, true);
             $script = <<<EOF
-            console.log("asdfasd");
 var app = new Vue({
     el: '#$id',
     data: $jsonData
 });
-console.log(app);
+EOF;
+            $s = new HTMLElement('script', [], $script, true);
+            return HTMLElement::factory('div', [], [$t, $s])->getRenderHTML();
+        }
+    }
+
+    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    {
+        $data = $m->getDefault(); // TODO: load data
+        $editableContainerTag = static::getEditableContainerTag();
+        $editableForm = join('', $elements);
+        $jsonData = json_encode($data);
+
+        if ($this->mode === self::VUE_MODE_SINGLE_FILE) {
+            return <<<EOF
+<template>
+<$editableContainerTag>
+    $editableForm
+</$editableContainerTag>
+</template>
+<script>
+module.exports = {
+    data: function () {
+        return $jsonData;
+    },
+
+    methods: {
+        loadAssociations() {
+            window.axios.get('/api/cruds').then(({ data }) => {
+                // console.log(data)
+            });
+        }
+    }
+};
+</script>
+<style>
+</style>
+EOF;
+        } else {
+            $id = 'vueapp';
+            $t = new HTMLElement($editableContainerTag, ['id' => $id], $editableForm, true);
+            $script = <<<EOF
+var app = new Vue({
+    el: '#$id',
+    data: $jsonData
+});
 EOF;
             $s = new HTMLElement('script', [], $script, true);
             return HTMLElement::factory('div', [], [$t, $s])->getRenderHTML();
