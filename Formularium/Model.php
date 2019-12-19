@@ -143,7 +143,11 @@ class Model
 
     public function toJSON(): string
     {
-        return json_encode($this->serialize());
+        $t = json_encode($this->serialize());
+        if (!$t) {
+            throw new Exception('Cannot serialize');
+        }
+        return $t;
     }
 
     /**
