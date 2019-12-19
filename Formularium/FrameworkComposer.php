@@ -22,6 +22,20 @@ class FrameworkComposer
     }
 
     /**
+     *
+     * @return Framework
+     */
+    public static function getByName(string $name): ?Framework
+    {
+        foreach (static::$frameworks as $f) {
+            if ($f->getName() === $name) {
+                return $f;
+            }
+        }
+        return null;
+    }
+
+    /**
      * @param Framework[] $frameworks
      * @return void
      */

@@ -2,7 +2,11 @@
 
 namespace Formularium\Frontend\Vue;
 
+use Formularium\Datatype;
+use Formularium\Datatype\Datatype_bool;
+use Formularium\Datatype\Datatype_number;
 use Formularium\HTMLElement;
+use Formularium\Model;
 
 class Framework extends \Formularium\Framework
 {
@@ -19,47 +23,96 @@ class Framework extends \Formularium\Framework
     *
     * @var string
     */
-    protected static $viewableContainerTag = 'div';
+    protected $viewableContainerTag = 'div';
 
     /**
      * The tag used as container for fields in editable()
      *
      * @var string
      */
-    protected static $editableContainerTag = 'div';
+    protected $editableContainerTag = 'div';
 
+    /**
+     * The viewable template.
+     *
+     * The following variables are replaced:
+     *
+     * {{form}}
+     * {{jsonData}}
+     * {{containerTag}}
+     *
+     * @var string
+     */
+    protected $viewableTemplate = '';
+
+    /**
+     *
+     *
+     * @var string
+     */
+    protected $editableTemplate = '';
 
     public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
     }
 
-    public static function getViewableContainerTag(): string
-    {
-        return static::$viewableContainerTag;
-    }
-    
     /**
-     * @param string $tag
-     * @return void
+     * Get the tag used as container for fields in viewable()
+     *
+     * @return  string
      */
-    public static function setViewableContainerTag(string $tag)
+    public function getViewableContainerTag(): string
     {
-        static::$viewableContainerTag = $tag;
+        return $this->viewableContainerTag;
     }
 
-    public static function getEditableContainerTag(): string
+    /**
+     * Set the tag used as container for fields in viewable()
+     *
+     * @param  string  $viewableContainerTag  The tag used as container for fields in viewable()
+     *
+     * @return  self
+     */
+    public function setViewableContainerTag(string $viewableContainerTag): Framework
     {
-        return static::$editableContainerTag;
+        $this->viewableContainerTag = $viewableContainerTag;
+        return $this;
+    }
+
+    public function getEditableContainerTag(): string
+    {
+        return $this->editableContainerTag;
     }
     
     /**
      * @param string $tag
-     * @return void
+     * @return self
      */
-    public static function setEditableContainerTag(string $tag)
+    public function setEditableContainerTag(string $tag): Framework
     {
-        static::$editableContainerTag = $tag;
+        $this->editableContainerTag = $tag;
+        return $this;
+    }
+
+    /**
+     * Get the value of editableTemplate
+     */
+    public function getEditableTemplate(): string
+    {
+        return $this->editableTemplate;
+    }
+
+    /**
+     * Set the value of editableTemplate
+     *
+     * @return self
+     */
+    public function setEditableTemplate(string $editableTemplate): Framework
+    {
+        $this->editableTemplate = $editableTemplate;
+
+        return $this;
     }
     
     /**
@@ -74,6 +127,16 @@ class Framework extends \Formularium\Framework
         return $this;
     }
 
+    /**
+     * Get the value of mode
+     *
+     * @return string
+     */
+    public function getMode(): string
+    {
+        return $this->mode;
+    }
+
     public function htmlHead(HTMLElement &$head)
     {
         $head->prependContent(
@@ -81,33 +144,77 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    protected function mapType(Datatype $type): string
+    {
+        if ($type instanceof Datatype_number) {
+            return 'Number';
+        } elseif ($type instanceof Datatype_bool) {
+            return 'Boolean';
+        }
+        return 'String';
+    }
+
+    protected function props(Model $m): array
+    {
+        $props = [];
+        foreach ($m->getFields() as $field) {
+            if ($field->getExtension('VUEPROP')) { // TODO
+                $p = [
+                    'type' => $this->mapType($field->getDatatype()),
+                ];
+                if ($field->getExtension(Datatype::REQUIRED)) {
+                    $p['required'] = true;
+                }
+                $props[$field->getName()] = $p;
+            }
+        }
+        return $props;
+    }
+
+    public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
         $data = $m->getDefault(); // TODO: load data
-        $viewableContainerTag = static::getViewableContainerTag();
+        
         $viewableForm = join('', $elements);
         $jsonData = json_encode($data);
+        $templateData = [
+            'containerTag' => $this->getViewableContainerTag(),
+            'form' => $viewableForm,
+            'jsonData' => $jsonData,
+            'props' => $this->props($m)
+        ];
 
-        if ($this->mode === self::VUE_MODE_SINGLE_FILE) {
-            return <<<EOF
+        if ($this->viewableTemplate) {
+            return $this->fillTemplate(
+                $this->viewableTemplate,
+                $templateData,
+                $m
+            );
+        } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
+            $viewableTemplate = <<<EOF
 <template>
-<$viewableContainerTag>
-    $viewableForm
-</$viewableContainerTag>
+<{{containerTag}}>
+    {{form}}
+</{{containerTag}}>
 </template>
 <script>
 module.exports = {
     data: function () {
-        return $jsonData;
+        return {{jsonData}};
     }
 };
 </script>
 <style>
 </style>
 EOF;
+            return $this->fillTemplate(
+                $this->viewableTemplate,
+                $templateData,
+                $m
+            );
         } else {
             $id = 'vueapp';
-            $t = new HTMLElement($viewableContainerTag, ['id' => $id], $viewableForm, true);
+            $t = new HTMLElement(self::getViewableContainerTag(), ['id' => $id], $viewableForm, true);
             $script = <<<EOF
 var app = new Vue({
     el: '#$id',
@@ -119,38 +226,47 @@ EOF;
         }
     }
 
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
         $data = $m->getDefault(); // TODO: load data
-        $editableContainerTag = static::getEditableContainerTag();
+        $editableContainerTag = $this->getEditableContainerTag();
         $editableForm = join('', $elements);
         $jsonData = json_encode($data);
+        $templateData = [
+            'containerTag' => $this->getViewableContainerTag(),
+            'form' => $editableForm,
+            'jsonData' => $jsonData,
+            'props' => $this->props($m)
+        ];
 
-        if ($this->mode === self::VUE_MODE_SINGLE_FILE) {
-            return <<<EOF
+        if ($this->viewableTemplate) {
+            return $this->fillTemplate(
+                $this->editableTemplate,
+                $templateData,
+                $m
+            );
+        } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
+            $editableTemplate = <<<EOF
 <template>
-<$editableContainerTag>
-    $editableForm
-</$editableContainerTag>
+<{{containerTag}}>
+    {{form}}
+</{{containerTag}}>
 </template>
 <script>
 module.exports = {
     data: function () {
-        return $jsonData;
-    },
-
-    methods: {
-        loadAssociations() {
-            window.axios.get('/api/cruds').then(({ data }) => {
-                // console.log(data)
-            });
-        }
+        return {{jsonData}};
     }
 };
 </script>
 <style>
 </style>
 EOF;
+            return $this->fillTemplate(
+                $editableTemplate,
+                $templateData,
+                $m
+            );
         } else {
             $id = 'vueapp';
             $t = new HTMLElement($editableContainerTag, ['id' => $id], $editableForm, true);
@@ -163,5 +279,35 @@ EOF;
             $s = new HTMLElement('script', [], $script, true);
             return HTMLElement::factory('div', [], [$t, $s])->getRenderHTML();
         }
+    }
+
+    protected function fillTemplate(string $template, array $data, Model $m): string
+    {
+        $template = str_replace(
+            '{{form}}',
+            $data['form'],
+            $template
+        );
+        $template = str_replace(
+            '{{modelName}}',
+            $m->getName(),
+            $template
+        );
+        $template = str_replace(
+            '{{modelNameLower}}',
+            mb_strtolower($m->getName()),
+            $template
+        );
+        $template = str_replace(
+            '{{jsonData}}',
+            $data['jsonData'],
+            $template
+        );
+        $template = str_replace(
+            '{{containerTag}}',
+            $data['containerTag'],
+            $template
+        );
+        return $template;
     }
 }

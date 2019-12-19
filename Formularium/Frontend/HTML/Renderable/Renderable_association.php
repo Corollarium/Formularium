@@ -9,6 +9,6 @@ use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
 
-class Renderable_association extends Renderable
+abstract class Renderable_association extends Renderable
 {
 }

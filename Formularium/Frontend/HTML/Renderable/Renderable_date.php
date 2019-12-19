@@ -15,7 +15,7 @@ class Renderable_date extends Renderable_string
         $input->setAttribute('type', 'date');
 
         /**
-         * @var $datatype Datatype_date
+         * @var Datatype_date $datatype
          */
         $datatype = $field->getDatatype();
         $validators = $field->getValidators();
@@ -23,14 +23,14 @@ class Renderable_date extends Renderable_string
         if (array_key_exists(Datatype_date::MIN, $validators)) {
             $min = $validators[Datatype_date::MIN];
             if ($min === 'now') {
-                $min = $datatype->time($min);
+                $min = Datatype_date::fromString($min);
             }
             $input->setAttribute('min', $min);
         }
         if (array_key_exists(Datatype_date::MAX, $validators)) {
             $max = $validators[Datatype_date::MAX];
             if ($max === 'now') {
-                $max = $datatype->time($max);
+                $max = Datatype_date::fromString($max);
             }
             $input->setAttribute('max', $max);
         }
