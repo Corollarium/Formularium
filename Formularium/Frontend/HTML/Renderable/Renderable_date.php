@@ -1,7 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\HTML\Renderable;
 
+use Formularium\Datatype\Datatype_date;
 use Formularium\Field;
 use Formularium\HTMLElement;
 
@@ -10,7 +11,30 @@ class Renderable_date extends Renderable_string
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $element = parent::editable($value, $field, $previous);
-        $element->get('input')[0]->setAttribute('type', 'date');
+        $input = $element->get('input')[0];
+        $input->setAttribute('type', 'date');
+
+        /**
+         * @var $datatype Datatype_date
+         */
+        $datatype = $field->getDatatype();
+        $validators = $field->getValidators();
+
+        if (array_key_exists(Datatype_date::MIN, $validators)) {
+            $min = $validators[Datatype_date::MIN];
+            if ($min === 'now') {
+                $min = $datatype->time($min);
+            }
+            $input->setAttribute('min', $min);
+        }
+        if (array_key_exists(Datatype_date::MAX, $validators)) {
+            $max = $validators[Datatype_date::MAX];
+            if ($max === 'now') {
+                $max = $datatype->time($max);
+            }
+            $input->setAttribute('max', $max);
+        }
+
         return $element;
     }
 }
