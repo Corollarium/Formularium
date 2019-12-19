@@ -1,7 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
+use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Respect\Validation\Validator;
@@ -16,15 +17,31 @@ class Datatype_date extends \Formularium\Datatype
         parent::__construct($typename, $basetype);
     }
 
-    public static function time(int $time): string
+    /**
+     * Wrapper for strotime()
+     *
+     * @throws Exception
+     * @param string $time
+     * @return string
+     */
+    public static function fromString(string $time): string
+    {
+        $t = strtotime($time);
+        if ($t === false) {
+            throw new Exception('Invalid date.');
+        }
+        return date('Y-m-d', $t);
+    }
+
+    public static function fromUnix(int $time): string
     {
         return date('Y-m-d', $time);
     }
 
     public function getRandom(array $params = [])
     {
-        $min = $params[static::MIN] ?? self::time(strtotime('-10 years'));
-        $max = $params[static::MAX] ?? self::time(strtotime('+10 years'));
+        $min = $params[static::MIN] ?? self::fromString('-10 years');
+        $max = $params[static::MAX] ?? self::fromString('+10 years');
         $faker = static::faker();
         $v = $faker->dateTimeBetween(
             $min,
