@@ -1,0 +1,5012 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>HTML/Bootstrap/Quill</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"/>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js">
+  </script>
+  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css"/>
+
+
+    <style>
+    h1.kitchen {
+        font-size: 2.5rem;
+    }
+    h2.kitchen {
+        font-size: 2.0rem;
+    }
+    h3.kitchen {
+        font-size: 1.5rem;
+    }
+    h1.kitchen, h2.kitchen, h3.kitchen  {
+        margin-bottom: .5rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    </style>
+</head>
+<body>
+<div class='container'>
+    <h1 class="kitchen">HTML/Bootstrap/Quill</h1>
+    
+    <section>
+        <h2 class="kitchen">Basic demo</h2>
+        <form>
+            <section class="section"><div class="container"><div class="form-group" data-attribute="myString" data-datatype="string" data-basetype="string">
+  <label for="myString610" class="formularium-label">
+    Type string
+  </label>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="fas fa-check">
+        </i>
+      </span>
+    </div>
+    <input id="myString610" type="text" name="myString" class=" form-control form-control-lg" data-attribute="myString" data-datatype="string" data-basetype="string" value="" maxlength="30" title="Type string" placeholder="Type here" minlength="3" aria-describedby="comment611"/>
+  </div>
+  <small class="formularium-comment form-text text-muted" id="comment611">
+    Some text explaining this field
+  </small>
+</div>
+
+<div class="form-group" data-attribute="myInteger" data-datatype="integer" data-basetype="number">
+  <label for="myInteger612" class="formularium-label">
+    Type integer
+  </label>
+  <input id="myInteger612" type="number" name="myInteger" class=" form-control" data-attribute="myInteger" data-datatype="integer" data-basetype="number" value="" title="Type integer" placeholder="Type here" min="4" max="30"/>
+</div>
+
+<div class="form-group" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice">
+  <label for="" class="formularium-label">
+    Country code - radio choice
+  </label>
+  <div class="formularium-radio-group">
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input checked="checked" id="countrycoderadio613" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AND" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio613">
+        <span>
+          AND
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio614" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ARE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio614">
+        <span>
+          ARE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio615" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AFG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio615">
+        <span>
+          AFG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio616" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ATG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio616">
+        <span>
+          ATG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio617" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AFI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio617">
+        <span>
+          AFI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio618" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AIA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio618">
+        <span>
+          AIA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio619" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ALB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio619">
+        <span>
+          ALB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio620" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ARM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio620">
+        <span>
+          ARM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio621" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ANT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio621">
+        <span>
+          ANT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio622" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AGO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio622">
+        <span>
+          AGO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio623" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ATA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio623">
+        <span>
+          ATA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio624" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ARG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio624">
+        <span>
+          ARG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio625" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ASM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio625">
+        <span>
+          ASM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio626" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AUT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio626">
+        <span>
+          AUT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio627" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AUS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio627">
+        <span>
+          AUS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio628" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ABW" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio628">
+        <span>
+          ABW
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio629" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ALA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio629">
+        <span>
+          ALA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio630" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="AZE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio630">
+        <span>
+          AZE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio631" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BIH" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio631">
+        <span>
+          BIH
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio632" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BRB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio632">
+        <span>
+          BRB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio633" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BGD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio633">
+        <span>
+          BGD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio634" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BEL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio634">
+        <span>
+          BEL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio635" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BFA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio635">
+        <span>
+          BFA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio636" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BGR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio636">
+        <span>
+          BGR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio637" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BHR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio637">
+        <span>
+          BHR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio638" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BDI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio638">
+        <span>
+          BDI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio639" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BEN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio639">
+        <span>
+          BEN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio640" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BLM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio640">
+        <span>
+          BLM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio641" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BMU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio641">
+        <span>
+          BMU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio642" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BRN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio642">
+        <span>
+          BRN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio643" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BOL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio643">
+        <span>
+          BOL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio644" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ATB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio644">
+        <span>
+          ATB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio645" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BES" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio645">
+        <span>
+          BES
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio646" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BRA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio646">
+        <span>
+          BRA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio647" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BHS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio647">
+        <span>
+          BHS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio648" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BTN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio648">
+        <span>
+          BTN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio649" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BUR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio649">
+        <span>
+          BUR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio650" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BVT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio650">
+        <span>
+          BVT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio651" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BWA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio651">
+        <span>
+          BWA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio652" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BLR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio652">
+        <span>
+          BLR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio653" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BYS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio653">
+        <span>
+          BYS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio654" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="BLZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio654">
+        <span>
+          BLZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio655" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CAN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio655">
+        <span>
+          CAN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio656" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CCK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio656">
+        <span>
+          CCK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio657" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="COD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio657">
+        <span>
+          COD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio658" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CAF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio658">
+        <span>
+          CAF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio659" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="COG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio659">
+        <span>
+          COG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio660" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CHE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio660">
+        <span>
+          CHE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio661" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CIV" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio661">
+        <span>
+          CIV
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio662" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="COK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio662">
+        <span>
+          COK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio663" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CHL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio663">
+        <span>
+          CHL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio664" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CMR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio664">
+        <span>
+          CMR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio665" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CHN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio665">
+        <span>
+          CHN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio666" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="COL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio666">
+        <span>
+          COL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio667" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CRI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio667">
+        <span>
+          CRI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio668" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CSK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio668">
+        <span>
+          CSK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio669" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SCG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio669">
+        <span>
+          SCG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio670" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CTE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio670">
+        <span>
+          CTE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio671" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CUB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio671">
+        <span>
+          CUB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio672" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CPV" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio672">
+        <span>
+          CPV
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio673" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CUW" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio673">
+        <span>
+          CUW
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio674" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CXR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio674">
+        <span>
+          CXR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio675" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CYP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio675">
+        <span>
+          CYP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio676" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CZE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio676">
+        <span>
+          CZE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio677" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DDR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio677">
+        <span>
+          DDR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio678" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DEU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio678">
+        <span>
+          DEU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio679" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DJI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio679">
+        <span>
+          DJI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio680" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DNK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio680">
+        <span>
+          DNK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio681" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DMA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio681">
+        <span>
+          DMA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio682" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DOM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio682">
+        <span>
+          DOM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio683" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DHY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio683">
+        <span>
+          DHY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio684" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="DZA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio684">
+        <span>
+          DZA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio685" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ECU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio685">
+        <span>
+          ECU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio686" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="EST" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio686">
+        <span>
+          EST
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio687" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="EGY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio687">
+        <span>
+          EGY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio688" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ESH" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio688">
+        <span>
+          ESH
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio689" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ERI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio689">
+        <span>
+          ERI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio690" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ESP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio690">
+        <span>
+          ESP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio691" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ETH" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio691">
+        <span>
+          ETH
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio692" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FIN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio692">
+        <span>
+          FIN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio693" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FJI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio693">
+        <span>
+          FJI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio694" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FLK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio694">
+        <span>
+          FLK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio695" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FSM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio695">
+        <span>
+          FSM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio696" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FRO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio696">
+        <span>
+          FRO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio697" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ATF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio697">
+        <span>
+          ATF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio698" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FRA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio698">
+        <span>
+          FRA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio699" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="FXX" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio699">
+        <span>
+          FXX
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio700" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GAB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio700">
+        <span>
+          GAB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio701" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GBR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio701">
+        <span>
+          GBR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio702" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GRD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio702">
+        <span>
+          GRD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio703" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GEL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio703">
+        <span>
+          GEL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio704" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GEO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio704">
+        <span>
+          GEO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio705" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GUF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio705">
+        <span>
+          GUF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio706" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GGY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio706">
+        <span>
+          GGY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio707" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GHA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio707">
+        <span>
+          GHA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio708" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GIB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio708">
+        <span>
+          GIB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio709" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GRL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio709">
+        <span>
+          GRL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio710" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GMB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio710">
+        <span>
+          GMB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio711" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GIN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio711">
+        <span>
+          GIN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio712" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GLP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio712">
+        <span>
+          GLP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio713" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GNQ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio713">
+        <span>
+          GNQ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio714" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GRC" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio714">
+        <span>
+          GRC
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio715" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SGS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio715">
+        <span>
+          SGS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio716" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GTM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio716">
+        <span>
+          GTM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio717" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GUM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio717">
+        <span>
+          GUM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio718" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GNB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio718">
+        <span>
+          GNB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio719" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="GUY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio719">
+        <span>
+          GUY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio720" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HKG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio720">
+        <span>
+          HKG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio721" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HMD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio721">
+        <span>
+          HMD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio722" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HND" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio722">
+        <span>
+          HND
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio723" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HRV" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio723">
+        <span>
+          HRV
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio724" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HTI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio724">
+        <span>
+          HTI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio725" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HUN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio725">
+        <span>
+          HUN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio726" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="HVO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio726">
+        <span>
+          HVO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio727" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IDN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio727">
+        <span>
+          IDN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio728" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IRL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio728">
+        <span>
+          IRL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio729" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ISR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio729">
+        <span>
+          ISR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio730" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IMN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio730">
+        <span>
+          IMN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio731" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IND" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio731">
+        <span>
+          IND
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio732" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IOT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio732">
+        <span>
+          IOT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio733" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IRQ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio733">
+        <span>
+          IRQ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio734" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="IRN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio734">
+        <span>
+          IRN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio735" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ISL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio735">
+        <span>
+          ISL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio736" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ITA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio736">
+        <span>
+          ITA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio737" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="JEY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio737">
+        <span>
+          JEY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio738" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="JAM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio738">
+        <span>
+          JAM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio739" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="JOR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio739">
+        <span>
+          JOR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio740" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="JPN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio740">
+        <span>
+          JPN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio741" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="JTN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio741">
+        <span>
+          JTN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio742" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KEN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio742">
+        <span>
+          KEN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio743" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KGZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio743">
+        <span>
+          KGZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio744" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KHM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio744">
+        <span>
+          KHM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio745" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KIR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio745">
+        <span>
+          KIR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio746" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="COM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio746">
+        <span>
+          COM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio747" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KNA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio747">
+        <span>
+          KNA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio748" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PRK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio748">
+        <span>
+          PRK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio749" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KOR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio749">
+        <span>
+          KOR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio750" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KWT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio750">
+        <span>
+          KWT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio751" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="CYM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio751">
+        <span>
+          CYM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio752" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="KAZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio752">
+        <span>
+          KAZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio753" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LAO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio753">
+        <span>
+          LAO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio754" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LBN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio754">
+        <span>
+          LBN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio755" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LCA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio755">
+        <span>
+          LCA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio756" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LIE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio756">
+        <span>
+          LIE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio757" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LKA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio757">
+        <span>
+          LKA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio758" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LBR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio758">
+        <span>
+          LBR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio759" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LSO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio759">
+        <span>
+          LSO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio760" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LTU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio760">
+        <span>
+          LTU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio761" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LUX" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio761">
+        <span>
+          LUX
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio762" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LVA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio762">
+        <span>
+          LVA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio763" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="LBY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio763">
+        <span>
+          LBY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio764" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MAR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio764">
+        <span>
+          MAR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio765" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MCO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio765">
+        <span>
+          MCO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio766" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MDA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio766">
+        <span>
+          MDA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio767" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MNE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio767">
+        <span>
+          MNE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio768" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MAF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio768">
+        <span>
+          MAF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio769" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MDG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio769">
+        <span>
+          MDG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio770" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MHL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio770">
+        <span>
+          MHL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio771" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MID" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio771">
+        <span>
+          MID
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio772" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MKD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio772">
+        <span>
+          MKD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio773" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MLI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio773">
+        <span>
+          MLI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio774" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MMR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio774">
+        <span>
+          MMR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio775" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MNG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio775">
+        <span>
+          MNG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio776" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MAC" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio776">
+        <span>
+          MAC
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio777" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MNP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio777">
+        <span>
+          MNP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio778" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MTQ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio778">
+        <span>
+          MTQ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio779" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MRT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio779">
+        <span>
+          MRT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio780" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MSR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio780">
+        <span>
+          MSR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio781" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MLT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio781">
+        <span>
+          MLT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio782" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MUS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio782">
+        <span>
+          MUS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio783" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MDV" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio783">
+        <span>
+          MDV
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio784" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MWI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio784">
+        <span>
+          MWI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio785" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MEX" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio785">
+        <span>
+          MEX
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio786" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MYS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio786">
+        <span>
+          MYS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio787" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MOZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio787">
+        <span>
+          MOZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio788" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NAM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio788">
+        <span>
+          NAM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio789" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NCL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio789">
+        <span>
+          NCL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio790" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NER" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio790">
+        <span>
+          NER
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio791" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NFK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio791">
+        <span>
+          NFK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio792" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NGA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio792">
+        <span>
+          NGA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio793" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NHB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio793">
+        <span>
+          NHB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio794" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NIC" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio794">
+        <span>
+          NIC
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio795" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NLD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio795">
+        <span>
+          NLD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio796" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NOR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio796">
+        <span>
+          NOR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio797" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NPL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio797">
+        <span>
+          NPL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio798" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ATN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio798">
+        <span>
+          ATN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio799" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NRU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio799">
+        <span>
+          NRU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio800" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NTZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio800">
+        <span>
+          NTZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio801" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NIU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio801">
+        <span>
+          NIU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio802" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="NZL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio802">
+        <span>
+          NZL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio803" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="OMN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio803">
+        <span>
+          OMN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio804" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PAN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio804">
+        <span>
+          PAN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio805" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PCI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio805">
+        <span>
+          PCI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio806" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PER" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio806">
+        <span>
+          PER
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio807" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PYF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio807">
+        <span>
+          PYF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio808" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PNG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio808">
+        <span>
+          PNG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio809" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PHL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio809">
+        <span>
+          PHL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio810" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PAK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio810">
+        <span>
+          PAK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio811" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="POL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio811">
+        <span>
+          POL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio812" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SPM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio812">
+        <span>
+          SPM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio813" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PCN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio813">
+        <span>
+          PCN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio814" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PRI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio814">
+        <span>
+          PRI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio815" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PSE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio815">
+        <span>
+          PSE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio816" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PRT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio816">
+        <span>
+          PRT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio817" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PUS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio817">
+        <span>
+          PUS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio818" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PLW" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio818">
+        <span>
+          PLW
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio819" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PRY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio819">
+        <span>
+          PRY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio820" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="PCZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio820">
+        <span>
+          PCZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio821" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="QAT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio821">
+        <span>
+          QAT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio822" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="REU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio822">
+        <span>
+          REU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio823" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="RHO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio823">
+        <span>
+          RHO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio824" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ROU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio824">
+        <span>
+          ROU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio825" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SRB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio825">
+        <span>
+          SRB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio826" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="RUS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio826">
+        <span>
+          RUS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio827" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="RWA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio827">
+        <span>
+          RWA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio828" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SAU" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio828">
+        <span>
+          SAU
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio829" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SLB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio829">
+        <span>
+          SLB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio830" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SYC" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio830">
+        <span>
+          SYC
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio831" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SDN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio831">
+        <span>
+          SDN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio832" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SWE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio832">
+        <span>
+          SWE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio833" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SGP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio833">
+        <span>
+          SGP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio834" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SHN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio834">
+        <span>
+          SHN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio835" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SVN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio835">
+        <span>
+          SVN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio836" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SJM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio836">
+        <span>
+          SJM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio837" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SKM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio837">
+        <span>
+          SKM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio838" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SVK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio838">
+        <span>
+          SVK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio839" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SLE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio839">
+        <span>
+          SLE
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio840" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SMR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio840">
+        <span>
+          SMR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio841" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SEN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio841">
+        <span>
+          SEN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio842" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SOM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio842">
+        <span>
+          SOM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio843" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SUR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio843">
+        <span>
+          SUR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio844" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SSD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio844">
+        <span>
+          SSD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio845" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="STP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio845">
+        <span>
+          STP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio846" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SUN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio846">
+        <span>
+          SUN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio847" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SLV" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio847">
+        <span>
+          SLV
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio848" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SXM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio848">
+        <span>
+          SXM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio849" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SYR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio849">
+        <span>
+          SYR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio850" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="SWZ" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio850">
+        <span>
+          SWZ
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio851" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TCA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio851">
+        <span>
+          TCA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio852" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TCD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio852">
+        <span>
+          TCD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio853" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ATF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio853">
+        <span>
+          ATF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio854" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TGO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio854">
+        <span>
+          TGO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio855" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="THA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio855">
+        <span>
+          THA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio856" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TJK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio856">
+        <span>
+          TJK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio857" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TKL" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio857">
+        <span>
+          TKL
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio858" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TLS" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio858">
+        <span>
+          TLS
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio859" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TKM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio859">
+        <span>
+          TKM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio860" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TUN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio860">
+        <span>
+          TUN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio861" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TON" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio861">
+        <span>
+          TON
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio862" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TMP" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio862">
+        <span>
+          TMP
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio863" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TUR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio863">
+        <span>
+          TUR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio864" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TTO" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio864">
+        <span>
+          TTO
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio865" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TUV" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio865">
+        <span>
+          TUV
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio866" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TWN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio866">
+        <span>
+          TWN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio867" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="TZA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio867">
+        <span>
+          TZA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio868" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="UKR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio868">
+        <span>
+          UKR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio869" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="UGA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio869">
+        <span>
+          UGA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio870" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="UMI" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio870">
+        <span>
+          UMI
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio871" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="USA" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio871">
+        <span>
+          USA
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio872" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="URY" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio872">
+        <span>
+          URY
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio873" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="UZB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio873">
+        <span>
+          UZB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio874" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VAT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio874">
+        <span>
+          VAT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio875" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VCT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio875">
+        <span>
+          VCT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio876" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VDR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio876">
+        <span>
+          VDR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio877" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VEN" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio877">
+        <span>
+          VEN
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio878" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VGB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio878">
+        <span>
+          VGB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio879" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VIR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio879">
+        <span>
+          VIR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio880" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VNM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio880">
+        <span>
+          VNM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio881" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="VUT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio881">
+        <span>
+          VUT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio882" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="WLF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio882">
+        <span>
+          WLF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio883" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="WAK" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio883">
+        <span>
+          WAK
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio884" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="WSM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio884">
+        <span>
+          WSM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio885" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="YMD" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio885">
+        <span>
+          YMD
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio886" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="YEM" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio886">
+        <span>
+          YEM
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio887" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="MYT" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio887">
+        <span>
+          MYT
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio888" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="YUG" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio888">
+        <span>
+          YUG
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio889" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ZAF" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio889">
+        <span>
+          ZAF
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio890" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ZMB" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio890">
+        <span>
+          ZMB
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio891" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ZAR" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio891">
+        <span>
+          ZAR
+        </span>
+      </label>
+    </div>
+    <div class="formularium-radio-item custom-control custom-radio custom-control-inline">
+      <input id="countrycoderadio892" name="countrycoderadio" data-attribute="countrycoderadio" data-datatype="countrycode" data-basetype="choice" value="" type="radio" title="ZWE" class="custom-control-input"/>
+      <label class="formularium-radio-label custom-control-label" for="countrycoderadio892">
+        <span>
+          ZWE
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice">
+  <label for="countrycodeselect893" class="formularium-label">
+    Country code - select choice
+  </label>
+  <select id="countrycodeselect893" name="countrycodeselect" class=" custom-select" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice">
+    <option value="0" selected="selected">
+      AND
+    </option>
+    <option value="1">
+      ARE
+    </option>
+    <option value="2">
+      AFG
+    </option>
+    <option value="3">
+      ATG
+    </option>
+    <option value="4">
+      AFI
+    </option>
+    <option value="5">
+      AIA
+    </option>
+    <option value="6">
+      ALB
+    </option>
+    <option value="7">
+      ARM
+    </option>
+    <option value="8">
+      ANT
+    </option>
+    <option value="9">
+      AGO
+    </option>
+    <option value="10">
+      ATA
+    </option>
+    <option value="11">
+      ARG
+    </option>
+    <option value="12">
+      ASM
+    </option>
+    <option value="13">
+      AUT
+    </option>
+    <option value="14">
+      AUS
+    </option>
+    <option value="15">
+      ABW
+    </option>
+    <option value="16">
+      ALA
+    </option>
+    <option value="17">
+      AZE
+    </option>
+    <option value="18">
+      BIH
+    </option>
+    <option value="19">
+      BRB
+    </option>
+    <option value="20">
+      BGD
+    </option>
+    <option value="21">
+      BEL
+    </option>
+    <option value="22">
+      BFA
+    </option>
+    <option value="23">
+      BGR
+    </option>
+    <option value="24">
+      BHR
+    </option>
+    <option value="25">
+      BDI
+    </option>
+    <option value="26">
+      BEN
+    </option>
+    <option value="27">
+      BLM
+    </option>
+    <option value="28">
+      BMU
+    </option>
+    <option value="29">
+      BRN
+    </option>
+    <option value="30">
+      BOL
+    </option>
+    <option value="31">
+      ATB
+    </option>
+    <option value="32">
+      BES
+    </option>
+    <option value="33">
+      BRA
+    </option>
+    <option value="34">
+      BHS
+    </option>
+    <option value="35">
+      BTN
+    </option>
+    <option value="36">
+      BUR
+    </option>
+    <option value="37">
+      BVT
+    </option>
+    <option value="38">
+      BWA
+    </option>
+    <option value="39">
+      BLR
+    </option>
+    <option value="40">
+      BYS
+    </option>
+    <option value="41">
+      BLZ
+    </option>
+    <option value="42">
+      CAN
+    </option>
+    <option value="43">
+      CCK
+    </option>
+    <option value="44">
+      COD
+    </option>
+    <option value="45">
+      CAF
+    </option>
+    <option value="46">
+      COG
+    </option>
+    <option value="47">
+      CHE
+    </option>
+    <option value="48">
+      CIV
+    </option>
+    <option value="49">
+      COK
+    </option>
+    <option value="50">
+      CHL
+    </option>
+    <option value="51">
+      CMR
+    </option>
+    <option value="52">
+      CHN
+    </option>
+    <option value="53">
+      COL
+    </option>
+    <option value="54">
+      CRI
+    </option>
+    <option value="55">
+      CSK
+    </option>
+    <option value="56">
+      SCG
+    </option>
+    <option value="57">
+      CTE
+    </option>
+    <option value="58">
+      CUB
+    </option>
+    <option value="59">
+      CPV
+    </option>
+    <option value="60">
+      CUW
+    </option>
+    <option value="61">
+      CXR
+    </option>
+    <option value="62">
+      CYP
+    </option>
+    <option value="63">
+      CZE
+    </option>
+    <option value="64">
+      DDR
+    </option>
+    <option value="65">
+      DEU
+    </option>
+    <option value="66">
+      DJI
+    </option>
+    <option value="67">
+      DNK
+    </option>
+    <option value="68">
+      DMA
+    </option>
+    <option value="69">
+      DOM
+    </option>
+    <option value="70">
+      DHY
+    </option>
+    <option value="71">
+      DZA
+    </option>
+    <option value="72">
+      ECU
+    </option>
+    <option value="73">
+      EST
+    </option>
+    <option value="74">
+      EGY
+    </option>
+    <option value="75">
+      ESH
+    </option>
+    <option value="76">
+      ERI
+    </option>
+    <option value="77">
+      ESP
+    </option>
+    <option value="78">
+      ETH
+    </option>
+    <option value="79">
+      FIN
+    </option>
+    <option value="80">
+      FJI
+    </option>
+    <option value="81">
+      FLK
+    </option>
+    <option value="82">
+      FSM
+    </option>
+    <option value="83">
+      FRO
+    </option>
+    <option value="84">
+      ATF
+    </option>
+    <option value="85">
+      FRA
+    </option>
+    <option value="86">
+      FXX
+    </option>
+    <option value="87">
+      GAB
+    </option>
+    <option value="88">
+      GBR
+    </option>
+    <option value="89">
+      GRD
+    </option>
+    <option value="90">
+      GEL
+    </option>
+    <option value="91">
+      GEO
+    </option>
+    <option value="92">
+      GUF
+    </option>
+    <option value="93">
+      GGY
+    </option>
+    <option value="94">
+      GHA
+    </option>
+    <option value="95">
+      GIB
+    </option>
+    <option value="96">
+      GRL
+    </option>
+    <option value="97">
+      GMB
+    </option>
+    <option value="98">
+      GIN
+    </option>
+    <option value="99">
+      GLP
+    </option>
+    <option value="100">
+      GNQ
+    </option>
+    <option value="101">
+      GRC
+    </option>
+    <option value="102">
+      SGS
+    </option>
+    <option value="103">
+      GTM
+    </option>
+    <option value="104">
+      GUM
+    </option>
+    <option value="105">
+      GNB
+    </option>
+    <option value="106">
+      GUY
+    </option>
+    <option value="107">
+      HKG
+    </option>
+    <option value="108">
+      HMD
+    </option>
+    <option value="109">
+      HND
+    </option>
+    <option value="110">
+      HRV
+    </option>
+    <option value="111">
+      HTI
+    </option>
+    <option value="112">
+      HUN
+    </option>
+    <option value="113">
+      HVO
+    </option>
+    <option value="114">
+      IDN
+    </option>
+    <option value="115">
+      IRL
+    </option>
+    <option value="116">
+      ISR
+    </option>
+    <option value="117">
+      IMN
+    </option>
+    <option value="118">
+      IND
+    </option>
+    <option value="119">
+      IOT
+    </option>
+    <option value="120">
+      IRQ
+    </option>
+    <option value="121">
+      IRN
+    </option>
+    <option value="122">
+      ISL
+    </option>
+    <option value="123">
+      ITA
+    </option>
+    <option value="124">
+      JEY
+    </option>
+    <option value="125">
+      JAM
+    </option>
+    <option value="126">
+      JOR
+    </option>
+    <option value="127">
+      JPN
+    </option>
+    <option value="128">
+      JTN
+    </option>
+    <option value="129">
+      KEN
+    </option>
+    <option value="130">
+      KGZ
+    </option>
+    <option value="131">
+      KHM
+    </option>
+    <option value="132">
+      KIR
+    </option>
+    <option value="133">
+      COM
+    </option>
+    <option value="134">
+      KNA
+    </option>
+    <option value="135">
+      PRK
+    </option>
+    <option value="136">
+      KOR
+    </option>
+    <option value="137">
+      KWT
+    </option>
+    <option value="138">
+      CYM
+    </option>
+    <option value="139">
+      KAZ
+    </option>
+    <option value="140">
+      LAO
+    </option>
+    <option value="141">
+      LBN
+    </option>
+    <option value="142">
+      LCA
+    </option>
+    <option value="143">
+      LIE
+    </option>
+    <option value="144">
+      LKA
+    </option>
+    <option value="145">
+      LBR
+    </option>
+    <option value="146">
+      LSO
+    </option>
+    <option value="147">
+      LTU
+    </option>
+    <option value="148">
+      LUX
+    </option>
+    <option value="149">
+      LVA
+    </option>
+    <option value="150">
+      LBY
+    </option>
+    <option value="151">
+      MAR
+    </option>
+    <option value="152">
+      MCO
+    </option>
+    <option value="153">
+      MDA
+    </option>
+    <option value="154">
+      MNE
+    </option>
+    <option value="155">
+      MAF
+    </option>
+    <option value="156">
+      MDG
+    </option>
+    <option value="157">
+      MHL
+    </option>
+    <option value="158">
+      MID
+    </option>
+    <option value="159">
+      MKD
+    </option>
+    <option value="160">
+      MLI
+    </option>
+    <option value="161">
+      MMR
+    </option>
+    <option value="162">
+      MNG
+    </option>
+    <option value="163">
+      MAC
+    </option>
+    <option value="164">
+      MNP
+    </option>
+    <option value="165">
+      MTQ
+    </option>
+    <option value="166">
+      MRT
+    </option>
+    <option value="167">
+      MSR
+    </option>
+    <option value="168">
+      MLT
+    </option>
+    <option value="169">
+      MUS
+    </option>
+    <option value="170">
+      MDV
+    </option>
+    <option value="171">
+      MWI
+    </option>
+    <option value="172">
+      MEX
+    </option>
+    <option value="173">
+      MYS
+    </option>
+    <option value="174">
+      MOZ
+    </option>
+    <option value="175">
+      NAM
+    </option>
+    <option value="176">
+      NCL
+    </option>
+    <option value="177">
+      NER
+    </option>
+    <option value="178">
+      NFK
+    </option>
+    <option value="179">
+      NGA
+    </option>
+    <option value="180">
+      NHB
+    </option>
+    <option value="181">
+      NIC
+    </option>
+    <option value="182">
+      NLD
+    </option>
+    <option value="183">
+      NOR
+    </option>
+    <option value="184">
+      NPL
+    </option>
+    <option value="185">
+      ATN
+    </option>
+    <option value="186">
+      NRU
+    </option>
+    <option value="187">
+      NTZ
+    </option>
+    <option value="188">
+      NIU
+    </option>
+    <option value="189">
+      NZL
+    </option>
+    <option value="190">
+      OMN
+    </option>
+    <option value="191">
+      PAN
+    </option>
+    <option value="192">
+      PCI
+    </option>
+    <option value="193">
+      PER
+    </option>
+    <option value="194">
+      PYF
+    </option>
+    <option value="195">
+      PNG
+    </option>
+    <option value="196">
+      PHL
+    </option>
+    <option value="197">
+      PAK
+    </option>
+    <option value="198">
+      POL
+    </option>
+    <option value="199">
+      SPM
+    </option>
+    <option value="200">
+      PCN
+    </option>
+    <option value="201">
+      PRI
+    </option>
+    <option value="202">
+      PSE
+    </option>
+    <option value="203">
+      PRT
+    </option>
+    <option value="204">
+      PUS
+    </option>
+    <option value="205">
+      PLW
+    </option>
+    <option value="206">
+      PRY
+    </option>
+    <option value="207">
+      PCZ
+    </option>
+    <option value="208">
+      QAT
+    </option>
+    <option value="209">
+      REU
+    </option>
+    <option value="210">
+      RHO
+    </option>
+    <option value="211">
+      ROU
+    </option>
+    <option value="212">
+      SRB
+    </option>
+    <option value="213">
+      RUS
+    </option>
+    <option value="214">
+      RWA
+    </option>
+    <option value="215">
+      SAU
+    </option>
+    <option value="216">
+      SLB
+    </option>
+    <option value="217">
+      SYC
+    </option>
+    <option value="218">
+      SDN
+    </option>
+    <option value="219">
+      SWE
+    </option>
+    <option value="220">
+      SGP
+    </option>
+    <option value="221">
+      SHN
+    </option>
+    <option value="222">
+      SVN
+    </option>
+    <option value="223">
+      SJM
+    </option>
+    <option value="224">
+      SKM
+    </option>
+    <option value="225">
+      SVK
+    </option>
+    <option value="226">
+      SLE
+    </option>
+    <option value="227">
+      SMR
+    </option>
+    <option value="228">
+      SEN
+    </option>
+    <option value="229">
+      SOM
+    </option>
+    <option value="230">
+      SUR
+    </option>
+    <option value="231">
+      SSD
+    </option>
+    <option value="232">
+      STP
+    </option>
+    <option value="233">
+      SUN
+    </option>
+    <option value="234">
+      SLV
+    </option>
+    <option value="235">
+      SXM
+    </option>
+    <option value="236">
+      SYR
+    </option>
+    <option value="237">
+      SWZ
+    </option>
+    <option value="238">
+      TCA
+    </option>
+    <option value="239">
+      TCD
+    </option>
+    <option value="240">
+      ATF
+    </option>
+    <option value="241">
+      TGO
+    </option>
+    <option value="242">
+      THA
+    </option>
+    <option value="243">
+      TJK
+    </option>
+    <option value="244">
+      TKL
+    </option>
+    <option value="245">
+      TLS
+    </option>
+    <option value="246">
+      TKM
+    </option>
+    <option value="247">
+      TUN
+    </option>
+    <option value="248">
+      TON
+    </option>
+    <option value="249">
+      TMP
+    </option>
+    <option value="250">
+      TUR
+    </option>
+    <option value="251">
+      TTO
+    </option>
+    <option value="252">
+      TUV
+    </option>
+    <option value="253">
+      TWN
+    </option>
+    <option value="254">
+      TZA
+    </option>
+    <option value="255">
+      UKR
+    </option>
+    <option value="256">
+      UGA
+    </option>
+    <option value="257">
+      UMI
+    </option>
+    <option value="258">
+      USA
+    </option>
+    <option value="259">
+      URY
+    </option>
+    <option value="260">
+      UZB
+    </option>
+    <option value="261">
+      VAT
+    </option>
+    <option value="262">
+      VCT
+    </option>
+    <option value="263">
+      VDR
+    </option>
+    <option value="264">
+      VEN
+    </option>
+    <option value="265">
+      VGB
+    </option>
+    <option value="266">
+      VIR
+    </option>
+    <option value="267">
+      VNM
+    </option>
+    <option value="268">
+      VUT
+    </option>
+    <option value="269">
+      WLF
+    </option>
+    <option value="270">
+      WAK
+    </option>
+    <option value="271">
+      WSM
+    </option>
+    <option value="272">
+      YMD
+    </option>
+    <option value="273">
+      YEM
+    </option>
+    <option value="274">
+      MYT
+    </option>
+    <option value="275">
+      YUG
+    </option>
+    <option value="276">
+      ZAF
+    </option>
+    <option value="277">
+      ZMB
+    </option>
+    <option value="278">
+      ZAR
+    </option>
+    <option value="279">
+      ZWE
+    </option>
+  </select>
+</div>
+
+</div></section>
+        </form>
+    </section>
+
+    <section>
+        <h2 class="kitchen">Full kitchen sink</h2>
+
+        <div>
+            <h3 class="kitchen">Viewable</h3>
+
+            <section class="section"><div class="container"><div>
+  <span class="formularium-label">
+    Type bool
+  </span>
+  <span class="formularium-value">
+    False
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type cnpj
+  </span>
+  <span class="formularium-value">
+    50.274.267/0001-45
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type color
+  </span>
+  <span class="formularium-value">
+    <span style="width: 1em; display: inline-block; background-color: #4C8829">
+      &nbsp;
+    </span>
+    #4C8829
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type countrycode
+  </span>
+  <span class="formularium-value">
+    PER
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type date
+  </span>
+  <span class="formularium-value">
+    2011-07-11
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type datetime
+  </span>
+  <span class="formularium-value">
+    2023-09-09T21:33:08+0000
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type domain
+  </span>
+  <span class="formularium-value">
+    oreilly.biz
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type email
+  </span>
+  <span class="formularium-value">
+    carroll78@dietrich.info
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type file
+  </span>
+  <span class="formularium-value">
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type float
+  </span>
+  <span class="formularium-value">
+    0.081
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type html
+  </span>
+  <span class="formularium-value">
+    &lt;p&gt;HTML &lt;span&gt;Omnis sed qui quisquam dignissimos rerum sit vitae possimus. Et enim aut ut iure consequuntur. Provident enim quas magnam libero impedit et maiores sint.&lt;/span&gt;Qui sit ducimus aut qui voluptatibus. Occaecati iure maxime aut velit fugiat id quae.&lt;/p&gt;
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type integer
+  </span>
+  <span class="formularium-value">
+    2124271693
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type json
+  </span>
+  <span class="formularium-value">
+    {&quot;version&quot;:1945323145,&quot;data&quot;:{&quot;string&quot;:&quot;RgT7KJfsmHv&quot;,&quot;float&quot;:0.906}}
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type language
+  </span>
+  <span class="formularium-value">
+    Luganda
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type phone
+  </span>
+  <span class="formularium-value">
+    +5665839089683
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type string
+  </span>
+  <span class="formularium-value">
+    RiTNNoFOiH
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type text
+  </span>
+  <span class="formularium-value">
+    Qui perspiciatis nulla rerum eos mollitia. Optio tempore autem ut. Blanditiis expedita numquam est doloribus. Dolorem totam sed voluptatem voluptate voluptas vel hic consequuntur.
+  </span>
+</div>
+
+
+<div>
+  <span class="formularium-label">
+    Type uinteger
+  </span>
+  <span class="formularium-value">
+    3220738252
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type url
+  </span>
+  <span class="formularium-value">
+    http://www.ruecker.com/
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type usmall
+  </span>
+  <span class="formularium-value">
+    53963
+  </span>
+</div>
+
+<div>
+  <span class="formularium-label">
+    Type uuid
+  </span>
+  <span class="formularium-value">
+    fe45c3d8-fb11-41d5-a4d6-06dc0928a8a1
+  </span>
+</div>
+
+</div></section>
+        </div>
+        
+        <div>
+            <h3 class="kitchen">Editable</h3>
+            
+            <form>
+                <section class="section"><div class="container"><div class="form-group" data-attribute="bool" data-datatype="bool" data-basetype="bool">
+  <label for="bool894" class="formularium-label">
+    Type bool
+  </label>
+  <select id="bool894" name="bool" class="form-control" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool">
+    <option value="false" selected="selected">
+      False
+    </option>
+    <option value="true">
+      True
+    </option>
+  </select>
+</div>
+
+<div class="form-group" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string">
+  <label for="cnpj895" class="formularium-label">
+    Type cnpj
+  </label>
+  <input id="cnpj895" type="text" name="cnpj" class=" form-control" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" value="" maxlength="1024" title="Type cnpj"/>
+</div>
+
+<div class="form-group" data-attribute="color" data-datatype="color" data-basetype="string">
+  <label for="color896" class="formularium-label">
+    Type color
+  </label>
+  <input id="color896" type="color" name="color" class=" form-control" data-attribute="color" data-datatype="color" data-basetype="string" value="" maxlength="1024" title="Type color"/>
+</div>
+
+<div class="form-group" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice">
+  <label for="countrycode897" class="formularium-label">
+    Type countrycode
+  </label>
+  <select id="countrycode897" name="countrycode" class=" custom-select" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode">
+    <option value="0" selected="selected">
+      AND
+    </option>
+    <option value="1">
+      ARE
+    </option>
+    <option value="2">
+      AFG
+    </option>
+    <option value="3">
+      ATG
+    </option>
+    <option value="4">
+      AFI
+    </option>
+    <option value="5">
+      AIA
+    </option>
+    <option value="6">
+      ALB
+    </option>
+    <option value="7">
+      ARM
+    </option>
+    <option value="8">
+      ANT
+    </option>
+    <option value="9">
+      AGO
+    </option>
+    <option value="10">
+      ATA
+    </option>
+    <option value="11">
+      ARG
+    </option>
+    <option value="12">
+      ASM
+    </option>
+    <option value="13">
+      AUT
+    </option>
+    <option value="14">
+      AUS
+    </option>
+    <option value="15">
+      ABW
+    </option>
+    <option value="16">
+      ALA
+    </option>
+    <option value="17">
+      AZE
+    </option>
+    <option value="18">
+      BIH
+    </option>
+    <option value="19">
+      BRB
+    </option>
+    <option value="20">
+      BGD
+    </option>
+    <option value="21">
+      BEL
+    </option>
+    <option value="22">
+      BFA
+    </option>
+    <option value="23">
+      BGR
+    </option>
+    <option value="24">
+      BHR
+    </option>
+    <option value="25">
+      BDI
+    </option>
+    <option value="26">
+      BEN
+    </option>
+    <option value="27">
+      BLM
+    </option>
+    <option value="28">
+      BMU
+    </option>
+    <option value="29">
+      BRN
+    </option>
+    <option value="30">
+      BOL
+    </option>
+    <option value="31">
+      ATB
+    </option>
+    <option value="32">
+      BES
+    </option>
+    <option value="33">
+      BRA
+    </option>
+    <option value="34">
+      BHS
+    </option>
+    <option value="35">
+      BTN
+    </option>
+    <option value="36">
+      BUR
+    </option>
+    <option value="37">
+      BVT
+    </option>
+    <option value="38">
+      BWA
+    </option>
+    <option value="39">
+      BLR
+    </option>
+    <option value="40">
+      BYS
+    </option>
+    <option value="41">
+      BLZ
+    </option>
+    <option value="42">
+      CAN
+    </option>
+    <option value="43">
+      CCK
+    </option>
+    <option value="44">
+      COD
+    </option>
+    <option value="45">
+      CAF
+    </option>
+    <option value="46">
+      COG
+    </option>
+    <option value="47">
+      CHE
+    </option>
+    <option value="48">
+      CIV
+    </option>
+    <option value="49">
+      COK
+    </option>
+    <option value="50">
+      CHL
+    </option>
+    <option value="51">
+      CMR
+    </option>
+    <option value="52">
+      CHN
+    </option>
+    <option value="53">
+      COL
+    </option>
+    <option value="54">
+      CRI
+    </option>
+    <option value="55">
+      CSK
+    </option>
+    <option value="56">
+      SCG
+    </option>
+    <option value="57">
+      CTE
+    </option>
+    <option value="58">
+      CUB
+    </option>
+    <option value="59">
+      CPV
+    </option>
+    <option value="60">
+      CUW
+    </option>
+    <option value="61">
+      CXR
+    </option>
+    <option value="62">
+      CYP
+    </option>
+    <option value="63">
+      CZE
+    </option>
+    <option value="64">
+      DDR
+    </option>
+    <option value="65">
+      DEU
+    </option>
+    <option value="66">
+      DJI
+    </option>
+    <option value="67">
+      DNK
+    </option>
+    <option value="68">
+      DMA
+    </option>
+    <option value="69">
+      DOM
+    </option>
+    <option value="70">
+      DHY
+    </option>
+    <option value="71">
+      DZA
+    </option>
+    <option value="72">
+      ECU
+    </option>
+    <option value="73">
+      EST
+    </option>
+    <option value="74">
+      EGY
+    </option>
+    <option value="75">
+      ESH
+    </option>
+    <option value="76">
+      ERI
+    </option>
+    <option value="77">
+      ESP
+    </option>
+    <option value="78">
+      ETH
+    </option>
+    <option value="79">
+      FIN
+    </option>
+    <option value="80">
+      FJI
+    </option>
+    <option value="81">
+      FLK
+    </option>
+    <option value="82">
+      FSM
+    </option>
+    <option value="83">
+      FRO
+    </option>
+    <option value="84">
+      ATF
+    </option>
+    <option value="85">
+      FRA
+    </option>
+    <option value="86">
+      FXX
+    </option>
+    <option value="87">
+      GAB
+    </option>
+    <option value="88">
+      GBR
+    </option>
+    <option value="89">
+      GRD
+    </option>
+    <option value="90">
+      GEL
+    </option>
+    <option value="91">
+      GEO
+    </option>
+    <option value="92">
+      GUF
+    </option>
+    <option value="93">
+      GGY
+    </option>
+    <option value="94">
+      GHA
+    </option>
+    <option value="95">
+      GIB
+    </option>
+    <option value="96">
+      GRL
+    </option>
+    <option value="97">
+      GMB
+    </option>
+    <option value="98">
+      GIN
+    </option>
+    <option value="99">
+      GLP
+    </option>
+    <option value="100">
+      GNQ
+    </option>
+    <option value="101">
+      GRC
+    </option>
+    <option value="102">
+      SGS
+    </option>
+    <option value="103">
+      GTM
+    </option>
+    <option value="104">
+      GUM
+    </option>
+    <option value="105">
+      GNB
+    </option>
+    <option value="106">
+      GUY
+    </option>
+    <option value="107">
+      HKG
+    </option>
+    <option value="108">
+      HMD
+    </option>
+    <option value="109">
+      HND
+    </option>
+    <option value="110">
+      HRV
+    </option>
+    <option value="111">
+      HTI
+    </option>
+    <option value="112">
+      HUN
+    </option>
+    <option value="113">
+      HVO
+    </option>
+    <option value="114">
+      IDN
+    </option>
+    <option value="115">
+      IRL
+    </option>
+    <option value="116">
+      ISR
+    </option>
+    <option value="117">
+      IMN
+    </option>
+    <option value="118">
+      IND
+    </option>
+    <option value="119">
+      IOT
+    </option>
+    <option value="120">
+      IRQ
+    </option>
+    <option value="121">
+      IRN
+    </option>
+    <option value="122">
+      ISL
+    </option>
+    <option value="123">
+      ITA
+    </option>
+    <option value="124">
+      JEY
+    </option>
+    <option value="125">
+      JAM
+    </option>
+    <option value="126">
+      JOR
+    </option>
+    <option value="127">
+      JPN
+    </option>
+    <option value="128">
+      JTN
+    </option>
+    <option value="129">
+      KEN
+    </option>
+    <option value="130">
+      KGZ
+    </option>
+    <option value="131">
+      KHM
+    </option>
+    <option value="132">
+      KIR
+    </option>
+    <option value="133">
+      COM
+    </option>
+    <option value="134">
+      KNA
+    </option>
+    <option value="135">
+      PRK
+    </option>
+    <option value="136">
+      KOR
+    </option>
+    <option value="137">
+      KWT
+    </option>
+    <option value="138">
+      CYM
+    </option>
+    <option value="139">
+      KAZ
+    </option>
+    <option value="140">
+      LAO
+    </option>
+    <option value="141">
+      LBN
+    </option>
+    <option value="142">
+      LCA
+    </option>
+    <option value="143">
+      LIE
+    </option>
+    <option value="144">
+      LKA
+    </option>
+    <option value="145">
+      LBR
+    </option>
+    <option value="146">
+      LSO
+    </option>
+    <option value="147">
+      LTU
+    </option>
+    <option value="148">
+      LUX
+    </option>
+    <option value="149">
+      LVA
+    </option>
+    <option value="150">
+      LBY
+    </option>
+    <option value="151">
+      MAR
+    </option>
+    <option value="152">
+      MCO
+    </option>
+    <option value="153">
+      MDA
+    </option>
+    <option value="154">
+      MNE
+    </option>
+    <option value="155">
+      MAF
+    </option>
+    <option value="156">
+      MDG
+    </option>
+    <option value="157">
+      MHL
+    </option>
+    <option value="158">
+      MID
+    </option>
+    <option value="159">
+      MKD
+    </option>
+    <option value="160">
+      MLI
+    </option>
+    <option value="161">
+      MMR
+    </option>
+    <option value="162">
+      MNG
+    </option>
+    <option value="163">
+      MAC
+    </option>
+    <option value="164">
+      MNP
+    </option>
+    <option value="165">
+      MTQ
+    </option>
+    <option value="166">
+      MRT
+    </option>
+    <option value="167">
+      MSR
+    </option>
+    <option value="168">
+      MLT
+    </option>
+    <option value="169">
+      MUS
+    </option>
+    <option value="170">
+      MDV
+    </option>
+    <option value="171">
+      MWI
+    </option>
+    <option value="172">
+      MEX
+    </option>
+    <option value="173">
+      MYS
+    </option>
+    <option value="174">
+      MOZ
+    </option>
+    <option value="175">
+      NAM
+    </option>
+    <option value="176">
+      NCL
+    </option>
+    <option value="177">
+      NER
+    </option>
+    <option value="178">
+      NFK
+    </option>
+    <option value="179">
+      NGA
+    </option>
+    <option value="180">
+      NHB
+    </option>
+    <option value="181">
+      NIC
+    </option>
+    <option value="182">
+      NLD
+    </option>
+    <option value="183">
+      NOR
+    </option>
+    <option value="184">
+      NPL
+    </option>
+    <option value="185">
+      ATN
+    </option>
+    <option value="186">
+      NRU
+    </option>
+    <option value="187">
+      NTZ
+    </option>
+    <option value="188">
+      NIU
+    </option>
+    <option value="189">
+      NZL
+    </option>
+    <option value="190">
+      OMN
+    </option>
+    <option value="191">
+      PAN
+    </option>
+    <option value="192">
+      PCI
+    </option>
+    <option value="193">
+      PER
+    </option>
+    <option value="194">
+      PYF
+    </option>
+    <option value="195">
+      PNG
+    </option>
+    <option value="196">
+      PHL
+    </option>
+    <option value="197">
+      PAK
+    </option>
+    <option value="198">
+      POL
+    </option>
+    <option value="199">
+      SPM
+    </option>
+    <option value="200">
+      PCN
+    </option>
+    <option value="201">
+      PRI
+    </option>
+    <option value="202">
+      PSE
+    </option>
+    <option value="203">
+      PRT
+    </option>
+    <option value="204">
+      PUS
+    </option>
+    <option value="205">
+      PLW
+    </option>
+    <option value="206">
+      PRY
+    </option>
+    <option value="207">
+      PCZ
+    </option>
+    <option value="208">
+      QAT
+    </option>
+    <option value="209">
+      REU
+    </option>
+    <option value="210">
+      RHO
+    </option>
+    <option value="211">
+      ROU
+    </option>
+    <option value="212">
+      SRB
+    </option>
+    <option value="213">
+      RUS
+    </option>
+    <option value="214">
+      RWA
+    </option>
+    <option value="215">
+      SAU
+    </option>
+    <option value="216">
+      SLB
+    </option>
+    <option value="217">
+      SYC
+    </option>
+    <option value="218">
+      SDN
+    </option>
+    <option value="219">
+      SWE
+    </option>
+    <option value="220">
+      SGP
+    </option>
+    <option value="221">
+      SHN
+    </option>
+    <option value="222">
+      SVN
+    </option>
+    <option value="223">
+      SJM
+    </option>
+    <option value="224">
+      SKM
+    </option>
+    <option value="225">
+      SVK
+    </option>
+    <option value="226">
+      SLE
+    </option>
+    <option value="227">
+      SMR
+    </option>
+    <option value="228">
+      SEN
+    </option>
+    <option value="229">
+      SOM
+    </option>
+    <option value="230">
+      SUR
+    </option>
+    <option value="231">
+      SSD
+    </option>
+    <option value="232">
+      STP
+    </option>
+    <option value="233">
+      SUN
+    </option>
+    <option value="234">
+      SLV
+    </option>
+    <option value="235">
+      SXM
+    </option>
+    <option value="236">
+      SYR
+    </option>
+    <option value="237">
+      SWZ
+    </option>
+    <option value="238">
+      TCA
+    </option>
+    <option value="239">
+      TCD
+    </option>
+    <option value="240">
+      ATF
+    </option>
+    <option value="241">
+      TGO
+    </option>
+    <option value="242">
+      THA
+    </option>
+    <option value="243">
+      TJK
+    </option>
+    <option value="244">
+      TKL
+    </option>
+    <option value="245">
+      TLS
+    </option>
+    <option value="246">
+      TKM
+    </option>
+    <option value="247">
+      TUN
+    </option>
+    <option value="248">
+      TON
+    </option>
+    <option value="249">
+      TMP
+    </option>
+    <option value="250">
+      TUR
+    </option>
+    <option value="251">
+      TTO
+    </option>
+    <option value="252">
+      TUV
+    </option>
+    <option value="253">
+      TWN
+    </option>
+    <option value="254">
+      TZA
+    </option>
+    <option value="255">
+      UKR
+    </option>
+    <option value="256">
+      UGA
+    </option>
+    <option value="257">
+      UMI
+    </option>
+    <option value="258">
+      USA
+    </option>
+    <option value="259">
+      URY
+    </option>
+    <option value="260">
+      UZB
+    </option>
+    <option value="261">
+      VAT
+    </option>
+    <option value="262">
+      VCT
+    </option>
+    <option value="263">
+      VDR
+    </option>
+    <option value="264">
+      VEN
+    </option>
+    <option value="265">
+      VGB
+    </option>
+    <option value="266">
+      VIR
+    </option>
+    <option value="267">
+      VNM
+    </option>
+    <option value="268">
+      VUT
+    </option>
+    <option value="269">
+      WLF
+    </option>
+    <option value="270">
+      WAK
+    </option>
+    <option value="271">
+      WSM
+    </option>
+    <option value="272">
+      YMD
+    </option>
+    <option value="273">
+      YEM
+    </option>
+    <option value="274">
+      MYT
+    </option>
+    <option value="275">
+      YUG
+    </option>
+    <option value="276">
+      ZAF
+    </option>
+    <option value="277">
+      ZMB
+    </option>
+    <option value="278">
+      ZAR
+    </option>
+    <option value="279">
+      ZWE
+    </option>
+  </select>
+</div>
+
+<div class="form-group" data-attribute="date" data-datatype="date" data-basetype="date">
+  <label for="date898" class="formularium-label">
+    Type date
+  </label>
+  <input id="date898" type="date" name="date" class=" form-control" data-attribute="date" data-datatype="date" data-basetype="date" value="" maxlength="1024" title="Type date"/>
+</div>
+
+<div class="form-group" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime">
+  <label for="datetime899" class="formularium-label">
+    Type datetime
+  </label>
+  <input id="datetime899" type="datetime" name="datetime" class=" form-control" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" value="" maxlength="1024" title="Type datetime"/>
+</div>
+
+<div class="form-group" data-attribute="domain" data-datatype="domain" data-basetype="string">
+  <label for="domain900" class="formularium-label">
+    Type domain
+  </label>
+  <input id="domain900" type="text" name="domain" class=" form-control" data-attribute="domain" data-datatype="domain" data-basetype="string" value="" maxlength="1024" title="Type domain"/>
+</div>
+
+<div class="form-group" data-attribute="email" data-datatype="email" data-basetype="string">
+  <label for="email901" class="formularium-label">
+    Type email
+  </label>
+  <input id="email901" type="email" name="email" class=" form-control" data-attribute="email" data-datatype="email" data-basetype="string" value="" maxlength="1024" title="Type email"/>
+</div>
+
+<div class="form-group" data-attribute="file" data-datatype="file" data-basetype="file">
+  <label for="file902" class="formularium-label">
+    Type file
+  </label>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        Upload
+      </span>
+    </div>
+    <div class="custom-file">
+      <input id="file902" class="formularium-file-upload-button custom-file-input" type="file" data-attribute="file" data-datatype="file" data-basetype="file" title="Type file" data-max-size="" capture="environment"/>
+      <label class="custom-file-label formularium-file-name">
+        Choose file
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" data-attribute="float" data-datatype="float" data-basetype="number">
+  <label for="float903" class="formularium-label">
+    Type float
+  </label>
+  <input id="float903" type="number" name="float" class=" form-control" data-attribute="float" data-datatype="float" data-basetype="number" value="" title="Type float"/>
+</div>
+
+<div class="form-group" data-attribute="html" data-datatype="html" data-basetype="text">
+  <label for="html904" class="formularium-label">
+    Type html
+  </label>
+  <div id="html904" type="text" name="html" class="form-control" data-attribute="html" data-datatype="html" data-basetype="text" value="" maxlength="1024000" title="Type html">
+  </div>
+  <script>
+    var quill = new Quill('#html904', { theme: 'snow' });
+  </script>
+</div>
+
+<div class="form-group" data-attribute="integer" data-datatype="integer" data-basetype="number">
+  <label for="integer905" class="formularium-label">
+    Type integer
+  </label>
+  <input id="integer905" type="number" name="integer" class=" form-control" data-attribute="integer" data-datatype="integer" data-basetype="number" value="" title="Type integer" min="-2147483648" max="2147483647"/>
+</div>
+
+<div class="form-group" data-attribute="json" data-datatype="json" data-basetype="text">
+  <label for="json906" class="formularium-label">
+    Type json
+  </label>
+  <textarea id="json906" type="text" name="json" class="form-control" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024000" title="Type json">
+  </textarea>
+</div>
+
+<div class="form-group" data-attribute="language" data-datatype="language" data-basetype="choice">
+  <label for="language907" class="formularium-label">
+    Type language
+  </label>
+  <select id="language907" name="language" class=" custom-select" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language">
+    <option value="0" selected="selected">
+      Afaraf
+    </option>
+    <option value="1">
+      Аҧсуа
+    </option>
+    <option value="2">
+      avesta
+    </option>
+    <option value="3">
+      Afrikaans
+    </option>
+    <option value="4">
+      Akan
+    </option>
+    <option value="5">
+      አማርኛ
+    </option>
+    <option value="6">
+      Aragonés
+    </option>
+    <option value="7">
+      Anglo-Saxon (Englisc)
+    </option>
+    <option value="8">
+      العربية
+    </option>
+    <option value="9">
+      ܐܪܡܝܐ
+    </option>
+    <option value="10">
+      অসমীয়া
+    </option>
+    <option value="11">
+      Asturianu
+    </option>
+    <option value="12">
+      авар мацӀ; магӀарул мацӀ
+    </option>
+    <option value="13">
+      Aymar aru
+    </option>
+    <option value="14">
+      azərbaycan dili
+    </option>
+    <option value="15">
+      башҡорт теле
+    </option>
+    <option value="16">
+      Boarisch
+    </option>
+    <option value="17">
+      Žemaitėška
+    </option>
+    <option value="18">
+      Bikol
+    </option>
+    <option value="19">
+      Беларуская
+    </option>
+    <option value="20">
+      Беларуская (тарашкевіца)
+    </option>
+    <option value="21">
+      български език
+    </option>
+    <option value="22">
+      भोजपुरी
+    </option>
+    <option value="23">
+      Bislama
+    </option>
+    <option value="24">
+      bamanankan
+    </option>
+    <option value="25">
+      বাংলা
+    </option>
+    <option value="26">
+      བོད་ཡིག
+    </option>
+    <option value="27">
+      ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী 
+    </option>
+    <option value="28">
+      brezhoneg
+    </option>
+    <option value="29">
+      bosanski jezik
+    </option>
+    <option value="30">
+      Català
+    </option>
+    <option value="31">
+      нохчийн мотт
+    </option>
+    <option value="32">
+      Sinugboanong Binisaya
+    </option>
+    <option value="33">
+      Chamoru
+    </option>
+    <option value="34">
+      Corsu; Lingua corsa
+    </option>
+    <option value="35">
+      ᓀᐦᐃᔭᐍᐏᐣ
+    </option>
+    <option value="36">
+      česky; čeština
+    </option>
+    <option value="37">
+      ѩзыкъ словѣньскъ
+    </option>
+    <option value="38">
+      чӑваш чӗлхи
+    </option>
+    <option value="39">
+      Cymraeg
+    </option>
+    <option value="40">
+      dansk
+    </option>
+    <option value="41">
+      Deutsch
+    </option>
+    <option value="42">
+      རྫོང་ཁ
+    </option>
+    <option value="43">
+      Ɛʋɛgbɛ
+    </option>
+    <option value="44">
+      Ελληνικά
+    </option>
+    <option value="45">
+      English
+    </option>
+    <option value="46">
+      Esperanto
+    </option>
+    <option value="47">
+      Español; castellano
+    </option>
+    <option value="48">
+      Eesti keel
+    </option>
+    <option value="49">
+      euskara
+    </option>
+    <option value="50">
+      فارسی
+    </option>
+    <option value="51">
+      Fulfulde
+    </option>
+    <option value="52">
+      suomen kieli
+    </option>
+    <option value="53">
+      vosa Vakaviti
+    </option>
+    <option value="54">
+      Føroyskt
+    </option>
+    <option value="55">
+      Français
+    </option>
+    <option value="56">
+      Frysk
+    </option>
+    <option value="57">
+      Gaeilge
+    </option>
+    <option value="58">
+      Gàidhlig
+    </option>
+    <option value="59">
+      Galego
+    </option>
+    <option value="60">
+      Avañe'ẽ
+    </option>
+    <option value="61">
+      Allemanisch
+    </option>
+    <option value="62">
+      ગુજરાતી
+    </option>
+    <option value="63">
+      Gaelg; Gailck
+    </option>
+    <option value="64">
+      هَوُسَ
+    </option>
+    <option value="65">
+      עברית
+    </option>
+    <option value="66">
+      हिन्दी; हिंदी
+    </option>
+    <option value="67">
+      Hiri Motu
+    </option>
+    <option value="68">
+      Hrvatski
+    </option>
+    <option value="69">
+      Kreyòl ayisyen
+    </option>
+    <option value="70">
+      Magyar
+    </option>
+    <option value="71">
+      Հայերեն
+    </option>
+    <option value="72">
+      Otjiherero
+    </option>
+    <option value="73">
+      Interlingua
+    </option>
+    <option value="74">
+      Bahasa Indonesia
+    </option>
+    <option value="75">
+      Interlingue
+    </option>
+    <option value="76">
+      Igbo
+    </option>
+    <option value="77">
+      ꆇꉙ
+    </option>
+    <option value="78">
+      Iñupiaq; Iñupiatun
+    </option>
+    <option value="79">
+      Ido
+    </option>
+    <option value="80">
+      Íslenska
+    </option>
+    <option value="81">
+      Italiano
+    </option>
+    <option value="82">
+      ᐃᓄᒃᑎᑐᑦ
+    </option>
+    <option value="83">
+      日本語 (にほんご／にっぽんご)
+    </option>
+    <option value="84">
+      basa Jawa
+    </option>
+    <option value="85">
+      ქართული
+    </option>
+    <option value="86">
+      KiKongo
+    </option>
+    <option value="87">
+      Gĩkũyũ
+    </option>
+    <option value="88">
+      Kuanyama
+    </option>
+    <option value="89">
+      Қазақ тілі
+    </option>
+    <option value="90">
+      kalaallisut; kalaallit oqaasii
+    </option>
+    <option value="91">
+      ភាសាខ្មែរ
+    </option>
+    <option value="92">
+      ಕನ್ನಡ
+    </option>
+    <option value="93">
+      한국어 (韓國語); 조선말 (朝鮮語)
+    </option>
+    <option value="94">
+      Kanuri
+    </option>
+    <option value="95">
+      कश्मीरी; كشميري‎
+    </option>
+    <option value="96">
+      Ripoarisch
+    </option>
+    <option value="97">
+      Kurdî; كوردی‎
+    </option>
+    <option value="98">
+      коми кыв
+    </option>
+    <option value="99">
+      Kernewek
+    </option>
+    <option value="100">
+      кыргыз тили
+    </option>
+    <option value="101">
+      latine; lingua latina
+    </option>
+    <option value="102">
+      Lëtzebuergesch
+    </option>
+    <option value="103">
+      Luganda
+    </option>
+    <option value="104">
+      Limburgs
+    </option>
+    <option value="105">
+      Lingála
+    </option>
+    <option value="106">
+      ພາສາລາວ
+    </option>
+    <option value="107">
+      lietuvių kalba
+    </option>
+    <option value="108">
+      Luba-Katanga
+    </option>
+    <option value="109">
+      latviešu valoda
+    </option>
+    <option value="110">
+      Malagasy fiteny
+    </option>
+    <option value="111">
+      Kajin M̧ajeļ
+    </option>
+    <option value="112">
+      te reo Māori
+    </option>
+    <option value="113">
+      македонски јазик
+    </option>
+    <option value="114">
+      മലയാളം
+    </option>
+    <option value="115">
+      Монгол
+    </option>
+    <option value="116">
+      Молдовеняскэ
+    </option>
+    <option value="117">
+      मराठी
+    </option>
+    <option value="118">
+      bahasa Melayu; بهاس ملايو‎
+    </option>
+    <option value="119">
+      Malti
+    </option>
+    <option value="120">
+      ဗမာစာ
+    </option>
+    <option value="121">
+      Ekakairũ Naoero
+    </option>
+    <option value="122">
+      Nāhuatl
+    </option>
+    <option value="123">
+      Nnapulitano
+    </option>
+    <option value="124">
+      Norsk bokmål
+    </option>
+    <option value="125">
+      Plattdüütsch
+    </option>
+    <option value="126">
+      Nedersaksisch
+    </option>
+    <option value="127">
+      नेपाली
+    </option>
+    <option value="128">
+      Owambo
+    </option>
+    <option value="129">
+      Nederlands
+    </option>
+    <option value="130">
+      Norsk nynorsk
+    </option>
+    <option value="131">
+      Norsk
+    </option>
+    <option value="132">
+      Diné bizaad; Dinékʼehǰí
+    </option>
+    <option value="133">
+      chiCheŵa; chinyanja
+    </option>
+    <option value="134">
+      Occitan
+    </option>
+    <option value="135">
+      ᐊᓂᔑᓈᐯᒧᐎᓐ
+    </option>
+    <option value="136">
+      Afaan Oromoo
+    </option>
+    <option value="137">
+      ଓଡ଼ିଆ
+    </option>
+    <option value="138">
+      Ирон æвзаг
+    </option>
+    <option value="139">
+      ਪੰਜਾਬੀ; پنجابی‎
+    </option>
+    <option value="140">
+      Kapampangan
+    </option>
+    <option value="141">
+      पाऴि
+    </option>
+    <option value="142">
+      Polski
+    </option>
+    <option value="143">
+      Piemontèis
+    </option>
+    <option value="144">
+      پښتو
+    </option>
+    <option value="145">
+      Português
+    </option>
+    <option value="146">
+      Português (Brasil)
+    </option>
+    <option value="147">
+      Runa Simi; Kichwa
+    </option>
+    <option value="148">
+      rumantsch grischun
+    </option>
+    <option value="149">
+      kiRundi
+    </option>
+    <option value="150">
+      Română
+    </option>
+    <option value="151">
+      русский язык
+    </option>
+    <option value="152">
+      Ikinyarwanda
+    </option>
+    <option value="153">
+      संस्कृतम्
+    </option>
+    <option value="154">
+      Sardu
+    </option>
+    <option value="155">
+      Sicilianu
+    </option>
+    <option value="156">
+      सिन्धी; سنڌي، سندھی‎
+    </option>
+    <option value="157">
+      Davvisámegiella
+    </option>
+    <option value="158">
+      yângâ tî sängö
+    </option>
+    <option value="159">
+      Srpskohrvatski; Српскохрватски
+    </option>
+    <option value="160">
+      සිංහල
+    </option>
+    <option value="161">
+      slovenčina
+    </option>
+    <option value="162">
+      slovenščina
+    </option>
+    <option value="163">
+      gagana fa'a Samoa
+    </option>
+    <option value="164">
+      chiShona
+    </option>
+    <option value="165">
+      Soomaaliga; af Soomaali
+    </option>
+    <option value="166">
+      Shqip
+    </option>
+    <option value="167">
+      српски језик
+    </option>
+    <option value="168">
+      SiSwati
+    </option>
+    <option value="169">
+      Sesotho
+    </option>
+    <option value="170">
+      Basa Sunda
+    </option>
+    <option value="171">
+      svenska
+    </option>
+    <option value="172">
+      Kiswahili
+    </option>
+    <option value="173">
+      தமிழ்
+    </option>
+    <option value="174">
+      తెలుగు
+    </option>
+    <option value="175">
+      тоҷикӣ; toğikī; تاجیکی‎
+    </option>
+    <option value="176">
+      ไทย
+    </option>
+    <option value="177">
+      ትግርኛ
+    </option>
+    <option value="178">
+      Türkmen; Түркмен
+    </option>
+    <option value="179">
+      Tagalog
+    </option>
+    <option value="180">
+      Setswana
+    </option>
+    <option value="181">
+      faka Tonga
+    </option>
+    <option value="182">
+      Türkçe
+    </option>
+    <option value="183">
+      Xitsonga
+    </option>
+    <option value="184">
+      татарча; tatarça; تاتارچا‎
+    </option>
+    <option value="185">
+      Twi
+    </option>
+    <option value="186">
+      Reo Mā`ohi
+    </option>
+    <option value="187">
+      Uyƣurqə; ئۇيغۇرچە‎
+    </option>
+    <option value="188">
+      Українська
+    </option>
+    <option value="189">
+      اردو
+    </option>
+    <option value="190">
+      O'zbek; Ўзбек; أۇزبېك‎
+    </option>
+    <option value="191">
+      Tshivenḓa
+    </option>
+    <option value="192">
+      Vèneto
+    </option>
+    <option value="193">
+      Tiếng Việt
+    </option>
+    <option value="194">
+      Volapük
+    </option>
+    <option value="195">
+      Walon
+    </option>
+    <option value="196">
+      Wollof
+    </option>
+    <option value="197">
+      isiXhosa
+    </option>
+    <option value="198">
+      ייִדיש
+    </option>
+    <option value="199">
+      Yorùbá
+    </option>
+    <option value="200">
+      Saɯ cueŋƅ; Saw cuengh
+    </option>
+    <option value="201">
+      中文
+    </option>
+    <option value="202">
+      粵語 
+    </option>
+    <option value="203">
+      isiZulu
+    </option>
+  </select>
+</div>
+
+<div class="form-group" data-attribute="phone" data-datatype="phone" data-basetype="string">
+  <label for="phone908" class="formularium-label">
+    Type phone
+  </label>
+  <input id="phone908" type="tel" name="phone" class=" form-control" data-attribute="phone" data-datatype="phone" data-basetype="string" value="" maxlength="1024" title="Type phone"/>
+</div>
+
+<div class="form-group" data-attribute="string" data-datatype="string" data-basetype="string">
+  <label for="string909" class="formularium-label">
+    Type string
+  </label>
+  <input id="string909" type="text" name="string" class=" form-control" data-attribute="string" data-datatype="string" data-basetype="string" value="" maxlength="1024" title="Type string"/>
+</div>
+
+<div class="form-group" data-attribute="text" data-datatype="text" data-basetype="string">
+  <label for="text910" class="formularium-label">
+    Type text
+  </label>
+  <textarea id="text910" type="text" name="text" class="form-control" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024000" title="Type text">
+  </textarea>
+</div>
+
+
+<div class="form-group" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer">
+  <label for="uinteger911" class="formularium-label">
+    Type uinteger
+  </label>
+  <input id="uinteger911" type="number" name="uinteger" class=" form-control" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" value="" title="Type uinteger" min="0" max="4294967296"/>
+</div>
+
+<div class="form-group" data-attribute="url" data-datatype="url" data-basetype="url">
+  <label for="url912" class="formularium-label">
+    Type url
+  </label>
+  <input id="url912" type="url" name="url" class=" form-control" data-attribute="url" data-datatype="url" data-basetype="url" value="" maxlength="1024" title="Type url"/>
+</div>
+
+<div class="form-group" data-attribute="usmall" data-datatype="usmall" data-basetype="integer">
+  <label for="usmall913" class="formularium-label">
+    Type usmall
+  </label>
+  <input id="usmall913" type="number" name="usmall" class=" form-control" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" value="" title="Type usmall" min="0" max="65536"/>
+</div>
+
+<div class="form-group" data-attribute="uuid" data-datatype="uuid" data-basetype="string">
+  <label for="uuid914" class="formularium-label">
+    Type uuid
+  </label>
+  <input id="uuid914" type="text" name="uuid" class=" form-control" data-attribute="uuid" data-datatype="uuid" data-basetype="string" value="" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$"/>
+</div>
+
+</div></section>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+    <footer style="margin-top: 2em; font-size: small">
+        Generated with <a href="https://github.com/Corollarium/Formularium/">Formularium</a>.
+    </footer>
+</div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+
+</body></html>
