@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\HTML\Renderable;
 
@@ -15,23 +15,23 @@ class Renderable_string extends Renderable
     
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
-    public function editable($value, Field $f, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $input = new HTMLElement('input');
 
-        $extensions = $f->getExtensions();
-        $validators = $f->getValidators();
+        $extensions = $field->getExtensions();
+        $validators = $field->getValidators();
         $input->setAttributes([
-            'id' => $f->getName() . Framework::counter(),
+            'id' => $field->getName() . Framework::counter(),
             'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'text'),
-            'name' => $f->getName(),
+            'name' => $field->getName(),
             'class' => '',
-            'data-attribute' => $f->getName(),
-            'data-datatype' => $f->getDatatype()->getName(),
-            'data-basetype' => $f->getDatatype()->getBasetype(),
+            'data-attribute' => $field->getName(),
+            'data-datatype' => $field->getDatatype()->getName(),
+            'data-basetype' => $field->getDatatype()->getBasetype(),
             'value' => $value,
             'maxlength' => static::MAX_STRING_SIZE,
-            'title' => $f->getExtension(static::LABEL, '')
+            'title' => $field->getExtension(static::LABEL, '')
         ]);
 
         if (isset($extensions[static::PLACEHOLDER])) {
@@ -41,7 +41,7 @@ class Renderable_string extends Renderable
             $input->setAttribute('required', 'required');
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($f->getExtension($v, false)) {
+            if ($field->getExtension($v, false)) {
                 $input->setAttribute($v, $v);
             }
         }
@@ -58,6 +58,6 @@ class Renderable_string extends Renderable
             $input->setAttribute('autocomplete', 'off');
         }
 
-        return $this->container($input, $f);
+        return $this->container($input, $field);
     }
 }
