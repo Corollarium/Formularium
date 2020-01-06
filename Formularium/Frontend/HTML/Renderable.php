@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\HTML;
 
@@ -15,7 +15,9 @@ abstract class Renderable extends \Formularium\Renderable implements \Formulariu
             $container->prependContent(new HTMLElement('label', ['for' => $content->getAttribute('id'), 'class' => 'formularium-label'], $extensions[Renderable::LABEL]));
         }
         if (array_key_exists(Renderable::COMMENT, $extensions)) {
-            $container->appendContent(new HTMLElement('div', ['class' => 'formularium-comment'], $extensions[Renderable::COMMENT]));
+            $id = 'comment' . Framework::counter();
+            $container->appendContent(new HTMLElement('div', ['class' => 'formularium-comment', 'id' => $id], $extensions[Renderable::COMMENT]));
+            $content->addAttribute('aria-describedby', $id);
         }
         return $container;
     }
