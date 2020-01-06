@@ -4,6 +4,7 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 use Respect\Validation\Validator;
 
 class Datatype_url extends \Formularium\Datatype
@@ -18,7 +19,7 @@ class Datatype_url extends \Formularium\Datatype
         return static::faker()->url;
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         $value = trim((string)$value);
         $this->validateURL($value);

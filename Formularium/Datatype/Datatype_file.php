@@ -3,6 +3,7 @@
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 
 class Datatype_file extends \Formularium\Datatype
@@ -19,7 +20,7 @@ class Datatype_file extends \Formularium\Datatype
         return '';
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
         $max_size = $field->getValidator(self::MAX_SIZE, 0);
         if ($max_size) {

@@ -4,6 +4,7 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 use Respect\Validation\Validator as v;
 
 class Datatype_phone extends Datatype_string
@@ -13,9 +14,9 @@ class Datatype_phone extends Datatype_string
         parent::__construct($typename, $basetype);
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
-        $value = parent::validate($value, $field);
+        $value = parent::validate($value, $field, $model);
         
         $value = mb_strtolower($value);
 

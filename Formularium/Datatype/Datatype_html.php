@@ -3,6 +3,7 @@
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use HTMLPurifier;
 use HTMLPurifier_Config;
 
@@ -20,7 +21,7 @@ class Datatype_html extends Datatype_text
         return '<p>HTML <span>' . parent::getRandom() . '</span>' . parent::getRandom() . '</p>';
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
         $text = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
         if ($text === false) {

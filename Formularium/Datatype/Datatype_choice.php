@@ -1,8 +1,9 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 
 abstract class Datatype_choice extends \Formularium\Datatype
@@ -27,17 +28,14 @@ abstract class Datatype_choice extends \Formularium\Datatype
              * @var string $index
              */
             $index = array_rand($this->choices, 1);
-            return $this->choices[$index];
+            return $index;
         } else {
             $choiceValues = [];
             /**
              * @var array $rand_keys
              */
             $rand_keys = array_rand($this->choices, $total);
-            foreach ($rand_keys as $r) {
-                $choiceValues[] = $this->choices[$r];
-            }
-            return $choiceValues;
+            return $rand_keys;
         }
     }
 
@@ -46,12 +44,12 @@ abstract class Datatype_choice extends \Formularium\Datatype
         return $this->choices;
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if (!is_string($value) && !is_int($value)) {
             throw new ValidatorException('Invalid choice value ' . htmlspecialchars(print_r($value, true)));
         }
-        if ($value === '' || in_array($value, $this->choices)) {
+        if ($value === '' || array_key_exists($value, $this->choices)) {
             return $value;
         }
         throw new ValidatorException('Invalid choice value set: ' . htmlspecialchars((string)$value));

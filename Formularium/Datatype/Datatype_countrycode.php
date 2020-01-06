@@ -1,9 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Field;
 use Formularium\Exception\ValidatorException;
+use Formularium\Model;
 
 class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
 {
@@ -320,7 +321,8 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
 
     private function setChoices(string $code): void
     {
-        $this->choices = array_column(self::COUNTRY_CODES, self::SET_INDEXES[$code]);
+        $col = array_column(self::COUNTRY_CODES, self::SET_INDEXES[$code]);
+        $this->choices = array_combine($col, $col);
     }
 
     public function __construct(string $typename = 'countrycode', string $basetype = 'choice')
@@ -335,9 +337,9 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
         return parent::getRandom($params);
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
         $this->setChoices($field->getValidator(self::CODE_TYPE, self::ISO_ALPHA3));
-        return parent::validate($value, $field);
+        return parent::validate($value, $field, $model);
     }
 }

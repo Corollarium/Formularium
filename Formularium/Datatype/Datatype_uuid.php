@@ -4,6 +4,7 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\Exception;
 use Formularium\Field;
+use Formularium\Model;
 
 class Datatype_uuid extends Datatype_string
 {
@@ -30,7 +31,7 @@ class Datatype_uuid extends Datatype_string
         );
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
         $value = (string)$value;
         if ($value === '' || preg_match('/' . self::UUID_REGEX . '/i', $value)) {

@@ -4,6 +4,7 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 
 class Datatype_color extends Datatype_string
 {
@@ -17,7 +18,7 @@ class Datatype_color extends Datatype_string
         return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if (!is_string($value)) {
             throw new ValidatorException('Only hexadecimal colors are allowed');

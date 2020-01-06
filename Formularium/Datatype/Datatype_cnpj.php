@@ -1,8 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
+
 use Formularium\Exception\ValidatorException;
 use Respect\Validation\Validator;
 
@@ -20,7 +22,7 @@ class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
         return $faker->cnpj;
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if ($value === '' || Validator::cnpj()->validate($value)) {
             return $value;

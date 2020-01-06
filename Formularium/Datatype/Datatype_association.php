@@ -4,6 +4,7 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 
 abstract class Datatype_association extends \Formularium\Datatype
 {
@@ -24,7 +25,7 @@ abstract class Datatype_association extends \Formularium\Datatype
         throw new ValidatorException('Implementation defined');
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         throw new ValidatorException('Invalid boolean value');
     }

@@ -71,10 +71,11 @@ abstract class Datatype
      *
      * @param mixed $value
      * @param Field $field
+     * @param Model $model The entire model, if you your field depends on other things of the model. may be null.
      * @throws Exception If invalid, with the message.
      * @return mixed
      */
-    abstract public function validate($value, Field $field);
+    abstract public function validate($value, Field $field, Model $model = null);
 
     /**
      * Returns a random valid value for this datatype, considering the validators

@@ -1,9 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 use Respect\Validation\Validator;
 
 class Datatype_email extends Datatype_string
@@ -18,7 +19,7 @@ class Datatype_email extends Datatype_string
         return static::faker()->email;
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if ($value === '' || Validator::email()->validate($value)) {
             return $value;

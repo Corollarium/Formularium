@@ -1,9 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 use Respect\Validation\Validator as V;
 
 class Datatype_float extends \Formularium\Datatype\Datatype_number
@@ -29,7 +30,7 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
         return (float)number_format($rand, 3);
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if (is_float($value) || V::floatVal()->validate($value)) {
             return $value;

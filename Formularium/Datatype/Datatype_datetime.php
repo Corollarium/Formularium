@@ -1,10 +1,11 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use DateTime;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 use Respect\Validation\Validator;
 
 class Datatype_datetime extends \Formularium\Datatype
@@ -34,7 +35,7 @@ class Datatype_datetime extends \Formularium\Datatype
         return $v->format(\DateTime::ISO8601);
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if ($value === '') {
             return $value;

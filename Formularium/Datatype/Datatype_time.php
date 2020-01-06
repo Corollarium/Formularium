@@ -3,6 +3,7 @@
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 use Respect\Validation\Validator;
 
@@ -19,7 +20,7 @@ class Datatype_time extends \Formularium\Datatype
         return $faker->time();
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if ($value === '') {
             return $value;

@@ -1,9 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 use Respect\Validation\Validator as V;
 
 class Datatype_integer extends \Formularium\Datatype\Datatype_number
@@ -44,9 +45,9 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
         return mt_rand($min, $max);
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
-        $validators = $f->getValidators();
+        $validators = $field->getValidators();
         $min = $validators[static::MIN] ?? $this->minvalue;
         $max = $validators[static::MAX] ?? $this->maxvalue;
 

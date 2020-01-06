@@ -19,6 +19,13 @@ class Model
      */
     protected $fields;
 
+
+    /**
+     * Model data being processed.
+     * @var array
+     */
+    protected $_data;
+
     /**
      *
      * @param string $name
@@ -84,6 +91,11 @@ class Model
         return $this->fields;
     }
 
+    public function getData(): array
+    {
+        return $this->_data;
+    }
+
     /**
      * Validates a set of data against this model.
      *
@@ -92,6 +104,7 @@ class Model
      */
     public function validate(array $data): array
     {
+        $this->_data = $data;
         $validate = [];
         $errors = [];
         foreach ($data as $name => $d) {
@@ -101,7 +114,7 @@ class Model
             }
             $field = $this->fields[$name];
             try {
-                $validate[$name] = $field->getDatatype()->validate($d, $field);
+                $validate[$name] = $field->getDatatype()->validate($d, $field, $this);
             } catch (Exception $e) {
                 $errors[$name] = $e->getMessage();
             }
@@ -114,6 +127,7 @@ class Model
                 $errors[$name] = "Field $name is missing";
             }
         }
+        $this->_data = [];
         return ['validated' => $validate, 'errors' => $errors];
     }
 

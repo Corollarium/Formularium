@@ -1,9 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
+use Formularium\Model;
 
 class Datatype_bool extends \Formularium\Datatype
 {
@@ -27,7 +28,7 @@ class Datatype_bool extends \Formularium\Datatype
         return $value == true ? 'True' : 'False';
     }
 
-    public function validate($value, Field $f)
+    public function validate($value, Field $field, Model $model = null)
     {
         if (is_string($value)) {
             if (strcasecmp($value, 'true') == 0 || $value == '1') {
