@@ -48,7 +48,7 @@ class Renderable_file extends \Formularium\Renderable
                                 $input,
                                 HTMLElement::factory(
                                     'label',
-                                    ['class' => "custom-file-label"],
+                                    ['class' => "custom-file-label formularium-file-name"],
                                     'Choose file'
                                 )
                             ]

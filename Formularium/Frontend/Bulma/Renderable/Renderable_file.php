@@ -57,7 +57,7 @@ class Renderable_file extends Renderable
                         ),
                         HTMLElement::factory(
                             'span',
-                            ['class' => "file-name"],
+                            ['class' => "formularium-file-name file-name"],
                             '' // TODO
                         )
                     ]

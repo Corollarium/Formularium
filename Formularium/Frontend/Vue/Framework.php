@@ -294,6 +294,11 @@ EOF;
 module.exports = {
     data: function () {
         return {{jsonData}};
+    },
+    methods: {
+        changedFile(name, event) {
+            console.log(name, event);
+        }
     }
 };
 </script>
@@ -311,7 +316,12 @@ EOF;
             $script = <<<EOF
 var app = new Vue({
     el: '#$id',
-    data: $jsonData
+    data: $jsonData,
+    methods: {
+        changedFile(name, event) {
+            console.log(name, event);
+        }
+    }
 });
 EOF;
             $s = new HTMLElement('script', [], $script, true);
