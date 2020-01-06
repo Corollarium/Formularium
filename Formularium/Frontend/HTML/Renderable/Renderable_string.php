@@ -12,6 +12,7 @@ use Formularium\HTMLElement;
 class Renderable_string extends Renderable
 {
     public const MAX_STRING_SIZE = 1024;
+    public const PASSWORD = 'PASSWORD';
     
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
@@ -23,7 +24,7 @@ class Renderable_string extends Renderable
         $validators = $field->getValidators();
         $input->setAttributes([
             'id' => $field->getName() . Framework::counter(),
-            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'text'),
+            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : ($extensions[static::PASSWORD] ?? false ? 'password' : 'text')),
             'name' => $field->getName(),
             'class' => '',
             'data-attribute' => $field->getName(),
