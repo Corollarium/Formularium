@@ -52,7 +52,19 @@ class Datatype_date extends \Formularium\Datatype
 
     public function validate($value, Field $f)
     {
-        if ($value === '' || Validator::date()->validate($value)) {
+        if ($value === '') {
+            return $value;
+        }
+        $val = Validator::date();
+        $min = $f->getValidator(static::MIN, false);
+        if ($min) {
+            $val->min($min);
+        }
+        $max = $f->getValidator(static::MAX, false);
+        if ($max) {
+            $val->max($max);
+        }
+        if ($val->validate($value)) {
             return $value;
         }
         throw new ValidatorException(
