@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\HTML\Renderable;
 
@@ -17,6 +17,8 @@ class Renderable_choice extends Renderable
     public const LAYOUT_RADIO = 'inline';
     public const LAYOUT_RADIO_INLINE = 'inline';
 
+    protected $format_chooser_default = self::FORMAT_CHOOSER_SELECT;
+
     use \Formularium\Frontend\HTML\RenderableViewableTrait {
         viewable as _viewable;
     }
@@ -30,7 +32,7 @@ class Renderable_choice extends Renderable
 
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $format = $field->getExtension(static::FORMAT_CHOOSER, static::FORMAT_CHOOSER_SELECT);
+        $format = $field->getExtension(static::FORMAT_CHOOSER, $this->format_chooser_default);
         
         if ($format == static::FORMAT_CHOOSER_SELECT) {
             $element = $this->editableSelect($value, $field, $previous);
