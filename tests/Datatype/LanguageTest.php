@@ -44,4 +44,15 @@ class DatatypeLanguage_TestCase extends DatatypeBaseTestCase
             ]
         ];
     }
+
+    public function testChoice()
+    {
+        /**
+         * @var Datatype_language $d
+         */
+        $d = $this->getDataType();
+        $this->assertIsArray($d->getChoices());
+        $random = $d->getRandom(['total' => 3]);
+        $this->assertEquals(3, count($random));
+    }
 }
