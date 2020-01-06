@@ -251,7 +251,7 @@ EOF;
                 $m
             );
         } else {
-            $id = 'vueapp';
+            $id = 'vueapp' . static::counter();
             $t = new HTMLElement(self::getViewableContainerTag(), ['id' => $id], $viewableForm, true);
             $script = <<<EOF
 var app = new Vue({
