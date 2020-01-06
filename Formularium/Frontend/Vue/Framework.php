@@ -13,6 +13,9 @@ class Framework extends \Formularium\Framework
     const VUE_MODE_SINGLE_FILE = 'VUE_MODE_SINGLE_FILE';
     const VUE_MODE_EMBEDDED = 'VUE_MODE_EMBEDDED';
 
+    const VUE_PROP = 'VUE_PROP';
+
+
     /**
      * @var string
      */
@@ -116,6 +119,30 @@ class Framework extends \Formularium\Framework
     }
     
     /**
+     * Get {{containerTag}}
+     *
+     * @return  string
+     */
+    public function getViewableTemplate()
+    {
+        return $this->viewableTemplate;
+    }
+
+    /**
+     * Set {{containerTag}}
+     *
+     * @param  string  $viewableTemplate  {{containerTag}}
+     *
+     * @return  self
+     */
+    public function setViewableTemplate(string $viewableTemplate)
+    {
+        $this->viewableTemplate = $viewableTemplate;
+
+        return $this;
+    }
+    
+    /**
      * Sets the vue render mode, single file component or embedded
      *
      * @param string $mode self::VUE_MODE_EMBEDDED or self::VUE_MODE_SINGLE_FILE
@@ -158,7 +185,7 @@ class Framework extends \Formularium\Framework
     {
         $props = [];
         foreach ($m->getFields() as $field) {
-            if ($field->getExtension('VUEPROP')) { // TODO
+            if ($field->getExtension(self::VUE_PROP, false)) { // TODO
                 $p = [
                     'type' => $this->mapType($field->getDatatype()),
                 ];
