@@ -17,6 +17,11 @@ class Renderable_choice extends Renderable
     public const LAYOUT_RADIO = 'inline';
     public const LAYOUT_RADIO_INLINE = 'inline';
 
+    /**
+     * Default value for format chooset
+     *
+     * @var string
+     */
     protected $format_chooser_default = self::FORMAT_CHOOSER_SELECT;
 
     use \Formularium\Frontend\HTML\RenderableViewableTrait {

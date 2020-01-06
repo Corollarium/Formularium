@@ -10,6 +10,14 @@ trait RenderableBootstrapInputTrait
 {
     use RenderableBootstrapTrait;
 
+    /**
+     * Subcall of wrapper editable()
+     *
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         return $previous;

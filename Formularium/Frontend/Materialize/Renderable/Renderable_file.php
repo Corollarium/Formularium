@@ -10,6 +10,14 @@ class Renderable_file extends \Formularium\Renderable
 {
     use RenderableMaterializeInputTrait;
     
+    /**
+     * Subcall of wrapper editable()
+     *
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         // add extra classes

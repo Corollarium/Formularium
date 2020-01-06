@@ -21,6 +21,14 @@ class Renderable_file extends Renderable
 
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
+    /**
+     * Subcall of wrapper editable() from RenderableMaterializeTrait
+     *
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $extensions = $field->getExtensions();

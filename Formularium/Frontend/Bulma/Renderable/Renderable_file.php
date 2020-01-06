@@ -19,6 +19,14 @@ class Renderable_file extends Renderable
         return $previous;
     }
 
+    /**
+     * Subcall of wrapper editable()
+     *
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $extensions = $field->getExtensions();
