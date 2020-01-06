@@ -51,6 +51,6 @@ jobs:
         provider: pages:git
         token: ${GITHUB_TOKEN}
         edge: 
-          branch: octokit-release
+          branch: octokit-latest
         verbose: true
         local_dir: docs/
