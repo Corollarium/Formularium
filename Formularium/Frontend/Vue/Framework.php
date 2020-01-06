@@ -61,6 +61,17 @@ class Framework extends \Formularium\Framework
     }
 
     /**
+     * Static counter to generate unique ids.
+     *
+     * @return integer
+     */
+    public static function counter(): int
+    {
+        static $counter = 0;
+        return $counter++;
+    }
+
+    /**
      * Get the tag used as container for fields in viewable()
      *
      * @return  string
@@ -295,7 +306,7 @@ EOF;
                 $m
             );
         } else {
-            $id = 'vueapp';
+            $id = 'vueapp' . static::counter();
             $t = new HTMLElement($editableContainerTag, ['id' => $id], $editableForm, true);
             $script = <<<EOF
 var app = new Vue({
