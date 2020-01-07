@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium;
 
@@ -12,10 +12,9 @@ trait DatatypeRandomTrait
      * @param integer $maxletters
      * @return string
      */
-    public static function getRandomString($minLetters = 5, $maxletters = 15): string
+    public static function getRandomString($minLetters = 5, $maxletters = 15, $source = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"): string
     {
         $pattern = 'R';
-        $source = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $sourceLen = mb_strlen($source);
         $numberOfLetters = rand($minLetters, $maxletters);
         for ($i = 0; $i < $numberOfLetters - 1; $i++) {
