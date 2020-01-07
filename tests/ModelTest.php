@@ -109,6 +109,30 @@ EOF;
         $this->assertEmpty($v['errors']);
     }
 
+    public function testFilled()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someString' => [
+                    'datatype' => 'string',
+                    'validators' => [
+                        Datatype::FILLED => true,
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // filled
+        $v = $model->validate(['someString' => '']);
+        $this->assertArrayHasKey('someString', $v['errors']);
+
+        // ok
+        $v = $model->validate(['someString' => 'aa']);
+        $this->assertEmpty($v['errors']);
+    }
+
     public function testRandom()
     {
         $modelData = [

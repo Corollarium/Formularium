@@ -113,6 +113,14 @@ class Model
                 continue;
             }
             $field = $this->fields[$name];
+
+            if ($field->getValidators()[Datatype::FILLED] ?? false) {
+                if (empty($d)) {
+                    $errors[$name] = "Field $name is empty";
+                    continue;
+                }
+            }
+
             try {
                 $validate[$name] = $field->getDatatype()->validate($d, $field, $this);
             } catch (Exception $e) {

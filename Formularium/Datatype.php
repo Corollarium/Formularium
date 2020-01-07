@@ -12,8 +12,15 @@ abstract class Datatype
 {
     use DatatypeRandomTrait;
 
-    // some basic validators
+    /**
+     * Must be present in data, but may be empty.
+     */
     public const REQUIRED = "required";
+
+    /**
+     * Must be present in data and be not empty.
+     */
+    public const FILLED = "filled";
 
     /**
      * @var string
