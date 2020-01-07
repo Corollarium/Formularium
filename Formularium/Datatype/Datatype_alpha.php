@@ -26,8 +26,8 @@ class Datatype_alpha extends \Formularium\Datatype\Datatype_string
     public function validate($value, Field $field, Model $model = null)
     {
         $value = parent::validate($value, $field, $model);
-        if (!preg_match('/^[\pL\pM]+$/u', $value)) {
-            throw new ValidatorException('Use only alphabetic characters.');
+        if ($value !== '' && !preg_match('/^[\pL\pM]+$/u', $value)) {
+            throw new ValidatorException('Use only alphabetic characters.' . $value);
         }
         return $value;
     }

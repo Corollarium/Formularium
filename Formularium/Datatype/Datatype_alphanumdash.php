@@ -26,7 +26,7 @@ class Datatype_alphanumdash extends \Formularium\Datatype\Datatype_string
     public function validate($value, Field $field, Model $model = null)
     {
         $value = parent::validate($value, $field, $model);
-        if (!preg_match('/^[\pL\pM\pN_-]+$/u', $value)) {
+        if ($value !== '' && !preg_match('/^[\pL\pM\pN_-]+$/u', $value)) {
             throw new ValidatorException('Use only alpha-numeric characters, dashes, and underscores.');
         }
         return $value;
