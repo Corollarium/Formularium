@@ -18,9 +18,23 @@ abstract class Datatype
     public const REQUIRED = "required";
 
     /**
-     * Must be present in data and be not empty.
+     * May not be present, but if it is must not be empty.
      */
     public const FILLED = "filled";
+
+    /**
+     */
+    public const REQUIRED_IF = "required_if";
+
+    /**
+     * The field under validation must be present and not empty only if any of the other specified fields are present.
+     */
+    public const REQUIRED_WITH = "required_with";
+
+    /**
+     * The field under validation must be present and not empty only if all of the other specified fields are present.
+     */
+    public const REQUIRED_WITH_ALL = "required_with_all";
 
     /**
      * @var string

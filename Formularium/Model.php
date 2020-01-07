@@ -108,15 +108,47 @@ class Model
         $validate = [];
         $errors = [];
         foreach ($data as $name => $d) {
+            // expected?
             if (!array_key_exists($name, $this->fields)) {
                 $errors[$name] = "Field $name does not exist in this model";
                 continue;
             }
+
             $field = $this->fields[$name];
 
+            // must be filled?
             if ($field->getValidators()[Datatype::FILLED] ?? false) {
                 if (empty($d)) {
                     $errors[$name] = "Field $name is empty";
+                    continue;
+                }
+            }
+
+            if ($field->getValidators()[Datatype::REQUIRED_WITH] ?? false) {
+                $expectedFields = $field->getValidators()[Datatype::REQUIRED_WITH];
+                $found = false;
+                foreach ($expectedFields as $ef) {
+                    if (array_key_exists($data, $ef)) {
+                        $found = true;
+                    }
+                }
+                if (!$found) {
+                    $errors[$name] = "Field $name is required when at least one of fields " . join(',', $expectedFields . ' are present');
+                    continue;
+                }
+            }
+
+            if ($field->getValidators()[Datatype::REQUIRED_WITH_ALL] ?? false) {
+                $expectedFields = $field->getValidators()[Datatype::REQUIRED_WITH_ALL];
+                $found = true;
+                foreach ($expectedFields as $ef) {
+                    if (!array_key_exists($data, $ef)) {
+                        $found = false;
+                        break;
+                    }
+                }
+                if (!$found) {
+                    $errors[$name] = "Field $name is required when at all fields " . join(',', $expectedFields . ' are present');
                     continue;
                 }
             }
