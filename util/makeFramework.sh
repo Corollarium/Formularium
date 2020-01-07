@@ -2,6 +2,7 @@
 
 FRAMEWORK=$1
 INHERIT=${2:-\\Formularium\\Datatype}
+DATATYPES=${3:-`ls Formularium/Datatype/`}
 
 mkdir -p Formularium/Frontend/$FRAMEWORK/Renderable
 
@@ -23,8 +24,13 @@ class Framework extends \Formularium\Framework
 EOF
 fi
 
-for datatype in `ls Formularium/Datatype/`
+for datatype in $DATATYPES
 do
+    if [ ! -f "Formularium/Datatype/$FILENAME" ]
+    then
+        echo "Cannot find Formularium/Datatype/$datatype. Try using the full filename: Datatype_xxx.php"
+        continue;
+    fi
     RENDERABLENAME=$((sed 's|\.php$||i' <<< "$datatype") | sed 's/Datatype/Renderable/')
     FILENAME="Formularium/Frontend/$FRAMEWORK/Renderable/$RENDERABLENAME.php"
 
