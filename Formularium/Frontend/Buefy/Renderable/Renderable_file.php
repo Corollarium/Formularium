@@ -23,11 +23,11 @@ class Renderable_file extends \Formularium\Renderable
             'v-model' => $field->getName(),
             'drag-drop' => ''
         ];
-        if ($extensions[HTMLRenderable_file::ACCEPT] ?? false) {
-            if (is_array($extensions[HTMLRenderable_file::ACCEPT])) {
-                $accept = join(',', $extensions[HTMLRenderable_file::ACCEPT]);
+        if ($extensions[Datatype_file::ACCEPT] ?? false) {
+            if (is_array($extensions[Datatype_file::ACCEPT])) {
+                $accept = join(',', $extensions[Datatype_file::ACCEPT]);
             } else {
-                $accept = $extensions[HTMLRenderable_file::ACCEPT];
+                $accept = $extensions[Datatype_file::ACCEPT];
             }
             $inputAtts['accept'] = htmlspecialchars($accept);
         }
