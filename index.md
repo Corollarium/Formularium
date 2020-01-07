@@ -7,6 +7,12 @@ Forms are generated from a simple structure, which can be serialized as JSON. It
 Check:
 - [kitchen sink demo](https://corollarium.github.io/Formularium/kitchensink)
 - [a basic hello world example in pure PHP](https://github.com/Corollarium/Formularium-example)
+
+## Documentation
+
+- [getting started: how to declare your models](model.md)
+- [base validators available for all datatypes](basevalidator.md)
+- [base extensions available for all datatypes](baseextension.md)
 - [how to create your own datatype](datatype.md)
 - [how to add support to your own frontend framework](frontend.md)
 
@@ -17,6 +23,8 @@ Install with composer:
 ```
 composer required Corollarium/Formularium
 ```
+
+Here's a minimal sample:
 
 ```php
 // set your framework composition statically.
@@ -29,9 +37,11 @@ $modelData = [
     'fields' => [
         'myString' => [
             'datatype' => 'string',
+            'validators' => [ 
+                Datatype_string::MIN_LENGTH => 3,
+                Datatype_string::MAX_LENGTH => 30,
+            ],
             'extensions' => [
-                Renderable_string::MIN_LENGTH => 3,
-                Renderable_string::MAX_LENGTH => 30,
                 Renderable::LABEL => 'This is some string',
                 Renderable::COMMENT => 'Some text explaining this field',
                 Renderable::PLACEHOLDER => "Type here"
@@ -39,9 +49,11 @@ $modelData = [
         ],
         'someInteger' => [
             'datatype' => 'integer',
-            'extensions' => [
+            'validators' => [ 
                 Datatype_integer::MIN => 4,
-                Datatype_integer::MAX => 30,
+                Datatype_integer::MAX => 30
+            ],
+            'extensions' => [
                 Renderable_number::STEP => 2,
                 Renderable::LABEL => 'Some integer',
                 Renderable::PLACEHOLDER => "Type here"
