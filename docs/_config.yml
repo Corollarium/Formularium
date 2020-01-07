@@ -1,4 +1,4 @@
-include: 
+includes: 
   - coverage-report
   - coverage-report/.css
   - coverage-report/.icons
