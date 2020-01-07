@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 $shortopts  = "d:p::b::t";
 $longopts  = array(
@@ -36,6 +36,7 @@ $datatypeCode = <<<EOF
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 
 class Datatype_${datatypeLower} extends ${basetypeClass}
@@ -50,7 +51,7 @@ class Datatype_${datatypeLower} extends ${basetypeClass}
         throw new ValidatorException('Not implemented');
     }
 
-    public function validate(\$value, Field \$field)
+    public function validate(\$value, Field \$field, Model \$model = null)
     {
         throw new ValidatorException('Not implemented');
     }
