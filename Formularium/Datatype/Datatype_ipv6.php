@@ -3,6 +3,7 @@
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 use Respect\Validation\Validator as v;
 
@@ -19,7 +20,7 @@ class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
         return $faker->ipv6;
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
         if ($value === '' || v::ip(FILTER_FLAG_IPV6)->validate($value)) {
             return $value;

@@ -3,10 +3,11 @@
 namespace Formularium\Datatype;
 
 use Formularium\Field;
+use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 use Respect\Validation\Validator as v;
 
-class Datatype_ipv4 extends \Formularium\Datatype\Datatype_string
+class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
 {
     public function __construct(string $typename = 'ipv4', string $basetype = 'string')
     {
@@ -16,16 +17,16 @@ class Datatype_ipv4 extends \Formularium\Datatype\Datatype_string
     public function getRandom(array $params = [])
     {
         $faker = static::faker();
-        return $faker->ipv4;
+        return $faker->ipv6;
     }
 
-    public function validate($value, Field $field)
+    public function validate($value, Field $field, Model $model = null)
     {
-        if ($value === '' || v::ip(FILTER_FLAG_IPV4)->validate($value)) {
+        if ($value === '' || v::ip(FILTER_FLAG_IPV6)->validate($value)) {
             return $value;
         }
         throw new ValidatorException(
-            'Invalid IPV4'
+            'Invalid IPV6'
         );
     }
 }
