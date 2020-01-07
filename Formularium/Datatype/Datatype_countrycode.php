@@ -322,7 +322,7 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
     private function setChoices(string $code): void
     {
         $col = array_column(self::COUNTRY_CODES, self::SET_INDEXES[$code]);
-        $this->choices = array_combine($col, $col);
+        $this->choices = (array)array_combine($col, $col); // cast because phpstan
     }
 
     public function __construct(string $typename = 'countrycode', string $basetype = 'choice')
