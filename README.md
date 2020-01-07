@@ -10,7 +10,10 @@ This is a general form generator for PHP. It hosts a number of generators for di
 
 Forms are generated from a simple structure describing its fields, each one with a datatype and information for the HTML generator. Model descriptions can be serialized as JSON. It's easy to create new datatypes, either from zero or extending the base types provided. The generated HTML code can be used as is or manually customized for those pesky cases that no tool ever gets right.
 
-Check the [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink) and our [documentation](https://corollarium.github.io/Formularium/).
+Check the:
+- [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink) 
+- [documentation](https://corollarium.github.io/Formularium/)
+- [sample php app](https://github.com/Corollarium/Formularium-example)
 
 ## Supported frontend generators
 
