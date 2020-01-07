@@ -50,10 +50,11 @@ class Datatype_file extends \Formularium\Datatype
             // TODO if ()
         }
 
+        /*
         $isImage = false;
         if ($isImage) {
-            $width = 0;
-            $height = 0;
+            $width = mt_rand(1, 100);
+            $height = mt_rand(1, 100);
 
             if ($field->getValidator(self::DIMENSION_HEIGHT, false) !== false) {
                 if ($field->getValidator(self::DIMENSION_HEIGHT, false) !== $height) {
@@ -104,6 +105,11 @@ class Datatype_file extends \Formularium\Datatype
             }
 
             if ($field->getValidator(self::DIMENSION_RATIO, false) !== false) {
+                if (!$width || !$height) {
+                    throw new ValidatorException(
+                        'Zero width or height'
+                    );
+                }
                 $ratio = $width/$height;
                 $expected = $field->getValidator(self::DIMENSION_RATIO, false);
                 if (abs(($ratio-$expected)/$expected) > 0.0001) {
@@ -113,6 +119,7 @@ class Datatype_file extends \Formularium\Datatype
                 }
             }
         }
+        */
 
         return $value;
     }
