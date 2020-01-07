@@ -10,9 +10,10 @@ trait DatatypeRandomTrait
      *
      * @param integer $minLetters
      * @param integer $maxletters
+     * @param string $maxletters
      * @return string
      */
-    public static function getRandomString($minLetters = 5, $maxletters = 15, $source = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"): string
+    public static function getRandomString($minLetters = 5, $maxletters = 15, string $source = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"): string
     {
         $pattern = 'R';
         $sourceLen = mb_strlen($source);
