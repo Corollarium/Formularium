@@ -25,10 +25,6 @@ if (!is_dir($path)) {
     echo "Path $path does not exist.\n";
     return 1;
 }
-if (file_exists($filename)) {
-    echo "Filename $filename already exists.\n";
-    return 1;
-}
 
 $datatypeCode = <<<EOF
 <?php declare(strict_types=1); 
@@ -57,7 +53,12 @@ class Datatype_${datatypeLower} extends ${basetypeClass}
     }
 }
 EOF;
-file_put_contents($filename, $datatypeCode);
+if (!file_exists($filename)) {
+    echo "Created ${datatype} test.\n";
+    file_put_contents($filename, $datatypeCode);
+} else {
+    echo "Filename $filename already exists.\n";
+}
 
 if ($generateTest) {
     $testFilename = "tests/Datatype/${datatype}Test.php";
@@ -107,7 +108,10 @@ class Datatype${datatype}_TestCase extends DatatypeBaseTestCase
     }
 }
 EOF;
-    file_put_contents($testFilename, $testCode);
+    if (!file_exists($testFilename)) {
+        echo "Created ${datatype} test.\n";
+        file_put_contents($testFilename, $testCode);
+    } else {
+        echo "Filename test $testFilename already exists.\n";
+    }
 }
-
-echo "Created ${datatype}.\n";
