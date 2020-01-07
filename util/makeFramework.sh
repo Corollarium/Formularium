@@ -1,8 +1,7 @@
 #!/bin/bash
 
 FRAMEWORK=$1
-INHERIT=${2:-\\Formularium\\Datatype}
-DATATYPES=${3:-`ls Formularium/Datatype/`}
+DATATYPES=${2:-`ls Formularium/Datatype/`}
 
 mkdir -p Formularium/Frontend/$FRAMEWORK/Renderable
 
@@ -22,6 +21,7 @@ class Framework extends \Formularium\Framework
     }
 }
 EOF
+    echo "Created ${FRAMEWORK} class."
 fi
 
 for datatype in $DATATYPES
@@ -66,5 +66,3 @@ EOF
    fi
 
 done
-
-echo "Created ${FRAMEWORK}."

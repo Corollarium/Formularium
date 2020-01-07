@@ -17,64 +17,58 @@ Check the:
 
 ## Minimum example
 
-```
-    // setup what frameworks we will use.
-    FrameworkComposer::set(['HTML', 'Bootstrap']);
+```php
+// set your framework composition statically.
+// For example, this builds HTML using Bootstrap as CSS and the Vue framework.
+FrameworkComposer::set(['HTML', 'Bootstrap', 'Vue']);
 
-    /*
-     * basic demo fiels
-     */
-    $basicFields = [
+// build the model from data description. You can use a JSON file as well.
+$modelData = [
+    'name' => 'TestModel',
+    'fields' => [
         'myString' => [
             'datatype' => 'string',
-            'validators' => [
-                Datatype_string::MIN_LENGTH => 3,
-                Datatype_string::MAX_LENGTH => 30,
-            ],
             'extensions' => [
-                Renderable::LABEL => 'Type string',
+                Renderable_string::MIN_LENGTH => 3,
+                Renderable_string::MAX_LENGTH => 30,
+                Renderable::LABEL => 'This is some string',
                 Renderable::COMMENT => 'Some text explaining this field',
-                Renderable::PLACEHOLDER => "Type here",
-                Renderable::SIZE => Renderable::SIZE_LARGE,
-                Renderable::ICON_PACK => 'fas',
-                Renderable::ICON => 'fa-check'
-            ],
+                Renderable::PLACEHOLDER => "Type here"
+            ]
         ],
-        'myInteger' => [
+        'someInteger' => [
             'datatype' => 'integer',
-            'validators' => [
+            'extensions' => [
                 Datatype_integer::MIN => 4,
                 Datatype_integer::MAX => 30,
-            ],
-            'extensions' => [
                 Renderable_number::STEP => 2,
-                Renderable::LABEL => 'Type integer',
+                Renderable::LABEL => 'Some integer',
                 Renderable::PLACEHOLDER => "Type here"
-            ],
-        ],
-        'countrycodeselect' => [
-            'datatype' => 'countrycode',
-            'extensions' => [
-                Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
-                Renderable::LABEL => 'Country code - select your country'
-            ],
+            ]
         ]
-    ];
+    ]
+];
+$model = Model::fromStruct($modelData);
 
-    // generate basic model
-    $basicModel = Model::fromStruct(
-        [
-            'name' => 'BasicModel',
-            'fields' => $basicFields
-        ]
-    );
+// validate some data
+$data = [
+    'myString' => 'some string here',
+    'someInteger' => 32
+];
+$validation = $model->validate($data);
+if (!empty($validation['errors'])) {
+    foreach ($validation['errors'] as $fieldName => $error) {
+        echo "$fieldName has an error: $error\n";
+    }
+}
+// get data after validation
+$validated = $validation['validated'];
 
-    // generates HTML form
-    $editableHTML = $basicModel->editable(); 
+// render a form 
+echo $model->editable($data);
 
-    // you can also generate a read-only page with the data
-    $data = []; // fill with some data
-    $viewable = $basicModel->editable($data); // generates HTML
+// render a view
+echo $model->viewable($data);
 ```
 
 The output is a nice HTML that you can use as basis for your forms. See the generated HTML on the [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink).
