@@ -277,6 +277,19 @@ EOF;
             'props' => $this->props($m)
         ];
 
+        $methods = <<<EOF
+    methods: {
+        changedFile(name, event) {
+            console.log(name, event);
+            const input = event.target;
+            const files = input.files;
+            if (files && files[0]) {
+                // input.preview = window.URL.createObjectURL(files[0]);
+            }
+        }
+    }        
+EOF;
+
         if ($this->viewableTemplate) {
             return $this->fillTemplate(
                 $this->editableTemplate,
@@ -295,11 +308,7 @@ module.exports = {
     data: function () {
         return {{jsonData}};
     },
-    methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-        }
-    }
+    $methods
 };
 </script>
 <style>
@@ -316,12 +325,10 @@ EOF;
             $script = <<<EOF
 var app = new Vue({
     el: '#$id',
-    data: $jsonData,
-    methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-        }
-    }
+    data: function () {
+        return $jsonData;
+    },
+    $methods
 });
 EOF;
             $s = new HTMLElement('script', [], $script, true);
