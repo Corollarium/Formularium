@@ -128,12 +128,12 @@ class Model
                 $expectedFields = $field->getValidators()[Datatype::REQUIRED_WITH];
                 $found = false;
                 foreach ($expectedFields as $ef) {
-                    if (array_key_exists($data, $ef)) {
+                    if (array_key_exists($ef, $data)) {
                         $found = true;
                     }
                 }
                 if (!$found) {
-                    $errors[$name] = "Field $name is required when at least one of fields " . join(',', $expectedFields . ' are present');
+                    $errors[$name] = "Field $name is required when at least one of fields " . join(',', $expectedFields) . ' are present';
                     continue;
                 }
             }
@@ -142,13 +142,13 @@ class Model
                 $expectedFields = $field->getValidators()[Datatype::REQUIRED_WITH_ALL];
                 $found = true;
                 foreach ($expectedFields as $ef) {
-                    if (!array_key_exists($data, $ef)) {
+                    if (!array_key_exists($ef, $data)) {
                         $found = false;
                         break;
                     }
                 }
                 if (!$found) {
-                    $errors[$name] = "Field $name is required when at all fields " . join(',', $expectedFields . ' are present');
+                    $errors[$name] = "Field $name is required when at all fields " . join(',', $expectedFields) . ' are present';
                     continue;
                 }
             }

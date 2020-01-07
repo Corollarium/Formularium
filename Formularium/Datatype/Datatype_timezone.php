@@ -12,6 +12,6 @@ class Datatype_timezone extends \Formularium\Datatype\Datatype_choice
     {
         parent::__construct($typename, $basetype);
         $l = timezone_identifiers_list();
-        $this->choices = array_combine($l, $l);
+        $this->choices = (array)array_combine($l, $l);
     }
 }
