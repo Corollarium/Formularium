@@ -26,7 +26,7 @@ class Datatype_ip extends \Formularium\Datatype\Datatype_string
             return $value;
         }
         throw new ValidatorException(
-            'Invalid IPV4'
+            'Invalid IP'
         );
     }
 }

@@ -7,7 +7,7 @@ use Formularium\Model;
 use Formularium\Exception\ValidatorException;
 use Respect\Validation\Validator as v;
 
-class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
+class Datatype_ipv4 extends \Formularium\Datatype\Datatype_string
 {
     public function __construct(string $typename = 'ipv4', string $basetype = 'string')
     {
@@ -17,16 +17,16 @@ class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
     public function getRandom(array $params = [])
     {
         $faker = static::faker();
-        return $faker->ipv6;
+        return $faker->ipv4;
     }
 
     public function validate($value, Field $field, Model $model = null)
     {
-        if ($value === '' || v::ip(FILTER_FLAG_IPV6)->validate($value)) {
+        if ($value === '' || v::ip(FILTER_FLAG_IPV4)->validate($value)) {
             return $value;
         }
         throw new ValidatorException(
-            'Invalid IPV6'
+            'Invalid IPV4'
         );
     }
 }
