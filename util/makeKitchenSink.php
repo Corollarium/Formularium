@@ -13,7 +13,7 @@ use Formularium\Frontend\HTML\Renderable\Renderable_string;
 use Formularium\Model;
 use Formularium\Renderable;
 
-function kitchenSink($frameworkName)
+function kitchenSink($frameworkName, string $templateName)
 {
     FrameworkComposer::set($frameworkName);
     $head = FrameworkComposer::htmlHead();
@@ -119,67 +119,15 @@ function kitchenSink($frameworkName)
     $modelEditable = $model->editable();
 
     $title = join('/', $frameworkName);
-    $html = <<<EOF
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <title>{$title}</title>
-    {$head}
-    <style>
-    h1.kitchen {
-        font-size: 2.5rem;
-    }
-    h2.kitchen {
-        font-size: 2.0rem;
-    }
-    h3.kitchen {
-        font-size: 1.5rem;
-    }
-    h1.kitchen, h2.kitchen, h3.kitchen  {
-        margin-bottom: .5rem;
-        font-weight: 500;
-        line-height: 1.2;
-    }
-    </style>
-</head>
-<body>
-<div class='container'>
-    <h1 class="kitchen">$title</h1>
-    
-    <section>
-        <h2 class="kitchen">Basic demo</h2>
-        <form>
-            $basicDemoEditable
-        </form>
-    </section>
+    $template = file_get_contents(__DIR__ . '/kitchentemplates/' . $templateName);
 
-    <section>
-        <h2 class="kitchen">Full kitchen sink</h2>
-
-        <div>
-            <h3 class="kitchen">Viewable</h3>
-
-            $modelViewable
-        </div>
-        
-        <div>
-            <h3 class="kitchen">Editable</h3>
-            
-            <form>
-                $modelEditable
-                <button type="submit">Send</button>
-            </form>
-        </div>
-    </section>
-    <footer style="margin-top: 2em; font-size: small">
-        Generated with <a href="https://github.com/Corollarium/Formularium/">Formularium</a>.
-    </footer>
-</div>
-{$footer}
-</body></html>
-EOF;
-    return $html;
+    $template = str_replace('{{title}}', $title, $template);
+    $template = str_replace('{{head}}', $head, $template);
+    $template = str_replace('{{basicDemoEditable}}', $basicDemoEditable, $template);
+    $template = str_replace('{{modelViewable}}', $modelViewable, $template);
+    $template = str_replace('{{modelEditable}}', $modelEditable, $template);
+    $template = str_replace('{{footer}}', $footer, $template);
+    return $template;
 }
 
 @mkdir(__DIR__ . '/../docs/');
@@ -216,22 +164,22 @@ $index = <<<EOF
 <ul>
 EOF;
 $frameworks = [
-    ['HTML', 'Quill'],
-    ['HTML', 'Bulma', 'Quill'],
-    ['HTML', 'Bootstrap', 'Quill'],
-    ['HTML', 'Bootstrap', 'Quill', 'Parsley'],
-    ['HTML', 'Materialize'],
-    ['HTML', 'Bulma', 'Quill', 'Vue'],
-    ['HTML', 'Buefy', 'Vue'],
-    ['HTML', 'React'],
-    ['HTML', 'Bootstrap', 'React'],
+    ['framework' => ['HTML', 'Quill'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'Bulma', 'Quill'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'Bootstrap', 'Quill'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'Materialize'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'Buefy', 'Vue'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'React'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'Bootstrap', 'React'], 'template' => 'base.html'],
 ];
-foreach ($frameworks as $framework) {
-    $name = join('', $framework);
+foreach ($frameworks as $f) {
+    $name = join('', $f['framework']);
     echo "Building $name...\n";
-    $html = kitchenSink($framework);
+    $html = kitchenSink($f['framework'], $f['template']);
     file_put_contents(__DIR__ . '/../docs/kitchensink/' . $name . '.html', $html);
-    $index .= "<li><a href='{$name}.html'>" . join('+', $framework) . '</a></li>';
+    $index .= "<li><a href='{$name}.html'>" . join('+', $f['framework']) . '</a></li>';
 }
 $index .= "</ul>
 <footer>
