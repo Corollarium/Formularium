@@ -11,14 +11,6 @@ use Formularium\HTMLElement;
 
 class Renderable_file extends Renderable
 {
-    /**
-     * Key for extension. Value can be array or string.
-     */
-    const ACCEPT = 'accept';
-    const ACCEPT_AUDIO = 'audio/*';
-    const ACCEPT_IMAGE = 'image/*';
-    const ACCEPT_VIDEO = 'video/*';
-
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
     /**
@@ -125,11 +117,11 @@ class Renderable_file extends Renderable
         );
 
         $accept = '';
-        if ($extensions[self::ACCEPT] ?? false) {
-            if (is_array($extensions[self::ACCEPT])) {
-                $accept = join(',', $extensions[self::ACCEPT]);
+        if ($validators[Datatype_file::ACCEPT] ?? false) {
+            if (is_array($validators[Datatype_file::ACCEPT])) {
+                $accept = join(',', $validators[Datatype_file::ACCEPT]);
             } else {
-                $accept = $extensions[self::ACCEPT];
+                $accept = $validators[Datatype_file::ACCEPT];
             }
             $input->setAttribute('accept', htmlspecialchars($accept));
         }
