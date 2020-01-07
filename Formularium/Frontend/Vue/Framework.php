@@ -200,7 +200,7 @@ class Framework extends \Formularium\Framework
                 $p = [
                     'type' => $this->mapType($field->getDatatype()),
                 ];
-                if ($field->getExtension(Datatype::REQUIRED)) {
+                if ($field->getExtension(Datatype::REQUIRED, false)) {
                     $p['required'] = true;
                 }
                 $props[$field->getName()] = $p;
@@ -252,7 +252,7 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLElement(self::getViewableContainerTag(), ['id' => $id], $viewableForm, true);
+            $t = new HTMLElement($this->getViewableContainerTag(), ['id' => $id], $viewableForm, true);
             $script = <<<EOF
 var app = new Vue({
     el: '#$id',
