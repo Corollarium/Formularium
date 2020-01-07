@@ -1,5 +1,1 @@
-includes: 
-  - coverage-report
-  - coverage-report/.css
-  - coverage-report/.icons
-  - coverage-report/.js
+include: ['coverage-report', 'coverage-report/.css', 'coverage-report/.icons', 'coverage-report/.js']
