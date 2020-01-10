@@ -109,7 +109,7 @@ EOF;
         $this->assertEmpty($v['errors']);
     }
 
-    public function testFilled()
+    public function testValidator()
     {
         $modelData = [
             'name' => 'TestModel',
@@ -117,7 +117,7 @@ EOF;
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        Datatype::FILLED => true,
+                        \Formularium\Validator\Filled::class => true,
                     ]
                 ]
             ]

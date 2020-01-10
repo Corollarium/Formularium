@@ -1,7 +1,5 @@
 <?php declare(strict_types=1);
 
-declare(strict_types=1);
-
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Exception\Exception;

@@ -19,6 +19,10 @@ class Model
      */
     protected $fields;
 
+    /**
+     * @var array
+     */
+    protected $extensions;
 
     /**
      * Model data being processed.
@@ -96,6 +100,26 @@ class Model
         return $this->_data;
     }
 
+    public function getExtensions(): array
+    {
+        return $this->extensions;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getExtension(string $name, $default)
+    {
+        return $this->extensions[$name] ?? $default;
+    }
+
+    public function getField(string $name): Field
+    {
+        return $this->fields[$name];
+    }
+
     /**
      * Validates a set of data against this model.
      *
@@ -107,6 +131,8 @@ class Model
         $this->_data = $data;
         $validate = [];
         $errors = [];
+
+        // validate data
         foreach ($data as $name => $d) {
             // expected?
             if (!array_key_exists($name, $this->fields)) {
@@ -114,57 +140,50 @@ class Model
                 continue;
             }
 
+            // call the datatype validator
             $field = $this->fields[$name];
-
-            // must be filled?
-            if ($field->getValidators()[Datatype::FILLED] ?? false) {
-                if (empty($d)) {
-                    $errors[$name] = "Field $name is empty";
-                    continue;
-                }
-            }
-
-            if ($field->getValidators()[Datatype::REQUIRED_WITH] ?? false) {
-                $expectedFields = $field->getValidators()[Datatype::REQUIRED_WITH];
-                $found = false;
-                foreach ($expectedFields as $ef) {
-                    if (array_key_exists($ef, $data)) {
-                        $found = true;
-                    }
-                }
-                if (!$found) {
-                    $errors[$name] = "Field $name is required when at least one of fields " . join(',', $expectedFields) . ' are present';
-                    continue;
-                }
-            }
-
-            if ($field->getValidators()[Datatype::REQUIRED_WITH_ALL] ?? false) {
-                $expectedFields = $field->getValidators()[Datatype::REQUIRED_WITH_ALL];
-                $found = true;
-                foreach ($expectedFields as $ef) {
-                    if (!array_key_exists($ef, $data)) {
-                        $found = false;
-                        break;
-                    }
-                }
-                if (!$found) {
-                    $errors[$name] = "Field $name is required when at all fields " . join(',', $expectedFields) . ' are present';
-                    continue;
-                }
-            }
-
             try {
                 $validate[$name] = $field->getDatatype()->validate($d, $field, $this);
             } catch (Exception $e) {
                 $errors[$name] = $e->getMessage();
             }
+
+            // call class validators.
+            foreach ($field->getValidators() as $validatorName => $_) {
+                if (mb_strpos($validatorName, '\\') === false) {
+                    continue;
+                }
+                try {
+                    $v = Validator::factory($validatorName);
+                    $validate[$name] = $v->validate($validate[$name], $field, $this);
+                } catch (Exception $e) {
+                    $errors[$name] = $e->getMessage();
+                }
+            }
         }
+
         foreach ($this->fields as $name => $field) {
             if (($field->getValidators()[Datatype::REQUIRED] ?? false)
                 && !array_key_exists($name, $validate)
                 && !array_key_exists($name, $errors)
             ) {
                 $errors[$name] = "Field $name is missing";
+            }
+
+            // if in field list but not in data
+            if (!array_key_exists($name, $data)) {
+                // call class validators.
+                foreach ($field->getValidators() as $validatorName => $_) {
+                    if (mb_strpos($validatorName, '\\') === false) {
+                        continue;
+                    }
+                    try {
+                        $v = Validator::factory($validatorName);
+                        $v->validate(null, $field, $this);
+                    } catch (Exception $e) {
+                        $errors[$name] = $e->getMessage();
+                    }
+                }
             }
         }
         $this->_data = [];
@@ -267,6 +286,12 @@ class Model
         $this->name = $data['name'];
         foreach ($data['fields'] as $fieldName => $fieldData) {
             $this->fields[$fieldName] = Field::getFromData($fieldName, $fieldData);
+        }
+        if (array_key_exists('extensions', $data)) {
+            if (!is_array($data['extensions'])) {
+                throw new Exception('Model extension must be an array');
+            }
+            $this->extensions = $data['extensions'];
         }
     }
 }
