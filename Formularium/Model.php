@@ -163,6 +163,7 @@ class Model
         }
 
         foreach ($this->fields as $name => $field) {
+            // check REQUIRED.
             if (($field->getValidators()[Datatype::REQUIRED] ?? false)
                 && !array_key_exists($name, $validate)
                 && !array_key_exists($name, $errors)
