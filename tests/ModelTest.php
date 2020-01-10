@@ -47,7 +47,7 @@ EOF;
         Model::fromJSON($json);
     }
    
-    public function testFromJSON()
+    public function testJSON()
     {
         $json = <<<'EOF'
 { 
@@ -55,20 +55,16 @@ EOF;
     "fields": {
         "name": {
             "datatype": "string",
-            "label": {
-                "en": "Name",
-                "pt": "Nome"
+            "validators": {
+                "required": true,
+                "minlength": 30,
+                "maxlength": 40
             },
             "extensions": {
                 "comment": {
                     "en": "Your full name",
                     "pt": "Seu nome completo"
                 }
-            },
-            "validator": {
-                "required": true,
-                "minlength": 30,
-                "maxlength": 40
             }
         }
     } 
@@ -77,6 +73,7 @@ EOF;
         $m = Model::fromJSON($json);
         $this->assertEquals('ModelTest', $m->getName());
         $this->assertIsArray($m->getFields());
+        $this->assertJsonStringEqualsJsonString($json, $m->toJSON());
     }
 
     public function testValidate()
