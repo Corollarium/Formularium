@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/travis/build/Corollarium/Formularium/Formularium/Exception</title>
+  <title>Dashboard for /home/travis/build/Corollarium/Formularium/Formularium/Validator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">/home/travis/build/Corollarium/Formularium/Formularium</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Exception</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Validator</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -173,7 +173,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,3], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -223,7 +223,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,0,"<a href=\"ClassNotFoundException.php.html#5\">Formularium\\Exception\\ClassNotFoundException<\/a>"],[100,0,"<a href=\"Exception.php.html#5\">Formularium\\Exception\\Exception<\/a>"],[100,0,"<a href=\"ValidatorException.php.html#5\">Formularium\\Exception\\ValidatorException<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[100,3,"<a href=\"Filled.php.html#13\">Formularium\\Validator\\Filled<\/a>"],[100,8,"<a href=\"RequiredWith.php.html#13\">Formularium\\Validator\\RequiredWith<\/a>"],[100,7,"<a href=\"RequiredWithAll.php.html#13\">Formularium\\Validator\\RequiredWithAll<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -247,7 +247,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([], 'Method Complexity'))
+      .datum(getComplexityData([[100,3,"<a href=\"Filled.php.html#15\">Formularium\\Validator\\Filled::validate<\/a>"],[100,8,"<a href=\"RequiredWith.php.html#15\">Formularium\\Validator\\RequiredWith::validate<\/a>"],[100,7,"<a href=\"RequiredWithAll.php.html#15\">Formularium\\Validator\\RequiredWithAll::validate<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
