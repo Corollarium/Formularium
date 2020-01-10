@@ -8,7 +8,7 @@ use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\HTMLElement;
 
-class Renderable_associationAutocomplete extends Renderable_association
+class Renderable_associationSelect extends Renderable_association
 {
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
@@ -38,9 +38,9 @@ class Renderable_associationAutocomplete extends Renderable_association
         if ($validators[Datatype::REQUIRED] ?? false) {
             $input->setAttribute('required', 'required');
         }
-        if ($validators[Datatype_association::MULTIPLE] ?? false) {
+        /* TODO if ($validators[Datatype_association::MULTIPLE] ?? false) {
             $input->setAttribute('multiple', 'multiple');
-        }
+        } */
         foreach ([static::DISABLED, static::READONLY] as $v) {
             if ($field->getExtension($v, false)) {
                 $input->setAttribute($v, $v);

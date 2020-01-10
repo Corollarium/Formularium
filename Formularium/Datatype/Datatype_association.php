@@ -8,7 +8,25 @@ use Formularium\Model;
 
 abstract class Datatype_association extends \Formularium\Datatype
 {
-    public const MULTIPLE = "MULTIPLE";
+    public const RELATIONSHIP = "RELATIONSHIP";
+    public const RELATIONSHIP_ONE_TO_ONE = "RELATIONSHIP_ONE_TO_ONE";
+    public const RELATIONSHIP_ONE_TO_MANY = "RELATIONSHIP_ONE_TO_MANY";
+    public const RELATIONSHIP_MANY_TO_MANY  = "RELATIONSHIP_MANY_TO_MANY";
+
+    /**
+     * @var string
+     */
+    protected $relationship = '';
+
+    /**
+     * @var string
+     */
+    protected $source = '';
+
+    /**
+     * @var string
+     */
+    protected $target = '';
 
     public function __construct(string $typename = 'association', string $basetype = 'association')
     {
