@@ -215,11 +215,20 @@ class Framework extends \Formularium\Framework
         
         $viewableForm = join('', $elements);
         $jsonData = json_encode($data);
+        $jsonData = json_encode($data);
+        $props = $this->props($m);
+        $propsBind = array_map(
+            function ($p) {
+                return 'v-bind:' . $p . '="model.' . $p . '"';
+            },
+            array_keys($props)
+        );
         $templateData = [
             'containerTag' => $this->getViewableContainerTag(),
             'form' => $viewableForm,
             'jsonData' => $jsonData,
-            'props' => $this->props($m)
+            'props' => json_encode($props),
+            'propsBind' => implode(' ', $propsBind)
         ];
 
         if ($this->viewableTemplate) {
@@ -270,11 +279,19 @@ EOF;
         $editableContainerTag = $this->getEditableContainerTag();
         $editableForm = join('', $elements);
         $jsonData = json_encode($data);
+        $props = $this->props($m);
+        $propsBind = array_map(
+            function ($p) {
+                return 'v-bind:' . $p . '="model.' . $p . '"';
+            },
+            array_keys($props)
+        );
         $templateData = [
-            'containerTag' => $this->getViewableContainerTag(),
+            'containerTag' => $editableContainerTag,
             'form' => $editableForm,
             'jsonData' => $jsonData,
-            'props' => $this->props($m)
+            'props' => json_encode($props),
+            'propsBind' => implode(' ', $propsBind)
         ];
 
         $methods = <<<EOF
@@ -290,7 +307,7 @@ EOF;
     }        
 EOF;
 
-        if ($this->viewableTemplate) {
+        if ($this->editableTemplate) {
             return $this->fillTemplate(
                 $this->editableTemplate,
                 $templateData,
@@ -338,11 +355,14 @@ EOF;
 
     protected function fillTemplate(string $template, array $data, Model $m): string
     {
-        $template = str_replace(
-            '{{form}}',
-            $data['form'],
-            $template
-        );
+        foreach ($data as $name => $value) {
+            $template = str_replace(
+                '{{' . $name . '}}',
+                $value,
+                $template
+            );
+        }
+
         $template = str_replace(
             '{{modelName}}',
             $m->getName(),
@@ -351,16 +371,6 @@ EOF;
         $template = str_replace(
             '{{modelNameLower}}',
             mb_strtolower($m->getName()),
-            $template
-        );
-        $template = str_replace(
-            '{{jsonData}}',
-            $data['jsonData'],
-            $template
-        );
-        $template = str_replace(
-            '{{containerTag}}',
-            $data['containerTag'],
             $template
         );
         return $template;
