@@ -85,8 +85,11 @@ Formularium is built in a way that generators can be chained, so you can combine
     - [Bootstrap](https://getbootstrap.com/)
     - [Materialize](https://materializecss.com/)
     - [Buefy](https://buefy.github.io/)
-- JS Frameworks/validators:
+- JS/PHP Frameworks:
     - [Vue](https://vuejs.org)
     - [React](https://reactjs.org)
+    - [Laravel Blade](https://laravel.com)
+ - JS extensions
     - [Parsley](https://parsleyjs.org/)
+    - [Quill editor](https://quilljs.com/)
  
