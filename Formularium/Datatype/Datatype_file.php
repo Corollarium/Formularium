@@ -196,7 +196,6 @@ class Datatype_file extends \Formularium\Datatype
                 }
             }
         }
-        */
 
         return $value;
     }
