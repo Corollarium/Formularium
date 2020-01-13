@@ -67,7 +67,7 @@ class Renderable_pagination extends Renderable_constant
         $pages = [];
 
         if ($firstindex > 0) {
-            $pages[] = $this->getItem('...', '', 'formularium-disabled');
+            $pages[] = $this->getItem('...', '', 'formularium-ellipsis');
         }
     
         for ($i = $firstindex; $i < $maxindex; $i += $perpage) {
@@ -83,7 +83,7 @@ class Renderable_pagination extends Renderable_constant
     
         if ($i < $numitems) {
             // disabled
-            $pages[] = $this->getItem('...', '', 'formularium-disabled');
+            $pages[] = $this->getItem('...', '', 'formularium-ellipsis');
         }
     
         return HTMLElement::factory(
