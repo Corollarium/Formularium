@@ -173,6 +173,7 @@ $frameworks = [
     ['framework' => ['HTML', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'Materialize'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'Bootstrap', 'Vue'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'Buefy', 'Vue'], 'template' => 'bulma.html'],
     ['framework' => ['HTML', 'React'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'Bootstrap', 'React'], 'template' => 'base.html'],
