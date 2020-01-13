@@ -18,6 +18,12 @@ class Renderable_pagination extends Renderable_constant
         return $this->fix($value, $field, $previous);
     }
 
+    /**
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     protected function fix($value, Field $field, HTMLElement $previous): HTMLElement
     {
         foreach ($previous->get('.formularium-disabled') as $e) {

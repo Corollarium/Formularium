@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\HTML\Renderable;
 
+use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\HTMLElement;
 use PHP_CodeSniffer\Generators\HTML;
@@ -25,6 +26,12 @@ class Renderable_pagination extends Renderable_constant
         return $this->container($this->pagination($value, $field, $previous), $field);
     }
 
+    /**
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     protected function pagination($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $pagesaround = intval($field->getExtension(self::PAGES_AROUND, 5));
@@ -51,9 +58,14 @@ class Renderable_pagination extends Renderable_constant
     
         $query = array();
         $parsed = parse_url($baseurl);
+        if (!$parsed) {
+            throw new Exception('Invalid url');
+        }
         if (isset($parsed['query'])) {
             mb_parse_str($parsed['query'], $query);
         }
+
+        $pages = [];
 
         if ($firstindex > 0) {
             $pages[] = $this->getItem('...', '', 'formularium-disabled');
@@ -102,11 +114,11 @@ class Renderable_pagination extends Renderable_constant
 
     /**
      * Inverse of parse_url.
-     * @param array parsed An array of fields, same ones as returned by parse_url.
+     * @param array $parsed An array of fields, same ones as returned by parse_url.
      * In addition, the 'query' field may be an associative array as well.
      * @return string The URL.
      */
-    protected function glue_url($parsed)
+    protected function glue_url(array $parsed): string
     {
         $uri = '';
         if (isset($parsed['scheme'])) {
