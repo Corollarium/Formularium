@@ -12,4 +12,13 @@ class Datatype_pagination extends \Formularium\Datatype\Datatype_constant
     {
         parent::__construct($typename, $basetype);
     }
+
+    public function getDefault(array $params = [])
+    {
+        return [
+            "total" => 1,
+            "current_page" => 1,
+            "per_page" => 20
+        ];
+    }
 }

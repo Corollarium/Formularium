@@ -15,6 +15,7 @@ class Framework extends \Formularium\Framework
 
     const VUE_PROP = 'VUE_PROP';
 
+    const VUE_VARS = 'VUE_VARS';
 
     /**
      * @var string
@@ -211,10 +212,9 @@ class Framework extends \Formularium\Framework
 
     public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
-        $data = $m->getDefault(); // TODO: load data
+        $data = array_merge($m->getDefault(), $m->getData(), ['pagination']);
         
         $viewableForm = join('', $elements);
-        $jsonData = json_encode($data);
         $jsonData = json_encode($data);
         $props = $this->props($m);
         $propsBind = array_map(
@@ -275,7 +275,7 @@ EOF;
 
     public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
-        $data = $m->getDefault(); // TODO: load data
+        $data = array_merge($m->getDefault(), $m->getData());
         $editableContainerTag = $this->getEditableContainerTag();
         $editableForm = join('', $elements);
         $jsonData = json_encode($data);

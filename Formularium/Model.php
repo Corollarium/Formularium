@@ -28,7 +28,7 @@ class Model
      * Model data being processed.
      * @var array
      */
-    protected $_data;
+    protected $_data = [];
 
     /**
      *
