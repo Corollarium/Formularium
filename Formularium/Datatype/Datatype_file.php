@@ -41,7 +41,7 @@ class Datatype_file extends \Formularium\Datatype
      * @param string $value The path to the file to be validated. Might be a temporary path.
      * @param Field $field
      * @param Model $model
-     * @return void
+     * @return mixed
      */
     public function validate($value, Field $field, Model $model = null)
     {
@@ -60,9 +60,19 @@ class Datatype_file extends \Formularium\Datatype
             if (!is_array($accept)) {
                 $accept = [$accept];
             }
-            $valid = false;
+
+            /**
+             * @var array $accept
+             */
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            if ($finfo === false) {
+                throw new ValidatorException(
+                    'Cannot load fileinfo'
+                );
+            }
             $mime = finfo_file($finfo, $value);
+
+            $valid = false;
             foreach ($accept as $a) {
                 switch ($a) {
                     case self::ACCEPT_AUDIO:
@@ -122,8 +132,14 @@ class Datatype_file extends \Formularium\Datatype
             }
         }
 
-        $isImage = false;
-        if ($isImage) {
+        if ($field->getValidator(self::DIMENSION_HEIGHT, false) ||
+            $field->getValidator(self::DIMENSION_WIDTH, false) ||
+            $field->getValidator(self::DIMENSION_MIN_HEIGHT, false) ||
+            $field->getValidator(self::DIMENSION_MIN_WIDTH, false) ||
+            $field->getValidator(self::DIMENSION_MAX_HEIGHT, false) ||
+            $field->getValidator(self::DIMENSION_MAX_WIDTH, false) ||
+            $field->getValidator(self::DIMENSION_RATIO, false)
+        ) {
             $imageData = getimagesize($value);
             if ($imageData === false) {
                 throw new ValidatorException(
