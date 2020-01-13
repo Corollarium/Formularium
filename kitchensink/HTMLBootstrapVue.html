@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HTML/Quill</title>
-      <script src="https://cdn.quilljs.com/1.3.6/quill.min.js">
+    <title>HTML/Bootstrap/Vue</title>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
   </script>
-  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"/>
 
 
     <style>
@@ -34,33 +36,43 @@
 
 <body>
     <div class="container">
-        <h1 class="kitchen">HTML/Quill</h1>
+        <h1 class="kitchen">HTML/Bootstrap/Vue</h1>
 
         <section>
             <h2 class="kitchen">Basic demo</h2>
             <form>
                 <div>
-  <label for="myString0" class="formularium-label">
+  <div id="vueapp3">
+    <div class="form-group" data-attribute="myString" data-datatype="string" data-basetype="string">
+  <label for="myString210" class="formularium-label">
     Type string
   </label>
-  <input id="myString0" type="text" name="myString" class="" data-attribute="myString" data-datatype="string" data-basetype="string" value="" maxlength="30" title="Type string" placeholder="Type here" minlength="3" aria-describedby="comment1"/>
-  <div class="formularium-comment" id="comment1">
-    Some text explaining this field
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="fas fa-check">
+        </i>
+      </span>
+    </div>
+    <input id="myString210" type="text" name="myString" class=" form-control form-control-lg" data-attribute="myString" data-datatype="string" data-basetype="string" maxlength="30" title="Type string" placeholder="Type here" minlength="3" aria-describedby="comment211" v-model="myString"/>
   </div>
+  <small class="formularium-comment form-text text-muted" id="comment211">
+    Some text explaining this field
+  </small>
 </div>
 
-<div>
-  <label for="myInteger2" class="formularium-label">
+<div class="form-group" data-attribute="myInteger" data-datatype="integer" data-basetype="number">
+  <label for="myInteger212" class="formularium-label">
     Type integer
   </label>
-  <input id="myInteger2" type="number" name="myInteger" class="" data-attribute="myInteger" data-datatype="integer" data-basetype="number" value="" title="Type integer" placeholder="Type here" min="4" max="30"/>
+  <input id="myInteger212" type="number" name="myInteger" class=" form-control" data-attribute="myInteger" data-datatype="integer" data-basetype="number" title="Type integer" placeholder="Type here" min="4" max="30" v-model="myInteger"/>
 </div>
 
-<div>
-  <label for="countrycodeselect3" class="formularium-label">
+<div class="form-group" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice">
+  <label for="countrycodeselect213" class="formularium-label">
     Country code - select choice
   </label>
-  <select id="countrycodeselect3" name="countrycodeselect" class="" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice">
+  <select id="countrycodeselect213" name="countrycodeselect" class=" custom-select" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice" v-model="countrycodeselect">
     <option value="AND">
       AND
     </option>
@@ -903,44 +915,66 @@
 
 <div>
   <nav class="formularium-pagination-wrapper" aria-label="Page navigation">
-    <ul class="formularium-pagination">
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=0&amp;total=20">
+    <ul class="formularium-pagination pagination">
+      <li class="formularium-pagination-item  page-item">
+        <a class="formularium-pagination-link page-link" href="?begin=0&amp;total=20">
           1
         </a>
       </li>
-      <li class="formularium-pagination-item formularium-pagination-current">
-        <a class="formularium-pagination-link" href="">
+      <li class="formularium-pagination-item formularium-pagination-current page-item disabled">
+        <a class="formularium-pagination-link page-link" href="">
           2
         </a>
       </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=40&amp;total=20">
+      <li class="formularium-pagination-item  page-item">
+        <a class="formularium-pagination-link page-link" href="?begin=40&amp;total=20">
           3
         </a>
       </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=60&amp;total=20">
+      <li class="formularium-pagination-item  page-item">
+        <a class="formularium-pagination-link page-link" href="?begin=60&amp;total=20">
           4
         </a>
       </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=80&amp;total=20">
+      <li class="formularium-pagination-item  page-item">
+        <a class="formularium-pagination-link page-link" href="?begin=80&amp;total=20">
           5
         </a>
       </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=100&amp;total=20">
+      <li class="formularium-pagination-item  page-item">
+        <a class="formularium-pagination-link page-link" href="?begin=100&amp;total=20">
           6
         </a>
       </li>
-      <li class="formularium-pagination-item formularium-ellipsis">
-        <a class="formularium-pagination-link" href="">
+      <li class="formularium-pagination-item formularium-ellipsis page-item">
+        <a class="formularium-pagination-link page-link" href="">
           ...
         </a>
       </li>
     </ul>
   </nav>
+</div>
+
+
+  </div>
+  <script>
+    var app = new Vue({
+    el: '#vueapp3',
+    data: function () {
+        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":""};
+    },
+        methods: {
+        changedFile(name, event) {
+            console.log(name, event);
+            const input = event.target;
+            const files = input.files;
+            if (files && files[0]) {
+                // input.preview = window.URL.createObjectURL(files[0]);
+            }
+        }
+    }        
+});
+  </script>
 </div>
 
 
@@ -954,12 +988,14 @@
                 <h3 class="kitchen">Viewable</h3>
 
                 <div>
+  <div id="vueapp4">
+    <div>
   <span class="formularium-viewable">
     <span class="formularium-label">
       Type alpha
     </span>
     <span class="formularium-value">
-      RedgDJgEigyD
+      RAaUMH
     </span>
   </span>
 </div>
@@ -970,7 +1006,7 @@
       Type alphanum
     </span>
     <span class="formularium-value">
-      RQDBtoZroK
+      R8XD4N
     </span>
   </span>
 </div>
@@ -981,7 +1017,7 @@
       Type alphanumdash
     </span>
     <span class="formularium-value">
-      RVUrw7iMT1L
+      R2WtRwASo
     </span>
   </span>
 </div>
@@ -992,7 +1028,7 @@
       Type bool
     </span>
     <span class="formularium-value">
-      False
+      True
     </span>
   </span>
 </div>
@@ -1003,7 +1039,7 @@
       Type cnpj
     </span>
     <span class="formularium-value">
-      37.161.019/0001-20
+      96.042.837/0001-72
     </span>
   </span>
 </div>
@@ -1014,10 +1050,10 @@
       Type color
     </span>
     <span class="formularium-value">
-      <span style="width: 1em; display: inline-block; background-color: #AB6AD5">
+      <span style="width: 1em; display: inline-block; background-color: #E9C66E">
         &nbsp;
       </span>
-      #AB6AD5
+      #E9C66E
     </span>
   </span>
 </div>
@@ -1035,7 +1071,7 @@
       Type countrycode
     </span>
     <span class="formularium-value">
-      ZAF
+      BLM
     </span>
   </span>
 </div>
@@ -1046,7 +1082,7 @@
       Type cpf
     </span>
     <span class="formularium-value">
-      181.241.436-68
+      332.185.877-00
     </span>
   </span>
 </div>
@@ -1057,7 +1093,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      BRL
+      TND
     </span>
   </span>
 </div>
@@ -1068,7 +1104,7 @@
       Type date
     </span>
     <span class="formularium-value">
-      2015-01-07
+      2015-06-13
     </span>
   </span>
 </div>
@@ -1079,7 +1115,7 @@
       Type datetime
     </span>
     <span class="formularium-value">
-      2013-09-09T10:32:15+0000
+      2024-07-21T18:05:42+0000
     </span>
   </span>
 </div>
@@ -1090,7 +1126,7 @@
       Type domain
     </span>
     <span class="formularium-value">
-      emard.net
+      brekke.biz
     </span>
   </span>
 </div>
@@ -1101,7 +1137,7 @@
       Type email
     </span>
     <span class="formularium-value">
-      itoy@gmail.com
+      braun.herman@yahoo.com
     </span>
   </span>
 </div>
@@ -1122,7 +1158,7 @@
       Type float
     </span>
     <span class="formularium-value">
-      0.481
+      0.721
     </span>
   </span>
 </div>
@@ -1133,7 +1169,7 @@
       Type html
     </span>
     <span class="formularium-value">
-      &lt;p&gt;HTML &lt;span&gt;Eos rem magnam non quos sequi qui voluptates. Ratione non nulla ab at blanditiis. Id consequuntur architecto nisi cumque eos provident quo.&lt;/span&gt;Aut id et fugit corrupti et cum aut. Assumenda sequi neque sit doloremque tempora eaque occaecati. Laborum iure quisquam quibusdam illum itaque ea ipsum.&lt;/p&gt;
+      &lt;p&gt;HTML &lt;span&gt;Quis dicta blanditiis provident molestiae est. Sequi quia delectus sequi doloremque quis. A debitis facere culpa totam ratione excepturi. Blanditiis quia aut eum nobis.&lt;/span&gt;Laborum repudiandae harum quis. Repudiandae ut temporibus sunt quod accusantium neque ea. Nemo et quos quia voluptas cum sit.&lt;/p&gt;
     </span>
   </span>
 </div>
@@ -1144,7 +1180,7 @@
       Type integer
     </span>
     <span class="formularium-value">
-      519212213
+      -1347030855
     </span>
   </span>
 </div>
@@ -1155,7 +1191,7 @@
       Type ip
     </span>
     <span class="formularium-value">
-      2722:73f3:13ea:e01:5794:2b0e:9372:d553
+      440:a869:f8d3:5149:9658:c5d6:ab2f:c519
     </span>
   </span>
 </div>
@@ -1166,7 +1202,7 @@
       Type ipv4
     </span>
     <span class="formularium-value">
-      187.32.204.233
+      147.33.15.233
     </span>
   </span>
 </div>
@@ -1177,7 +1213,7 @@
       Type ipv6
     </span>
     <span class="formularium-value">
-      b8d7:e332:f448:6e47:657a:99a:6608:f715
+      5b25:1a27:4c1e:996f:e0f4:971c:ae88:7114
     </span>
   </span>
 </div>
@@ -1188,7 +1224,7 @@
       Type json
     </span>
     <span class="formularium-value">
-      {&quot;version&quot;:-125426138,&quot;data&quot;:{&quot;string&quot;:&quot;RwDBE&quot;,&quot;float&quot;:0.073}}
+      {&quot;version&quot;:-1559172045,&quot;data&quot;:{&quot;string&quot;:&quot;RICfM6I7gq9n&quot;,&quot;float&quot;:0.571}}
     </span>
   </span>
 </div>
@@ -1199,7 +1235,7 @@
       Type language
     </span>
     <span class="formularium-value">
-      sn
+      pt
     </span>
   </span>
 </div>
@@ -1217,7 +1253,7 @@
       Type phone
     </span>
     <span class="formularium-value">
-      +3164715889244
+      +8760584378415
     </span>
   </span>
 </div>
@@ -1228,7 +1264,7 @@
       Type string
     </span>
     <span class="formularium-value">
-      R5LKVWZuvW9Jh
+      Rkf4e5oTazxUCkm
     </span>
   </span>
 </div>
@@ -1239,7 +1275,7 @@
       Type text
     </span>
     <span class="formularium-value">
-      Aliquid ut dolore accusantium recusandae omnis asperiores placeat. Enim id aliquam vel libero doloremque ipsum.
+      Molestiae ad facilis necessitatibus suscipit quisquam voluptatibus. Ratione occaecati et veniam qui blanditiis et est eum. Similique non et animi alias dolorum blanditiis.
     </span>
   </span>
 </div>
@@ -1250,7 +1286,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      07:00:58
+      04:23:07
     </span>
   </span>
 </div>
@@ -1261,7 +1297,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      America/Argentina/Salta
+      Pacific/Nauru
     </span>
   </span>
 </div>
@@ -1272,7 +1308,7 @@
       Type uinteger
     </span>
     <span class="formularium-value">
-      2702135084
+      2466324361
     </span>
   </span>
 </div>
@@ -1283,7 +1319,7 @@
       Type url
     </span>
     <span class="formularium-value">
-      http://schumm.com/
+      https://www.schaefer.com/repudiandae-ut-sit-voluptatem-sunt-et
     </span>
   </span>
 </div>
@@ -1294,7 +1330,7 @@
       Type usmall
     </span>
     <span class="formularium-value">
-      12088
+      5313
     </span>
   </span>
 </div>
@@ -1305,9 +1341,19 @@
       Type uuid
     </span>
     <span class="formularium-value">
-      8806247c-302c-4c1e-82ae-c816fd5c163e
+      62352608-b6ba-4579-b224-c2d3bf09e370
     </span>
   </span>
+</div>
+
+
+  </div>
+  <script>
+    var app = new Vue({
+    el: '#vueapp4',
+    data: {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":"","phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":""}
+});
+  </script>
 </div>
 
 
@@ -1318,31 +1364,33 @@
 
                 <form>
                     <div>
-  <label for="alpha4" class="formularium-label">
+  <div id="vueapp5">
+    <div class="form-group" data-attribute="alpha" data-datatype="alpha" data-basetype="string">
+  <label for="alpha214" class="formularium-label">
     Type alpha
   </label>
-  <input id="alpha4" type="text" name="alpha" class="" data-attribute="alpha" data-datatype="alpha" data-basetype="string" value="" maxlength="1024" title="Type alpha"/>
+  <input id="alpha214" type="text" name="alpha" class=" form-control" data-attribute="alpha" data-datatype="alpha" data-basetype="string" maxlength="1024" title="Type alpha" v-model="alpha"/>
 </div>
 
-<div>
-  <label for="alphanum5" class="formularium-label">
+<div class="form-group" data-attribute="alphanum" data-datatype="alphanum" data-basetype="string">
+  <label for="alphanum215" class="formularium-label">
     Type alphanum
   </label>
-  <input id="alphanum5" type="text" name="alphanum" class="" data-attribute="alphanum" data-datatype="alphanum" data-basetype="string" value="" maxlength="1024" title="Type alphanum"/>
+  <input id="alphanum215" type="text" name="alphanum" class=" form-control" data-attribute="alphanum" data-datatype="alphanum" data-basetype="string" maxlength="1024" title="Type alphanum" v-model="alphanum"/>
 </div>
 
-<div>
-  <label for="alphanumdash6" class="formularium-label">
+<div class="form-group" data-attribute="alphanumdash" data-datatype="alphanumdash" data-basetype="string">
+  <label for="alphanumdash216" class="formularium-label">
     Type alphanumdash
   </label>
-  <input id="alphanumdash6" type="text" name="alphanumdash" class="" data-attribute="alphanumdash" data-datatype="alphanumdash" data-basetype="string" value="" maxlength="1024" title="Type alphanumdash"/>
+  <input id="alphanumdash216" type="text" name="alphanumdash" class=" form-control" data-attribute="alphanumdash" data-datatype="alphanumdash" data-basetype="string" maxlength="1024" title="Type alphanumdash" v-model="alphanumdash"/>
 </div>
 
-<div>
-  <label for="bool7" class="formularium-label">
+<div class="form-group" data-attribute="bool" data-datatype="bool" data-basetype="bool">
+  <label for="bool217" class="formularium-label">
     Type bool
   </label>
-  <select id="bool7" name="bool" class="" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool">
+  <select id="bool217" name="bool" class="form-control" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" v-model="bool">
     <option value="false" selected="selected">
       False
     </option>
@@ -1352,18 +1400,18 @@
   </select>
 </div>
 
-<div>
-  <label for="cnpj8" class="formularium-label">
+<div class="form-group" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string">
+  <label for="cnpj218" class="formularium-label">
     Type cnpj
   </label>
-  <input id="cnpj8" type="text" name="cnpj" class="" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" value="" maxlength="1024" title="Type cnpj"/>
+  <input id="cnpj218" type="text" name="cnpj" class=" form-control" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" maxlength="1024" title="Type cnpj" v-model="cnpj"/>
 </div>
 
-<div>
-  <label for="color9" class="formularium-label">
+<div class="form-group" data-attribute="color" data-datatype="color" data-basetype="string">
+  <label for="color219" class="formularium-label">
     Type color
   </label>
-  <input id="color9" type="color" name="color" class="" data-attribute="color" data-datatype="color" data-basetype="string" value="" maxlength="1024" title="Type color"/>
+  <input id="color219" type="color" name="color" class=" form-control" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
 </div>
 
 <div>
@@ -1373,11 +1421,11 @@
 
 </div>
 
-<div>
-  <label for="countrycode10" class="formularium-label">
+<div class="form-group" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice">
+  <label for="countrycode220" class="formularium-label">
     Type countrycode
   </label>
-  <select id="countrycode10" name="countrycode" class="" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode">
+  <select id="countrycode220" name="countrycode" class=" custom-select" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode" v-model="countrycode">
     <option value="AND">
       AND
     </option>
@@ -2218,18 +2266,18 @@
   </select>
 </div>
 
-<div>
-  <label for="cpf11" class="formularium-label">
+<div class="form-group" data-attribute="cpf" data-datatype="cpf" data-basetype="string">
+  <label for="cpf221" class="formularium-label">
     Type cpf
   </label>
-  <input id="cpf11" type="text" name="cpf" class="" data-attribute="cpf" data-datatype="cpf" data-basetype="string" value="" maxlength="1024" title="Type cpf"/>
+  <input id="cpf221" type="text" name="cpf" class=" form-control" data-attribute="cpf" data-datatype="cpf" data-basetype="string" maxlength="1024" title="Type cpf" v-model="cpf"/>
 </div>
 
-<div>
-  <label for="currency12" class="formularium-label">
+<div class="form-group" data-attribute="currency" data-datatype="currency" data-basetype="choice">
+  <label for="currency222" class="formularium-label">
     Type currency
   </label>
-  <select id="currency12" name="currency" class="" data-attribute="currency" data-datatype="currency" data-basetype="choice" title="Type currency">
+  <select id="currency222" name="currency" class=" custom-select" data-attribute="currency" data-datatype="currency" data-basetype="choice" title="Type currency">
     <option value="XUA">
       ADB Unit of Account
     </option>
@@ -2770,105 +2818,109 @@
   </select>
 </div>
 
-<div>
-  <label for="date13" class="formularium-label">
+<div class="form-group" data-attribute="date" data-datatype="date" data-basetype="date">
+  <label for="date223" class="formularium-label">
     Type date
   </label>
-  <input id="date13" type="date" name="date" class="" data-attribute="date" data-datatype="date" data-basetype="date" value="" maxlength="1024" title="Type date"/>
+  <input id="date223" type="date" name="date" class=" form-control" data-attribute="date" data-datatype="date" data-basetype="date" maxlength="1024" title="Type date" v-model="date"/>
 </div>
 
-<div>
-  <label for="datetime14" class="formularium-label">
+<div class="form-group" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime">
+  <label for="datetime224" class="formularium-label">
     Type datetime
   </label>
-  <input id="datetime14" type="datetime" name="datetime" class="" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" value="" maxlength="1024" title="Type datetime"/>
+  <input id="datetime224" type="datetime" name="datetime" class=" form-control" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" maxlength="1024" title="Type datetime" v-model="datetime"/>
 </div>
 
-<div>
-  <label for="domain15" class="formularium-label">
+<div class="form-group" data-attribute="domain" data-datatype="domain" data-basetype="string">
+  <label for="domain225" class="formularium-label">
     Type domain
   </label>
-  <input id="domain15" type="text" name="domain" class="" data-attribute="domain" data-datatype="domain" data-basetype="string" value="" maxlength="1024" title="Type domain"/>
+  <input id="domain225" type="text" name="domain" class=" form-control" data-attribute="domain" data-datatype="domain" data-basetype="string" maxlength="1024" title="Type domain" v-model="domain"/>
 </div>
 
-<div>
-  <label for="email16" class="formularium-label">
+<div class="form-group" data-attribute="email" data-datatype="email" data-basetype="string">
+  <label for="email226" class="formularium-label">
     Type email
   </label>
-  <input id="email16" type="email" name="email" class="" data-attribute="email" data-datatype="email" data-basetype="string" value="" maxlength="1024" title="Type email"/>
+  <input id="email226" type="email" name="email" class=" form-control" data-attribute="email" data-datatype="email" data-basetype="string" maxlength="1024" title="Type email" v-model="email"/>
 </div>
 
-<div>
-  <div class="formularium-file-origin-upload">
-    <label for="file17" class="formularium-label">
-      Type file
-    </label>
-    <input id="file17" class="formularium-file-upload-button" type="file" data-attribute="file" data-datatype="file" data-basetype="file" title="Type file" data-max-size="" capture="environment"/>
-    <canvas class="formularium-file-preview" style="display: none; clear: both;">
-    </canvas>
-    <input class="formularium-button formularium-file-reset" style="display: none;" value="Clear file"/>
+<div class="form-group" data-attribute="file" data-datatype="file" data-basetype="file">
+  <label for="file227" class="formularium-label">
+    Type file
+  </label>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        Upload
+      </span>
+    </div>
+    <div class="custom-file">
+      <input id="file227" class="formularium-file-upload-button custom-file-input" type="file" data-attribute="file" data-datatype="file" data-basetype="file" title="Type file" data-max-size="" capture="environment" v-on:change="changedFile(file, $event)"/>
+      <label class="custom-file-label formularium-file-name">
+        Choose file
+      </label>
+    </div>
   </div>
 </div>
 
-<div>
-  <label for="float18" class="formularium-label">
+<div class="form-group" data-attribute="float" data-datatype="float" data-basetype="number">
+  <label for="float228" class="formularium-label">
     Type float
   </label>
-  <input id="float18" type="number" name="float" class="" data-attribute="float" data-datatype="float" data-basetype="number" value="" title="Type float"/>
+  <input id="float228" type="number" name="float" class=" form-control" data-attribute="float" data-datatype="float" data-basetype="number" title="Type float" v-model="float"/>
 </div>
 
-<div>
-  <label for="html19" class="formularium-label">
+<div class="form-group" data-attribute="html" data-datatype="html" data-basetype="text">
+  <label for="html229" class="formularium-label">
     Type html
   </label>
-  <div id="html19" type="text" name="html" class=" formularium-html-editor" data-attribute="html" data-datatype="html" data-basetype="text" value="" maxlength="1024000" title="Type html">
-  </div>
-  <script>
-    var quill = new Quill('#html19', { theme: 'snow' });
-  </script>
-</div>
-
-<div>
-  <label for="integer20" class="formularium-label">
-    Type integer
-  </label>
-  <input id="integer20" type="number" name="integer" class="" data-attribute="integer" data-datatype="integer" data-basetype="number" value="" title="Type integer" min="-2147483648" max="2147483647"/>
-</div>
-
-<div>
-  <label for="ip21" class="formularium-label">
-    Type ip
-  </label>
-  <input id="ip21" type="text" name="ip" class="" data-attribute="ip" data-datatype="ipv4" data-basetype="string" value="" maxlength="1024" title="Type ip"/>
-</div>
-
-<div>
-  <label for="ipv422" class="formularium-label">
-    Type ipv4
-  </label>
-  <input id="ipv422" type="text" name="ipv4" class="" data-attribute="ipv4" data-datatype="ipv4" data-basetype="string" value="" maxlength="1024" title="Type ipv4"/>
-</div>
-
-<div>
-  <label for="ipv623" class="formularium-label">
-    Type ipv6
-  </label>
-  <input id="ipv623" type="text" name="ipv6" class="" data-attribute="ipv6" data-datatype="ipv4" data-basetype="string" value="" maxlength="1024" title="Type ipv6"/>
-</div>
-
-<div>
-  <label for="json24" class="formularium-label">
-    Type json
-  </label>
-  <textarea id="json24" type="text" name="json" class="" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024000" title="Type json">
+  <textarea id="html229" type="text" name="html" class="form-control" data-attribute="html" data-datatype="html" data-basetype="text" value="" maxlength="1024000" title="Type html" v-model="html">
   </textarea>
 </div>
 
-<div>
-  <label for="language25" class="formularium-label">
+<div class="form-group" data-attribute="integer" data-datatype="integer" data-basetype="number">
+  <label for="integer230" class="formularium-label">
+    Type integer
+  </label>
+  <input id="integer230" type="number" name="integer" class=" form-control" data-attribute="integer" data-datatype="integer" data-basetype="number" title="Type integer" min="-2147483648" max="2147483647" v-model="integer"/>
+</div>
+
+<div class="form-group" data-attribute="ip" data-datatype="ipv4" data-basetype="string">
+  <label for="ip231" class="formularium-label">
+    Type ip
+  </label>
+  <input id="ip231" type="text" name="ip" class=" form-control" data-attribute="ip" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ip" v-model="ip"/>
+</div>
+
+<div class="form-group" data-attribute="ipv4" data-datatype="ipv4" data-basetype="string">
+  <label for="ipv4232" class="formularium-label">
+    Type ipv4
+  </label>
+  <input id="ipv4232" type="text" name="ipv4" class=" form-control" data-attribute="ipv4" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ipv4" v-model="ipv4"/>
+</div>
+
+<div class="form-group" data-attribute="ipv6" data-datatype="ipv4" data-basetype="string">
+  <label for="ipv6233" class="formularium-label">
+    Type ipv6
+  </label>
+  <input id="ipv6233" type="text" name="ipv6" class=" form-control" data-attribute="ipv6" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ipv6" v-model="ipv6"/>
+</div>
+
+<div class="form-group" data-attribute="json" data-datatype="json" data-basetype="text">
+  <label for="json234" class="formularium-label">
+    Type json
+  </label>
+  <textarea id="json234" type="text" name="json" class="form-control" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024000" title="Type json" v-model="json">
+  </textarea>
+</div>
+
+<div class="form-group" data-attribute="language" data-datatype="language" data-basetype="choice">
+  <label for="language235" class="formularium-label">
     Type language
   </label>
-  <select id="language25" name="language" class="" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language">
+  <select id="language235" name="language" class=" custom-select" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language">
     <option value="aa">
       Afaraf
     </option>
@@ -3482,40 +3534,40 @@
 
 </div>
 
-<div>
-  <label for="phone26" class="formularium-label">
+<div class="form-group" data-attribute="phone" data-datatype="phone" data-basetype="string">
+  <label for="phone236" class="formularium-label">
     Type phone
   </label>
-  <input id="phone26" type="tel" name="phone" class="" data-attribute="phone" data-datatype="phone" data-basetype="string" value="" maxlength="1024" title="Type phone"/>
+  <input id="phone236" type="tel" name="phone" class=" form-control" data-attribute="phone" data-datatype="phone" data-basetype="string" maxlength="1024" title="Type phone" v-model="phone"/>
 </div>
 
-<div>
-  <label for="string27" class="formularium-label">
+<div class="form-group" data-attribute="string" data-datatype="string" data-basetype="string">
+  <label for="string237" class="formularium-label">
     Type string
   </label>
-  <input id="string27" type="text" name="string" class="" data-attribute="string" data-datatype="string" data-basetype="string" value="" maxlength="1024" title="Type string"/>
+  <input id="string237" type="text" name="string" class=" form-control" data-attribute="string" data-datatype="string" data-basetype="string" maxlength="1024" title="Type string" v-model="string"/>
 </div>
 
-<div>
-  <label for="text28" class="formularium-label">
+<div class="form-group" data-attribute="text" data-datatype="text" data-basetype="string">
+  <label for="text238" class="formularium-label">
     Type text
   </label>
-  <textarea id="text28" type="text" name="text" class="" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024000" title="Type text">
+  <textarea id="text238" type="text" name="text" class="form-control" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024000" title="Type text" v-model="text">
   </textarea>
 </div>
 
-<div>
-  <label for="time29" class="formularium-label">
+<div class="form-group" data-attribute="time" data-datatype="time" data-basetype="time">
+  <label for="time239" class="formularium-label">
     Type time
   </label>
-  <input id="time29" type="time" name="time" class="" data-attribute="time" data-datatype="time" data-basetype="time" value="" maxlength="1024" title="Type time"/>
+  <input id="time239" type="time" name="time" class=" form-control" data-attribute="time" data-datatype="time" data-basetype="time" value="" maxlength="1024" title="Type time"/>
 </div>
 
-<div>
-  <label for="timezone30" class="formularium-label">
+<div class="form-group" data-attribute="timezone" data-datatype="timezone" data-basetype="choice">
+  <label for="timezone240" class="formularium-label">
     Type timezone
   </label>
-  <select id="timezone30" name="timezone" class="" data-attribute="timezone" data-datatype="timezone" data-basetype="choice" title="Type timezone">
+  <select id="timezone240" name="timezone" class=" custom-select" data-attribute="timezone" data-datatype="timezone" data-basetype="choice" title="Type timezone">
     <option value="Africa/Abidjan">
       Africa/Abidjan
     </option>
@@ -4794,32 +4846,54 @@
   </select>
 </div>
 
-<div>
-  <label for="uinteger31" class="formularium-label">
+<div class="form-group" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer">
+  <label for="uinteger241" class="formularium-label">
     Type uinteger
   </label>
-  <input id="uinteger31" type="number" name="uinteger" class="" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" value="" title="Type uinteger" min="0" max="4294967296"/>
+  <input id="uinteger241" type="number" name="uinteger" class=" form-control" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" title="Type uinteger" min="0" max="4294967296" v-model="uinteger"/>
 </div>
 
-<div>
-  <label for="url32" class="formularium-label">
+<div class="form-group" data-attribute="url" data-datatype="url" data-basetype="url">
+  <label for="url242" class="formularium-label">
     Type url
   </label>
-  <input id="url32" type="url" name="url" class="" data-attribute="url" data-datatype="url" data-basetype="url" value="" maxlength="1024" title="Type url"/>
+  <input id="url242" type="url" name="url" class=" form-control" data-attribute="url" data-datatype="url" data-basetype="url" maxlength="1024" title="Type url" v-model="url"/>
 </div>
 
-<div>
-  <label for="usmall33" class="formularium-label">
+<div class="form-group" data-attribute="usmall" data-datatype="usmall" data-basetype="integer">
+  <label for="usmall243" class="formularium-label">
     Type usmall
   </label>
-  <input id="usmall33" type="number" name="usmall" class="" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" value="" title="Type usmall" min="0" max="65536"/>
+  <input id="usmall243" type="number" name="usmall" class=" form-control" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" title="Type usmall" min="0" max="65536" v-model="usmall"/>
 </div>
 
-<div>
-  <label for="uuid34" class="formularium-label">
+<div class="form-group" data-attribute="uuid" data-datatype="uuid" data-basetype="string">
+  <label for="uuid244" class="formularium-label">
     Type uuid
   </label>
-  <input id="uuid34" type="text" name="uuid" class="" data-attribute="uuid" data-datatype="uuid" data-basetype="string" value="" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$"/>
+  <input id="uuid244" type="text" name="uuid" class=" form-control" data-attribute="uuid" data-datatype="uuid" data-basetype="string" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" v-model="uuid"/>
+</div>
+
+
+  </div>
+  <script>
+    var app = new Vue({
+    el: '#vueapp5',
+    data: function () {
+        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":"","phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":""};
+    },
+        methods: {
+        changedFile(name, event) {
+            console.log(name, event);
+            const input = event.target;
+            const files = input.files;
+            if (files && files[0]) {
+                // input.preview = window.URL.createObjectURL(files[0]);
+            }
+        }
+    }        
+});
+  </script>
 </div>
 
 
@@ -4831,7 +4905,13 @@
             Generated with <a href="https://github.com/Corollarium/Formularium/">Formularium</a>.
         </footer>
     </div>
-    
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
 
 </body>
 
