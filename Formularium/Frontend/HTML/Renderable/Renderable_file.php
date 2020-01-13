@@ -151,7 +151,7 @@ class Renderable_file extends Renderable
                 ),
                 HTMLElement::factory(
                     'input',
-                    ['class' => 'formularium-button formularium-file-reset', 'style' => "display: none;", 'value' => 'Clear file']
+                    ['class' => 'formularium-button formularium-file-reset', 'type' => 'button', 'style' => "display: none;", 'value' => 'Clear file']
                 )
             ]
         );

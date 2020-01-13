@@ -121,6 +121,16 @@ class HTMLElement
     }
 
     /**
+     * Does attribute exist?
+     * @param string $name The name of attribute
+     * @return bool
+     */
+    public function hasAttribute($name): bool
+    {
+        return array_key_exists($name, $this->attributes);
+    }
+
+    /**
      * Return the content of element
      * @return mixed array of HTMLElement and string (text)
      */
@@ -566,10 +576,10 @@ class HTMLElement
     }
 
     /**
-     * Similar to array_filter().
+     * Similar to array_filter(): removes children from this element.
      * Does not call callback for text content.
      *
-     * @param callable $f
+     * @param callable $f If returns false, element being checked is removed.
      * @return HTMLElement[] The filtered elements.
      */
     public function filter(callable $f, bool $recurse = true): array

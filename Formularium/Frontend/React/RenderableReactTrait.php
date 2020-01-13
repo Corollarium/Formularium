@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\React;
 
@@ -9,10 +9,15 @@ trait RenderableReactTrait
 {
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        return $previous;
+        return $this->fix($value, $field, $previous);
     }
 
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    {
+        return $this->fix($value, $field, $previous);
+    }
+
+    public function fix($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $previous->walk(function (HTMLElement $element) use ($field) {
             if ($element->getTag() === 'input') {
@@ -36,11 +41,11 @@ trait RenderableReactTrait
             if ($element->getTag() === 'option') {
                 $element->removeAttribute('selected');
             }
-            if (!empty($element->getAttribute('for'))) {
+            if ($element->hasAttribute('for')) {
                 $element->setAttribute('htmlFor', $element->getAttribute('for'));
                 $element->removeAttribute('for');
             }
-            if (!empty($element->getAttribute('class'))) {
+            if ($element->hasAttribute('class')) {
                 $element->setAttribute('className', $element->getAttribute('class'));
                 $element->removeAttribute('class');
             }

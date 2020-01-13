@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\React;
 
@@ -9,6 +9,17 @@ class Framework extends \Formularium\Framework
     public function __construct(string $name = 'React')
     {
         parent::__construct($name);
+    }
+
+    /**
+     * Static counter to generate unique ids.
+     *
+     * @return integer
+     */
+    public static function counter(): int
+    {
+        static $counter = 0;
+        return $counter++;
     }
 
     public function htmlHead(HTMLElement &$head)
@@ -37,7 +48,7 @@ class Framework extends \Formularium\Framework
         
         $jsonData = json_encode($data);
 
-        $id = 'reactapp';
+        $id = 'reactapp' . self::counter();
         $component = $m->getName() . 'Component';
         $reactCode = <<<EOF
 'use strict';
