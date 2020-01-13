@@ -36,25 +36,102 @@ class Datatype_file extends \Formularium\Datatype
         return '';
     }
 
+    /**
+     *
+     * @param string $value The path to the file to be validated. Might be a temporary path.
+     * @param Field $field
+     * @param Model $model
+     * @return void
+     */
     public function validate($value, Field $field, Model $model = null)
     {
         $validators = $field->getValidators();
 
         // $file =
         $max_size = $field->getValidator(self::MAX_SIZE, 0);
-        if ($max_size) {
-            // TODO
+        if ($max_size > 0 && filesize($value) > $max_size) {
+            throw new ValidatorException(
+                'File too big. Maximum size: ' . $max_size
+            );
         }
 
         if ($validators[Datatype_file::ACCEPT] ?? false) {
-            // TODO if ()
+            $accept = $validators[Datatype_file::ACCEPT];
+            if (!is_array($accept)) {
+                $accept = [$accept];
+            }
+            $valid = false;
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($finfo, $value);
+            foreach ($accept as $a) {
+                switch ($a) {
+                    case self::ACCEPT_AUDIO:
+                        $validMimes = [
+                            'audio/aac',
+                            'audio/mpeg',
+                            'audio/ogg',
+                            'audio/wav',
+                            'audio/webm',
+                        ];
+                        if (in_array($mime, $validMimes)) {
+                            $valid = true;
+                            break;
+                        }
+                    break;
+                    case self::ACCEPT_IMAGE:
+                        $validMimes = [
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/gif',
+                            'image/png',
+                            'image/webp'
+                        ];
+                        if (in_array($mime, $validMimes)) {
+                            $valid = true;
+                            break;
+                        }
+                    break;
+                    case self::ACCEPT_VIDEO:
+                        $validMimes = [
+                            'video/x-flv',
+                            'video/mp4',
+                            'video/mpeg',
+                            'application/x-mpegURL',
+                            'video/MP2T',
+                            'video/3gpp',
+                            'video/ogg',
+                            'video/quicktime',
+                            'video/x-msvideo',
+                            'video/x-ms-wmv',
+                            'video/webm',
+                        ];
+                        if (in_array($mime, $validMimes)) {
+                            $valid = true;
+                            break;
+                        }
+                    break;
+                }
+            }
+
+            // TODO: 'accept' extensions
+
+            if (!$valid) {
+                throw new ValidatorException(
+                    'Not an accepted file'
+                );
+            }
         }
 
-        /*
         $isImage = false;
         if ($isImage) {
-            $width = mt_rand(1, 100);
-            $height = mt_rand(1, 100);
+            $imageData = getimagesize($value);
+            if ($imageData === false) {
+                throw new ValidatorException(
+                    'Not an image'
+                );
+            }
+            $width = $imageData[0];
+            $height = $imageData[1];
 
             if ($field->getValidator(self::DIMENSION_HEIGHT, false) !== false) {
                 if ($field->getValidator(self::DIMENSION_HEIGHT, false) !== $height) {
