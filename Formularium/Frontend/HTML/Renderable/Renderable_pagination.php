@@ -9,12 +9,11 @@ use PHP_CodeSniffer\Generators\HTML;
 
 class Renderable_pagination extends Renderable_constant
 {
-    const BASE_URL = 'BASE_URL';
-    const CURRENT = 'CURRENT';
-    const INITIAL = 'INITIAL';
-    const PAGES_AROUND = 'PAGES_AROUND';
-    const PER_PAGE = 'PER_PAGE';
-    const TOTAL_ITEMS = 'TOTAL_ITEMS';
+    const BASE_URL = 'BASE_URL'; // base url for pagination. Default: '?'
+    const CURRENT = 'CURRENT'; // current item
+    const PAGES_AROUND = 'PAGES_AROUND'; // maximum pages listed before or after the current one
+    const PER_PAGE = 'PER_PAGE'; // items per page. Default: 20
+    const TOTAL_ITEMS = 'TOTAL_ITEMS'; // total items in query.
 
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
@@ -58,8 +57,8 @@ class Renderable_pagination extends Renderable_constant
     
         $query = array();
         $parsed = parse_url($baseurl);
-        if (!$parsed) {
-            throw new Exception('Invalid url');
+        if ($parsed === false) {
+            throw new Exception('Invalid url' . $baseurl);
         }
         if (isset($parsed['query'])) {
             mb_parse_str($parsed['query'], $query);
