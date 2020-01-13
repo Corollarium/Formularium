@@ -901,47 +901,8 @@
   </b-select>
 </b-field>
 
-<div>
-  <nav class="formularium-pagination-wrapper" aria-label="Page navigation">
-    <ul class="formularium-pagination">
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=0&amp;total=20">
-          1
-        </a>
-      </li>
-      <li class="formularium-pagination-item formularium-pagination-current">
-        <a class="formularium-pagination-link" href="">
-          2
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=40&amp;total=20">
-          3
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=60&amp;total=20">
-          4
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=80&amp;total=20">
-          5
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link" href="?begin=100&amp;total=20">
-          6
-        </a>
-      </li>
-      <li class="formularium-pagination-item formularium-ellipsis">
-        <a class="formularium-pagination-link" href="">
-          ...
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
+<b-pagination :total="paginator.total" :current.sync="paginator.current_page" :per-page="paginator.per_page">
+</b-pagination>
 
 
   </div>
@@ -949,7 +910,7 @@
     var app = new Vue({
     el: '#vueapp6',
     data: function () {
-        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":""};
+        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"total":1,"current_page":1,"per_page":20}};
     },
         methods: {
         changedFile(name, event) {
@@ -985,7 +946,7 @@
       Type alpha
     </span>
     <span class="formularium-value">
-      RcxJDuAQtrZn
+      ReYXyJaX
     </span>
   </span>
 </div>
@@ -996,7 +957,7 @@
       Type alphanum
     </span>
     <span class="formularium-value">
-      RZqWyOKNtKB0
+      RILoTqG3v9OxCoS
     </span>
   </span>
 </div>
@@ -1007,7 +968,7 @@
       Type alphanumdash
     </span>
     <span class="formularium-value">
-      RAZDRhAt
+      Rd9ZTECmR2i
     </span>
   </span>
 </div>
@@ -1018,7 +979,7 @@
       Type bool
     </span>
     <span class="formularium-value">
-      False
+      True
     </span>
   </span>
 </div>
@@ -1029,7 +990,7 @@
       Type cnpj
     </span>
     <span class="formularium-value">
-      60.063.768/0001-36
+      15.527.101/0001-92
     </span>
   </span>
 </div>
@@ -1040,10 +1001,10 @@
       Type color
     </span>
     <span class="formularium-value">
-      <span style="width: 1em; display: inline-block; background-color: #468283">
+      <span style="width: 1em; display: inline-block; background-color: #0F6733">
         &nbsp;
       </span>
-      #468283
+      #0F6733
     </span>
   </span>
 </div>
@@ -1061,7 +1022,7 @@
       Type countrycode
     </span>
     <span class="formularium-value">
-      KHM
+      PAK
     </span>
   </span>
 </div>
@@ -1072,7 +1033,7 @@
       Type cpf
     </span>
     <span class="formularium-value">
-      861.750.197-92
+      660.801.118-02
     </span>
   </span>
 </div>
@@ -1083,7 +1044,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      VUV
+      HRK
     </span>
   </span>
 </div>
@@ -1094,7 +1055,7 @@
       Type date
     </span>
     <span class="formularium-value">
-      2022-05-04
+      2013-07-12
     </span>
   </span>
 </div>
@@ -1105,7 +1066,7 @@
       Type datetime
     </span>
     <span class="formularium-value">
-      2015-01-19T07:26:01+0000
+      2013-02-05T06:28:51+0000
     </span>
   </span>
 </div>
@@ -1116,7 +1077,7 @@
       Type domain
     </span>
     <span class="formularium-value">
-      casper.com
+      nikolaus.org
     </span>
   </span>
 </div>
@@ -1127,7 +1088,7 @@
       Type email
     </span>
     <span class="formularium-value">
-      sgaylord@jakubowski.com
+      tobin.koepp@sanford.com
     </span>
   </span>
 </div>
@@ -1148,7 +1109,7 @@
       Type float
     </span>
     <span class="formularium-value">
-      0.734
+      0.126
     </span>
   </span>
 </div>
@@ -1159,7 +1120,7 @@
       Type html
     </span>
     <span class="formularium-value">
-      &lt;p&gt;HTML &lt;span&gt;Sequi et ut nihil dolorum suscipit. Accusantium aut sint libero. Non eveniet blanditiis aliquid ab.&lt;/span&gt;Suscipit explicabo optio ad recusandae. Quo aut recusandae rerum modi vitae. Maxime culpa voluptatem itaque molestias delectus. Aut magni in ipsam sunt atque sunt magnam.&lt;/p&gt;
+      &lt;p&gt;HTML &lt;span&gt;Reprehenderit repudiandae a quibusdam est. Eaque est perferendis suscipit beatae cum est ut. Ut odit sunt assumenda ratione. Quo aspernatur soluta et ipsa est molestias.&lt;/span&gt;Alias maiores aspernatur et id. Voluptate ducimus ad voluptatem doloribus ex et. Et similique harum voluptas explicabo autem.&lt;/p&gt;
     </span>
   </span>
 </div>
@@ -1170,7 +1131,7 @@
       Type integer
     </span>
     <span class="formularium-value">
-      398259025
+      -1229666962
     </span>
   </span>
 </div>
@@ -1181,7 +1142,7 @@
       Type ip
     </span>
     <span class="formularium-value">
-      684d:87a2:ea9d:f25d:f41c:f7c:2e4e:2e97
+      114.47.53.104
     </span>
   </span>
 </div>
@@ -1192,7 +1153,7 @@
       Type ipv4
     </span>
     <span class="formularium-value">
-      23.219.116.123
+      10.146.176.8
     </span>
   </span>
 </div>
@@ -1203,7 +1164,7 @@
       Type ipv6
     </span>
     <span class="formularium-value">
-      9cbb:d514:14c1:1317:4450:e109:610c:6cfe
+      c999:361b:213a:aba:ec0c:2c6c:6578:1048
     </span>
   </span>
 </div>
@@ -1214,7 +1175,7 @@
       Type json
     </span>
     <span class="formularium-value">
-      {&quot;version&quot;:1119114602,&quot;data&quot;:{&quot;string&quot;:&quot;RAVIKA3Nd&quot;,&quot;float&quot;:0.999}}
+      {&quot;version&quot;:1715780649,&quot;data&quot;:{&quot;string&quot;:&quot;ROkFJ&quot;,&quot;float&quot;:0.977}}
     </span>
   </span>
 </div>
@@ -1225,17 +1186,13 @@
       Type language
     </span>
     <span class="formularium-value">
-      vo
+      oj
     </span>
   </span>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type pagination
-  </label>
-
-</div>
+<b-pagination :total="pagination.total" :current.sync="pagination.current_page" :per-page="pagination.per_page">
+</b-pagination>
 
 <div>
   <span class="formularium-viewable">
@@ -1243,7 +1200,7 @@
       Type phone
     </span>
     <span class="formularium-value">
-      +9087637861697
+      +6774386980433
     </span>
   </span>
 </div>
@@ -1254,7 +1211,7 @@
       Type string
     </span>
     <span class="formularium-value">
-      RyfOqQ
+      RitsiVyx0Znu
     </span>
   </span>
 </div>
@@ -1265,7 +1222,7 @@
       Type text
     </span>
     <span class="formularium-value">
-      Unde quia et id vel. Fugit non facilis enim mollitia odit quas enim soluta. Necessitatibus vero voluptas asperiores vel distinctio sit expedita.
+      Molestiae qui nemo iusto vero. Quod distinctio sint est molestias possimus architecto. Sit quia quam iusto laboriosam laudantium. Dolor sed placeat cum ut omnis.
     </span>
   </span>
 </div>
@@ -1276,7 +1233,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      10:49:17
+      23:56:44
     </span>
   </span>
 </div>
@@ -1287,7 +1244,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      Europe/Zurich
+      Africa/Dakar
     </span>
   </span>
 </div>
@@ -1298,7 +1255,7 @@
       Type uinteger
     </span>
     <span class="formularium-value">
-      3938109493
+      1357548731
     </span>
   </span>
 </div>
@@ -1309,7 +1266,7 @@
       Type url
     </span>
     <span class="formularium-value">
-      https://hirthe.com/delectus-voluptatem-dolor-quos-vel-officia-natus.html
+      http://www.king.net/ex-expedita-atque-tenetur-velit-voluptas-culpa-voluptas.html
     </span>
   </span>
 </div>
@@ -1320,7 +1277,7 @@
       Type usmall
     </span>
     <span class="formularium-value">
-      52117
+      30544
     </span>
   </span>
 </div>
@@ -1331,7 +1288,7 @@
       Type uuid
     </span>
     <span class="formularium-value">
-      0f46a37e-611e-4307-883a-d19459780fb0
+      fba38f99-2166-40ae-94e0-35c6a266f449
     </span>
   </span>
 </div>
@@ -1341,7 +1298,7 @@
   <script>
     var app = new Vue({
     el: '#vueapp7',
-    data: {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":"","phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":""}
+    data: {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","0":"pagination"}
 });
   </script>
 </div>
@@ -3466,12 +3423,8 @@
   </b-select>
 </b-field>
 
-<div>
-  <label for="" class="formularium-label">
-    Type pagination
-  </label>
-
-</div>
+<b-pagination :total="pagination.total" :current.sync="pagination.current_page" :per-page="pagination.per_page">
+</b-pagination>
 
 <b-field label="Type phone">
   <b-input id="phone271" type="tel" name="phone" class="" data-attribute="phone" data-datatype="phone" data-basetype="string" value="" maxlength="1024" title="Type phone">
@@ -4799,7 +4752,7 @@
     var app = new Vue({
     el: '#vueapp8',
     data: function () {
-        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":"","phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":""};
+        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":""};
     },
         methods: {
         changedFile(name, event) {
