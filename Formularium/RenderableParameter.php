@@ -21,4 +21,6 @@ interface RenderableParameter
     const SIZE_LARGE = 'size_large';
     const SIZE_NORMAL = 'size_normal';
     const SIZE_SMALL = 'size_large';
+
+    const VIEWABLE_TAG = 'viewable_tag'; // HTML tag to use (or equivalent in framework). Default is 'span'.
 }
