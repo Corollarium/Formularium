@@ -9,6 +9,7 @@ use Formularium\Framework;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
+use Formularium\Frontend\HTML\Renderable\Renderable_pagination;
 use Formularium\Frontend\HTML\Renderable\Renderable_string;
 use Formularium\Model;
 use Formularium\Renderable;
@@ -79,20 +80,20 @@ function kitchenSink($frameworkName, string $templateName)
                 Renderable::PLACEHOLDER => "Type here"
             ],
         ],
-        'countrycoderadio' => [
-            'datatype' => 'countrycode',
-            'extensions' => [
-                Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_RADIO,
-                Renderable::LABEL => 'Country code - radio choice'
-            ],
-        ],
         'countrycodeselect' => [
             'datatype' => 'countrycode',
             'extensions' => [
                 Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
                 Renderable::LABEL => 'Country code - select choice'
             ],
-        ]
+        ],
+        'paginator' => [
+            'datatype' => 'pagination',
+            'extensions' => [
+                Renderable_pagination::CURRENT => 20,
+                Renderable_pagination::TOTAL_ITEMS => 253,
+            ],
+        ],
     ];
 
     // generate basic model
@@ -113,7 +114,9 @@ function kitchenSink($frameworkName, string $templateName)
     );
     $randomData = [];
     foreach ($model->getFields() as $f) {
-        $randomData[$f->getName()] = $f->getDatatype()->getRandom();
+        if ($f->getDatatype()->getBasetype() !== 'constant') {
+            $randomData[$f->getName()] = $f->getDatatype()->getRandom();
+        }
     }
     $modelViewable = $model->viewable($randomData);
     $modelEditable = $model->editable();

@@ -1,0 +1,20 @@
+<?php declare(strict_types=1);
+
+namespace Formularium\Frontend\Bootstrap\Renderable;
+
+use Formularium\Field;
+use Formularium\Frontend\HTML\Renderable;
+use Formularium\HTMLElement;
+
+class Renderable_constant extends Renderable
+{
+    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    {
+        return $previous;
+    }
+    
+    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    {
+        return $previous;
+    }
+}
