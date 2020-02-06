@@ -17,6 +17,12 @@ trait RenderableReactTrait
         return $this->fix($value, $field, $previous);
     }
 
+    /**
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLElement $previous
+     * @return HTMLElement
+     */
     public function fix($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $previous->walk(function (HTMLElement $element) use ($field) {
