@@ -210,6 +210,14 @@ class Framework extends \Formularium\Framework
         return $props;
     }
 
+    protected function serializeProps(array $props): string
+    {
+        $s = array_map(function ($name, $p) {
+            return "'$name': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
+        }, array_keys($props), $props);
+        return "{\n        " . implode(",\n        ", $s) . "\n    }\n";
+    }
+
     public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
         $data = array_merge($m->getDefault(), $m->getData(), ['pagination']);
@@ -227,7 +235,7 @@ class Framework extends \Formularium\Framework
             'containerTag' => $this->getViewableContainerTag(),
             'form' => $viewableForm,
             'jsonData' => $jsonData,
-            'props' => json_encode($props),
+            'props' => $this->serializeProps($props),
             'propsBind' => implode(' ', $propsBind)
         ];
 
@@ -290,7 +298,7 @@ EOF;
             'containerTag' => $editableContainerTag,
             'form' => $editableForm,
             'jsonData' => $jsonData,
-            'props' => json_encode($props),
+            'props' => $this->serializeProps($props),
             'propsBind' => implode(' ', $propsBind)
         ];
 
