@@ -9,6 +9,11 @@ trait RenderableVueTrait
 {
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
+        $elements = $previous->get('.formularium-value');
+        foreach ($elements as &$e) {
+            $e->setContent('{{' . $field->getName() . '}}');
+        }
+
         return $previous;
     }
 

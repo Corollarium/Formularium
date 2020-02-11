@@ -232,7 +232,10 @@ class Model
      */
     public function viewable(array $modelData): string
     {
-        return FrameworkComposer::viewable($this, $modelData);
+        $this->_data = $modelData;
+        $r = FrameworkComposer::viewable($this, $modelData);
+        $this->_data = [];
+        return $r;
     }
 
     /**
