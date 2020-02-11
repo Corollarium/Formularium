@@ -220,7 +220,7 @@ class Framework extends \Formularium\Framework
 
     public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
-        $data = array_merge($m->getDefault(), $m->getData(), ['pagination']);
+        $data = array_merge($m->getDefault(), $m->getData());
         $viewableForm = join('', $elements);
         $jsonData = json_encode($data);
         $props = $this->props($m);
