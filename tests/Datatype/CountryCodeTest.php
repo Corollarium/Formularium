@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 require_once('DatatypeBaseTestCase.php');
 
@@ -25,17 +25,17 @@ class DatatypeCountryCode_TestCase extends DatatypeBaseTestCase
             [
                 'value' => 'BR',
                 'expected' => 'BR',
-                'validators' => [Datatype_countrycode::CODE_TYPE => Datatype_countrycode::ISO_ALPHA2]
+                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_ALPHA2]
             ],
             [
                 'value' => 'BRA',
                 'expected' => 'BRA',
-                'validators' => [Datatype_countrycode::CODE_TYPE => Datatype_countrycode::ISO_ALPHA3]
+                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_ALPHA3]
             ],
             [
                 'value' => '020',
                 'expected' => '020',
-                'validators' => [Datatype_countrycode::CODE_TYPE => Datatype_countrycode::ISO_NUMERIC]
+                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_NUMERIC]
             ]
 
         ];
@@ -49,15 +49,15 @@ class DatatypeCountryCode_TestCase extends DatatypeBaseTestCase
         return [
             [
                 'value' => 'BRA',
-                'validators' => [Datatype_countrycode::CODE_TYPE => Datatype_countrycode::ISO_ALPHA2]
+                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_ALPHA2]
             ],
             [
                 'value' => 'BR',
-                'validators' => [Datatype_countrycode::CODE_TYPE => Datatype_countrycode::ISO_ALPHA3]
+                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_ALPHA3]
             ],
             [
                 'value' => 'xxx',
-                'validators' => [Datatype_countrycode::CODE_TYPE => Datatype_countrycode::ISO_NUMERIC]
+                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_NUMERIC]
             ]
         ];
     }

@@ -72,4 +72,34 @@ class Datatype_date extends \Formularium\Datatype
             'Invalid date value. We expect this format: YYYY-MM-DD.' . print_r($value, true)
         );
     }
+
+
+    public static function getValidatorMetadata(): array
+    {
+        return array_merge(
+            parent::getValidatorMetadata(),
+            [
+                self::MIN => [
+                    'comment' => "Minimum value.",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'Integer',
+                            'comment' => 'The actual value'
+                        ]
+                    ]
+                ],
+                self::MAX => [
+                    'comment' => "Maximum value.",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'Integer',
+                            'comment' => 'The actual value'
+                        ]
+                    ]
+                ]
+            ]
+        );
+    }
 }

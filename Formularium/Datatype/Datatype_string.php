@@ -7,9 +7,9 @@ use Formularium\Model;
 
 class Datatype_string extends \Formularium\Datatype
 {
-    const MIN_LENGTH = "min_length";
-    const MAX_LENGTH = "max_length";
-    const SAME_AS = "same_as";
+    const MIN_LENGTH = "minLength";
+    const MAX_LENGTH = "maxLength";
+    const SAME_AS = "sameAs";
 
     /**
      *  @var integer
@@ -63,5 +63,44 @@ class Datatype_string extends \Formularium\Datatype
         }
 
         return $text;
+    }
+
+    public static function getValidatorMetadata(): array
+    {
+        return array_merge(
+            parent::getValidatorMetadata(),
+            [
+                self::MIN_LENGTH => [
+                    'comment' => "Minimum length for the string.",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'Integer',
+                            'comment' => 'The length'
+                        ]
+                    ]
+                ],
+                self::MAX_LENGTH => [
+                    'comment' => "Maximum length for the string.",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'Integer',
+                            'comment' => 'The length'
+                        ]
+                    ]
+                ],
+                self::SAME_AS => [
+                    'comment' => "Must match the same value from another field.",
+                    'args' => [
+                        [
+                            'name' => 'field',
+                            'type' => 'String',
+                            'comment' => 'The field name to match to.'
+                        ]
+                    ]
+                ]
+            ]
+        );
     }
 }

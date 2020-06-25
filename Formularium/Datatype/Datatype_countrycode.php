@@ -8,7 +8,7 @@ use Formularium\Model;
 
 class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
 {
-    public const CODE_TYPE = 'code-type';
+    public const COUNTRY_CODE_TYPE = 'countryCodeType';
 
     /**
      * The ISO representation of a country code.
@@ -333,13 +333,32 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
 
     public function getRandom(array $params = [])
     {
-        $this->setChoices($params[self::CODE_TYPE] ?? self::ISO_ALPHA3);
+        $this->setChoices($params[self::COUNTRY_CODE_TYPE] ?? self::ISO_ALPHA3);
         return parent::getRandom($params);
     }
 
     public function validate($value, Field $field, Model $model = null)
     {
-        $this->setChoices($field->getValidator(self::CODE_TYPE, self::ISO_ALPHA3));
+        $this->setChoices($field->getValidator(self::COUNTRY_CODE_TYPE, self::ISO_ALPHA3));
         return parent::validate($value, $field, $model);
+    }
+
+    public static function getValidatorMetadata(): array
+    {
+        return array_merge(
+            parent::getValidatorMetadata(),
+            [
+                self::COUNTRY_CODE_TYPE => [
+                    'comment' => "Country code type. ",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'String',
+                            'comment' => 'The type, one of "alpha-2", "alpha-3" or "numeric'
+                        ]
+                    ]
+                ]
+            ]
+        );
     }
 }
