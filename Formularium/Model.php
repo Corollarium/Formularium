@@ -85,6 +85,18 @@ class Model
         return $m;
     }
 
+    /**
+     * Loads model from JSON string
+     *
+     * @param string $json The JSON string.
+     * @return Model
+     */
+    public static function create(string $name): Model
+    {
+        $m = new self($name);
+        return $m;
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -118,6 +130,24 @@ class Model
     public function getField(string $name): Field
     {
         return $this->fields[$name];
+    }
+
+    public function appendField(Field $f): self
+    {
+        $this->fields[$f->name] = $f;
+        return $this;
+    }
+
+    /**
+     * @param Field[] $fields
+     * @return self
+     */
+    public function appendFields(array $fields): self
+    {
+        foreach ($fields as $f) {
+            $this->fields[$f->name] = $f;
+        }
+        return $this;
     }
 
     /**

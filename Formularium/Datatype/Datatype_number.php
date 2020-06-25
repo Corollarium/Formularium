@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -10,5 +10,34 @@ abstract class Datatype_number extends \Formularium\Datatype
     public function __construct(string $typename = 'number', string $basetype = 'number')
     {
         parent::__construct($typename, $basetype);
+    }
+
+    public static function getValidatorMetadata(): array
+    {
+        return array_merge(
+            parent::getValidatorMetadata(),
+            [
+                self::MIN => [
+                    'comment' => "Minimum value.",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'Integer',
+                            'comment' => 'The actual value'
+                        ]
+                    ]
+                ],
+                self::MAX => [
+                    'comment' => "Maximum value.",
+                    'args' => [
+                        [
+                            'name' => 'value',
+                            'type' => 'Integer',
+                            'comment' => 'The actual value'
+                        ]
+                    ]
+                ]
+            ]
+        );
     }
 }

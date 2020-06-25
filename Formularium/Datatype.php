@@ -74,7 +74,7 @@ abstract class Datatype
      * @param Field $field
      * @param Model $model The entire model, if you your field depends on other things of the model. may be null.
      * @throws Exception If invalid, with the message.
-     * @return mixed
+     * @return mixed The validated value.
      */
     abstract public function validate($value, Field $field, Model $model = null);
 
@@ -105,5 +105,15 @@ abstract class Datatype
     public function getBasetype(): string
     {
         return $this->basetype;
+    }
+
+    public static function getValidatorMetadata(): array
+    {
+        return [
+            self::REQUIRED => [
+                'comment' => "Field is required.",
+                'args' => []
+            ]
+        ];
     }
 }
