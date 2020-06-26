@@ -6,6 +6,7 @@ use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
+use Formularium\ValidatorMetadata;
 
 /**
  * The field under validation must be present and not empty only if all of the other specified fields are present.
@@ -33,5 +34,20 @@ class RequiredWithAll implements ValidatorInterface
             }
         }
         return $value;
+    }
+
+    public function getMetadata(): ValidatorMetadata
+    {
+        return new ValidatorMetadata(
+            __CLASS__,
+            "The field under validation must be present and not empty only if all of the other specified fields are present.",
+            [
+                new ValidatorArgs(
+                    'fields',
+                    '[String]',
+                    'The fields that are required with'
+                )
+            ]
+        );
     }
 }

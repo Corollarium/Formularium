@@ -20,4 +20,11 @@ interface ValidatorInterface
      * @return mixed
      */
     public function validate($value, array $validators = [], Model $model = null);
+
+    /**
+     * Documents this validator.
+     *
+     * @return ValidatorMetadata
+     */
+    public function getMetadata(): ValidatorMetadata;
 }

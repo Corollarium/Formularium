@@ -39,6 +39,27 @@ class Formularium
         return $datatypes;
     }
 
+    /**
+     * Returns a list of datatype class names
+     *
+     * @return array
+     */
+    public static function getValidatorNames(): array
+    {
+        $files = scandir(__DIR__ . '/Validator/');
+        if (!$files) {
+            throw new Exception('Validators not found');
+        }
+        $validators = array_map(
+            function ($x) {
+                return str_replace('.php', '', $x);
+            },
+            array_diff($files, array('.', '..'))
+        );
+    
+        return $validators;
+    }
+
     public static function getDatatypeValidators(array $extraDatatypes = []): array
     {
         $datatypes = self::getDatatypeNames();
@@ -49,6 +70,8 @@ class Formularium
             $datatype = Datatype::factory($name);
             $validators = array_merge($validators, $datatype->getValidatorMetadata());
         }
+
+        // TODO foreach ($validators as $name) {
         foreach ($extraDatatypes as $name) {
             $datatype = Datatype::factory($name);
             $validators = array_merge($validators, $datatype->getValidatorMetadata());
