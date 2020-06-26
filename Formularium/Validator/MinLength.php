@@ -7,17 +7,18 @@ use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\ValidatorMetadata;
+use Formularium\ValidatorArgs;
 
 class MinLength implements ValidatorInterface
 {
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, array $options = [], Model $model = null)
     {
         if (!is_string($value)) {
             throw new \Formularium\Exception\ValidatorException('Expected a string.');
         }
 
-        $maxlength = $options['value'];
-        if (mb_strlen($value) < $options[self::MIN_LENGTH]) {
+        $minlength = $options['value'];
+        if (mb_strlen($value) < $minlength) {
             throw new \Formularium\Exception\ValidatorException('String is too short.');
         }
         return $value;
@@ -26,7 +27,7 @@ class MinLength implements ValidatorInterface
     public function getMetadata(): ValidatorMetadata
     {
         return new ValidatorMetadata(
-            __CLASS__,
+            'MinLength',
             "Minimum string length",
             [
                 new ValidatorArgs(

@@ -24,7 +24,7 @@ class ValidatorMetadata
     {
         $this->name = $name;
         $this->comment = $comment;
-        $this->args = args;
+        $this->args = $args;
     }
 
     public function toGraphql(): string
@@ -38,14 +38,14 @@ class ValidatorMetadata
 
         $argString = '';
         if ($args) {
-            $argString = "(\n" . join("\n", $args) . ')';
+            $argString = "(" . join("\n", $args) . "\n)";
         }
         return <<< EOF
 """
 {$this->comment}
 """
 directive @{$this->name}{$argString} on FIELD_DEFINITION
-  
+
 EOF;
     }
 }

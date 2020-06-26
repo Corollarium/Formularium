@@ -26,7 +26,7 @@ class Filled implements ValidatorInterface
     public function getMetadata(): ValidatorMetadata
     {
         return new ValidatorMetadata(
-            __CLASS__,
+            'Filled',
             "Field may not be present, but if it is must not be empty."
         );
     }

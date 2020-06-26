@@ -7,6 +7,7 @@ use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\ValidatorMetadata;
+use Formularium\ValidatorArgs;
 
 /**
  * May not be present, but if it is must not be empty.
@@ -32,7 +33,7 @@ class SameAs implements ValidatorInterface
     public function getMetadata(): ValidatorMetadata
     {
         return new ValidatorMetadata(
-            __CLASS__,
+            'SameAs',
             "Must be the same as a target field.",
             [
                 new ValidatorArgs(
