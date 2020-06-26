@@ -12,10 +12,10 @@ use Formularium\ValidatorInterface;
  */
 class RequiredWith implements ValidatorInterface
 {
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
-        if ($field->getValidators()[self::class] ?? false) {
-            $expectedFields = $field->getValidators()[self::class];
+        if ($validators[self::class] ?? false) {
+            $expectedFields = $validators[self::class];
             if (!is_array($expectedFields)) {
                 $expectedFields = [$expectedFields];
             }
@@ -28,8 +28,7 @@ class RequiredWith implements ValidatorInterface
                 }
             }
             if ($found && empty($value)) {
-                $name = $field->getName();
-                throw new ValidatorException("Field $name is required when at least one of fields " . implode(',', $expectedFields) . ' are present');
+                throw new ValidatorException("Field is required when at least one of fields " . implode(',', $expectedFields) . ' are present');
             }
         }
         return $value;

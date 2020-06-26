@@ -22,7 +22,7 @@ class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
         return $faker->cnpj;
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         if ($value === '' || Validator::cnpj()->validate($value)) {
             return $value;

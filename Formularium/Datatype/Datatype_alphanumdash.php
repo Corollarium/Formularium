@@ -23,9 +23,9 @@ class Datatype_alphanumdash extends \Formularium\Datatype\Datatype_string
         return static::getRandomString($min, $max, "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-");
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
-        $value = parent::validate($value, $field, $model);
+        $value = parent::validate($value, $validators, $model);
         if ($value !== '' && !preg_match('/^[\pL\pM\pN_-]+$/u', $value)) {
             throw new ValidatorException('Use only alpha-numeric characters, dashes, and underscores.');
         }

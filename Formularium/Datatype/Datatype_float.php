@@ -30,7 +30,7 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
         return (float)number_format($rand, 3);
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         if (is_float($value) || V::floatVal()->validate($value)) {
             return $value;

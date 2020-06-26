@@ -21,14 +21,13 @@ class Datatype_html extends Datatype_text
         return '<p>HTML <span>' . parent::getRandom() . '</span>' . parent::getRandom() . '</p>';
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         $text = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
         if ($text === false) {
             throw new \Formularium\Exception\ValidatorException('Invalid encoding in string.');
         }
 
-        $validators = $field->getValidators();
         if (array_key_exists(static::MIN_LENGTH, $validators)) {
             if (mb_strlen($text) < $validators[self::MIN_LENGTH]) {
                 throw new \Formularium\Exception\ValidatorException('String is too short.');

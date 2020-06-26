@@ -18,7 +18,7 @@ class Datatype_color extends Datatype_string
         return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         if (!is_string($value)) {
             throw new ValidatorException('Only hexadecimal colors are allowed');

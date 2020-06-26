@@ -21,7 +21,7 @@ class Datatype_constant extends \Formularium\Datatype
         throw new ValidatorException('Constant field.');
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         throw new ValidatorException('Constant field.');
     }

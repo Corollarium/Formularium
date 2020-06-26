@@ -337,10 +337,10 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
         return parent::getRandom($params);
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
-        $this->setChoices($field->getValidator(self::COUNTRY_CODE_TYPE, self::ISO_ALPHA3));
-        return parent::validate($value, $field, $model);
+        $this->setChoices($validators[self::COUNTRY_CODE_TYPE] ?? self::ISO_ALPHA3);
+        return parent::validate($value, $validators, $model);
     }
 
     public static function getValidatorMetadata(): array

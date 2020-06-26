@@ -51,18 +51,18 @@ class Datatype_date extends \Formularium\Datatype
         return preg_replace('/T.+/', '', $v->format(\DateTime::ATOM));
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         if ($value === '') {
             return $value;
         }
         $val = Validator::date();
-        $min = $field->getValidator(static::MIN, false);
-        if ($min) {
+        $min = $validators[static::MIN] ?? false;
+        if ($min !== false) {
             $val->min($min);
         }
-        $max = $field->getValidator(static::MAX, false);
-        if ($max) {
+        $max = $validator[static::MAX] ?? false;
+        if ($max !== false) {
             $val->max($max);
         }
         if ($val->validate($value)) {
@@ -72,7 +72,6 @@ class Datatype_date extends \Formularium\Datatype
             'Invalid date value. We expect this format: YYYY-MM-DD.' . print_r($value, true)
         );
     }
-
 
     public static function getValidatorMetadata(): array
     {

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 declare(strict_types=1);
 
@@ -52,7 +52,7 @@ abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
             $validated = '';
             try {
                 $f = new Field($datatype->getName(), $datatype, [], $validators);
-                $validated = $datatype->validate($value, $f);
+                $validated = $datatype->validate($value, $f->getValidators());
             } catch (Exception $e) {
                 $this->assertFalse(true, $e->getMessage() . '. Value: ' . print_r($value, true));
                 return;
@@ -74,7 +74,7 @@ abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
             try {
                 $datatype = $this->getDataType();
                 $f = new Field($datatype->getName(), $datatype, [], $validators);
-                $datatype->validate($value, $f);
+                $datatype->validate($value, $f->getValidators());
                 $this->assertFalse(true, "Test invalidate passed");
             } catch (Exception $e) {
                 $this->assertTrue(true, $e->getMessage() . ' Data: ' . print_r($value, true));
@@ -88,7 +88,7 @@ abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
             $datatype = $this->getDataType();
             $value = $datatype->getRandom();
             $f = new Field($datatype->getName(), $datatype);
-            $this->assertEquals($value, $datatype->validate($value, $f), 'Data: ' . print_r($value, true));
+            $this->assertEquals($value, $datatype->validate($value, $f->getValidators()), 'Data: ' . print_r($value, true));
         }
     }
 
@@ -97,6 +97,6 @@ abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
         $datatype = $this->getDataType();
         $value = $datatype->getDefault();
         $f = new Field($datatype->getName(), $datatype);
-        $this->assertEquals($value, $datatype->validate($value, $f), 'Data: ' . print_r($value, true));
+        $this->assertEquals($value, $datatype->validate($value, $f->getValidators()), 'Data: ' . print_r($value, true));
     }
 }

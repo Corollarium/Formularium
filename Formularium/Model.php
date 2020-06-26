@@ -85,12 +85,6 @@ class Model
         return $m;
     }
 
-    /**
-     * Loads model from JSON string
-     *
-     * @param string $json The JSON string.
-     * @return Model
-     */
     public static function create(string $name): Model
     {
         $m = new self($name);
@@ -134,7 +128,7 @@ class Model
 
     public function appendField(Field $f): self
     {
-        $this->fields[$f->name] = $f;
+        $this->fields[$f->getName()] = $f;
         return $this;
     }
 
@@ -145,7 +139,7 @@ class Model
     public function appendFields(array $fields): self
     {
         foreach ($fields as $f) {
-            $this->fields[$f->name] = $f;
+            $this->fields[$f->getName()] = $f;
         }
         return $this;
     }
@@ -173,7 +167,7 @@ class Model
             // call the datatype validator
             $field = $this->fields[$name];
             try {
-                $validate[$name] = $field->getDatatype()->validate($d, $field, $this);
+                $validate[$name] = $field->getDatatype()->validate($d, $field->getValidators(), $this);
             } catch (Exception $e) {
                 $errors[$name] = $e->getMessage();
             }
@@ -185,7 +179,7 @@ class Model
                 }
                 try {
                     $v = Validator::factory($validatorName);
-                    $validate[$name] = $v->validate($validate[$name], $field, $this);
+                    $validate[$name] = $v->validate($validate[$name], $field->getValidators(), $this);
                 } catch (Exception $e) {
                     $errors[$name] = $e->getMessage();
                 }
@@ -210,7 +204,7 @@ class Model
                     }
                     try {
                         $v = Validator::factory($validatorName);
-                        $v->validate(null, $field, $this);
+                        $v->validate(null, $field->getValidators(), $this);
                     } catch (Exception $e) {
                         $errors[$name] = $e->getMessage();
                     }

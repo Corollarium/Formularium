@@ -45,9 +45,8 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
         return mt_rand($min, $max);
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
-        $validators = $field->getValidators();
         $min = $validators[static::MIN] ?? $this->minvalue;
         $max = $validators[static::MAX] ?? $this->maxvalue;
 

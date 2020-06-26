@@ -12,12 +12,12 @@ use Formularium\ValidatorInterface;
  */
 class Filled implements ValidatorInterface
 {
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         // must be filled?
-        if ($field->getValidators()[self::class] ?? false) {
+        if ($validators[self::class] ?? false) {
             if (empty($value)) {
-                throw new ValidatorException("Field {$field->getName()} must be filled");
+                throw new ValidatorException("Field  must be filled");
             }
         }
         return $value;

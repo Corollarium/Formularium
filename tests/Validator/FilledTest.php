@@ -22,7 +22,7 @@ class ValidatorFilledTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = $validator->validate('x', $model->getField('someString'), $model);
+        $v = $validator->validate('x', $model->getField('someString')->getValidators(), $model);
         $this->assertEquals('x', $v);
     }
 
@@ -41,7 +41,7 @@ class ValidatorFilledTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = $validator->validate('x', $model->getField('someString'), $model);
+        $v = $validator->validate('x', $model->getField('someString')->getValidators(), $model);
         $this->assertEquals('x', $v);
     }
 }

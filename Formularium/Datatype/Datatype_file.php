@@ -39,16 +39,14 @@ class Datatype_file extends \Formularium\Datatype
     /**
      *
      * @param string $value The path to the file to be validated. Might be a temporary path.
-     * @param Field $field
+     * @param array $validators
      * @param Model $model
      * @return mixed
      */
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
-        $validators = $field->getValidators();
-
         // $file =
-        $max_size = $field->getValidator(self::MAX_SIZE, 0);
+        $max_size = $validators[self::MAX_SIZE] ?? 0;
         if ($max_size > 0 && filesize($value) > $max_size) {
             throw new ValidatorException(
                 'File too big. Maximum size: ' . $max_size
@@ -132,13 +130,13 @@ class Datatype_file extends \Formularium\Datatype
             }
         }
 
-        if ($field->getValidator(self::DIMENSION_HEIGHT, false) ||
-            $field->getValidator(self::DIMENSION_WIDTH, false) ||
-            $field->getValidator(self::DIMENSION_MIN_HEIGHT, false) ||
-            $field->getValidator(self::DIMENSION_MIN_WIDTH, false) ||
-            $field->getValidator(self::DIMENSION_MAX_HEIGHT, false) ||
-            $field->getValidator(self::DIMENSION_MAX_WIDTH, false) ||
-            $field->getValidator(self::DIMENSION_RATIO, false)
+        if (($validators[self::DIMENSION_HEIGHT] ?? false) ||
+            ($validators[self::DIMENSION_WIDTH] ?? false) ||
+            ($validators[self::DIMENSION_MIN_HEIGHT] ?? false) ||
+            ($validators[self::DIMENSION_MIN_WIDTH] ?? false) ||
+            ($validators[self::DIMENSION_MAX_HEIGHT] ?? false) ||
+            ($validators[self::DIMENSION_MAX_WIDTH] ?? false) ||
+            ($validators[self::DIMENSION_RATIO] ?? false)
         ) {
             $imageData = getimagesize($value);
             if ($imageData === false) {
@@ -149,65 +147,72 @@ class Datatype_file extends \Formularium\Datatype
             $width = $imageData[0];
             $height = $imageData[1];
 
-            if ($field->getValidator(self::DIMENSION_HEIGHT, false) !== false) {
-                if ($field->getValidator(self::DIMENSION_HEIGHT, false) !== $height) {
+            $expectedHeight = $validators[self::DIMENSION_HEIGHT] ?? false;
+            if ($expectedHeight !== false) {
+                if ($expectedHeight !== $height) {
                     throw new ValidatorException(
-                        'Image height should be exactly ' . $field->getValidator(self::DIMENSION_HEIGHT, false)
+                        'Image height should be exactly ' . $validators[self::DIMENSION_HEIGHT] ?? false
                     );
                 }
             }
 
-            if ($field->getValidator(self::DIMENSION_WIDTH, false) !== false) {
-                if ($field->getValidator(self::DIMENSION_WIDTH, false) !== $width) {
+            $expectedWidth = $validators[self::DIMENSION_WIDTH] ?? false;
+            if ($expectedWidth !== false) {
+                if ($expectedWidth !== $width) {
                     throw new ValidatorException(
-                        'Image width should be exactly ' . $field->getValidator(self::DIMENSION_WIDTH, false)
+                        'Image width should be exactly ' . $expectedWidth
                     );
                 }
             }
 
-            if ($field->getValidator(self::DIMENSION_MIN_HEIGHT, false) !== false) {
-                if ($height < $field->getValidator(self::DIMENSION_MIN_HEIGHT, false)) {
+            $minHeight = $validators[self::DIMENSION_MIN_HEIGHT] ?? false;
+            if ($minHeight !== false) {
+                if ($height < $minHeight) {
                     throw new ValidatorException(
-                        'Image height should be at least ' . $field->getValidator(self::DIMENSION_MIN_HEIGHT, false)
+                        'Image height should be at least ' . $minHeight
                     );
                 }
             }
 
-            if ($field->getValidator(self::DIMENSION_MIN_WIDTH, false) !== false) {
-                if ($width < $field->getValidator(self::DIMENSION_MIN_WIDTH, false)) {
+            $minWidth = $validators[self::DIMENSION_MIN_WIDTH] ?? false;
+            if ($minWidth !== false) {
+                if ($width < $minWidth) {
                     throw new ValidatorException(
-                        'Image width should be at least ' . $field->getValidator(self::DIMENSION_MIN_WIDTH, false)
+                        'Image width should be at least ' . $minWidth
                     );
                 }
             }
 
-            if ($field->getValidator(self::DIMENSION_MAX_HEIGHT, false) !== false) {
-                if ($height > $field->getValidator(self::DIMENSION_MAX_HEIGHT, false)) {
+            $maxHeight = $validators[self::DIMENSION_MAX_HEIGHT] ?? false;
+            if ($maxHeight !== false) {
+                if ($height > $maxHeight) {
                     throw new ValidatorException(
-                        'Image height should be at most ' . $field->getValidator(self::DIMENSION_MAX_HEIGHT, false)
+                        'Image height should be at most ' . $maxHeight
                     );
                 }
             }
 
-            if ($field->getValidator(self::DIMENSION_MAX_WIDTH, false) !== false) {
-                if ($width > $field->getValidator(self::DIMENSION_MAX_WIDTH, false)) {
+            $maxWidth = $validators[self::DIMENSION_MAX_WIDTH] ?? false;
+            if ($maxWidth !== false) {
+                if ($width > $maxWidth) {
                     throw new ValidatorException(
-                        'Image width should be at most ' . $field->getValidator(self::DIMENSION_MAX_WIDTH, false)
+                        'Image width should be at most ' . $maxWidth
                     );
                 }
             }
 
-            if ($field->getValidator(self::DIMENSION_RATIO, false) !== false) {
+            $ratio = $validators[self::DIMENSION_RATIO] ?? false;
+            if ($ratio !== false) {
                 if (!$width || !$height) {
                     throw new ValidatorException(
                         'Zero width or height'
                     );
                 }
                 $ratio = $width/$height;
-                $expected = $field->getValidator(self::DIMENSION_RATIO, false);
+                $expected = $ratio;
                 if (abs(($ratio-$expected)/$expected) > 0.0001) {
                     throw new ValidatorException(
-                        'Image width/height ratio should be ' . $field->getValidator(self::DIMENSION_RATIO, false)
+                        'Image width/height ratio should be ' . $ratio
                     );
                 }
             }

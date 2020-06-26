@@ -28,7 +28,7 @@ class Datatype_string extends \Formularium\Datatype
         return static::getRandomString($min, $max);
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         // avoid invalid encoding attack
         $data = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
@@ -37,7 +37,6 @@ class Datatype_string extends \Formularium\Datatype
         }
         $text = preg_replace('/<[^>]*>/', '', $data);
 
-        $validators = $field->getValidators();
         if (array_key_exists(self::MIN_LENGTH, $validators)) {
             if (mb_strlen($text) < $validators[self::MIN_LENGTH]) {
                 throw new \Formularium\Exception\ValidatorException('String is too short.');

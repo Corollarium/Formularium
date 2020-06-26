@@ -3,8 +3,10 @@
     "description": "Form validation and generation for PHP with custom frontend generators",
     "type": "library",
     "license": "MIT",
-    "version": "0.1.2",
-    "keywords": ["form"],
+    "version": "0.2.0",
+    "keywords": [
+        "form"
+    ],
     "homepage": "https://github.com/Corollarium/Formularium",
     "autoload": {
         "psr-4": {

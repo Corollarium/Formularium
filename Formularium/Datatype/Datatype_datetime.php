@@ -35,7 +35,7 @@ class Datatype_datetime extends \Formularium\Datatype
         return $v->format(\DateTime::ISO8601);
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         if ($value === '') {
             return $value;

@@ -32,7 +32,7 @@ class Datatype_json extends Datatype_text
         return '{}';
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         $value = (string)$value;
         if ($value == "[]") {

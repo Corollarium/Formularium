@@ -28,7 +28,7 @@ class Datatype_bool extends \Formularium\Datatype
         return $value == true ? 'True' : 'False';
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         if (is_string($value)) {
             if (strcasecmp($value, 'true') == 0 || $value == '1') {

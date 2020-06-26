@@ -19,7 +19,7 @@ class Datatype_url extends \Formularium\Datatype
         return static::faker()->url;
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
         $value = trim((string)$value);
         $this->validateURL($value);

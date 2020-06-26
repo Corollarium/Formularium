@@ -14,9 +14,9 @@ class Datatype_domain extends Datatype_string
         parent::__construct($typename, $basetype);
     }
 
-    public function validate($value, Field $field, Model $model = null)
+    public function validate($value, array $validators = [], Model $model = null)
     {
-        $value = parent::validate($value, $field, $model);
+        $value = parent::validate($value, $validators, $model);
         
         $value = mb_strtolower($value);
 
