@@ -112,7 +112,7 @@ EOF;
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        \Formularium\Validator\Filled::class => true,
+                        \Formularium\Validator\Filled::class => ['value' => true],
                     ]
                 ]
             ]

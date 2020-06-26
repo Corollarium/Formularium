@@ -179,7 +179,7 @@ class Model
                 }
                 try {
                     $v = Validator::factory($validatorName);
-                    $validate[$name] = $v->validate($validate[$name], $field->getValidators(), $this);
+                    $validate[$name] = $v->validate($validate[$name], $field->getValidatorOption($validatorName), $this);
                 } catch (Exception $e) {
                     $errors[$name] = $e->getMessage();
                 }
@@ -204,7 +204,7 @@ class Model
                     }
                     try {
                         $v = Validator::factory($validatorName);
-                        $v->validate(null, $field->getValidators(), $this);
+                        $v->validate(null, $field->getValidatorOption($validatorName), $this);
                     } catch (Exception $e) {
                         $errors[$name] = $e->getMessage();
                     }

@@ -13,12 +13,10 @@ use Formularium\ValidatorMetadata;
  */
 class RequiredWith implements ValidatorInterface
 {
-    public function validate($value, array $options = [], Model $model = null): mixed
+    public function validate($value, array $options = [], Model $model = null)
     {
-        $expectedFields = $validators[self::class];
-        if (!is_array($expectedFields)) {
-            $expectedFields = [$expectedFields];
-        }
+        $expectedFields = $options['fields'];
+
         $found = false;
         $data = $model->getData();
         foreach ($expectedFields as $ef) {

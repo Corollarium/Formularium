@@ -16,13 +16,17 @@ class ValidatorFilledTest extends TestCase
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        Filled::class => true,
+                        Filled::class => [ 'value' => true],
                     ]
                 ]
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = $validator->validate('x', $model->getField('someString')->getValidators(), $model);
+        $v = $validator->validate(
+            'x',
+            $model->getField('someString')->getValidatorOption(Filled::class),
+            $model
+        );
         $this->assertEquals('x', $v);
     }
 
@@ -35,13 +39,17 @@ class ValidatorFilledTest extends TestCase
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        Filled::class => true,
+                        Filled::class => [ 'value' => true],
                     ]
                 ]
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = $validator->validate('x', $model->getField('someString')->getValidators(), $model);
+        $v = $validator->validate(
+            'x',
+            $model->getField('someString')->getValidatorOption(Filled::class),
+            $model
+        );
         $this->assertEquals('x', $v);
     }
 }

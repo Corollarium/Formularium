@@ -24,7 +24,9 @@ class ValidatorRequiredWithAllTest extends TestCase
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        RequiredWithAll::class => ['someInteger', 'someOtherInteger'],
+                        RequiredWithAll::class => [
+                            'fields' => ['someInteger', 'someOtherInteger'],
+                        ]
                     ]
                 ]
             ]
@@ -50,7 +52,9 @@ class ValidatorRequiredWithAllTest extends TestCase
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        RequiredWithAll::class => 'someInteger',
+                        RequiredWithAll::class => [
+                            'fields' => [ 'someInteger' ],
+                        ]
                     ]
                 ]
             ]

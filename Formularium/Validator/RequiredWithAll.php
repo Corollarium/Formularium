@@ -13,26 +13,25 @@ use Formularium\ValidatorMetadata;
  */
 class RequiredWithAll implements ValidatorInterface
 {
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, array $options = [], Model $model = null)
     {
-        if ($validators[self::class] ?? false) {
-            $expectedFields = $validators[self::class];
-            if (!is_array($expectedFields)) {
-                $expectedFields = [$expectedFields];
-            }
-            $found = true;
-            $data = $model->getData();
-            foreach ($expectedFields as $ef) {
-                if (!array_key_exists($ef, $data)) {
-                    $found = false;
-                    break;
-                }
-            }
-
-            if ($found && empty($value)) {
-                throw new ValidatorException("Field is required when all fields " . implode(',', $expectedFields) . ' are present');
+        $expectedFields = $options['fields'];
+        if (!is_array($expectedFields)) {
+            $expectedFields = [$expectedFields];
+        }
+        $found = true;
+        $data = $model->getData();
+        foreach ($expectedFields as $ef) {
+            if (!array_key_exists($ef, $data)) {
+                $found = false;
+                break;
             }
         }
+
+        if ($found && empty($value)) {
+            throw new ValidatorException("Field is required when all fields " . implode(',', $expectedFields) . ' are present');
+        }
+
         return $value;
     }
 
