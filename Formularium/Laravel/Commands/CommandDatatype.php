@@ -58,7 +58,7 @@ class CommandDatatype extends Command
             $retval = Datatype::generateFile(
                 $code,
                 // @phpstan-ignore-next-line
-                $this->option('path') ? (string)$this->option('path') : base_path('app/Datatypes')
+                $this->option('path') ? (string)$this->option('path') : base_path('app/Datatypes'),
                 // @phpstan-ignore-next-line
                 $this->option('testpath') ? $this->option('testpath') : base_path('tests/Unit/')
             );
