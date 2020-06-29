@@ -5,6 +5,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
+use Formularium\Formularium;
 use Formularium\Framework;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
@@ -24,20 +25,7 @@ function kitchenSink($frameworkName, string $templateName)
      * kitchen sink fields
      */
     $fields = [];
-    $datatypes = array_map(
-        function ($x) {
-            return str_replace('Datatype_', '', str_replace('.php', '', $x));
-        },
-        array_diff(scandir(__DIR__ . '/../Formularium/Datatype/'), array('.', '..'))
-    );
-
-    // TODO: avoid abstract classes
-    $datatypes = array_filter(
-        $datatypes,
-        function ($t) {
-            return ($t !== 'number' && $t !== 'choice' && $t !== 'association');
-        }
-    );
+    $datatypes = Formularium::getDatatypeNames();
 
     // make a default for all types
     foreach ($datatypes as $d) {
