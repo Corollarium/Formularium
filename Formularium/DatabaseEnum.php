@@ -8,4 +8,5 @@ final class DatabaseEnum
     const POSTGRESQL = 'postgresql';
     const SQLSERVER = 'sqlserver';
     const ORACLE = 'mysql';
+    const SQLITE = 'sqlite';
 }
