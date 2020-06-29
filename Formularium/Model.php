@@ -17,12 +17,12 @@ class Model
     /**
      * @var Field[]
      */
-    protected $fields;
+    protected $fields = [];
 
     /**
      * @var array
      */
-    protected $extensions;
+    protected $extensions = [];
 
     /**
      * Model data being processed.
@@ -85,9 +85,21 @@ class Model
         return $m;
     }
 
-    public static function create(string $name): Model
+    /**
+     * @param string $name
+     * @param Field[]|array $fields
+     * @return Model
+     */
+    public static function create(string $name, array $fields = []): Model
     {
         $m = new self($name);
+        foreach ($fields as $fieldName => $fieldData) {
+            if ($fieldData instanceof Field) {
+                $m->fields[$fieldData->getName()] = $fieldData;
+            } else {
+                $m->fields[$fieldName] = Field::getFromData($fieldName, $fieldData);
+            }
+        }
         return $m;
     }
 

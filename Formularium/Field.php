@@ -57,6 +57,18 @@ class Field
         $this->validators = $validators;
     }
 
+    /**
+     * @param string $name
+     * @param [type] $datatype
+     * @param array $extensions
+     * @param array $validators
+     * @return static
+     */
+    public function create(string $name, $datatype, array $extensions = [], array $validators = [])
+    {
+        return new static($name, $datatype, $extensions, $validators);
+    }
+
     public function getName(): string
     {
         return $this->name;
