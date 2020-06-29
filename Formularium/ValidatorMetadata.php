@@ -11,8 +11,14 @@ use Formularium\Exception\ValidatorException;
  */
 class ValidatorMetadata
 {
+    /**
+     * @var string
+     */
     public $name;
 
+    /**
+     * @var string
+     */
     public $comment;
 
     /**
