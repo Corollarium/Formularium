@@ -18,6 +18,7 @@ class CommandDatatype extends Command
         {--basetype= : the basetype it inherits from ("string"), if there is one.}
         {--namespace= : the class namespace. Defaults to "\\App\\Datatypes"}
         {--path= : path to save the file. Defaults to "basepath("app\\Datatypes") }
+        {--test-path= : path to save the file. Defaults to "basepath("tests/Unuit") }
     ';
 
     /**
@@ -58,6 +59,8 @@ class CommandDatatype extends Command
                 $code,
                 // @phpstan-ignore-next-line
                 $this->option('path') ? (string)$this->option('path') : base_path('app/Datatypes')
+                // @phpstan-ignore-next-line
+                $this->option('testpath') ? $this->option('testpath') : base_path('tests/Unit/')
             );
 
             $this->line($retval['code']);

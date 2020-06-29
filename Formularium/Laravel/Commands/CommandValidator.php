@@ -17,6 +17,7 @@ class CommandValidator extends Command
         {name : The validator name}
         {--namespace= : the class namespace. Defaults to "\\App\\Validators"}
         {--path= : path to save the file. Defaults to "basepath("app\\Validators") }
+        {--test-path= : path to save the file. Defaults to "basepath("tests/Unit") }
     ';
 
     /**
@@ -54,7 +55,9 @@ class CommandValidator extends Command
             $retval = Validator::generateFile(
                 $code,
                 // @phpstan-ignore-next-line
-                $this->option('path') ? $this->option('path') : base_path('app/Datatypes')
+                $this->option('path') ? $this->option('path') : base_path('app/Datatypes'),
+                // @phpstan-ignore-next-line
+                $this->option('testpath') ? $this->option('testpath') : base_path('tests/Unit/')
             );
 
             $this->line($retval['code']);

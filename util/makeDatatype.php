@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+require('vendor/autoload.php');
 
 $shortopts  = "d:p::b::t";
 $longopts  = array(
     "datatype:",     // Required value
     "basetype::",
     "namespace::",
-    "path::",    // Optional value
-    "test"
+    "path::",
+    "test-path::"
 );
 $options = getopt($shortopts, $longopts);
 if (empty($options)) {
@@ -17,18 +17,20 @@ if (empty($options)) {
 }
 
 $datatype = $options['datatype'];
-$basetype = $options['basetype'] ?? $datatypeLower;
-$namespace = $options['namespace'] ?? '';
+$basetype = $options['basetype'] ?? '';
+$namespace = $options['namespace'] ?? 'Formularium\Datatype';
 $path = $options['path'] ?? "Formularium/Datatype/" ;
-$filename =  $path . "/Datatype_${datatypeLower}.php";
-$generateTest = array_key_exists('test', $options);
+$testpath = $options['testpath'] ?? "tests/Datatype" ;
 
-$code = Datatype::generate(
+$code = \Formularium\Datatype::generate(
     $datatype,
     $basetype,
     $namespace
 );
-$retval = Datatype::generateFile(
+$retval = \Formularium\Datatype::generateFile(
     $code,
     $path,
+    $testpath
 );
+echo $retval['code'] . "\n";
+echo $retval['test'] . "\n";

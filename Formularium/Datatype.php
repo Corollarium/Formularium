@@ -152,7 +152,7 @@ class Datatype_${datatypeLower} extends ${basetypeClass}
      * @throws Exception If cannot generate a random value.
      * @return mixed
      */
-    public function getRandom(array \$validators = []);
+    public function getRandom(array \$validators = [])
     {
         throw new ValidatorException('Not implemented');
     }
@@ -235,7 +235,7 @@ EOF;
      * @return string[] With two keys: 'code' and 'test', human messages of what was done.
      * @throws Exception If errors.
      */
-    public static function generateFile(array $codeData, string $path): array
+    public static function generateFile(array $codeData, string $path, string $testpath = null): array
     {
         if (!is_dir($path)) {
             throw new Exception("Path $path does not exist.");
@@ -248,15 +248,17 @@ EOF;
             $retval['code'] = "Created {$datatype}.";
             file_put_contents($filename, $codeData['code']);
         } else {
-            $retval['code'] = "Filename $filename already exists.\n";
+            $retval['code'] = "Filename $filename already exists.";
         }
 
-        $testFilename = "tests/Datatype/{$datatype}Test.php";
-        if (!file_exists($testFilename)) {
-            $retval['test'] = "Created ${datatype} test.";
-            file_put_contents($filename, $codeData['test']);
-        } else {
-            $retval['test'] = "Filename test $testFilename already exists.";
+        if ($testpath) {
+            $testFilename = $testpath . "/{$datatype}Test.php";
+            if (!file_exists($testFilename)) {
+                $retval['test'] = "Created ${datatype} test.";
+                file_put_contents($testFilename, $codeData['test']);
+            } else {
+                $retval['test'] = "Filename test $testFilename already exists.";
+            }
         }
         return $retval;
     }

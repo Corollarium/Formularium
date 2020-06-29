@@ -112,11 +112,12 @@ EOF;
      * Generates scaffolding and saves it to a file
      *
      * @param array $codeData The data returned from self::generate()
-     * @param string $path The
+     * @param string $path The path for the validator code file
+     * @param string $testpath The path for the validator test file
      * @return string[] With two keys: 'code' and 'test', human messages of what was done.
      * @throws Exception If errors.
      */
-    public static function generateFile(array $codeData, string $path): array
+    public static function generateFile(array $codeData, string $path, string $testpath = null): array
     {
         if (!is_dir($path)) {
             throw new Exception("Path $path does not exist.");
@@ -132,12 +133,14 @@ EOF;
             $retval['code'] = "Filename $filename already exists.\n";
         }
 
-        $testFilename = "tests/Validator/{$name}Test.php";
-        if (!file_exists($testFilename)) {
-            $retval['test'] = "Created validator ${name} test.";
-            file_put_contents($filename, $codeData['test']);
-        } else {
-            $retval['test'] = "Filename test $testFilename already exists.";
+        if ($testpath) {
+            $testFilename = $testpath . "{$name}Test.php";
+            if (!file_exists($testFilename)) {
+                $retval['test'] = "Created validator ${name} test.";
+                file_put_contents($filename, $codeData['test']);
+            } else {
+                $retval['test'] = "Filename test $testFilename already exists.";
+            }
         }
         return $retval;
     }
