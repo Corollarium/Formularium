@@ -21,8 +21,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7",
-        "phpstan/phpstan": "^0.12.2",
-        "symplify/easy-coding-standard": "^6.1"
+        "phpstan/phpstan": "^0.12",
+        "illuminate/console": "^7.16",
+        "symplify/easy-coding-standard": "^8.0"
     },
     "scripts": {
         "make:datatype": "php ./util/makeDatatype.php",
