@@ -8,7 +8,35 @@ Formularium is defined on a few base class types:
 - `Framework`: the framework to use (CSS/JS/etc). Frameworks work by composition, so you can combine them.
 - `Renderable`: the frontend datatype classes. Convert a datatype into rendered HTML.
 
-Each model is described a simple structure:
+You can create models from a structure, programmatically or from a graphql description.
+
+## Programmatically
+
+```php
+$model = Model::create(
+    'TestModel', // your model name. Something like "Product".
+    [ // the fields in this object
+        Field::create(
+            'myString', // the first field name.
+            Datatype::factory('string'), // the field datatype. maps to Datatype_string in this case.
+            [ // the validators to be applied. Validators are used by Datatypes, although Renderable can use them for frontend validation too.
+                Datatype::REQUIRED => [
+                    'value' => true // so, make this field required.
+                ]
+            ],
+            [ // extensions are used only by the frontend Renderable/Framework classes.
+                Renderable::LABEL => 'This is some string', // so, let's add a label describing the field
+            ]
+        ]
+    ]
+];
+```
+
+## From graphql
+
+TODO
+
+## From structure
 
 ```php
 $modelData = [
@@ -28,10 +56,37 @@ $modelData = [
 $model = Model::fromStruct($modelData); // use a factory method to convert the structure into a Model class.
 ```
 
-Once built, models can validate date, render a form or a read-only page. 
+## From JSON
 
-***
+```php
+    $json = <<<EOF
+{
+    "name": "TestModel",
+    "fields": {
+        "myString": {
+            "datatype": "string",
+            "validators": [
+                "required": [
+                    "value": true
+                ]
+            ],
+            "extensions" => [
+                "label" => "This is some string",
+            ]
+        ]
+    ]
+];
+EOF
+
+$model = Model::fromJSON($modelData); // use a factory method to convert the structure into a Model class.
+```
+
+Once built, models can validate date, render a form or a read-only page.
+
+---
+
 See also:
+
 - [base validators available for all datatypes](basevalidator.md)
 - [creating your own datatypes](datatype.md)
 - [creating your own framework and renderable classes](frontend.md)
