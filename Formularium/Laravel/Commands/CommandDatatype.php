@@ -59,9 +59,8 @@ class CommandDatatype extends Command
             $this->line($retval['code']);
             $this->line($retval['test']);
             $this->info('Finished. You might want to run `composer dump-autoload`');
-        }
-        catch (Exception $e) {
-            $this->error($e->getMessage())
+        } catch (Exception $e) {
+            $this->error($e->getMessage());
         }
     }
 }
