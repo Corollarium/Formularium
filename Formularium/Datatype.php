@@ -112,7 +112,14 @@ abstract class Datatype
         return [
             self::REQUIRED => [
                 'comment' => "Field is required.",
-                'args' => []
+                'args' => [
+                    [
+                        'name' => 'value',
+                        'type' => 'Boolean',
+                        'comment' => 'The value'
+                    ]
+        
+                ]
             ]
         ];
     }
