@@ -120,7 +120,6 @@ EOF;
     {
         if (!is_dir($path)) {
             throw new Exception("Path $path does not exist.");
-            return 1;
         }
     
         $name = $codeData['validator'];

@@ -44,14 +44,16 @@ class CommandValidator extends Command
     public function handle()
     {
         $code = Validator::generate(
-            $this->option('datatype'),
-            $this->option('basetype'),
-            $this->option('namespace') ? $this->option('namespace') : 'App\\Datatypes'
+            // @phpstan-ignore-next-line
+            (string)$this->option('datatype'),
+            // @phpstan-ignore-next-line
+            $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Datatypes'
         );
 
         try {
             $retval = Validator::generateFile(
                 $code,
+                // @phpstan-ignore-next-line
                 $this->option('path') ? $this->option('path') : base_path('app/Datatypes')
             );
 

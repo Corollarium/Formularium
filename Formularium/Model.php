@@ -87,7 +87,7 @@ class Model
 
     /**
      * @param string $name
-     * @param Field[]|array $fields
+     * @param array[]|Field[] $fields
      * @return Model
      */
     public static function create(string $name, array $fields = []): Model

@@ -45,15 +45,19 @@ class CommandDatatype extends Command
     public function handle()
     {
         $code = Datatype::generate(
-            $this->option('datatype'),
-            $this->option('basetype'),
-            $this->option('namespace') ? $this->option('namespace') : 'App\\Datatypes'
+            // @phpstan-ignore-next-line
+            (string)$this->option('datatype'),
+            // @phpstan-ignore-next-line
+            (string)$this->option('basetype'),
+            // @phpstan-ignore-next-line
+            $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Datatypes'
         );
 
         try {
             $retval = Datatype::generateFile(
                 $code,
-                $this->option('path') ? $this->option('path') : base_path('app/Datatypes')
+                // @phpstan-ignore-next-line
+                $this->option('path') ? (string)$this->option('path') : base_path('app/Datatypes')
             );
 
             $this->line($retval['code']);

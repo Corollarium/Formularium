@@ -38,8 +38,6 @@ class Field
     }
 
     /**
-     * Undocumented function
-     *
      * @param string $name
      * @param string|Datatype $datatype
      * @param array $extensions
@@ -59,14 +57,14 @@ class Field
 
     /**
      * @param string $name
-     * @param [type] $datatype
+     * @param string|Datatype $datatype
      * @param array $extensions
      * @param array $validators
-     * @return static
+     * @return self
      */
-    public function create(string $name, $datatype, array $extensions = [], array $validators = [])
+    public function create(string $name, $datatype, array $extensions = [], array $validators = []): self
     {
-        return new static($name, $datatype, $extensions, $validators);
+        return new self($name, $datatype, $extensions, $validators);
     }
 
     public function getName(): string
