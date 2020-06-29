@@ -29,4 +29,14 @@ class Datatype_ip extends \Formularium\Datatype\Datatype_string
             'Invalid IP'
         );
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'VARCHAR(39)';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "ipAdddress('$name')";
+    }
 }

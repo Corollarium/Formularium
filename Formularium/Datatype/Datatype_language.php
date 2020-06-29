@@ -214,4 +214,14 @@ class Datatype_language extends \Formularium\Datatype\Datatype_choice
             'zu' => 'isiZulu'
         ];
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'VARCHAR(10)';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "string($name, 10)";
+    }
 }

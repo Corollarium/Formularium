@@ -69,4 +69,14 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
             ]
         );
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'FLOAT';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "float('$name')";
+    }
 }

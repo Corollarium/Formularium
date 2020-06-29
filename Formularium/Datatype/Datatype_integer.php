@@ -58,4 +58,14 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
 
         return $value;
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'INT';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return 'integer';
+    }
 }

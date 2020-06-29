@@ -14,7 +14,7 @@ class Datatype_string extends \Formularium\Datatype
     /**
      *  @var integer
      */
-    protected $MAX_STRING_SIZE = 1024;
+    protected $MAX_STRING_SIZE = 256;
 
     public function __construct(string $typename = 'string', string $basetype = 'string')
     {
@@ -62,6 +62,16 @@ class Datatype_string extends \Formularium\Datatype
         }
 
         return $text;
+    }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'VARCHAR(' . $this->MAX_STRING_SIZE . ')';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "string('$name', {$this->MAX_STRING_SIZE})";
     }
 
     public static function getValidatorMetadata(): array

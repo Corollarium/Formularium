@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -14,5 +14,15 @@ class Datatype_text extends Datatype_string
     public function getRandom(array $params = [])
     {
         return static::faker()->text(); // TODO: params
+    }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'TEXT';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "text('$name')";
     }
 }

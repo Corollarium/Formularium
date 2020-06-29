@@ -194,4 +194,14 @@ class Datatype_currency extends \Formularium\Datatype\Datatype_choice
             'PLN' => 'Zloty',
         ];
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'CHAR(3)';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "char($name, 3)";
+    }
 }

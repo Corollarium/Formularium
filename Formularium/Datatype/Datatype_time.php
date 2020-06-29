@@ -40,4 +40,14 @@ class Datatype_time extends \Formularium\Datatype
             'Invalid time value. We expect this format: HH:MM:SS. ' . print_r($value, true)
         );
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'TIME';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "time('$name', 0)";
+    }
 }

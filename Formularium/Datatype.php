@@ -56,7 +56,7 @@ abstract class Datatype
 
     /**
      * Formats field to look prettier. Useful for formatting numbers with commas, ISO dates in
-     * locale, etc.
+     * locale, etc. Override if necessary.
      *
      * @param mixed $value
      * @param Field $field
@@ -86,6 +86,21 @@ abstract class Datatype
      * @return mixed
      */
     abstract public function getRandom(array $validators = []);
+
+    /**
+     * Returns the suggested SQL type for this datatype, such as 'TEXT'.
+     *
+     * @param string $database The database
+     * @return string
+     */
+    abstract public function getSQLType(string $database = '', array $options = []): string;
+
+    /**
+     * Returns the suggested Laravel Database type for this datatype.
+     *
+     * @return string
+     */
+    abstract public function getLaravelSQLType(string $name, array $options = []): string;
 
     /**
      * Returns a default value. Used to build new editable forms, for example.
@@ -124,6 +139,14 @@ abstract class Datatype
         ];
     }
 
+    /**
+     * Generates scaffolding, with a child class for Datatype and a test case.
+     *
+     * @param string $datatype The new datatype name.
+     * @param string $basetype The base type, if any.
+     * @param string $namespace The namespace for the new file.
+     * @return array ['code' => code string, 'test' => test case string]
+     */
     public static function generate(string $datatype, string $basetype = null, string $namespace = '\\Formularium\\Datatype'): array
     {
         $datatypeLower = mb_strtolower($datatype);

@@ -74,4 +74,14 @@ class Datatype_url extends \Formularium\Datatype
             throw new ValidatorException('Invalid url');
         }
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'VARCHAR(256)';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "string('$name', 256)";
+    }
 }

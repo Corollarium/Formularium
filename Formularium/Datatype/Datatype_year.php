@@ -2,23 +2,20 @@
 
 namespace Formularium\Datatype;
 
-class Datatype_usmall extends Datatype_integer
+class Datatype_year extends \Formularium\Datatype\Datatype_integer
 {
-    protected $minvalue = 0;
-    protected $maxvalue = 65536;
-
-    public function __construct(string $typename = 'usmall', string $basetype = 'integer')
+    public function __construct(string $typename = 'year', string $basetype = 'integer')
     {
         parent::__construct($typename, $basetype);
     }
 
     public function getSQLType(string $database = '', array $options = []): string
     {
-        return 'SMALLINT';
+        return 'INT';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "smallInteger($name)";
+        return "year('$name')";
     }
 }

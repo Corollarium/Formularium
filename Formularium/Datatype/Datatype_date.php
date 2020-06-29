@@ -61,7 +61,7 @@ class Datatype_date extends \Formularium\Datatype
         if ($min !== false) {
             $val->min($min);
         }
-        $max = $validator[static::MAX] ?? false;
+        $max = $validators[static::MAX] ?? false;
         if ($max !== false) {
             $val->max($max);
         }
@@ -100,5 +100,15 @@ class Datatype_date extends \Formularium\Datatype
                 ]
             ]
         );
+    }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'DATE';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return 'date';
     }
 }

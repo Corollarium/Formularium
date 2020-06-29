@@ -29,4 +29,14 @@ class Datatype_cpf extends \Formularium\Datatype\Datatype_string
         }
         throw new ValidatorException('Invalid CPF');
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'VARCHAR(13)';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "string($name, 13)";
+    }
 }

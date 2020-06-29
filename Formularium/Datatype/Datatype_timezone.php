@@ -14,4 +14,14 @@ class Datatype_timezone extends \Formularium\Datatype\Datatype_choice
         $l = timezone_identifiers_list();
         $this->choices = (array)array_combine($l, $l);
     }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'VARCHAR(50)';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "string($name, 50)";
+    }
 }
