@@ -34,5 +34,12 @@
         "apidoc": "echo TODO",
         "coverage": "./vendor/bin/phpunit --configuration phpunit.xml --coverage-html docs/coverage-report tests/",
         "test": "./vendor/bin/phpunit --configuration phpunit.xml tests/"
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Formularium\\Laravel\\ServiceProvider"
+            ]
+        }
+    },
 }
