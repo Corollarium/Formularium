@@ -36,10 +36,13 @@ final class Validator
 
 namespace $namespace;
 
-use Formularium;
+use Formularium\Model;
+use Formularium\ValidatorArgs;
+use Formularium\ValidatorInterface;
+use Formularium\ValidatorMetadata;
 use Formularium\Exception\ValidatorException;
 
-class ${name} implement ValidatorInterface
+class ${name} implements ValidatorInterface
 {
     /**
      * Checks if \$value is a valid value for this datatype considering the validators.
@@ -50,14 +53,25 @@ class ${name} implement ValidatorInterface
      * @throws ValidatorException If invalid, with the message.
      * @return mixed
      */
-    public function validate(\$value, array \$validators = [], Model \$model = null);
+    public function validate(\$value, array \$validators = [], Model \$model = null) {
+        throw new \Formularium\Exception\ValidatorException('Not implemented yet.');
+    }
 
     /**
      * Documents this validator.
      *
      * @return ValidatorMetadata
      */
-    public function getMetadata(): ValidatorMetadata;
+    public function getMetadata(): ValidatorMetadata
+    {
+        return new ValidatorMetadata(
+            '${name}',
+            "", // TODO: add description
+            [
+                // TODO: add ValidatorArgs if any
+            ]
+        );
+    }
 }
 EOF;
         
@@ -66,16 +80,16 @@ EOF;
 
 require_once('DatatypeBaseTestCase.php');
 
-use Formularium\Model;
-use $namespace\RequiredWith;
-use PHPUnit\Framework\TestCase;
+use Formularium\\Model;
+use $namespace\\{$name};
+use PHPUnit\\Framework\\TestCase;
 
-class Datatype${name}_TestCase extends TestCase
+class ${name}_TestCase extends TestCase
 {
 
     public function testFilled()
     {
-        \$validator = \Formularium\Validator::factory('$name');
+        \$validator = \\Formularium\\Validator::factory('$name');
         \$modelData = [
             'name' => 'TestModel',
             'fields' => [
@@ -93,7 +107,7 @@ class Datatype${name}_TestCase extends TestCase
         \$input = 'x'; // REPLACE THIS
         \$expected = 'x'; // REPLACE THIS
         \$v = \$validator->validate(
-            'x',
+            \$input,
             \$model->getField('someString')->getValidatorOption($name::class),
             \$model
         );
@@ -134,10 +148,10 @@ EOF;
         }
 
         if ($testpath) {
-            $testFilename = $testpath . "{$name}Test.php";
+            $testFilename = $testpath . "/{$name}Test.php";
             if (!file_exists($testFilename)) {
                 $retval['test'] = "Created validator ${name} test.";
-                file_put_contents($filename, $codeData['test']);
+                file_put_contents($testFilename, $codeData['test']);
             } else {
                 $retval['test'] = "Filename test $testFilename already exists.";
             }

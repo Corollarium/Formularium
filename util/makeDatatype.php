@@ -2,7 +2,7 @@
 
 require('vendor/autoload.php');
 
-$shortopts  = "d:p::b::t";
+$shortopts  = "d:b::n::p::t::";
 $longopts  = array(
     "datatype:",     // Required value
     "basetype::",
@@ -12,7 +12,7 @@ $longopts  = array(
 );
 $options = getopt($shortopts, $longopts);
 if (empty($options)) {
-    echo "Syntax: --datatype=xx [--basetype=xx] [--path=xx] [--test]\n";
+    echo "Syntax: --datatype=xx [--namespace=xx] [--basetype=xx] [--path=xx] [--test]\n";
     return 1;
 }
 
