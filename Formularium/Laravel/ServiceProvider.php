@@ -15,7 +15,8 @@ class ServiceProvider extends LaravelServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \Formularium\Laravel\Console\Commands\CommandDatatype::class
+                \Formularium\Laravel\Console\Commands\CommandDatatype::class,
+                \Formularium\Laravel\Console\Commands\CommandValidator::class
             ]);
         }
     }
