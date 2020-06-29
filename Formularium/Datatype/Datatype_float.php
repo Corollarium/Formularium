@@ -34,7 +34,7 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
     {
         if (is_float($value) || V::floatVal()->validate($value)) {
             return $value;
-        } elseif ($value == '') {
+        } elseif ($value === '') {
             return null;
         }
         throw new ValidatorException('Invalid float value');

@@ -2,6 +2,7 @@
 
 namespace Formularium\Datatype;
 
+use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
@@ -21,6 +22,9 @@ class Datatype_url extends \Formularium\Datatype
 
     public function validate($value, array $validators = [], Model $model = null)
     {
+        if ($value === null || !is_string($value)) {
+            throw new Exception('Invalid url value: ' . $value);
+        }
         $value = trim((string)$value);
         $this->validateURL($value);
         return $value;

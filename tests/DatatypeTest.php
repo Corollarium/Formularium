@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace FormulariumTests;
+
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Exception\Exception;

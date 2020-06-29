@@ -19,7 +19,6 @@ class Datatype_domain extends Datatype_string
         $value = parent::validate($value, $validators, $model);
         
         $value = mb_strtolower($value);
-
         if ($value === '' || v::domain()->validate($value)) {
             return $value;
         }

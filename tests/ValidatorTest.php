@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace FormulariumTests;
 
+use Formularium\Exception\Exception;
 use Formularium\Validator;
 use Formularium\ValidatorInterface;
 use PHPUnit\Framework\TestCase;

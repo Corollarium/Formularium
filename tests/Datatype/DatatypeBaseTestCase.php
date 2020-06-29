@@ -1,10 +1,11 @@
 <?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace FormulariumTests\Datatype;
 
+use Formularium\Exception\Exception;
 use \Formularium\Field;
 
-abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
+abstract class DatatypeBaseTestCase extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -75,7 +76,7 @@ abstract class DatatypeBaseTestCase extends PHPUnit\Framework\TestCase
                 $datatype = $this->getDataType();
                 $f = new Field($datatype->getName(), $datatype, [], $validators);
                 $datatype->validate($value, $f->getValidators());
-                $this->assertFalse(true, "Test invalidate passed");
+                $this->assertFalse(true, "Test invalidate passed for " . print_r($value, true));
             } catch (Exception $e) {
                 $this->assertTrue(true, $e->getMessage() . ' Data: ' . print_r($value, true));
             }

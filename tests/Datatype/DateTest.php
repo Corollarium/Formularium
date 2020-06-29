@@ -1,6 +1,6 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
@@ -24,7 +24,6 @@ class DatatypeDate_TestCase extends DatatypeBaseTestCase
             '2014-01-01',
             '2011-05-07',
             '0001-01-01',
-            '0000-00-00',
             ''
         ];
     }
@@ -35,8 +34,8 @@ class DatatypeDate_TestCase extends DatatypeBaseTestCase
     public function getInvalidValues()
     {
         return [
-            '-0001-01-01',
-            '35000-01-02',
+            '0000-00-00',
+            '-0001-21-01',
             '2001-13-01',
             '0001-12--1',
             'notadate',
@@ -48,11 +47,9 @@ class DatatypeDate_TestCase extends DatatypeBaseTestCase
             '0000-01-01',
             'nota-da-te',
             '02015-01-01',
-            '2000-1-29',
             1234567,
             ' ',
             '-0000-01-01',
-            '1990-01-14',
             '1000.01.01',
             '2001-00-00'
         ];

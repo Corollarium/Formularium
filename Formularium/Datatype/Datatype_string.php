@@ -2,6 +2,7 @@
 
 namespace Formularium\Datatype;
 
+use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
 
@@ -23,13 +24,17 @@ class Datatype_string extends \Formularium\Datatype
 
     public function getRandom(array $params = [])
     {
-        $min = $params[static::MIN_LENGTH] ?? 5;
-        $max = $params[static::MAX_LENGTH] ?? 15;
+        $min = $params[static::MIN_LENGTH]['value'] ?? 5;
+        $max = $params[static::MAX_LENGTH]['value'] ?? 15;
         return static::getRandomString($min, $max);
     }
 
     public function validate($value, array $validators = [], Model $model = null)
     {
+        if (!is_string($value)) {
+            throw new ValidatorException('Invalid domain value');
+        }
+
         // avoid invalid encoding attack
         $data = iconv("UTF-8", "UTF-8//IGNORE", (string)$value);
         if ($data === false) {
@@ -38,16 +43,16 @@ class Datatype_string extends \Formularium\Datatype
         $text = preg_replace('/<[^>]*>/', '', $data);
 
         if (array_key_exists(self::MIN_LENGTH, $validators)) {
-            if (mb_strlen($text) < $validators[self::MIN_LENGTH]) {
+            if (mb_strlen($text) < $validators[self::MIN_LENGTH]['value']) {
                 throw new \Formularium\Exception\ValidatorException('String is too short.');
             }
         }
-        $maxlength = $validators[self::MAX_LENGTH] ?? $this->MAX_STRING_SIZE;
+        $maxlength = $validators[self::MAX_LENGTH]['value'] ?? $this->MAX_STRING_SIZE;
         if (mb_strlen($text) > $maxlength) {
             throw new \Formularium\Exception\ValidatorException('String is too long.');
         }
 
-        $same = $validators[self::SAME_AS] ?? null;
+        $same = $validators[self::SAME_AS]['value'] ?? null;
         if ($same) {
             if (!$model) {
                 throw new \Formularium\Exception\ValidatorException('Same as requires a model.');

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
@@ -39,13 +39,17 @@ class DatatypeString_TestCase extends DatatypeBaseTestCase
             [
                 'value' => 'aaa',
                 'validators' => [
-                    Datatype_string::MIN_LENGTH => 5
+                    Datatype_string::MIN_LENGTH => [
+                        'value' => 5
+                    ]
                 ]
             ],
             [
                 'value' => 'aaaaaaaaaaaaaaaaaa',
                 'validators' => [
-                    Datatype_string::MAX_LENGTH => 5
+                    Datatype_string::MAX_LENGTH => [
+                        'value' => 5
+                    ]
                 ]
             ]
         ];
@@ -59,7 +63,9 @@ class DatatypeString_TestCase extends DatatypeBaseTestCase
                 "field1" => [
                     "datatype" => "string",
                     "validators" => [
-                        Datatype_string::SAME_AS => 'field2'
+                        Datatype_string::SAME_AS => [
+                            "value" => 'field2'
+                        ]
                     ]
                 ],
                 "field2" => [

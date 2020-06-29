@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
@@ -22,6 +22,14 @@ class DatatypeHTML_TestCase extends DatatypeBaseTestCase
     {
         return [
             "<p>Test</p>",
+            [
+                'value' => '</p>',
+                'expected' => '',
+            ],
+            [
+                'value' => '<p>asasdf',
+                'expected' => '<p>asasdf</p>',
+            ],
         ];
     }
 
@@ -32,8 +40,6 @@ class DatatypeHTML_TestCase extends DatatypeBaseTestCase
     {
         $dt = $this->getDataType();
         return [
-            '</p>',
-            '<p>asasdf',
             null
         ];
     }

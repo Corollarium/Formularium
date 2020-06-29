@@ -333,13 +333,13 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
 
     public function getRandom(array $params = [])
     {
-        $this->setChoices($params[self::COUNTRY_CODE_TYPE] ?? self::ISO_ALPHA3);
+        $this->setChoices($params[self::COUNTRY_CODE_TYPE]['value'] ?? self::ISO_ALPHA3);
         return parent::getRandom($params);
     }
 
     public function validate($value, array $validators = [], Model $model = null)
     {
-        $this->setChoices($validators[self::COUNTRY_CODE_TYPE] ?? self::ISO_ALPHA3);
+        $this->setChoices($validators[self::COUNTRY_CODE_TYPE]['value'] ?? self::ISO_ALPHA3);
         return parent::validate($value, $validators, $model);
     }
 

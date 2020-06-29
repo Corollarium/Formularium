@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
@@ -39,7 +39,7 @@ class Datatypeip_TestCase extends DatatypeBaseTestCase
     {
         return [
             [
-                'value' => '', // TODO
+                'value' => 'xcvxcv',
                 // optional: 'validators' => []
             ]
         ];

@@ -40,17 +40,17 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
     
     public function getRandom(array $params = [])
     {
-        $min = $params[static::MIN] ?? $this->minvalue;
-        $max = $params[static::MAX] ?? $this->maxvalue;
+        $min = $params[static::MIN]['value'] ?? $this->minvalue;
+        $max = $params[static::MAX]['value'] ?? $this->maxvalue;
         return mt_rand($min, $max);
     }
 
     public function validate($value, array $validators = [], Model $model = null)
     {
-        $min = $validators[static::MIN] ?? $this->minvalue;
-        $max = $validators[static::MAX] ?? $this->maxvalue;
+        $min = $validators[static::MIN]['value'] ?? $this->minvalue;
+        $max = $validators[static::MAX]['value'] ?? $this->maxvalue;
 
-        if ($value == '') {
+        if ($value === '') {
             return $value;
         } elseif (!V::intVal()->between($min, $max, true)->validate($value)) {
             throw new ValidatorException("Invalid integer value, must be between $min and $max");

@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace FormulariumTests;
+
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Exception\Exception;
@@ -54,9 +56,15 @@ EOF;
         "name": {
             "datatype": "string",
             "validators": {
-                "required": true,
-                "minlength": 30,
-                "maxlength": 40
+                "required": {
+                    "value": true
+                },
+                "minlength": {
+                    "value": 30
+                },
+                "maxlength": {
+                    "value": 40
+                }
             },
             "extensions": {
                 "comment": {
@@ -82,9 +90,15 @@ EOF;
                 'someInteger' => [
                     'datatype' => 'integer',
                     'validators' => [
-                        Datatype_integer::MIN => 4,
-                        Datatype_integer::MAX => 30,
-                        Datatype::REQUIRED => true,
+                        Datatype_integer::MIN => [
+                            'value' => 4
+                        ],
+                        Datatype_integer::MAX => [
+                            'value' => 30
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true
+                        ],
                     ]
                 ]
             ]
@@ -136,9 +150,15 @@ EOF;
                 'someInteger' => [
                     'datatype' => 'integer',
                     'validators' => [
-                        Datatype_integer::MIN => 4,
-                        Datatype_integer::MAX => 30,
-                        Datatype::REQUIRED => true,
+                        Datatype_integer::MIN => [
+                            'value' => 4,
+                        ],
+                        Datatype_integer::MAX => [
+                            'value' => 30,
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true,
+                        ]
                     ]
                 ]
             ]

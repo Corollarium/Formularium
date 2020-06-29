@@ -1,6 +1,6 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace FormulariumTests;
 
 use Formularium\Datatype\Datatype_string;
 use Formularium\Exception\Exception;
@@ -16,7 +16,9 @@ final class FieldTest extends TestCase
         $data = [
             'datatype' => 'string',
             'validators' => [
-                Datatype_string::MAX_LENGTH => 30
+                Datatype_string::MAX_LENGTH => [
+                    'value' => 30
+                ]
             ],
             'extensions' => [
                 Renderable::PLACEHOLDER => 'blabla'

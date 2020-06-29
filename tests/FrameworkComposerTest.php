@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace FormulariumTests;
 
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
@@ -14,7 +14,7 @@ final class FrameworkComposerTest extends TestCase
         FrameworkComposer::set(["HTML"]);
         $this->assertIsArray(FrameworkComposer::get());
         $this->assertEquals(1, count(FrameworkComposer::get()));
-        $this->assertInstanceOf(Formularium\Frontend\HTML\Framework::class, FrameworkComposer::get()[0]);
+        $this->assertInstanceOf(\Formularium\Frontend\HTML\Framework::class, FrameworkComposer::get()[0]);
     }
 
     public function testFactoryFail()

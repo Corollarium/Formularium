@@ -1,6 +1,6 @@
 <?php declare(strict_types=1); 
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;

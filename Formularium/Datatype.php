@@ -199,7 +199,7 @@ EOF;
         $testCode = <<<EOF
 <?php declare(strict_types=1); 
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
@@ -261,7 +261,7 @@ EOF;
     public static function generateFile(array $codeData, string $path, string $testpath = null): array
     {
         if (!is_dir($path)) {
-            throw new Exception("Path $path does not exist.");
+            \Safe\mkdir($path);
         }
     
         $datatype = $codeData['datatype'];

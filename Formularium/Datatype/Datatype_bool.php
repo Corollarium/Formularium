@@ -39,8 +39,10 @@ class Datatype_bool extends \Formularium\Datatype
             } else {
                 throw new ValidatorException('Invalid boolean value');
             }
+        } elseif (is_bool($value)) {
+            return ($value === true);
         }
-        return $value == true;
+        throw new ValidatorException('Invalid boolean value');
     }
 
     public function getSQLType(string $database = '', array $options = []): string

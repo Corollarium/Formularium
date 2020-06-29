@@ -78,7 +78,7 @@ EOF;
         $testCode = <<<EOF
 <?php declare(strict_types=1); 
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\\Model;
 use $namespace\\{$name};
@@ -134,9 +134,9 @@ EOF;
     public static function generateFile(array $codeData, string $path, string $testpath = null): array
     {
         if (!is_dir($path)) {
-            throw new Exception("Path $path does not exist.");
+            \Safe\mkdir($path);
         }
-    
+
         $name = $codeData['validator'];
         $retval = [];
         $filename =  $path . "/{$name}.php";

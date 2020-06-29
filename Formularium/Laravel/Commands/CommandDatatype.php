@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Laravel\Console\Commands;
+namespace Formularium\Laravel\Commands;
 
 use Formularium\Datatype;
 use Formularium\Exception\Exception;
@@ -47,7 +47,7 @@ class CommandDatatype extends Command
     {
         $code = Datatype::generate(
             // @phpstan-ignore-next-line
-            (string)$this->option('datatype'),
+            (string)$this->argument('name'),
             // @phpstan-ignore-next-line
             (string)$this->option('basetype'),
             // @phpstan-ignore-next-line
@@ -60,7 +60,7 @@ class CommandDatatype extends Command
                 // @phpstan-ignore-next-line
                 $this->option('path') ? (string)$this->option('path') : base_path('app/Datatypes'),
                 // @phpstan-ignore-next-line
-                $this->option('testpath') ? $this->option('testpath') : base_path('tests/Unit/')
+                $this->option('test-path') ? $this->option('test-path') : base_path('tests/Unit/')
             );
 
             $this->line($retval['code']);

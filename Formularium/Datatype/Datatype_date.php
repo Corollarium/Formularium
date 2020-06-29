@@ -41,8 +41,8 @@ class Datatype_date extends \Formularium\Datatype
 
     public function getRandom(array $params = [])
     {
-        $min = $params[static::MIN] ?? self::fromString('-10 years');
-        $max = $params[static::MAX] ?? self::fromString('+10 years');
+        $min = $params[static::MIN]['value'] ?? self::fromString('-10 years');
+        $max = $params[static::MAX]['value'] ?? self::fromString('+10 years');
         $faker = static::faker();
         $v = $faker->dateTimeBetween(
             $min,
@@ -56,12 +56,12 @@ class Datatype_date extends \Formularium\Datatype
         if ($value === '') {
             return $value;
         }
-        $val = Validator::date();
-        $min = $validators[static::MIN] ?? false;
+        $val = Validator::date('Y-m-d');
+        $min = $validators[static::MIN]['value'] ?? false;
         if ($min !== false) {
             $val->min($min);
         }
-        $max = $validators[static::MAX] ?? false;
+        $max = $validators[static::MAX]['value'] ?? false;
         if ($max !== false) {
             $val->max($max);
         }

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Laravel\Console\Commands;
+namespace Formularium\Laravel\Commands;
 
 use Formularium\Validator;
 use Formularium\Exception\Exception;
@@ -46,7 +46,7 @@ class CommandValidator extends Command
     {
         $code = Validator::generate(
             // @phpstan-ignore-next-line
-            (string)$this->option('datatype'),
+            (string)$this->argument('name'),
             // @phpstan-ignore-next-line
             $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Datatypes'
         );
@@ -55,9 +55,9 @@ class CommandValidator extends Command
             $retval = Validator::generateFile(
                 $code,
                 // @phpstan-ignore-next-line
-                $this->option('path') ? $this->option('path') : base_path('app/Datatypes'),
+                $this->option('path') ? $this->option('path') : base_path('app/Validators'),
                 // @phpstan-ignore-next-line
-                $this->option('testpath') ? $this->option('testpath') : base_path('tests/Unit/')
+                $this->option('test-path') ? $this->option('test-path') : base_path('tests/Unit/')
             );
 
             $this->line($retval['code']);

@@ -53,6 +53,11 @@ class Field
         }
         $this->extensions = $extensions;
         $this->validators = $validators;
+        foreach ($this->validators as $name => $data) {
+            if (!is_array($data)) {
+                throw new Exception("Validator data for $name must be an array");
+            }
+        }
     }
 
     /**

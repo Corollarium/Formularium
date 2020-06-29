@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace FormulariumTests;
+
 use Formularium\Formularium;
 use PHPUnit\Framework\TestCase;
 

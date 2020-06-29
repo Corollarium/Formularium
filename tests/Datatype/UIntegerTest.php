@@ -1,6 +1,6 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
@@ -49,13 +49,17 @@ class DatatypeUInteger_TestCase extends DatatypeBaseTestCase
             [
                 'value' => 300,
                 'validators' => [
-                    Datatype_integer::MAX => 100
+                    Datatype_integer::MAX => [
+                        'value' => 100
+                    ]
                 ]
             ],
             [
                 'value' => 30,
                 'validators' => [
-                    Datatype_integer::MIN => 100
+                    Datatype_integer::MIN => [
+                        'value' => 100
+                    ]
                 ]
             ],
         ];

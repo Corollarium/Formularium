@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require_once('DatatypeBaseTestCase.php');
+namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_countrycode;
@@ -25,17 +25,29 @@ class DatatypeCountryCode_TestCase extends DatatypeBaseTestCase
             [
                 'value' => 'BR',
                 'expected' => 'BR',
-                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_ALPHA2]
+                'validators' => [
+                    Datatype_countrycode::COUNTRY_CODE_TYPE => [
+                        'value' => Datatype_countrycode::ISO_ALPHA2
+                    ]
+                ]
             ],
             [
                 'value' => 'BRA',
                 'expected' => 'BRA',
-                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_ALPHA3]
+                'validators' => [
+                    Datatype_countrycode::COUNTRY_CODE_TYPE => [
+                        'value' => Datatype_countrycode::ISO_ALPHA3
+                    ]
+                ]
             ],
             [
                 'value' => '020',
                 'expected' => '020',
-                'validators' => [Datatype_countrycode::COUNTRY_CODE_TYPE => Datatype_countrycode::ISO_NUMERIC]
+                'validators' => [
+                    Datatype_countrycode::COUNTRY_CODE_TYPE => [
+                        'value' => Datatype_countrycode::ISO_NUMERIC
+                    ]
+                ]
             ]
 
         ];
