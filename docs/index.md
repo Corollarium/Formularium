@@ -39,8 +39,12 @@ $modelData = [
         'myString' => [
             'datatype' => 'string',
             'validators' => [
-                Datatype_string::MIN_LENGTH => 3,
-                Datatype_string::MAX_LENGTH => 30,
+                Datatype_string::MIN_LENGTH => [
+                    'value' => 3,
+                ],
+                Datatype_string::MAX_LENGTH =>  => [
+                    'value' => 30,
+                ],
             ],
             'extensions' => [
                 Renderable::LABEL => 'This is some string',
@@ -51,8 +55,12 @@ $modelData = [
         'someInteger' => [
             'datatype' => 'integer',
             'validators' => [
-                Datatype_integer::MIN => 4,
-                Datatype_integer::MAX => 30
+                Datatype_integer::MIN => [
+                    'value' => 4,
+                ],
+                Datatype_integer::MAX => [
+                    'value' => 40,
+                ],
             ],
             'extensions' => [
                 Renderable_number::STEP => 2,
