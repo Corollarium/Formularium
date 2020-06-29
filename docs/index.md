@@ -1,10 +1,11 @@
 # Formularium
 
-This is a general form generator for PHP. It hosts a number of generators for different frameworks, as well as validators. The main feature is that it provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for validation and form generation. Your fields are not strings, stop treating them as such.
+This is an [open source general frontend generator and backend validator for PHP](https://github.com/Corollarium/Formularium/). It hosts a number of generators for different CSS frameworks, as well as validators. The main feature is that it provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for validation and form generation. Your fields are not strings, stop treating them as such.
 
 Forms are generated from a simple structure, which can be serialized as JSON. It's easy to create new datatypes, either from zero or extending the base types provided. The generated code can be used as is or customized with fine tuning for those pesky cases that no tool ever gets right.
 
 Check:
+
 - [kitchen sink demo](https://corollarium.github.io/Formularium/kitchensink)
 - [a basic hello world example in pure PHP](https://github.com/Corollarium/Formularium-example)
 
@@ -37,7 +38,7 @@ $modelData = [
     'fields' => [
         'myString' => [
             'datatype' => 'string',
-            'validators' => [ 
+            'validators' => [
                 Datatype_string::MIN_LENGTH => 3,
                 Datatype_string::MAX_LENGTH => 30,
             ],
@@ -49,7 +50,7 @@ $modelData = [
         ],
         'someInteger' => [
             'datatype' => 'integer',
-            'validators' => [ 
+            'validators' => [
                 Datatype_integer::MIN => 4,
                 Datatype_integer::MAX => 30
             ],
@@ -77,7 +78,7 @@ if (!empty($validation['errors'])) {
 // get data after validation
 $validated = $validation['validated'];
 
-// render a form 
+// render a form
 echo $model->editable($data);
 
 // render a view
