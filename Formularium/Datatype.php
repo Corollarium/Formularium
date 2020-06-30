@@ -32,6 +32,7 @@ abstract class Datatype
      *
      * @param string $datatype
      * @return Datatype
+     * @throws ClassNotFoundException
      */
     public static function factory(string $datatype): Datatype
     {
@@ -45,7 +46,11 @@ abstract class Datatype
                 throw new ClassNotFoundException("Invalid datatype $datatype");
             }
         }
-        return new $class();
+        try {
+            return new $class();
+        } catch (\Error $e) {
+            throw new ClassNotFoundException("Invalid datatype $datatype");
+        }
     }
 
     protected function __construct(string $name = '', string $basetype = '')

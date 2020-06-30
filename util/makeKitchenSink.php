@@ -2,18 +2,21 @@
 
 require(__DIR__ . '/../vendor/autoload.php');
 
+use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Datatype\Datatype_string;
-use Formularium\Field;
+use Formularium\Exception\ClassNotFoundException;
 use Formularium\Formularium;
-use Formularium\Framework;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Frontend\HTML\Renderable\Renderable_pagination;
-use Formularium\Frontend\HTML\Renderable\Renderable_string;
 use Formularium\Model;
 use Formularium\Renderable;
+use Formularium\Validator\MaxLength;
+use Formularium\Validator\Min;
+use Formularium\Validator\MinLength;
+use Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
 
 function kitchenSink($frameworkName, string $templateName)
 {
@@ -29,12 +32,17 @@ function kitchenSink($frameworkName, string $templateName)
 
     // make a default for all types
     foreach ($datatypes as $d) {
-        $fields[$d] = [
-            'datatype' => $d,
-            'extensions' => [
-                Renderable::LABEL => 'Type ' . $d
-            ],
-        ];
+        try {
+            Datatype::factory($d);
+            $fields[$d] = [
+                'datatype' => $d,
+                'extensions' => [
+                    Renderable::LABEL => 'Type ' . $d
+                ],
+            ];
+        } catch (ClassNotFoundException $e) {
+            // Abstract class
+        }
     }
 
     /*
@@ -44,8 +52,8 @@ function kitchenSink($frameworkName, string $templateName)
         'myString' => [
             'datatype' => 'string',
             'validators' => [
-                Datatype_string::MIN_LENGTH => 3,
-                Datatype_string::MAX_LENGTH => 30,
+                MinLength::class => [ 'value' => 3],
+                MaxLength::class => [ 'value' => 30],
             ],
             'extensions' => [
                 Renderable::LABEL => 'Type string',
@@ -59,8 +67,8 @@ function kitchenSink($frameworkName, string $templateName)
         'myInteger' => [
             'datatype' => 'integer',
             'validators' => [
-                Datatype_integer::MIN => 4,
-                Datatype_integer::MAX => 30,
+                Min::class => [ 'value' => 4],
+                Max::class => [ 'value' => 40],
             ],
             'extensions' => [
                 Renderable_number::STEP => 2,
@@ -69,7 +77,7 @@ function kitchenSink($frameworkName, string $templateName)
             ],
         ],
         'countrycodeselect' => [
-            'datatype' => 'countrycode',
+            'datatype' => 'countrycodeISO3',
             'extensions' => [
                 Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
                 Renderable::LABEL => 'Country code - select choice'
@@ -93,6 +101,7 @@ function kitchenSink($frameworkName, string $templateName)
     );
     $basicDemoEditable = $basicModel->editable();
 
+    
     // generate kitchen sink model
     $model = Model::fromStruct(
         [

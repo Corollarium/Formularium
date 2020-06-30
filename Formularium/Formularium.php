@@ -49,7 +49,7 @@ final class Formularium
     public static function getDatatypeNames(): array
     {
         $datatypes = [];
-        foreach (self::$validatorDirectories as $dir) {
+        foreach (self::$datatypeDirectories as $dir) {
             $files = scandir($dir);
             if (!$files) {
                 throw new Exception('Datatypes not found');
@@ -61,14 +61,6 @@ final class Formularium
                 array_diff($files, array('.', '..'))
             );
     
-            // TODO: avoid abstract classes dinamically
-            $d = array_filter(
-                $d,
-                function ($t) {
-                    return ($t !== 'number' && $t !== 'choice' && $t !== 'association' && $t !== 'country');
-                }
-            );
-
             $datatypes = array_merge($datatypes, $d);
         }
 
