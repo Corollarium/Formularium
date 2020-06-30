@@ -14,7 +14,7 @@ interface ValidatorInterface
      * Checks if $value is a valid value for this datatype considering the validators.
      *
      * @param mixed $value
-     * @param array $validators
+     * @param array $options
      * @param Model $model The entire model. Useful if validation depends on other fields. May be null.
      * @throws ValidatorException Thrown if invalid, with the message.
      * @return mixed The $value, with possible changes from the validation.

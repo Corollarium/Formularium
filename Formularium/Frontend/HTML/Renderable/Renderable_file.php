@@ -3,11 +3,11 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Datatype;
-use Formularium\Datatype\Datatype_file;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
+use Formularium\Validator\File;
 
 class Renderable_file extends Renderable
 {
@@ -111,25 +111,25 @@ class Renderable_file extends Renderable
                 'data-datatype' => $field->getDatatype()->getName(),
                 'data-basetype' => $field->getDatatype()->getBasetype(),
                 'title' => $field->getExtension(static::LABEL, ''),
-                'data-max-size' => $validators[Datatype_file::MAX_SIZE] ?? '',
+                'data-max-size' => $validators[File::MAX_SIZE] ?? '',
                 'capture' => 'environment'
             ]
         );
 
         $accept = '';
-        if ($validators[Datatype_file::ACCEPT] ?? false) {
-            if (is_array($validators[Datatype_file::ACCEPT])) {
-                $accept = join(',', $validators[Datatype_file::ACCEPT]);
+        if ($validators[File::ACCEPT] ?? false) {
+            if (is_array($validators[File::ACCEPT])) {
+                $accept = join(',', $validators[File::ACCEPT]);
             } else {
-                $accept = $validators[Datatype_file::ACCEPT];
+                $accept = $validators[File::ACCEPT];
             }
             $input->setAttribute('accept', htmlspecialchars($accept));
         }
         if ($validators[Datatype::REQUIRED] ?? false) {
             $input->setAttribute('required', 'required');
         }
-        if ($validators[Datatype_file::MAX_SIZE] ?? false) {
-            $input->setAttribute('data-max-size', $validators[Datatype_file::MAX_SIZE]);
+        if ($validators[File::MAX_SIZE] ?? false) {
+            $input->setAttribute('data-max-size', $validators[File::MAX_SIZE]);
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
             if ($field->getExtension($v, false)) {

@@ -10,10 +10,18 @@ use Formularium\Exception\Exception;
  */
 final class Formularium
 {
+    /**
+     *
+     * @var string[]
+     */
     private static $validatorDirectories = [
         __DIR__ . '/Validator/'
     ];
 
+    /**
+     *
+     * @var string[]
+     */
     private static $datatypeDirectories = [
         __DIR__ . '/Datatype/'
     ];
@@ -23,12 +31,12 @@ final class Formularium
         // empty
     }
 
-    public static function appendDatatypeDirectory($dir)
+    public static function appendDatatypeDirectory(string $dir): void
     {
         self::$datatypeDirectories[] = $dir;
     }
 
-    public static function appendValidatorDirectory($dir)
+    public static function appendValidatorDirectory(string $dir): void
     {
         self::$validatorDirectories[] = $dir;
     }
@@ -40,12 +48,13 @@ final class Formularium
      */
     public static function getDatatypeNames(): array
     {
+        $datatypes = [];
         foreach (self::$validatorDirectories as $dir) {
             $files = scandir($dir);
             if (!$files) {
                 throw new Exception('Datatypes not found');
             }
-            $datatypes = array_map(
+            $d = array_map(
                 function ($x) {
                     return str_replace('Datatype_', '', str_replace('.php', '', $x));
                 },
@@ -53,12 +62,14 @@ final class Formularium
             );
     
             // TODO: avoid abstract classes dinamically
-            $datatypes = array_filter(
-                $datatypes,
+            $d = array_filter(
+                $d,
                 function ($t) {
                     return ($t !== 'number' && $t !== 'choice' && $t !== 'association' && $t !== 'country');
                 }
             );
+
+            $datatypes = array_merge($datatypes, $d);
         }
 
         return $datatypes;
@@ -71,17 +82,19 @@ final class Formularium
      */
     public static function getValidatorNames(): array
     {
+        $validators = [];
         foreach (self::$validatorDirectories as $dir) {
             $files = scandir($dir);
             if (!$files) {
                 throw new Exception('Validators not found');
             }
-            $validators = array_map(
+            $v = array_map(
                 function ($x) {
                     return str_replace('.php', '', $x);
                 },
                 array_diff($files, array('.', '..'))
             );
+            $validators = array_merge($validators, $v);
         }
         return $validators;
     }

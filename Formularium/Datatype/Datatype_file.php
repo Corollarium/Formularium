@@ -21,7 +21,6 @@ class Datatype_file extends \Formularium\Datatype
     /**
      *
      * @param string $value The path to the file to be validated. Might be a temporary path.
-     * @param array $validators
      * @param Model $model
      * @return mixed
      */

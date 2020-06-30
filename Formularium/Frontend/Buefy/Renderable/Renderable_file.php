@@ -3,11 +3,11 @@
 namespace Formularium\Frontend\Buefy\Renderable;
 
 use Formularium\Datatype;
-use Formularium\Datatype\Datatype_file;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Renderable\Renderable_file as HTMLRenderable_file;
 use Formularium\HTMLElement;
 use Formularium\Renderable;
+use Formularium\Validator\File;
 
 class Renderable_file extends \Formularium\Renderable
 {
@@ -23,19 +23,19 @@ class Renderable_file extends \Formularium\Renderable
             'v-model' => $field->getName(),
             'drag-drop' => ''
         ];
-        if ($extensions[Datatype_file::ACCEPT] ?? false) {
-            if (is_array($extensions[Datatype_file::ACCEPT])) {
-                $accept = join(',', $extensions[Datatype_file::ACCEPT]);
+        if ($extensions[File::ACCEPT] ?? false) {
+            if (is_array($extensions[File::ACCEPT])) {
+                $accept = join(',', $extensions[File::ACCEPT]);
             } else {
-                $accept = $extensions[Datatype_file::ACCEPT];
+                $accept = $extensions[File::ACCEPT];
             }
             $inputAtts['accept'] = htmlspecialchars($accept);
         }
         if ($validators[Datatype::REQUIRED] ?? false) {
             $inputAtts['required'] = 'required';
         }
-        if ($validators[Datatype_file::MAX_SIZE] ?? false) {
-            $inputAtts['data-max-size'] = $validators[Datatype_file::MAX_SIZE];
+        if ($validators[File::MAX_SIZE] ?? false) {
+            $inputAtts['data-max-size'] = $validators[File::MAX_SIZE];
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
             if ($field->getExtension($v, false)) {
