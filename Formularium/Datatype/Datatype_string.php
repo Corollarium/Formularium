@@ -5,6 +5,7 @@ namespace Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
+use Formularium\Validator\MaxLength;
 
 class Datatype_string extends \Formularium\Datatype
 {
@@ -40,6 +41,8 @@ class Datatype_string extends \Formularium\Datatype
             throw new \Formularium\Exception\ValidatorException('Invalid encoding in string.');
         }
         $text = preg_replace('/<[^>]*>/', '', $data);
+
+        $value = MaxLength::validate($value, ['value' => $this->MAX_STRING_SIZE], $this);
 
         return $text;
     }

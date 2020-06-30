@@ -15,7 +15,7 @@ class Max implements ValidatorInterface
     public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
         $max = $options['value'];
-        if ($datatype->getBasetype() === 'number') {
+        if ($datatype->getBasetype() === 'number' || $datatype->getBasetype() === 'integer') {
             if ($value > $max) {
                 throw new ValidatorException('Value is too large.');
             }
@@ -50,7 +50,7 @@ class Max implements ValidatorInterface
             [
                 new ValidatorArgs(
                     'value',
-                    'Mixed',
+                    'Int', // TODO: Mixed
                     'Value'
                 )
             ]

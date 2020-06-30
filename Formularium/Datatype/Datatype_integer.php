@@ -5,6 +5,8 @@ namespace Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
+use Formularium\Validator\Max;
+use Formularium\Validator\Min;
 use Respect\Validation\Validator as V;
 
 class Datatype_integer extends \Formularium\Datatype\Datatype_number
@@ -49,9 +51,11 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
     {
         if ($value === '') {
             return $value;
-        } elseif (!V::intVal()->between($this->minvalue, $this->maxvalue, true)->validate($value)) {
-            throw new ValidatorException("Invalid integer value, must be between {$this->minvalue} and {$this->maxvalue}");
+        } elseif (!V::intVal()->validate($value)) {
+            throw new ValidatorException("Invalid integer value");
         }
+        $value = Min::validate($value, ['value' => $this->minvalue], $this);
+        $value = Max::validate($value, ['value' => $this->maxvalue], $this);
 
         return $value;
     }

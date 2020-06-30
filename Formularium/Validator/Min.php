@@ -15,7 +15,7 @@ class Min implements ValidatorInterface
     public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
         $min = $options['value'];
-        if ($datatype->getBasetype() === 'number') {
+        if ($datatype->getBasetype() === 'number' || $datatype->getBasetype() === 'integer') {
             if ($value < $min) {
                 throw new ValidatorException('Value is too small.');
             }
@@ -50,7 +50,7 @@ class Min implements ValidatorInterface
             [
                 new ValidatorArgs(
                     'value',
-                    'Mixed',
+                    'Int', // TODO: Mixed
                     'Value'
                 )
             ]
