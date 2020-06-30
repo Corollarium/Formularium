@@ -24,7 +24,7 @@ final class Validator
         return $class;
     }
 
-    public static function generate(string $name, string $namespace = '\\Formularium\\Datatype'): array
+    public static function generate(string $name, string $namespace = '\\Formularium\\Validator'): array
     {
         $validatorCode = <<<EOF
 <?php declare(strict_types=1); 

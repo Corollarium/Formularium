@@ -14,11 +14,11 @@ final class FormulariumTest extends TestCase
         $this->assertContains('string', $names);
     }
 
-    public function testGraphqlDirectives()
+    public function testValidatorGraphqlDirectives()
     {
-        $names = Formularium::graphqlDirectives();
+        $names = Formularium::validatorGraphqlDirectives();
         $this->assertIsString($names);
-        $this->assertContains('directive @min(', $names);
+        $this->assertContains('directive @Min(', $names);
         $this->assertNotContains('directive @required', $names);
     }
 }

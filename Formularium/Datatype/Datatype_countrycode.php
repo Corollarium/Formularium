@@ -17,6 +17,7 @@ abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choic
      * The ISO3 representation of a country code.
      */
     public const ISO_ALPHA3 = 'alpha-3';
+
     /**
      * The ISO-number representation of a country code.
      */
