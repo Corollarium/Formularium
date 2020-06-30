@@ -20,7 +20,7 @@ class Datatype_url extends \Formularium\Datatype
         return static::faker()->url;
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === null || !is_string($value)) {
             throw new Exception('Invalid url value: ' . $value);

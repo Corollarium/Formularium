@@ -8,6 +8,7 @@ use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\ValidatorMetadata;
 use Formularium\ValidatorArgs;
+use Respect\Validation\Validator as Respect;
 
 class Min implements ValidatorInterface
 {
@@ -19,7 +20,14 @@ class Min implements ValidatorInterface
                 throw new ValidatorException('Value is too small.');
             }
         } elseif (
-            $datatype->getBasetype() === 'date' ||
+            $datatype->getBasetype() === 'date'
+        ) {
+            $val = Respect::date('Y-m-d');
+            $val->min($min);
+            if (!$val->validate($value)) {
+                throw new ValidatorException('Value is too small.');
+            }
+        } elseif (
             $datatype->getBasetype() === 'datetime'
         ) {
             $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);

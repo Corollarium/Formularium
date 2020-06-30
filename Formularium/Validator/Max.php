@@ -8,6 +8,7 @@ use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\ValidatorMetadata;
 use Formularium\ValidatorArgs;
+use Respect\Validation\Validator as Respect;
 
 class Max implements ValidatorInterface
 {
@@ -16,10 +17,17 @@ class Max implements ValidatorInterface
         $max = $options['value'];
         if ($datatype->getBasetype() === 'number') {
             if ($value > $max) {
-                throw new ValidatorException('Value is too small.');
+                throw new ValidatorException('Value is too large.');
             }
         } elseif (
-            $datatype->getBasetype() === 'date' ||
+            $datatype->getBasetype() === 'date'
+        ) {
+            $val = Respect::date('Y-m-d');
+            $val->max($max);
+            if (!$val->validate($value)) {
+                throw new ValidatorException('Value is too large.');
+            }
+        } elseif (
             $datatype->getBasetype() === 'datetime'
         ) {
             $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);

@@ -43,7 +43,7 @@ abstract class Datatype_association extends \Formularium\Datatype
         throw new ValidatorException('Implementation defined');
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         throw new ValidatorException('Invalid boolean value');
     }

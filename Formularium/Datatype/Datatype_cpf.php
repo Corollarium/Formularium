@@ -22,7 +22,7 @@ class Datatype_cpf extends \Formularium\Datatype\Datatype_string
         return $faker->cpf;
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '' || Validator::cpf()->validate($value)) {
             return $value;

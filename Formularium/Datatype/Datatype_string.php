@@ -28,7 +28,7 @@ class Datatype_string extends \Formularium\Datatype
         return static::getRandomString($min, $max);
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if (!is_string($value)) {
             throw new ValidatorException('Invalid domain value');

@@ -4,9 +4,8 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
-use Formularium\Field;
 use Formularium\Model;
-use Respect\Validation\Validator;
+use Respect\Validation\Validator as Respect;
 
 class Datatype_date extends \Formularium\Datatype
 {
@@ -51,20 +50,12 @@ class Datatype_date extends \Formularium\Datatype
         return preg_replace('/T.+/', '', $v->format(\DateTime::ATOM));
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '') {
             return $value;
         }
-        $val = Validator::date('Y-m-d');
-        $min = $validators[static::MIN]['value'] ?? false;
-        if ($min !== false) {
-            $val->min($min);
-        }
-        $max = $validators[static::MAX]['value'] ?? false;
-        if ($max !== false) {
-            $val->max($max);
-        }
+        $val = Respect::date('Y-m-d');
         if ($val->validate($value)) {
             return $value;
         }

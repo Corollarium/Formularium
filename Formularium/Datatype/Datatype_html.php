@@ -22,7 +22,7 @@ class Datatype_html extends Datatype_text
         return '<p>HTML <span>' . parent::getRandom() . '</span>' . parent::getRandom() . '</p>';
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if (!is_string($value)) {
             throw new ValidatorException('Invalid HTML value');
@@ -37,16 +37,6 @@ class Datatype_html extends Datatype_text
         $config->set('Cache.DefinitionImpl', null);
         $purifier = new HTMLPurifier($config);
         $clean_html = $purifier->purify($text);
-
-        if (array_key_exists(static::MIN_LENGTH, $validators)) {
-            if (mb_strlen($clean_html) < $validators[self::MIN_LENGTH]['value']) {
-                throw new \Formularium\Exception\ValidatorException('String is too short.');
-            }
-        }
-        $maxlength = $validators[static::MAX_LENGTH]['value'] ?? $this->MAX_STRING_SIZE;
-        if (mb_strlen($clean_html) > $maxlength) {
-            throw new \Formularium\Exception\ValidatorException('String is too long.');
-        }
 
         return $clean_html;
     }

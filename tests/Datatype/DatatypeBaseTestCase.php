@@ -53,7 +53,7 @@ abstract class DatatypeBaseTestCase extends \PHPUnit\Framework\TestCase
             $validated = '';
             try {
                 $f = new Field($datatype->getName(), $datatype, [], $validators);
-                $validated = $datatype->validate($value, $f->getValidators());
+                $validated = $datatype->validate($value);
             } catch (Exception $e) {
                 $this->assertFalse(true, $e->getMessage() . '. Value: ' . print_r($value, true));
                 return;
@@ -75,7 +75,7 @@ abstract class DatatypeBaseTestCase extends \PHPUnit\Framework\TestCase
             try {
                 $datatype = $this->getDataType();
                 $f = new Field($datatype->getName(), $datatype, [], $validators);
-                $datatype->validate($value, $f->getValidators());
+                $datatype->validate($value);
                 $this->assertFalse(true, "Test invalidate passed for " . print_r($value, true));
             } catch (Exception $e) {
                 $this->assertTrue(true, $e->getMessage() . ' Data: ' . print_r($value, true));
@@ -89,7 +89,7 @@ abstract class DatatypeBaseTestCase extends \PHPUnit\Framework\TestCase
             $datatype = $this->getDataType();
             $value = $datatype->getRandom();
             $f = new Field($datatype->getName(), $datatype);
-            $this->assertEquals($value, $datatype->validate($value, $f->getValidators()), 'Data: ' . print_r($value, true));
+            $this->assertEquals($value, $datatype->validate($value), 'Data: ' . print_r($value, true));
         }
     }
 
@@ -98,6 +98,6 @@ abstract class DatatypeBaseTestCase extends \PHPUnit\Framework\TestCase
         $datatype = $this->getDataType();
         $value = $datatype->getDefault();
         $f = new Field($datatype->getName(), $datatype);
-        $this->assertEquals($value, $datatype->validate($value, $f->getValidators()), 'Data: ' . print_r($value, true));
+        $this->assertEquals($value, $datatype->validate($value), 'Data: ' . print_r($value, true));
     }
 }

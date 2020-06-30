@@ -14,9 +14,9 @@ class Datatype_phone extends Datatype_string
         parent::__construct($typename, $basetype);
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
-        $value = parent::validate($value, $validators, $model);
+        $value = parent::validate($value, $model);
         
         $value = mb_strtolower($value);
 

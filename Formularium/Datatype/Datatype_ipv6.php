@@ -20,7 +20,7 @@ class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
         return $faker->ipv6;
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '' || v::ip(FILTER_FLAG_IPV6)->validate($value)) {
             return $value;

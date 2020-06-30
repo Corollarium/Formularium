@@ -179,7 +179,7 @@ class Model
             // call the datatype validator
             $field = $this->fields[$name];
             try {
-                $validate[$name] = $field->getDatatype()->validate($d, $field->getValidators(), $this);
+                $validate[$name] = $field->getDatatype()->validate($d, $this);
             } catch (Exception $e) {
                 $errors[$name] = $e->getMessage();
             }

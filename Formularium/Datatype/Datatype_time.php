@@ -20,7 +20,7 @@ class Datatype_time extends \Formularium\Datatype
         return $faker->time();
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '') {
             return $value;

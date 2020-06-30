@@ -19,7 +19,7 @@ class Datatype_email extends Datatype_string
         return static::faker()->email;
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '' || Validator::email()->validate($value)) {
             return $value;

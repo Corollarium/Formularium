@@ -44,7 +44,7 @@ abstract class Datatype_choice extends \Formularium\Datatype
         return $this->choices;
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if (!is_string($value) && !is_int($value)) {
             throw new ValidatorException('Invalid choice value ' . htmlspecialchars(print_r($value, true)));

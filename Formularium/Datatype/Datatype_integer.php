@@ -45,7 +45,7 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
         return mt_rand($min, $max);
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '') {
             return $value;

@@ -31,7 +31,7 @@ class Datatype_uuid extends Datatype_string
         );
     }
 
-    public function validate($value, array $validators = [], Model $model = null)
+    public function validate($value, Model $model = null)
     {
         if ($value === '' || preg_match('/' . self::UUID_REGEX . '/i', (string)$value)) {
             return $value;

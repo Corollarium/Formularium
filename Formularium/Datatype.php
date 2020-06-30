@@ -71,12 +71,11 @@ abstract class Datatype
      * Checks if $value is a valid value for this datatype considering the validators.
      *
      * @param mixed $value
-     * @param array $validators The arguments for your validation.
      * @param Model $model The entire model, if your field depends on other things of the model. may be null.
      * @throws Exception If invalid, with the message.
      * @return mixed The validated value.
      */
-    abstract public function validate($value, array $validators = [], ?Model $model = null);
+    abstract public function validate($value, ?Model $model = null);
 
     /**
      * Returns a random valid value for this datatype, considering the validators
