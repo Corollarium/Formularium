@@ -166,12 +166,11 @@ class Datatype_${datatypeLower} extends ${basetypeClass}
      * Checks if \$value is a valid value for this datatype considering the validators.
      *
      * @param mixed \$value The value you are checking.
-     * @param array \$validators The arguments for your validation.
      * @param Model \$model The entire model, if your field depends on other things of the model. may be null.
      * @throws Exception If invalid, with the message.
      * @return mixed The validated value.
      */
-    public function validate(\$value, array \$validators = [], Model \$model = null)
+    public function validate(\$value, Model \$model = null)
     {
         throw new ValidatorException('Not implemented');
     }
