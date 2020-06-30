@@ -15,6 +15,7 @@ final class Validator
     public static function class(string $validatorName): string
     {
         $class = "Formularium\\Validator\\$validatorName";
+        // TODO: Formularium::Diretories()
         if (!class_exists($class)) {
             $class = $validatorName;
             if (!class_exists($class)) {

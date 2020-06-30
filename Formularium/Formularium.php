@@ -10,9 +10,27 @@ use Formularium\Exception\Exception;
  */
 final class Formularium
 {
+    private static $validatorDirectories = [
+        __DIR__ . '/Validator/'
+    ];
+
+    private static $datatypeDirectories = [
+        __DIR__ . '/Datatype/'
+    ];
+
     private function __construct()
     {
         // empty
+    }
+
+    public static function appendDatatypeDirectory($dir)
+    {
+        self::$datatypeDirectories[] = $dir;
+    }
+
+    public static function appendValidatorDirectory($dir)
+    {
+        self::$validatorDirectories[] = $dir;
     }
 
     /**
@@ -22,24 +40,26 @@ final class Formularium
      */
     public static function getDatatypeNames(): array
     {
-        $files = scandir(__DIR__ . '/Datatype/');
-        if (!$files) {
-            throw new Exception('Datatypes not found');
-        }
-        $datatypes = array_map(
-            function ($x) {
-                return str_replace('Datatype_', '', str_replace('.php', '', $x));
-            },
-            array_diff($files, array('.', '..'))
-        );
-    
-        // TODO: avoid abstract classes
-        $datatypes = array_filter(
-            $datatypes,
-            function ($t) {
-                return ($t !== 'number' && $t !== 'choice' && $t !== 'association');
+        foreach (self::$validatorDirectories as $dir) {
+            $files = scandir($dir);
+            if (!$files) {
+                throw new Exception('Datatypes not found');
             }
-        );
+            $datatypes = array_map(
+                function ($x) {
+                    return str_replace('Datatype_', '', str_replace('.php', '', $x));
+                },
+                array_diff($files, array('.', '..'))
+            );
+    
+            // TODO: avoid abstract classes dinamically
+            $datatypes = array_filter(
+                $datatypes,
+                function ($t) {
+                    return ($t !== 'number' && $t !== 'choice' && $t !== 'association' && $t !== 'country');
+                }
+            );
+        }
 
         return $datatypes;
     }
@@ -51,17 +71,18 @@ final class Formularium
      */
     public static function getValidatorNames(): array
     {
-        $files = scandir(__DIR__ . '/Validator/');
-        if (!$files) {
-            throw new Exception('Validators not found');
+        foreach (self::$validatorDirectories as $dir) {
+            $files = scandir($dir);
+            if (!$files) {
+                throw new Exception('Validators not found');
+            }
+            $validators = array_map(
+                function ($x) {
+                    return str_replace('.php', '', $x);
+                },
+                array_diff($files, array('.', '..'))
+            );
         }
-        $validators = array_map(
-            function ($x) {
-                return str_replace('.php', '', $x);
-            },
-            array_diff($files, array('.', '..'))
-        );
-    
         return $validators;
     }
 
