@@ -185,38 +185,47 @@ class Model
             }
 
             // call class validators.
-            foreach ($field->getValidators() as $validatorName => $_) {
-                if (mb_strpos($validatorName, '\\') === false) {
+            foreach ($field->getValidators() as $validatorName => $options) {
+                // special case
+                if ($validatorName === Datatype::REQUIRED) {
                     continue;
                 }
+
                 try {
-                    $v = Validator::factory($validatorName);
-                    $validate[$name] = $v->validate($validate[$name], $field->getValidatorOption($validatorName), $this);
+                    $validate[$name] = Validator::class($validatorName)::validate(
+                        $validate[$name],
+                        $options,
+                        $field->getDatatype(),
+                        $this
+                    );
                 } catch (Exception $e) {
                     $errors[$name] = $e->getMessage();
                 }
             }
         }
 
+        // now validate fields, since you may have some that were not in data.
         foreach ($this->fields as $name => $field) {
-            // check REQUIRED.
-            if (($field->getValidators()[Datatype::REQUIRED] ?? false)
-                && !array_key_exists($name, $validate)
-                && !array_key_exists($name, $errors)
-            ) {
-                $errors[$name] = "Field $name is missing";
-            }
-
             // if in field list but not in data
             if (!array_key_exists($name, $data)) {
                 // call class validators.
-                foreach ($field->getValidators() as $validatorName => $_) {
-                    if (mb_strpos($validatorName, '\\') === false) {
+                foreach ($field->getValidators() as $validatorName => $options) {
+                    if ($validatorName === Datatype::REQUIRED) {
+                        if (!array_key_exists($name, $validate)
+                            && !array_key_exists($name, $errors)
+                        ) {
+                            $errors[$name] = "Field $name is missing";
+                        }
                         continue;
                     }
+
                     try {
-                        $v = Validator::factory($validatorName);
-                        $v->validate(null, $field->getValidatorOption($validatorName), $this);
+                        $v = Validator::class($validatorName)::validate(
+                            null,
+                            $options,
+                            $field->getDatatype(),
+                            $this
+                        );
                     } catch (Exception $e) {
                         $errors[$name] = $e->getMessage();
                     }

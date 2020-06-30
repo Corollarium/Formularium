@@ -8,8 +8,13 @@ use Formularium\Exception\Exception;
  * Abstract base class for frameworks. Each framework should have a class inheriting
  * from this class.
  */
-class Formularium
+final class Formularium
 {
+    private function __construct()
+    {
+        // empty
+    }
+
     /**
      * Returns a list of datatype class names
      *
@@ -73,8 +78,7 @@ class Formularium
 
         $classes = static::getValidatorNames();
         foreach ($classes as $name) {
-            $v = Validator::factory($name);
-            $graphql[] = $v->getMetadata()->toGraphql();
+            $graphql[] = Validator::class($name)::getMetadata()->toGraphql();
         }
         
         return $validators;
@@ -112,8 +116,6 @@ class Formularium
 
 ' . join("\n\n", $graphql);
     }
-
-
 
     public static function graphqlDirectives(): string
     {

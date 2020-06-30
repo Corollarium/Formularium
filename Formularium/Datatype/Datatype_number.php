@@ -17,26 +17,7 @@ abstract class Datatype_number extends \Formularium\Datatype
         return array_merge(
             parent::getValidatorMetadata(),
             [
-                self::MIN => [
-                    'comment' => "Minimum value.",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'Integer',
-                            'comment' => 'The actual value'
-                        ]
-                    ]
-                ],
-                self::MAX => [
-                    'comment' => "Maximum value.",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'Integer',
-                            'comment' => 'The actual value'
-                        ]
-                    ]
-                ]
+                // TODO: min, max?
             ]
         );
     }

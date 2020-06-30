@@ -12,22 +12,17 @@ use Formularium\Exception\ValidatorException;
  */
 final class Validator
 {
-    /**
-     * Factory.
-     *
-     */
-    public static function factory(string $validatorName): ValidatorInterface
+    public static function class(string $validatorName): string
     {
-        $class = "\\Formularium\\Validator\\$validatorName";
+        $class = "Formularium\\Validator\\$validatorName";
         if (!class_exists($class)) {
             $class = $validatorName;
             if (!class_exists($class)) {
-                throw new ClassNotFoundException("Invalid datatype validator $validatorName");
+                throw new ClassNotFoundException("Invalid datatype validator: $validatorName");
             }
         }
-        return new $class();
+        return $class;
     }
-
 
     public static function generate(string $name, string $namespace = '\\Formularium\\Datatype'): array
     {

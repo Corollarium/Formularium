@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace FormulariumTests\Datatype;
 
@@ -35,18 +35,7 @@ class DatatypeText_TestCase extends DatatypeBaseTestCase
     public function getInvalidValues()
     {
         return [
-            [
-                'value' => 'aaa',
-                'validators' => [
-                    Datatype_string::MIN_LENGTH => 5
-                ]
-            ],
-            [
-                'value' => 'aaaaaaaaaaaaaaaaaa',
-                'validators' => [
-                    Datatype_string::MAX_LENGTH => 5
-                ]
-            ]
+            null
         ];
     }
 }

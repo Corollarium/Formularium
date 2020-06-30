@@ -46,23 +46,7 @@ class DatatypeUSmall_TestCase extends DatatypeBaseTestCase
             593495,
             994234023042934923492349,
             $dt->getMinValue()-1,
-            $dt->getMaxValue()+1,
-            [
-                'value' => 300,
-                'validators' => [
-                    Datatype_integer::MAX => [
-                        'value' => 100
-                    ]
-                ]
-            ],
-            [
-                'value' => 30,
-                'validators' => [
-                    Datatype_integer::MIN => [
-                        'value' => 100
-                    ]
-                ]
-            ],
+            $dt->getMaxValue()+1
         ];
     }
 }

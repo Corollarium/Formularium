@@ -24,7 +24,6 @@ class Datatypeipv4_TestCase extends DatatypeBaseTestCase
             [
                 'value' => '1.1.1.1',
                 'expected' => '1.1.1.1'
-                // optional: 'validators' => []
             ]
         ];
     }

@@ -36,22 +36,7 @@ class DatatypeString_TestCase extends DatatypeBaseTestCase
     public function getInvalidValues()
     {
         return [
-            [
-                'value' => 'aaa',
-                'validators' => [
-                    Datatype_string::MIN_LENGTH => [
-                        'value' => 5
-                    ]
-                ]
-            ],
-            [
-                'value' => 'aaaaaaaaaaaaaaaaaa',
-                'validators' => [
-                    Datatype_string::MAX_LENGTH => [
-                        'value' => 5
-                    ]
-                ]
-            ]
+            null
         ];
     }
 
@@ -63,8 +48,8 @@ class DatatypeString_TestCase extends DatatypeBaseTestCase
                 "field1" => [
                     "datatype" => "string",
                     "validators" => [
-                        Datatype_string::SAME_AS => [
-                            "value" => 'field2'
+                        \Formularium\Validator\SameAs::class => [
+                            "target" => 'field2'
                         ]
                     ]
                 ],

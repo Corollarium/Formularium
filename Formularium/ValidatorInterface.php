@@ -15,16 +15,16 @@ interface ValidatorInterface
      *
      * @param mixed $value
      * @param array $validators
-     * @param Model $model The entire model, if you your field depends on other things of the model. may be null.
-     * @throws ValidatorException If invalid, with the message.
-     * @return mixed
+     * @param Model $model The entire model. Useful if validation depends on other fields. May be null.
+     * @throws ValidatorException Thrown if invalid, with the message.
+     * @return mixed The $value, with possible changes from the validation.
      */
-    public function validate($value, array $validators = [], Model $model = null);
+    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null);
 
     /**
      * Documents this validator.
      *
      * @return ValidatorMetadata
      */
-    public function getMetadata(): ValidatorMetadata;
+    public static function getMetadata(): ValidatorMetadata;
 }

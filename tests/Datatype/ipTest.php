@@ -40,7 +40,6 @@ class Datatypeip_TestCase extends DatatypeBaseTestCase
         return [
             [
                 'value' => 'xcvxcv',
-                // optional: 'validators' => []
             ]
         ];
     }

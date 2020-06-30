@@ -6,6 +6,8 @@ use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Exception\Exception;
 use Formularium\Model;
+use Formularium\Validator\Max;
+use Formularium\Validator\Min;
 use PHPUnit\Framework\TestCase;
 
 final class ModelTest extends TestCase
@@ -90,10 +92,10 @@ EOF;
                 'someInteger' => [
                     'datatype' => 'integer',
                     'validators' => [
-                        Datatype_integer::MIN => [
+                        Min::class => [
                             'value' => 4
                         ],
-                        Datatype_integer::MAX => [
+                        Max::class => [
                             'value' => 30
                         ],
                         Datatype::REQUIRED => [
@@ -150,10 +152,10 @@ EOF;
                 'someInteger' => [
                     'datatype' => 'integer',
                     'validators' => [
-                        Datatype_integer::MIN => [
+                        Min::class => [
                             'value' => 4,
                         ],
-                        Datatype_integer::MAX => [
+                        Max::class => [
                             'value' => 30,
                         ],
                         Datatype::REQUIRED => [

@@ -6,7 +6,7 @@ namespace Formularium;
  * Abstract base classe to validate data in composition to the validation in
  * datatypes.
  */
-class ValidatorArgs
+final class ValidatorArgs
 {
     /**
      * @var string

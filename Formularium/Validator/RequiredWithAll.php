@@ -2,6 +2,7 @@
 
 namespace Formularium\Validator;
 
+use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
@@ -14,7 +15,7 @@ use Formularium\ValidatorArgs;
  */
 class RequiredWithAll implements ValidatorInterface
 {
-    public function validate($value, array $options = [], Model $model = null)
+    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
         $expectedFields = $options['fields'];
         if (!is_array($expectedFields)) {
@@ -36,7 +37,7 @@ class RequiredWithAll implements ValidatorInterface
         return $value;
     }
 
-    public function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): ValidatorMetadata
     {
         return new ValidatorMetadata(
             'RequiredWithAll',

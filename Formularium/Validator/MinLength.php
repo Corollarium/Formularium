@@ -2,8 +2,8 @@
 
 namespace Formularium\Validator;
 
+use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
-use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\ValidatorMetadata;
@@ -11,20 +11,20 @@ use Formularium\ValidatorArgs;
 
 class MinLength implements ValidatorInterface
 {
-    public function validate($value, array $options = [], Model $model = null)
+    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
         if (!is_string($value)) {
-            throw new \Formularium\Exception\ValidatorException('Expected a string.');
+            throw new ValidatorException('Expected a string.');
         }
 
         $minlength = $options['value'];
         if (mb_strlen($value) < $minlength) {
-            throw new \Formularium\Exception\ValidatorException('String is too short.');
+            throw new ValidatorException('String is too short.');
         }
         return $value;
     }
 
-    public function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): ValidatorMetadata
     {
         return new ValidatorMetadata(
             'MinLength',

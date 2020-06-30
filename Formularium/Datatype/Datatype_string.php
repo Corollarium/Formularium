@@ -10,7 +10,6 @@ class Datatype_string extends \Formularium\Datatype
 {
     const MIN_LENGTH = "minLength";
     const MAX_LENGTH = "maxLength";
-    const SAME_AS = "sameAs";
 
     /**
      *  @var integer
@@ -52,20 +51,6 @@ class Datatype_string extends \Formularium\Datatype
             throw new \Formularium\Exception\ValidatorException('String is too long.');
         }
 
-        $same = $validators[self::SAME_AS]['value'] ?? null;
-        if ($same) {
-            if (!$model) {
-                throw new \Formularium\Exception\ValidatorException('Same as requires a model.');
-            }
-            $modelData = $model->getData();
-            if (!array_key_exists($same, $modelData)) {
-                throw new \Formularium\Exception\ValidatorException('Same as field not found.');
-            }
-            if ($modelData[$same] !== $value) {
-                throw new \Formularium\Exception\ValidatorException('Field does not match ' . $same);
-            }
-        }
-
         return $text;
     }
 
@@ -104,16 +89,6 @@ class Datatype_string extends \Formularium\Datatype
                         ]
                     ]
                 ],
-                self::SAME_AS => [
-                    'comment' => "Must match the same value from another field.",
-                    'args' => [
-                        [
-                            'name' => 'field',
-                            'type' => 'String',
-                            'comment' => 'The field name to match to.'
-                        ]
-                    ]
-                ]
             ]
         );
     }

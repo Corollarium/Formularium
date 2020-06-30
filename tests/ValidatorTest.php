@@ -4,6 +4,7 @@ namespace FormulariumTests;
 
 use Formularium\Exception\Exception;
 use Formularium\Validator;
+use Formularium\Validator\SameAs;
 use Formularium\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -11,20 +12,19 @@ final class ValidatorTest extends TestCase
 {
     public function testFactory()
     {
-        $r = Validator::factory('SameAs');
-        $this->assertInstanceOf(ValidatorInterface::class, $r);
+        $r = Validator::class('SameAs');
+        $this->assertEquals(SameAs::class, $r);
     }
     
     public function testFactoryFail()
     {
         $this->expectException(Exception::class);
-        Validator::factory('stringasdf');
+        Validator::class('stringasdf');
     }
 
     public function testValidatorGraphQL()
     {
-        $r = Validator::factory('SameAs');
-        $metadata = $r->getMetadata();
+        $metadata = Validator::class('SameAs')::getMetadata();
         $graphql = $metadata->toGraphql();
         $expected = <<<EOF
 """

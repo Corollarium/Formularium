@@ -1,14 +1,15 @@
 <?php declare(strict_types=1);
 
 use Formularium\Datatype;
+use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 use Formularium\Validator;
-use Formularium\Validator\Filled;
+use Formularium\Validator\MaxLength;
 use PHPUnit\Framework\TestCase;
 
-class ValidatorFilledTest extends TestCase
+class MaxLengthTest extends TestCase
 {
-    public function testFilled()
+    public function testPass()
     {
         $modelData = [
             'name' => 'TestModel',
@@ -16,22 +17,24 @@ class ValidatorFilledTest extends TestCase
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        Filled::class => [ 'value' => true],
+                        \Formularium\Validator\MaxLength::class => [
+                            'value' => 5
+                        ]
                     ]
                 ]
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = Validator::class('Filled')::validate(
-            'x',
-            $model->getField('someString')->getValidatorOption(Filled::class),
+        $v = Validator::class('MaxLength')::validate(
+            'asdf',
+            $model->getField('someString')->getValidatorOption(MaxLength::class),
             Datatype::factory('string'),
             $model
         );
-        $this->assertEquals('x', $v);
+        $this->assertEquals('asdf', $v);
     }
 
-    public function testFilledFail()
+    public function testFail()
     {
         $modelData = [
             'name' => 'TestModel',
@@ -39,18 +42,20 @@ class ValidatorFilledTest extends TestCase
                 'someString' => [
                     'datatype' => 'string',
                     'validators' => [
-                        Filled::class => [ 'value' => true],
+                        \Formularium\Validator\MaxLength::class => [
+                            'value' => 5
+                        ]
                     ]
                 ]
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v =  Validator::class('Filled')::validate(
-            'x',
-            $model->getField('someString')->getValidatorOption(Filled::class),
+        $this->expectException(ValidatorException::class);
+        $v = Validator::class('MaxLength')::validate(
+            'asdfasdfasdf',
+            $model->getField('someString')->getValidatorOption(MaxLength::class),
             Datatype::factory('string'),
             $model
         );
-        $this->assertEquals('x', $v);
     }
 }

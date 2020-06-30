@@ -9,7 +9,7 @@ use Formularium\Exception\ValidatorException;
  * Abstract base classe to validate data in composition to the validation in
  * datatypes.
  */
-class ValidatorMetadata
+final class ValidatorMetadata
 {
     /**
      * @var string
