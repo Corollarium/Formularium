@@ -32,7 +32,7 @@ class MinLength implements ValidatorInterface
             [
                 new ValidatorArgs(
                     'value',
-                    'Integer',
+                    'Int',
                     'Value'
                 )
             ]

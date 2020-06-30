@@ -32,7 +32,7 @@ class MaxLength implements ValidatorInterface
             [
                 new ValidatorArgs(
                     'value',
-                    'Integer',
+                    'Int',
                     'Value'
                 )
             ]

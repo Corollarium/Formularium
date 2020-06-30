@@ -217,7 +217,7 @@ class File implements ValidatorInterface
             [
                 new ValidatorArgs(
                     self::MAX_SIZE,
-                    'Integer',
+                    'Int',
                     'Maximum file size in bytes'
                 )
                 // TODO: missing args
