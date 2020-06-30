@@ -41,16 +41,6 @@ class Datatype_string extends \Formularium\Datatype
         }
         $text = preg_replace('/<[^>]*>/', '', $data);
 
-        if (array_key_exists(self::MIN_LENGTH, $validators)) {
-            if (mb_strlen($text) < $validators[self::MIN_LENGTH]['value']) {
-                throw new \Formularium\Exception\ValidatorException('String is too short.');
-            }
-        }
-        $maxlength = $validators[self::MAX_LENGTH]['value'] ?? $this->MAX_STRING_SIZE;
-        if (mb_strlen($text) > $maxlength) {
-            throw new \Formularium\Exception\ValidatorException('String is too long.');
-        }
-
         return $text;
     }
 
@@ -62,34 +52,5 @@ class Datatype_string extends \Formularium\Datatype
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "string('$name', {$this->MAX_STRING_SIZE})";
-    }
-
-    public static function getValidatorMetadata(): array
-    {
-        return array_merge(
-            parent::getValidatorMetadata(),
-            [
-                self::MIN_LENGTH => [
-                    'comment' => "Minimum length for the string.",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'Integer',
-                            'comment' => 'The length'
-                        ]
-                    ]
-                ],
-                self::MAX_LENGTH => [
-                    'comment' => "Maximum length for the string.",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'Integer',
-                            'comment' => 'The length'
-                        ]
-                    ]
-                ],
-            ]
-        );
     }
 }

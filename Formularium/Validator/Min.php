@@ -18,10 +18,15 @@ class Min implements ValidatorInterface
             if ($value < $min) {
                 throw new ValidatorException('Value is too small.');
             }
-        } elseif ($datatype->getBasetype() === 'date') {
-            throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
-        } elseif ($datatype->getBasetype() === 'datetime') {
-            throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
+        } elseif (
+            $datatype->getBasetype() === 'date' ||
+            $datatype->getBasetype() === 'datetime'
+        ) {
+            $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);
+            $min = \DateTime::createFromFormat(\DateTime::ISO8601, $min);
+            if ($dt < $min) {
+                throw new ValidatorException('Value is too small.');
+            }
         } else {
             throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
         }

@@ -11,14 +11,4 @@ abstract class Datatype_number extends \Formularium\Datatype
     {
         parent::__construct($typename, $basetype);
     }
-
-    public static function getValidatorMetadata(): array
-    {
-        return array_merge(
-            parent::getValidatorMetadata(),
-            [
-                // TODO: min, max?
-            ]
-        );
-    }
 }

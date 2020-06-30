@@ -67,14 +67,7 @@ final class Formularium
 
     public static function getDatatypeValidators(): array
     {
-        $datatypes = self::getDatatypeNames();
-
         $validators = [];
-
-        foreach ($datatypes as $name) {
-            $datatype = Datatype::factory($name);
-            $validators = array_merge($validators, $datatype->getValidatorMetadata());
-        }
 
         $classes = static::getValidatorNames();
         foreach ($classes as $name) {

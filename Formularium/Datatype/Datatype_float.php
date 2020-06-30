@@ -40,36 +40,6 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
         throw new ValidatorException('Invalid float value');
     }
 
-
-    public static function getValidatorMetadata(): array
-    {
-        return array_merge(
-            parent::getValidatorMetadata(),
-            [
-                self::MIN => [
-                    'comment' => "Minimum value.",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'Float',
-                            'comment' => 'The actual value'
-                        ]
-                    ]
-                ],
-                self::MAX => [
-                    'comment' => "Maximum value.",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'Float',
-                            'comment' => 'The actual value'
-                        ]
-                    ]
-                ]
-            ]
-        );
-    }
-
     public function getSQLType(string $database = '', array $options = []): string
     {
         return 'FLOAT';

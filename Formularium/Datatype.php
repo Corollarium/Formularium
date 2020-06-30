@@ -122,23 +122,6 @@ abstract class Datatype
         return $this->basetype;
     }
 
-    public static function getValidatorMetadata(): array
-    {
-        return [
-            self::REQUIRED => [
-                'comment' => "Field is required.",
-                'args' => [
-                    [
-                        'name' => 'value',
-                        'type' => 'Boolean',
-                        'comment' => 'The value'
-                    ]
-        
-                ]
-            ]
-        ];
-    }
-
     /**
      * Generates scaffolding, with a child class for Datatype and a test case.
      *

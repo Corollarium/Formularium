@@ -13,15 +13,20 @@ class Max implements ValidatorInterface
 {
     public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
-        $min = $options['value'];
+        $max = $options['value'];
         if ($datatype->getBasetype() === 'number') {
-            if ($value > $min) {
+            if ($value > $max) {
                 throw new ValidatorException('Value is too small.');
             }
-        } elseif ($datatype->getBasetype() === 'date') {
-            throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
-        } elseif ($datatype->getBasetype() === 'datetime') {
-            throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
+        } elseif (
+            $datatype->getBasetype() === 'date' ||
+            $datatype->getBasetype() === 'datetime'
+        ) {
+            $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);
+            $max = \DateTime::createFromFormat(\DateTime::ISO8601, $max);
+            if ($dt > $max) {
+                throw new ValidatorException('Value is too small.');
+            }
         } else {
             throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
         }
