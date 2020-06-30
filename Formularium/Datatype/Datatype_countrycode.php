@@ -6,10 +6,8 @@ use Formularium\Field;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 
-class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
+abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
 {
-    public const COUNTRY_CODE_TYPE = 'countryCodeType';
-
     /**
      * The ISO representation of a country code.
      */
@@ -319,7 +317,7 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
         ['ZW', 'ZWE', '716'], // Zimbabwe
     ];
 
-    private function setChoices(string $code): void
+    protected function setChoices(string $code): void
     {
         $col = array_column(self::COUNTRY_CODES, self::SET_INDEXES[$code]);
         $this->choices = (array)array_combine($col, $col); // cast because phpstan
@@ -328,47 +326,5 @@ class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
     public function __construct(string $typename = 'countrycode', string $basetype = 'choice')
     {
         parent::__construct($typename, $basetype);
-        $this->setChoices(self::ISO_ALPHA3);
-    }
-
-    public function getRandom(array $params = [])
-    {
-        $this->setChoices($params[self::COUNTRY_CODE_TYPE]['value'] ?? self::ISO_ALPHA3);
-        return parent::getRandom($params);
-    }
-
-    public function validate($value, array $validators = [], Model $model = null)
-    {
-        $this->setChoices($validators[self::COUNTRY_CODE_TYPE]['value'] ?? self::ISO_ALPHA3);
-        return parent::validate($value, $validators, $model);
-    }
-
-    public static function getValidatorMetadata(): array
-    {
-        return array_merge(
-            parent::getValidatorMetadata(),
-            [
-                self::COUNTRY_CODE_TYPE => [
-                    'comment' => "Country code type. ",
-                    'args' => [
-                        [
-                            'name' => 'value',
-                            'type' => 'String',
-                            'comment' => 'The type, one of "alpha-2", "alpha-3" or "numeric'
-                        ]
-                    ]
-                ]
-            ]
-        );
-    }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'CHAR(3)';
-    }
-
-    public function getLaravelSQLType(string $name, array $options = []): string
-    {
-        return "char($name, 3)";
     }
 }
