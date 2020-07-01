@@ -5,6 +5,7 @@ Formularium is defined on a few base class types:
 - `Model`: this is what describes your object.
 - `Field`: the attributes of a model. Fields are typed, and every field has its own datatype.
 - `Datatype`: the type of an attribute. These are not the basic PHP types, but extensible datatypes that can be complex.
+- `Validator`: a class that performs specific data validation.
 - `Framework`: the framework to use (CSS/JS/etc). Frameworks work by composition, so you can combine them.
 - `Renderable`: the frontend datatype classes. Convert a datatype into rendered HTML.
 
@@ -45,7 +46,9 @@ $modelData = [
         'myString' => [ // the first field name.
             'datatype' => 'string', // the field datatype. maps to Datatype_string in this case.
             'validators' => [ // the validators to be applied. Validators are used by Datatypes, although Renderable can use them for frontend validation too.
-                Datatype::REQUIRED => true // so, make this field required.
+                Formularium\Validator\MinLength::class => [
+                    'value' => 5 // so, make this field at least 5 characters long.
+                ]
             ],
             'extensions' => [ // extensions are used only by the frontend Renderable/Framework classes.
                 Renderable::LABEL => 'This is some string', // so, let's add a label describing the field

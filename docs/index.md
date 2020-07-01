@@ -8,6 +8,7 @@ Check:
 
 - [kitchen sink demo](https://corollarium.github.io/Formularium/kitchensink)
 - [a basic hello world example in pure PHP](https://github.com/Corollarium/Formularium-example)
+- [Modelarium, a full backend/frontend scaffolding generator for PHP/Laravel](https://github.com/Corollarium/modelarium/).
 
 ## Documentation
 
@@ -39,10 +40,10 @@ $modelData = [
         'myString' => [
             'datatype' => 'string',
             'validators' => [
-                Datatype_string::MIN_LENGTH => [
+                \Formularium\Validator\MinLength::class => [
                     'value' => 3,
                 ],
-                Datatype_string::MAX_LENGTH =>  => [
+                \Formularium\Validator\MaxLength::class =>  => [
                     'value' => 30,
                 ],
             ],
@@ -55,10 +56,10 @@ $modelData = [
         'someInteger' => [
             'datatype' => 'integer',
             'validators' => [
-                Datatype_integer::MIN => [
+                \Formularium\Validator\Min::class => [
                     'value' => 4,
                 ],
-                Datatype_integer::MAX => [
+                \Formularium\Validator\Max::class => [
                     'value' => 40,
                 ],
             ],

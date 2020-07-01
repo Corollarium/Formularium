@@ -7,25 +7,18 @@ $modelData = [
     'name' => 'TestModel',
     'fields' => [
         'myString' => [
-            'datatype' => 'string',
+            'datatype' => 'integer',
             'validators' => [
-                Datatype::REQUIRED => true
+                Formularium\Validator\Min::class [
+                    'value' => 10
+                ]
             ]
         ]
     ]
 ];
 $model = Model::fromStruct($modelData);
+```
 
 ## Validators
 
-- `Datatype::REQUIRED => true` 
-Field must be present in data.
-
-- `Datatype::FILLED => true` 
-If present in data, field must not be empty.
-
-- `Datatype::REQUIRED_WITH => [field1, field2]` 
-The field under validation must be present and not empty only if any of the other specified fields `field1, field2...` are present.
-
-- `Datatype::REQUIRED_WITH_ALL => [field1, field2]` 
-The field under validation must be present and not empty only if all of the other specified fields are present.
+Validators are classes, implementing the `ValidatorInterface` interface.
