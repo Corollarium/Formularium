@@ -21,7 +21,7 @@ $model = Model::create(
             'myString', // the first field name.
             Datatype::factory('string'), // the field datatype. maps to Datatype_string in this case.
             [ // the validators to be applied. Validators are used by Datatypes, although Renderable can use them for frontend validation too.
-                Datatype::REQUIRED => [
+                Validator::class('MinLength') => [
                     'value' => true // so, make this field required.
                 ]
             ],
@@ -37,7 +37,7 @@ $model = Model::create(
 
 TODO
 
-## From structure
+## From data structure
 
 ```php
 $modelData = [
@@ -69,8 +69,8 @@ $model = Model::fromStruct($modelData); // use a factory method to convert the s
         "myString": {
             "datatype": "string",
             "validators": [
-                "required": [
-                    "value": true
+                "MinLength": [
+                    "value": 5
                 ]
             ],
             "extensions" => [
