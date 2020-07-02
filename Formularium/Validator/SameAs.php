@@ -17,11 +17,12 @@ class SameAs implements ValidatorInterface
 {
     public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
-        $same = $options['target'];
         if (!$model) {
             throw new ValidatorException('Same as requires a model.');
         }
         $modelData = $model->getData();
+
+        $same = $options['target'];
         if (!array_key_exists($same, $modelData)) {
             throw new ValidatorException('Same as field not found.');
         }
