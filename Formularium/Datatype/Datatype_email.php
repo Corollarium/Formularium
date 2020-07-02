@@ -9,6 +9,9 @@ use Respect\Validation\Validator;
 
 class Datatype_email extends Datatype_string
 {
+    // RFC 5321 states: The maximum total length of a reverse-path or forward-path is 256 characters.
+    protected $MAX_STRING_SIZE = 256;
+
     public function __construct(string $typename = 'email', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
