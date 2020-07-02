@@ -16,9 +16,6 @@ class Renderable_date extends Renderable_string
         $input = $element->get('input')[0];
         $input->setAttribute('type', 'date');
 
-        /**
-         * @var Datatype_date $datatype
-         */
         $min = $field->getValidatorOption(Min::class);
         if ($min) {
             if ($min === 'now') {

@@ -5,6 +5,8 @@ namespace Formularium\Frontend\HTML\Renderable;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Field;
 use Formularium\HTMLElement;
+use Formularium\Validator\Max;
+use Formularium\Validator\Min;
 
 class Renderable_integer extends Renderable_number
 {
@@ -15,7 +17,6 @@ class Renderable_integer extends Renderable_number
         
         /** @var Datatype_integer $datatype */
         $datatype = $field->getDatatype();
-        $validators = $field->getValidators();
 
         $input->setAttribute('min', $field->getValidatorOption(Min::class, 'value', $datatype->getMinValue()));
         $input->setAttribute('max', $field->getValidatorOption(Max::class, 'value', $datatype->getMaxValue()));
