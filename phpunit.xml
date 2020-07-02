@@ -15,6 +15,7 @@
             <directory suffix=".php">Formularium</directory>
             <exclude>
                 <directory suffix=".php">Formularium/Frontend</directory>
+                <directory suffix=".php">Formularium/Laravel</directory>
             </exclude>
         </whitelist>
     </filter>

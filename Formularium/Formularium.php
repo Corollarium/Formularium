@@ -26,6 +26,9 @@ final class Formularium
         __DIR__ . '/Datatype/'
     ];
 
+    /**
+     * @codeCoverageIgnore
+     */
     private function __construct()
     {
         // empty

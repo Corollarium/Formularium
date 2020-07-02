@@ -25,6 +25,14 @@ final class Validator
         return $class;
     }
 
+    /**
+     * Generates a validator code file.
+     *
+     * @codeCoverageIgnore
+     * @param string $name
+     * @param string $namespace
+     * @return array
+     */
     public static function generate(string $name, string $namespace = '\\Formularium\\Validator'): array
     {
         $validatorCode = <<<EOF
@@ -121,6 +129,7 @@ EOF;
     /**
      * Generates scaffolding and saves it to a file
      *
+     * @codeCoverageIgnore
      * @param array $codeData The data returned from self::generate()
      * @param string $path The path for the validator code file
      * @param string $testpath The path for the validator test file

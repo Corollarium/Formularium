@@ -63,6 +63,7 @@ abstract class Datatype
      * Formats field to look prettier. Useful for formatting numbers with commas, ISO dates in
      * locale, etc. Override if necessary.
      *
+     * @codeCoverageIgnore
      * @param mixed $value
      * @param Field $field
      * @return mixed
@@ -129,6 +130,7 @@ abstract class Datatype
     /**
      * Generates scaffolding, with a child class for Datatype and a test case.
      *
+     * @codeCoverageIgnore
      * @param string $datatype The new datatype name.
      * @param string $basetype The base type, if any.
      * @param string $namespace The namespace for the new file.
@@ -239,6 +241,7 @@ EOF;
     /**
      * Generates scaffolding and saves it to a file
      *
+     * @codeCoverageIgnore
      * @param array $codeData The data returned from self::generate()
      * @param string $path The
      * @return string[] With two keys: 'code' and 'test', human messages of what was done.
