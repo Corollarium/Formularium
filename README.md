@@ -18,7 +18,8 @@ Check the:
 
 - [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink)
 - [full documentation](https://corollarium.github.io/Formularium/)
-- [automatic code generation with Modelarium](https://github.com/Corollarium/modelarium)
+- [a basic hello world example in pure PHP](https://github.com/Corollarium/Formularium-example)
+- [Modelarium, a full backend/frontend scaffolding generator for PHP/Laravel](https://github.com/Corollarium/modelarium/)
 - [sample Laravel app with Modelarium](https://github.com/Corollarium/modelarium-example)
 
 ## Why use this
