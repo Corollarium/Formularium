@@ -120,4 +120,14 @@ class Field
     {
         return $this->extensions[$name] ?? $default;
     }
+
+    public function toString()
+    {
+        return [
+            'name' => $this->name,
+            'datatype' => $this->datatype->getName(),
+            'validators' => $this->validators,
+            'extensions' => $this->extensions
+        ];
+    }
 }

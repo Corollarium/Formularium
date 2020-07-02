@@ -54,4 +54,24 @@ directive @{$this->name}{$argString} on FIELD_DEFINITION
 
 EOF;
     }
+
+    public function hasArgument(string $name): bool
+    {
+        foreach ($this->args as $a) {
+            if ($a->name === $name) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function argument(string $name): ?ValidatorArgs
+    {
+        foreach ($this->args as $a) {
+            if ($a->name === $name) {
+                return $a;
+            }
+        }
+        return null;
+    }
 }
