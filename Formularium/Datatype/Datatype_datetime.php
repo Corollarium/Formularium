@@ -61,6 +61,6 @@ class Datatype_datetime extends \Formularium\Datatype
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "datetimeTz('$name')";
+        return "datetime('$name')";
     }
 }
