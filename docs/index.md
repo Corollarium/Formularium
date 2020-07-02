@@ -93,3 +93,7 @@ echo $model->editable($data);
 // render a view
 echo $model->viewable($data);
 ```
+
+## Sponsors
+
+[![Corollarium](https://corollarium.github.io/Formularium/logo-horizontal-400px.png)](https://corollarium.com)

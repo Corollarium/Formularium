@@ -29,7 +29,7 @@ Check the:
 
 ## Sponsors
 
-[![Corollarium](https://formularium.github.com/logo-horizontal-400px.png)](https://corollarium.com)
+[![Corollarium](https://corollarium.github.io/Formularium/logo-horizontal-400px.png)](https://corollarium.com)
 
 ## Minimum example
 
