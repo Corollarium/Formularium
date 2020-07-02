@@ -24,14 +24,6 @@ class File implements ValidatorInterface
     const ACCEPT_IMAGE = 'image/*';
     const ACCEPT_VIDEO = 'video/*';
 
-    const DIMENSION_WIDTH = 'DIMENSION_WIDTH';
-    const DIMENSION_HEIGHT = 'DIMENSION_HEIGHT';
-    const DIMENSION_MIN_WIDTH = 'DIMENSION_MIN_WIDTH';
-    const DIMENSION_MAX_WIDTH = 'DIMENSION_MAX_WIDTH';
-    const DIMENSION_MIN_HEIGHT = 'DIMENSION_MIN_HEIGHT';
-    const DIMENSION_MAX_HEIGHT = 'DIMENSION_MAX_HEIGHT';
-    const DIMENSION_RATIO = 'DIMENSION_RATIO';
-
     protected static function size(string $value, array $options = []): void
     {
         $max_size = $options[self::MAX_SIZE] ?? 0;
@@ -42,7 +34,7 @@ class File implements ValidatorInterface
         }
     }
 
-    public static function accept(string $value, array $options = []): void
+    protected static function accept(string $value, array $options = []): void
     {
         $accept = $options[self::ACCEPT];
         if (!is_array($accept)) {
@@ -134,94 +126,6 @@ class File implements ValidatorInterface
             self::accept($value, $options);
         }
 
-        if (($options[self::DIMENSION_HEIGHT] ?? false) ||
-            ($options[self::DIMENSION_WIDTH] ?? false) ||
-            ($options[self::DIMENSION_MIN_HEIGHT] ?? false) ||
-            ($options[self::DIMENSION_MIN_WIDTH] ?? false) ||
-            ($options[self::DIMENSION_MAX_HEIGHT] ?? false) ||
-            ($options[self::DIMENSION_MAX_WIDTH] ?? false) ||
-            ($options[self::DIMENSION_RATIO] ?? false)
-        ) {
-            $imageData = getimagesize($value);
-            if ($imageData === false) {
-                throw new ValidatorException(
-                    'Not an image'
-                );
-            }
-            $width = $imageData[0];
-            $height = $imageData[1];
-
-            $expectedHeight = $options[self::DIMENSION_HEIGHT] ?? false;
-            if ($expectedHeight !== false) {
-                if ($expectedHeight !== $height) {
-                    throw new ValidatorException(
-                        'Image height should be exactly ' . $options[self::DIMENSION_HEIGHT] ?? false
-                    );
-                }
-            }
-
-            $expectedWidth = $options[self::DIMENSION_WIDTH] ?? false;
-            if ($expectedWidth !== false) {
-                if ($expectedWidth !== $width) {
-                    throw new ValidatorException(
-                        'Image width should be exactly ' . $expectedWidth
-                    );
-                }
-            }
-
-            $minHeight = $options[self::DIMENSION_MIN_HEIGHT] ?? false;
-            if ($minHeight !== false) {
-                if ($height < $minHeight) {
-                    throw new ValidatorException(
-                        'Image height should be at least ' . $minHeight
-                    );
-                }
-            }
-
-            $minWidth = $options[self::DIMENSION_MIN_WIDTH] ?? false;
-            if ($minWidth !== false) {
-                if ($width < $minWidth) {
-                    throw new ValidatorException(
-                        'Image width should be at least ' . $minWidth
-                    );
-                }
-            }
-
-            $maxHeight = $options[self::DIMENSION_MAX_HEIGHT] ?? false;
-            if ($maxHeight !== false) {
-                if ($height > $maxHeight) {
-                    throw new ValidatorException(
-                        'Image height should be at most ' . $maxHeight
-                    );
-                }
-            }
-
-            $maxWidth = $options[self::DIMENSION_MAX_WIDTH] ?? false;
-            if ($maxWidth !== false) {
-                if ($width > $maxWidth) {
-                    throw new ValidatorException(
-                        'Image width should be at most ' . $maxWidth
-                    );
-                }
-            }
-
-            $ratio = $options[self::DIMENSION_RATIO] ?? false;
-            if ($ratio !== false) {
-                if (!$width || !$height) {
-                    throw new ValidatorException(
-                        'Zero width or height'
-                    );
-                }
-                $ratio = $width/$height;
-                $expected = $ratio;
-                if (abs(($ratio-$expected)/$expected) > 0.0001) {
-                    throw new ValidatorException(
-                        'Image width/height ratio should be ' . $ratio
-                    );
-                }
-            }
-        }
-
         return $value;
     }
 
@@ -235,8 +139,12 @@ class File implements ValidatorInterface
                     self::MAX_SIZE,
                     'Int',
                     'Maximum file size in bytes'
+                ),
+                new ValidatorArgs(
+                    self::ACCEPT,
+                    '[String]',
+                    'Acceptable types'
                 )
-                // TODO: missing args
             ]
         );
     }
