@@ -16,7 +16,7 @@ final class FieldTest extends TestCase
         $data = [
             'datatype' => 'string',
             'validators' => [
-                Datatype_string::MAX_LENGTH => [
+                MaxLength::class => [
                     'value' => 30
                 ]
             ],

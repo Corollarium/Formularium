@@ -24,7 +24,7 @@ class ValidatorFilledTest extends TestCase
         $model = Model::fromStruct($modelData);
         $v = Validator::class('Filled')::validate(
             'x',
-            $model->getField('someString')->getValidatorOption(Filled::class),
+            $model->getField('someString')->getValidator(Filled::class),
             Datatype::factory('string'),
             $model
         );
@@ -47,7 +47,7 @@ class ValidatorFilledTest extends TestCase
         $model = Model::fromStruct($modelData);
         $v =  Validator::class('Filled')::validate(
             'x',
-            $model->getField('someString')->getValidatorOption(Filled::class),
+            $model->getField('someString')->getValidator(Filled::class),
             Datatype::factory('string'),
             $model
         );

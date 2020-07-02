@@ -8,6 +8,10 @@ use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLElement;
+use Formularium\Validator\Max;
+use Formularium\Validator\MaxLength;
+use Formularium\Validator\Min;
+use Formularium\Validator\MinLength;
 
 class Renderable_string extends Renderable
 {
@@ -47,13 +51,13 @@ class Renderable_string extends Renderable
             }
         }
 
-        if (array_key_exists(Datatype_string::MIN_LENGTH, $validators)) {
-            $input->setAttribute('minlength', $validators[Datatype_string::MIN_LENGTH]);
+        $min = $field->getValidatorOption(MinLength::class);
+        if ($min) {
+            $input->setAttribute('minlength', $min);
         }
-        if (array_key_exists(Datatype_string::MAX_LENGTH, $validators)
-            && $validators[Datatype_string::MAX_LENGTH] < static::MAX_STRING_SIZE // TODO: datatype
-        ) {
-            $input->setAttribute('maxlength', $validators[Datatype_string::MAX_LENGTH]);
+        $max = $field->getValidatorOption(MaxLength::class);
+        if ($max) {
+            $input->setAttribute('maxlength', $max);
         }
         if (isset($extensions[static::NO_AUTOCOMPLETE])) {
             $input->setAttribute('autocomplete', 'off');

@@ -27,7 +27,7 @@ class MaxLengthTest extends TestCase
         $model = Model::fromStruct($modelData);
         $v = Validator::class('MaxLength')::validate(
             'asdf',
-            $model->getField('someString')->getValidatorOption(MaxLength::class),
+            $model->getField('someString')->getValidator(MaxLength::class),
             Datatype::factory('string'),
             $model
         );
@@ -53,7 +53,7 @@ class MaxLengthTest extends TestCase
         $this->expectException(ValidatorException::class);
         $v = Validator::class('MaxLength')::validate(
             'asdfasdfasdf',
-            $model->getField('someString')->getValidatorOption(MaxLength::class),
+            $model->getField('someString')->getValidator(MaxLength::class),
             Datatype::factory('string'),
             $model
         );

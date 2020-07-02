@@ -104,7 +104,7 @@ class ${name}_TestCase extends TestCase
         \$expected = 'x'; // REPLACE THIS
         \$v = \$validator->validate(
             \$input,
-            \$model->getField('someString')->getValidatorOption($name::class),
+            \$model->getField('someString')->getValidator($name::class),
             \$model
         );
         \$this->assertEquals(\$expected, \$v);

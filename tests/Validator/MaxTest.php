@@ -27,7 +27,7 @@ class MaxTest extends TestCase
         $model = Model::fromStruct($modelData);
         $v = Validator::class('Max')::validate(
             3,
-            $model->getField('someNumber')->getValidatorOption(Max::class),
+            $model->getField('someNumber')->getValidator(Max::class),
             Datatype::factory('integer'),
             $model
         );
@@ -53,7 +53,7 @@ class MaxTest extends TestCase
         $this->expectException(ValidatorException::class);
         $v = Validator::class('Max')::validate(
             30,
-            $model->getField('someNumber')->getValidatorOption(Max::class),
+            $model->getField('someNumber')->getValidator(Max::class),
             Datatype::factory('integer'),
             $model
         );

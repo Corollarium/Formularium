@@ -5,6 +5,8 @@ namespace Formularium\Frontend\HTML\Renderable;
 use Formularium\Datatype\Datatype_date;
 use Formularium\Field;
 use Formularium\HTMLElement;
+use Formularium\Validator\Max;
+use Formularium\Validator\Min;
 
 class Renderable_date extends Renderable_string
 {
@@ -17,18 +19,15 @@ class Renderable_date extends Renderable_string
         /**
          * @var Datatype_date $datatype
          */
-        $datatype = $field->getDatatype();
-        $validators = $field->getValidators();
-
-        if (array_key_exists(Datatype_date::MIN, $validators)) {
-            $min = $validators[Datatype_date::MIN];
+        $min = $field->getValidatorOption(Min::class);
+        if ($min) {
             if ($min === 'now') {
                 $min = Datatype_date::fromString($min);
             }
             $input->setAttribute('min', $min);
         }
-        if (array_key_exists(Datatype_date::MAX, $validators)) {
-            $max = $validators[Datatype_date::MAX];
+        $max = $field->getValidatorOption(Max::class);
+        if ($max) {
             if ($max === 'now') {
                 $max = Datatype_date::fromString($max);
             }

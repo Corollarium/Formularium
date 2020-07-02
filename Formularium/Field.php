@@ -98,12 +98,16 @@ class Field
     }
 
     /**
-     * @param string $name
-     * @return array
+     * Undocumented function
+     *
+     * @param string $validator
+     * @param string $option
+     * @param mixed $default
+     * @return mixed
      */
-    public function getValidatorOption(string $name): array
+    public function getValidatorOption(string $validator, string $option = 'value', $default = null)
     {
-        return $this->validators[$name] ?? [];
+        return $this->validators[$validator][$option] ?? $default;
     }
 
     public function getExtensions(): array

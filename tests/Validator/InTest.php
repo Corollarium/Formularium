@@ -28,7 +28,7 @@ class InTest extends TestCase
         $expected = "b";
         $v = Validator::class('In')::validate(
             $expected,
-            $model->getField('someString')->getValidatorOption(In::class),
+            $model->getField('someString')->getValidator(In::class),
             Datatype::factory('string'),
             $model
         );
@@ -54,7 +54,7 @@ class InTest extends TestCase
         $this->expectException(ValidatorException::class);
         $v = Validator::class('In')::validate(
             "c",
-            $model->getField('someString')->getValidatorOption(In::class),
+            $model->getField('someString')->getValidator(In::class),
             Datatype::factory('string'),
             $model
         );

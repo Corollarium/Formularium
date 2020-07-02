@@ -6,6 +6,7 @@ use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\HTMLElement;
+use Formularium\Validator\MaxLength;
 
 trait RenderableMaterializeInputTrait
 {
@@ -41,7 +42,7 @@ trait RenderableMaterializeInputTrait
             'class' => 'validate',
         ]);
 
-        $maxlength = $field->getExtension(Datatype_string::MAX_LENGTH, 0);
+        $maxlength = $field->getValidatorOption(MaxLength::class, 'value', 0);
         if ($maxlength > 0) {
             $input->addAttribute('data-length', $maxlength);
         }

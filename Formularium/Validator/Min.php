@@ -22,6 +22,7 @@ class Min implements ValidatorInterface
         } elseif (
             $datatype->getBasetype() === 'date'
         ) {
+            // TODO: now
             $val = Respect::date('Y-m-d');
             $val->min($min);
             if (!$val->validate($value)) {
@@ -30,6 +31,7 @@ class Min implements ValidatorInterface
         } elseif (
             $datatype->getBasetype() === 'datetime'
         ) {
+            // TODO: now
             $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);
             $min = \DateTime::createFromFormat(\DateTime::ISO8601, $min);
             if ($dt < $min) {

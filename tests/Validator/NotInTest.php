@@ -28,7 +28,7 @@ class NotInTest extends TestCase
         $expected = "c";
         $v = Validator::class('NotIn')::validate(
             $expected,
-            $model->getField('someString')->getValidatorOption(NotIn::class),
+            $model->getField('someString')->getValidator(NotIn::class),
             Datatype::factory('string'),
             $model
         );
@@ -54,7 +54,7 @@ class NotInTest extends TestCase
         $this->expectException(ValidatorException::class);
         $v = Validator::class('NotIn')::validate(
             "b",
-            $model->getField('someString')->getValidatorOption(NotIn::class),
+            $model->getField('someString')->getValidator(NotIn::class),
             Datatype::factory('string'),
             $model
         );

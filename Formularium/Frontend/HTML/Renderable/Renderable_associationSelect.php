@@ -20,7 +20,6 @@ class Renderable_associationSelect extends Renderable_association
         $input = new HTMLElement('select');
     
         $extensions = $field->getExtensions();
-        $validators = $field->getValidators();
         $input->setAttributes([
                 'id' => $field->getName() . Framework::counter(),
                 'name' => $field->getName(),
@@ -35,7 +34,7 @@ class Renderable_associationSelect extends Renderable_association
         if (isset($extensions[static::PLACEHOLDER])) {
             $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
         }
-        if ($validators[Datatype::REQUIRED] ?? false) {
+        if ($field->getValidatorOption(Datatype::REQUIRED)) {
             $input->setAttribute('required', 'required');
         }
         /* TODO if ($validators[Datatype_association::MULTIPLE] ?? false) {

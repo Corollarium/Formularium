@@ -27,7 +27,7 @@ class MinTest extends TestCase
         $model = Model::fromStruct($modelData);
         $v = Validator::class('Min')::validate(
             6,
-            $model->getField('someNumber')->getValidatorOption(Min::class),
+            $model->getField('someNumber')->getValidator(Min::class),
             Datatype::factory('integer'),
             $model
         );
@@ -53,7 +53,7 @@ class MinTest extends TestCase
         $this->expectException(ValidatorException::class);
         $v = Validator::class('Min')::validate(
             3,
-            $model->getField('someNumber')->getValidatorOption(Min::class),
+            $model->getField('someNumber')->getValidator(Min::class),
             Datatype::factory('integer'),
             $model
         );
