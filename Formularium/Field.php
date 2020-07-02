@@ -121,7 +121,7 @@ class Field
         return $this->extensions[$name] ?? $default;
     }
 
-    public function toString()
+    public function __toString()
     {
         return [
             'name' => $this->name,
