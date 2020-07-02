@@ -1,9 +1,9 @@
 sudo: false
 language: php
 php:
-  - '7.1'
-  - '7.2'
-  - '7.3'
+  - "7.2"
+  - "7.3"
+  - "7.4"
 
 cache:
   directories:
@@ -12,7 +12,7 @@ cache:
 # Commands to be run before your environment runs.
 before_script:
   - composer self-update
-   # disable xdebug if not coverage
+  # disable xdebug if not coverage
   - if [[ $CODE_COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
   - composer install --prefer-source --no-interaction --dev
 
@@ -25,7 +25,7 @@ jobs:
 
   include:
     - stage: Quality assurance
-      env: 
+      env:
         - CODE_COVERAGE=yes
       script: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
       after_script:
@@ -38,7 +38,7 @@ jobs:
       script: vendor/bin/phpstan analyze Formularium
 
     - stage: Publish kitchen sink
-      env: 
+      env:
         - CODE_COVERAGE=yes
         - DOCUMENTATION=yes
       before_deploy:
@@ -50,7 +50,7 @@ jobs:
       deploy:
         provider: pages:git
         token: ${GITHUB_TOKEN}
-        edge: 
+        edge:
           branch: octokit-latest
         verbose: true
         local_dir: docs/

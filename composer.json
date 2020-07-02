@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.2.0",
         "fzaninotto/faker": "^1.9",
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.12",
