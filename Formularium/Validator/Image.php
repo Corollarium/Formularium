@@ -28,7 +28,7 @@ class Image implements ValidatorInterface
         if ($expectedHeight !== false) {
             if ($expectedHeight !== $height) {
                 throw new ValidatorException(
-                    'Image height should be exactly ' . $options[self::DIMENSION_HEIGHT] ?? false
+                    'Image height should be exactly ' . $expectedHeight
                 );
             }
         }
