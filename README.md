@@ -10,20 +10,23 @@ This is a general form generator and validator for PHP. It hosts a number of gen
 
 Forms are generated from a simple structure describing its fields, each one with a datatype and information for the HTML generator. Model descriptions can be serialized as JSON. It's easy to create new datatypes, either from zero or extending the base types provided. The generated HTML code can be used as is or manually customized for those pesky cases that no tool ever gets right.
 
-If you are looking for [a backend scaffolding and validation, Modelarium](https://github.com/Corollarium/modelarium) is what you want.
+If you are looking for [a fully integrated backend/frontend scaffolding and validation, Modelarium](https://github.com/Corollarium/modelarium) is what you want. Formularium is the low-level generator.
+
+## Getting started
 
 Check the:
 
-- [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink) and the
+- [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink)
 - [full documentation](https://corollarium.github.io/Formularium/)
+- [automatic code generation with Modelarium](https://github.com/Corollarium/modelarium)
 - [sample Laravel app with Modelarium](https://github.com/Corollarium/modelarium-example)
 
 ## Why use this
 
-- typed system: change the datatype and reflect it on your data.
+- typed data system: change the datatype and reflect it on your data.
 - automatic validation: validate your data automatically and safely.
 - component validators: add new validators for your datatypes easily.
-- Fraphql: declare your models in Graphql SDL and get the scaffolding for free. Even better with [Modelarium](https://github.com/Corollarium/modelarium).
+- Graphql: declare your models in Graphql SDL and get the scaffolding for free. Even better with [Modelarium](https://github.com/Corollarium/modelarium).
 - generate frontend scaffolding: stop writing verbose HTML and code to generate code/cards/etc. Let this tool do all the basic work for you.
 - SQL/Laravel typing: convert datatypes to your database generation with SQL and Laravel types.
 
@@ -46,9 +49,15 @@ $modelData = [
     'fields' => [
         'myString' => [
             'datatype' => 'string',
+            'validators' => [
+                \Formularium\Validator\MinLength::class => [
+                    'value' => 5,
+                ],
+                \Formularium\Validator\MaxLength::class =>  => [
+                    'value' => 30,
+                ]
+            ],
             'extensions' => [
-                Renderable_string::MIN_LENGTH => 3,
-                Renderable_string::MAX_LENGTH => 30,
                 Renderable::LABEL => 'This is some string',
                 Renderable::COMMENT => 'Some text explaining this field',
                 Renderable::PLACEHOLDER => "Type here"
@@ -57,13 +66,14 @@ $modelData = [
         'someInteger' => [
             'datatype' => 'integer',
             'validators' => [
-                Datatype_integer::MIN => [
+                \Formularium\Validator\Min::class => [
                     'value' => 4,
                 ],
-                Datatype_integer::MAX =>  => [
-                    'value' => 30,
+                \Formularium\Validator\Max::class =>  => [
+                    'value' => 40,
                 ]
-            ]
+            ],
+            'extensions' => [
                 Renderable_number::STEP => 2,
                 Renderable::LABEL => 'Some integer',
                 Renderable::PLACEHOLDER => "Type here"
@@ -103,8 +113,8 @@ Formularium is built in a way that generators can be chained, so you can combine
 - Base generators:
   - Pure HTML
 - CSS Frameworks:
-  - [Bulma](https://bulma.io)
   - [Bootstrap](https://getbootstrap.com/)
+  - [Bulma](https://bulma.io)
   - [Materialize](https://materializecss.com/)
   - [Buefy](https://buefy.github.io/)
 - JS/PHP Frameworks:
