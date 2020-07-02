@@ -32,7 +32,7 @@ class File implements ValidatorInterface
     const DIMENSION_MAX_HEIGHT = 'DIMENSION_MAX_HEIGHT';
     const DIMENSION_RATIO = 'DIMENSION_RATIO';
 
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    protected static function size(string $value, array $options = []): void
     {
         $max_size = $options[self::MAX_SIZE] ?? 0;
         if ($max_size > 0 && filesize($value) > $max_size) {
@@ -40,82 +40,98 @@ class File implements ValidatorInterface
                 'File too big. Maximum size: ' . $max_size
             );
         }
+    }
+
+    public static function accept(string $value, array $options = []): void
+    {
+        $accept = $options[self::ACCEPT];
+        if (!is_array($accept)) {
+            $accept = [$accept];
+        }
+
+        /**
+         * @var array $accept
+         */
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        if ($finfo === false) {
+            throw new ValidatorException(
+                'Cannot load fileinfo'
+            );
+        }
+        $mime = finfo_file($finfo, $value);
+
+        $valid = false;
+        foreach ($accept as $a) {
+            switch ($a) {
+                case self::ACCEPT_AUDIO:
+                    $validMimes = [
+                        'audio/aac',
+                        'audio/mpeg',
+                        'audio/ogg',
+                        'audio/wav',
+                        'audio/webm',
+                    ];
+                    if (in_array($mime, $validMimes)) {
+                        $valid = true;
+                        break;
+                    }
+                break;
+                case self::ACCEPT_IMAGE:
+                    $validMimes = [
+                        'image/jpg',
+                        'image/jpeg',
+                        'image/gif',
+                        'image/png',
+                        'image/webp'
+                    ];
+                    if (in_array($mime, $validMimes)) {
+                        $valid = true;
+                        break;
+                    }
+                break;
+                case self::ACCEPT_VIDEO:
+                    $validMimes = [
+                        'video/x-flv',
+                        'video/mp4',
+                        'video/mpeg',
+                        'application/x-mpegURL',
+                        'video/MP2T',
+                        'video/3gpp',
+                        'video/ogg',
+                        'video/quicktime',
+                        'video/x-msvideo',
+                        'video/x-ms-wmv',
+                        'video/webm',
+                    ];
+                    if (in_array($mime, $validMimes)) {
+                        $valid = true;
+                        break;
+                    }
+                break;
+            }
+        }
+
+        // TODO: 'accept' extensions
+
+        if (!$valid) {
+            throw new ValidatorException(
+                'Not an accepted file'
+            );
+        }
+    }
+
+    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    {
+        if ($datatype->getBasetype() !== 'file') {
+            throw new ValidatorException(
+                'Not a file'
+            );
+        }
+
+        self::size($value, $options);
 
         if ($options[self::ACCEPT] ?? false) {
-            $accept = $options[self::ACCEPT];
-            if (!is_array($accept)) {
-                $accept = [$accept];
-            }
-
-            /**
-             * @var array $accept
-             */
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            if ($finfo === false) {
-                throw new ValidatorException(
-                    'Cannot load fileinfo'
-                );
-            }
-            $mime = finfo_file($finfo, $value);
-
-            $valid = false;
-            foreach ($accept as $a) {
-                switch ($a) {
-            case self::ACCEPT_AUDIO:
-                $validMimes = [
-                    'audio/aac',
-                    'audio/mpeg',
-                    'audio/ogg',
-                    'audio/wav',
-                    'audio/webm',
-                ];
-                if (in_array($mime, $validMimes)) {
-                    $valid = true;
-                    break;
-                }
-            break;
-            case self::ACCEPT_IMAGE:
-                $validMimes = [
-                    'image/jpg',
-                    'image/jpeg',
-                    'image/gif',
-                    'image/png',
-                    'image/webp'
-                ];
-                if (in_array($mime, $validMimes)) {
-                    $valid = true;
-                    break;
-                }
-            break;
-            case self::ACCEPT_VIDEO:
-                $validMimes = [
-                    'video/x-flv',
-                    'video/mp4',
-                    'video/mpeg',
-                    'application/x-mpegURL',
-                    'video/MP2T',
-                    'video/3gpp',
-                    'video/ogg',
-                    'video/quicktime',
-                    'video/x-msvideo',
-                    'video/x-ms-wmv',
-                    'video/webm',
-                ];
-                if (in_array($mime, $validMimes)) {
-                    $valid = true;
-                    break;
-                }
-            break;
-        }
-            }
-
-            // TODO: 'accept' extensions
-
-            if (!$valid) {
-                throw new ValidatorException(
-                    'Not an accepted file'
-                );
-            }
+            self::accept($value, $options);
         }
 
         if (($options[self::DIMENSION_HEIGHT] ?? false) ||
