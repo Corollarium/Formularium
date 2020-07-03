@@ -109,7 +109,7 @@ class Datatype${datatype}_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('${datatypeLower}');
+        return \Formularium\Datatype::factory('${datatypeLower}');
     }
 
     /**
