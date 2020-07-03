@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 
 class Datatype_ip extends \Formularium\Datatype\Datatype_string
 {
-    public function __construct(string $typename = 'ipv4', string $basetype = 'string')
+    public function __construct(string $typename = 'ip', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
     }

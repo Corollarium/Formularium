@@ -5,6 +5,7 @@ require(__DIR__ . '/../vendor/autoload.php');
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Datatype\Datatype_string;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Formularium;
 use Formularium\FrameworkComposer;
