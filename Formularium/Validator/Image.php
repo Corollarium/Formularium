@@ -25,57 +25,45 @@ class Image implements ValidatorInterface
     protected static function dimension(array $options = [], int $width, int $height): void
     {
         $expectedHeight = $options[self::DIMENSION_HEIGHT] ?? false;
-        if ($expectedHeight !== false) {
-            if ($expectedHeight !== $height) {
-                throw new ValidatorException(
-                    'Image height should be exactly ' . $expectedHeight
-                );
-            }
+        if ($expectedHeight !== false && $expectedHeight !== $height) {
+            throw new ValidatorException(
+                'Image height should be exactly ' . $expectedHeight
+            );
         }
 
         $expectedWidth = $options[self::DIMENSION_WIDTH] ?? false;
-        if ($expectedWidth !== false) {
-            if ($expectedWidth !== $width) {
-                throw new ValidatorException(
-                    'Image width should be exactly ' . $expectedWidth
-                );
-            }
+        if ($expectedWidth !== false && $expectedWidth !== $width) {
+            throw new ValidatorException(
+                'Image width should be exactly ' . $expectedWidth
+            );
         }
 
         $minHeight = $options[self::DIMENSION_MIN_HEIGHT] ?? false;
-        if ($minHeight !== false) {
-            if ($height < $minHeight) {
-                throw new ValidatorException(
-                    'Image height should be at least ' . $minHeight
-                );
-            }
+        if ($minHeight !== false && $height < $minHeight) {
+            throw new ValidatorException(
+                'Image height should be at least ' . $minHeight
+            );
         }
 
         $minWidth = $options[self::DIMENSION_MIN_WIDTH] ?? false;
-        if ($minWidth !== false) {
-            if ($width < $minWidth) {
-                throw new ValidatorException(
-                    'Image width should be at least ' . $minWidth
-                );
-            }
+        if ($minWidth !== false && $width < $minWidth) {
+            throw new ValidatorException(
+                'Image width should be at least ' . $minWidth
+            );
         }
 
         $maxHeight = $options[self::DIMENSION_MAX_HEIGHT] ?? false;
-        if ($maxHeight !== false) {
-            if ($height > $maxHeight) {
-                throw new ValidatorException(
-                    'Image height should be at most ' . $maxHeight
-                );
-            }
+        if ($maxHeight !== false && $height > $maxHeight) {
+            throw new ValidatorException(
+                'Image height should be at most ' . $maxHeight
+            );
         }
 
         $maxWidth = $options[self::DIMENSION_MAX_WIDTH] ?? false;
-        if ($maxWidth !== false) {
-            if ($width > $maxWidth) {
-                throw new ValidatorException(
-                    'Image width should be at most ' . $maxWidth
-                );
-            }
+        if ($maxWidth !== false && $width > $maxWidth) {
+            throw new ValidatorException(
+                'Image width should be at most ' . $maxWidth
+            );
         }
 
         $ratio = $options[self::DIMENSION_RATIO] ?? false;

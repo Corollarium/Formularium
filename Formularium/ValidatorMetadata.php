@@ -43,7 +43,7 @@ final class ValidatorMetadata
         );
 
         $argString = '';
-        if ($args) {
+        if (!empty($args)) {
             $argString = "(" . join("\n", $args) . "\n)";
         }
         return <<< EOF
