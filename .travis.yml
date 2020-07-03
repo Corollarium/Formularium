@@ -50,7 +50,6 @@ jobs:
       deploy:
         provider: pages:git
         token: ${GITHUB_TOKEN}
-        edge:
-          branch: octokit-latest
+        edge: true
         verbose: true
         local_dir: docs/
