@@ -44,7 +44,7 @@
                 <div>
   <div id="vueapp3">
     <div class="form-group" data-attribute="myString" data-datatype="string" data-basetype="string">
-  <label for="myString210" class="formularium-label">
+  <label for="myString240" class="formularium-label">
     Type string
   </label>
   <div class="input-group mb-3">
@@ -54,25 +54,25 @@
         </i>
       </span>
     </div>
-    <input id="myString210" type="text" name="myString" class=" form-control form-control-lg" data-attribute="myString" data-datatype="string" data-basetype="string" maxlength="30" title="Type string" placeholder="Type here" minlength="3" aria-describedby="comment211" v-model="myString"/>
+    <input id="myString240" type="text" name="myString" class=" form-control form-control-lg" data-attribute="myString" data-datatype="string" data-basetype="string" maxlength="30" title="Type string" placeholder="Type here" minlength="3" aria-describedby="comment241" v-model="myString"/>
   </div>
-  <small class="formularium-comment form-text text-muted" id="comment211">
+  <small class="formularium-comment form-text text-muted" id="comment241">
     Some text explaining this field
   </small>
 </div>
 
 <div class="form-group" data-attribute="myInteger" data-datatype="integer" data-basetype="number">
-  <label for="myInteger212" class="formularium-label">
+  <label for="myInteger242" class="formularium-label">
     Type integer
   </label>
-  <input id="myInteger212" type="number" name="myInteger" class=" form-control" data-attribute="myInteger" data-datatype="integer" data-basetype="number" title="Type integer" placeholder="Type here" min="4" max="30" v-model="myInteger"/>
+  <input id="myInteger242" type="number" name="myInteger" class=" form-control" data-attribute="myInteger" data-datatype="integer" data-basetype="number" title="Type integer" placeholder="Type here" min="4" max="2147483647" v-model="myInteger"/>
 </div>
 
-<div class="form-group" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice">
-  <label for="countrycodeselect213" class="formularium-label">
+<div class="form-group" data-attribute="countrycodeselect" data-datatype="countrycodeISO3" data-basetype="choice">
+  <label for="countrycodeselect243" class="formularium-label">
     Country code - select choice
   </label>
-  <select id="countrycodeselect213" name="countrycodeselect" class=" custom-select" data-attribute="countrycodeselect" data-datatype="countrycode" data-basetype="choice" title="Country code - select choice" v-model="countrycodeselect">
+  <select id="countrycodeselect243" name="countrycodeselect" class=" custom-select" data-attribute="countrycodeselect" data-datatype="countrycodeISO3" data-basetype="choice" title="Country code - select choice">
     <option value="AND">
       AND
     </option>
@@ -995,7 +995,7 @@
       Type alpha
     </span>
     <span class="formularium-value">
-      RruIhyizIjt
+      {{alpha}}
     </span>
   </span>
 </div>
@@ -1006,7 +1006,7 @@
       Type alphanum
     </span>
     <span class="formularium-value">
-      RC0qAp0RrkQWxQ
+      {{alphanum}}
     </span>
   </span>
 </div>
@@ -1017,7 +1017,7 @@
       Type alphanumdash
     </span>
     <span class="formularium-value">
-      Ry68eC
+      {{alphanumdash}}
     </span>
   </span>
 </div>
@@ -1028,7 +1028,18 @@
       Type bool
     </span>
     <span class="formularium-value">
-      True
+      {{bool}}
+    </span>
+  </span>
+</div>
+
+<div>
+  <span class="formularium-viewable">
+    <span class="formularium-label">
+      Type boolean
+    </span>
+    <span class="formularium-value">
+      {{boolean}}
     </span>
   </span>
 </div>
@@ -1039,7 +1050,7 @@
       Type cnpj
     </span>
     <span class="formularium-value">
-      00.451.996/0001-51
+      {{cnpj}}
     </span>
   </span>
 </div>
@@ -1050,10 +1061,7 @@
       Type color
     </span>
     <span class="formularium-value">
-      <span style="width: 1em; display: inline-block; background-color: #945F3F">
-        &nbsp;
-      </span>
-      #945F3F
+      {{color}}
     </span>
   </span>
 </div>
@@ -1068,10 +1076,32 @@
 <div>
   <span class="formularium-viewable">
     <span class="formularium-label">
-      Type countrycode
+      Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      MSR
+      CU
+    </span>
+  </span>
+</div>
+
+<div>
+  <span class="formularium-viewable">
+    <span class="formularium-label">
+      Type countrycodeISO3
+    </span>
+    <span class="formularium-value">
+      ESP
+    </span>
+  </span>
+</div>
+
+<div>
+  <span class="formularium-viewable">
+    <span class="formularium-label">
+      Type countrycodeNumeric
+    </span>
+    <span class="formularium-value">
+      332
     </span>
   </span>
 </div>
@@ -1082,7 +1112,7 @@
       Type cpf
     </span>
     <span class="formularium-value">
-      520.267.959-91
+      {{cpf}}
     </span>
   </span>
 </div>
@@ -1093,7 +1123,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      SCR
+      MZN
     </span>
   </span>
 </div>
@@ -1104,7 +1134,7 @@
       Type date
     </span>
     <span class="formularium-value">
-      2021-01-08
+      {{date}}
     </span>
   </span>
 </div>
@@ -1115,7 +1145,7 @@
       Type datetime
     </span>
     <span class="formularium-value">
-      2015-10-28T04:33:07+0000
+      {{datetime}}
     </span>
   </span>
 </div>
@@ -1126,7 +1156,7 @@
       Type domain
     </span>
     <span class="formularium-value">
-      dubuque.biz
+      {{domain}}
     </span>
   </span>
 </div>
@@ -1137,7 +1167,7 @@
       Type email
     </span>
     <span class="formularium-value">
-      wisozk.reymundo@gmail.com
+      {{email}}
     </span>
   </span>
 </div>
@@ -1148,6 +1178,7 @@
       Type file
     </span>
     <span class="formularium-value">
+      {{file}}
     </span>
   </span>
 </div>
@@ -1158,7 +1189,7 @@
       Type float
     </span>
     <span class="formularium-value">
-      0.886
+      {{float}}
     </span>
   </span>
 </div>
@@ -1169,7 +1200,7 @@
       Type html
     </span>
     <span class="formularium-value">
-      &lt;p&gt;HTML &lt;span&gt;Omnis officia earum dolores corrupti cumque est. Dolores commodi quia ducimus eos. Autem culpa doloribus iusto debitis perspiciatis ut et. Dolore ea saepe aspernatur natus explicabo quis ut.&lt;/span&gt;Recusandae quisquam dignissimos fugit. Et et est perferendis est voluptatem. Rerum dolore est assumenda sed voluptatibus.&lt;/p&gt;
+      {{html}}
     </span>
   </span>
 </div>
@@ -1180,7 +1211,7 @@
       Type integer
     </span>
     <span class="formularium-value">
-      892461025
+      {{integer}}
     </span>
   </span>
 </div>
@@ -1191,7 +1222,7 @@
       Type ip
     </span>
     <span class="formularium-value">
-      f4ca:bfba:bca5:f8ca:b9de:29ed:7c42:496
+      {{ip}}
     </span>
   </span>
 </div>
@@ -1202,7 +1233,7 @@
       Type ipv4
     </span>
     <span class="formularium-value">
-      3.3.135.66
+      {{ipv4}}
     </span>
   </span>
 </div>
@@ -1213,7 +1244,7 @@
       Type ipv6
     </span>
     <span class="formularium-value">
-      d80:741a:8a4:49a:88fc:8e13:cfb6:ca9d
+      {{ipv6}}
     </span>
   </span>
 </div>
@@ -1224,7 +1255,7 @@
       Type json
     </span>
     <span class="formularium-value">
-      {&quot;version&quot;:-1931691564,&quot;data&quot;:{&quot;string&quot;:&quot;RxMVubsW8&quot;,&quot;float&quot;:0.64}}
+      {{json}}
     </span>
   </span>
 </div>
@@ -1235,7 +1266,7 @@
       Type language
     </span>
     <span class="formularium-value">
-      mh
+      fr
     </span>
   </span>
 </div>
@@ -1253,7 +1284,7 @@
       Type phone
     </span>
     <span class="formularium-value">
-      +1681567170273
+      {{phone}}
     </span>
   </span>
 </div>
@@ -1264,7 +1295,7 @@
       Type string
     </span>
     <span class="formularium-value">
-      R7pdknyLwO
+      {{string}}
     </span>
   </span>
 </div>
@@ -1275,7 +1306,7 @@
       Type text
     </span>
     <span class="formularium-value">
-      Aut amet enim deleniti aut. Ipsum suscipit maiores nulla eos quidem dolores eius fuga. Distinctio perferendis aut occaecati omnis voluptatum.
+      {{text}}
     </span>
   </span>
 </div>
@@ -1286,7 +1317,18 @@
       Type time
     </span>
     <span class="formularium-value">
-      09:57:31
+      18:09:46
+    </span>
+  </span>
+</div>
+
+<div>
+  <span class="formularium-viewable">
+    <span class="formularium-label">
+      Type timestamp
+    </span>
+    <span class="formularium-value">
+      {{timestamp}}
     </span>
   </span>
 </div>
@@ -1297,7 +1339,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      Africa/Malabo
+      America/Belem
     </span>
   </span>
 </div>
@@ -1308,7 +1350,7 @@
       Type uinteger
     </span>
     <span class="formularium-value">
-      1829306385
+      {{uinteger}}
     </span>
   </span>
 </div>
@@ -1319,7 +1361,7 @@
       Type url
     </span>
     <span class="formularium-value">
-      http://luettgen.com/quis-eum-quod-unde-porro-non-quia.html
+      {{url}}
     </span>
   </span>
 </div>
@@ -1330,7 +1372,7 @@
       Type usmall
     </span>
     <span class="formularium-value">
-      35278
+      {{usmall}}
     </span>
   </span>
 </div>
@@ -1341,7 +1383,18 @@
       Type uuid
     </span>
     <span class="formularium-value">
-      4b527d3f-30ac-4125-8011-088981132ee1
+      {{uuid}}
+    </span>
+  </span>
+</div>
+
+<div>
+  <span class="formularium-viewable">
+    <span class="formularium-label">
+      Type year
+    </span>
+    <span class="formularium-value">
+      {{year}}
     </span>
   </span>
 </div>
@@ -1351,7 +1404,7 @@
   <script>
     var app = new Vue({
     el: '#vueapp4',
-    data: {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","0":"pagination"}
+    data: {"alpha":"RnPJCUIG","alphanum":"RbycYs0uL","alphanumdash":"R-n9uADrnN","bool":false,"boolean":true,"cnpj":"77.313.267\/0001-63","color":"#4122BD","constant":"","countrycodeISO2":"CU","countrycodeISO3":"ESP","countrycodeNumeric":332,"cpf":"076.842.491-77","currency":"MZN","date":"2027-01-28","datetime":"2010-07-26T09:22:03+0000","domain":"lowe.com","email":"ffeeney@cremin.net","file":"","float":0.148,"html":"<p>HTML <span>Eum nihil et tempore quis perferendis. Doloremque voluptatem voluptates quos ut et neque perferendis. Eaque ipsum esse facilis dolores deleniti labore.<\/span>Quia explicabo debitis deleniti. Aut facere laboriosam adipisci quo aut. Natus quis sed accusamus repellendus. Voluptatem debitis in laboriosam rerum quasi ipsa quis neque.<\/p>","integer":1445580729,"ip":"76.142.10.183","ipv4":"26.22.123.218","ipv6":"e73:2908:3066:2ef6:9776:786:5111:51cd","json":"{\"version\":518544279,\"data\":{\"string\":\"RX75MWsENEfUoE\",\"float\":0.118}}","language":"fr","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"+4246477970016","string":"RvCRHMJmVuwbgR","text":"Et impedit iusto eum tempore non. Pariatur et velit est nostrum enim doloribus magni. Fuga id aut eos itaque eveniet. Ut numquam numquam aut perferendis eos.","time":"18:09:46","timestamp":"2017-07-15T20:26:59+0000","timezone":"America\/Belem","uinteger":3526806671,"url":"http:\/\/renner.net\/sed-nemo-et-architecto-deleniti-sed","usmall":23535,"uuid":"21d13e80-e045-48c3-b664-e5916062b5dd","year":238848525}
 });
   </script>
 </div>
@@ -1366,31 +1419,45 @@
                     <div>
   <div id="vueapp5">
     <div class="form-group" data-attribute="alpha" data-datatype="alpha" data-basetype="string">
-  <label for="alpha214" class="formularium-label">
+  <label for="alpha244" class="formularium-label">
     Type alpha
   </label>
-  <input id="alpha214" type="text" name="alpha" class=" form-control" data-attribute="alpha" data-datatype="alpha" data-basetype="string" maxlength="1024" title="Type alpha" v-model="alpha"/>
+  <input id="alpha244" type="text" name="alpha" class=" form-control" data-attribute="alpha" data-datatype="alpha" data-basetype="string" maxlength="1024" title="Type alpha" v-model="alpha"/>
 </div>
 
 <div class="form-group" data-attribute="alphanum" data-datatype="alphanum" data-basetype="string">
-  <label for="alphanum215" class="formularium-label">
+  <label for="alphanum245" class="formularium-label">
     Type alphanum
   </label>
-  <input id="alphanum215" type="text" name="alphanum" class=" form-control" data-attribute="alphanum" data-datatype="alphanum" data-basetype="string" maxlength="1024" title="Type alphanum" v-model="alphanum"/>
+  <input id="alphanum245" type="text" name="alphanum" class=" form-control" data-attribute="alphanum" data-datatype="alphanum" data-basetype="string" maxlength="1024" title="Type alphanum" v-model="alphanum"/>
 </div>
 
 <div class="form-group" data-attribute="alphanumdash" data-datatype="alphanumdash" data-basetype="string">
-  <label for="alphanumdash216" class="formularium-label">
+  <label for="alphanumdash246" class="formularium-label">
     Type alphanumdash
   </label>
-  <input id="alphanumdash216" type="text" name="alphanumdash" class=" form-control" data-attribute="alphanumdash" data-datatype="alphanumdash" data-basetype="string" maxlength="1024" title="Type alphanumdash" v-model="alphanumdash"/>
+  <input id="alphanumdash246" type="text" name="alphanumdash" class=" form-control" data-attribute="alphanumdash" data-datatype="alphanumdash" data-basetype="string" maxlength="1024" title="Type alphanumdash" v-model="alphanumdash"/>
 </div>
 
 <div class="form-group" data-attribute="bool" data-datatype="bool" data-basetype="bool">
-  <label for="bool217" class="formularium-label">
+  <label for="bool247" class="formularium-label">
     Type bool
   </label>
-  <select id="bool217" name="bool" class="form-control" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" v-model="bool">
+  <select id="bool247" name="bool" class="form-control" data-attribute="bool" data-datatype="bool" data-basetype="bool" title="Type bool" v-model="bool">
+    <option value="false" selected="selected">
+      False
+    </option>
+    <option value="true">
+      True
+    </option>
+  </select>
+</div>
+
+<div class="form-group" data-attribute="boolean" data-datatype="boolean" data-basetype="bool">
+  <label for="boolean248" class="formularium-label">
+    Type boolean
+  </label>
+  <select id="boolean248" name="boolean" class="form-control" data-attribute="boolean" data-datatype="boolean" data-basetype="bool" title="Type boolean" v-model="boolean">
     <option value="false" selected="selected">
       False
     </option>
@@ -1401,17 +1468,17 @@
 </div>
 
 <div class="form-group" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string">
-  <label for="cnpj218" class="formularium-label">
+  <label for="cnpj249" class="formularium-label">
     Type cnpj
   </label>
-  <input id="cnpj218" type="text" name="cnpj" class=" form-control" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" maxlength="1024" title="Type cnpj" v-model="cnpj"/>
+  <input id="cnpj249" type="text" name="cnpj" class=" form-control" data-attribute="cnpj" data-datatype="cnpj" data-basetype="string" maxlength="1024" title="Type cnpj" v-model="cnpj"/>
 </div>
 
 <div class="form-group" data-attribute="color" data-datatype="color" data-basetype="string">
-  <label for="color219" class="formularium-label">
+  <label for="color250" class="formularium-label">
     Type color
   </label>
-  <input id="color219" type="color" name="color" class=" form-control" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
+  <input id="color250" type="color" name="color" class=" form-control" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
 </div>
 
 <div>
@@ -1421,11 +1488,841 @@
 
 </div>
 
-<div class="form-group" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice">
-  <label for="countrycode220" class="formularium-label">
-    Type countrycode
+<div class="form-group" data-attribute="countrycodeISO2" data-datatype="countrycodeISO2" data-basetype="choice">
+  <label for="countrycodeISO2251" class="formularium-label">
+    Type countrycodeISO2
   </label>
-  <select id="countrycode220" name="countrycode" class=" custom-select" data-attribute="countrycode" data-datatype="countrycode" data-basetype="choice" title="Type countrycode" v-model="countrycode">
+  <select id="countrycodeISO2251" name="countrycodeISO2" class=" custom-select" data-attribute="countrycodeISO2" data-datatype="countrycodeISO2" data-basetype="choice" title="Type countrycodeISO2">
+    <option value="AD">
+      AD
+    </option>
+    <option value="AE">
+      AE
+    </option>
+    <option value="AF">
+      AF
+    </option>
+    <option value="AG">
+      AG
+    </option>
+    <option value="AI">
+      AI
+    </option>
+    <option value="AL">
+      AL
+    </option>
+    <option value="AM">
+      AM
+    </option>
+    <option value="AN">
+      AN
+    </option>
+    <option value="AO">
+      AO
+    </option>
+    <option value="AQ">
+      AQ
+    </option>
+    <option value="AR">
+      AR
+    </option>
+    <option value="AS">
+      AS
+    </option>
+    <option value="AT">
+      AT
+    </option>
+    <option value="AU">
+      AU
+    </option>
+    <option value="AW">
+      AW
+    </option>
+    <option value="AX">
+      AX
+    </option>
+    <option value="AZ">
+      AZ
+    </option>
+    <option value="BA">
+      BA
+    </option>
+    <option value="BB">
+      BB
+    </option>
+    <option value="BD">
+      BD
+    </option>
+    <option value="BE">
+      BE
+    </option>
+    <option value="BF">
+      BF
+    </option>
+    <option value="BG">
+      BG
+    </option>
+    <option value="BH">
+      BH
+    </option>
+    <option value="BI">
+      BI
+    </option>
+    <option value="BJ">
+      BJ
+    </option>
+    <option value="BL">
+      BL
+    </option>
+    <option value="BM">
+      BM
+    </option>
+    <option value="BN">
+      BN
+    </option>
+    <option value="BO">
+      BO
+    </option>
+    <option value="BQ">
+      BQ
+    </option>
+    <option value="BR">
+      BR
+    </option>
+    <option value="BS">
+      BS
+    </option>
+    <option value="BT">
+      BT
+    </option>
+    <option value="BU">
+      BU
+    </option>
+    <option value="BV">
+      BV
+    </option>
+    <option value="BW">
+      BW
+    </option>
+    <option value="BY">
+      BY
+    </option>
+    <option value="BZ">
+      BZ
+    </option>
+    <option value="CA">
+      CA
+    </option>
+    <option value="CC">
+      CC
+    </option>
+    <option value="CD">
+      CD
+    </option>
+    <option value="CF">
+      CF
+    </option>
+    <option value="CG">
+      CG
+    </option>
+    <option value="CH">
+      CH
+    </option>
+    <option value="CI">
+      CI
+    </option>
+    <option value="CK">
+      CK
+    </option>
+    <option value="CL">
+      CL
+    </option>
+    <option value="CM">
+      CM
+    </option>
+    <option value="CN">
+      CN
+    </option>
+    <option value="CO">
+      CO
+    </option>
+    <option value="CR">
+      CR
+    </option>
+    <option value="CS">
+      CS
+    </option>
+    <option value="CT">
+      CT
+    </option>
+    <option value="CU">
+      CU
+    </option>
+    <option value="CV">
+      CV
+    </option>
+    <option value="CW">
+      CW
+    </option>
+    <option value="CX">
+      CX
+    </option>
+    <option value="CY">
+      CY
+    </option>
+    <option value="CZ">
+      CZ
+    </option>
+    <option value="DD">
+      DD
+    </option>
+    <option value="DE">
+      DE
+    </option>
+    <option value="DJ">
+      DJ
+    </option>
+    <option value="DK">
+      DK
+    </option>
+    <option value="DM">
+      DM
+    </option>
+    <option value="DO">
+      DO
+    </option>
+    <option value="DY">
+      DY
+    </option>
+    <option value="DZ">
+      DZ
+    </option>
+    <option value="EC">
+      EC
+    </option>
+    <option value="EE">
+      EE
+    </option>
+    <option value="EG">
+      EG
+    </option>
+    <option value="EH">
+      EH
+    </option>
+    <option value="ER">
+      ER
+    </option>
+    <option value="ES">
+      ES
+    </option>
+    <option value="ET">
+      ET
+    </option>
+    <option value="FI">
+      FI
+    </option>
+    <option value="FJ">
+      FJ
+    </option>
+    <option value="FK">
+      FK
+    </option>
+    <option value="FM">
+      FM
+    </option>
+    <option value="FO">
+      FO
+    </option>
+    <option value="FQ">
+      FQ
+    </option>
+    <option value="FR">
+      FR
+    </option>
+    <option value="FX">
+      FX
+    </option>
+    <option value="GA">
+      GA
+    </option>
+    <option value="GB">
+      GB
+    </option>
+    <option value="GD">
+      GD
+    </option>
+    <option value="GE">
+      GE
+    </option>
+    <option value="GF">
+      GF
+    </option>
+    <option value="GG">
+      GG
+    </option>
+    <option value="GH">
+      GH
+    </option>
+    <option value="GI">
+      GI
+    </option>
+    <option value="GL">
+      GL
+    </option>
+    <option value="GM">
+      GM
+    </option>
+    <option value="GN">
+      GN
+    </option>
+    <option value="GP">
+      GP
+    </option>
+    <option value="GQ">
+      GQ
+    </option>
+    <option value="GR">
+      GR
+    </option>
+    <option value="GS">
+      GS
+    </option>
+    <option value="GT">
+      GT
+    </option>
+    <option value="GU">
+      GU
+    </option>
+    <option value="GW">
+      GW
+    </option>
+    <option value="GY">
+      GY
+    </option>
+    <option value="HK">
+      HK
+    </option>
+    <option value="HM">
+      HM
+    </option>
+    <option value="HN">
+      HN
+    </option>
+    <option value="HR">
+      HR
+    </option>
+    <option value="HT">
+      HT
+    </option>
+    <option value="HU">
+      HU
+    </option>
+    <option value="HV">
+      HV
+    </option>
+    <option value="ID">
+      ID
+    </option>
+    <option value="IE">
+      IE
+    </option>
+    <option value="IL">
+      IL
+    </option>
+    <option value="IM">
+      IM
+    </option>
+    <option value="IN">
+      IN
+    </option>
+    <option value="IO">
+      IO
+    </option>
+    <option value="IQ">
+      IQ
+    </option>
+    <option value="IR">
+      IR
+    </option>
+    <option value="IS">
+      IS
+    </option>
+    <option value="IT">
+      IT
+    </option>
+    <option value="JE">
+      JE
+    </option>
+    <option value="JM">
+      JM
+    </option>
+    <option value="JO">
+      JO
+    </option>
+    <option value="JP">
+      JP
+    </option>
+    <option value="JT">
+      JT
+    </option>
+    <option value="KE">
+      KE
+    </option>
+    <option value="KG">
+      KG
+    </option>
+    <option value="KH">
+      KH
+    </option>
+    <option value="KI">
+      KI
+    </option>
+    <option value="KM">
+      KM
+    </option>
+    <option value="KN">
+      KN
+    </option>
+    <option value="KP">
+      KP
+    </option>
+    <option value="KR">
+      KR
+    </option>
+    <option value="KW">
+      KW
+    </option>
+    <option value="KY">
+      KY
+    </option>
+    <option value="KZ">
+      KZ
+    </option>
+    <option value="LA">
+      LA
+    </option>
+    <option value="LB">
+      LB
+    </option>
+    <option value="LC">
+      LC
+    </option>
+    <option value="LI">
+      LI
+    </option>
+    <option value="LK">
+      LK
+    </option>
+    <option value="LR">
+      LR
+    </option>
+    <option value="LS">
+      LS
+    </option>
+    <option value="LT">
+      LT
+    </option>
+    <option value="LU">
+      LU
+    </option>
+    <option value="LV">
+      LV
+    </option>
+    <option value="LY">
+      LY
+    </option>
+    <option value="MA">
+      MA
+    </option>
+    <option value="MC">
+      MC
+    </option>
+    <option value="MD">
+      MD
+    </option>
+    <option value="ME">
+      ME
+    </option>
+    <option value="MF">
+      MF
+    </option>
+    <option value="MG">
+      MG
+    </option>
+    <option value="MH">
+      MH
+    </option>
+    <option value="MI">
+      MI
+    </option>
+    <option value="MK">
+      MK
+    </option>
+    <option value="ML">
+      ML
+    </option>
+    <option value="MM">
+      MM
+    </option>
+    <option value="MN">
+      MN
+    </option>
+    <option value="MO">
+      MO
+    </option>
+    <option value="MP">
+      MP
+    </option>
+    <option value="MQ">
+      MQ
+    </option>
+    <option value="MR">
+      MR
+    </option>
+    <option value="MS">
+      MS
+    </option>
+    <option value="MT">
+      MT
+    </option>
+    <option value="MU">
+      MU
+    </option>
+    <option value="MV">
+      MV
+    </option>
+    <option value="MW">
+      MW
+    </option>
+    <option value="MX">
+      MX
+    </option>
+    <option value="MY">
+      MY
+    </option>
+    <option value="MZ">
+      MZ
+    </option>
+    <option value="NA">
+      NA
+    </option>
+    <option value="NC">
+      NC
+    </option>
+    <option value="NE">
+      NE
+    </option>
+    <option value="NF">
+      NF
+    </option>
+    <option value="NG">
+      NG
+    </option>
+    <option value="NH">
+      NH
+    </option>
+    <option value="NI">
+      NI
+    </option>
+    <option value="NL">
+      NL
+    </option>
+    <option value="NO">
+      NO
+    </option>
+    <option value="NP">
+      NP
+    </option>
+    <option value="NQ">
+      NQ
+    </option>
+    <option value="NR">
+      NR
+    </option>
+    <option value="NT">
+      NT
+    </option>
+    <option value="NU">
+      NU
+    </option>
+    <option value="NZ">
+      NZ
+    </option>
+    <option value="OM">
+      OM
+    </option>
+    <option value="PA">
+      PA
+    </option>
+    <option value="PC">
+      PC
+    </option>
+    <option value="PE">
+      PE
+    </option>
+    <option value="PF">
+      PF
+    </option>
+    <option value="PG">
+      PG
+    </option>
+    <option value="PH">
+      PH
+    </option>
+    <option value="PK">
+      PK
+    </option>
+    <option value="PL">
+      PL
+    </option>
+    <option value="PM">
+      PM
+    </option>
+    <option value="PN">
+      PN
+    </option>
+    <option value="PR">
+      PR
+    </option>
+    <option value="PS">
+      PS
+    </option>
+    <option value="PT">
+      PT
+    </option>
+    <option value="PU">
+      PU
+    </option>
+    <option value="PW">
+      PW
+    </option>
+    <option value="PY">
+      PY
+    </option>
+    <option value="PZ">
+      PZ
+    </option>
+    <option value="QA">
+      QA
+    </option>
+    <option value="RE">
+      RE
+    </option>
+    <option value="RH">
+      RH
+    </option>
+    <option value="RO">
+      RO
+    </option>
+    <option value="RS">
+      RS
+    </option>
+    <option value="RU">
+      RU
+    </option>
+    <option value="RW">
+      RW
+    </option>
+    <option value="SA">
+      SA
+    </option>
+    <option value="SB">
+      SB
+    </option>
+    <option value="SC">
+      SC
+    </option>
+    <option value="SD">
+      SD
+    </option>
+    <option value="SE">
+      SE
+    </option>
+    <option value="SG">
+      SG
+    </option>
+    <option value="SH">
+      SH
+    </option>
+    <option value="SI">
+      SI
+    </option>
+    <option value="SJ">
+      SJ
+    </option>
+    <option value="SK">
+      SK
+    </option>
+    <option value="SL">
+      SL
+    </option>
+    <option value="SM">
+      SM
+    </option>
+    <option value="SN">
+      SN
+    </option>
+    <option value="SO">
+      SO
+    </option>
+    <option value="SR">
+      SR
+    </option>
+    <option value="SS">
+      SS
+    </option>
+    <option value="ST">
+      ST
+    </option>
+    <option value="SU">
+      SU
+    </option>
+    <option value="SV">
+      SV
+    </option>
+    <option value="SX">
+      SX
+    </option>
+    <option value="SY">
+      SY
+    </option>
+    <option value="SZ">
+      SZ
+    </option>
+    <option value="TC">
+      TC
+    </option>
+    <option value="TD">
+      TD
+    </option>
+    <option value="TF">
+      TF
+    </option>
+    <option value="TG">
+      TG
+    </option>
+    <option value="TH">
+      TH
+    </option>
+    <option value="TJ">
+      TJ
+    </option>
+    <option value="TK">
+      TK
+    </option>
+    <option value="TL">
+      TL
+    </option>
+    <option value="TM">
+      TM
+    </option>
+    <option value="TN">
+      TN
+    </option>
+    <option value="TO">
+      TO
+    </option>
+    <option value="TP">
+      TP
+    </option>
+    <option value="TR">
+      TR
+    </option>
+    <option value="TT">
+      TT
+    </option>
+    <option value="TV">
+      TV
+    </option>
+    <option value="TW">
+      TW
+    </option>
+    <option value="TZ">
+      TZ
+    </option>
+    <option value="UA">
+      UA
+    </option>
+    <option value="UG">
+      UG
+    </option>
+    <option value="UM">
+      UM
+    </option>
+    <option value="US">
+      US
+    </option>
+    <option value="UY">
+      UY
+    </option>
+    <option value="UZ">
+      UZ
+    </option>
+    <option value="VA">
+      VA
+    </option>
+    <option value="VC">
+      VC
+    </option>
+    <option value="VD">
+      VD
+    </option>
+    <option value="VE">
+      VE
+    </option>
+    <option value="VG">
+      VG
+    </option>
+    <option value="VI">
+      VI
+    </option>
+    <option value="VN">
+      VN
+    </option>
+    <option value="VU">
+      VU
+    </option>
+    <option value="WF">
+      WF
+    </option>
+    <option value="WK">
+      WK
+    </option>
+    <option value="WS">
+      WS
+    </option>
+    <option value="YD">
+      YD
+    </option>
+    <option value="YE">
+      YE
+    </option>
+    <option value="YT">
+      YT
+    </option>
+    <option value="YU">
+      YU
+    </option>
+    <option value="ZA">
+      ZA
+    </option>
+    <option value="ZM">
+      ZM
+    </option>
+    <option value="ZR">
+      ZR
+    </option>
+    <option value="ZW">
+      ZW
+    </option>
+  </select>
+</div>
+
+<div class="form-group" data-attribute="countrycodeISO3" data-datatype="countrycodeISO3" data-basetype="choice">
+  <label for="countrycodeISO3252" class="formularium-label">
+    Type countrycodeISO3
+  </label>
+  <select id="countrycodeISO3252" name="countrycodeISO3" class=" custom-select" data-attribute="countrycodeISO3" data-datatype="countrycodeISO3" data-basetype="choice" title="Type countrycodeISO3">
     <option value="AND">
       AND
     </option>
@@ -2266,18 +3163,820 @@
   </select>
 </div>
 
+<div class="form-group" data-attribute="countrycodeNumeric" data-datatype="countrycodeNumeric" data-basetype="choice">
+  <label for="countrycodeNumeric253" class="formularium-label">
+    Type countrycodeNumeric
+  </label>
+  <select id="countrycodeNumeric253" name="countrycodeNumeric" class=" custom-select" data-attribute="countrycodeNumeric" data-datatype="countrycodeNumeric" data-basetype="choice" title="Type countrycodeNumeric">
+    <option value="020">
+      020
+    </option>
+    <option value="784">
+      784
+    </option>
+    <option value="004">
+      004
+    </option>
+    <option value="028">
+      028
+    </option>
+    <option value="262">
+      262
+    </option>
+    <option value="660">
+      660
+    </option>
+    <option value="008">
+      008
+    </option>
+    <option value="051">
+      051
+    </option>
+    <option value="530">
+      530
+    </option>
+    <option value="024">
+      024
+    </option>
+    <option value="010">
+      010
+    </option>
+    <option value="032">
+      032
+    </option>
+    <option value="016">
+      016
+    </option>
+    <option value="040">
+      040
+    </option>
+    <option value="036">
+      036
+    </option>
+    <option value="533">
+      533
+    </option>
+    <option value="248">
+      248
+    </option>
+    <option value="031">
+      031
+    </option>
+    <option value="070">
+      070
+    </option>
+    <option value="052">
+      052
+    </option>
+    <option value="050">
+      050
+    </option>
+    <option value="056">
+      056
+    </option>
+    <option value="854">
+      854
+    </option>
+    <option value="100">
+      100
+    </option>
+    <option value="048">
+      048
+    </option>
+    <option value="108">
+      108
+    </option>
+    <option value="204">
+      204
+    </option>
+    <option value="652">
+      652
+    </option>
+    <option value="060">
+      060
+    </option>
+    <option value="096">
+      096
+    </option>
+    <option value="068">
+      068
+    </option>
+    <option value="" selected="selected">
+    </option>
+    <option value="535">
+      535
+    </option>
+    <option value="076">
+      076
+    </option>
+    <option value="044">
+      044
+    </option>
+    <option value="064">
+      064
+    </option>
+    <option value="104">
+      104
+    </option>
+    <option value="074">
+      074
+    </option>
+    <option value="072">
+      072
+    </option>
+    <option value="112">
+      112
+    </option>
+    <option value="084">
+      084
+    </option>
+    <option value="124">
+      124
+    </option>
+    <option value="166">
+      166
+    </option>
+    <option value="180">
+      180
+    </option>
+    <option value="140">
+      140
+    </option>
+    <option value="178">
+      178
+    </option>
+    <option value="756">
+      756
+    </option>
+    <option value="384">
+      384
+    </option>
+    <option value="184">
+      184
+    </option>
+    <option value="152">
+      152
+    </option>
+    <option value="120">
+      120
+    </option>
+    <option value="156">
+      156
+    </option>
+    <option value="170">
+      170
+    </option>
+    <option value="188">
+      188
+    </option>
+    <option value="200">
+      200
+    </option>
+    <option value="891">
+      891
+    </option>
+    <option value="128">
+      128
+    </option>
+    <option value="192">
+      192
+    </option>
+    <option value="132">
+      132
+    </option>
+    <option value="531">
+      531
+    </option>
+    <option value="162">
+      162
+    </option>
+    <option value="196">
+      196
+    </option>
+    <option value="203">
+      203
+    </option>
+    <option value="278">
+      278
+    </option>
+    <option value="276">
+      276
+    </option>
+    <option value="208">
+      208
+    </option>
+    <option value="212">
+      212
+    </option>
+    <option value="214">
+      214
+    </option>
+    <option value="012">
+      012
+    </option>
+    <option value="218">
+      218
+    </option>
+    <option value="233">
+      233
+    </option>
+    <option value="818">
+      818
+    </option>
+    <option value="732">
+      732
+    </option>
+    <option value="232">
+      232
+    </option>
+    <option value="724">
+      724
+    </option>
+    <option value="231">
+      231
+    </option>
+    <option value="246">
+      246
+    </option>
+    <option value="242">
+      242
+    </option>
+    <option value="238">
+      238
+    </option>
+    <option value="583">
+      583
+    </option>
+    <option value="234">
+      234
+    </option>
+    <option value="250">
+      250
+    </option>
+    <option value="249">
+      249
+    </option>
+    <option value="266">
+      266
+    </option>
+    <option value="826">
+      826
+    </option>
+    <option value="308">
+      308
+    </option>
+    <option value="296">
+      296
+    </option>
+    <option value="268">
+      268
+    </option>
+    <option value="254">
+      254
+    </option>
+    <option value="831">
+      831
+    </option>
+    <option value="288">
+      288
+    </option>
+    <option value="292">
+      292
+    </option>
+    <option value="304">
+      304
+    </option>
+    <option value="270">
+      270
+    </option>
+    <option value="324">
+      324
+    </option>
+    <option value="312">
+      312
+    </option>
+    <option value="226">
+      226
+    </option>
+    <option value="300">
+      300
+    </option>
+    <option value="239">
+      239
+    </option>
+    <option value="320">
+      320
+    </option>
+    <option value="316">
+      316
+    </option>
+    <option value="624">
+      624
+    </option>
+    <option value="328">
+      328
+    </option>
+    <option value="344">
+      344
+    </option>
+    <option value="334">
+      334
+    </option>
+    <option value="340">
+      340
+    </option>
+    <option value="191">
+      191
+    </option>
+    <option value="332">
+      332
+    </option>
+    <option value="348">
+      348
+    </option>
+    <option value="360">
+      360
+    </option>
+    <option value="372">
+      372
+    </option>
+    <option value="376">
+      376
+    </option>
+    <option value="833">
+      833
+    </option>
+    <option value="356">
+      356
+    </option>
+    <option value="086">
+      086
+    </option>
+    <option value="368">
+      368
+    </option>
+    <option value="364">
+      364
+    </option>
+    <option value="352">
+      352
+    </option>
+    <option value="380">
+      380
+    </option>
+    <option value="832">
+      832
+    </option>
+    <option value="388">
+      388
+    </option>
+    <option value="400">
+      400
+    </option>
+    <option value="392">
+      392
+    </option>
+    <option value="396">
+      396
+    </option>
+    <option value="404">
+      404
+    </option>
+    <option value="417">
+      417
+    </option>
+    <option value="116">
+      116
+    </option>
+    <option value="174">
+      174
+    </option>
+    <option value="659">
+      659
+    </option>
+    <option value="408">
+      408
+    </option>
+    <option value="410">
+      410
+    </option>
+    <option value="414">
+      414
+    </option>
+    <option value="136">
+      136
+    </option>
+    <option value="398">
+      398
+    </option>
+    <option value="418">
+      418
+    </option>
+    <option value="422">
+      422
+    </option>
+    <option value="662">
+      662
+    </option>
+    <option value="438">
+      438
+    </option>
+    <option value="144">
+      144
+    </option>
+    <option value="430">
+      430
+    </option>
+    <option value="426">
+      426
+    </option>
+    <option value="440">
+      440
+    </option>
+    <option value="442">
+      442
+    </option>
+    <option value="428">
+      428
+    </option>
+    <option value="434">
+      434
+    </option>
+    <option value="504">
+      504
+    </option>
+    <option value="492">
+      492
+    </option>
+    <option value="498">
+      498
+    </option>
+    <option value="499">
+      499
+    </option>
+    <option value="663">
+      663
+    </option>
+    <option value="450">
+      450
+    </option>
+    <option value="584">
+      584
+    </option>
+    <option value="488">
+      488
+    </option>
+    <option value="807">
+      807
+    </option>
+    <option value="466">
+      466
+    </option>
+    <option value="496">
+      496
+    </option>
+    <option value="446">
+      446
+    </option>
+    <option value="580">
+      580
+    </option>
+    <option value="474">
+      474
+    </option>
+    <option value="478">
+      478
+    </option>
+    <option value="500">
+      500
+    </option>
+    <option value="470">
+      470
+    </option>
+    <option value="480">
+      480
+    </option>
+    <option value="462">
+      462
+    </option>
+    <option value="454">
+      454
+    </option>
+    <option value="484">
+      484
+    </option>
+    <option value="458">
+      458
+    </option>
+    <option value="508">
+      508
+    </option>
+    <option value="516">
+      516
+    </option>
+    <option value="540">
+      540
+    </option>
+    <option value="562">
+      562
+    </option>
+    <option value="574">
+      574
+    </option>
+    <option value="566">
+      566
+    </option>
+    <option value="548">
+      548
+    </option>
+    <option value="558">
+      558
+    </option>
+    <option value="528">
+      528
+    </option>
+    <option value="578">
+      578
+    </option>
+    <option value="524">
+      524
+    </option>
+    <option value="216">
+      216
+    </option>
+    <option value="520">
+      520
+    </option>
+    <option value="536">
+      536
+    </option>
+    <option value="570">
+      570
+    </option>
+    <option value="554">
+      554
+    </option>
+    <option value="512">
+      512
+    </option>
+    <option value="591">
+      591
+    </option>
+    <option value="582">
+      582
+    </option>
+    <option value="604">
+      604
+    </option>
+    <option value="258">
+      258
+    </option>
+    <option value="598">
+      598
+    </option>
+    <option value="608">
+      608
+    </option>
+    <option value="586">
+      586
+    </option>
+    <option value="616">
+      616
+    </option>
+    <option value="666">
+      666
+    </option>
+    <option value="612">
+      612
+    </option>
+    <option value="630">
+      630
+    </option>
+    <option value="275">
+      275
+    </option>
+    <option value="620">
+      620
+    </option>
+    <option value="849">
+      849
+    </option>
+    <option value="585">
+      585
+    </option>
+    <option value="600">
+      600
+    </option>
+    <option value="634">
+      634
+    </option>
+    <option value="638">
+      638
+    </option>
+    <option value="716">
+      716
+    </option>
+    <option value="642">
+      642
+    </option>
+    <option value="688">
+      688
+    </option>
+    <option value="643">
+      643
+    </option>
+    <option value="646">
+      646
+    </option>
+    <option value="682">
+      682
+    </option>
+    <option value="090">
+      090
+    </option>
+    <option value="690">
+      690
+    </option>
+    <option value="729">
+      729
+    </option>
+    <option value="752">
+      752
+    </option>
+    <option value="702">
+      702
+    </option>
+    <option value="654">
+      654
+    </option>
+    <option value="705">
+      705
+    </option>
+    <option value="744">
+      744
+    </option>
+    <option value="703">
+      703
+    </option>
+    <option value="694">
+      694
+    </option>
+    <option value="674">
+      674
+    </option>
+    <option value="686">
+      686
+    </option>
+    <option value="706">
+      706
+    </option>
+    <option value="740">
+      740
+    </option>
+    <option value="728">
+      728
+    </option>
+    <option value="678">
+      678
+    </option>
+    <option value="810">
+      810
+    </option>
+    <option value="222">
+      222
+    </option>
+    <option value="534">
+      534
+    </option>
+    <option value="760">
+      760
+    </option>
+    <option value="748">
+      748
+    </option>
+    <option value="796">
+      796
+    </option>
+    <option value="148">
+      148
+    </option>
+    <option value="260">
+      260
+    </option>
+    <option value="768">
+      768
+    </option>
+    <option value="764">
+      764
+    </option>
+    <option value="762">
+      762
+    </option>
+    <option value="772">
+      772
+    </option>
+    <option value="626">
+      626
+    </option>
+    <option value="795">
+      795
+    </option>
+    <option value="788">
+      788
+    </option>
+    <option value="776">
+      776
+    </option>
+    <option value="792">
+      792
+    </option>
+    <option value="780">
+      780
+    </option>
+    <option value="798">
+      798
+    </option>
+    <option value="158">
+      158
+    </option>
+    <option value="834">
+      834
+    </option>
+    <option value="804">
+      804
+    </option>
+    <option value="800">
+      800
+    </option>
+    <option value="581">
+      581
+    </option>
+    <option value="840">
+      840
+    </option>
+    <option value="858">
+      858
+    </option>
+    <option value="860">
+      860
+    </option>
+    <option value="336">
+      336
+    </option>
+    <option value="670">
+      670
+    </option>
+    <option value="862">
+      862
+    </option>
+    <option value="092">
+      092
+    </option>
+    <option value="850">
+      850
+    </option>
+    <option value="704">
+      704
+    </option>
+    <option value="876">
+      876
+    </option>
+    <option value="872">
+      872
+    </option>
+    <option value="882">
+      882
+    </option>
+    <option value="720">
+      720
+    </option>
+    <option value="887">
+      887
+    </option>
+    <option value="175">
+      175
+    </option>
+    <option value="710">
+      710
+    </option>
+    <option value="894">
+      894
+    </option>
+  </select>
+</div>
+
 <div class="form-group" data-attribute="cpf" data-datatype="cpf" data-basetype="string">
-  <label for="cpf221" class="formularium-label">
+  <label for="cpf254" class="formularium-label">
     Type cpf
   </label>
-  <input id="cpf221" type="text" name="cpf" class=" form-control" data-attribute="cpf" data-datatype="cpf" data-basetype="string" maxlength="1024" title="Type cpf" v-model="cpf"/>
+  <input id="cpf254" type="text" name="cpf" class=" form-control" data-attribute="cpf" data-datatype="cpf" data-basetype="string" maxlength="1024" title="Type cpf" v-model="cpf"/>
 </div>
 
 <div class="form-group" data-attribute="currency" data-datatype="currency" data-basetype="choice">
-  <label for="currency222" class="formularium-label">
+  <label for="currency255" class="formularium-label">
     Type currency
   </label>
-  <select id="currency222" name="currency" class=" custom-select" data-attribute="currency" data-datatype="currency" data-basetype="choice" title="Type currency">
+  <select id="currency255" name="currency" class=" custom-select" data-attribute="currency" data-datatype="currency" data-basetype="choice" title="Type currency">
     <option value="XUA">
       ADB Unit of Account
     </option>
@@ -2819,35 +4518,35 @@
 </div>
 
 <div class="form-group" data-attribute="date" data-datatype="date" data-basetype="date">
-  <label for="date223" class="formularium-label">
+  <label for="date256" class="formularium-label">
     Type date
   </label>
-  <input id="date223" type="date" name="date" class=" form-control" data-attribute="date" data-datatype="date" data-basetype="date" maxlength="1024" title="Type date" v-model="date"/>
+  <input id="date256" type="date" name="date" class=" form-control" data-attribute="date" data-datatype="date" data-basetype="date" maxlength="1024" title="Type date" v-model="date"/>
 </div>
 
 <div class="form-group" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime">
-  <label for="datetime224" class="formularium-label">
+  <label for="datetime257" class="formularium-label">
     Type datetime
   </label>
-  <input id="datetime224" type="datetime" name="datetime" class=" form-control" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" maxlength="1024" title="Type datetime" v-model="datetime"/>
+  <input id="datetime257" type="datetime" name="datetime" class=" form-control" data-attribute="datetime" data-datatype="datetime" data-basetype="datetime" maxlength="1024" title="Type datetime" v-model="datetime"/>
 </div>
 
 <div class="form-group" data-attribute="domain" data-datatype="domain" data-basetype="string">
-  <label for="domain225" class="formularium-label">
+  <label for="domain258" class="formularium-label">
     Type domain
   </label>
-  <input id="domain225" type="text" name="domain" class=" form-control" data-attribute="domain" data-datatype="domain" data-basetype="string" maxlength="1024" title="Type domain" v-model="domain"/>
+  <input id="domain258" type="text" name="domain" class=" form-control" data-attribute="domain" data-datatype="domain" data-basetype="string" maxlength="1024" title="Type domain" v-model="domain"/>
 </div>
 
 <div class="form-group" data-attribute="email" data-datatype="email" data-basetype="string">
-  <label for="email226" class="formularium-label">
+  <label for="email259" class="formularium-label">
     Type email
   </label>
-  <input id="email226" type="email" name="email" class=" form-control" data-attribute="email" data-datatype="email" data-basetype="string" maxlength="1024" title="Type email" v-model="email"/>
+  <input id="email259" type="email" name="email" class=" form-control" data-attribute="email" data-datatype="email" data-basetype="string" maxlength="1024" title="Type email" v-model="email"/>
 </div>
 
 <div class="form-group" data-attribute="file" data-datatype="file" data-basetype="file">
-  <label for="file227" class="formularium-label">
+  <label for="file260" class="formularium-label">
     Type file
   </label>
   <div class="input-group mb-3">
@@ -2857,7 +4556,7 @@
       </span>
     </div>
     <div class="custom-file">
-      <input id="file227" class="formularium-file-upload-button custom-file-input" type="file" data-attribute="file" data-datatype="file" data-basetype="file" title="Type file" data-max-size="" capture="environment" v-on:change="changedFile(file, $event)"/>
+      <input id="file260" class="formularium-file-upload-button custom-file-input" type="file" data-attribute="file" data-datatype="file" data-basetype="file" title="Type file" data-max-size="" capture="environment" v-on:change="changedFile(file, $event)"/>
       <label class="custom-file-label formularium-file-name">
         Choose file
       </label>
@@ -2866,61 +4565,61 @@
 </div>
 
 <div class="form-group" data-attribute="float" data-datatype="float" data-basetype="number">
-  <label for="float228" class="formularium-label">
+  <label for="float261" class="formularium-label">
     Type float
   </label>
-  <input id="float228" type="number" name="float" class=" form-control" data-attribute="float" data-datatype="float" data-basetype="number" title="Type float" v-model="float"/>
+  <input id="float261" type="number" name="float" class=" form-control" data-attribute="float" data-datatype="float" data-basetype="number" title="Type float" v-model="float"/>
 </div>
 
 <div class="form-group" data-attribute="html" data-datatype="html" data-basetype="text">
-  <label for="html229" class="formularium-label">
+  <label for="html262" class="formularium-label">
     Type html
   </label>
-  <textarea id="html229" type="text" name="html" class="form-control" data-attribute="html" data-datatype="html" data-basetype="text" value="" maxlength="1024000" title="Type html" v-model="html">
+  <textarea id="html262" type="text" name="html" class="form-control" data-attribute="html" data-datatype="html" data-basetype="text" value="" maxlength="1024000" title="Type html" v-model="html">
   </textarea>
 </div>
 
 <div class="form-group" data-attribute="integer" data-datatype="integer" data-basetype="number">
-  <label for="integer230" class="formularium-label">
+  <label for="integer263" class="formularium-label">
     Type integer
   </label>
-  <input id="integer230" type="number" name="integer" class=" form-control" data-attribute="integer" data-datatype="integer" data-basetype="number" title="Type integer" min="-2147483648" max="2147483647" v-model="integer"/>
+  <input id="integer263" type="number" name="integer" class=" form-control" data-attribute="integer" data-datatype="integer" data-basetype="number" title="Type integer" min="-2147483648" max="2147483647" v-model="integer"/>
 </div>
 
 <div class="form-group" data-attribute="ip" data-datatype="ipv4" data-basetype="string">
-  <label for="ip231" class="formularium-label">
+  <label for="ip264" class="formularium-label">
     Type ip
   </label>
-  <input id="ip231" type="text" name="ip" class=" form-control" data-attribute="ip" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ip" v-model="ip"/>
+  <input id="ip264" type="text" name="ip" class=" form-control" data-attribute="ip" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ip" v-model="ip"/>
 </div>
 
 <div class="form-group" data-attribute="ipv4" data-datatype="ipv4" data-basetype="string">
-  <label for="ipv4232" class="formularium-label">
+  <label for="ipv4265" class="formularium-label">
     Type ipv4
   </label>
-  <input id="ipv4232" type="text" name="ipv4" class=" form-control" data-attribute="ipv4" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ipv4" v-model="ipv4"/>
+  <input id="ipv4265" type="text" name="ipv4" class=" form-control" data-attribute="ipv4" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ipv4" v-model="ipv4"/>
 </div>
 
 <div class="form-group" data-attribute="ipv6" data-datatype="ipv4" data-basetype="string">
-  <label for="ipv6233" class="formularium-label">
+  <label for="ipv6266" class="formularium-label">
     Type ipv6
   </label>
-  <input id="ipv6233" type="text" name="ipv6" class=" form-control" data-attribute="ipv6" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ipv6" v-model="ipv6"/>
+  <input id="ipv6266" type="text" name="ipv6" class=" form-control" data-attribute="ipv6" data-datatype="ipv4" data-basetype="string" maxlength="1024" title="Type ipv6" v-model="ipv6"/>
 </div>
 
 <div class="form-group" data-attribute="json" data-datatype="json" data-basetype="text">
-  <label for="json234" class="formularium-label">
+  <label for="json267" class="formularium-label">
     Type json
   </label>
-  <textarea id="json234" type="text" name="json" class="form-control" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024000" title="Type json" v-model="json">
+  <textarea id="json267" type="text" name="json" class="form-control" data-attribute="json" data-datatype="json" data-basetype="text" value="{}" maxlength="1024000" title="Type json" v-model="json">
   </textarea>
 </div>
 
 <div class="form-group" data-attribute="language" data-datatype="language" data-basetype="choice">
-  <label for="language235" class="formularium-label">
+  <label for="language268" class="formularium-label">
     Type language
   </label>
-  <select id="language235" name="language" class=" custom-select" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language">
+  <select id="language268" name="language" class=" custom-select" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language">
     <option value="aa">
       Afaraf
     </option>
@@ -3535,39 +5234,46 @@
 </div>
 
 <div class="form-group" data-attribute="phone" data-datatype="phone" data-basetype="string">
-  <label for="phone236" class="formularium-label">
+  <label for="phone269" class="formularium-label">
     Type phone
   </label>
-  <input id="phone236" type="tel" name="phone" class=" form-control" data-attribute="phone" data-datatype="phone" data-basetype="string" maxlength="1024" title="Type phone" v-model="phone"/>
+  <input id="phone269" type="tel" name="phone" class=" form-control" data-attribute="phone" data-datatype="phone" data-basetype="string" maxlength="1024" title="Type phone" v-model="phone"/>
 </div>
 
 <div class="form-group" data-attribute="string" data-datatype="string" data-basetype="string">
-  <label for="string237" class="formularium-label">
+  <label for="string270" class="formularium-label">
     Type string
   </label>
-  <input id="string237" type="text" name="string" class=" form-control" data-attribute="string" data-datatype="string" data-basetype="string" maxlength="1024" title="Type string" v-model="string"/>
+  <input id="string270" type="text" name="string" class=" form-control" data-attribute="string" data-datatype="string" data-basetype="string" maxlength="1024" title="Type string" v-model="string"/>
 </div>
 
 <div class="form-group" data-attribute="text" data-datatype="text" data-basetype="string">
-  <label for="text238" class="formularium-label">
+  <label for="text271" class="formularium-label">
     Type text
   </label>
-  <textarea id="text238" type="text" name="text" class="form-control" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024000" title="Type text" v-model="text">
+  <textarea id="text271" type="text" name="text" class="form-control" data-attribute="text" data-datatype="text" data-basetype="string" value="" maxlength="1024000" title="Type text" v-model="text">
   </textarea>
 </div>
 
 <div class="form-group" data-attribute="time" data-datatype="time" data-basetype="time">
-  <label for="time239" class="formularium-label">
+  <label for="time272" class="formularium-label">
     Type time
   </label>
-  <input id="time239" type="time" name="time" class=" form-control" data-attribute="time" data-datatype="time" data-basetype="time" value="" maxlength="1024" title="Type time"/>
+  <input id="time272" type="time" name="time" class=" form-control" data-attribute="time" data-datatype="time" data-basetype="time" value="" maxlength="1024" title="Type time"/>
+</div>
+
+<div class="form-group" data-attribute="timestamp" data-datatype="timestamp" data-basetype="datetime">
+  <label for="timestamp273" class="formularium-label">
+    Type timestamp
+  </label>
+  <input id="timestamp273" type="datetime" name="timestamp" class=" form-control" data-attribute="timestamp" data-datatype="timestamp" data-basetype="datetime" maxlength="1024" title="Type timestamp" v-model="timestamp"/>
 </div>
 
 <div class="form-group" data-attribute="timezone" data-datatype="timezone" data-basetype="choice">
-  <label for="timezone240" class="formularium-label">
+  <label for="timezone274" class="formularium-label">
     Type timezone
   </label>
-  <select id="timezone240" name="timezone" class=" custom-select" data-attribute="timezone" data-datatype="timezone" data-basetype="choice" title="Type timezone">
+  <select id="timezone274" name="timezone" class=" custom-select" data-attribute="timezone" data-datatype="timezone" data-basetype="choice" title="Type timezone">
     <option value="Africa/Abidjan">
       Africa/Abidjan
     </option>
@@ -4375,6 +6081,9 @@
     <option value="Asia/Qatar">
       Asia/Qatar
     </option>
+    <option value="Asia/Qostanay">
+      Asia/Qostanay
+    </option>
     <option value="Asia/Qyzylorda">
       Asia/Qyzylorda
     </option>
@@ -4847,31 +6556,38 @@
 </div>
 
 <div class="form-group" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer">
-  <label for="uinteger241" class="formularium-label">
+  <label for="uinteger275" class="formularium-label">
     Type uinteger
   </label>
-  <input id="uinteger241" type="number" name="uinteger" class=" form-control" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" title="Type uinteger" min="0" max="4294967296" v-model="uinteger"/>
+  <input id="uinteger275" type="number" name="uinteger" class=" form-control" data-attribute="uinteger" data-datatype="uinteger" data-basetype="integer" title="Type uinteger" min="0" max="4294967296" v-model="uinteger"/>
 </div>
 
 <div class="form-group" data-attribute="url" data-datatype="url" data-basetype="url">
-  <label for="url242" class="formularium-label">
+  <label for="url276" class="formularium-label">
     Type url
   </label>
-  <input id="url242" type="url" name="url" class=" form-control" data-attribute="url" data-datatype="url" data-basetype="url" maxlength="1024" title="Type url" v-model="url"/>
+  <input id="url276" type="url" name="url" class=" form-control" data-attribute="url" data-datatype="url" data-basetype="url" maxlength="1024" title="Type url" v-model="url"/>
 </div>
 
 <div class="form-group" data-attribute="usmall" data-datatype="usmall" data-basetype="integer">
-  <label for="usmall243" class="formularium-label">
+  <label for="usmall277" class="formularium-label">
     Type usmall
   </label>
-  <input id="usmall243" type="number" name="usmall" class=" form-control" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" title="Type usmall" min="0" max="65536" v-model="usmall"/>
+  <input id="usmall277" type="number" name="usmall" class=" form-control" data-attribute="usmall" data-datatype="usmall" data-basetype="integer" title="Type usmall" min="0" max="65536" v-model="usmall"/>
 </div>
 
 <div class="form-group" data-attribute="uuid" data-datatype="uuid" data-basetype="string">
-  <label for="uuid244" class="formularium-label">
+  <label for="uuid278" class="formularium-label">
     Type uuid
   </label>
-  <input id="uuid244" type="text" name="uuid" class=" form-control" data-attribute="uuid" data-datatype="uuid" data-basetype="string" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" v-model="uuid"/>
+  <input id="uuid278" type="text" name="uuid" class=" form-control" data-attribute="uuid" data-datatype="uuid" data-basetype="string" maxlength="1024" title="Type uuid" pattern="^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$" v-model="uuid"/>
+</div>
+
+<div class="form-group" data-attribute="year" data-datatype="year" data-basetype="integer">
+  <label for="year279" class="formularium-label">
+    Type year
+  </label>
+  <input id="year279" type="number" name="year" class=" form-control" data-attribute="year" data-datatype="year" data-basetype="integer" title="Type year" min="-2147483648" max="2147483647" v-model="year"/>
 </div>
 
 
@@ -4880,7 +6596,7 @@
     var app = new Vue({
     el: '#vueapp5',
     data: function () {
-        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"cnpj":"","color":"","constant":"","countrycode":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":""};
+        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
         methods: {
         changedFile(name, event) {
