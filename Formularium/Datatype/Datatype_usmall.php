@@ -19,6 +19,6 @@ class Datatype_usmall extends Datatype_integer
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "smallInteger($name)->unsigned()";
+        return "smallInteger(\"$name\")->unsigned()";
     }
 }

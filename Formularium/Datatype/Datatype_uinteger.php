@@ -19,6 +19,6 @@ class Datatype_uinteger extends \Formularium\Datatype\Datatype_integer
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "integer($name)->unsigned()";
+        return "integer(\"$name\")->unsigned()";
     }
 }
