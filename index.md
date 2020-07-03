@@ -14,7 +14,7 @@ Check:
 
 - [getting started: how to declare your models](model.md)
 - [base validators available for all datatypes](basevalidator.md)
-- [base extensions available for all datatypes](baseextension.md)
+- [base renderable available for all datatypes](baseextension.md)
 - [how to create your own datatype](datatype.md)
 - [how to add support to your own frontend framework](frontend.md)
 
@@ -47,7 +47,7 @@ $modelData = [
                     'value' => 30,
                 ],
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable::LABEL => 'This is some string',
                 Renderable::COMMENT => 'Some text explaining this field',
                 Renderable::PLACEHOLDER => "Type here"
@@ -63,7 +63,7 @@ $modelData = [
                     'value' => 40,
                 ],
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable_number::STEP => 2,
                 Renderable::LABEL => 'Some integer',
                 Renderable::PLACEHOLDER => "Type here"

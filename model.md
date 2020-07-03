@@ -19,13 +19,13 @@ $model = Model::create(
     [ // the fields in this object
         Field::create(
             'myString', // the first field name.
-            Datatype::factory('string'), // the field datatype. maps to Datatype_string in this case.
+            DatatypeFactory::factory('string'), // the field datatype. maps to Datatype_string in this case.
             [ // the validators to be applied. Validators are used by Datatypes, although Renderable can use them for frontend validation too.
-                Validator::class('MinLength') => [
+                ValidatorFactory::class('MinLength') => [
                     'value' => true // so, make this field required.
                 ]
             ],
-            [ // extensions are used only by the frontend Renderable/Framework classes.
+            [ // renderable are used only by the frontend Renderable/Framework classes.
                 Renderable::LABEL => 'This is some string', // so, let's add a label describing the field
             ]
         ]
@@ -50,7 +50,7 @@ $modelData = [
                     'value' => 5 // so, make this field at least 5 characters long.
                 ]
             ],
-            'extensions' => [ // extensions are used only by the frontend Renderable/Framework classes.
+            'renderable' => [ // renderable are used only by the frontend Renderable/Framework classes.
                 Renderable::LABEL => 'This is some string', // so, let's add a label describing the field
             ]
         ]
@@ -73,7 +73,7 @@ $model = Model::fromStruct($modelData); // use a factory method to convert the s
                     "value": 5
                 ]
             ],
-            "extensions" => [
+            "renderable" => [
                 "label" => "This is some string",
             ]
         ]
