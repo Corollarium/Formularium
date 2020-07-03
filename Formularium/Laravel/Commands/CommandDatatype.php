@@ -2,7 +2,7 @@
 
 namespace Formularium\Laravel\Commands;
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\Exception;
 use Illuminate\Console\Command;
 
@@ -45,7 +45,7 @@ class CommandDatatype extends Command
      */
     public function handle()
     {
-        $code = Datatype::generate(
+        $code = DatatypeFactory::generate(
             // @phpstan-ignore-next-line
             (string)$this->argument('name'),
             // @phpstan-ignore-next-line
@@ -55,7 +55,7 @@ class CommandDatatype extends Command
         );
 
         try {
-            $retval = Datatype::generateFile(
+            $retval = DatatypeFactory::generateFile(
                 $code,
                 // @phpstan-ignore-next-line
                 $this->option('path') ? (string)$this->option('path') : base_path('app/Datatypes'),

@@ -55,7 +55,7 @@ final class Formularium
         $datatypes = [];
 
         foreach (self::$datatypeNamespaces as $datatypeNamespace) {
-            /** @var string[] $classesInNamespace */
+            /** @var array<class-string> $classesInNamespace */
             $classesInNamespace = ClassFinder::getClassesInNamespace($datatypeNamespace);
 
             foreach ($classesInNamespace as $class) {
@@ -90,7 +90,7 @@ final class Formularium
         $validators = [];
 
         foreach (self::$validatorNamespaces as $validatorNamespace) {
-            /** @var string[] $classesInNamespace */
+            /** @var array<class-string> $classesInNamespace */
             $classesInNamespace = ClassFinder::getClassesInNamespace($validatorNamespace);
 
             foreach ($classesInNamespace as $class) {
@@ -108,30 +108,6 @@ final class Formularium
             }
         }
 
-        return $validators;
-    }
-
-    /**
-     * Returns a list of datatype class names
-     *
-     * @return array
-     */
-    public static function getValidatorNamesOld(): array
-    {
-        $validators = [];
-        foreach (self::$validatorDirectories as $dir) {
-            $files = scandir($dir);
-            if (!$files) {
-                throw new Exception('Validators not found');
-            }
-            $v = array_map(
-                function ($x) {
-                    return str_replace('.php', '', $x);
-                },
-                array_diff($files, array('.', '..'))
-            );
-            $validators = array_merge($validators, $v);
-        }
         return $validators;
     }
 
