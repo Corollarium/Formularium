@@ -2,11 +2,10 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Field;
 use Formularium\Model;
 
 use Formularium\Exception\ValidatorException;
-use Respect\Validation\Validator;
+use Respect\Validation\Validator as Respect;
 
 class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
 {
@@ -24,7 +23,7 @@ class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
 
     public function validate($value, Model $model = null)
     {
-        if ($value === '' || Validator::cnpj()->validate($value)) {
+        if ($value === '' || Respect::cnpj()->validate($value)) {
             return $value;
         }
         throw new ValidatorException('Invalid CNPJ');

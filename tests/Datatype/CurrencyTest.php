@@ -13,7 +13,7 @@ class DatatypeCurrency_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('currency');
+        return \Formularium\DatatypeFactory::factory('currency');
     }
 
     /**

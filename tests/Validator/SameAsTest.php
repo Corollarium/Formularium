@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\Validator;
-use Formularium\Validator\NotIn;
+use Formularium\ValidatorFactory;
+use Formularium\Validator\SameAs;
 use PHPUnit\Framework\TestCase;
 
 class SameAsTest extends TestCase
@@ -12,10 +12,10 @@ class SameAsTest extends TestCase
     public function testNoModel()
     {
         $this->expectException(ValidatorException::class);
-        $v = Validator::class('SameAs')::validate(
+        $v = ValidatorFactory::class('SameAs')::validate(
             "b",
             [],
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             null
         );
     }

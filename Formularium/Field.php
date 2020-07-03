@@ -49,7 +49,7 @@ class Field
         if ($datatype instanceof Datatype) {
             $this->datatype = $datatype;
         } else {
-            $this->datatype = Datatype::factory($datatype);
+            $this->datatype = DatatypeFactory::factory($datatype);
         }
         $this->renderable = $renderable;
         $this->validators = $validators;

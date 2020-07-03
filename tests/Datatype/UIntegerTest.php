@@ -13,7 +13,7 @@ class DatatypeUInteger_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('uinteger');
+        return \Formularium\DatatypeFactory::factory('uinteger');
     }
 
     /**

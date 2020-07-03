@@ -33,7 +33,7 @@ function kitchenSink($frameworkName, string $templateName)
     // make a default for all types
     foreach ($datatypes as $d) {
         try {
-            Datatype::factory($d);
+            DatatypeFactory::factory($d);
             $fields[$d] = [
                 'datatype' => $d,
                 'renderable' => [

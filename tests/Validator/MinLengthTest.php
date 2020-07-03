@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Validator\MinLength;
 use PHPUnit\Framework\TestCase;
 
@@ -25,10 +25,10 @@ class MinLengthTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = Validator::class('MinLength')::validate(
+        $v = ValidatorFactory::class('MinLength')::validate(
             'asdfasdfasdf',
             $model->getField('someString')->getValidator(MinLength::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('asdfasdfasdf', $v);
@@ -51,10 +51,10 @@ class MinLengthTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $this->expectException(ValidatorException::class);
-        $v = Validator::class('MinLength')::validate(
+        $v = ValidatorFactory::class('MinLength')::validate(
             'x',
             $model->getField('someString')->getValidator(MinLength::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
     }

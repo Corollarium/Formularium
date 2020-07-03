@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Validator\Equals;
 use PHPUnit\Framework\TestCase;
 
@@ -26,10 +26,10 @@ class EqualsTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $expected = "b";
-        $v = Validator::class('Equals')::validate(
+        $v = ValidatorFactory::class('Equals')::validate(
             $expected,
             $model->getField('someString')->getValidator(Equals::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals($expected, $v);
@@ -52,10 +52,10 @@ class EqualsTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $this->expectException(ValidatorException::class);
-        $v = Validator::class('Equals')::validate(
+        $v = ValidatorFactory::class('Equals')::validate(
             "c",
             $model->getField('someString')->getValidator(Equals::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
     }

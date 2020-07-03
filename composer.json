@@ -19,7 +19,8 @@
         "fzaninotto/faker": "^1.9",
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.12",
-        "thecodingmachine/safe": "^1.1"
+        "thecodingmachine/safe": "^1.1",
+        "haydenpierce/class-finder": "^0.4.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^7",

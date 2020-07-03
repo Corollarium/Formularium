@@ -12,7 +12,7 @@ class DatatypeTime_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('time');
+        return \Formularium\DatatypeFactory::factory('time');
     }
 
     /**

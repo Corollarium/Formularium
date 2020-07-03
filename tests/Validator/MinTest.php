@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Validator\Min;
 use PHPUnit\Framework\TestCase;
 
@@ -25,10 +25,10 @@ class MinTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = Validator::class('Min')::validate(
+        $v = ValidatorFactory::class('Min')::validate(
             6,
             $model->getField('someNumber')->getValidator(Min::class),
-            Datatype::factory('integer'),
+            DatatypeFactory::factory('integer'),
             $model
         );
         $this->assertEquals(6, $v);
@@ -51,10 +51,10 @@ class MinTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $this->expectException(ValidatorException::class);
-        $v = Validator::class('Min')::validate(
+        $v = ValidatorFactory::class('Min')::validate(
             3,
             $model->getField('someNumber')->getValidator(Min::class),
-            Datatype::factory('integer'),
+            DatatypeFactory::factory('integer'),
             $model
         );
     }

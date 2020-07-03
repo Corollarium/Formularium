@@ -2,7 +2,7 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
@@ -18,10 +18,10 @@ class Datatype_json extends Datatype_text
     public function getRandom(array $params = [])
     {
         $arr = [
-            'version' => Datatype::factory('integer')->getRandom(),
+            'version' => DatatypeFactory::factory('integer')->getRandom(),
             'data' => [
-                'string' => Datatype::factory('string')->getRandom(),
-                'float' => Datatype::factory('float')->getRandom(),
+                'string' => DatatypeFactory::factory('string')->getRandom(),
+                'float' => DatatypeFactory::factory('float')->getRandom(),
             ]
         ];
         return json_encode($arr);

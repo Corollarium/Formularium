@@ -12,7 +12,7 @@ class Datatypeipv6_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('ipv6');
+        return \Formularium\DatatypeFactory::factory('ipv6');
     }
 
     /**

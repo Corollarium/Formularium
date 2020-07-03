@@ -12,7 +12,7 @@ class DatatypeAlphanumdash_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('alphanumdash');
+        return \Formularium\DatatypeFactory::factory('alphanumdash');
     }
 
     /**

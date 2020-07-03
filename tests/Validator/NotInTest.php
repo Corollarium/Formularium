@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Validator\NotIn;
 use PHPUnit\Framework\TestCase;
 
@@ -26,10 +26,10 @@ class NotInTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $expected = "c";
-        $v = Validator::class('NotIn')::validate(
+        $v = ValidatorFactory::class('NotIn')::validate(
             $expected,
             $model->getField('someString')->getValidator(NotIn::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals($expected, $v);
@@ -52,10 +52,10 @@ class NotInTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $this->expectException(ValidatorException::class);
-        $v = Validator::class('NotIn')::validate(
+        $v = ValidatorFactory::class('NotIn')::validate(
             "b",
             $model->getField('someString')->getValidator(NotIn::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
     }

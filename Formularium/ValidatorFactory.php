@@ -10,7 +10,7 @@ use Formularium\Exception\ValidatorException;
  * Utility class to validate data in composition to the validation in
  * datatypes.
  */
-final class Validator
+final class ValidatorFactory
 {
     public static function class(string $validatorName): string
     {
@@ -93,7 +93,7 @@ class ${name}_TestCase extends TestCase
 
     public function testFilled()
     {
-        \$validator = \\Formularium\\Validator::factory('$name');
+        \$validator = \\Formularium\\ValidatorFactory::factory('$name');
         \$modelData = [
             'name' => 'TestModel',
             'fields' => [

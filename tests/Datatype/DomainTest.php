@@ -12,7 +12,7 @@ class DatatypeDomain_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('domain');
+        return \Formularium\DatatypeFactory::factory('domain');
     }
 
     /**

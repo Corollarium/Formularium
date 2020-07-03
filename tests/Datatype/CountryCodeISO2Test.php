@@ -13,7 +13,7 @@ class DatatypeCountryCodeISO2_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('countrycodeISO2');
+        return \Formularium\DatatypeFactory::factory('countrycodeISO2');
     }
 
     /**

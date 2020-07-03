@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Model;
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Validator\Filled;
 use PHPUnit\Framework\TestCase;
 
@@ -22,10 +22,10 @@ class ValidatorFilledTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = Validator::class('Filled')::validate(
+        $v = ValidatorFactory::class('Filled')::validate(
             'x',
             $model->getField('someString')->getValidator(Filled::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('x', $v);
@@ -45,10 +45,10 @@ class ValidatorFilledTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v =  Validator::class('Filled')::validate(
+        $v =  ValidatorFactory::class('Filled')::validate(
             'x',
             $model->getField('someString')->getValidator(Filled::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('x', $v);

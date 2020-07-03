@@ -192,7 +192,7 @@ class Model
                 }
 
                 try {
-                    $validate[$name] = Validator::class($validatorName)::validate(
+                    $validate[$name] = ValidatorFactory::class($validatorName)::validate(
                         $validate[$name],
                         $options,
                         $field->getDatatype(),
@@ -220,7 +220,7 @@ class Model
                     }
 
                     try {
-                        $v = Validator::class($validatorName)::validate(
+                        $v = ValidatorFactory::class($validatorName)::validate(
                             null,
                             $options,
                             $field->getDatatype(),

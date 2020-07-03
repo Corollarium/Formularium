@@ -14,7 +14,7 @@ class DatatypeString_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType($framework = ''): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('string', $framework);
+        return \Formularium\DatatypeFactory::factory('string', $framework);
     }
 
     /**

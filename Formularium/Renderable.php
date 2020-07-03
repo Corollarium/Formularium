@@ -25,7 +25,7 @@ abstract class Renderable implements RenderableParameter
             $datatypeName = $datatype->getName();
         } else {
             $datatypeName = $datatype;
-            $datatype = Datatype::factory($datatypeName);
+            $datatype = DatatypeFactory::factory($datatypeName);
         }
 
         $frameworkClassname = get_class($framework);

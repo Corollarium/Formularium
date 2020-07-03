@@ -6,7 +6,7 @@ use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
-use Respect\Validation\Validator;
+use Respect\Validation\Validator as Respect;
 
 class Datatype_url extends \Formularium\Datatype
 {
@@ -68,11 +68,11 @@ class Datatype_url extends \Formularium\Datatype
             $parsed['path'] = str_replace('%2F', '/', urlencode(utf8_encode($parsed['path'])));
         }
     
-        $validurl = Validator::arrayVal()
-            ->key('scheme', Validator::startsWith('http'))
-            ->key('host', Validator::domain(false))
-            // not required ->key('path',   Validator::string())
-            // not required ->key('query',  Validator::notEmpty())
+        $validurl = Respect::arrayVal()
+            ->key('scheme', Respect::startsWith('http'))
+            ->key('host', Respect::domain(false))
+            // not required ->key('path',   Respect::string())
+            // not required ->key('query',  Respect::notEmpty())
             ->validate($parsed);
         if (!$validurl) {
             throw new ValidatorException('Invalid url');

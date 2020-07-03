@@ -12,7 +12,7 @@ class DatatypeHTML_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('html');
+        return \Formularium\DatatypeFactory::factory('html');
     }
 
     /**

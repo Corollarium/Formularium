@@ -13,7 +13,7 @@ class DatatypeUSmall_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('usmall');
+        return \Formularium\DatatypeFactory::factory('usmall');
     }
 
     /**

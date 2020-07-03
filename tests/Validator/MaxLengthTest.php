@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Validator\MaxLength;
 use PHPUnit\Framework\TestCase;
 
@@ -25,10 +25,10 @@ class MaxLengthTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $v = Validator::class('MaxLength')::validate(
+        $v = ValidatorFactory::class('MaxLength')::validate(
             'asdf',
             $model->getField('someString')->getValidator(MaxLength::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('asdf', $v);
@@ -51,10 +51,10 @@ class MaxLengthTest extends TestCase
         ];
         $model = Model::fromStruct($modelData);
         $this->expectException(ValidatorException::class);
-        $v = Validator::class('MaxLength')::validate(
+        $v = ValidatorFactory::class('MaxLength')::validate(
             'asdfasdfasdf',
             $model->getField('someString')->getValidator(MaxLength::class),
-            Datatype::factory('string'),
+            DatatypeFactory::factory('string'),
             $model
         );
     }

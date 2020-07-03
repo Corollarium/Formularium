@@ -20,11 +20,11 @@ $namespace = $options['namespace'] ?? 'Formularium\Datatype';
 $path = $options['path'] ?? "Formularium/Validator/" ;
 $testpath = $options['testpath'] ?? "tests/Validator" ;
 
-$code = \Formularium\Validator::generate(
+$code = \Formularium\ValidatorFactory::generate(
     $validator,
     $namespace
 );
-$retval = \Formularium\Validator::generateFile(
+$retval = \Formularium\ValidatorFactory::generateFile(
     $code,
     $path,
     $testpath

@@ -5,7 +5,7 @@ namespace Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
-use Respect\Validation\Validator;
+use Respect\Validation\Validator as Respect;
 
 class Datatype_email extends Datatype_string
 {
@@ -24,7 +24,7 @@ class Datatype_email extends Datatype_string
 
     public function validate($value, Model $model = null)
     {
-        if ($value === '' || Validator::email()->validate($value)) {
+        if ($value === '' || Respect::email()->validate($value)) {
             return $value;
         }
         throw new ValidatorException('Invalid email: ' . $value);

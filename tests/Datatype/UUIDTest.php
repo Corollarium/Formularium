@@ -12,7 +12,7 @@ class DatatypeUUID_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('uuid');
+        return \Formularium\DatatypeFactory::factory('uuid');
     }
 
     /**

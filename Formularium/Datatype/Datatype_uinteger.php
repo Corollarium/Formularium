@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Datatype;
 
@@ -10,5 +10,15 @@ class Datatype_uinteger extends \Formularium\Datatype\Datatype_integer
     public function __construct(string $typename = 'uinteger', string $basetype = 'integer')
     {
         parent::__construct($typename, $basetype);
+    }
+
+    public function getSQLType(string $database = '', array $options = []): string
+    {
+        return 'INT UNSIGNED';
+    }
+
+    public function getLaravelSQLType(string $name, array $options = []): string
+    {
+        return "integer($name)->unsigned()";
     }
 }

@@ -13,7 +13,7 @@ class DatatypeLanguage_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('language');
+        return \Formularium\DatatypeFactory::factory('language');
     }
 
     /**

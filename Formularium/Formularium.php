@@ -3,6 +3,7 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
+use HaydenPierce\ClassFinder\ClassFinder;
 
 /**
  * Abstract base class for frameworks. Each framework should have a class inheriting
@@ -14,16 +15,16 @@ final class Formularium
      *
      * @var string[]
      */
-    private static $validatorDirectories = [
-        __DIR__ . '/Validator/'
+    private static $validatorNamespaces = [
+        'Formularium\\Validator'
     ];
 
     /**
      *
      * @var string[]
      */
-    private static $datatypeDirectories = [
-        __DIR__ . '/Datatype/'
+    private static $datatypeNamespaces = [
+        'Formularium\\Datatype'
     ];
 
     /**
@@ -34,48 +35,88 @@ final class Formularium
         // empty
     }
 
-    public static function appendDatatypeDirectory(string $dir): void
+    public static function appendDatatypeNamespace(string $ns): void
     {
-        self::$datatypeDirectories[] = $dir;
+        self::$datatypeNamespaces[] = $ns;
     }
 
-    public static function appendValidatorDirectory(string $dir): void
+    public static function appendValidatorNamespace(string $dir): void
     {
-        self::$validatorDirectories[] = $dir;
+        self::$validatorNamespaces[] = $dir;
     }
 
     /**
-     * Returns a list of datatype class names
+     * Returns a list class name => datatype.
      *
-     * @return array
+     * @return array<string, string>
      */
     public static function getDatatypeNames(): array
     {
         $datatypes = [];
-        foreach (self::$datatypeDirectories as $dir) {
-            $files = scandir($dir);
-            if (!$files) {
-                throw new Exception('Datatypes not found');
+
+        foreach (self::$datatypeNamespaces as $datatypeNamespace) {
+            /** @var string[] $classesInNamespace */
+            $classesInNamespace = ClassFinder::getClassesInNamespace($datatypeNamespace);
+
+            foreach ($classesInNamespace as $class) {
+                $reflection = new \ReflectionClass($class);
+                if (!$reflection->isInstantiable()) {
+                    continue;
+                }
+
+                if (!is_a($class, Datatype::class, true)) {
+                    continue;
+                }
+
+                /**
+                 * @var Datatype $d
+                 */
+                $d = new $class();
+
+                $datatypes[$class] = $d->getName();
             }
-            $d = array_map(
-                function ($x) {
-                    return str_replace('Datatype_', '', str_replace('.php', '', $x));
-                },
-                array_diff($files, array('.', '..'))
-            );
-    
-            $datatypes = array_merge($datatypes, $d);
         }
 
         return $datatypes;
     }
 
     /**
+     * Returns a list classname => validator
+     *
+     * @return array<string, string>
+     */
+    public static function getValidatorNames(): array
+    {
+        $validators = [];
+
+        foreach (self::$validatorNamespaces as $validatorNamespace) {
+            /** @var string[] $classesInNamespace */
+            $classesInNamespace = ClassFinder::getClassesInNamespace($validatorNamespace);
+
+            foreach ($classesInNamespace as $class) {
+                $reflection = new \ReflectionClass($class);
+                if (!$reflection->isInstantiable()) {
+                    continue;
+                }
+
+                if (!is_a($class, ValidatorInterface::class, true)) {
+                    continue;
+                }
+
+                $name = mb_substr($class, strrpos($class, '\\') + 1);
+                $validators[$class] = $name;
+            }
+        }
+
+        return $validators;
+    }
+
+    /**
      * Returns a list of datatype class names
      *
      * @return array
      */
-    public static function getValidatorNames(): array
+    public static function getValidatorNamesOld(): array
     {
         $validators = [];
         foreach (self::$validatorDirectories as $dir) {
@@ -98,9 +139,7 @@ final class Formularium
     {
         $classes = static::getDatatypeNames();
         $graphql = [];
-        foreach ($classes as $name) {
-            $v = Datatype::factory($name);
-            $className = get_class($v);
+        foreach ($classes as $className => $name) {
             $graphql[] = "scalar $name @scalar(class: \"{$className}\")";
         }
 
@@ -115,8 +154,8 @@ final class Formularium
     {
         $classes = static::getValidatorNames();
         $graphql = [];
-        foreach ($classes as $name) {
-            $graphql[] = Validator::class($name)::getMetadata()->toGraphql();
+        foreach ($classes as $className => $name) {
+            $graphql[] = $className::getMetadata()->toGraphql();
         }
 
         return '

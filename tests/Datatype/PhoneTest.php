@@ -13,7 +13,7 @@ class DatatypePhone_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('phone');
+        return \Formularium\DatatypeFactory::factory('phone');
     }
 
     /**

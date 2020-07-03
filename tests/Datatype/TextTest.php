@@ -13,7 +13,7 @@ class DatatypeText_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType($framework = ''): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('text', $framework);
+        return \Formularium\DatatypeFactory::factory('text', $framework);
     }
 
     /**

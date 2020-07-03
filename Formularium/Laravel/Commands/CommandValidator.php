@@ -2,7 +2,7 @@
 
 namespace Formularium\Laravel\Commands;
 
-use Formularium\Validator;
+use Formularium\ValidatorFactory;
 use Formularium\Exception\Exception;
 use Illuminate\Console\Command;
 
@@ -44,7 +44,7 @@ class CommandValidator extends Command
      */
     public function handle()
     {
-        $code = Validator::generate(
+        $code = ValidatorFactory::generate(
             // @phpstan-ignore-next-line
             (string)$this->argument('name'),
             // @phpstan-ignore-next-line
@@ -52,7 +52,7 @@ class CommandValidator extends Command
         );
 
         try {
-            $retval = Validator::generateFile(
+            $retval = ValidatorFactory::generateFile(
                 $code,
                 // @phpstan-ignore-next-line
                 $this->option('path') ? $this->option('path') : base_path('app/Validators'),

@@ -13,7 +13,7 @@ class DatatypeEmail_TestCase extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\Datatype::factory('email');
+        return \Formularium\DatatypeFactory::factory('email');
     }
 
     /**

@@ -1,8 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace FormulariumTests;
 
-use Formularium\Datatype;
+use Formularium\DatatypeFactory;
 use Formularium\Exception\Exception;
 use Formularium\Frontend\Bulma\Framework;
 use Formularium\Renderable;
@@ -18,7 +18,7 @@ final class RenderableTest extends TestCase
     
     public function testFactoryTypes()
     {
-        $r = Renderable::factory(Datatype::factory('string'), Framework::factory('HTML'));
+        $r = Renderable::factory(DatatypeFactory::factory('string'), Framework::factory('HTML'));
         $this->assertInstanceOf(Renderable::class, $r);
     }
     

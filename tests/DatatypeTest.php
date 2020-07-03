@@ -2,21 +2,18 @@
 
 namespace FormulariumTests;
 
-use Formularium\Datatype;
-use Formularium\Datatype\Datatype_integer;
-use Formularium\Exception\Exception;
-use Formularium\Model;
+use Formularium\DatatypeFactory;
 use PHPUnit\Framework\TestCase;
 
 final class DatatypeTest extends TestCase
 {
     public function testBase()
     {
-        $d = Datatype::factory('string');
+        $d = DatatypeFactory::factory('string');
         $this->assertEquals('string', $d->getName());
         $this->assertEquals('string', $d->getBasetype());
 
-        $d = Datatype::factory('color');
+        $d = DatatypeFactory::factory('color');
         $this->assertEquals('color', $d->getName());
         $this->assertEquals('string', $d->getBasetype());
     }

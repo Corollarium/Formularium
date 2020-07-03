@@ -14,11 +14,11 @@ class Datatype_usmall extends Datatype_integer
 
     public function getSQLType(string $database = '', array $options = []): string
     {
-        return 'SMALLINT';
+        return 'SMALLINT UNSIGNED';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "smallInteger($name)";
+        return "smallInteger($name)->unsigned()";
     }
 }
