@@ -103,7 +103,7 @@ class File implements ValidatorInterface
             }
         }
 
-        // TODO: 'accept' extensions
+        // TODO: 'accept' renderable
 
         if (!$valid) {
             throw new ValidatorException(

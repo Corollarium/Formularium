@@ -23,14 +23,14 @@ trait RenderableBuefyTrait
         /** @var HTMLElement $base */
         $base = $this->_editable($value, $field, $previous);
 
-        $extensions = $field->getExtensions();
+        $renderable = $field->getRenderables();
         $base->setTag('b-field');
 
-        if (array_key_exists(Renderable::LABEL, $extensions)) {
-            $base->setAttribute('label', $extensions[Renderable::LABEL]);
+        if (array_key_exists(Renderable::LABEL, $renderable)) {
+            $base->setAttribute('label', $renderable[Renderable::LABEL]);
         }
-        if (array_key_exists(Renderable::COMMENT, $extensions)) {
-            $base->setAttribute('message', $extensions[Renderable::COMMENT]);
+        if (array_key_exists(Renderable::COMMENT, $renderable)) {
+            $base->setAttribute('message', $renderable[Renderable::COMMENT]);
         }
         $base->filter(function ($e) {
             if ($e instanceof HTMLElement) {

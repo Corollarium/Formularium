@@ -37,7 +37,7 @@ trait RenderableBulmaInputTrait
             ]);
         }
 
-        $size = $field->getExtension(Renderable::SIZE, '');
+        $size = $field->getRenderable(Renderable::SIZE, '');
         switch ($size) {
             case Renderable::SIZE_LARGE:
                 $input[0]->addAttribute('class', 'is-large');
@@ -46,10 +46,10 @@ trait RenderableBulmaInputTrait
                 $input[0]->addAttribute('class', 'is-small');
                 break;
         }
-        $icon = $field->getExtension(Renderable::ICON, '');
+        $icon = $field->getRenderable(Renderable::ICON, '');
         if ($icon) {
             $iconData = [];
-            $iconPack = $field->getExtension(Renderable::ICON_PACK, '');
+            $iconPack = $field->getRenderable(Renderable::ICON_PACK, '');
             if ($iconPack) {
                 $iconData[] = $iconPack;
             }

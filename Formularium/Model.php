@@ -22,7 +22,7 @@ class Model
     /**
      * @var array
      */
-    protected $extensions = [];
+    protected $renderable = [];
 
     /**
      * Model data being processed.
@@ -118,9 +118,9 @@ class Model
         return $this->_data;
     }
 
-    public function getExtensions(): array
+    public function getRenderables(): array
     {
-        return $this->extensions;
+        return $this->renderable;
     }
 
     /**
@@ -128,9 +128,9 @@ class Model
      * @param mixed $default
      * @return mixed
      */
-    public function getExtension(string $name, $default)
+    public function getRenderable(string $name, $default)
     {
-        return $this->extensions[$name] ?? $default;
+        return $this->renderable[$name] ?? $default;
     }
 
     public function getField(string $name): Field
@@ -248,7 +248,7 @@ class Model
                 return [
                     'datatype' => $f->getDatatype()->getName(),
                     'validators' => $f->getValidators(),
-                    'extensions' => $f->getExtensions()
+                    'renderable' => $f->getRenderables()
                 ];
             },
             $this->fields
@@ -336,11 +336,11 @@ class Model
         foreach ($data['fields'] as $fieldName => $fieldData) {
             $this->fields[$fieldName] = Field::getFromData($fieldName, $fieldData);
         }
-        if (array_key_exists('extensions', $data)) {
-            if (!is_array($data['extensions'])) {
+        if (array_key_exists('renderable', $data)) {
+            if (!is_array($data['renderable'])) {
                 throw new Exception('Model extension must be an array');
             }
-            $this->extensions = $data['extensions'];
+            $this->renderable = $data['renderable'];
         }
     }
 }

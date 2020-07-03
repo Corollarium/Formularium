@@ -18,7 +18,7 @@ class Renderable_associationAutocomplete extends Renderable_association
     {
         $input = new HTMLElement('input');
     
-        $extensions = $field->getExtensions();
+        $renderable = $field->getRenderables();
         $validators = $field->getValidators();
         $input->setAttributes([
                 'id' => $field->getName() . Framework::counter(),
@@ -27,18 +27,18 @@ class Renderable_associationAutocomplete extends Renderable_association
                 'data-attribute' => $field->getName(),
                 'data-datatype' => $field->getDatatype()->getName(),
                 'data-basetype' => $field->getDatatype()->getBasetype(),
-                'title' => $field->getExtension(static::LABEL, ''),
+                'title' => $field->getRenderable(static::LABEL, ''),
                 'autocomplete' => 'off'
             ]);
     
-        if (isset($extensions[static::PLACEHOLDER])) {
-            $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
+        if (isset($renderable[static::PLACEHOLDER])) {
+            $input->setAttribute('placeholder', $renderable[static::PLACEHOLDER]);
         }
         if ($validators[Datatype::REQUIRED] ?? false) {
             $input->setAttribute('required', 'required');
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($field->getExtension($v, false)) {
+            if ($field->getRenderable($v, false)) {
                 $input->setAttribute($v, $v);
             }
         }

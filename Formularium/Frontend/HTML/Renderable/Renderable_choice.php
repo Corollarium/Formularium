@@ -37,7 +37,7 @@ class Renderable_choice extends Renderable
 
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $format = $field->getExtension(static::FORMAT_CHOOSER, $this->format_chooser_default);
+        $format = $field->getRenderable(static::FORMAT_CHOOSER, $this->format_chooser_default);
         
         if ($format == static::FORMAT_CHOOSER_SELECT) {
             $element = $this->editableSelect($value, $field, $previous);
@@ -56,8 +56,8 @@ class Renderable_choice extends Renderable
      */
     protected function editableRadio($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getExtensions())) {
-            $value = $field->getExtensions()[static::DEFAULTVALUE];
+        if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getRenderables())) {
+            $value = $field->getRenderables()[static::DEFAULTVALUE];
         }
 
         $element = new HTMLElement(Framework::getEditableContainerTag(), ['class' => 'formularium-radio-group']);
@@ -90,7 +90,7 @@ class Renderable_choice extends Renderable
                 $element->setAttribute('required', 'required');
             }
             foreach ([static::DISABLED, static::READONLY] as $p) {
-                if ($field->getExtension($p, false)) {
+                if ($field->getRenderable($p, false)) {
                     $input->setAttribute($p, $p);
                 }
             }
@@ -127,7 +127,7 @@ class Renderable_choice extends Renderable
             'data-attribute' => $field->getName(),
             'data-datatype' => $field->getDatatype()->getName(),
             'data-basetype' => $field->getDatatype()->getBasetype(),
-            'title' => $field->getExtension(static::LABEL, '')
+            'title' => $field->getRenderable(static::LABEL, '')
         ]);
 
         $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
@@ -151,7 +151,7 @@ class Renderable_choice extends Renderable
         }
 
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($field->getExtension($v, false)) {
+            if ($field->getRenderable($v, false)) {
                 $element->setAttribute($v, $v);
             }
         }

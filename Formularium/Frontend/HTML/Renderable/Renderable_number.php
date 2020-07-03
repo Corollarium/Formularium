@@ -20,28 +20,28 @@ class Renderable_number extends Renderable
         /** @var \Formularium\Datatype\Datatype_number $datatype */
         $datatype = $f->getDatatype();
     
-        $extensions = $f->getExtensions();
+        $renderable = $f->getRenderables();
         $validators = $f->getValidators();
         $input->setAttributes([
             'id' => $f->getName() . Framework::counter(),
-            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : 'number'),
+            'type' => ($renderable[static::HIDDEN] ?? false ? 'hidden' : 'number'),
             'name' => $f->getName(),
             'class' => '',
             'data-attribute' => $f->getName(),
             'data-datatype' => $datatype->getName(),
             'data-basetype' => $datatype->getBasetype(),
             'value' => $value,
-            'title' => $f->getExtension(static::LABEL, '')
+            'title' => $f->getRenderable(static::LABEL, '')
         ]);
 
-        if (isset($extensions[static::PLACEHOLDER])) {
-            $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
+        if (isset($renderable[static::PLACEHOLDER])) {
+            $input->setAttribute('placeholder', $renderable[static::PLACEHOLDER]);
         }
         if ($validators[Datatype::REQUIRED] ?? false) {
             $input->setAttribute('required', 'required');
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($f->getExtension($v, false)) {
+            if ($f->getRenderable($v, false)) {
                 $input->setAttribute($v, $v);
             }
         }
@@ -49,7 +49,7 @@ class Renderable_number extends Renderable
         if (array_key_exists(static::STEP, $validators)) {
             $input->setAttribute('step', $validators[static::STEP]);
         }
-        if (isset($extensions[static::NO_AUTOCOMPLETE])) {
+        if (isset($renderable[static::NO_AUTOCOMPLETE])) {
             $input->setAttribute('autocomplete', 'off');
         }
     

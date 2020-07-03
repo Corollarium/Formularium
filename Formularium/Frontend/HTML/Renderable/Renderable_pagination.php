@@ -33,11 +33,11 @@ class Renderable_pagination extends Renderable_constant
      */
     protected function pagination($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $pagesaround = intval($field->getExtension(self::PAGES_AROUND, 5));
-        $perpage = intval($field->getExtension(self::PER_PAGE, 20));
-        $baseurl = $field->getExtension(self::BASE_URL, '?');
-        $numitems = $field->getExtension(self::TOTAL_ITEMS, 0);
-        $currentitem = intval($field->getExtension(self::CURRENT, 1));
+        $pagesaround = intval($field->getRenderable(self::PAGES_AROUND, 5));
+        $perpage = intval($field->getRenderable(self::PER_PAGE, 20));
+        $baseurl = $field->getRenderable(self::BASE_URL, '?');
+        $numitems = $field->getRenderable(self::TOTAL_ITEMS, 0);
+        $currentitem = intval($field->getRenderable(self::CURRENT, 1));
     
         // $firstindex => first id, same as 'begin'
         $firstindex = $currentitem - $pagesaround * $perpage;

@@ -27,7 +27,7 @@ class Renderable_choice extends \Formularium\Renderable
      */
     public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $format = $field->getExtension(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
+        $format = $field->getRenderable(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
         
         if ($format == HTMLRenderable_choice::FORMAT_CHOOSER_RADIO) {
             $labels = [];

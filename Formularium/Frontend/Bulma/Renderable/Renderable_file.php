@@ -29,7 +29,7 @@ class Renderable_file extends Renderable
      */
     public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $extensions = $field->getExtensions();
+        $renderable = $field->getRenderables();
         $validators = $field->getValidators();
 
         $input = $previous->get('input')[0];
@@ -59,7 +59,7 @@ class Renderable_file extends Renderable
                                 HTMLElement::factory(
                                     'span',
                                     ['class' => "file-label"],
-                                    $extensions[Renderable::COMMENT] ?? 'Pick file or drag-drop'
+                                    $renderable[Renderable::COMMENT] ?? 'Pick file or drag-drop'
                                 ),
                             ]
                         ),
@@ -73,7 +73,7 @@ class Renderable_file extends Renderable
                 HTMLElement::factory(
                     'label',
                     ['class' => "formularium-label"],
-                    $extensions[Renderable::LABEL] ?? ''
+                    $renderable[Renderable::LABEL] ?? ''
                 )
             ]
         );

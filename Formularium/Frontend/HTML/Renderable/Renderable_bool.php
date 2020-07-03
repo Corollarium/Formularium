@@ -37,7 +37,7 @@ class Renderable_bool extends Renderable
             }
         }
 
-        $format = $field->getExtension(static::FORMAT_CHOOSER, static::FORMAT_CHOOSER_SELECT);
+        $format = $field->getRenderable(static::FORMAT_CHOOSER, static::FORMAT_CHOOSER_SELECT);
         
         if ($field->getValidators()[Datatype::REQUIRED] ?? false) {
             if ($format == static::FORMAT_CHOOSER_SELECT) {
@@ -60,8 +60,8 @@ class Renderable_bool extends Renderable
      */
     protected function editableRadio($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getExtensions())) {
-            $value = $field->getExtensions()[static::DEFAULTVALUE];
+        if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getRenderables())) {
+            $value = $field->getRenderables()[static::DEFAULTVALUE];
         }
 
         $element = new HTMLElement('ul');
@@ -84,14 +84,14 @@ class Renderable_bool extends Renderable
                 'data-basetype' => $field->getDatatype()->getBasetype(),
                 'value' => $value ? 'true' : 'false',
                 'type' => 'radio',
-                'title' => $field->getExtension(static::LABEL, '')
+                'title' => $field->getRenderable(static::LABEL, '')
             ]);
 
             if ($field->getValidators()[Datatype::REQUIRED] ?? false) {
                 $element->setAttribute('required', 'required');
             }
             foreach ([static::DISABLED, static::READONLY] as $p) {
-                if ($field->getExtension($p, false)) {
+                if ($field->getRenderable($p, false)) {
                     $input->setAttribute($p, $p);
                 }
             }
@@ -122,7 +122,7 @@ class Renderable_bool extends Renderable
             'data-attribute' => $field->getName(),
             'data-datatype' => $field->getDatatype()->getName(),
             'data-basetype' => $field->getDatatype()->getBasetype(),
-            'title' => $field->getExtension(static::LABEL, '')
+            'title' => $field->getRenderable(static::LABEL, '')
         ]);
 
         $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
@@ -142,7 +142,7 @@ class Renderable_bool extends Renderable
         $element->addContent($optionTrue);
 
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($field->getExtension($v, false)) {
+            if ($field->getRenderable($v, false)) {
                 $element->setAttribute($v, $v);
             }
         }

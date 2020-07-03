@@ -15,7 +15,7 @@ class Renderable_file extends \Formularium\Renderable
 
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $extensions = $field->getExtensions();
+        $renderable = $field->getRenderables();
         $validators = $field->getValidators();
 
         $inputAtts = [
@@ -23,11 +23,11 @@ class Renderable_file extends \Formularium\Renderable
             'v-model' => $field->getName(),
             'drag-drop' => ''
         ];
-        if ($extensions[File::ACCEPT] ?? false) {
-            if (is_array($extensions[File::ACCEPT])) {
-                $accept = join(',', $extensions[File::ACCEPT]);
+        if ($renderable[File::ACCEPT] ?? false) {
+            if (is_array($renderable[File::ACCEPT])) {
+                $accept = join(',', $renderable[File::ACCEPT]);
             } else {
-                $accept = $extensions[File::ACCEPT];
+                $accept = $renderable[File::ACCEPT];
             }
             $inputAtts['accept'] = htmlspecialchars($accept);
         }
@@ -38,7 +38,7 @@ class Renderable_file extends \Formularium\Renderable
             $inputAtts['data-max-size'] = $validators[File::MAX_SIZE];
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($field->getExtension($v, false)) {
+            if ($field->getRenderable($v, false)) {
                 $inputAtts[$v] = true;
             }
         }
@@ -67,7 +67,7 @@ class Renderable_file extends \Formularium\Renderable
                             HTMLElement::factory(
                                 'p',
                                 [ 'class' => 'formularium-label'],
-                                $extensions[Renderable::LABEL] ?? ''
+                                $renderable[Renderable::LABEL] ?? ''
                             )
                         ]
                     )

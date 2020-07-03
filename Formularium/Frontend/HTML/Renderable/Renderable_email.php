@@ -11,7 +11,7 @@ class Renderable_email extends Renderable_string
 
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        if ($field->getExtension(static::SCRAMBLE, false)) {
+        if ($field->getRenderable(static::SCRAMBLE, false)) {
             $value = str_ireplace(
                 '@',
                 '<span style="display:none;">null</span>@<span style="display:none;">none</span>',

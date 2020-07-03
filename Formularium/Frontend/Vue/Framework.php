@@ -197,11 +197,11 @@ class Framework extends \Formularium\Framework
     {
         $props = [];
         foreach ($m->getFields() as $field) {
-            if ($field->getExtension(self::VUE_PROP, false)) { // TODO
+            if ($field->getRenderable(self::VUE_PROP, false)) { // TODO
                 $p = [
                     'type' => $this->mapType($field->getDatatype()),
                 ];
-                if ($field->getExtension(Datatype::REQUIRED, false)) {
+                if ($field->getRenderable(Datatype::REQUIRED, false)) {
                     $p['required'] = true;
                 }
                 $props[$field->getName()] = $p;

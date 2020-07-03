@@ -36,7 +36,7 @@ function kitchenSink($frameworkName, string $templateName)
             Datatype::factory($d);
             $fields[$d] = [
                 'datatype' => $d,
-                'extensions' => [
+                'renderable' => [
                     Renderable::LABEL => 'Type ' . $d
                 ],
             ];
@@ -55,7 +55,7 @@ function kitchenSink($frameworkName, string $templateName)
                 MinLength::class => [ 'value' => 3],
                 MaxLength::class => [ 'value' => 30],
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable::LABEL => 'Type string',
                 Renderable::COMMENT => 'Some text explaining this field',
                 Renderable::PLACEHOLDER => "Type here",
@@ -70,7 +70,7 @@ function kitchenSink($frameworkName, string $templateName)
                 Min::class => [ 'value' => 4],
                 Max::class => [ 'value' => 40],
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable_number::STEP => 2,
                 Renderable::LABEL => 'Type integer',
                 Renderable::PLACEHOLDER => "Type here"
@@ -78,14 +78,14 @@ function kitchenSink($frameworkName, string $templateName)
         ],
         'countrycodeselect' => [
             'datatype' => 'countrycodeISO3',
-            'extensions' => [
+            'renderable' => [
                 Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
                 Renderable::LABEL => 'Country code - select choice'
             ],
         ],
         'paginator' => [
             'datatype' => 'pagination',
-            'extensions' => [
+            'renderable' => [
                 Renderable_pagination::CURRENT => 20,
                 Renderable_pagination::TOTAL_ITEMS => 253,
             ],

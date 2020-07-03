@@ -58,7 +58,7 @@ $modelData = [
                     'value' => 30,
                 ]
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable::LABEL => 'This is some string',
                 Renderable::COMMENT => 'Some text explaining this field',
                 Renderable::PLACEHOLDER => "Type here"
@@ -74,7 +74,7 @@ $modelData = [
                     'value' => 40,
                 ]
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable_number::STEP => 2,
                 Renderable::LABEL => 'Some integer',
                 Renderable::PLACEHOLDER => "Type here"
@@ -122,6 +122,6 @@ Formularium is built in a way that generators can be chained, so you can combine
   - [Vue](https://vuejs.org)
   - [React](https://reactjs.org)
   - [Laravel Blade](https://laravel.com)
-- JS extensions
+- JS renderable
   - [Parsley](https://parsleyjs.org/)
   - [Quill editor](https://quilljs.com/)

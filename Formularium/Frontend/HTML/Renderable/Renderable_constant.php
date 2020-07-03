@@ -12,11 +12,11 @@ class Renderable_constant extends Renderable
 
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        return $this->container(HTMLElement::factory('', [], $field->getExtension(self::HTML, ''), true), $field);
+        return $this->container(HTMLElement::factory('', [], $field->getRenderable(self::HTML, ''), true), $field);
     }
     
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        return $this->container(HTMLElement::factory('', [], $field->getExtension(self::HTML, ''), true), $field);
+        return $this->container(HTMLElement::factory('', [], $field->getRenderable(self::HTML, ''), true), $field);
     }
 }

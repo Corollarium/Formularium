@@ -25,7 +25,7 @@ $model = Model::create(
                     'value' => true // so, make this field required.
                 ]
             ],
-            [ // extensions are used only by the frontend Renderable/Framework classes.
+            [ // renderable are used only by the frontend Renderable/Framework classes.
                 Renderable::LABEL => 'This is some string', // so, let's add a label describing the field
             ]
         ]
@@ -50,7 +50,7 @@ $modelData = [
                     'value' => 5 // so, make this field at least 5 characters long.
                 ]
             ],
-            'extensions' => [ // extensions are used only by the frontend Renderable/Framework classes.
+            'renderable' => [ // renderable are used only by the frontend Renderable/Framework classes.
                 Renderable::LABEL => 'This is some string', // so, let's add a label describing the field
             ]
         ]
@@ -73,7 +73,7 @@ $model = Model::fromStruct($modelData); // use a factory method to convert the s
                     "value": 5
                 ]
             ],
-            "extensions" => [
+            "renderable" => [
                 "label" => "This is some string",
             ]
         ]

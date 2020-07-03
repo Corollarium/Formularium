@@ -45,7 +45,7 @@ trait RenderableBuefyInputTrait
                         return;
                     }
 
-                    $size = $field->getExtension(Renderable::SIZE, '');
+                    $size = $field->getRenderable(Renderable::SIZE, '');
                     switch ($size) {
                         case Renderable::SIZE_LARGE:
                             $e->addAttribute('size', 'is-large');
@@ -55,11 +55,11 @@ trait RenderableBuefyInputTrait
                             break;
                     }
 
-                    $icon = $field->getExtension(Renderable::ICON, '');
+                    $icon = $field->getRenderable(Renderable::ICON, '');
                     if ($icon) {
                         $e->addAttribute('icon', str_replace('fa-', '', $icon));
                     }
-                    $iconPack = $field->getExtension(Renderable::ICON_PACK, '');
+                    $iconPack = $field->getRenderable(Renderable::ICON_PACK, '');
                     if ($iconPack) {
                         $e->addAttribute('icon-pack', $iconPack);
                     }

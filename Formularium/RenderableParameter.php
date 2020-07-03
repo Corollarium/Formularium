@@ -3,7 +3,7 @@
 namespace Formularium;
 
 /**
- * These are parameters passed to Renderable through Field::extensions.
+ * These are parameters passed to Renderable through Field::renderable.
  */
 interface RenderableParameter
 {

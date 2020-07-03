@@ -68,7 +68,7 @@ EOF;
                     "value": 40
                 }
             },
-            "extensions": {
+            "renderable": {
                 "comment": {
                     "en": "Your full name",
                     "pt": "Seu nome completo"

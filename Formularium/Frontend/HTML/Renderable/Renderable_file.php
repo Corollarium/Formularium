@@ -23,12 +23,12 @@ class Renderable_file extends Renderable
      */
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $extensions = $field->getExtensions();
+        $renderable = $field->getRenderables();
         $validators = $field->getValidators();
 
         /*
         <fieldset class="loh_fieldset loh_filedata_picker"
-        data-acceptedExtensions="<?php echo htmlspecialchars(@$fields['acceptedExtensions']);?>"
+        data-acceptedRenderables="<?php echo htmlspecialchars(@$fields['acceptedRenderables']);?>"
         data-basetype="filedata" data-attribute="filedata"
         <?php echo $multipleField; ?>
         >
@@ -110,7 +110,7 @@ class Renderable_file extends Renderable
                 'data-attribute' => $field->getName(),
                 'data-datatype' => $field->getDatatype()->getName(),
                 'data-basetype' => $field->getDatatype()->getBasetype(),
-                'title' => $field->getExtension(static::LABEL, ''),
+                'title' => $field->getRenderable(static::LABEL, ''),
                 'data-max-size' => $validators[File::MAX_SIZE] ?? '',
                 'capture' => 'environment'
             ]
@@ -132,7 +132,7 @@ class Renderable_file extends Renderable
             $input->setAttribute('data-max-size', $validators[File::MAX_SIZE]);
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($field->getExtension($v, false)) {
+            if ($field->getRenderable($v, false)) {
                 $input->setAttribute($v, $v);
             }
         }
@@ -155,11 +155,11 @@ class Renderable_file extends Renderable
                 )
             ]
         );
-        if (array_key_exists(Renderable::LABEL, $extensions)) {
-            $content->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id'), 'class' => 'formularium-label'], $extensions[Renderable::LABEL]));
+        if (array_key_exists(Renderable::LABEL, $renderable)) {
+            $content->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id'), 'class' => 'formularium-label'], $renderable[Renderable::LABEL]));
         }
-        if (array_key_exists(Renderable::COMMENT, $extensions)) {
-            $content->appendContent(new HTMLElement('div', ['class' => 'formularium-comment'], $extensions[Renderable::COMMENT]));
+        if (array_key_exists(Renderable::COMMENT, $renderable)) {
+            $content->appendContent(new HTMLElement('div', ['class' => 'formularium-comment'], $renderable[Renderable::COMMENT]));
         }
 
         /*

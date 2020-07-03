@@ -19,7 +19,7 @@ class Field
     /**
      * @var array
      */
-    protected $extensions;
+    protected $renderable;
 
     /**
      * @var array
@@ -34,16 +34,16 @@ class Field
         if (!array_key_exists('datatype', $data)) {
             throw new Exception("Missing type in field data for $name");
         }
-        return new Field($name, $data['datatype'], $data['extensions'] ?? [], $data['validators'] ?? []);
+        return new Field($name, $data['datatype'], $data['renderable'] ?? [], $data['validators'] ?? []);
     }
 
     /**
      * @param string $name
      * @param string|Datatype $datatype
-     * @param array $extensions
+     * @param array $renderable
      * @param array $validators
      */
-    public function __construct(string $name, $datatype, array $extensions = [], array $validators = [])
+    public function __construct(string $name, $datatype, array $renderable = [], array $validators = [])
     {
         $this->name = $name;
         if ($datatype instanceof Datatype) {
@@ -51,7 +51,7 @@ class Field
         } else {
             $this->datatype = Datatype::factory($datatype);
         }
-        $this->extensions = $extensions;
+        $this->renderable = $renderable;
         $this->validators = $validators;
         foreach ($this->validators as $name => $data) {
             if (!is_array($data)) {
@@ -63,13 +63,13 @@ class Field
     /**
      * @param string $name
      * @param string|Datatype $datatype
-     * @param array $extensions
+     * @param array $renderable
      * @param array $validators
      * @return self
      */
-    public function create(string $name, $datatype, array $extensions = [], array $validators = []): self
+    public function create(string $name, $datatype, array $renderable = [], array $validators = []): self
     {
-        return new self($name, $datatype, $extensions, $validators);
+        return new self($name, $datatype, $renderable, $validators);
     }
 
     public function getName(): string
@@ -98,21 +98,35 @@ class Field
     }
 
     /**
-     * Undocumented function
+     * Get option value from a validator.
      *
-     * @param string $validator
-     * @param string $option
-     * @param mixed $default
-     * @return mixed
+     * @param string $validator The validator name.
+     * @param string $option The validation option.
+     * @param mixed $default The default value.
+     * @return mixed The option value or the default value if there is none.
      */
     public function getValidatorOption(string $validator, string $option = 'value', $default = null)
     {
         return $this->validators[$validator][$option] ?? $default;
     }
 
-    public function getExtensions(): array
+    /**
+     * Sets an option value
+     *
+     * @param string $validator
+     * @param string $option
+     * @param mixed $value
+     * @return self
+     */
+    public function setValidatorOption(string $validator, string $option, $value): self
     {
-        return $this->extensions;
+        $this->validators[$validator][$option] = $value;
+        return $this;
+    }
+
+    public function getRenderables(): array
+    {
+        return $this->renderable;
     }
 
     /**
@@ -120,9 +134,9 @@ class Field
      * @param mixed $default
      * @return mixed
      */
-    public function getExtension(string $name, $default)
+    public function getRenderable(string $name, $default)
     {
-        return $this->extensions[$name] ?? $default;
+        return $this->renderable[$name] ?? $default;
     }
 
     public function toArray(): array
@@ -131,7 +145,7 @@ class Field
             'name' => $this->name,
             'datatype' => $this->datatype->getName(),
             'validators' => $this->validators,
-            'extensions' => $this->extensions
+            'renderable' => $this->renderable
         ];
     }
 }

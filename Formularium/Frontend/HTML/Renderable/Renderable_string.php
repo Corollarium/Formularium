@@ -24,11 +24,11 @@ class Renderable_string extends Renderable
     {
         $input = new HTMLElement('input');
 
-        $extensions = $field->getExtensions();
+        $renderable = $field->getRenderables();
         $validators = $field->getValidators();
         $input->setAttributes([
             'id' => $field->getName() . Framework::counter(),
-            'type' => ($extensions[static::HIDDEN] ?? false ? 'hidden' : ($extensions[static::PASSWORD] ?? false ? 'password' : 'text')),
+            'type' => ($renderable[static::HIDDEN] ?? false ? 'hidden' : ($renderable[static::PASSWORD] ?? false ? 'password' : 'text')),
             'name' => $field->getName(),
             'class' => '',
             'data-attribute' => $field->getName(),
@@ -36,17 +36,17 @@ class Renderable_string extends Renderable
             'data-basetype' => $field->getDatatype()->getBasetype(),
             'value' => $value,
             'maxlength' => static::MAX_STRING_SIZE,
-            'title' => $field->getExtension(static::LABEL, '')
+            'title' => $field->getRenderable(static::LABEL, '')
         ]);
 
-        if (isset($extensions[static::PLACEHOLDER])) {
-            $input->setAttribute('placeholder', $extensions[static::PLACEHOLDER]);
+        if (isset($renderable[static::PLACEHOLDER])) {
+            $input->setAttribute('placeholder', $renderable[static::PLACEHOLDER]);
         }
         if ($validators[Datatype::REQUIRED] ?? false) {
             $input->setAttribute('required', 'required');
         }
         foreach ([static::DISABLED, static::READONLY] as $v) {
-            if ($field->getExtension($v, false)) {
+            if ($field->getRenderable($v, false)) {
                 $input->setAttribute($v, $v);
             }
         }
@@ -59,7 +59,7 @@ class Renderable_string extends Renderable
         if ($max) {
             $input->setAttribute('maxlength', $max);
         }
-        if (isset($extensions[static::NO_AUTOCOMPLETE])) {
+        if (isset($renderable[static::NO_AUTOCOMPLETE])) {
             $input->setAttribute('autocomplete', 'off');
         }
 

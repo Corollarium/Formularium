@@ -27,7 +27,7 @@ class Renderable_choice extends \Formularium\Renderable
      */
     public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $format = $field->getExtension(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
+        $format = $field->getRenderable(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
         
         if ($format == HTMLRenderable_choice::FORMAT_CHOOSER_RADIO) {
             // add extra classes
@@ -38,7 +38,7 @@ class Renderable_choice extends \Formularium\Renderable
                 $label->addAttribute('class', 'custom-control-label');
             }
             $radioClass = 'custom-control custom-radio';
-            if ($field->getExtension(HTMLRenderable_choice::LAYOUT_RADIO, HTMLRenderable_choice::LAYOUT_RADIO_INLINE)) {
+            if ($field->getRenderable(HTMLRenderable_choice::LAYOUT_RADIO, HTMLRenderable_choice::LAYOUT_RADIO_INLINE)) {
                 $radioClass = 'custom-control custom-radio custom-control-inline';
             }
             foreach ($previous->get('[class=formularium-radio-item]') as $group) {

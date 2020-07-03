@@ -50,7 +50,7 @@ class Renderable_pagination extends Renderable_constant
             $e->addAttribute('class', 'pagination-list');
         }
 
-        $size = $field->getExtension(Renderable::SIZE, '');
+        $size = $field->getRenderable(Renderable::SIZE, '');
         switch ($size) {
             case Renderable::SIZE_LARGE:
                 foreach ($previous->get('.formularium-pagination') as $e) {

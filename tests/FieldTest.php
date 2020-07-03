@@ -20,7 +20,7 @@ final class FieldTest extends TestCase
                     'value' => 30
                 ]
             ],
-            'extensions' => [
+            'renderable' => [
                 Renderable::PLACEHOLDER => 'blabla'
             ],
         ];
@@ -28,9 +28,9 @@ final class FieldTest extends TestCase
         $this->assertEquals($name, $field->getName());
         $this->assertInstanceOf(Datatype_string::class, $field->getDatatype());
         $this->assertEquals($data['validators'], $field->getValidators());
-        $this->assertEquals($data['extensions'], $field->getExtensions());
-        $this->assertEquals($data['extensions'][Renderable::PLACEHOLDER], $field->getExtension('placeholder', 'x'));
-        $this->assertEquals('xxx', $field->getExtension('lalal', 'xxx'));
+        $this->assertEquals($data['renderable'], $field->getRenderables());
+        $this->assertEquals($data['renderable'][Renderable::PLACEHOLDER], $field->getRenderable('placeholder', 'x'));
+        $this->assertEquals('xxx', $field->getRenderable('lalal', 'xxx'));
     }
 
     public function testMissingName()
