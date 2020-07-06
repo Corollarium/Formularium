@@ -2,8 +2,8 @@
 
 require('vendor/autoload.php');
 
-$shortopts  = "v:p::t::";
-$longopts  = array(
+$shortopts = "v:p::t::";
+$longopts = array(
     "validator:",     // Required value
     "namespace::",
     "path::",
