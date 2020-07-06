@@ -40,6 +40,7 @@ final class ValidatorFactory
 
 namespace $namespace;
 
+use Formularium\Datatype;
 use Formularium\Model;
 use Formularium\ValidatorArgs;
 use Formularium\ValidatorInterface;
@@ -52,13 +53,16 @@ class ${name} implements ValidatorInterface
      * Checks if \$value is a valid value for this datatype considering the validators.
      *
      * @param mixed \$value
-     * @param array \$validators
+     * @param array \$options The options passed to the validator
+     * @param Datatype \$datatype The datatype being validator.
      * @param Model \$model The entire model, if you your field depends on other things of the model. may be null.
      * @throws ValidatorException If invalid, with the message.
      * @return mixed
      */
-    public function validate(\$value, array \$validators = [], Model \$model = null) {
-        throw new \Formularium\Exception\ValidatorException('Not implemented yet.');
+    public static function validate(\$value, array \$options = [], Datatype \$datatype, ?Model \$model = null)
+    {
+        throw new ValidatorException('Not implemented yet.');
+        // return \$value;
     }
 
     /**
@@ -66,13 +70,13 @@ class ${name} implements ValidatorInterface
      *
      * @return ValidatorMetadata
      */
-    public function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): ValidatorMetadata
     {
         return new ValidatorMetadata(
             '${name}',
             "", // TODO: add description
             [
-                // TODO: add ValidatorArgs if any
+                // TODO: new ValidatorArgs(...)
             ]
         );
     }
@@ -85,6 +89,8 @@ EOF;
 namespace FormulariumTests\Datatype;
 
 use Formularium\\Model;
+use Formularium\DatatypeFactory;
+use Formularium\ValidatorFactory;
 use $namespace\\{$name};
 use PHPUnit\\Framework\\TestCase;
 
@@ -93,26 +99,25 @@ class ${name}_TestCase extends TestCase
 
     public function testFilled()
     {
-        \$validator = \\Formularium\\ValidatorFactory::factory('$name');
         \$modelData = [
             'name' => 'TestModel',
             'fields' => [
                 'someField' => [
                     'datatype' => 'string',
                     'validators' => [
-                        $name::class => [ 
-                            'value' => true
+                        $name::class => [
+                            'value' => true // REPLACE THIS
                         ],
                     ]
                 ]
             ]
         ];
         \$model = Model::fromStruct(\$modelData);
-        \$input = 'x'; // REPLACE THIS
         \$expected = 'x'; // REPLACE THIS
-        \$v = \$validator->validate(
-            \$input,
-            \$model->getField('someString')->getValidator($name::class),
+        \$v = ValidatorFactory::class('$name')::validate(
+            \$expected,
+            \$model->getField('someField')->getValidator($name::class),
+            DatatypeFactory::factory('string'),
             \$model
         );
         \$this->assertEquals(\$expected, \$v);
