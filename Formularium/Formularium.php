@@ -2,7 +2,6 @@
 
 namespace Formularium;
 
-use Formularium\Exception\Exception;
 use HaydenPierce\ClassFinder\ClassFinder;
 
 /**

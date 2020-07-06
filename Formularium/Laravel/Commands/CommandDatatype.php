@@ -18,7 +18,7 @@ class CommandDatatype extends Command
         {--basetype= : the basetype it inherits from ("string"), if there is one.}
         {--namespace= : the class namespace. Defaults to "\\App\\Datatypes"}
         {--path= : path to save the file. Defaults to "basepath("app\\Datatypes") }
-        {--test-path= : path to save the file. Defaults to "basepath("tests/Unuit") }
+        {--test-path= : path to save the file. Defaults to "basepath("tests/Unit") }
     ';
 
     /**
