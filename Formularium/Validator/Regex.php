@@ -29,7 +29,6 @@ class Regex implements ValidatorInterface
         } elseif ($ret === 0) {
             throw new ValidatorException('Value does not match regex.');
         }
-        throw new ValidatorException('Value does not match expected regular expression');
 
         return $value;
     }
