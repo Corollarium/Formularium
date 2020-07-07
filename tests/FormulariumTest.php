@@ -26,6 +26,6 @@ final class FormulariumTest extends TestCase
     {
         $names = Formularium::scalarGraphqlDirectives();
         $this->assertIsString($names);
-        $this->assertContains('scalar @year(', $names);
+        $this->assertContains('scalar year @scalar(', $names);
     }
 }
