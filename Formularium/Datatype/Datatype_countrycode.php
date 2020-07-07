@@ -35,7 +35,7 @@ abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choic
         self::ISO_ALPHA2 => 0,
         self::ISO_ALPHA3 => 1,
         self::ISO_NUMERIC => 2,
-        self::ISO_NAME => 4,
+        self::ISO_NAME => 3,
     ];
 
     /**
@@ -326,8 +326,7 @@ abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choic
 
     protected function setChoices(string $code): void
     {
-        $col = array_column(self::COUNTRY_CODES, self::SET_INDEXES[$code]);
-        $this->choices = (array)array_combine($col, $col); // cast because phpstan
+        $this->choices = array_column(self::COUNTRY_CODES, self::SET_INDEXES[self::ISO_NAME], self::SET_INDEXES[$code]);
     }
 
     public function __construct(string $typename = 'countrycode', string $basetype = 'choice')
