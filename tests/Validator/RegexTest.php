@@ -27,7 +27,7 @@ class RegexTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $expected = 'abAc'; // REPLACE THIS
+        $expected = 'abAc';
         $v = ValidatorFactory::class('Regex')::validate(
             $expected,
             $model->getField('someField')->getValidator(Regex::class),
@@ -53,7 +53,33 @@ class RegexTest extends TestCase
             ]
         ];
         $model = Model::fromStruct($modelData);
-        $expected = 'xasdfasdf'; // REPLACE THIS
+        $expected = 'xasdfasdf';
+        $this->expectException(ValidatorException::class);
+        $v = ValidatorFactory::class('Regex')::validate(
+            $expected,
+            $model->getField('someField')->getValidator(Regex::class),
+            DatatypeFactory::factory('string'),
+            $model
+        );
+    }
+
+    public function testInvalid()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someField' => [
+                    'datatype' => 'string',
+                    'validators' => [
+                        Regex::class => [
+                            'value' => '/^[abc' . 'def+$/'
+                        ],
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+        $expected = 'xasdfasdf';
         $this->expectException(ValidatorException::class);
         $v = ValidatorFactory::class('Regex')::validate(
             $expected,
