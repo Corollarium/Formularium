@@ -12,9 +12,9 @@ URLS[HTMLMaterialize]=HTMLMaterialize.html
 URLS[HTMLQuill]=HTMLQuill.html
 URLS[HTMLReact]=HTMLReact.html
 
-set -x
 for key in "${!URLS[@]}"
 do
     echo "Generating $key.png"
-    wkhtmltoimage --width 480 --crop-h 740 docs/kitchensink/${URLS[$key]} docs/shots/$key.png
+    rm -f docs/shots/$key.png
+    google-chrome-stable --headless --screenshot=docs/shots/$key.png file://`pwd`/docs/kitchensink/${URLS[$key]} --window-size=480,740
 done
