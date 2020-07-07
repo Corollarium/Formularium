@@ -34,11 +34,21 @@ final class Formularium
         // empty
     }
 
+    /**
+     * @param string $ns The namespace to add
+     * @return void
+     * @codeCoverageIgnore
+     */
     public static function appendDatatypeNamespace(string $ns): void
     {
         self::$datatypeNamespaces[] = $ns;
     }
 
+    /**
+     * @param string $ns The namespace to add
+     * @return void
+     * @codeCoverageIgnore
+     */
     public static function appendValidatorNamespace(string $dir): void
     {
         self::$validatorNamespaces[] = $dir;
