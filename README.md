@@ -34,8 +34,9 @@ Check the:
 - typed data system: change the datatype and reflect it on your data.
 - automatic validation: validate your data automatically and safely.
 - component validators: add new validators for your datatypes easily.
-- Graphql: declare your models in Graphql SDL and get the scaffolding for free. Even better with [Modelarium](https://github.com/Corollarium/modelarium).
+- Graphql: declare your models in Graphql SDL and get the scaffolding for free. Works even better with [Modelarium](https://github.com/Corollarium/modelarium).
 - generate frontend scaffolding: stop writing verbose HTML and code to generate code/cards/etc. Let this tool do all the basic work for you.
+- component generation: generate React and Vue components with the corresponding HTML template.
 - SQL/Laravel typing: convert datatypes to your database generation with SQL and Laravel types.
 
 ## Sponsors
@@ -120,6 +121,8 @@ Formularium is built in a way that generators can be chained, so you can combine
 
 - Base generators:
   - Pure HTML
+  - Future: Nativescript
+  - Future: React Native
 - CSS Frameworks:
   - [Bootstrap](https://getbootstrap.com/)
   - [Bulma](https://bulma.io)
