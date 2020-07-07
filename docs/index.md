@@ -10,6 +10,13 @@ Check:
 - [a basic hello world example in pure PHP](https://github.com/Corollarium/Formularium-example)
 - [Modelarium, a full backend/frontend scaffolding generator for PHP/Laravel](https://github.com/Corollarium/modelarium/).
 
+## Same code, different frontend frameworks
+
+[![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html)
+[![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html)
+[![Materialize](https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLMaterialize.html)
+[![Buefy](https://corollarium.github.io/Formularium/shots/HTMLBuefyVue.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapVue.html)
+
 ## Documentation
 
 - [getting started: how to declare your models](model.md)

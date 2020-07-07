@@ -8,6 +8,11 @@
 
 This is a general form generator and validator for PHP. It hosts a number of generators for different CSS and JS frameworks, as well as validators for backend and frontend. The main feature is that it provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for datatype creation, validation and form generation. Your fields **are not strings**, stop treating them as such.
 
+[![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html)
+[![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html)
+[![Materialize](https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLMaterialize.html)
+[![Buefy](https://corollarium.github.io/Formularium/shots/HTMLBuefyVue.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapVue.html)
+
 Forms are generated from a simple structure describing its fields, each one with a datatype and information for the HTML generator. Model descriptions can be serialized as JSON. It's easy to create new datatypes, either from zero or extending the base types provided. The generated HTML code can be used as is or manually customized for those pesky cases that no tool ever gets right.
 
 If you are looking for [a fully integrated backend/frontend scaffolding and validation, Modelarium](https://github.com/Corollarium/modelarium) is what you want. Formularium is the low-level generator.
