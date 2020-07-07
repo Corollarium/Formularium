@@ -21,4 +21,11 @@ final class FormulariumTest extends TestCase
         $this->assertContains('directive @Min(', $names);
         $this->assertNotContains('directive @required', $names);
     }
+
+    public function testScalarGraphqlDirectives()
+    {
+        $names = Formularium::scalarGraphqlDirectives();
+        $this->assertIsString($names);
+        $this->assertContains('scalar @year(', $names);
+    }
 }
