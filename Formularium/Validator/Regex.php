@@ -23,10 +23,15 @@ class Regex implements ValidatorInterface
      */
     public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
-        if (preg_match($options['value'], $value)) {
-            return $value;
+        $ret = preg_match($options['regex'], $value);
+        if ($ret === false) {
+            throw new ValidatorException('Error, invalid regex.');
+        } elseif ($ret === 0) {
+            throw new ValidatorException('Value does not match regex.');
         }
         throw new ValidatorException('Value does not match expected regular expression');
+
+        return $value;
     }
 
     /**
