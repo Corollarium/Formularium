@@ -272,13 +272,14 @@ class Model
     /**
      * Renders a readonly view of the model with given data.
      *
+     * @param FrameworkComposer $composer
      * @param array $modelData
      * @return string
      */
-    public function viewable(array $modelData): string
+    public function viewable(FrameworkComposer $composer, array $modelData): string
     {
         $this->_data = $modelData;
-        $r = FrameworkComposer::viewable($this, $modelData);
+        $r = $composer->viewable($this, $modelData);
         $this->_data = [];
         return $r;
     }
@@ -286,12 +287,13 @@ class Model
     /**
      * Renders a form view of the model with given data.
      *
+     * @param FrameworkComposer $composer
      * @param array $modelData
      * @return string
      */
-    public function editable(array $modelData = []): string
+    public function editable(FrameworkComposer $composer, array $modelData = []): string
     {
-        return FrameworkComposer::editable($this, $modelData);
+        return $composer->editable($this, $modelData);
     }
 
     public function getRandom(): array

@@ -21,9 +21,9 @@ use Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
 
 function kitchenSink($frameworkName, string $templateName)
 {
-    FrameworkComposer::set($frameworkName);
-    $head = FrameworkComposer::htmlHead();
-    $footer = FrameworkComposer::htmlFooter();
+    $framework = FrameworkComposer::create($frameworkName);
+    $head = $framework->htmlHead();
+    $footer = $framework->htmlFooter();
 
     /*
      * kitchen sink fields

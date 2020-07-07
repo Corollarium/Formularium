@@ -10,24 +10,40 @@ class FrameworkComposer
     /**
      * @var Framework[]
      */
-    protected static $frameworks = [];
+    protected $frameworks = [];
+
+    /**
+     * @param Framework[] $frameworks
+     */
+    public function __construct(array $frameworks = [])
+    {
+        $this->setFrameworks($frameworks);
+    }
+
+    /**
+     * @param Framework[] $frameworks
+     */
+    public static function create(array $frameworks = []): FrameworkComposer
+    {
+        return new self($frameworks);
+    }
 
     /**
      *
      * @return Framework[]
      */
-    public static function get(): array
+    public function getFrameworks(): array
     {
-        return static::$frameworks;
+        return $this->frameworks;
     }
 
     /**
      *
      * @return Framework
      */
-    public static function getByName(string $name): ?Framework
+    public function getByName(string $name): ?Framework
     {
-        foreach (static::$frameworks as $f) {
+        foreach ($this->frameworks as $f) {
             if ($f->getName() === $name) {
                 return $f;
             }
@@ -39,11 +55,11 @@ class FrameworkComposer
      * @param Framework[] $frameworks
      * @return void
      */
-    public static function set(array $frameworks = [])
+    public function setFrameworks(array $frameworks = [])
     {
-        static::$frameworks = [];
+        $this->frameworks = [];
         foreach ($frameworks as $f) {
-            static::append($f);
+            $this->append($f);
         }
     }
 
@@ -53,9 +69,9 @@ class FrameworkComposer
      * @param string|Framework $framework
      * @return void
      */
-    public static function append($framework)
+    public function append($framework)
     {
-        static::$frameworks[] = ($framework instanceof Framework ? $framework : Framework::factory($framework));
+        $this->frameworks[] = ($framework instanceof Framework ? $framework : Framework::factory($framework));
     }
 
     /**
@@ -63,19 +79,19 @@ class FrameworkComposer
      *
      * @return string
      */
-    public static function htmlHead(): string
+    public function htmlHead(): string
     {
         $head = new HTMLElement('');
-        foreach (static::get() as $framework) {
+        foreach ($this->get() as $framework) {
             $framework->htmlHead($head);
         }
         return $head->getRenderHTML();
     }
 
-    public static function htmlFooter(): string
+    public function htmlFooter(): string
     {
         $footer = new HTMLElement('');
-        foreach (static::get() as $framework) {
+        foreach ($this->get() as $framework) {
             $framework->htmlFooter($footer);
         }
         return $footer->getRenderHTML();
@@ -87,13 +103,13 @@ class FrameworkComposer
      * @param Model $m
      * @return string
      */
-    public static function viewable(Model $m, array $modelData): string
+    public function viewable(Model $m, array $modelData): string
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
-            foreach (static::get() as $framework) {
+            foreach ($this->get() as $framework) {
                 try {
                     $r = $framework->getRenderable($field->getDatatype());
                     $x = $r->viewable($value, $field, $html);
@@ -105,19 +121,19 @@ class FrameworkComposer
             $elements[$field->getName()] = $html;
         }
         $output = '';
-        foreach (static::get() as $framework) {
+        foreach ($this->get() as $framework) {
             $output = $framework->viewableCompose($m, $elements, $output);
         }
         return $output;
     }
 
-    public static function editable(Model $m, array $modelData): string
+    public function editable(Model $m, array $modelData): string
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
-            foreach (static::get() as $framework) {
+            foreach ($this->get() as $framework) {
                 try {
                     $r = $framework->getRenderable($field->getDatatype());
                     $html = $r->editable($value, $field, $html);
@@ -128,7 +144,7 @@ class FrameworkComposer
             $elements[$field->getName()] = $html;
         }
         $output = '';
-        foreach (static::get() as $framework) {
+        foreach ($this->get() as $framework) {
             $output = $framework->editableCompose($m, $elements, $output);
         }
         return $output;

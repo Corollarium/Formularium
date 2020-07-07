@@ -29,9 +29,9 @@ composer required Corollarium/Formularium
 Here's a minimal sample:
 
 ```php
-// set your framework composition statically.
+// set your framework composition.
 // For example, this builds HTML using Bootstrap as CSS and the Vue framework.
-FrameworkComposer::set(['HTML', 'Bootstrap', 'Vue']);
+$composer = new FrameworkComposer(['HTML', 'Bootstrap', 'Vue']);
 
 // build the model from data description. You can use a JSON file as well.
 $modelData = [

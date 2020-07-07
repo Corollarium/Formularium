@@ -11,15 +11,15 @@ final class FrameworkComposerTest extends TestCase
 {
     public function testFactory()
     {
-        FrameworkComposer::set(["HTML"]);
-        $this->assertIsArray(FrameworkComposer::get());
-        $this->assertEquals(1, count(FrameworkComposer::get()));
-        $this->assertInstanceOf(\Formularium\Frontend\HTML\Framework::class, FrameworkComposer::get()[0]);
+        $f = FrameworkComposer::create(["HTML"]);
+        $this->assertIsArray($f->getFrameworks());
+        $this->assertEquals(1, count($f->getFrameworks()));
+        $this->assertInstanceOf(\Formularium\Frontend\HTML\Framework::class, $f->getFrameworks()[0]);
     }
 
     public function testFactoryFail()
     {
         $this->expectException(ClassNotFoundException::class);
-        $f = FrameworkComposer::set(["asdfas"]);
+        $f = (new FrameworkComposer())->setFrameworks(["asdfas"]);
     }
 }
