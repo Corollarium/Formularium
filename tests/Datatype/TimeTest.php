@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class DatatypeTime_TestCase extends DatatypeBaseTestCase
+class TimeTest extends DatatypeBaseTestCase
 {
 
     /**

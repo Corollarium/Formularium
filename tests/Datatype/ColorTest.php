@@ -1,11 +1,11 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_email;
 
-class DatatypeColor_TestCase extends DatatypeBaseTestCase
+class ColorTest extends DatatypeBaseTestCase
 {
 
     /**

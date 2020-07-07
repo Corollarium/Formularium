@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class DatatypeAlphanum_TestCase extends DatatypeBaseTestCase
+class AlphanumTest extends DatatypeBaseTestCase
 {
 
     /**

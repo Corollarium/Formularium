@@ -6,7 +6,7 @@ use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 use Formularium\Validator\Max;
 
-class DatatypeInteger_TestCase extends DatatypeBaseTestCase
+class IntegerTest extends DatatypeBaseTestCase
 {
 
     /**

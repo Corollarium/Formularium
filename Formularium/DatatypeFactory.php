@@ -101,7 +101,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class Datatype${datatype}_TestCase extends DatatypeBaseTestCase
+class ${datatype}Test extends DatatypeBaseTestCase
 {
 
     /**

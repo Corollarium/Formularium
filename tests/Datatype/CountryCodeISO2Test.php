@@ -5,7 +5,7 @@ namespace FormulariumTests\Datatype;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_countrycode;
 
-class DatatypeCountryCodeISO2_TestCase extends DatatypeBaseTestCase
+class CountryCodeISO2Test extends DatatypeBaseTestCase
 {
 
     /**

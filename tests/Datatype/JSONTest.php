@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class DatatypeJSON_TestCase extends DatatypeBaseTestCase
+class JSONTest extends DatatypeBaseTestCase
 {
 
     /**

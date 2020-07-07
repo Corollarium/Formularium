@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class Datatypeipv4_TestCase extends DatatypeBaseTestCase
+class ipv4Test extends DatatypeBaseTestCase
 {
 
     /**

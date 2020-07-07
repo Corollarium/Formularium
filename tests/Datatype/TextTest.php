@@ -5,7 +5,7 @@ namespace FormulariumTests\Datatype;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
 
-class DatatypeText_TestCase extends DatatypeBaseTestCase
+class TextTest extends DatatypeBaseTestCase
 {
 
     /**

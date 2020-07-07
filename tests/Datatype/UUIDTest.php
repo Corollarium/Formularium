@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class DatatypeUUID_TestCase extends DatatypeBaseTestCase
+class UUIDTest extends DatatypeBaseTestCase
 {
 
     /**

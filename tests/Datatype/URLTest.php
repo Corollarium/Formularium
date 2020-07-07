@@ -5,7 +5,7 @@ namespace FormulariumTests\Datatype;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_email;
 
-class DatatypeURL_TestCase extends DatatypeBaseTestCase
+class URLTest extends DatatypeBaseTestCase
 {
 
     /**

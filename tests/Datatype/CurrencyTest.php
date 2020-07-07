@@ -5,7 +5,7 @@ namespace FormulariumTests\Datatype;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_countrycode;
 
-class DatatypeCurrency_TestCase extends DatatypeBaseTestCase
+class CurrencyTest extends DatatypeBaseTestCase
 {
 
     /**

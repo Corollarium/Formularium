@@ -5,7 +5,7 @@ namespace FormulariumTests\Datatype;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_integer;
 
-class DatatypeUInteger_TestCase extends DatatypeBaseTestCase
+class UIntegerTest extends DatatypeBaseTestCase
 {
 
     /**

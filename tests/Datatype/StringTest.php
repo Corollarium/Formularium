@@ -6,7 +6,7 @@ use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Model;
 
-class DatatypeString_TestCase extends DatatypeBaseTestCase
+class StringTest extends DatatypeBaseTestCase
 {
 
     /**

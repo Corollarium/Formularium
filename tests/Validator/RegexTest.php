@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace FormulariumTests\Datatype;
+namespace FormulariumTests\Validator;
 
 use Formularium\Model;
 use Formularium\Datatype\Regex;
@@ -9,7 +9,7 @@ use Formularium\Exception\ValidatorException;
 use Formularium\ValidatorFactory;
 use PHPUnit\Framework\TestCase;
 
-class Regex_TestCase extends TestCase
+class RegexTest extends TestCase
 {
     public function testFilled()
     {

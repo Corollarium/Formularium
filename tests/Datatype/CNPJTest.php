@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class DatatypeCNPJ_TestCase extends DatatypeBaseTestCase
+class CNPJTest extends DatatypeBaseTestCase
 {
 
     /**

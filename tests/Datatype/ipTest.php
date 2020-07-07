@@ -4,7 +4,7 @@ namespace FormulariumTests\Datatype;
 
 use Formularium\Datatype;
 
-class Datatypeip_TestCase extends DatatypeBaseTestCase
+class ipTest extends DatatypeBaseTestCase
 {
 
     /**

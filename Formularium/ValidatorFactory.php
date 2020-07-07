@@ -86,7 +86,7 @@ EOF;
         $testCode = <<<EOF
 <?php declare(strict_types=1); 
 
-namespace FormulariumTests\Datatype;
+namespace FormulariumTests\Validator;
 
 use Formularium\\Model;
 use Formularium\DatatypeFactory;
@@ -94,7 +94,7 @@ use Formularium\ValidatorFactory;
 use $namespace\\{$name};
 use PHPUnit\\Framework\\TestCase;
 
-class ${name}_TestCase extends TestCase
+class ${name}Test extends TestCase
 {
 
     public function testFilled()
