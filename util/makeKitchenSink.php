@@ -100,7 +100,7 @@ function kitchenSink($frameworkName, string $templateName)
             'fields' => $basicFields
         ]
     );
-    $basicDemoEditable = $basicModel->editable();
+    $basicDemoEditable = $basicModel->editable($framework);
 
     
     // generate kitchen sink model
@@ -116,8 +116,8 @@ function kitchenSink($frameworkName, string $templateName)
             $randomData[$f->getName()] = $f->getDatatype()->getRandom();
         }
     }
-    $modelViewable = $model->viewable($randomData);
-    $modelEditable = $model->editable();
+    $modelViewable = $model->viewable($framework, $randomData);
+    $modelEditable = $model->editable($framework);
 
     $title = join('/', $frameworkName);
     $template = file_get_contents(__DIR__ . '/kitchentemplates/' . $templateName);
