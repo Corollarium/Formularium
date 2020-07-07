@@ -10,10 +10,10 @@ This is a general form generator and validator for PHP. It hosts a number of gen
 
 Same code generating frontends in Bootstrap, Bulma, Materialize and Buefy. Click on the images to see a live HTML.
 
-[![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html)
-[![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html)
-[![Materialize](https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLMaterialize.html)
-[![Buefy](https://corollarium.github.io/Formularium/shots/HTMLBuefyVue.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapVue.html)
+<a href="https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html"><img src="https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png" width="419" height="646"></a>
+<a href="https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html"><img src="https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png" width="419" height="646"></a>
+<a href="https://corollarium.github.io/Formularium/kitchensink/HTMLMaterialize.html"><img src="https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png" width="419" height="646"></a>
+<a href="https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapVue.html"><img src="https://corollarium.github.io/Formularium/shots/HTMLBuefyVue.png" width="419" height="646"></a>
 
 Forms are generated from a simple structure describing its fields, each one with a datatype and information for the HTML generator. Model descriptions can be serialized as JSON. It's easy to create new datatypes, either from zero or extending the base types provided. The generated HTML code can be used as is or manually customized for those pesky cases that no tool ever gets right.
 
