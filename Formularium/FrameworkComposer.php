@@ -39,7 +39,7 @@ class FrameworkComposer
 
     /**
      *
-     * @return Framework
+     * @return Framework|null
      */
     public function getByName(string $name): ?Framework
     {
@@ -82,7 +82,7 @@ class FrameworkComposer
     public function htmlHead(): string
     {
         $head = new HTMLElement('');
-        foreach ($this->get() as $framework) {
+        foreach ($this->getFrameworks() as $framework) {
             $framework->htmlHead($head);
         }
         return $head->getRenderHTML();
@@ -91,7 +91,7 @@ class FrameworkComposer
     public function htmlFooter(): string
     {
         $footer = new HTMLElement('');
-        foreach ($this->get() as $framework) {
+        foreach ($this->getFrameworks() as $framework) {
             $framework->htmlFooter($footer);
         }
         return $footer->getRenderHTML();
@@ -109,7 +109,7 @@ class FrameworkComposer
         foreach ($m->getFields() as $field) {
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
-            foreach ($this->get() as $framework) {
+            foreach ($this->getFrameworks() as $framework) {
                 try {
                     $r = $framework->getRenderable($field->getDatatype());
                     $x = $r->viewable($value, $field, $html);
@@ -121,7 +121,7 @@ class FrameworkComposer
             $elements[$field->getName()] = $html;
         }
         $output = '';
-        foreach ($this->get() as $framework) {
+        foreach ($this->getFrameworks() as $framework) {
             $output = $framework->viewableCompose($m, $elements, $output);
         }
         return $output;
@@ -133,7 +133,7 @@ class FrameworkComposer
         foreach ($m->getFields() as $field) {
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLElement('');
-            foreach ($this->get() as $framework) {
+            foreach ($this->getFrameworks() as $framework) {
                 try {
                     $r = $framework->getRenderable($field->getDatatype());
                     $html = $r->editable($value, $field, $html);
@@ -144,7 +144,7 @@ class FrameworkComposer
             $elements[$field->getName()] = $html;
         }
         $output = '';
-        foreach ($this->get() as $framework) {
+        foreach ($this->getFrameworks() as $framework) {
             $output = $framework->editableCompose($m, $elements, $output);
         }
         return $output;
