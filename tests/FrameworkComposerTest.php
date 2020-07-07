@@ -24,4 +24,11 @@ final class FrameworkComposerTest extends TestCase
         $this->expectException(ClassNotFoundException::class);
         $f = (new FrameworkComposer())->setFrameworks(["asdfas"]);
     }
+
+    public function testHeadFooter()
+    {
+        $f = FrameworkComposer::create(["Bootstrap"]);
+        $this->assertContains('bootstrap', $f->htmlHead());
+        $this->assertContains('script', $f->htmlFooter());
+    }
 }

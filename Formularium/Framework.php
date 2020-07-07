@@ -47,6 +47,7 @@ abstract class Framework
      *
      * @param HTMLElement $head
      * @return void
+     * @codeCoverageIgnore
      */
     public function htmlHead(HTMLElement &$head)
     {
@@ -58,6 +59,7 @@ abstract class Framework
      *
      * @param HTMLElement $head
      * @return void
+     * @codeCoverageIgnore
      */
     public function htmlFooter(HTMLElement &$head)
     {
