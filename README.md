@@ -8,6 +8,8 @@
 
 This is a general form generator and validator for PHP. It hosts a number of generators for different CSS and JS frameworks, as well as validators for backend and frontend. The main feature is that it provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for datatype creation, validation and form generation. Your fields **are not strings**, stop treating them as such.
 
+Same code generating frontends in Bootstrap, Bulma, Materialize and Buefy. Click on the images to see a live HTML.
+
 [![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html)
 [![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html)
 [![Materialize](https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLMaterialize.html)

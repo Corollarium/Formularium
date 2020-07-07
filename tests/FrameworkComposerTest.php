@@ -15,6 +15,8 @@ final class FrameworkComposerTest extends TestCase
         $this->assertIsArray($f->getFrameworks());
         $this->assertEquals(1, count($f->getFrameworks()));
         $this->assertInstanceOf(\Formularium\Frontend\HTML\Framework::class, $f->getFrameworks()[0]);
+        $this->assertInstanceOf(\Formularium\Frontend\HTML\Framework::class, $f->getByName('HTML'));
+        $this->assertNull($f->getByName('cvbcbv'));
     }
 
     public function testFactoryFail()

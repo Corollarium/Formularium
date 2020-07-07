@@ -7,6 +7,9 @@ use Formularium\Exception\Exception;
 
 final class DatatypeFactory
 {
+    /**
+     * @codeCoverageIgnore
+     */
     private function __construct()
     {
     }
@@ -30,11 +33,7 @@ final class DatatypeFactory
                 throw new ClassNotFoundException("Invalid datatype $datatype");
             }
         }
-        try {
-            return new $class();
-        } catch (\Error $e) {
-            throw new ClassNotFoundException("Invalid datatype $datatype");
-        }
+        return new $class();
     }
 
     /**
