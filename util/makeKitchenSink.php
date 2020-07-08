@@ -86,10 +86,7 @@ function kitchenSink($frameworkName, string $templateName)
         ],
         'paginator' => [
             'datatype' => 'pagination',
-            'renderable' => [
-                Renderable_pagination::CURRENT => 20,
-                Renderable_pagination::TOTAL_ITEMS => 253,
-            ],
+            'renderable' => [],
         ],
     ];
 
@@ -100,8 +97,16 @@ function kitchenSink($frameworkName, string $templateName)
             'fields' => $basicFields
         ]
     );
-    $basicDemoEditable = $basicModel->editable($framework);
-
+    $basicDemoEditable = $basicModel->editable(
+        $framework,
+        [
+            'paginator' => [
+                Renderable_pagination::CURRENT => 21,
+                Renderable_pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
+                Renderable_pagination::TOTAL_ITEMS => 253,
+            ]
+        ]
+    );
     
     // generate kitchen sink model
     $model = Model::fromStruct(

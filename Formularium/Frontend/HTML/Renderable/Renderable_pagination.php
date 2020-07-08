@@ -9,11 +9,12 @@ use PHP_CodeSniffer\Generators\HTML;
 
 class Renderable_pagination extends Renderable_constant
 {
-    const BASE_URL = 'BASE_URL'; // base url for pagination. Default: '?'
-    const CURRENT = 'CURRENT'; // current item
-    const PAGES_AROUND = 'PAGES_AROUND'; // maximum pages listed before or after the current one
-    const PER_PAGE = 'PER_PAGE'; // items per page. Default: 20
-    const TOTAL_ITEMS = 'TOTAL_ITEMS'; // total items in query.
+    const BASE_URL = 'baseURL'; // base url for pagination. Default: '?'
+    const CURRENT = 'current'; // current item. Conflicts with CURRENT_PAGE, use just one
+    const CURRENT_PAGE = 'currentPage'; // current page. Conflicts with CURRENT, use just one
+    const PAGES_AROUND = 'pagesAround'; // maximum pages listed before or after the current one
+    const PER_PAGE = 'perPage'; // items per page. Default: 20
+    const TOTAL_ITEMS = 'totalItems'; // total items in query.
 
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
@@ -33,11 +34,27 @@ class Renderable_pagination extends Renderable_constant
      */
     protected function pagination($value, Field $field, HTMLElement $previous): HTMLElement
     {
-        $pagesaround = intval($field->getRenderable(self::PAGES_AROUND, 5));
-        $perpage = intval($field->getRenderable(self::PER_PAGE, 20));
-        $baseurl = $field->getRenderable(self::BASE_URL, '?');
-        $numitems = $field->getRenderable(self::TOTAL_ITEMS, 0);
-        $currentitem = intval($field->getRenderable(self::CURRENT, 1));
+        if (!is_array($value)) {
+            $value = [];
+        }
+        
+        $pagesaround = intval(
+            $value[self::PAGES_AROUND] ?? $field->getRenderable(self::PAGES_AROUND, 5)
+        );
+        $perpage = intval(
+            $value[self::PER_PAGE] ?? $field->getRenderable(self::PER_PAGE, 20)
+        );
+        $baseurl = $value[self::BASE_URL] ?? $field->getRenderable(self::BASE_URL, '?');
+        $numitems = $value[self::TOTAL_ITEMS] ?? $field->getRenderable(self::TOTAL_ITEMS, 0);
+
+        // use $currentPage when defined
+        if (array_key_exists(self::CURRENT_PAGE, $value) || $field->getRenderable(self::CURRENT_PAGE, null) !== null) {
+            $currentPage = $value[self::CURRENT_PAGE] ?? intval($field->getRenderable(self::CURRENT_PAGE, 1));
+            $currentitem = $currentPage * ($perpage - 1);
+        } else {
+            $currentitem = $value[self::CURRENT] ?? intval($field->getRenderable(self::CURRENT, 0));
+            $currentPage = ceil($currentitem / $perpage);
+        }
     
         // $firstindex => first id, same as 'begin'
         $firstindex = $currentitem - $pagesaround * $perpage;
@@ -71,13 +88,13 @@ class Renderable_pagination extends Renderable_constant
         }
     
         for ($i = $firstindex; $i < $maxindex; $i += $perpage) {
-            $currentpage = $i / $perpage + 1;
-            if ($i == $currentitem) {
-                $pages[] = $this->getItem((string)$currentpage, '', 'formularium-pagination-current');
+            $page = $i / $perpage + 1;
+            if ($i < $currentitem && $i + $perpage >= $currentitem) {
+                $pages[] = $this->getItem((string)$page, '', 'formularium-pagination-current');
             } else {
                 $parsed['query'] = array_merge($query, array('begin' => $i, 'total' => $perpage));
                 $baseurl = $this->glue_url($parsed);
-                $pages[] = $this->getItem((string)$currentpage, $baseurl);
+                $pages[] = $this->getItem((string)$page, $baseurl);
             }
         }
     

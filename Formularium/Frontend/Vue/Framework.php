@@ -270,7 +270,7 @@ EOF;
             $id = 'vueapp' . static::counter();
             $t = new HTMLElement($this->getViewableContainerTag(), ['id' => $id], $viewableForm, true);
             $script = <<<EOF
-var app = new Vue({
+const app_$id = new Vue({
     el: '#$id',
     data: $jsonData
 });
@@ -347,7 +347,7 @@ EOF;
             $id = 'vueapp' . static::counter();
             $t = new HTMLElement($editableContainerTag, ['id' => $id], $editableForm, true);
             $script = <<<EOF
-var app = new Vue({
+const app_$id = new Vue({
     el: '#$id',
     data: function () {
         return $jsonData;

@@ -4,6 +4,7 @@ namespace Formularium\Frontend\Buefy\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\Buefy\RenderableBuefyInputTrait;
+use Formularium\Frontend\HTML\Renderable\Renderable_pagination as HTMLRenderable_pagination;
 use Formularium\HTMLElement;
 
 class Renderable_pagination extends \Formularium\Renderable
@@ -29,9 +30,9 @@ class Renderable_pagination extends \Formularium\Renderable
         $p = HTMLElement::factory(
             'b-pagination',
             [
-                ':total' => $field->getName() . ".total",
-                ':current.sync' => $field->getName() . ".current_page",
-                ':per-page' => $field->getName() . ".per_page"
+                ':total' => $field->getName() . "." . HTMLRenderable_pagination::TOTAL_ITEMS,
+                ':current.sync' => $field->getName() . "." . HTMLRenderable_pagination::CURRENT_PAGE,
+                ':per-page' => $field->getName() . "." . HTMLRenderable_pagination::PER_PAGE
             ]
         );
 

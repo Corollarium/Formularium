@@ -293,7 +293,10 @@ class Model
      */
     public function editable(FrameworkComposer $composer, array $modelData = []): string
     {
-        return $composer->editable($this, $modelData);
+        $this->_data = $modelData;
+        $r = $composer->editable($this, $modelData);
+        $this->_data = [];
+        return $r;
     }
 
     public function getRandom(): array
