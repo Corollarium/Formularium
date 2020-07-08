@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/buefy/dist/buefy.min.js">
   </script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"/>
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.3.45/css/materialdesignicons.min.css"/>
 
 
     <style>
@@ -901,16 +902,16 @@
   </b-select>
 </b-field>
 
-<b-pagination :total="paginator.total" :current.sync="paginator.current_page" :per-page="paginator.per_page">
+<b-pagination :total="paginator.totalItems" :current.sync="paginator.currentPage" :per-page="paginator.perPage">
 </b-pagination>
 
 
   </div>
   <script>
-    var app = new Vue({
+    const app_vueapp6 = new Vue({
     el: '#vueapp6',
     data: function () {
-        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"total":1,"current_page":1,"per_page":20}};
+        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"current":21,"currentPage":2,"totalItems":253}};
     },
         methods: {
         changedFile(name, event) {
@@ -1030,7 +1031,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      ZM
+      ET
     </span>
   </span>
 </div>
@@ -1041,7 +1042,7 @@
       Type countrycodeISO3
     </span>
     <span class="formularium-value">
-      SEN
+      HUN
     </span>
   </span>
 </div>
@@ -1052,7 +1053,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      796
+      132
     </span>
   </span>
 </div>
@@ -1074,7 +1075,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      KYD
+      DOP
     </span>
   </span>
 </div>
@@ -1217,12 +1218,12 @@
       Type language
     </span>
     <span class="formularium-value">
-      hr
+      ta
     </span>
   </span>
 </div>
 
-<b-pagination :total="pagination.total" :current.sync="pagination.current_page" :per-page="pagination.per_page">
+<b-pagination :total="pagination.totalItems" :current.sync="pagination.currentPage" :per-page="pagination.perPage">
 </b-pagination>
 
 <div>
@@ -1264,7 +1265,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      14:24:57
+      18:04:19
     </span>
   </span>
 </div>
@@ -1286,7 +1287,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      Atlantic/Bermuda
+      America/Edmonton
     </span>
   </span>
 </div>
@@ -1349,9 +1350,9 @@
 
   </div>
   <script>
-    var app = new Vue({
+    const app_vueapp7 = new Vue({
     el: '#vueapp7',
-    data: {"alpha":"REYdFxBdVL","alphanum":"RAXno","alphanumdash":"RS4eN6Njqcu42","bool":false,"boolean":true,"cnpj":"23.539.884\/0001-52","color":"#BD4101","constant":"","countrycodeISO2":"ZM","countrycodeISO3":"SEN","countrycodeNumeric":796,"cpf":"734.295.355-57","currency":"KYD","date":"2015-04-21","datetime":"2015-08-27T12:24:00+0000","domain":"hayes.com","email":"okilback@yahoo.com","file":"","float":0.721,"html":"<p>HTML <span>Iste rerum minima ipsum vel enim accusantium. Magnam eum praesentium ipsum et recusandae est. Nostrum eaque repellendus occaecati voluptate molestias non error.<\/span>Tempore consequatur veritatis reprehenderit laudantium. Voluptate laborum repudiandae doloremque laboriosam sed. Suscipit rerum officia rerum ea.<\/p>","integer":-1251157099,"ip":"89.245.179.24","ipv4":"153.211.144.19","ipv6":"3075:c6ae:6443:2705:4ed5:4fdd:8e37:a4a9","json":"{\"version\":-1348183536,\"data\":{\"string\":\"RUa6S8joTouo\",\"float\":0.308}}","language":"hr","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"+5691463835655","string":"RoFrtNHRMmQ","text":"Assumenda sed quis nam est sit quae deserunt. Est iste assumenda necessitatibus veniam dolores omnis. Consequatur atque ut et voluptas.","time":"14:24:57","timestamp":"2011-12-11T21:52:45+0000","timezone":"Atlantic\/Bermuda","uinteger":3480172935,"url":"https:\/\/www.gibson.com\/sed-distinctio-et-deleniti","usmall":60851,"uuid":"025c2ff1-35d3-4dfe-b9fe-6974e9484548","year":-199906636}
+    data: {"alpha":"RKnorxku","alphanum":"RtxrxpeEVxzyp","alphanumdash":"R_b_VrUIthd","bool":true,"boolean":false,"cnpj":"43.458.413\/0001-27","color":"#78B836","constant":"","countrycodeISO2":"ET","countrycodeISO3":"HUN","countrycodeNumeric":132,"cpf":"481.295.881-45","currency":"DOP","date":"2027-11-22","datetime":"2026-04-08T14:56:18+0000","domain":"corwin.com","email":"gstark@frami.biz","file":"","float":0.781,"html":"<p>HTML <span>Optio est qui enim aut. Consequatur ipsa voluptas qui aut voluptates. Corrupti rerum minus nemo pariatur ullam et. Odit expedita est nemo accusamus excepturi et reiciendis reprehenderit.<\/span>Officia maxime sed consequuntur maxime est laborum sunt. Laborum aut ut perferendis ipsa dolores sapiente. Magnam iure animi et aut distinctio adipisci maxime.<\/p>","integer":-886631667,"ip":"200.151.75.64","ipv4":"22.78.222.134","ipv6":"c764:e67f:cac7:3ddf:c5bb:5268:d953:cdc2","json":"{\"version\":-1169267907,\"data\":{\"string\":\"RXQFpFdz55FTL\",\"float\":0.78}}","language":"ta","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"+3274294943817","string":"RHOGxfcs","text":"Quos fugiat pariatur consectetur quia. Tempora exercitationem aspernatur temporibus eveniet.","time":"18:04:19","timestamp":"2023-09-02T16:35:23+0000","timezone":"America\/Edmonton","uinteger":2920396577,"url":"http:\/\/wuckert.biz\/molestiae-alias-itaque-quidem-pariatur-quia-minima","usmall":65359,"uuid":"a5e335f3-d44e-4053-b5ec-29325811fc61","year":-692437923}
 });
   </script>
 </div>
@@ -5114,7 +5115,7 @@
   </b-select>
 </b-field>
 
-<b-pagination :total="pagination.total" :current.sync="pagination.current_page" :per-page="pagination.per_page">
+<b-pagination :total="pagination.totalItems" :current.sync="pagination.currentPage" :per-page="pagination.perPage">
 </b-pagination>
 
 <b-field label="Type phone">
@@ -6453,7 +6454,7 @@
 
   </div>
   <script>
-    var app = new Vue({
+    const app_vueapp8 = new Vue({
     el: '#vueapp8',
     data: function () {
         return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
