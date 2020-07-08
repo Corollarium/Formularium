@@ -49,9 +49,9 @@ final class Formularium
      * @return void
      * @codeCoverageIgnore
      */
-    public static function appendValidatorNamespace(string $dir): void
+    public static function appendValidatorNamespace(string $ns): void
     {
-        self::$validatorNamespaces[] = $dir;
+        self::$validatorNamespaces[] = $ns;
     }
 
     /**
