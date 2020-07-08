@@ -16,7 +16,7 @@ if (empty($options)) {
 }
 
 $validator = $options['validator'];
-$namespace = $options['namespace'] ?? 'Formularium\Datatype';
+$namespace = $options['namespace'] ?? 'Formularium\\Validator';
 $path = $options['path'] ?? "Formularium/Validator/" ;
 $testpath = $options['testpath'] ?? "tests/Validator" ;
 
