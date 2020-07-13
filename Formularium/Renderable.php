@@ -43,9 +43,18 @@ abstract class Renderable implements RenderableParameter
         if (!class_exists($class)) {
             throw new ClassNotFoundException("Invalid datatype '$datatypeName' for {$framework->getName()}");
         }
-        return new $class();
+        return new $class($framework);
     }
 
+    /**
+     * @var Framework
+     */
+    protected $framework;
+
+    public function __construct(Framework $framework)
+    {
+        $this->framework = $framework;
+    }
     /**
      * Renders a view-only version of this renderable.
      *

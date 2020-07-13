@@ -1,8 +1,10 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\HTML;
 
 interface RenderableInterface
 {
     public const NO_AUTOCOMPLETE = 'no_autocomplete';
+
+    public const SCHEMA_ITEMPROP = 'itemprop';
 }

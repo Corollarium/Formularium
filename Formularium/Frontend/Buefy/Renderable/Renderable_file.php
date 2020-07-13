@@ -11,8 +11,6 @@ use Formularium\Validator\File;
 
 class Renderable_file extends \Formularium\Renderable
 {
-    use \Formularium\Frontend\HTML\RenderableViewableTrait;
-
     public function editable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $renderable = $field->getRenderables();
@@ -76,5 +74,35 @@ class Renderable_file extends \Formularium\Renderable
         );
 
         return $container;
+    }
+
+    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    {
+        $tag = $field->getRenderable(Renderable::VIEWABLE_TAG, 'span');
+        $atts = [
+            'class' => 'formularium-viewable'
+        ];
+        $valueAtts = ['class' => 'formularium-value'];
+
+        return HTMLElement::factory(
+            'div',
+            [],
+            HTMLElement::factory(
+                $tag,
+                $atts,
+                [
+                    HTMLElement::factory(
+                        'span',
+                        ['class' => 'formularium-label'],
+                        $field->getRenderable(\Formularium\Renderable::LABEL, '')
+                    ),
+                    HTMLElement::factory(
+                        'span',
+                        $valueAtts,
+                        $value
+                    )
+                ]
+            )
+        );
     }
 }

@@ -17,6 +17,12 @@ abstract class Framework
      */
     protected $name;
 
+    /**
+     * Options for rendering
+     * @var array
+     */
+    protected $options = [];
+
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -39,6 +45,40 @@ abstract class Framework
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return mixed
+     */
+    public function getOption(string $name, $value = null)
+    {
+        return $this->options[$name] ?? $value;
+    }
+
+    /**
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return self
+     */
+    public function setOption(string $name, $value): self
+    {
+        $this->options[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Set a new option
+     *
+     * @param array $options
+     * @return self
+     */
+    public function setOptions(array $options): self
+    {
+        $this->options = $options;
+        return $this;
     }
 
     /**

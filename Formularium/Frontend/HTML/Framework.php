@@ -6,51 +6,86 @@ use Formularium\HTMLElement;
 
 class Framework extends \Formularium\Framework
 {
+    public const SCHEMA_ITEMSCOPE = 'itemscope';
+    public const SCHEMA_ITEMTYPE = 'itemtype';
+
     /**
      * The tag used as container for fields in viewable()
      *
      * @var string
      */
-    protected static $viewableContainerTag = 'div';
+    protected $viewableContainerTag = 'div';
+
+    /**
+     * The tag used as container for the entire html.
+     *
+     * @var string
+     */
+    protected $viewableBaseTag = 'div';
 
     /**
      * The tag used as container for fields in editable()
      *
      * @var string
      */
-    protected static $editableContainerTag = 'div';
+    protected $editableContainerTag = 'div';
 
     public function __construct(string $name = 'HTML')
     {
         parent::__construct($name);
     }
 
-    public static function getViewableContainerTag(): string
-    {
-        return static::$viewableContainerTag;
-    }
-    
     /**
-     * @param string $tag
-     * @return void
+     * Get the tag used as container for the entire html.
+     *
+     * @return  string
      */
-    public static function setViewableContainerTag(string $tag)
+    public function getViewableBaseTag()
     {
-        static::$viewableContainerTag = $tag;
+        return $this->viewableBaseTag;
     }
 
-    public static function getEditableContainerTag(): string
+    /**
+     * Set the tag used as container for the entire html.
+     *
+     * @param  string  $viewableBaseTag  The tag used as container for the entire html.
+     *
+     * @return  self
+     */
+    public function setViewableBaseTag(string $viewableBaseTag): self
     {
-        return static::$editableContainerTag;
+        $this->viewableBaseTag = $viewableBaseTag;
+        return $this;
+    }
+
+    public function getViewableContainerTag(): string
+    {
+        return $this->viewableContainerTag;
     }
     
     /**
      * @param string $tag
-     * @return void
+     * @return self
      */
-    public static function setEditableContainerTag(string $tag)
+    public function setViewableContainerTag(string $tag): self
     {
-        static::$editableContainerTag = $tag;
+        $this->viewableContainerTag = $tag;
+        return $this;
+    }
+
+    public function getEditableContainerTag(): string
+    {
+        return $this->editableContainerTag;
+    }
+    
+    /**
+     * @param string $tag
+     * @return self
+     */
+    public function setEditableContainerTag(string $tag): self
+    {
+        $this->editableContainerTag = $tag;
+        return $this;
     }
 
     /**
@@ -66,9 +101,27 @@ class Framework extends \Formularium\Framework
 
     public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
     {
-        return join('', array_map(function ($e) {
-            return $e->__toString();
-        }, $elements));
+        $atts = [
+            'class' => 'formularium-base'
+        ];
+        if ($this->getOption('itemscope')) {
+            $atts['itemscope'] = '';
+        }
+        if ($this->getOption('itemtype')) {
+            $atts['itemtype'] = $this->getOption('itemtype');
+        }
+        
+        return HTMLElement::factory(
+            $this->getViewableBaseTag(),
+            $atts,
+            join(
+                '',
+                array_map(function ($e) {
+                    return $e->__toString();
+                }, $elements)
+            ),
+            true
+        )->__toString();
     }
 
     public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string

@@ -10,12 +10,22 @@ trait RenderableViewableTrait
     public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
     {
         $tag = $field->getRenderable(Renderable::VIEWABLE_TAG, 'span');
+        $atts = [
+            'class' => 'formularium-viewable'
+        ];
+        $valueAtts = ['class' => 'formularium-value'];
+
+        $renderables = $field->getRenderables();
+        if ($renderables[RenderableInterface::SCHEMA_ITEMPROP] ?? false) {
+            $valueAtts['itemprop'] = $renderables[RenderableInterface::SCHEMA_ITEMPROP];
+        }
+
         return HTMLElement::factory(
-            Framework::getViewableContainerTag(),
+            $this->framework->getViewableContainerTag(),
             [],
             HTMLElement::factory(
                 $tag,
-                ['class' => 'formularium-viewable'],
+                $atts,
                 [
                     HTMLElement::factory(
                         'span',
@@ -24,7 +34,7 @@ trait RenderableViewableTrait
                     ),
                     HTMLElement::factory(
                         'span',
-                        ['class' => 'formularium-value'],
+                        $valueAtts,
                         $value
                     )
                 ]

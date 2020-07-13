@@ -186,7 +186,7 @@ class Renderable_file extends Renderable
         </div>
         */
 
-        $container = new HTMLElement(Framework::getEditableContainerTag(), [], $content);
+        $container = new HTMLElement($this->framework->getEditableContainerTag(), [], $content);
 
         return $container;
     }

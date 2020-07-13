@@ -60,7 +60,7 @@ class Renderable_choice extends Renderable
             $value = $field->getRenderables()[static::DEFAULTVALUE];
         }
 
-        $element = new HTMLElement(Framework::getEditableContainerTag(), ['class' => 'formularium-radio-group']);
+        $element = new HTMLElement($this->framework->getEditableContainerTag(), ['class' => 'formularium-radio-group']);
 
         /**
          * @var Datatype_choice $datatype
