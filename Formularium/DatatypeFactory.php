@@ -8,6 +8,13 @@ use Formularium\Exception\Exception;
 final class DatatypeFactory
 {
     /**
+     * External factories.
+     *
+     * @var array
+     */
+    private static $factories = [];
+
+    /**
      * @codeCoverageIgnore
      */
     private function __construct()
@@ -23,17 +30,33 @@ final class DatatypeFactory
      */
     public static function factory(string $datatype): Datatype
     {
-        $class = "\\Formularium\\Datatype\\Datatype_$datatype";
-        if (!class_exists($class)) {
-            $class = "\\Datatype_$datatype";
-            if (!class_exists($class)) {
-                $class = $datatype;
-            }
-            if (!class_exists($class)) {
-                throw new ClassNotFoundException("Invalid datatype $datatype");
+        foreach (Formularium::getDatatypeNamespaces() as $ns) {
+            $class = $ns . "\\Datatype_$datatype";
+            if (class_exists($class)) {
+                return new $class();
             }
         }
-        return new $class();
+
+        // base namespace
+        if (class_exists("\\Datatype_$datatype")) {
+            $class = "\\Datatype_$datatype";
+            return new $class();
+        }
+
+        // external factories
+        foreach (self::$factories as $f) {
+            try {
+                return $f($datatype);
+            } catch (ClassNotFoundException $e) {
+                continue;
+            }
+        }
+        throw new ClassNotFoundException("Invalid datatype $datatype");
+    }
+
+    public static function registerFactory(callable $factory): void
+    {
+        self::$factories[] = $factory;
     }
 
     /**

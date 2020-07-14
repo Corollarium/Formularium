@@ -45,6 +45,16 @@ final class Formularium
     }
 
     /**
+     * Get the value of datatypeNamespaces
+     *
+     * @return  string[]
+     */
+    public static function getDatatypeNamespaces(): array
+    {
+        return self::$datatypeNamespaces;
+    }
+    
+    /**
      * @param string $ns The namespace to add
      * @return void
      * @codeCoverageIgnore
@@ -52,6 +62,16 @@ final class Formularium
     public static function appendValidatorNamespace(string $ns): void
     {
         self::$validatorNamespaces[] = $ns;
+    }
+
+    /**
+     * Get the value of validatorNamespaces
+     *
+     * @return  string[]
+     */
+    public static function getValidatorNamespaces(): array
+    {
+        return self::$validatorNamespaces;
     }
 
     /**

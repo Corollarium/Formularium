@@ -2,13 +2,14 @@
 
 namespace Formularium\Frontend\HTML;
 
+use Formularium\Frontend\HTML\Framework as HTMLFramework;
 use Formularium\Field;
 use Formularium\HTMLElement;
 
 abstract class Renderable extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
     /**
-     * @var Framework
+     * @var HTMLFramework
      */
     protected $framework;
 
