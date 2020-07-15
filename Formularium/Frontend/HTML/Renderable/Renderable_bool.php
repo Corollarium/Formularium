@@ -6,7 +6,7 @@ use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_bool extends Renderable
 {
@@ -18,14 +18,14 @@ class Renderable_bool extends Renderable
         viewable as _viewable;
     }
     
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $formatted = $field->getDatatype()->format($value, $field);
 
         return $this->_viewable($formatted, $field, $previous);
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         if (is_string($value)) {
             if ($value === 'true') {
@@ -55,20 +55,20 @@ class Renderable_bool extends Renderable
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function editableRadio($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function editableRadio($value, Field $field, HTMLNode $previous): HTMLNode
     {
         if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getRenderables())) {
             $value = $field->getRenderables()[static::DEFAULTVALUE];
         }
 
-        $element = new HTMLElement('ul');
+        $element = new HTMLNode('ul');
 
         $idcounter = 1;
         foreach ([true => 'True', false => 'False'] as $v => $label) {
-            $input = new HTMLElement('input');
+            $input = new HTMLNode('input');
 
             // send ids to delete/edit data later correctly.
             if ($value !== null && $v == $value) {
@@ -96,10 +96,10 @@ class Renderable_bool extends Renderable
                 }
             }
     
-            $li = new HTMLElement(
+            $li = new HTMLNode(
                 'li',
                 [],
-                [$input, new HTMLElement('label', ['for' => $id], [$label])]
+                [$input, new HTMLNode('label', ['for' => $id], [$label])]
             );
             $element->addContent($li);
         }
@@ -109,12 +109,12 @@ class Renderable_bool extends Renderable
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function editableSelect($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function editableSelect($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $element = new HTMLElement('select');
+        $element = new HTMLNode('select');
         $element->setAttributes([
             'id' => $field->getName() . Framework::counter(),
             'name' => $field->getName(),
@@ -125,9 +125,9 @@ class Renderable_bool extends Renderable
             'title' => $field->getRenderable(static::LABEL, '')
         ]);
 
-        $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
-        $optionTrue = new HTMLElement('option', ['value' => 'true'], 'True', true);
-        $optionFalse = new HTMLElement('option', ['value' => 'false'], 'False', true);
+        $optionEmpty = new HTMLNode('option', ['value' => ''], '', true);
+        $optionTrue = new HTMLNode('option', ['value' => 'true'], 'True', true);
+        $optionFalse = new HTMLNode('option', ['value' => 'false'], 'False', true);
 
         if ($value) {
             $optionTrue->setAttribute('selected', 'selected');

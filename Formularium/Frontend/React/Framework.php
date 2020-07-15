@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\React;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
 {
@@ -22,12 +22,12 @@ class Framework extends \Formularium\Framework
         return $counter++;
     }
 
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
         $head->prependContent([
-            HTMLElement::factory('script', ['src' => "https://unpkg.com/react@16/umd/react.development.js", 'crossorigin' => '']),
-            HTMLElement::factory('script', ['src' => "https://unpkg.com/react-dom@16/umd/react-dom.development.js", 'crossorigin' => '']),
-            HTMLElement::factory('script', ['src' => "https://unpkg.com/babel-standalone@6/babel.min.js", 'crossorigin' => ''])
+            HTMLNode::factory('script', ['src' => "https://unpkg.com/react@16/umd/react.development.js", 'crossorigin' => '']),
+            HTMLNode::factory('script', ['src' => "https://unpkg.com/react-dom@16/umd/react-dom.development.js", 'crossorigin' => '']),
+            HTMLNode::factory('script', ['src' => "https://unpkg.com/babel-standalone@6/babel.min.js", 'crossorigin' => ''])
         ]);
     }
 
@@ -86,8 +86,8 @@ const domContainer = document.querySelector('#{$id}');
 ReactDOM.render(e($component), domContainer);
 EOF;
 
-        $t = new HTMLElement('div', ['id' => $id]);
-        $s = new HTMLElement('script', ['type' => "text/babel"], $reactCode, true);
-        return HTMLElement::factory('', [], [$t, $s])->getRenderHTML();
+        $t = new HTMLNode('div', ['id' => $id]);
+        $s = new HTMLNode('script', ['type' => "text/babel"], $reactCode, true);
+        return HTMLNode::factory('', [], [$t, $s])->getRenderHTML();
     }
 }

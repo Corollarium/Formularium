@@ -6,7 +6,7 @@ use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Validator\File;
 
 class Renderable_file extends Renderable
@@ -18,10 +18,10 @@ class Renderable_file extends Renderable
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $renderable = $field->getRenderables();
         $validators = $field->getValidators();
@@ -101,7 +101,7 @@ class Renderable_file extends Renderable
             </ul>
         </div>*/
 
-        $input = HTMLElement::factory(
+        $input = HTMLNode::factory(
             'input',
             [
                 'id' => $field->getName() . Framework::counter(),
@@ -137,29 +137,29 @@ class Renderable_file extends Renderable
             }
         }
 
-        $content = HTMLElement::factory(
+        $content = HTMLNode::factory(
             'div',
             ['class' => 'formularium-file-origin-upload'],
             [
                 $input,
-                HTMLElement::factory(
+                HTMLNode::factory(
                     'canvas',
                     [
                         'class' => 'formularium-file-preview',
                         'style' => "display: none; clear: both;"
                     ]
                 ),
-                HTMLElement::factory(
+                HTMLNode::factory(
                     'input',
                     ['class' => 'formularium-button formularium-file-reset', 'type' => 'button', 'style' => "display: none;", 'value' => 'Clear file']
                 )
             ]
         );
         if (array_key_exists(Renderable::LABEL, $renderable)) {
-            $content->prependContent(new HTMLElement('label', ['for' => $input->getAttribute('id'), 'class' => 'formularium-label'], $renderable[Renderable::LABEL]));
+            $content->prependContent(new HTMLNode('label', ['for' => $input->getAttribute('id'), 'class' => 'formularium-label'], $renderable[Renderable::LABEL]));
         }
         if (array_key_exists(Renderable::COMMENT, $renderable)) {
-            $content->appendContent(new HTMLElement('div', ['class' => 'formularium-comment'], $renderable[Renderable::COMMENT]));
+            $content->appendContent(new HTMLNode('div', ['class' => 'formularium-comment'], $renderable[Renderable::COMMENT]));
         }
 
         /*
@@ -186,7 +186,7 @@ class Renderable_file extends Renderable
         </div>
         */
 
-        $container = new HTMLElement($this->framework->getEditableContainerTag(), [], $content);
+        $container = new HTMLNode($this->framework->getEditableContainerTag(), [], $content);
 
         return $container;
     }

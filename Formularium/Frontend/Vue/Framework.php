@@ -5,7 +5,7 @@ namespace Formularium\Frontend\Vue;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_bool;
 use Formularium\Datatype\Datatype_number;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Model;
 
 class Framework extends \Formularium\Framework
@@ -176,10 +176,10 @@ class Framework extends \Formularium\Framework
         return $this->mode;
     }
 
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
         $head->prependContent(
-            HTMLElement::factory('script', ['src' => "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"])
+            HTMLNode::factory('script', ['src' => "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"])
         );
     }
 
@@ -268,15 +268,15 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLElement($this->getViewableContainerTag(), ['id' => $id], $viewableForm, true);
+            $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $viewableForm, true);
             $script = <<<EOF
 const app_$id = new Vue({
     el: '#$id',
     data: $jsonData
 });
 EOF;
-            $s = new HTMLElement('script', [], $script, true);
-            return HTMLElement::factory('div', [], [$t, $s])->getRenderHTML();
+            $s = new HTMLNode('script', [], $script, true);
+            return HTMLNode::factory('div', [], [$t, $s])->getRenderHTML();
         }
     }
 
@@ -345,7 +345,7 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLElement($editableContainerTag, ['id' => $id], $editableForm, true);
+            $t = new HTMLNode($editableContainerTag, ['id' => $id], $editableForm, true);
             $script = <<<EOF
 const app_$id = new Vue({
     el: '#$id',
@@ -355,8 +355,8 @@ const app_$id = new Vue({
     $methods
 });
 EOF;
-            $s = new HTMLElement('script', [], $script, true);
-            return HTMLElement::factory('div', [], [$t, $s])->getRenderHTML();
+            $s = new HTMLNode('script', [], $script, true);
+            return HTMLNode::factory('div', [], [$t, $s])->getRenderHTML();
         }
     }
 

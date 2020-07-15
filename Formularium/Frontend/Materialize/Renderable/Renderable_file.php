@@ -4,7 +4,7 @@ namespace Formularium\Frontend\Materialize\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\Materialize\RenderableMaterializeInputTrait;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_file extends \Formularium\Renderable
 {
@@ -15,23 +15,23 @@ class Renderable_file extends \Formularium\Renderable
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         // add extra classes
         $input = $previous->get('input')[0];
 
-        return HTMLElement::factory(
+        return HTMLNode::factory(
             'div',
             ['class' => 'file-field'],
             [
-                HTMLElement::factory(
+                HTMLNode::factory(
                     'div',
                     ['class' => "btn"],
                     [
-                        HTMLElement::factory(
+                        HTMLNode::factory(
                             'span',
                             [],
                             'Upload'
@@ -39,10 +39,10 @@ class Renderable_file extends \Formularium\Renderable
                         $input
                     ]
                 ),
-                HTMLElement::factory(
+                HTMLNode::factory(
                     'div',
                     ['class' => "file-path-wrapper"],
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'input',
                         ['class' => 'file-path validate', 'type' => 'text']
                     )

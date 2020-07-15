@@ -5,10 +5,10 @@ namespace Formularium;
 use PHP_CodeSniffer\Generators\HTML;
 
 /**
- * Class that encapsule DOM elements. Similar to PHP DOMElement but more flexible.
+ * Class that encapsule DOM node elements. Similar to PHP DOMElement but more flexible.
  * This is not used for parsing, but to build HTML.
  */
-class HTMLElement
+class HTMLNode
 {
     const STANDALONE_TAGS = ['img', 'hr', 'br', 'input', 'meta', 'col', 'command', 'link', 'param', 'source', 'embed'];
 
@@ -45,7 +45,7 @@ class HTMLElement
      * @param array $attributes The attribute with values
      * @param mixed $content The content of element, can be:
      *                - string (with text content)
-     *                - HTMLElement
+     *                - HTMLNode
      *                - array with others elements or text
      * @param boolean $raw If true, do not escape content.
      */
@@ -66,12 +66,12 @@ class HTMLElement
      * @param array $attributes The attribute with values
      * @param mixed $content The content of element, can be:
      *                - string (with text content)
-     *                - HTMLElement
+     *                - HTMLNode
      *                - array with others elements or text
      * @param boolean $raw If true, do not escape content.
-     * @return HTMLElement
+     * @return HTMLNode
      */
-    public static function factory(string $tag, array $attributes = [], $content = '', $raw = false): HTMLElement
+    public static function factory(string $tag, array $attributes = [], $content = '', $raw = false): HTMLNode
     {
         return new self($tag, $attributes, $content, $raw);
     }
@@ -81,9 +81,9 @@ class HTMLElement
      * no contents or children)
      *
      * @param boolean $val
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      */
-    public function setRenderIfEmpty(bool $val): HTMLElement
+    public function setRenderIfEmpty(bool $val): HTMLNode
     {
         $this->renderIfEmpty = $val;
         return $this;
@@ -102,7 +102,7 @@ class HTMLElement
      * Modifies our tag
      *
      * @param string $tag
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      */
     public function setTag($tag)
     {
@@ -132,7 +132,7 @@ class HTMLElement
 
     /**
      * Return the content of element
-     * @return mixed array of HTMLElement and string (text)
+     * @return mixed array of HTMLNode and string (text)
      */
     public function getContent()
     {
@@ -157,9 +157,9 @@ class HTMLElement
      * Set a attribute value, if attribute exist overwrite it
      * @param string $name
      * @param mixed $value Can be a string or array of string
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      */
-    public function setAttribute(string $name, $value): HTMLElement
+    public function setAttribute(string $name, $value): HTMLNode
     {
         $this->setAttributes([$name => $value], true);
         return $this;
@@ -169,9 +169,9 @@ class HTMLElement
      * Add an attribute value, if attribute exist append value
      * @param string $name
      * @param mixed $value Can be a string or array of string
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      */
-    public function addAttribute(string $name, $value): HTMLElement
+    public function addAttribute(string $name, $value): HTMLNode
     {
         $this->setAttributes([$name => $value], false);
         return $this;
@@ -183,10 +183,10 @@ class HTMLElement
      * 				key is attributes names
      *              value is string or array values
      * @param bool $overwrite if true and attribute name exist overwrite them
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      *
      */
-    public function setAttributes(array $attributes, $overwrite = true): HTMLElement
+    public function setAttributes(array $attributes, $overwrite = true): HTMLNode
     {
         foreach ($attributes as $atrib => $value) {
             if (is_array($value)) {
@@ -208,7 +208,7 @@ class HTMLElement
         return $this;
     }
 
-    public function removeAttribute(string $attribute): HTMLElement
+    public function removeAttribute(string $attribute): HTMLNode
     {
         if (array_key_exists($attribute, $this->attributes)) {
             unset($this->attributes[$attribute]);
@@ -217,11 +217,11 @@ class HTMLElement
     }
 
     /**
-     * Aliases to HTMLElement::setAttributes($content, false);
+     * Aliases to HTMLNode::setAttributes($content, false);
      * @see setAttributes
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      */
-    public function addAttributes(array $attributes): HTMLElement
+    public function addAttributes(array $attributes): HTMLNode
     {
         $this->setAttributes($attributes, false);
         return $this;
@@ -229,16 +229,16 @@ class HTMLElement
 
     /**
      * Set content (dom objects or texts) to element
-     * @param string|HTMLElement|string[]|HTMLElement[] $content The content of element, can be:
+     * @param string|HTMLNode|string[]|HTMLNode[] $content The content of element, can be:
      *                - string (with text content)
-     *                - HTMLElement
+     *                - HTMLNode
      *                - array with others elements or text
      * @param bool $overwrite if true overwrite content otherwise append the content
      * @param bool $raw If true, this is raw content (html) and should not be escaped.
      * @param bool $prepend If true prepend instead of appending
-     * @return HTMLElement Itself
+     * @return HTMLNode Itself
      */
-    public function setContent($content, $overwrite = true, $raw = false, $prepend = false): HTMLElement
+    public function setContent($content, $overwrite = true, $raw = false, $prepend = false): HTMLNode
     {
         // TODO Don't work with reference objects, change it
         if (!is_array($content)) {
@@ -266,12 +266,12 @@ class HTMLElement
     }
 
     /**
-     * Aliases to HTMLElement::setContent($content, false);
+     * Aliases to HTMLNode::setContent($content, false);
      * @see setContent
-     * @param string|HTMLElement|string[]|HTMLElement[] $content
-     * @return HTMLElement Itself
+     * @param string|HTMLNode|string[]|HTMLNode[] $content
+     * @return HTMLNode Itself
      */
-    public function addContent($content, bool $raw = false): HTMLElement
+    public function addContent($content, bool $raw = false): HTMLNode
     {
         $this->setContent($content, false, $raw);
         return $this;
@@ -281,11 +281,11 @@ class HTMLElement
      * Appends content nodes to the bottom of this element.
      *
      * @see setContent
-     * @param string|HTMLElement|string[]|HTMLElement[] $content
+     * @param string|HTMLNode|string[]|HTMLNode[] $content
      * @param boolean $raw
-     * @return HTMLElement
+     * @return HTMLNode
      */
-    public function appendContent($content, bool $raw = false): HTMLElement
+    public function appendContent($content, bool $raw = false): HTMLNode
     {
         $this->setContent($content, false, $raw);
         return $this;
@@ -295,11 +295,11 @@ class HTMLElement
      * Prepends content nodes to the beginning of this element.
      *
      * @see setContent
-     * @param string|HTMLElement|string[]|HTMLElement[] $content
+     * @param string|HTMLNode|string[]|HTMLNode[] $content
      * @param boolean $raw
-     * @return HTMLElement
+     * @return HTMLNode
      */
-    public function prependContent($content, bool $raw = false): HTMLElement
+    public function prependContent($content, bool $raw = false): HTMLNode
     {
         $this->setContent($content, false, $raw, true);
         return $this;
@@ -314,7 +314,7 @@ class HTMLElement
      * 						'[a=v]' - Select elements with 'a' attribute with 'v' value
      * 						'e#i' - Select elements 'e' with id attribute 'i'
      * 						'e.c' - Select elements 'e' with class attribute 'c'
-     * @return HTMLElement[]
+     * @return HTMLNode[]
      */
     public function get(string $selector)
     {
@@ -349,11 +349,11 @@ class HTMLElement
      * Find and return elements based in $tag, $attr, $val
      * The $tag or $attr must be a value
      *
-     * @see HTMLElement::get
+     * @see HTMLNode::get
      * @param string $tag tag of search
      * @param string $attr attribute of search
      * @param string $val value of attribute search
-     * @return HTMLElement[]
+     * @return HTMLNode[]
      */
     public function getElements(string $tag, string $attr, string $val)
     {
@@ -362,13 +362,13 @@ class HTMLElement
 
     /**
      * Recursive function to found elements
-     * @param HTMLElement $element Element that will be available
+     * @param HTMLNode $element Element that will be available
      * @param string $tag Tag or null value to compare
      * @param string $attr Attribute name or null value to compare
      * @param string $val Value of attribute or null value to compare
-     * @return HTMLElement[]
+     * @return HTMLNode[]
      */
-    protected function getInternal(HTMLElement $element, string $tag = null, string $attr = null, string $val = null)
+    protected function getInternal(HTMLNode $element, string $tag = null, string $attr = null, string $val = null)
     {
         if ($this->match($element, $tag, $attr, $val)) {
             $return = [$element];
@@ -377,7 +377,7 @@ class HTMLElement
         }
 
         foreach ($element->getContent() as $content) {
-            if ($content instanceof HTMLElement) {
+            if ($content instanceof HTMLNode) {
                 $return = array_merge($return, $this->getInternal($content, $tag, $attr, $val));
             }
         }
@@ -387,13 +387,13 @@ class HTMLElement
 
     /**
      * Return a boolean based on match of the element with $tag, $attr or $val
-     * @param HTMLElement $element Element that will be available
+     * @param HTMLNode $element Element that will be available
      * @param string $tag Tag or null value to compare
      * @param string $attr Attribute name or null value to compare
      * @param string $val Value of attribute or null value to compare
      * @return boolean - true when satisfy and false otherwise
      */
-    protected function match(HTMLElement $element, $tag, $attr, $val): bool
+    protected function match(HTMLNode $element, $tag, $attr, $val): bool
     {
         if (!empty($tag)) {
             if ($element->getTag() != $tag) {
@@ -460,7 +460,7 @@ class HTMLElement
         $contentdata = [];
         $emptyfieldset = ($this->tag == 'fieldset'); // avoid rendering fieldset with only a "legend"
         foreach ($this->content as $content) {
-            if ($content instanceof HTMLElement) {
+            if ($content instanceof HTMLNode) {
                 $c = $content->getRenderHTML($indentString, $level + 1);
                 if ($this->tag == 'fieldset' and $content->getTag() != 'legend' and $c) {
                     $emptyfieldset = false;
@@ -497,14 +497,14 @@ class HTMLElement
     }
 
     /**
-     * Clone HTMLElement object and its child
-     * @return Object HTMLElement
+     * Clone HTMLNode object and its child
+     * @return Object HTMLNode
      */
     public function __clone()
     {
-        $obj = new HTMLElement($this->tag, $this->attributes);
+        $obj = new HTMLNode($this->tag, $this->attributes);
         foreach ($this->content as $content) {
-            if ($content instanceof HTMLElement) {
+            if ($content instanceof HTMLNode) {
                 $obj->addContent(clone $content);
             } else {
                 $obj->addContent($content);
@@ -512,7 +512,7 @@ class HTMLElement
         }
     }
 
-    public function replace(HTMLElement $e): void
+    public function replace(HTMLNode $e): void
     {
         $this->tag = $e->tag;
         $this->attributes = $e->attributes;
@@ -522,7 +522,7 @@ class HTMLElement
     /**
      * Clear All Attributes
      */
-    public function clearAttributes(): HTMLElement
+    public function clearAttributes(): HTMLNode
     {
         $this->attributes = [];
         return $this;
@@ -532,24 +532,24 @@ class HTMLElement
     /**
      * Clear All Content
      */
-    public function clearContent(): HTMLElement
+    public function clearContent(): HTMLNode
     {
         $this->content = [];
         return $this;
     }
 
     /**
-     * Similar to array_walk(). Applied to this HTMLElement and all its children.
+     * Similar to array_walk(). Applied to this HTMLNode and all its children.
      * Does not call callback for text content.
      *
      * @param callable $f
-     * @return HTMLElement self
+     * @return HTMLNode self
      */
-    public function walk(callable $f): HTMLElement
+    public function walk(callable $f): HTMLNode
     {
         $f($this);
         foreach ($this->content as $content) {
-            if ($content instanceof HTMLElement) {
+            if ($content instanceof HTMLNode) {
                 $content->walk($f);
             }
         }
@@ -566,7 +566,7 @@ class HTMLElement
     {
         $data = [$f($this)];
         foreach ($this->content as $content) {
-            if ($recurse && $content instanceof HTMLElement) {
+            if ($recurse && $content instanceof HTMLNode) {
                 $data = array_merge($data, $content->map($f, $recurse));
             } else {
                 $data[] = $f($content);
@@ -580,13 +580,13 @@ class HTMLElement
      * Does not call callback for text content.
      *
      * @param callable $f If returns false, element being checked is removed.
-     * @return HTMLElement[] The filtered elements.
+     * @return HTMLNode[] The filtered elements.
      */
     public function filter(callable $f, bool $recurse = true): array
     {
         $deleted = [];
         foreach ($this->content as $key => $content) {
-            if ($content instanceof HTMLElement) {
+            if ($content instanceof HTMLNode) {
                 if (!$f($content)) {
                     $deleted[] = $this->content[$key];
                     unset($this->content[$key]);

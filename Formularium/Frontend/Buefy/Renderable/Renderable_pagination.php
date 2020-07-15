@@ -5,16 +5,16 @@ namespace Formularium\Frontend\Buefy\Renderable;
 use Formularium\Field;
 use Formularium\Frontend\Buefy\RenderableBuefyInputTrait;
 use Formularium\Frontend\HTML\Renderable\Renderable_pagination as HTMLRenderable_pagination;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_pagination extends \Formularium\Renderable
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $this->pagination($value, $field, $previous);
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $this->pagination($value, $field, $previous);
     }
@@ -22,12 +22,12 @@ class Renderable_pagination extends \Formularium\Renderable
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function pagination($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function pagination($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $p = HTMLElement::factory(
+        $p = HTMLNode::factory(
             'b-pagination',
             [
                 ':total' => $field->getName() . "." . HTMLRenderable_pagination::TOTAL_ITEMS,

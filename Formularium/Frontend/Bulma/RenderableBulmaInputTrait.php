@@ -4,13 +4,13 @@ namespace Formularium\Frontend\Bulma;
 
 use Formularium\Field;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableBulmaInputTrait
 {
     use RenderableBulmaTrait;
 
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
@@ -20,10 +20,10 @@ trait RenderableBulmaInputTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         // add extra classes
         $input = $previous->get('input');
@@ -54,11 +54,11 @@ trait RenderableBulmaInputTrait
                 $iconData[] = $iconPack;
             }
             $iconData[] = $icon;
-            $iconElement = HTMLElement::factory(
+            $iconElement = HTMLNode::factory(
                 'span',
                 [ 'class' => "icon is-small is-left" ],
                 [
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'i',
                         [ 'class' => $iconData ],
                         []

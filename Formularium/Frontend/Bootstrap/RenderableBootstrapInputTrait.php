@@ -4,7 +4,7 @@ namespace Formularium\Frontend\Bootstrap;
 
 use Formularium\Field;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableBootstrapInputTrait
 {
@@ -15,10 +15,10 @@ trait RenderableBootstrapInputTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
@@ -28,10 +28,10 @@ trait RenderableBootstrapInputTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         // add extra classes
         $input = $previous->get('input')[0];
@@ -62,17 +62,17 @@ trait RenderableBootstrapInputTrait
                 $iconData[] = $iconPack;
             }
             $iconData[] = $icon;
-            $group = HTMLElement::factory(
+            $group = HTMLNode::factory(
                 'div',
                 [ 'class' => "input-group mb-3" ],
                 [
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'div',
                         [ 'class' => "input-group-prepend" ],
-                        HTMLElement::factory(
+                        HTMLNode::factory(
                             'span',
                             [ 'class' => "input-group-text" ],
-                            HTMLElement::factory(
+                            HTMLNode::factory(
                                 'i',
                                 [ 'class' => $iconData ],
                                 []

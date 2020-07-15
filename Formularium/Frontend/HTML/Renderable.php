@@ -4,7 +4,7 @@ namespace Formularium\Frontend\HTML;
 
 use Formularium\Frontend\HTML\Framework as HTMLFramework;
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 abstract class Renderable extends \Formularium\Renderable implements \Formularium\Frontend\HTML\RenderableInterface
 {
@@ -13,16 +13,16 @@ abstract class Renderable extends \Formularium\Renderable implements \Formulariu
      */
     protected $framework;
 
-    protected function container(HTMLElement $content, Field $field): HTMLElement
+    protected function container(HTMLNode $content, Field $field): HTMLNode
     {
         $renderable = $field->getRenderables();
-        $container = new HTMLElement($this->framework->getEditableContainerTag(), [], $content);
+        $container = new HTMLNode($this->framework->getEditableContainerTag(), [], $content);
         if (array_key_exists(Renderable::LABEL, $renderable)) {
-            $container->prependContent(new HTMLElement('label', ['for' => $content->getAttribute('id'), 'class' => 'formularium-label'], $renderable[Renderable::LABEL]));
+            $container->prependContent(new HTMLNode('label', ['for' => $content->getAttribute('id'), 'class' => 'formularium-label'], $renderable[Renderable::LABEL]));
         }
         if (array_key_exists(Renderable::COMMENT, $renderable)) {
             $id = 'comment' . $this->framework->counter();
-            $container->appendContent(new HTMLElement('div', ['class' => 'formularium-comment', 'id' => $id], $renderable[Renderable::COMMENT]));
+            $container->appendContent(new HTMLNode('div', ['class' => 'formularium-comment', 'id' => $id], $renderable[Renderable::COMMENT]));
             $content->addAttribute('aria-describedby', $id);
         }
         return $container;

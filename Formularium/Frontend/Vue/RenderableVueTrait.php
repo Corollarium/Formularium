@@ -3,11 +3,11 @@
 namespace Formularium\Frontend\Vue;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableVueTrait
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $elements = $previous->get('.formularium-value');
         foreach ($elements as &$e) {
@@ -17,7 +17,7 @@ trait RenderableVueTrait
         return $previous;
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         foreach ($previous->get('input') as $input) {
             $input->setAttribute('v-model', $field->getName())

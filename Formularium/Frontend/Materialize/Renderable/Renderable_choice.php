@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Materialize\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice as HTMLRenderable_choice;
 use Formularium\Frontend\Materialize\RenderableMaterializeTrait;
 
@@ -11,7 +11,7 @@ class Renderable_choice extends \Formularium\Renderable
 {
     use RenderableMaterializeTrait;
     
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
@@ -21,10 +21,10 @@ class Renderable_choice extends \Formularium\Renderable
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $newContent = [];
         $format = $field->getRenderable(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
@@ -35,7 +35,7 @@ class Renderable_choice extends \Formularium\Renderable
             foreach ($previous->get('.formularium-radio-item') as $container) {
                 $label = $container->get('label')[0];
                 $input = $container->get('input')[0];
-                $labels[] = HTMLElement::factory('p', [], $label->prependContent($input));
+                $labels[] = HTMLNode::factory('p', [], $label->prependContent($input));
             }
             $previous->setContent($labels);
         } else {
@@ -57,7 +57,7 @@ class Renderable_choice extends \Formularium\Renderable
                 ]);
                 $newContent[] = $comment[0];
             }
-            $script = HTMLElement::factory(
+            $script = HTMLNode::factory(
                 'script',
                 [],
                 "document.addEventListener('DOMContentLoaded', function() {

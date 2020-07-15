@@ -4,7 +4,7 @@ namespace Formularium\Frontend\Materialize\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\Materialize\RenderableMaterializeInputTrait;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_string extends \Formularium\Renderable
 {

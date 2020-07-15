@@ -4,19 +4,19 @@ namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_constant extends Renderable
 {
     const HTML = 'CONSTANT_HTML';
 
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        return $this->container(HTMLElement::factory('', [], $field->getRenderable(self::HTML, ''), true), $field);
+        return $this->container(HTMLNode::factory('', [], $field->getRenderable(self::HTML, ''), true), $field);
     }
     
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        return $this->container(HTMLElement::factory('', [], $field->getRenderable(self::HTML, ''), true), $field);
+        return $this->container(HTMLNode::factory('', [], $field->getRenderable(self::HTML, ''), true), $field);
     }
 }

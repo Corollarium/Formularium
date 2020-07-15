@@ -3,11 +3,11 @@
 namespace Formularium\Frontend\HTML;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableViewableTrait
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $tag = $field->getRenderable(Renderable::VIEWABLE_TAG, 'span');
         $atts = [
@@ -20,19 +20,19 @@ trait RenderableViewableTrait
             $valueAtts['itemprop'] = $renderables[RenderableInterface::SCHEMA_ITEMPROP];
         }
 
-        return HTMLElement::factory(
+        return HTMLNode::factory(
             $this->framework->getViewableContainerTag(),
             [],
-            HTMLElement::factory(
+            HTMLNode::factory(
                 $tag,
                 $atts,
                 [
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'span',
                         ['class' => 'formularium-label'],
                         $field->getRenderable(\Formularium\Renderable::LABEL, '')
                     ),
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'span',
                         $valueAtts,
                         $value

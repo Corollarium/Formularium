@@ -3,13 +3,13 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_email extends Renderable_string
 {
     const SCRAMBLE = 'scramble';
 
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         if ($field->getRenderable(static::SCRAMBLE, false)) {
             $value = str_ireplace(
@@ -21,7 +21,7 @@ class Renderable_email extends Renderable_string
         return parent::viewable($value, $field, $previous);
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $element = parent::editable($value, $field, $previous);
         $element->get('input')[0]->setAttribute('type', 'email');

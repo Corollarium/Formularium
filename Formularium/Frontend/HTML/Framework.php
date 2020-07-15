@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\HTML;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
 {
@@ -111,7 +111,7 @@ class Framework extends \Formularium\Framework
             $atts['itemtype'] = $this->getOption('itemtype');
         }
         
-        return HTMLElement::factory(
+        return HTMLNode::factory(
             $this->getViewableBaseTag(),
             $atts,
             join(

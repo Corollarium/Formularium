@@ -7,7 +7,7 @@ use Formularium\Datatype\Datatype_choice;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_choice extends Renderable
 {
@@ -28,14 +28,14 @@ class Renderable_choice extends Renderable
         viewable as _viewable;
     }
     
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $formatted = $field->getDatatype()->format($value, $field);
 
         return $this->_viewable($formatted, $field, $previous);
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $format = $field->getRenderable(static::FORMAT_CHOOSER, $this->format_chooser_default);
         
@@ -51,23 +51,23 @@ class Renderable_choice extends Renderable
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function editableRadio($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function editableRadio($value, Field $field, HTMLNode $previous): HTMLNode
     {
         if (empty($value) && array_key_exists(static::DEFAULTVALUE, $field->getRenderables())) {
             $value = $field->getRenderables()[static::DEFAULTVALUE];
         }
 
-        $element = new HTMLElement($this->framework->getEditableContainerTag(), ['class' => 'formularium-radio-group']);
+        $element = new HTMLNode($this->framework->getEditableContainerTag(), ['class' => 'formularium-radio-group']);
 
         /**
          * @var Datatype_choice $datatype
          */
         $datatype = $field->getDatatype();
         foreach ($datatype->getChoices() as $v => $label) {
-            $input = new HTMLElement('input');
+            $input = new HTMLNode('input');
 
             // send ids to delete/edit data later correctly.
             if ($value !== null && $v == $value) {
@@ -95,14 +95,14 @@ class Renderable_choice extends Renderable
                 }
             }
     
-            $li = new HTMLElement(
+            $li = new HTMLNode(
                 'div',
                 [
                     'class' => 'formularium-radio-item'
                 ],
                 [
                     $input,
-                    new HTMLElement('label', ['class' => 'formularium-radio-label', 'for' => $id], [HTMLElement::factory('span', [], $label)])
+                    new HTMLNode('label', ['class' => 'formularium-radio-label', 'for' => $id], [HTMLNode::factory('span', [], $label)])
                 ]
             );
             $element->addContent($li);
@@ -114,12 +114,12 @@ class Renderable_choice extends Renderable
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function editableSelect($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function editableSelect($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $element = new HTMLElement('select');
+        $element = new HTMLNode('select');
         $element->setAttributes([
             'id' => $field->getName() . Framework::counter(),
             'name' => $field->getName(),
@@ -130,19 +130,19 @@ class Renderable_choice extends Renderable
             'title' => $field->getRenderable(static::LABEL, '')
         ]);
 
-        $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
+        $optionEmpty = new HTMLNode('option', ['value' => ''], '', true);
         /**
          * @var Datatype_choice $datatype
          */
         $datatype = $field->getDatatype();
 
         if ($field->getValidators()[Datatype::REQUIRED] ?? false) {
-            $optionEmpty = new HTMLElement('option', ['value' => ''], '', true);
+            $optionEmpty = new HTMLNode('option', ['value' => ''], '', true);
             $element->addContent($optionEmpty);
         }
 
         foreach ($datatype->getChoices() as $v => $label) {
-            $option = new HTMLElement('option', ['value' => $v], $label, true);
+            $option = new HTMLNode('option', ['value' => $v], $label, true);
 
             if ($value == $v) {
                 $option->setAttribute('selected', 'selected');

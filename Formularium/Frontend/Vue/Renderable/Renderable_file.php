@@ -4,7 +4,7 @@ namespace Formularium\Frontend\Vue\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\Vue\RenderableVueTrait;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_file extends \Formularium\Renderable
 {
@@ -17,10 +17,10 @@ class Renderable_file extends \Formularium\Renderable
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $previous = $this->_editable($value, $field, $previous);
         foreach ($previous->get('[type=file]') as $input) {

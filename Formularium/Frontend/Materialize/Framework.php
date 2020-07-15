@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\Materialize;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
 {
@@ -11,12 +11,12 @@ class Framework extends \Formularium\Framework
         parent::__construct($name);
     }
 
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
         $head->appendContent(
-            HTMLElement::factory('meta', ['name' => "viewport", 'content' => "width=device-width, initial-scale=1"])
+            HTMLNode::factory('meta', ['name' => "viewport", 'content' => "width=device-width, initial-scale=1"])
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'link',
                 [
                     'rel' => "stylesheet",
@@ -26,10 +26,10 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    public function htmlFooter(HTMLElement &$footer)
+    public function htmlFooter(HTMLNode &$footer)
     {
         $footer->appendContent(
-            HTMLElement::factory('script', ['src' => "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"])
+            HTMLNode::factory('script', ['src' => "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"])
         );
     }
 

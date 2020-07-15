@@ -4,13 +4,13 @@ namespace Formularium\Frontend\Materialize\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\Materialize\RenderableMaterializeTrait;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_bool extends \Formularium\Renderable
 {
     use RenderableMaterializeTrait;
     
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
@@ -20,10 +20,10 @@ class Renderable_bool extends \Formularium\Renderable
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $newContent = [];
         // add extra classes
@@ -44,7 +44,7 @@ class Renderable_bool extends \Formularium\Renderable
             ]);
             $newContent[] = $comment[0];
         }
-        $script = HTMLElement::factory(
+        $script = HTMLNode::factory(
             'script',
             [],
             "document.addEventListener('DOMContentLoaded', function() {

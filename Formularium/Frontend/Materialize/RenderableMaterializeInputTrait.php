@@ -5,7 +5,7 @@ namespace Formularium\Frontend\Materialize;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Validator\MaxLength;
 
 trait RenderableMaterializeInputTrait
@@ -17,10 +17,10 @@ trait RenderableMaterializeInputTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
@@ -30,10 +30,10 @@ trait RenderableMaterializeInputTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         // add extra classes
         $newContent = [];

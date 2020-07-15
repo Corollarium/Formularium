@@ -4,7 +4,7 @@ namespace Formularium;
 
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 /**
  * Abstract base class for frameworks. Each framework should have a class inheriting
@@ -85,11 +85,11 @@ abstract class Framework
      * Returns a string with the <head> HTML to generate standalone files.
      * This is used by the kitchensink generator.
      *
-     * @param HTMLElement $head
+     * @param HTMLNode $head
      * @return void
      * @codeCoverageIgnore
      */
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
     }
 
@@ -97,17 +97,17 @@ abstract class Framework
      * Returns a string with things to add to the footer of the page (such as scripts)
      * This is used by the kitchensink generator.
      *
-     * @param HTMLElement $head
+     * @param HTMLNode $head
      * @return void
      * @codeCoverageIgnore
      */
-    public function htmlFooter(HTMLElement &$head)
+    public function htmlFooter(HTMLNode &$head)
     {
     }
 
     /**
      * @param Model $m
-     * @param HTMLElement[] $elements
+     * @param HTMLNode[] $elements
      * @param string $previousCompose
      * @return string
      */
@@ -118,7 +118,7 @@ abstract class Framework
 
     /**
      * @param Model $m
-     * @param HTMLElement[] $elements
+     * @param HTMLNode[] $elements
      * @param string $previousCompose
      * @return string
      */

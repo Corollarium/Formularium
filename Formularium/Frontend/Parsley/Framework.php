@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\Parsley;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Model;
 
 class Framework extends \Formularium\Framework
@@ -12,11 +12,11 @@ class Framework extends \Formularium\Framework
         parent::__construct($name);
     }
 
-    public function htmlFooter(HTMLElement &$footer)
+    public function htmlFooter(HTMLNode &$footer)
     {
         $footer->appendContent([
-            HTMLElement::factory('script', ['src' => "https://code.jquery.com/jquery-3.2.1.slim.min.js", 'integrity' => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", 'crossorigin' => "anonymous"]),
-            HTMLElement::factory('script', ['src' => "https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"])
+            HTMLNode::factory('script', ['src' => "https://code.jquery.com/jquery-3.2.1.slim.min.js", 'integrity' => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", 'crossorigin' => "anonymous"]),
+            HTMLNode::factory('script', ['src' => "https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"])
         ]);
     }
  
@@ -31,6 +31,6 @@ class Framework extends \Formularium\Framework
             'data-parsley-errors-wrapper' => "<span class='invalid-feedback'></span>",
             'data-parsley-error-template' => "<div></div>"
         ];
-        return HTMLElement::factory('div', $atts, [$previousCompose], true)->getRenderHTML();
+        return HTMLNode::factory('div', $atts, [$previousCompose], true)->getRenderHTML();
     }
 }

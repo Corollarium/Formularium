@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Bulma;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableBulmaTrait
 {
@@ -12,19 +12,19 @@ trait RenderableBulmaTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    abstract public function _editable($value, Field $field, HTMLElement $previous): HTMLElement;
+    abstract public function _editable($value, Field $field, HTMLNode $previous): HTMLNode;
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        /** @var HTMLElement $base */
+        /** @var HTMLNode $base */
         $base = $this->_editable($value, $field, $previous);
         $base->addAttribute('class', "control");
 
         // add a div.field container
-        $container = HTMLElement::factory(
+        $container = HTMLNode::factory(
             'div',
             [
                 'class' => "field",

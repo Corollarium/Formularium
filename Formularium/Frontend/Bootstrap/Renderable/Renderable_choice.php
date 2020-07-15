@@ -6,13 +6,13 @@ use Formularium\Datatype\Datatype_choice;
 use Formularium\Field;
 use Formularium\Frontend\Bootstrap\RenderableBootstrapTrait;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice as HTMLRenderable_choice;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_choice extends \Formularium\Renderable
 {
     use RenderableBootstrapTrait;
     
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
@@ -22,10 +22,10 @@ class Renderable_choice extends \Formularium\Renderable
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $format = $field->getRenderable(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
         

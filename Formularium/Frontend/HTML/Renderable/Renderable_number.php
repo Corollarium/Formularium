@@ -6,7 +6,7 @@ use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_number extends Renderable
 {
@@ -14,9 +14,9 @@ class Renderable_number extends Renderable
 
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
-    public function editable($value, Field $f, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $f, HTMLNode $previous): HTMLNode
     {
-        $input = new HTMLElement('input');
+        $input = new HTMLNode('input');
         /** @var \Formularium\Datatype\Datatype_number $datatype */
         $datatype = $f->getDatatype();
     

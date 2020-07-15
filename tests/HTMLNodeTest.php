@@ -1,35 +1,35 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace FormulariumTests;
 
 use PHPUnit\Framework\TestCase;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
-final class HTMLElementTest extends TestCase
+final class HTMLNodeTest extends TestCase
 {
     public function testTag()
     {
-        $html = new HTMLElement('div');
+        $html = new HTMLNode('div');
         $htmldata = '<div></div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
-        $html = new HTMLElement('img');
+        $html = new HTMLNode('img');
         $htmldata = '<img/>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
     }
 
     public function testAttributes()
     {
-        $html = new HTMLElement('div', array('id'=>'testID'));
+        $html = new HTMLNode('div', array('id'=>'testID'));
         $htmldata = '<div id="testID"></div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
-        $html = new HTMLElement('div', array('id'=>'testID', 'class'=>'testClass'));
+        $html = new HTMLNode('div', array('id'=>'testID', 'class'=>'testClass'));
         $htmldata = '<div id="testID" class="testClass"></div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $classes = array('testClass1','testClass2');
-        $html = new HTMLElement('div', array('id'=>'testID', 'class'=> $classes));
+        $html = new HTMLNode('div', array('id'=>'testID', 'class'=> $classes));
         $htmldata1 = '<div id="testID" class="testClass1 testClass2"></div>';
         $this->assertEquals($htmldata1, $html->getRenderHTML(''));
 
@@ -52,42 +52,42 @@ final class HTMLElementTest extends TestCase
     {
         $texto = "Hello World!";
 
-        $html = new HTMLElement('div', array(), $texto);
+        $html = new HTMLNode('div', array(), $texto);
         $htmldata = '<div>' . $texto .'</div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
-        $html2 = new HTMLElement('div', array(), $html);
+        $html2 = new HTMLNode('div', array(), $html);
         $htmldata = '<div><div>' . $texto .'</div></div>';
         $this->assertEquals($htmldata, $html2->getRenderHTML(''));
 
-        $html3 = new HTMLElement('body', array(), $html2);
+        $html3 = new HTMLNode('body', array(), $html2);
         $htmldata = '<body><div><div>' . $texto .'</div></div></body>';
         $this->assertEquals($htmldata, $html3->getRenderHTML(''));
 
-        $html = new HTMLElement('div', array(), array($texto, $html2));
+        $html = new HTMLNode('div', array(), array($texto, $html2));
         $htmldata = '<div>' . $texto . '<div><div>' . $texto .'</div></div></div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $img = '<img src="test.jpg"/>';
-        $html->setContent(new HTMLElement('img', array('src' => 'test.jpg')), false);
+        $html->setContent(new HTMLNode('img', array('src' => 'test.jpg')), false);
         $htmldata = '<div>' . $texto . '<div><div>' . $texto . '</div></div>' . $img . '</div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
 
         $img = '<img src="test.jpg"/>';
-        $html->setContent(new HTMLElement('img', array('src' => 'test.jpg')));
+        $html->setContent(new HTMLNode('img', array('src' => 'test.jpg')));
         $htmldata = '<div>' . $img . '</div>';
         $this->assertEquals($htmldata, $html->getRenderHTML(''));
     }
 
     public function testGet()
     {
-        $img = new HTMLElement('img', array('src' => 'test.jpg'));
-        $a = new HTMLElement('a', array('href' => 'teste.html'), array($img));
-        $div = new HTMLElement('div', array('id' => 'principal'), array($a));
+        $img = new HTMLNode('img', array('src' => 'test.jpg'));
+        $a = new HTMLNode('a', array('href' => 'teste.html'), array($img));
+        $div = new HTMLNode('div', array('id' => 'principal'), array($a));
 
-        $b = new HTMLElement('b', array('id' => 'idb', 'class' => array('negrito', 'c2')), 'Texto em negrito');
-        $span = new HTMLElement('span', array(), array('Texto sem negrito ', $b));
-        $div2 = new HTMLElement('div', array('class' => array('c1', 'c2')), array($span));
+        $b = new HTMLNode('b', array('id' => 'idb', 'class' => array('negrito', 'c2')), 'Texto em negrito');
+        $span = new HTMLNode('span', array(), array('Texto sem negrito ', $b));
+        $div2 = new HTMLNode('div', array('class' => array('c1', 'c2')), array($span));
 
         $div->addContent($div2);
 
@@ -130,7 +130,7 @@ final class HTMLElementTest extends TestCase
 
     public function testRaw()
     {
-        $e = new HTMLElement(
+        $e = new HTMLNode(
             'div',
             array('id' => '32')
         );
@@ -141,7 +141,7 @@ final class HTMLElementTest extends TestCase
 
     public function testClear()
     {
-        $e = new HTMLElement(
+        $e = new HTMLNode(
             'div',
             array('id' => '32')
         );
@@ -153,11 +153,11 @@ final class HTMLElementTest extends TestCase
 
     public function testMap()
     {
-        $e = new HTMLElement(
+        $e = new HTMLNode(
             'div',
             ['id' => '32'],
             [
-                new HTMLElement(
+                new HTMLNode(
                     'span',
                     ['id' => '23'],
                     ['data']
@@ -166,7 +166,7 @@ final class HTMLElementTest extends TestCase
         );
         $map = $e->map(
             function ($e) {
-                if ($e instanceof HTMLElement) {
+                if ($e instanceof HTMLNode) {
                     return $e->getTag();
                 }
                 return $e;
@@ -177,11 +177,11 @@ final class HTMLElementTest extends TestCase
 
     public function testFilter()
     {
-        $e = new HTMLElement(
+        $e = new HTMLNode(
             'div',
             ['id' => '32'],
             [
-                new HTMLElement(
+                new HTMLNode(
                     'span',
                     ['id' => '23'],
                     ['data']
@@ -190,7 +190,7 @@ final class HTMLElementTest extends TestCase
         );
         $e->filter(
             function ($e) {
-                if ($e instanceof HTMLElement && $e->getTag() === 'span') {
+                if ($e instanceof HTMLNode && $e->getTag() === 'span') {
                     return false;
                 }
                 return true;
@@ -201,11 +201,11 @@ final class HTMLElementTest extends TestCase
 
     public function testWalk()
     {
-        $e = new HTMLElement(
+        $e = new HTMLNode(
             'div',
             ['id' => '32'],
             [
-                new HTMLElement(
+                new HTMLNode(
                     'span',
                     ['id' => '23'],
                     ['data']
@@ -214,7 +214,7 @@ final class HTMLElementTest extends TestCase
         );
         $map = $e->walk(
             function ($e) {
-                if ($e instanceof HTMLElement) {
+                if ($e instanceof HTMLNode) {
                     $e->setTag('section');
                 }
             }

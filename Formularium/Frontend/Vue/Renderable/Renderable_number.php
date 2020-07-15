@@ -4,7 +4,7 @@ namespace Formularium\Frontend\Vue\Renderable;
 
 use Formularium\Field;
 use Formularium\Frontend\Vue\RenderableVueTrait;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_number extends \Formularium\Renderable
 {

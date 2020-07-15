@@ -4,7 +4,7 @@ namespace Formularium;
 
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 /**
  * Abstract base classe to render datatypes. This class should be extended by frontends
@@ -60,18 +60,18 @@ abstract class Renderable implements RenderableParameter
      *
      * @param mixed $value The value to render.
      * @param Field $field The field.
-     * @param HTMLElement $previous The HTML coming from the previous composer.
-     * @return HTMLElement The HTML rendered.
+     * @param HTMLNode $previous The HTML coming from the previous composer.
+     * @return HTMLNode The HTML rendered.
      */
-    abstract public function viewable($value, Field $field, HTMLElement $previous): HTMLElement;
+    abstract public function viewable($value, Field $field, HTMLNode $previous): HTMLNode;
 
     /**
      * Renders a form editable version of this renderable
      *
      * @param mixed $value The value to render.
      * @param Field $field The field.
-     * @param HTMLElement $previous The HTML coming from the previous composer.
-     * @return HTMLElement The HTML rendered.
+     * @param HTMLNode $previous The HTML coming from the previous composer.
+     * @return HTMLNode The HTML rendered.
      */
-    abstract public function editable($value, Field $field, HTMLElement $previous): HTMLElement;
+    abstract public function editable($value, Field $field, HTMLNode $previous): HTMLNode;
 }

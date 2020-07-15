@@ -5,13 +5,13 @@ namespace Formularium\Frontend\Buefy\Renderable;
 use Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Renderable\Renderable_file as HTMLRenderable_file;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Renderable;
 use Formularium\Validator\File;
 
 class Renderable_file extends \Formularium\Renderable
 {
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $renderable = $field->getRenderables();
         $validators = $field->getValidators();
@@ -41,28 +41,28 @@ class Renderable_file extends \Formularium\Renderable
             }
         }
 
-        $container = HTMLElement::factory(
+        $container = HTMLNode::factory(
             'b-field',
             [],
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'b-upload',
                 $inputAtts,
-                HTMLElement::factory(
+                HTMLNode::factory(
                     'section',
                     ['class' => 'section'],
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'div',
                         ['class' => "content has-text-centered"],
                         [
-                            HTMLElement::factory(
+                            HTMLNode::factory(
                                 'p',
                                 [],
-                                HTMLElement::factory(
+                                HTMLNode::factory(
                                     'b-icon',
                                     [ 'icon' => "upload", 'size' => "is-large" ]
                                 )
                             ),
-                            HTMLElement::factory(
+                            HTMLNode::factory(
                                 'p',
                                 [ 'class' => 'formularium-label'],
                                 $renderable[Renderable::LABEL] ?? ''
@@ -76,7 +76,7 @@ class Renderable_file extends \Formularium\Renderable
         return $container;
     }
 
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $tag = $field->getRenderable(Renderable::VIEWABLE_TAG, 'span');
         $atts = [
@@ -84,19 +84,19 @@ class Renderable_file extends \Formularium\Renderable
         ];
         $valueAtts = ['class' => 'formularium-value'];
 
-        return HTMLElement::factory(
+        return HTMLNode::factory(
             'div',
             [],
-            HTMLElement::factory(
+            HTMLNode::factory(
                 $tag,
                 $atts,
                 [
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'span',
                         ['class' => 'formularium-label'],
                         $field->getRenderable(\Formularium\Renderable::LABEL, '')
                     ),
-                    HTMLElement::factory(
+                    HTMLNode::factory(
                         'span',
                         $valueAtts,
                         $value

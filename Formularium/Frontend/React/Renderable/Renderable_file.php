@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\React\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Frontend\React\RenderableReactTrait;
 
 class Renderable_file extends \Formularium\Renderable
@@ -12,7 +12,7 @@ class Renderable_file extends \Formularium\Renderable
         RenderableReactTrait::editable as _editable;
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $previous->filter(
             function ($e) {

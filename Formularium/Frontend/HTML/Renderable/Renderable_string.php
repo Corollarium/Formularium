@@ -7,7 +7,7 @@ use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Validator\Max;
 use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
@@ -20,9 +20,9 @@ class Renderable_string extends Renderable
     
     use \Formularium\Frontend\HTML\RenderableViewableTrait;
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $input = new HTMLElement('input');
+        $input = new HTMLNode('input');
 
         $renderable = $field->getRenderables();
         $validators = $field->getValidators();

@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Bootstrap\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_date extends Renderable_string
 {

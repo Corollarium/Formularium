@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\Quill;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
 {
@@ -18,17 +18,17 @@ class Framework extends \Formularium\Framework
         parent::__construct($name);
     }
 
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
         $head->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'script',
                 [
                     'src' => "https://cdn.quilljs.com/1.3.6/quill.min.js"
                 ]
             )
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'link',
                 [
                     'rel' => "stylesheet",

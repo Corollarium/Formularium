@@ -3,11 +3,11 @@
 namespace Formularium\Frontend\Blade;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableBladeTrait
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         foreach ($previous->get('formularium-value') as $input) {
             $input->setContent("{{Request::input('" . $field->getName() . "')}}");
@@ -15,7 +15,7 @@ trait RenderableBladeTrait
         return $previous;
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         foreach ($previous->get('input') as $input) {
             $input->setAttribute('value', "{{Request::input('" . $field->getName() . "')}}");

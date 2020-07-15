@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_cnpj extends Renderable_string
 {

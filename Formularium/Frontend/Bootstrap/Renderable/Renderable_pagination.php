@@ -4,16 +4,16 @@ namespace Formularium\Frontend\Bootstrap\Renderable;
 
 use Formularium\Field;
 use Formularium\Renderable;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_pagination extends Renderable_constant
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $this->fix($value, $field, $previous);
     }
     
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $this->fix($value, $field, $previous);
     }
@@ -21,10 +21,10 @@ class Renderable_pagination extends Renderable_constant
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function fix($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function fix($value, Field $field, HTMLNode $previous): HTMLNode
     {
         foreach ($previous->get('.formularium-disabled') as $e) {
             $e->addAttribute('class', 'disabled');

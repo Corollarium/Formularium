@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Bootstrap\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_text extends Renderable_string
 {
@@ -12,10 +12,10 @@ class Renderable_text extends Renderable_string
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    public function _editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         // add extra classes
         $previous->get('textarea')[0]->setAttributes([

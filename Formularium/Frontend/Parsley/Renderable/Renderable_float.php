@@ -3,16 +3,16 @@
 namespace Formularium\Frontend\Parsley\Renderable;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Renderable_float extends \Formularium\Renderable
 {
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $previous;
     }
 
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $input = $previous->get('input')[0];
         $input->setAttribute('data-parsley-type', "number");

@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\Bulma;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Frontend\HTML\Framework
 {
@@ -11,12 +11,12 @@ class Framework extends \Formularium\Frontend\HTML\Framework
         parent::__construct($name);
     }
 
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
         $head->appendContent(
-            HTMLElement::factory('meta', ['name' => "viewport", 'content' => "width=device-width, initial-scale=1"])
+            HTMLNode::factory('meta', ['name' => "viewport", 'content' => "width=device-width, initial-scale=1"])
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'link',
                 [
                     'rel' => "stylesheet",
@@ -24,7 +24,7 @@ class Framework extends \Formularium\Frontend\HTML\Framework
                 ]
             )
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'script',
                 ['defer' => null, 'src' => "https://use.fontawesome.com/releases/v5.3.1/js/all.js"]
             )

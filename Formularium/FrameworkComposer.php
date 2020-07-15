@@ -3,7 +3,7 @@
 namespace Formularium;
 
 use Formularium\Exception\ClassNotFoundException;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class FrameworkComposer
 {
@@ -81,7 +81,7 @@ class FrameworkComposer
      */
     public function htmlHead(): string
     {
-        $head = new HTMLElement('');
+        $head = new HTMLNode('');
         foreach ($this->getFrameworks() as $framework) {
             $framework->htmlHead($head);
         }
@@ -90,11 +90,25 @@ class FrameworkComposer
 
     public function htmlFooter(): string
     {
-        $footer = new HTMLElement('');
+        $footer = new HTMLNode('');
         foreach ($this->getFrameworks() as $framework) {
             $framework->htmlFooter($footer);
         }
         return $footer->getRenderHTML();
+    }
+
+    public function element(string $elementName, array $parameters = []): string
+    {
+        $node = new HTMLNode('');
+        foreach ($this->getFrameworks() as $framework) {
+            try {
+                $element = Element::factory($elementName, $framework);
+                $node = $element->render($parameters, $node);
+            } catch (ClassNotFoundException $e) {
+                continue; // renderable default
+            }
+        }
+        return $node->getRenderHTML();
     }
 
     /**
@@ -108,7 +122,7 @@ class FrameworkComposer
         $elements = [];
         foreach ($m->getFields() as $field) {
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
-            $html = new HTMLElement('');
+            $html = new HTMLNode('');
             foreach ($this->getFrameworks() as $framework) {
                 try {
                     $r = $framework->getRenderable($field->getDatatype());
@@ -132,7 +146,7 @@ class FrameworkComposer
         $elements = [];
         foreach ($m->getFields() as $field) {
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
-            $html = new HTMLElement('');
+            $html = new HTMLNode('');
             foreach ($this->getFrameworks() as $framework) {
                 try {
                     $r = $framework->getRenderable($field->getDatatype());

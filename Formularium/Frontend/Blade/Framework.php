@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\Blade;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use Formularium\Model;
 
 class Framework extends \Formularium\Framework

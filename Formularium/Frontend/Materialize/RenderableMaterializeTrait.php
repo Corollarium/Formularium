@@ -3,7 +3,7 @@
 namespace Formularium\Frontend\Materialize;
 
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 trait RenderableMaterializeTrait
 {
@@ -12,16 +12,16 @@ trait RenderableMaterializeTrait
      *
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    abstract public function _editable($value, Field $field, HTMLElement $previous): HTMLElement;
+    abstract public function _editable($value, Field $field, HTMLNode $previous): HTMLNode;
     
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        /** @var HTMLElement $base */
+        /** @var HTMLNode $base */
         $base = $this->_editable($value, $field, $previous);
         $base->addAttribute('class', "input-field col s12");
-        return HTMLElement::factory('div', ['class' => 'row'], $base);
+        return HTMLNode::factory('div', ['class' => 'row'], $base);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Formularium\Frontend\Buefy;
 
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
 {
@@ -11,12 +11,12 @@ class Framework extends \Formularium\Framework
         parent::__construct($name);
     }
 
-    public function htmlHead(HTMLElement &$head)
+    public function htmlHead(HTMLNode &$head)
     {
         $head->appendContent(
-            HTMLElement::factory('meta', ['name' => "viewport", 'content' => "width=device-width, initial-scale=1"])
+            HTMLNode::factory('meta', ['name' => "viewport", 'content' => "width=device-width, initial-scale=1"])
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'link',
                 [
                     'rel' => "stylesheet",
@@ -24,14 +24,14 @@ class Framework extends \Formularium\Framework
                 ]
             )
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'script',
                 [
                     'src' => "https://unpkg.com/buefy/dist/buefy.min.js",
                 ]
             )
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'link',
                 [
                     'rel' => "stylesheet",
@@ -39,7 +39,7 @@ class Framework extends \Formularium\Framework
                 ]
             )
         )->appendContent(
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'link',
                 [
                     'rel' => "stylesheet",

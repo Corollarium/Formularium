@@ -4,7 +4,7 @@ namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Exception\Exception;
 use Formularium\Field;
-use Formularium\HTMLElement;
+use Formularium\HTMLNode;
 use PHP_CodeSniffer\Generators\HTML;
 
 class Renderable_pagination extends Renderable_constant
@@ -16,12 +16,12 @@ class Renderable_pagination extends Renderable_constant
     const PER_PAGE = 'perPage'; // items per page. Default: 20
     const TOTAL_ITEMS = 'totalItems'; // total items in query.
 
-    public function viewable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $this->container($this->pagination($value, $field, $previous), $field);
     }
     
-    public function editable($value, Field $field, HTMLElement $previous): HTMLElement
+    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         return $this->container($this->pagination($value, $field, $previous), $field);
     }
@@ -29,10 +29,10 @@ class Renderable_pagination extends Renderable_constant
     /**
      * @param mixed $value
      * @param Field $field
-     * @param HTMLElement $previous
-     * @return HTMLElement
+     * @param HTMLNode $previous
+     * @return HTMLNode
      */
-    protected function pagination($value, Field $field, HTMLElement $previous): HTMLElement
+    protected function pagination($value, Field $field, HTMLNode $previous): HTMLNode
     {
         if (!is_array($value)) {
             $value = [];
@@ -69,7 +69,7 @@ class Renderable_pagination extends Renderable_constant
     
         // only one page? don't show anything.
         if ($maxindex <= $perpage) {
-            return HTMLElement::factory('');
+            return HTMLNode::factory('');
         }
     
         $query = array();
@@ -103,10 +103,10 @@ class Renderable_pagination extends Renderable_constant
             $pages[] = $this->getItem('...', '', 'formularium-ellipsis');
         }
     
-        return HTMLElement::factory(
+        return HTMLNode::factory(
             'nav',
             ['class' => 'formularium-pagination-wrapper', 'aria-label' => "Page navigation"],
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'ul',
                 ['class' => 'formularium-pagination'],
                 $pages
@@ -114,12 +114,12 @@ class Renderable_pagination extends Renderable_constant
         );
     }
 
-    protected function getItem(string $text, string $link, string $class = ''): HTMLElement
+    protected function getItem(string $text, string $link, string $class = ''): HTMLNode
     {
-        return HTMLElement::factory(
+        return HTMLNode::factory(
             'li',
             ['class' => ['formularium-pagination-item', $class]],
-            HTMLElement::factory(
+            HTMLNode::factory(
                 'a',
                 ['class' => 'formularium-pagination-link', 'href' => $link],
                 $text
