@@ -138,6 +138,20 @@ class Model
         return $this->fields[$name];
     }
 
+    /**
+     * filter operation for fields that return true for callable.
+     *
+     * @param callable $function
+     * @return Field[]
+     */
+    public function filterField(callable $function): array
+    {
+        return array_filter(
+            $this->fields,
+            $function
+        );
+    }
+
     public function appendField(Field $f): self
     {
         $this->fields[$f->getName()] = $f;
