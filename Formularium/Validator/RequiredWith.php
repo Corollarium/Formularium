@@ -17,8 +17,11 @@ class RequiredWith implements ValidatorInterface
 {
     public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
     {
-        $expectedFields = $options['fields'];
+        if (!$model) {
+            throw new ValidatorException("RequiredWith needs a model");
+        }
 
+        $expectedFields = $options['fields'];
         $found = false;
         $data = $model->getData();
         foreach ($expectedFields as $ef) {
