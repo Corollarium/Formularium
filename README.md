@@ -34,8 +34,9 @@ Check the:
 - typed data system: change the datatype and reflect it on your data.
 - automatic validation: validate your data automatically and safely.
 - component validators: add new validators for your datatypes easily.
+- abstraction: abstract your CSS frameworks for simple element generation from code, like buttons or badges.
 - Graphql: declare your models in Graphql SDL and get the scaffolding for free. Works even better with [Modelarium](https://github.com/Corollarium/modelarium).
-- generate frontend scaffolding: stop writing verbose HTML and code to generate code/cards/etc. Let this tool do all the basic work for you.
+- generate frontend scaffolding: stop writing verbose HTML and have manual labor to generate forms/cards/etc. Let this tool do all the basic work for you.
 - component generation: generate React and Vue components with the corresponding HTML template.
 - SQL/Laravel typing: convert datatypes to your database generation with SQL and Laravel types.
 
@@ -51,6 +52,15 @@ Everything in a glance:
 // set your framework composition statically.
 // For example, this builds HTML using Bootstrap as CSS and the Vue framework.
 $composer = new FrameworkComposer(['HTML', 'Bootstrap', 'Vue']);
+
+// you can just make simple elements, like a button
+echo $composer->element(
+    'Button',
+    [
+        Element::LABEL => 'Submit',
+        Element::SIZE => Element::SIZE_LARGE,
+    ]
+);
 
 // build the model from data description. You can use a JSON file as well.
 $modelData = [

@@ -7,7 +7,8 @@ Formularium is defined on a few base class types:
 - `Datatype`: the type of an attribute. These are not the basic PHP types, but extensible datatypes that can be complex.
 - `Validator`: a class that performs specific data validation.
 - `Framework`: the framework to use (CSS/JS/etc). Frameworks work by composition, so you can combine them.
-- `Renderable`: the frontend datatype classes. Convert a datatype into rendered HTML.
+- `Renderable`: the frontend datatype render classes. Convert a datatype into rendered HTML.
+- `Element`: the frontend basic element classes, such as buttons.
 
 You can create models from a structure, programmatically or from a graphql description.
 
@@ -90,6 +91,6 @@ Once built, models can validate date, render a form or a read-only page.
 
 See also:
 
-- [base validators available for all datatypes](basevalidator.md)
+- [list of validators](basevalidator.md)
 - [creating your own datatypes](datatype.md)
 - [creating your own framework and renderable classes](frontend.md)

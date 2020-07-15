@@ -18,9 +18,15 @@ This will generate a file `Datatype_mine.php` with all the scaffolding. Fill the
 
 You often will want to use an existing basetype to inherit from existing datatypes. This will also use the Renderable from the basetype, so it will automatically render with all existing frontends automatically.
 
+Remember to register your datatype namespace in your application so they can be autoloaded:
+
+```php
+Formularium::appendDatatypeNamespace('MyApp\\Datatypes');
+```
+
 ---
 
 See also:
 
-- [base validators available for all datatypes](basevalidator.md)
+- [validators available](basevalidator.md)
 - [creating your own framework and renderable classes](frontend.md)
