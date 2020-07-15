@@ -62,7 +62,7 @@ echo $composer->element(
     ]
 );
 
-// build the model from data description. You can use a JSON file as well.
+// build the model from data description. You can use a JSON file as well or build it with constructors.
 $modelData = [
     'name' => 'TestModel',
     'fields' => [
@@ -142,6 +142,13 @@ Formularium is built in a way that generators can be chained, so you can combine
   - [Vue](https://vuejs.org)
   - [React](https://reactjs.org)
   - [Laravel Blade](https://laravel.com)
+  - Future: Angular
 - JS renderable
   - [Parsley](https://parsleyjs.org/)
   - [Quill editor](https://quilljs.com/)
+
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Corollarium/formularium/issues)
+
+Any contributions are welcome. Please send a PR.
+
+We are looking for people experienced in React and Angular to work on its generators.
