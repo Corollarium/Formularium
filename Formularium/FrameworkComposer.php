@@ -97,6 +97,13 @@ class FrameworkComposer
         return $footer->getRenderHTML();
     }
 
+    /**
+     * Renders an element
+     *
+     * @param string $elementName
+     * @param array $parameters
+     * @return string The rendered HTML
+     */
     public function element(string $elementName, array $parameters = []): string
     {
         $node = new HTMLNode('');
