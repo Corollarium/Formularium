@@ -42,6 +42,11 @@ abstract class Framework
         return Renderable::factory($datatype, $this);
     }
 
+    public function getElement(string $name): Element
+    {
+        return Element::factory($name, $this);
+    }
+
     public function getName(): string
     {
         return $this->name;

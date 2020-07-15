@@ -102,10 +102,10 @@ class FrameworkComposer
         $node = new HTMLNode('');
         foreach ($this->getFrameworks() as $framework) {
             try {
-                $element = Element::factory($elementName, $framework);
+                $element = $framework->getElement($elementName);
                 $node = $element->render($parameters, $node);
             } catch (ClassNotFoundException $e) {
-                continue; // renderable default
+                continue; // element default
             }
         }
         return $node->getRenderHTML();
