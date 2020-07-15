@@ -10,7 +10,7 @@ Check:
 - [a basic hello world example in pure PHP](https://github.com/Corollarium/Formularium-example)
 - [Modelarium, a full backend/frontend scaffolding generator for PHP/Laravel](https://github.com/Corollarium/modelarium/).
 
-## Same code, different frontend frameworks
+### Same code, different frontend frameworks
 
 [![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html)
 [![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html)
@@ -39,6 +39,15 @@ Here's a minimal sample:
 // set your framework composition.
 // For example, this builds HTML using Bootstrap as CSS and the Vue framework.
 $composer = new FrameworkComposer(['HTML', 'Bootstrap', 'Vue']);
+
+// you can just make simple elements, like a button
+echo $composer->element(
+    'Button',
+    [
+        Element::LABEL => 'Submit',
+        Element::SIZE => Element::SIZE_LARGE,
+    ]
+);
 
 // build the model from data description. You can use a JSON file as well.
 $modelData = [

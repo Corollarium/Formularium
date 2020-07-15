@@ -1,6 +1,6 @@
-# Base validation
+# Base renderables
 
-These validators are available for any datatype. They should be used in the `validators` section of a field, like this:
+These renderable parameters are available for most datatype renderables. They should be used in the `renderable` section of a field, like this:
 
 ```php
 $modelData = [
@@ -17,7 +17,7 @@ $modelData = [
 $model = Model::fromStruct($modelData);
 ```
 
-## Validators
+## Parameters
 
 - `Renderable::COMMENT => string`
   A comment to be printed explaining the field.
