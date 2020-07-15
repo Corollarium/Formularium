@@ -21,7 +21,7 @@ trait RenderableBladeTrait
             $input->setAttribute('value', "{{Request::input('" . $field->getName() . "')}}");
         }
         foreach ($previous->get('textarea') as $textarea) {
-            $input->setContent("{{Request::input('" . $field->getName() . "')}}");
+            $textarea->setContent("{{Request::input('" . $field->getName() . "')}}");
         }
         foreach ($previous->get('select') as $input) {
             $input->setAttribute('value', "{{Request::input('" . $field->getName() . "')}}");
