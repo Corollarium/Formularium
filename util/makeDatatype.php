@@ -22,12 +22,12 @@ $namespace = $options['namespace'] ?? 'Formularium\Datatype';
 $path = $options['path'] ?? "Formularium/Datatype/" ;
 $testpath = $options['testpath'] ?? "tests/Datatype" ;
 
-$code = \Formularium\Datatype::generate(
+$code = \Formularium\DatatypeFactory::generate(
     $datatype,
     $basetype,
     $namespace
 );
-$retval = \Formularium\Datatype::generateFile(
+$retval = \Formularium\DatatypeFactory::generateFile(
     $code,
     $path,
     $testpath
