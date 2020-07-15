@@ -42,7 +42,7 @@ abstract class Datatype
      * @param Field $field
      * @return mixed
      */
-    public function format($value, Field $field)
+    public function format($value, /** @scrutinizer ignore-unused */ Field $field)
     {
         return $value;
     }
