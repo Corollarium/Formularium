@@ -54,10 +54,8 @@ class CommandValidator extends Command
         try {
             $retval = ValidatorFactory::generateFile(
                 $code,
-                // @phpstan-ignore-next-line
-                $this->option('path') ? $this->option('path') : base_path('app/Validators'),
-                // @phpstan-ignore-next-line
-                $this->option('test-path') ? $this->option('test-path') : base_path('tests/Unit/')
+                $this->option('path') ? $this->option('path') : /** @scrutinizer ignore-call */ base_path('app/Validators'),
+                $this->option('test-path') ? $this->option('test-path') : /** @scrutinizer ignore-call */ base_path('tests/Unit/')
             );
 
             $this->line($retval['code']);
