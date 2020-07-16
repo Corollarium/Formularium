@@ -93,7 +93,7 @@ class Button extends Element
                 HTMLButton::COLOR,
                 'string',
                 'Button color. Supports HTMLButton::COLOR_PRIMARY, HTMLButton::COLOR_LINK, HTMLButton::COLOR_INFO, HTMLButton::COLOR_SUCCESS, HTMLButton::COLOR_WARNING, HTMLButton::COLOR_ERROR and any Bulma button color classes. Default: primary.'
-            ),
+            )
         );
         return $metadata;
     }
