@@ -3,6 +3,8 @@
 namespace Formularium\Frontend\Bootstrap\Element;
 
 use Formularium\Element;
+use Formularium\Exception\Exception;
+use Formularium\Frontend\HTML\Element\Button as HTMLButton;
 use Formularium\HTMLNode;
 
 class Button extends Element
@@ -11,9 +13,43 @@ class Button extends Element
     {
         $previous->addAttribute('class', 'btn');
 
-        // TODO button color $previous->addAttribute('class', 'is-vvvvv');
-        $type = 'btn-primary';
-        $previous->addAttribute('class', $type);
+        $color = $parameters[HTMLButton::COLOR] ?? 'btn-primary';
+        $colorMap = [
+            HTMLButton::COLOR_PRIMARY => 'btn-primary',
+            HTMLButton::COLOR_LINK => 'btn-link',
+            HTMLButton::COLOR_INFO => 'btn-info',
+            HTMLButton::COLOR_SUCCESS => 'btn-success',
+            HTMLButton::COLOR_WARNING => 'btn-warning',
+            HTMLButton::COLOR_ERROR => 'btn-error',
+        ];
+        if (array_key_exists($color, $colorMap)) {
+            $color = $colorMap[$color];
+        } else {
+            $colors = [
+                'btn-primary',
+                'btn-secondary',
+                'btn-success',
+                'btn-danger',
+                'btn-warning',
+                'btn-info',
+                'btn-light',
+                'btn-dark',
+                'btn-link',
+            
+                'btn-outline-primary',
+                'btn-outline-secondary',
+                'btn-outline-success',
+                'btn-outline-danger',
+                'btn-outline-warning',
+                'btn-outline-info',
+                'btn-outline-light',
+                'btn-outline-dark',
+            ];
+            if (!in_array($color, $colors)) {
+                throw new Exception('Invalid button color.');
+            }
+        }
+        $previous->addAttribute('class', $color);
 
         $size = $parameters[self::SIZE] ?? '';
         switch ($size) {

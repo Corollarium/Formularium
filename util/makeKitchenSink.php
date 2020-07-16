@@ -7,6 +7,7 @@ use Formularium\Element;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Formularium;
 use Formularium\FrameworkComposer;
+use Formularium\Frontend\HTML\Element\Button;
 use Formularium\Frontend\HTML\Element\Pagination;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
@@ -95,7 +96,8 @@ function kitchenSink($frameworkName, string $templateName)
     $submitButton = $framework->element(
         'Button',
         [
-            Element::LABEL => 'Save'
+            Element::LABEL => 'Save',
+            Button::COLOR => Button::COLOR_PRIMARY
         ]
     );
 

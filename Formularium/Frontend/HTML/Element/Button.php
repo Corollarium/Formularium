@@ -7,12 +7,22 @@ use Formularium\HTMLNode;
 
 class Button extends Element
 {
+    const COLOR = 'color';
+    const COLOR_PRIMARY = 'primary';
+    const COLOR_LINK = 'link';
+    const COLOR_INFO = 'info';
+    const COLOR_SUCCESS = 'success';
+    const COLOR_WARNING = 'warning';
+    const COLOR_ERROR = 'error';
+    
+    const TYPE = 'type';
+
     public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
         $node = new HTMLNode('button');
 
         $node->setAttributes([
-            'type' => 'submit', // TODO
+            'type' => $parameters[self::TYPE] ?? 'submit',
             'class' => '',
         ]);
 

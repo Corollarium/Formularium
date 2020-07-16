@@ -3,7 +3,9 @@
 namespace Formularium\Frontend\Bulma\Element;
 
 use Formularium\Element;
+use Formularium\Exception\Exception;
 use Formularium\HTMLNode;
+use Formularium\Frontend\HTML\Element\Button as HTMLButton;
 
 class Button extends Element
 {
@@ -11,7 +13,36 @@ class Button extends Element
     {
         $previous->addAttribute('class', 'button');
 
-        // TODO button color $previous->addAttribute('class', 'is-vvvvv');
+
+        $color = $parameters[HTMLButton::COLOR] ?? '';
+        $colorMap = [
+            HTMLButton::COLOR_PRIMARY => 'is-primary',
+            HTMLButton::COLOR_LINK => 'is-link',
+            HTMLButton::COLOR_INFO => 'is-info',
+            HTMLButton::COLOR_SUCCESS => 'is-success',
+            HTMLButton::COLOR_WARNING => 'is-warning',
+            HTMLButton::COLOR_ERROR => 'is-error',
+        ];
+        if (array_key_exists($color, $colorMap)) {
+            $color = $colorMap[$color];
+        } else {
+            $colors = [
+                'is-primary',
+                'is-success',
+                'is-danger',
+                'is-warning',
+                'is-info',
+                'is-light',
+                'is-dark',
+                'is-link',
+                'is-black',
+                'is-white',
+            ];
+            if (!in_array($color, $colors)) {
+                throw new Exception('Invalid button color.');
+            }
+        }
+        $previous->addAttribute('class', $color);
 
         $size = $parameters[self::SIZE] ?? '';
         switch ($size) {
