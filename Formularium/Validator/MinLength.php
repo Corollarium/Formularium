@@ -6,8 +6,8 @@ use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
-use Formularium\ValidatorArgs;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 class MinLength implements ValidatorInterface
 {
@@ -24,13 +24,13 @@ class MinLength implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'MinLength',
             "Minimum string length",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'value',
                     'Int',
                     'Value'

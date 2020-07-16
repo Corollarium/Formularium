@@ -6,6 +6,8 @@ use Formularium\Element;
 use Formularium\Exception\Exception;
 use Formularium\Frontend\HTML\Element\Button as HTMLButton;
 use Formularium\HTMLNode;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 class Button extends Element
 {
@@ -82,5 +84,18 @@ class Button extends Element
         }
 
         return $previous;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        $metadata = HTMLButton::getMetadata();
+        $metadata->appendParameter(
+            new MetadataParameter(
+                HTMLButton::COLOR,
+                'string',
+                'Button color. Supports HTMLButton::COLOR_PRIMARY, HTMLButton::COLOR_LINK, HTMLButton::COLOR_INFO, HTMLButton::COLOR_SUCCESS, HTMLButton::COLOR_WARNING, HTMLButton::COLOR_ERROR and any Bootstrap button color classes. Default: primary.'
+            ),
+        );
+        return $metadata;
     }
 }

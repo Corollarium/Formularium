@@ -4,9 +4,9 @@ namespace Formularium\Validator;
 
 use Formularium\Datatype;
 use Formularium\Model;
-use Formularium\ValidatorArgs;
+use Formularium\MetadataParameter;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
+use Formularium\Metadata;
 use Formularium\Exception\ValidatorException;
 use Formularium\Validator\MinLength;
 
@@ -41,20 +41,20 @@ class Password implements ValidatorInterface
     /**
      * Documents this validator.
      *
-     * @return ValidatorMetadata
+     * @return Metadata
      */
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'Password',
             "Validates passwords",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'minLength',
                     'Int',
                     'Minimum password length'
                 ),
-                new ValidatorArgs(
+                new MetadataParameter(
                     'entropy',
                     'Float',
                     'Minimum entropy. Default: 2'

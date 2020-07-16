@@ -5,9 +5,9 @@ namespace Formularium\Validator;
 use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\ValidatorArgs;
+use Formularium\MetadataParameter;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
+use Formularium\Metadata;
 
 /**
  * Image file validation
@@ -113,13 +113,13 @@ class Image implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'Image',
             "Image file validations.",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     self::DIMENSION_RATIO,
                     'Float',
                     'The expected ratio (width/height)'

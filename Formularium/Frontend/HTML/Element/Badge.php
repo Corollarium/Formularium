@@ -4,6 +4,7 @@ namespace Formularium\Frontend\HTML\Element;
 
 use Formularium\Element;
 use Formularium\HTMLNode;
+use Formularium\Metadata;
 
 class Badge extends Element
 {
@@ -18,5 +19,15 @@ class Badge extends Element
         $node->setContent($parameters[self::LABEL]);
 
         return $node;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        return new Metadata(
+            'Badge',
+            'Creates a badge field',
+            [
+            ]
+        );
     }
 }

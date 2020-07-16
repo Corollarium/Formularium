@@ -3,10 +3,9 @@
 namespace Formularium;
 
 /**
- * Abstract base classe to validate data in composition to the validation in
- * datatypes.
+ * Allowed arguments
  */
-final class ValidatorArgs
+final class MetadataParameter
 {
     /**
      * @var string
@@ -28,6 +27,16 @@ final class ValidatorArgs
         $this->name = $name;
         $this->type = $type;
         $this->comment = $comment;
+    }
+
+    public function toMarkdown(): string
+    {
+        return <<<EOF
+### {$this->name} ({$this->type})
+
+{$this->comment}
+
+EOF;
     }
 
     public function toGraphql(): string

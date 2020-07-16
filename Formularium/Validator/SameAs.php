@@ -7,8 +7,8 @@ use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
-use Formularium\ValidatorArgs;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 /**
  * May not be present, but if it is must not be empty.
@@ -32,13 +32,13 @@ class SameAs implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'SameAs',
             "Must be the same as a target field.",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'target',
                     'String',
                     'Target field'

@@ -3,9 +3,6 @@
 namespace Formularium\Datatype;
 
 use Formularium\Exception\Exception;
-use Formularium\Field;
-use Formularium\Model;
-use Formularium\Exception\ValidatorException;
 
 class Datatype_timezone extends \Formularium\Datatype\Datatype_choice
 {
@@ -13,9 +10,6 @@ class Datatype_timezone extends \Formularium\Datatype\Datatype_choice
     {
         parent::__construct($typename, $basetype);
         $l = timezone_identifiers_list();
-        if ($l === false) {
-            throw new Exception('Cannot get timezone identifiers list');
-        }
         $this->choices = (array)array_combine($l, $l);
     }
 

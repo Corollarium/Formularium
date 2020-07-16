@@ -4,6 +4,8 @@ namespace Formularium\Frontend\Materialize\Element;
 
 use Formularium\Element;
 use Formularium\HTMLNode;
+use Formularium\Frontend\HTML\Element\Button as HTMLButton;
+use Formularium\Metadata;
 
 class Button extends Element
 {
@@ -32,5 +34,11 @@ class Button extends Element
         }
 
         return $previous;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        $metadata = HTMLButton::getMetadata();
+        return $metadata;
     }
 }

@@ -47,7 +47,7 @@ class CommandDatatype extends Command
     {
         $code = DatatypeFactory::generate(
             // @phpstan-ignore-next-line
-            (string)$this->argument('name'),
+            (string)$this->parameter('name'),
             // @phpstan-ignore-next-line
             (string)$this->option('basetype'),
             // @phpstan-ignore-next-line

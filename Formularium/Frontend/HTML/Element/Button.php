@@ -4,6 +4,8 @@ namespace Formularium\Frontend\HTML\Element;
 
 use Formularium\Element;
 use Formularium\HTMLNode;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 class Button extends Element
 {
@@ -22,7 +24,7 @@ class Button extends Element
         $node = new HTMLNode('button');
 
         $node->setAttributes([
-            'type' => $parameters[self::TYPE] ?? 'submit',
+            'type' => $parameters[self::TYPE] ?? 'button',
             'class' => '',
         ]);
 
@@ -35,5 +37,30 @@ class Button extends Element
         }
 
         return $node;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        return new Metadata(
+            'Button',
+            'Creates a button',
+            [
+                new MetadataParameter(
+                    static::TYPE,
+                    'string',
+                    'Button type, like "submit", "reset" or "button" . Default: "button"'
+                ),
+                new MetadataParameter(
+                    static::READONLY,
+                    'boolean',
+                    'Is it readonly?'
+                ),
+                new MetadataParameter(
+                    static::DISABLED,
+                    'boolean',
+                    'Is it disabled?'
+                )
+            ]
+        );
     }
 }

@@ -52,4 +52,11 @@ abstract class Element implements RenderableParameter
      * @return HTMLNode The HTML rendered.
      */
     abstract public function render(array $parameters, HTMLNode $previous): HTMLNode;
+
+    /**
+     * Documents this validator.
+     *
+     * @return Metadata
+     */
+    abstract public static function getMetadata(): Metadata;
 }

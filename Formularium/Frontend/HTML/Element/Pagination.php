@@ -6,15 +6,17 @@ use Formularium\Element;
 use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\HTMLNode;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 class Pagination extends Element
 {
-    const BASE_URL = 'baseURL'; // base url for pagination. Default: '?'
-    const CURRENT = 'current'; // current item. Conflicts with CURRENT_PAGE, use just one
-    const CURRENT_PAGE = 'currentPage'; // current page. Conflicts with CURRENT, use just one
-    const PAGES_AROUND = 'pagesAround'; // maximum pages listed before or after the current one
-    const PER_PAGE = 'perPage'; // items per page. Default: 20
-    const TOTAL_ITEMS = 'totalItems'; // total items in query.
+    const BASE_URL = 'baseURL';
+    const CURRENT = 'current';
+    const CURRENT_PAGE = 'currentPage';
+    const PAGES_AROUND = 'pagesAround';
+    const PER_PAGE = 'perPage';
+    const TOTAL_ITEMS = 'totalItems';
 
     public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
@@ -141,5 +143,45 @@ class Pagination extends Element
             $uri .= $parsed['fragment'] ? '#' . $parsed['fragment'] : '';
         }
         return $uri;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        return new Metadata(
+            'Pagination',
+            'Creates a pagination element',
+            [
+                new MetadataParameter(
+                    self::BASE_URL,
+                    'string',
+                    'Base url for pagination. Default: "?"'
+                ),
+                new MetadataParameter(
+                    self::CURRENT,
+                    'int',
+                    'Current item. Conflicts with CURRENT_PAGE, use just one of them.'
+                ),
+                new MetadataParameter(
+                    self::CURRENT_PAGE,
+                    'int',
+                    'Current page. Conflicts with CURRENT, use just one of them'
+                ),
+                new MetadataParameter(
+                    self::PAGES_AROUND,
+                    'int',
+                    'Maximum pages show before or after the current one'
+                ),
+                new MetadataParameter(
+                    self::PER_PAGE,
+                    'int',
+                    'Items per page. Default: 20'
+                ),
+                new MetadataParameter(
+                    self::TOTAL_ITEMS,
+                    'int',
+                    'Total items found by query.'
+                )
+            ]
+        );
     }
 }

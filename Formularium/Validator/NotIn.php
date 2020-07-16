@@ -6,8 +6,8 @@ use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
-use Formularium\ValidatorArgs;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 class NotIn implements ValidatorInterface
 {
@@ -20,13 +20,13 @@ class NotIn implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'NotIn',
             "Not in list",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'value',
                     '[String!]!',
                     'Value'

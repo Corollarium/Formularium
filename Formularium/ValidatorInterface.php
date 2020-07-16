@@ -24,7 +24,7 @@ interface ValidatorInterface
     /**
      * Documents this validator.
      *
-     * @return ValidatorMetadata
+     * @return Metadata
      */
-    public static function getMetadata(): ValidatorMetadata;
+    public static function getMetadata(): Metadata;
 }

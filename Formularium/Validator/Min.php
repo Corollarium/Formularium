@@ -6,8 +6,8 @@ use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
-use Formularium\ValidatorArgs;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 use Respect\Validation\Validator as Respect;
 
 class Min implements ValidatorInterface
@@ -44,13 +44,13 @@ class Min implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'Min',
             "Minimum value",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'value',
                     'Int', // TODO: Mixed
                     'Value'

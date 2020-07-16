@@ -2,14 +2,11 @@
 
 namespace Formularium;
 
-use Formularium\Exception\ClassNotFoundException;
-use Formularium\Exception\ValidatorException;
-
 /**
- * Abstract base classe to validate data in composition to the validation in
- * datatypes.
+ * Class to store information about a validator, datatype, renderable or element
+ * and its parameters.
  */
-final class ValidatorMetadata
+final class Metadata
 {
     /**
      * @var string
@@ -22,7 +19,7 @@ final class ValidatorMetadata
     public $comment;
 
     /**
-     * @var ValidatorArgs[]
+     * @var MetadataParameter[]
      */
     public $args;
 
@@ -33,10 +30,40 @@ final class ValidatorMetadata
         $this->args = $args;
     }
 
+    public function appendParameter(MetadataParameter $p): self
+    {
+        $this->args[] = $p;
+        return $this;
+    }
+
+    public function toMarkdown(): string
+    {
+        $args = array_map(
+            function (MetadataParameter $a) {
+                return $a->toMarkdown();
+            },
+            $this->args
+        );
+
+        $argString = '';
+        if (!empty($args)) {
+            $argString = join("\n", $args);
+        }
+
+        return <<<EOF
+## {$this->name}
+
+{$this->comment}
+
+$argString
+
+EOF;
+    }
+
     public function toGraphql(): string
     {
         $args = array_map(
-            function (ValidatorArgs $a) {
+            function (MetadataParameter $a) {
                 return $a->toGraphql();
             },
             $this->args
@@ -55,7 +82,7 @@ directive @{$this->name}{$argString} on FIELD_DEFINITION
 EOF;
     }
 
-    public function hasArgument(string $name): bool
+    public function hasParameter(string $name): bool
     {
         foreach ($this->args as $a) {
             if ($a->name === $name) {
@@ -65,7 +92,7 @@ EOF;
         return false;
     }
 
-    public function argument(string $name): ?ValidatorArgs
+    public function parameter(string $name): ?MetadataParameter
     {
         foreach ($this->args as $a) {
             if ($a->name === $name) {

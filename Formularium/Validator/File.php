@@ -5,9 +5,9 @@ namespace Formularium\Validator;
 use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\ValidatorArgs;
+use Formularium\MetadataParameter;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
+use Formularium\Metadata;
 
 /**
  * File validation
@@ -129,18 +129,18 @@ class File implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'File',
             "File validations.",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     self::MAX_SIZE,
                     'Int',
                     'Maximum file size in bytes'
                 ),
-                new ValidatorArgs(
+                new MetadataParameter(
                     self::ACCEPT,
                     '[String]',
                     'Acceptable types'

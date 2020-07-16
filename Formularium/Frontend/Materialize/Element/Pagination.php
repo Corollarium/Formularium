@@ -4,6 +4,8 @@ namespace Formularium\Frontend\Materialize\Element;
 
 use Formularium\Element;
 use Formularium\HTMLNode;
+use Formularium\Frontend\HTML\Element\Pagination as HTMLPagination;
+use Formularium\Metadata;
 
 class Pagination extends Element
 {
@@ -24,5 +26,11 @@ class Pagination extends Element
 
         $x = $previous->get('ul');
         return $x ? $x[0] : $previous;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        $metadata = HTMLPagination::getMetadata();
+        return $metadata;
     }
 }

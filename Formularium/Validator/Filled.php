@@ -6,7 +6,7 @@ use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
+use Formularium\Metadata;
 
 /**
  * May not be present, but if it is must not be empty.
@@ -23,9 +23,9 @@ class Filled implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'Filled',
             "Field may not be present, but if it is must not be empty."
         );

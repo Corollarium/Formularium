@@ -4,9 +4,9 @@ namespace Formularium\Validator;
 
 use Formularium\Datatype;
 use Formularium\Model;
-use Formularium\ValidatorArgs;
+use Formularium\MetadataParameter;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
+use Formularium\Metadata;
 use Formularium\Exception\ValidatorException;
 
 class Regex implements ValidatorInterface
@@ -39,15 +39,15 @@ class Regex implements ValidatorInterface
     /**
      * Documents this validator.
      *
-     * @return ValidatorMetadata
+     * @return Metadata
      */
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'Regex',
             "Regular expression validator",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'value',
                     'String',
                     'Regular expression, PHP style'

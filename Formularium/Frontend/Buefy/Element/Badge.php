@@ -4,6 +4,8 @@ namespace Formularium\Frontend\Buefy\Element;
 
 use Formularium\Element;
 use Formularium\HTMLNode;
+use Formularium\Frontend\HTML\Element\Badge as HTMLBadge;
+use Formularium\Metadata;
 
 class Badge extends Element
 {
@@ -15,5 +17,11 @@ class Badge extends Element
         $previous->addAttribute('type', $badgeMode);
 
         return $previous;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        $metadata = HTMLBadge::getMetadata();
+        return $metadata;
     }
 }

@@ -6,6 +6,7 @@ use Formularium\Element;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Element\Pagination as HTMLPagination;
 use Formularium\HTMLNode;
+use Formularium\Metadata;
 
 class Pagination extends Element
 {
@@ -22,5 +23,11 @@ class Pagination extends Element
         );
 
         return $p;
+    }
+
+    public static function getMetadata(): Metadata
+    {
+        $metadata = HTMLPagination::getMetadata();
+        return $metadata;
     }
 }

@@ -7,8 +7,8 @@ use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
-use Formularium\ValidatorArgs;
+use Formularium\Metadata;
+use Formularium\MetadataParameter;
 
 class MaxLength implements ValidatorInterface
 {
@@ -24,13 +24,13 @@ class MaxLength implements ValidatorInterface
         return $value;
     }
 
-    public static function getMetadata(): ValidatorMetadata
+    public static function getMetadata(): Metadata
     {
-        return new ValidatorMetadata(
+        return new Metadata(
             'MaxLength',
             "Maximum string length",
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'value',
                     'Int',
                     'Value'

@@ -5,44 +5,44 @@ namespace FormulariumTests;
 use Formularium\Exception\Exception;
 use Formularium\Validator;
 use Formularium\Validator\SameAs;
-use Formularium\ValidatorArgs;
+use Formularium\MetadataParameter;
 use Formularium\ValidatorInterface;
-use Formularium\ValidatorMetadata;
+use Formularium\Metadata;
 use PHPUnit\Framework\TestCase;
 
-final class ValidatorMetadataTest extends TestCase
+final class MetadataTest extends TestCase
 {
     public function testHasArgument()
     {
-        $v = new ValidatorMetadata(
+        $v = new Metadata(
             'name',
             'comment',
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'subname',
                     'string',
                     'subcomment'
                 )
             ]
         );
-        $this->assertTrue($v->hasArgument('subname'));
-        $this->assertFalse($v->hasArgument('subnsdfame'));
+        $this->assertTrue($v->hasParameter('subname'));
+        $this->assertFalse($v->hasParameter('subnsdfame'));
     }
 
     public function testArgument()
     {
-        $v = new ValidatorMetadata(
+        $v = new Metadata(
             'name',
             'comment',
             [
-                new ValidatorArgs(
+                new MetadataParameter(
                     'subname',
                     'string',
                     'subcomment'
                 )
             ]
         );
-        $this->assertNotNull($v->argument('subname'));
-        $this->assertNull($v->argument('subnsdfame'));
+        $this->assertNotNull($v->parameter('subname'));
+        $this->assertNull($v->parameter('subnsdfame'));
     }
 }
