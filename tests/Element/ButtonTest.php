@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace FormulariumTests\Renderable;
+namespace FormulariumTests\Element;
 
 use Formularium\Element;
 use Formularium\FrameworkComposer;
