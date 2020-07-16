@@ -902,16 +902,13 @@
   </b-select>
 </b-field>
 
-<b-pagination :total="paginator.totalItems" :current.sync="paginator.currentPage" :per-page="paginator.perPage">
-</b-pagination>
-
 
   </div>
   <script>
     const app_vueapp6 = new Vue({
     el: '#vueapp6',
     data: function () {
-        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"current":21,"currentPage":2,"totalItems":253}};
+        return {"myString":"","myInteger":"","countrycodeselect":""};
     },
         methods: {
         changedFile(name, event) {
@@ -928,7 +925,16 @@
 </div>
 
 
+                <b-button type="button primary" class="">
+  Save
+</b-button>
+
+
             </form>
+            <b-pagination :total="paginator.totalItems" :current.sync="paginator.currentPage" :per-page="paginator.perPage">
+</b-pagination>
+
+
         </div>
     </section>
 
@@ -1018,12 +1024,6 @@
   </span>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div>
   <span class="formularium-viewable">
@@ -1031,7 +1031,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      GU
+      MZ
     </span>
   </span>
 </div>
@@ -1042,7 +1042,7 @@
       Type countrycodeISO3
     </span>
     <span class="formularium-value">
-      VDR
+      CUB
     </span>
   </span>
 </div>
@@ -1053,7 +1053,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      662
+      826
     </span>
   </span>
 </div>
@@ -1075,7 +1075,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      BZD
+      LSL
     </span>
   </span>
 </div>
@@ -1218,13 +1218,10 @@
       Type language
     </span>
     <span class="formularium-value">
-      en
+      no
     </span>
   </span>
 </div>
-
-<b-pagination :total="pagination.totalItems" :current.sync="pagination.currentPage" :per-page="pagination.perPage">
-</b-pagination>
 
 <div>
   <span class="formularium-viewable">
@@ -1265,7 +1262,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      20:30:48
+      01:48:44
     </span>
   </span>
 </div>
@@ -1287,7 +1284,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      Europe/Luxembourg
+      America/Port_of_Spain
     </span>
   </span>
 </div>
@@ -1352,7 +1349,7 @@
   <script>
     const app_vueapp7 = new Vue({
     el: '#vueapp7',
-    data: {"alpha":"RsOuwTfL","alphanum":"RLpIKB5","alphanumdash":"R0wi1UfUm8oVXeg","bool":true,"boolean":false,"cnpj":"77.956.325\/0001-77","color":"#4F12AE","constant":"","countrycodeISO2":"GU","countrycodeISO3":"VDR","countrycodeNumeric":662,"cpf":"434.663.594-65","currency":"BZD","date":"2029-08-15","datetime":"2027-07-07T18:38:26+0000","domain":"heathcote.com","email":"adan.hammes@gmail.com","file":"","float":0.908,"html":"<p>HTML <span>Voluptatum expedita accusamus numquam aperiam aliquam aut. Qui quidem impedit commodi officia. Sit debitis aut quo et in cumque.<\/span>Et reiciendis laudantium aut dolorum. Fugit ad at ullam.<\/p>","integer":-1976502460,"ip":"1e4a:17ee:e458:61c0:f45c:3d71:e1bc:2ee5","ipv4":"71.37.53.220","ipv6":"ff3c:4b4d:c605:4b53:d95:11b0:5c5a:c3d1","json":"{\"version\":-2025324064,\"data\":{\"string\":\"ReZU2y\",\"float\":0.728}}","language":"en","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"+6462753514262","string":"R3QYNwxA7FFVN","text":"Dolor non quasi maxime maiores nobis ipsum exercitationem. Totam omnis aut exercitationem. Quia sed aut ut aperiam. Atque quos est at ut.","time":"20:30:48","timestamp":"2014-06-09T03:14:16+0000","timezone":"Europe\/Luxembourg","uinteger":1933637500,"url":"https:\/\/www.mayer.org\/placeat-et-quia-facilis-blanditiis-consectetur","usmall":31208,"uuid":"5372f028-7a6c-4b88-8990-32e7bef61491","year":1813657653}
+    data: {"alpha":"RfJzrEWqnIGMmya","alphanum":"RL9yDTOqQwy","alphanumdash":"R8bXX-2hMyMmf7","bool":true,"boolean":false,"cnpj":"09.253.078\/0001-92","color":"#74DDFA","constant":"","countrycodeISO2":"MZ","countrycodeISO3":"CUB","countrycodeNumeric":826,"cpf":"972.368.435-71","currency":"LSL","date":"2014-06-29","datetime":"2018-08-30T15:30:50+0000","domain":"kub.com","email":"candelario16@becker.net","file":"","float":0.328,"html":"<p>HTML <span>Molestiae voluptatum numquam et qui. Eum maxime commodi quae soluta eos illum. Quam placeat dolores vitae aspernatur explicabo.<\/span>Reprehenderit sint aut placeat qui. Tenetur iure labore adipisci est fugiat. Odit placeat alias incidunt hic mollitia natus ad.<\/p>","integer":-1386892006,"ip":"105.40.186.52","ipv4":"51.83.75.171","ipv6":"ef2c:fbef:3dcc:bd66:8be3:81da:4c8e:679b","json":"{\"version\":1706149790,\"data\":{\"string\":\"RBgC8R9Y\",\"float\":0.546}}","language":"no","phone":"+4626929549533","string":"R9sUX63c","text":"Molestias voluptatum quod aut est molestiae porro. Et omnis libero saepe eum nesciunt laborum ut. Fugit accusamus animi totam et omnis et aut. Cum et qui esse in.","time":"01:48:44","timestamp":"2023-04-04T07:15:22+0000","timezone":"America\/Port_of_Spain","uinteger":354857919,"url":"http:\/\/www.wiza.com\/aliquam-omnis-ea-rem-ullam-vel-quidem-placeat-accusantium.html","usmall":55439,"uuid":"abdee5a5-2df2-4e92-8d05-840c02f390d1","year":544768986}
 });
   </script>
 </div>
@@ -1413,12 +1410,6 @@
   </b-input>
 </b-field>
 
-<div>
-  <label for="" class="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <b-field label="Type countrycodeISO2">
   <b-select id="countrycodeISO2291" name="countrycodeISO2" class="" data-attribute="countrycodeISO2" data-datatype="countrycodeISO2" data-basetype="choice" title="Type countrycodeISO2">
@@ -5115,9 +5106,6 @@
   </b-select>
 </b-field>
 
-<b-pagination :total="pagination.totalItems" :current.sync="pagination.currentPage" :per-page="pagination.perPage">
-</b-pagination>
-
 <b-field label="Type phone">
   <b-input id="phone309" type="tel" name="phone" class="" data-attribute="phone" data-datatype="phone" data-basetype="string" value="" maxlength="1024" title="Type phone">
   </b-input>
@@ -6457,7 +6445,7 @@
     const app_vueapp8 = new Vue({
     el: '#vueapp8',
     data: function () {
-        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
+        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
         methods: {
         changedFile(name, event) {

@@ -925,60 +925,13 @@
   </div>
 </div>
 
-<div>
-  <nav class="formularium-pagination-wrapper pagination" aria-label="Page navigation">
-    <ul class="formularium-pagination pagination-list">
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link pagination-link" href="?begin=0&amp;total=20">
-          1
-        </a>
-      </li>
-      <li class="formularium-pagination-item formularium-pagination-current">
-        <a class="formularium-pagination-link pagination-link is-current" href="">
-          2
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link pagination-link" href="?begin=40&amp;total=20">
-          3
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link pagination-link" href="?begin=60&amp;total=20">
-          4
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link pagination-link" href="?begin=80&amp;total=20">
-          5
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link pagination-link" href="?begin=100&amp;total=20">
-          6
-        </a>
-      </li>
-      <li class="formularium-pagination-item ">
-        <a class="formularium-pagination-link pagination-link" href="?begin=120&amp;total=20">
-          7
-        </a>
-      </li>
-      <li class="formularium-pagination-item formularium-ellipsis">
-        <span class="pagination-ellipsis" href="">
-          ...
-        </span>
-      </li>
-    </ul>
-  </nav>
-</div>
-
 
   </div>
   <script>
     const app_vueapp0 = new Vue({
     el: '#vueapp0',
     data: function () {
-        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"current":21,"currentPage":2,"totalItems":253}};
+        return {"myString":"","myInteger":"","countrycodeselect":""};
     },
         methods: {
         changedFile(name, event) {
@@ -995,7 +948,58 @@
 </div>
 
 
+                <button type="button" class=" button is-primary">
+  Save
+</button>
+
+
             </form>
+            <nav class="formularium-pagination-wrapper pagination" aria-label="Page navigation">
+  <ul class="formularium-pagination pagination-list">
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link pagination-link" href="?begin=0&amp;total=20">
+        1
+      </a>
+    </li>
+    <li class="formularium-pagination-item formularium-pagination-current">
+      <a class="formularium-pagination-link pagination-link is-current" href="">
+        2
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link pagination-link" href="?begin=40&amp;total=20">
+        3
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link pagination-link" href="?begin=60&amp;total=20">
+        4
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link pagination-link" href="?begin=80&amp;total=20">
+        5
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link pagination-link" href="?begin=100&amp;total=20">
+        6
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link pagination-link" href="?begin=120&amp;total=20">
+        7
+      </a>
+    </li>
+    <li class="formularium-pagination-item formularium-ellipsis">
+      <span class="pagination-ellipsis" href="">
+        ...
+      </span>
+    </li>
+  </ul>
+</nav>
+
+
         </div>
     </section>
 
@@ -1085,12 +1089,6 @@
   </span>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div>
   <span class="formularium-viewable">
@@ -1098,7 +1096,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      SN
+      LU
     </span>
   </span>
 </div>
@@ -1109,7 +1107,7 @@
       Type countrycodeISO3
     </span>
     <span class="formularium-value">
-      KOR
+      CAN
     </span>
   </span>
 </div>
@@ -1120,7 +1118,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      508
+      242
     </span>
   </span>
 </div>
@@ -1142,7 +1140,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      CDF
+      IRR
     </span>
   </span>
 </div>
@@ -1285,16 +1283,9 @@
       Type language
     </span>
     <span class="formularium-value">
-      oj
+      nah
     </span>
   </span>
-</div>
-
-<div>
-  <label for="" class="formularium-label">
-    Type pagination
-  </label>
-
 </div>
 
 <div>
@@ -1336,7 +1327,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      09:21:35
+      12:29:33
     </span>
   </span>
 </div>
@@ -1358,7 +1349,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      America/Anchorage
+      America/Thunder_Bay
     </span>
   </span>
 </div>
@@ -1423,7 +1414,7 @@
   <script>
     const app_vueapp1 = new Vue({
     el: '#vueapp1',
-    data: {"alpha":"RPqpk","alphanum":"RBgHAaEPU6E6s","alphanumdash":"R5Mah","bool":true,"boolean":false,"cnpj":"44.661.691\/0001-40","color":"#441FDC","constant":"","countrycodeISO2":"SN","countrycodeISO3":"KOR","countrycodeNumeric":508,"cpf":"984.229.028-00","currency":"CDF","date":"2029-04-10","datetime":"2022-10-01T21:13:51+0000","domain":"mills.com","email":"rose82@gmail.com","file":"","float":0.053,"html":"<p>HTML <span>Dignissimos sint possimus ut atque. Sit nisi nostrum asperiores velit occaecati. Illo vitae unde minima dignissimos voluptatibus minus. Recusandae aut voluptatem facilis est numquam.<\/span>Soluta qui quis modi sunt voluptas esse nulla. Expedita et consequatur dolores libero tenetur. Voluptas est qui id nesciunt et. Id autem veritatis tempore.<\/p>","integer":-203621064,"ip":"91f8:375d:ce65:8eab:d7ac:f86c:babf:8311","ipv4":"237.152.143.159","ipv6":"f209:44ff:7fdb:8a16:7032:3f5c:d2d0:7667","json":"{\"version\":-366776812,\"data\":{\"string\":\"RdE1cfTJI\",\"float\":0.619}}","language":"oj","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"+5162650107344","string":"RThfW0rRF4VV","text":"Velit consequuntur et minus eaque quo. Quam quis nihil et voluptatum facere. Quam consequuntur optio mollitia explicabo numquam sit quos quia. Qui nam odio cupiditate deleniti ex.","time":"09:21:35","timestamp":"2021-08-24T19:36:32+0000","timezone":"America\/Anchorage","uinteger":3442991622,"url":"http:\/\/schowalter.biz\/","usmall":34068,"uuid":"e05ad08f-515b-4312-84a4-06067b9c4585","year":-925979664}
+    data: {"alpha":"RSKXSj","alphanum":"R8DbUAg","alphanumdash":"Rm5OLx2hH0","bool":true,"boolean":false,"cnpj":"09.637.751\/0001-98","color":"#AF2E69","constant":"","countrycodeISO2":"LU","countrycodeISO3":"CAN","countrycodeNumeric":242,"cpf":"337.259.781-82","currency":"IRR","date":"2028-08-12","datetime":"2013-01-09T19:56:46+0000","domain":"schulist.com","email":"margie.kuvalis@franecki.com","file":"","float":0.2,"html":"<p>HTML <span>Optio expedita culpa magnam molestias rerum et dignissimos. Qui qui commodi quidem a atque id et quam. Quia est perspiciatis deserunt est harum perferendis. Numquam eius dolorum reiciendis.<\/span>Mollitia ad placeat consequuntur quia suscipit voluptate. Fugit est id id consequuntur maiores magni iste. Sapiente unde labore assumenda.<\/p>","integer":-1330911028,"ip":"6020:5ac8:d1bf:4dea:85b5:b828:d064:a475","ipv4":"69.220.148.70","ipv6":"4a54:9f9a:4c01:6d21:2d1e:a425:3db6:ca28","json":"{\"version\":1858003963,\"data\":{\"string\":\"RKV4rFCB3gknJ\",\"float\":0.043}}","language":"nah","phone":"+2801640567231","string":"RYIJmMyAOBRn","text":"Suscipit sit et et saepe et accusamus. Officia facilis cupiditate est aut modi voluptatem consequatur.","time":"12:29:33","timestamp":"2013-09-05T09:32:49+0000","timezone":"America\/Thunder_Bay","uinteger":2158281461,"url":"http:\/\/nolan.com\/saepe-consectetur-tenetur-iste-eaque-dolores","usmall":38054,"uuid":"3e74aeea-69c4-4905-81ac-de03046e7da6","year":-806905958}
 });
   </script>
 </div>
@@ -1514,12 +1505,6 @@
   </div>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div class="field" data-attribute="countrycodeISO2" data-datatype="countrycodeISO2" data-basetype="choice">
   <label for="countrycodeISO2211" class="formularium-label label">
@@ -5310,13 +5295,6 @@
   </div>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type pagination
-  </label>
-
-</div>
-
 <div class="field" data-attribute="phone" data-datatype="phone" data-basetype="string">
   <label for="phone229" class="formularium-label label">
     Type phone
@@ -6704,7 +6682,7 @@
     const app_vueapp2 = new Vue({
     el: '#vueapp2',
     data: function () {
-        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
+        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
         methods: {
         changedFile(name, event) {

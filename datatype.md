@@ -8,7 +8,7 @@ Run this to create a class for a datatype called `mine`:
 
 If you are using Laravel, you can shorten it to (other options work too, but we provide sane defaults):
 
-`artisan mine --basetype=string`
+`artisan formularium:datatype mine --basetype=string`
 
 If you are developing Formularium itself, there's a composer shortcut:
 
@@ -28,5 +28,5 @@ Formularium::appendDatatypeNamespace('MyApp\\Datatypes');
 
 See also:
 
-- [validators available](basevalidator.md)
-- [creating your own framework and renderable classes](frontend.md)
+- [validators](validator.md)
+- [renderable](renderable.md)

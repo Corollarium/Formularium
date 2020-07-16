@@ -913,60 +913,13 @@
   </select>
 </div>
 
-<div>
-  <nav class="formularium-pagination-wrapper" aria-label="Page navigation">
-    <ul class="formularium-pagination pagination">
-      <li class="formularium-pagination-item  page-item">
-        <a class="formularium-pagination-link page-link" href="?begin=0&amp;total=20">
-          1
-        </a>
-      </li>
-      <li class="formularium-pagination-item formularium-pagination-current page-item disabled">
-        <a class="formularium-pagination-link page-link" href="">
-          2
-        </a>
-      </li>
-      <li class="formularium-pagination-item  page-item">
-        <a class="formularium-pagination-link page-link" href="?begin=40&amp;total=20">
-          3
-        </a>
-      </li>
-      <li class="formularium-pagination-item  page-item">
-        <a class="formularium-pagination-link page-link" href="?begin=60&amp;total=20">
-          4
-        </a>
-      </li>
-      <li class="formularium-pagination-item  page-item">
-        <a class="formularium-pagination-link page-link" href="?begin=80&amp;total=20">
-          5
-        </a>
-      </li>
-      <li class="formularium-pagination-item  page-item">
-        <a class="formularium-pagination-link page-link" href="?begin=100&amp;total=20">
-          6
-        </a>
-      </li>
-      <li class="formularium-pagination-item  page-item">
-        <a class="formularium-pagination-link page-link" href="?begin=120&amp;total=20">
-          7
-        </a>
-      </li>
-      <li class="formularium-pagination-item formularium-ellipsis page-item">
-        <a class="formularium-pagination-link page-link" href="">
-          ...
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
-
 
   </div>
   <script>
     const app_vueapp3 = new Vue({
     el: '#vueapp3',
     data: function () {
-        return {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"current":21,"currentPage":2,"totalItems":253}};
+        return {"myString":"","myInteger":"","countrycodeselect":""};
     },
         methods: {
         changedFile(name, event) {
@@ -983,7 +936,58 @@
 </div>
 
 
+                <button type="button" class=" btn btn-primary">
+  Save
+</button>
+
+
             </form>
+            <nav class="formularium-pagination-wrapper" aria-label="Page navigation">
+  <ul class="formularium-pagination pagination">
+    <li class="formularium-pagination-item  page-item">
+      <a class="formularium-pagination-link page-link" href="?begin=0&amp;total=20">
+        1
+      </a>
+    </li>
+    <li class="formularium-pagination-item formularium-pagination-current page-item disabled">
+      <a class="formularium-pagination-link page-link" href="">
+        2
+      </a>
+    </li>
+    <li class="formularium-pagination-item  page-item">
+      <a class="formularium-pagination-link page-link" href="?begin=40&amp;total=20">
+        3
+      </a>
+    </li>
+    <li class="formularium-pagination-item  page-item">
+      <a class="formularium-pagination-link page-link" href="?begin=60&amp;total=20">
+        4
+      </a>
+    </li>
+    <li class="formularium-pagination-item  page-item">
+      <a class="formularium-pagination-link page-link" href="?begin=80&amp;total=20">
+        5
+      </a>
+    </li>
+    <li class="formularium-pagination-item  page-item">
+      <a class="formularium-pagination-link page-link" href="?begin=100&amp;total=20">
+        6
+      </a>
+    </li>
+    <li class="formularium-pagination-item  page-item">
+      <a class="formularium-pagination-link page-link" href="?begin=120&amp;total=20">
+        7
+      </a>
+    </li>
+    <li class="formularium-pagination-item formularium-ellipsis page-item">
+      <a class="formularium-pagination-link page-link" href="">
+        ...
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
         </section>
 
         <section>
@@ -1071,12 +1075,6 @@
   </span>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div>
   <span class="formularium-viewable">
@@ -1084,7 +1082,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      SB
+      YU
     </span>
   </span>
 </div>
@@ -1095,7 +1093,7 @@
       Type countrycodeISO3
     </span>
     <span class="formularium-value">
-      TWN
+      SLE
     </span>
   </span>
 </div>
@@ -1106,7 +1104,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      238
+      678
     </span>
   </span>
 </div>
@@ -1128,7 +1126,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      ZAR
+      SRD
     </span>
   </span>
 </div>
@@ -1271,16 +1269,9 @@
       Type language
     </span>
     <span class="formularium-value">
-      nv
+      ki
     </span>
   </span>
-</div>
-
-<div>
-  <label for="" class="formularium-label">
-    Type pagination
-  </label>
-
 </div>
 
 <div>
@@ -1322,7 +1313,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      08:32:46
+      21:30:02
     </span>
   </span>
 </div>
@@ -1344,7 +1335,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      America/Argentina/San_Juan
+      Asia/Shanghai
     </span>
   </span>
 </div>
@@ -1409,7 +1400,7 @@
   <script>
     const app_vueapp4 = new Vue({
     el: '#vueapp4',
-    data: {"alpha":"RCCjEJzQBMj","alphanum":"RInL1sLsQR8ksIO","alphanumdash":"Ro1LLNV2ZW9jjP","bool":false,"boolean":false,"cnpj":"53.526.975\/0001-14","color":"#350671","constant":"","countrycodeISO2":"SB","countrycodeISO3":"TWN","countrycodeNumeric":238,"cpf":"806.553.577-18","currency":"ZAR","date":"2012-01-16","datetime":"2021-03-26T22:12:00+0000","domain":"damore.com","email":"kareem.kunze@baumbach.com","file":"","float":0.79,"html":"<p>HTML <span>Quas et in quos laborum velit sequi. Ducimus molestias quaerat sed iste deserunt. Magni ipsa explicabo temporibus voluptatem quia. Recusandae fugit excepturi et velit nostrum repellendus.<\/span>Enim et illo ipsa illo quisquam et. Ex dolore id reprehenderit qui. Rerum sed fugit officia et dolore. Aut distinctio quaerat incidunt.<\/p>","integer":-1391386801,"ip":"1a15:85f1:727b:f13:36b2:4289:b28b:5aa5","ipv4":"133.27.26.23","ipv6":"2805:321a:acfb:6da2:3907:cda8:27a1:b8e6","json":"{\"version\":-20335311,\"data\":{\"string\":\"ReRVV\",\"float\":0.378}}","language":"nv","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"+5761762669334","string":"RKIR5FmhxG92X","text":"Dolores tempora molestiae impedit quibusdam. Nisi facere delectus rem aut consequatur. Corporis adipisci quas saepe eum. Porro unde praesentium eaque autem impedit.","time":"08:32:46","timestamp":"2015-09-26T06:47:01+0000","timezone":"America\/Argentina\/San_Juan","uinteger":2856229525,"url":"https:\/\/kessler.com\/dolorum-et-et-repellat-et.html","usmall":45067,"uuid":"341faff1-67ed-4429-bb9a-80547fb5851e","year":59042654}
+    data: {"alpha":"RAiZUEWxGSmR","alphanum":"Rq3vWtTj2xqwa","alphanumdash":"RAsYuKCEdeH9K5","bool":true,"boolean":true,"cnpj":"77.451.764\/0001-28","color":"#E791D8","constant":"","countrycodeISO2":"YU","countrycodeISO3":"SLE","countrycodeNumeric":678,"cpf":"328.704.594-67","currency":"SRD","date":"2022-12-06","datetime":"2017-03-25T19:09:42+0000","domain":"tromp.net","email":"jleuschke@yahoo.com","file":"","float":0.588,"html":"<p>HTML <span>Nemo quia id facere et. Voluptatem autem distinctio quo quia culpa quibusdam. Quia nisi quidem laudantium. Ut doloremque accusantium vel voluptatum natus.<\/span>Magnam maiores et consequuntur velit. In dolorem dolorum explicabo necessitatibus nemo deserunt ratione magnam. Dolorem expedita rerum ratione quibusdam ut.<\/p>","integer":-534274755,"ip":"198.14.28.140","ipv4":"99.218.107.141","ipv6":"8aa:b7c5:4c5c:2e93:93bf:1f9f:ac9b:705c","json":"{\"version\":1871896315,\"data\":{\"string\":\"Rb4KwMmPD8\",\"float\":0.711}}","language":"ki","phone":"+9196660042458","string":"RSFb0","text":"Unde asperiores provident odio pariatur. Sed pariatur dolore adipisci est molestiae voluptatum totam est.","time":"21:30:02","timestamp":"2013-09-22T07:58:09+0000","timezone":"Asia\/Shanghai","uinteger":1487308149,"url":"https:\/\/www.howe.com\/eos-explicabo-at-dolor","usmall":50760,"uuid":"5eada8dc-d177-4f79-b807-958e35723a7b","year":-513008621}
 });
   </script>
 </div>
@@ -1486,12 +1477,6 @@
   <input id="color250" type="color" name="color" class=" form-control" data-attribute="color" data-datatype="color" data-basetype="string" maxlength="1024" title="Type color" v-model="color"/>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div class="form-group" data-attribute="countrycodeISO2" data-datatype="countrycodeISO2" data-basetype="choice">
   <label for="countrycodeISO2251" class="formularium-label">
@@ -5232,13 +5217,6 @@
   </select>
 </div>
 
-<div>
-  <label for="" class="formularium-label">
-    Type pagination
-  </label>
-
-</div>
-
 <div class="form-group" data-attribute="phone" data-datatype="phone" data-basetype="string">
   <label for="phone269" class="formularium-label">
     Type phone
@@ -6602,7 +6580,7 @@
     const app_vueapp5 = new Vue({
     el: '#vueapp5',
     data: function () {
-        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
+        return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
         methods: {
         changedFile(name, event) {

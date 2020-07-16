@@ -52,7 +52,7 @@ const e = React.createElement;
 class BasicModelComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {"myString":"","myInteger":"","countrycodeselect":"","paginator":{"total":1,"current_page":1,"per_page":20}};
+        this.state = {"myString":"","myInteger":"","countrycodeselect":""};
    
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -932,53 +932,6 @@ class BasicModelComponent extends React.Component {
   </select>
 </div>
 
-<div>
-  <nav aria-label="Page navigation" className="formularium-pagination-wrapper">
-    <ul className="formularium-pagination">
-      <li className="formularium-pagination-item ">
-        <a href="?begin=0&amp;total=20" className="formularium-pagination-link">
-          1
-        </a>
-      </li>
-      <li className="formularium-pagination-item formularium-pagination-current">
-        <a href="" className="formularium-pagination-link">
-          2
-        </a>
-      </li>
-      <li className="formularium-pagination-item ">
-        <a href="?begin=40&amp;total=20" className="formularium-pagination-link">
-          3
-        </a>
-      </li>
-      <li className="formularium-pagination-item ">
-        <a href="?begin=60&amp;total=20" className="formularium-pagination-link">
-          4
-        </a>
-      </li>
-      <li className="formularium-pagination-item ">
-        <a href="?begin=80&amp;total=20" className="formularium-pagination-link">
-          5
-        </a>
-      </li>
-      <li className="formularium-pagination-item ">
-        <a href="?begin=100&amp;total=20" className="formularium-pagination-link">
-          6
-        </a>
-      </li>
-      <li className="formularium-pagination-item ">
-        <a href="?begin=120&amp;total=20" className="formularium-pagination-link">
-          7
-        </a>
-      </li>
-      <li className="formularium-pagination-item formularium-ellipsis">
-        <a href="" className="formularium-pagination-link">
-          ...
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
-
 
         </form>
         );
@@ -990,7 +943,58 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
   </script>
 
 
+                <button type="button" class="">
+  Save
+</button>
+
+
             </form>
+            <nav class="formularium-pagination-wrapper" aria-label="Page navigation">
+  <ul class="formularium-pagination">
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link" href="?begin=0&amp;total=20">
+        1
+      </a>
+    </li>
+    <li class="formularium-pagination-item formularium-pagination-current">
+      <a class="formularium-pagination-link" href="">
+        2
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link" href="?begin=40&amp;total=20">
+        3
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link" href="?begin=60&amp;total=20">
+        4
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link" href="?begin=80&amp;total=20">
+        5
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link" href="?begin=100&amp;total=20">
+        6
+      </a>
+    </li>
+    <li class="formularium-pagination-item ">
+      <a class="formularium-pagination-link" href="?begin=120&amp;total=20">
+        7
+      </a>
+    </li>
+    <li class="formularium-pagination-item formularium-ellipsis">
+      <a class="formularium-pagination-link" href="">
+        ...
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
         </section>
 
         <section>
@@ -1006,7 +1010,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type alpha
     </span>
     <span className="formularium-value">
-      RaTVF
+      RJIaZyYuMnZ
     </span>
   </span>
 </div>
@@ -1017,7 +1021,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type alphanum
     </span>
     <span className="formularium-value">
-      R2Lxx
+      R2ZYOiVuH7u3
     </span>
   </span>
 </div>
@@ -1028,7 +1032,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type alphanumdash
     </span>
     <span className="formularium-value">
-      Rx5umkSoTVUaF9z
+      RXc1KWQShShNC
     </span>
   </span>
 </div>
@@ -1050,7 +1054,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type boolean
     </span>
     <span className="formularium-value">
-      True
+      False
     </span>
   </span>
 </div>
@@ -1061,7 +1065,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type cnpj
     </span>
     <span className="formularium-value">
-      64.668.492/0001-70
+      36.395.541/0001-03
     </span>
   </span>
 </div>
@@ -1072,20 +1076,14 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type color
     </span>
     <span className="formularium-value">
-      <span style="width: 1em; display: inline-block; background-color: #3DA456">
+      <span style="width: 1em; display: inline-block; background-color: #8114F7">
         &nbsp;
       </span>
-      #3DA456
+      #8114F7
     </span>
   </span>
 </div>
 
-<div>
-  <label htmlFor="" className="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div>
   <span className="formularium-viewable">
@@ -1093,7 +1091,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type countrycodeISO2
     </span>
     <span className="formularium-value">
-      GM
+      BJ
     </span>
   </span>
 </div>
@@ -1104,7 +1102,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type countrycodeISO3
     </span>
     <span className="formularium-value">
-      NAM
+      NIU
     </span>
   </span>
 </div>
@@ -1115,7 +1113,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type countrycodeNumeric
     </span>
     <span className="formularium-value">
-      724
+      480
     </span>
   </span>
 </div>
@@ -1126,7 +1124,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type cpf
     </span>
     <span className="formularium-value">
-      881.470.786-33
+      677.417.435-38
     </span>
   </span>
 </div>
@@ -1137,7 +1135,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type currency
     </span>
     <span className="formularium-value">
-      COU
+      XSU
     </span>
   </span>
 </div>
@@ -1148,7 +1146,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type date
     </span>
     <span className="formularium-value">
-      2025-08-14
+      2026-08-27
     </span>
   </span>
 </div>
@@ -1159,7 +1157,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type datetime
     </span>
     <span className="formularium-value">
-      2019-01-31T09:37:30+0000
+      2020-08-16T18:01:06+0000
     </span>
   </span>
 </div>
@@ -1170,7 +1168,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type domain
     </span>
     <span className="formularium-value">
-      kutch.com
+      littel.com
     </span>
   </span>
 </div>
@@ -1181,7 +1179,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type email
     </span>
     <span className="formularium-value">
-      fiona.schneider@yahoo.com
+      granville.murray@hotmail.com
     </span>
   </span>
 </div>
@@ -1202,7 +1200,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type float
     </span>
     <span className="formularium-value">
-      0.794
+      0.109
     </span>
   </span>
 </div>
@@ -1213,7 +1211,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type html
     </span>
     <span className="formularium-value">
-      &lt;p&gt;HTML &lt;span&gt;Et necessitatibus eos deserunt voluptas repellat. Sit cupiditate dolorem est magnam sunt sit qui. Ut velit cum impedit maxime omnis enim enim. Esse hic in mollitia fugiat minima cum.&lt;/span&gt;Sit vel libero eum ut exercitationem. Enim ad quia et autem sit exercitationem. Ea voluptatem sit consectetur quia dolore eum molestias.&lt;/p&gt;
+      &lt;p&gt;HTML &lt;span&gt;Ducimus accusamus quo amet dolor dolorum omnis voluptatem. Et minima fugit tempora vel dolorem.&lt;/span&gt;Et ratione et architecto aspernatur. Repellendus id magnam placeat quo. Minus error dolore voluptas ut. Praesentium et voluptate delectus ut mollitia dignissimos. Omnis facere nam est nam eligendi.&lt;/p&gt;
     </span>
   </span>
 </div>
@@ -1224,7 +1222,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type integer
     </span>
     <span className="formularium-value">
-      1381251309
+      694330959
     </span>
   </span>
 </div>
@@ -1235,7 +1233,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type ip
     </span>
     <span className="formularium-value">
-      121.68.132.127
+      b043:db90:4590:cd73:50e0:e3a8:3a2b:d16d
     </span>
   </span>
 </div>
@@ -1246,7 +1244,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type ipv4
     </span>
     <span className="formularium-value">
-      12.91.19.59
+      188.81.2.102
     </span>
   </span>
 </div>
@@ -1257,7 +1255,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type ipv6
     </span>
     <span className="formularium-value">
-      3576:fb5e:a9a8:d8ae:ebd0:194d:b6b7:719e
+      1afa:662e:4d0a:b825:6699:db67:ee3a:b794
     </span>
   </span>
 </div>
@@ -1268,7 +1266,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type json
     </span>
     <span className="formularium-value">
-      {&quot;version&quot;:-307916774,&quot;data&quot;:{&quot;string&quot;:&quot;RWJv2KCqumqwMr&quot;,&quot;float&quot;:0.31}}
+      {&quot;version&quot;:-1462165143,&quot;data&quot;:{&quot;string&quot;:&quot;RfztEA&quot;,&quot;float&quot;:0.862}}
     </span>
   </span>
 </div>
@@ -1279,16 +1277,9 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type language
     </span>
     <span className="formularium-value">
-      is
+      af
     </span>
   </span>
-</div>
-
-<div>
-  <label htmlFor="" className="formularium-label">
-    Type pagination
-  </label>
-
 </div>
 
 <div>
@@ -1297,7 +1288,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type phone
     </span>
     <span className="formularium-value">
-      +3252093991252
+      +1584085857615
     </span>
   </span>
 </div>
@@ -1308,7 +1299,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type string
     </span>
     <span className="formularium-value">
-      RN30mXFGwQhBm
+      RNtW6pi6
     </span>
   </span>
 </div>
@@ -1319,7 +1310,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type text
     </span>
     <span className="formularium-value">
-      Est unde similique non minus velit provident libero. Quisquam et sit ea non. Sint quia praesentium atque voluptatem.
+      Dolores nostrum est enim. Culpa alias cumque vero fugiat explicabo. Id quas placeat voluptas quaerat eos. Aut omnis maxime molestiae rerum neque laboriosam.
     </span>
   </span>
 </div>
@@ -1330,7 +1321,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type time
     </span>
     <span className="formularium-value">
-      07:35:51
+      01:46:20
     </span>
   </span>
 </div>
@@ -1341,7 +1332,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type timestamp
     </span>
     <span className="formularium-value">
-      2021-06-27T06:51:22+0000
+      2025-03-02T11:03:57+0000
     </span>
   </span>
 </div>
@@ -1352,7 +1343,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type timezone
     </span>
     <span className="formularium-value">
-      Africa/Porto-Novo
+      Asia/Aqtobe
     </span>
   </span>
 </div>
@@ -1363,7 +1354,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type uinteger
     </span>
     <span className="formularium-value">
-      1281500465
+      2427339297
     </span>
   </span>
 </div>
@@ -1374,7 +1365,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type url
     </span>
     <span className="formularium-value">
-      http://harvey.com/in-quas-voluptas-provident
+      https://mayer.com/quo-earum-excepturi-incidunt-occaecati-facilis-ad-ea.html
     </span>
   </span>
 </div>
@@ -1385,7 +1376,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type usmall
     </span>
     <span className="formularium-value">
-      24939
+      9166
     </span>
   </span>
 </div>
@@ -1396,7 +1387,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type uuid
     </span>
     <span className="formularium-value">
-      d798d314-9975-4fe4-941c-449730b32f7a
+      f1431e5e-0ef5-4984-9b63-d26b129b4e46
     </span>
   </span>
 </div>
@@ -1407,7 +1398,7 @@ ReactDOM.render(e(BasicModelComponent), domContainer);
       Type year
     </span>
     <span className="formularium-value">
-      1533150438
+      329055515
     </span>
   </span>
 </div>
@@ -1432,7 +1423,7 @@ const e = React.createElement;
 class TestModelComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","pagination":{"total":1,"current_page":1,"per_page":20},"phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
+        this.state = {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
    
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -1513,12 +1504,6 @@ class TestModelComponent extends React.Component {
   <input id="color330" type="color" name="color" data-attribute="color" data-datatype="color" data-basetype="string" value={this.state.color} title="Type color" onChange={this.handleInputChange} className="" maxLength="1024"/>
 </div>
 
-<div>
-  <label htmlFor="" className="formularium-label">
-    Type constant
-  </label>
-
-</div>
 
 <div>
   <label htmlFor="countrycodeISO2331" className="formularium-label">
@@ -5247,13 +5232,6 @@ class TestModelComponent extends React.Component {
       isiZulu
     </option>
   </select>
-</div>
-
-<div>
-  <label htmlFor="" className="formularium-label">
-    Type pagination
-  </label>
-
 </div>
 
 <div>

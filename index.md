@@ -20,10 +20,22 @@ Check:
 ## Documentation
 
 - [getting started: how to declare your models](model.md)
-- [base validators available for all datatypes](basevalidator.md)
-- [base renderable available for all datatypes](baseextension.md)
 - [how to create your own datatype](datatype.md)
-- [how to add support to your own frontend framework](frontend.md)
+- [how to create your own validators](validator.md)
+- [how to create your own renderables](renderable.md)
+- [how to create your own elements](element.md)
+- [how to add support to your own frontend framework](framework.md)
+
+### Reference
+
+- [all validators and their parameters](api-validators.md)
+- all datatypes: TODO
+- elements and their parameters:
+  - [Bootstrap](api-Bootstrap-elements.md)
+  - [Buefy](api-Buefy-elements.md)
+  - [Bulma](api-Bulma-elements.md)
+  - [HTML](api-HTML-elements.md)
+  - [Materialize](api-Materialize-elements.md)
 
 ## Getting started
 
