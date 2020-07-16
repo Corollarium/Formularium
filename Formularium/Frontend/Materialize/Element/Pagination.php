@@ -1,30 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Frontend\Materialize\Renderable;
+namespace Formularium\Frontend\Materialize\Element;
 
-use Formularium\Field;
-use Formularium\Renderable;
+use Formularium\Element;
 use Formularium\HTMLNode;
 
-class Renderable_pagination extends Renderable_constant
+class Pagination extends Element
 {
-    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
-    {
-        return $this->fix($value, $field, $previous);
-    }
-    
-    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
-    {
-        return $this->fix($value, $field, $previous);
-    }
-
-    /**
-     * @param mixed $value
-     * @param Field $field
-     * @param HTMLNode $previous
-     * @return HTMLNode
-     */
-    protected function fix($value, Field $field, HTMLNode $previous): HTMLNode
+    public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
         foreach ($previous->get('.formularium-disabled') as $e) {
             $e->addAttribute('class', 'disabled');

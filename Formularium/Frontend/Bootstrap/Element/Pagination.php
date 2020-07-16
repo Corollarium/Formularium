@@ -1,30 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Frontend\Bootstrap\Renderable;
+namespace Formularium\Frontend\Bootstrap\Element;
 
+use Formularium\Element;
 use Formularium\Field;
-use Formularium\Renderable;
 use Formularium\HTMLNode;
 
-class Renderable_pagination extends Renderable_constant
+class Pagination extends Element
 {
-    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
-    {
-        return $this->fix($value, $field, $previous);
-    }
-    
-    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
-    {
-        return $this->fix($value, $field, $previous);
-    }
-
-    /**
-     * @param mixed $value
-     * @param Field $field
-     * @param HTMLNode $previous
-     * @return HTMLNode
-     */
-    protected function fix($value, Field $field, HTMLNode $previous): HTMLNode
+    public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
         foreach ($previous->get('.formularium-disabled') as $e) {
             $e->addAttribute('class', 'disabled');
@@ -45,14 +29,14 @@ class Renderable_pagination extends Renderable_constant
             $e->addAttribute('class', 'pagination');
         }
 
-        $size = $field->getRenderable(Renderable::SIZE, '');
+        $size = $parameters[self::SIZE] ?? '';
         switch ($size) {
-            case Renderable::SIZE_LARGE:
+            case self::SIZE_LARGE:
                 foreach ($previous->get('.formularium-pagination') as $e) {
                     $e->addAttribute('class', 'pagination-lg');
                 }
                 break;
-            case Renderable::SIZE_SMALL:
+            case self::SIZE_SMALL:
                 foreach ($previous->get('.formularium-pagination') as $e) {
                     $e->addAttribute('class', 'pagination-sm');
                 }

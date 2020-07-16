@@ -2,22 +2,19 @@
 
 require(__DIR__ . '/../vendor/autoload.php');
 
-use Formularium\Datatype;
-use Formularium\Datatype\Datatype_integer;
-use Formularium\Datatype\Datatype_string;
 use Formularium\DatatypeFactory;
+use Formularium\Element;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Formularium;
 use Formularium\FrameworkComposer;
+use Formularium\Frontend\HTML\Element\Pagination;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
-use Formularium\Frontend\HTML\Renderable\Renderable_pagination;
 use Formularium\Model;
 use Formularium\Renderable;
 use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
-use Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
 
 function kitchenSink($frameworkName, string $templateName)
 {
@@ -84,10 +81,6 @@ function kitchenSink($frameworkName, string $templateName)
                 Renderable::LABEL => 'Country code - select choice'
             ],
         ],
-        'paginator' => [
-            'datatype' => 'pagination',
-            'renderable' => [],
-        ],
     ];
 
     // generate basic model
@@ -97,14 +90,21 @@ function kitchenSink($frameworkName, string $templateName)
             'fields' => $basicFields
         ]
     );
-    $basicDemoEditable = $basicModel->editable(
-        $framework,
+    $basicDemoEditable = $basicModel->editable($framework, []);
+
+    $submitButton = $framework->element(
+        'Button',
         [
-            'paginator' => [
-                Renderable_pagination::CURRENT => 21,
-                Renderable_pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
-                Renderable_pagination::TOTAL_ITEMS => 253,
-            ]
+            Element::LABEL => 'Save'
+        ]
+    );
+
+    $pagination = $framework->element(
+        'Pagination',
+        [
+            Pagination::CURRENT => 21,
+            Pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
+            Pagination::TOTAL_ITEMS => 253,
         ]
     );
     
@@ -127,12 +127,19 @@ function kitchenSink($frameworkName, string $templateName)
     $title = join('/', $frameworkName);
     $template = file_get_contents(__DIR__ . '/kitchentemplates/' . $templateName);
 
-    $template = str_replace('{{title}}', $title, $template);
-    $template = str_replace('{{head}}', $head, $template);
-    $template = str_replace('{{basicDemoEditable}}', $basicDemoEditable, $template);
-    $template = str_replace('{{modelViewable}}', $modelViewable, $template);
-    $template = str_replace('{{modelEditable}}', $modelEditable, $template);
-    $template = str_replace('{{footer}}', $footer, $template);
+    $template = strtr(
+        $template,
+        [
+            '{{title}}' => $title,
+            '{{head}}' => $head,
+            '{{basicDemoEditable}}' => $basicDemoEditable,
+            '{{pagination}}' => $pagination,
+            '{{submitButton}}' => $submitButton,
+            '{{modelViewable}}' => $modelViewable,
+            '{{modelEditable}}' => $modelEditable,
+            '{{footer}}' => $footer,
+        ]
+    );
     return $template;
 }
 

@@ -18,8 +18,8 @@ class Pagination extends Element
 
     public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
-        $pagesaround = intval($parameters[self::PAGES_AROUND]) ?? 5;
-        $perpage = intval($parameters[self::PER_PAGE]) ?? 20;
+        $pagesaround = intval($parameters[self::PAGES_AROUND] ?? 5);
+        $perpage = intval($parameters[self::PER_PAGE] ?? 20);
         $baseurl = $parameters[self::BASE_URL] ?? '?';
         $numitems = $parameters[self::TOTAL_ITEMS] ?? 0;
 
@@ -28,7 +28,7 @@ class Pagination extends Element
             $currentPage = intval($parameters[self::CURRENT_PAGE]);
             $currentitem = $currentPage * ($perpage - 1);
         } else {
-            $currentitem = intval($parameters[self::CURRENT]) ?? 0;
+            $currentitem = intval($parameters[self::CURRENT] ?? 0);
             $currentPage = ceil($currentitem / $perpage);
         }
     

@@ -12,6 +12,8 @@ class Button extends Element
         $previous->addAttribute('class', 'btn');
 
         // TODO button color $previous->addAttribute('class', 'is-vvvvv');
+        $type = 'btn-primary';
+        $previous->addAttribute('class', $type);
 
         $size = $parameters[self::SIZE] ?? '';
         switch ($size) {
