@@ -45,16 +45,16 @@ class Framework extends \Formularium\Framework
      * {{jsonData}}
      * {{containerTag}}
      *
-     * @var string
+     * @var string|callable|null
      */
-    protected $viewableTemplate = '';
+    protected $viewableTemplate = null;
 
     /**
      *
      *
-     * @var string
+     * @var string|callable|null
      */
-    protected $editableTemplate = '';
+    protected $editableTemplate = null;
 
     public function __construct(string $name = 'Vue')
     {
@@ -112,8 +112,9 @@ class Framework extends \Formularium\Framework
 
     /**
      * Get the value of editableTemplate
+     * @return string|callable|null
      */
-    public function getEditableTemplate(): string
+    public function getEditableTemplate()
     {
         return $this->editableTemplate;
     }
@@ -121,9 +122,10 @@ class Framework extends \Formularium\Framework
     /**
      * Set the value of editableTemplate
      *
+     * @param string|callable|null $editableTemplate
      * @return self
      */
-    public function setEditableTemplate(string $editableTemplate): Framework
+    public function setEditableTemplate($editableTemplate): Framework
     {
         $this->editableTemplate = $editableTemplate;
 
@@ -131,9 +133,9 @@ class Framework extends \Formularium\Framework
     }
     
     /**
-     * Get {{containerTag}}
+     * Get viewable template
      *
-     * @return  string
+     * @return string|callable|null
      */
     public function getViewableTemplate()
     {
@@ -141,13 +143,13 @@ class Framework extends \Formularium\Framework
     }
 
     /**
-     * Set {{containerTag}}
+     * Set viewable tempalte
      *
-     * @param  string  $viewableTemplate  {{containerTag}}
+     * @param string|callable|null  $viewableTemplate
      *
      * @return  self
      */
-    public function setViewableTemplate(string $viewableTemplate)
+    public function setViewableTemplate($viewableTemplate)
     {
         $this->viewableTemplate = $viewableTemplate;
 
@@ -183,7 +185,7 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    protected function mapType(Datatype $type): string
+    public function mapType(Datatype $type): string
     {
         if ($type instanceof Datatype_number) {
             return 'Number';
@@ -193,11 +195,11 @@ class Framework extends \Formularium\Framework
         return 'String';
     }
 
-    protected function props(Model $m): array
+    public function props(Model $m): array
     {
         $props = [];
         foreach ($m->getFields() as $field) {
-            if ($field->getRenderable(self::VUE_PROP, false)) { // TODO
+            if ($field->getRenderable(self::VUE_PROP, true)) { // TODO
                 $p = [
                     'type' => $this->mapType($field->getDatatype()),
                 ];
@@ -234,18 +236,12 @@ class Framework extends \Formularium\Framework
             'containerTag' => $this->getViewableContainerTag(),
             'form' => $viewableForm,
             'jsonData' => $jsonData,
-            'props' => $this->serializeProps($props),
+            'props' => $props,
+            'propsCode' => $this->serializeProps($props),
             'propsBind' => implode(' ', $propsBind)
         ];
 
-        if ($this->viewableTemplate) {
-            return $this->fillTemplate(
-                $this->viewableTemplate,
-                $templateData,
-                $m
-            );
-        } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
-            $viewableTemplate = <<<EOF
+        $viewableTemplate = $this->viewableTemplate ? $this->viewableTemplate : <<<EOF
 <template>
 <{{containerTag}}>
     {{form}}
@@ -255,14 +251,25 @@ class Framework extends \Formularium\Framework
 module.exports = {
     data: function () {
         return {{jsonData}};
+    },
+    methods: {
     }
 };
 </script>
 <style>
 </style>
 EOF;
-            return $this->fillTemplate(
+
+        if (is_callable($this->viewableTemplate)) {
+            return call_user_func(
                 $this->viewableTemplate,
+                $this,
+                $templateData,
+                $m
+            );
+        } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
+            return $this->fillTemplate(
+                $viewableTemplate,
                 $templateData,
                 $m
             );
@@ -297,24 +304,31 @@ EOF;
             'containerTag' => $editableContainerTag,
             'form' => $editableForm,
             'jsonData' => $jsonData,
-            'props' => $this->serializeProps($props),
-            'propsBind' => implode(' ', $propsBind)
+            'props' => $props,
+            'propsCode' => $this->serializeProps($props),
+            'propsBind' => implode(' ', $propsBind),
+            'methods' => [
+                'changedFile' => <<<EOF
+changedFile(name, event) {
+    console.log(name, event);
+    const input = event.target;
+    const files = input.files;
+    if (files && files[0]) {
+        // input.preview = window.URL.createObjectURL(files[0]);
+    }
+}
+EOF
+            ]
         ];
 
-        $methods = <<<EOF
-    methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
-EOF;
-
-        if ($this->editableTemplate) {
+        if (is_callable($this->editableTemplate)) {
+            return call_user_func(
+                $this->editableTemplate,
+                $this,
+                $templateData,
+                $m
+            );
+        } elseif (!$this->editableTemplate) {
             return $this->fillTemplate(
                 $this->editableTemplate,
                 $templateData,
@@ -332,7 +346,12 @@ module.exports = {
     data: function () {
         return {{jsonData}};
     },
-    $methods
+    props: {
+        {{propsCode}}
+    },
+    methods: {
+        {{methods}}
+    }
 };
 </script>
 <style>
@@ -352,7 +371,9 @@ const app_$id = new Vue({
     data: function () {
         return $jsonData;
     },
-    $methods
+    methods: {
+        {{methods}}
+    }
 });
 EOF;
             $s = new HTMLNode('script', [], $script, true);
