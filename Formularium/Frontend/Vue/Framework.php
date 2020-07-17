@@ -241,7 +241,15 @@ class Framework extends \Formularium\Framework
             'propsBind' => implode(' ', $propsBind)
         ];
 
-        $viewableTemplate = $this->viewableTemplate ? $this->viewableTemplate : <<<EOF
+        if (is_callable($this->viewableTemplate)) {
+            return call_user_func(
+                $this->viewableTemplate,
+                $this,
+                $templateData,
+                $m
+            );
+        } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
+            $viewableTemplate = $this->viewableTemplate ? $this->viewableTemplate : <<<EOF
 <template>
 <{{containerTag}}>
     {{form}}
@@ -259,15 +267,7 @@ module.exports = {
 <style>
 </style>
 EOF;
-
-        if (is_callable($this->viewableTemplate)) {
-            return call_user_func(
-                $this->viewableTemplate,
-                $this,
-                $templateData,
-                $m
-            );
-        } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
+            
             return $this->fillTemplate(
                 $viewableTemplate,
                 $templateData,
