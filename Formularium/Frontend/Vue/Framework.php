@@ -328,7 +328,7 @@ EOF
                 $templateData,
                 $m
             );
-        } elseif (!$this->editableTemplate) {
+        } elseif ($this->editableTemplate) {
             return $this->fillTemplate(
                 $this->editableTemplate,
                 $templateData,
