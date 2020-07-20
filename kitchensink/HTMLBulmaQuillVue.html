@@ -933,16 +933,9 @@
     data: function () {
         return {"myString":"","myInteger":"","countrycodeselect":""};
     },
-        methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
+    methods: {
+        {{methods}}
+    }
 });
   </script>
 </div>
@@ -1096,7 +1089,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      LU
+      BL
     </span>
   </span>
 </div>
@@ -1107,7 +1100,7 @@
       Type countrycodeISO3
     </span>
     <span class="formularium-value">
-      CAN
+      CHE
     </span>
   </span>
 </div>
@@ -1118,7 +1111,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      242
+      036
     </span>
   </span>
 </div>
@@ -1140,7 +1133,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      IRR
+      TMT
     </span>
   </span>
 </div>
@@ -1283,7 +1276,7 @@
       Type language
     </span>
     <span class="formularium-value">
-      nah
+      arc
     </span>
   </span>
 </div>
@@ -1327,7 +1320,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      12:29:33
+      14:33:02
     </span>
   </span>
 </div>
@@ -1349,7 +1342,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      America/Thunder_Bay
+      Asia/Pontianak
     </span>
   </span>
 </div>
@@ -1414,7 +1407,7 @@
   <script>
     const app_vueapp1 = new Vue({
     el: '#vueapp1',
-    data: {"alpha":"RSKXSj","alphanum":"R8DbUAg","alphanumdash":"Rm5OLx2hH0","bool":true,"boolean":false,"cnpj":"09.637.751\/0001-98","color":"#AF2E69","constant":"","countrycodeISO2":"LU","countrycodeISO3":"CAN","countrycodeNumeric":242,"cpf":"337.259.781-82","currency":"IRR","date":"2028-08-12","datetime":"2013-01-09T19:56:46+0000","domain":"schulist.com","email":"margie.kuvalis@franecki.com","file":"","float":0.2,"html":"<p>HTML <span>Optio expedita culpa magnam molestias rerum et dignissimos. Qui qui commodi quidem a atque id et quam. Quia est perspiciatis deserunt est harum perferendis. Numquam eius dolorum reiciendis.<\/span>Mollitia ad placeat consequuntur quia suscipit voluptate. Fugit est id id consequuntur maiores magni iste. Sapiente unde labore assumenda.<\/p>","integer":-1330911028,"ip":"6020:5ac8:d1bf:4dea:85b5:b828:d064:a475","ipv4":"69.220.148.70","ipv6":"4a54:9f9a:4c01:6d21:2d1e:a425:3db6:ca28","json":"{\"version\":1858003963,\"data\":{\"string\":\"RKV4rFCB3gknJ\",\"float\":0.043}}","language":"nah","phone":"+2801640567231","string":"RYIJmMyAOBRn","text":"Suscipit sit et et saepe et accusamus. Officia facilis cupiditate est aut modi voluptatem consequatur.","time":"12:29:33","timestamp":"2013-09-05T09:32:49+0000","timezone":"America\/Thunder_Bay","uinteger":2158281461,"url":"http:\/\/nolan.com\/saepe-consectetur-tenetur-iste-eaque-dolores","usmall":38054,"uuid":"3e74aeea-69c4-4905-81ac-de03046e7da6","year":-806905958}
+    data: {"alpha":"RMGHAe","alphanum":"R3ityc4PZtCL","alphanumdash":"R74n1rxkTJNg6","bool":false,"boolean":true,"cnpj":"22.173.323\/0001-10","color":"#33481B","constant":"","countrycodeISO2":"BL","countrycodeISO3":"CHE","countrycodeNumeric":"036","cpf":"517.632.773-21","currency":"TMT","date":"2011-10-02","datetime":"2019-05-29T21:25:52+0000","domain":"wuckert.com","email":"wjakubowski@hotmail.com","file":"","float":0.57,"html":"<p>HTML <span>Earum ullam enim veniam velit molestiae asperiores aliquid. Pariatur et esse sint nostrum. Id sunt qui incidunt voluptates aut illo autem.<\/span>Culpa quidem sed et aut. Qui corporis distinctio corrupti in cumque non ut. Earum autem omnis quasi quia rerum adipisci. Officia odit ut et eaque necessitatibus esse.<\/p>","integer":-353155588,"ip":"96.127.230.214","ipv4":"244.236.43.145","ipv6":"8473:2957:6bd4:5aac:ea30:5fad:47a1:5014","json":"{\"version\":-810051118,\"data\":{\"string\":\"RZV2rLAEDIExI\",\"float\":0.581}}","language":"arc","phone":"+1571165952603","string":"Rs5QT","text":"Quidem ex sint nihil harum dolorum. Sed vitae molestias sed et. Temporibus cum velit quas quia ipsam vel. Voluptas accusantium reiciendis quis ut rerum ut.","time":"14:33:02","timestamp":"2017-03-29T03:56:54+0000","timezone":"Asia\/Pontianak","uinteger":1728298861,"url":"http:\/\/www.kris.info\/et-maiores-placeat-soluta-consequatur-dolores-laudantium.html","usmall":58271,"uuid":"362d57f2-1b7c-4ba5-9bf9-c90291383029","year":394610173}
 });
   </script>
 </div>
@@ -6684,16 +6677,9 @@
     data: function () {
         return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
-        methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
+    methods: {
+        {{methods}}
+    }
 });
   </script>
 </div>

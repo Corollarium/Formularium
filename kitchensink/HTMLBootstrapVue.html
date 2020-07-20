@@ -921,16 +921,9 @@
     data: function () {
         return {"myString":"","myInteger":"","countrycodeselect":""};
     },
-        methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
+    methods: {
+        {{methods}}
+    }
 });
   </script>
 </div>
@@ -1082,7 +1075,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      YU
+      NQ
     </span>
   </span>
 </div>
@@ -1093,7 +1086,7 @@
       Type countrycodeISO3
     </span>
     <span class="formularium-value">
-      SLE
+      PNG
     </span>
   </span>
 </div>
@@ -1104,7 +1097,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      678
+      690
     </span>
   </span>
 </div>
@@ -1126,7 +1119,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      SRD
+      NGN
     </span>
   </span>
 </div>
@@ -1269,7 +1262,7 @@
       Type language
     </span>
     <span class="formularium-value">
-      ki
+      hy
     </span>
   </span>
 </div>
@@ -1313,7 +1306,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      21:30:02
+      17:12:36
     </span>
   </span>
 </div>
@@ -1335,7 +1328,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      Asia/Shanghai
+      America/Kralendijk
     </span>
   </span>
 </div>
@@ -1400,7 +1393,7 @@
   <script>
     const app_vueapp4 = new Vue({
     el: '#vueapp4',
-    data: {"alpha":"RAiZUEWxGSmR","alphanum":"Rq3vWtTj2xqwa","alphanumdash":"RAsYuKCEdeH9K5","bool":true,"boolean":true,"cnpj":"77.451.764\/0001-28","color":"#E791D8","constant":"","countrycodeISO2":"YU","countrycodeISO3":"SLE","countrycodeNumeric":678,"cpf":"328.704.594-67","currency":"SRD","date":"2022-12-06","datetime":"2017-03-25T19:09:42+0000","domain":"tromp.net","email":"jleuschke@yahoo.com","file":"","float":0.588,"html":"<p>HTML <span>Nemo quia id facere et. Voluptatem autem distinctio quo quia culpa quibusdam. Quia nisi quidem laudantium. Ut doloremque accusantium vel voluptatum natus.<\/span>Magnam maiores et consequuntur velit. In dolorem dolorum explicabo necessitatibus nemo deserunt ratione magnam. Dolorem expedita rerum ratione quibusdam ut.<\/p>","integer":-534274755,"ip":"198.14.28.140","ipv4":"99.218.107.141","ipv6":"8aa:b7c5:4c5c:2e93:93bf:1f9f:ac9b:705c","json":"{\"version\":1871896315,\"data\":{\"string\":\"Rb4KwMmPD8\",\"float\":0.711}}","language":"ki","phone":"+9196660042458","string":"RSFb0","text":"Unde asperiores provident odio pariatur. Sed pariatur dolore adipisci est molestiae voluptatum totam est.","time":"21:30:02","timestamp":"2013-09-22T07:58:09+0000","timezone":"Asia\/Shanghai","uinteger":1487308149,"url":"https:\/\/www.howe.com\/eos-explicabo-at-dolor","usmall":50760,"uuid":"5eada8dc-d177-4f79-b807-958e35723a7b","year":-513008621}
+    data: {"alpha":"RAzCBjxWLNk","alphanum":"RBm4x4xH1","alphanumdash":"RJTm8XMY8RzbvP","bool":true,"boolean":false,"cnpj":"92.313.293\/0001-85","color":"#C03384","constant":"","countrycodeISO2":"NQ","countrycodeISO3":"PNG","countrycodeNumeric":690,"cpf":"274.010.061-20","currency":"NGN","date":"2029-09-12","datetime":"2019-10-09T01:42:25+0000","domain":"terry.com","email":"beatty.raquel@yahoo.com","file":"","float":0.179,"html":"<p>HTML <span>Eligendi quisquam consequatur enim laboriosam in. Fuga facilis et ut ea.<\/span>Sit doloremque enim et nulla mollitia repudiandae. Deleniti eius atque magnam excepturi.<\/p>","integer":1113128985,"ip":"5ef9:a034:84e8:e27:919e:6279:a07b:ac16","ipv4":"227.203.86.92","ipv6":"c423:4167:4039:919a:b6ae:8327:5d80:cb81","json":"{\"version\":-1848743117,\"data\":{\"string\":\"Rg4TE\",\"float\":0.608}}","language":"hy","phone":"+9457202778849","string":"Ry4XI5Yu","text":"Cupiditate in tempora pariatur incidunt. Dolores sunt alias accusantium perspiciatis vero unde occaecati quasi. Voluptas aliquid delectus quae repellat velit ducimus. Eos qui est sit tenetur.","time":"17:12:36","timestamp":"2022-09-25T13:56:21+0000","timezone":"America\/Kralendijk","uinteger":651154003,"url":"http:\/\/www.hoeger.com\/dicta-nostrum-commodi-quod","usmall":52208,"uuid":"453210df-a0e0-45a4-8d3c-cc43156ed7d7","year":133753862}
 });
   </script>
 </div>
@@ -6582,16 +6575,9 @@
     data: function () {
         return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
-        methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
+    methods: {
+        {{methods}}
+    }
 });
   </script>
 </div>

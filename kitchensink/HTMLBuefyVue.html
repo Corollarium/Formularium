@@ -910,16 +910,9 @@
     data: function () {
         return {"myString":"","myInteger":"","countrycodeselect":""};
     },
-        methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
+    methods: {
+        {{methods}}
+    }
 });
   </script>
 </div>
@@ -1031,7 +1024,7 @@
       Type countrycodeISO2
     </span>
     <span class="formularium-value">
-      MZ
+      BQ
     </span>
   </span>
 </div>
@@ -1053,7 +1046,7 @@
       Type countrycodeNumeric
     </span>
     <span class="formularium-value">
-      826
+      174
     </span>
   </span>
 </div>
@@ -1075,7 +1068,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      LSL
+      GNF
     </span>
   </span>
 </div>
@@ -1218,7 +1211,7 @@
       Type language
     </span>
     <span class="formularium-value">
-      no
+      kk
     </span>
   </span>
 </div>
@@ -1262,7 +1255,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      01:48:44
+      11:21:37
     </span>
   </span>
 </div>
@@ -1284,7 +1277,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      America/Port_of_Spain
+      Asia/Ashgabat
     </span>
   </span>
 </div>
@@ -1349,7 +1342,7 @@
   <script>
     const app_vueapp7 = new Vue({
     el: '#vueapp7',
-    data: {"alpha":"RfJzrEWqnIGMmya","alphanum":"RL9yDTOqQwy","alphanumdash":"R8bXX-2hMyMmf7","bool":true,"boolean":false,"cnpj":"09.253.078\/0001-92","color":"#74DDFA","constant":"","countrycodeISO2":"MZ","countrycodeISO3":"CUB","countrycodeNumeric":826,"cpf":"972.368.435-71","currency":"LSL","date":"2014-06-29","datetime":"2018-08-30T15:30:50+0000","domain":"kub.com","email":"candelario16@becker.net","file":"","float":0.328,"html":"<p>HTML <span>Molestiae voluptatum numquam et qui. Eum maxime commodi quae soluta eos illum. Quam placeat dolores vitae aspernatur explicabo.<\/span>Reprehenderit sint aut placeat qui. Tenetur iure labore adipisci est fugiat. Odit placeat alias incidunt hic mollitia natus ad.<\/p>","integer":-1386892006,"ip":"105.40.186.52","ipv4":"51.83.75.171","ipv6":"ef2c:fbef:3dcc:bd66:8be3:81da:4c8e:679b","json":"{\"version\":1706149790,\"data\":{\"string\":\"RBgC8R9Y\",\"float\":0.546}}","language":"no","phone":"+4626929549533","string":"R9sUX63c","text":"Molestias voluptatum quod aut est molestiae porro. Et omnis libero saepe eum nesciunt laborum ut. Fugit accusamus animi totam et omnis et aut. Cum et qui esse in.","time":"01:48:44","timestamp":"2023-04-04T07:15:22+0000","timezone":"America\/Port_of_Spain","uinteger":354857919,"url":"http:\/\/www.wiza.com\/aliquam-omnis-ea-rem-ullam-vel-quidem-placeat-accusantium.html","usmall":55439,"uuid":"abdee5a5-2df2-4e92-8d05-840c02f390d1","year":544768986}
+    data: {"alpha":"RzOOMSACEcUO","alphanum":"RGCVD0pmoSOz","alphanumdash":"R8p1xN-fRZJSWP","bool":true,"boolean":true,"cnpj":"85.621.068\/0001-40","color":"#D92C42","constant":"","countrycodeISO2":"BQ","countrycodeISO3":"CUB","countrycodeNumeric":174,"cpf":"583.188.847-95","currency":"GNF","date":"2010-12-04","datetime":"2027-10-26T14:25:06+0000","domain":"kshlerin.com","email":"yyost@hotmail.com","file":"","float":0.081,"html":"<p>HTML <span>Et laudantium asperiores possimus dolorem rerum. Explicabo repudiandae eaque expedita fugit. Temporibus pariatur quam maiores aut quae reiciendis.<\/span>Ipsum libero exercitationem et ut. Perferendis quidem aut nobis doloremque. Natus rerum ad eos eaque qui quaerat facilis porro.<\/p>","integer":-1028408550,"ip":"190.85.158.43","ipv4":"22.152.114.3","ipv6":"e077:d30a:c328:e693:41ca:dab6:1218:1663","json":"{\"version\":-821389759,\"data\":{\"string\":\"RxBC122tqt1\",\"float\":0.206}}","language":"kk","phone":"+9770963705083","string":"RTAdAqPNumOrF8k","text":"Eveniet ut voluptatum quod soluta non nihil. Iste provident quo quam ut voluptas.","time":"11:21:37","timestamp":"2027-04-02T22:00:53+0000","timezone":"Asia\/Ashgabat","uinteger":3091395870,"url":"https:\/\/www.crist.org\/accusantium-nesciunt-et-ad-est-nihil-est","usmall":37061,"uuid":"ef4bfbf4-b4ca-41fb-adca-6c0bd524cb00","year":282620794}
 });
   </script>
 </div>
@@ -6447,16 +6440,9 @@
     data: function () {
         return {"alpha":"","alphanum":"","alphanumdash":"","bool":false,"boolean":false,"cnpj":"","color":"","constant":"","countrycodeISO2":"","countrycodeISO3":"","countrycodeNumeric":"","cpf":"","currency":"","date":"","datetime":"","domain":"","email":"","file":"","float":"","html":"","integer":"","ip":"","ipv4":"","ipv6":"","json":"{}","language":"","phone":"","string":"","text":"","time":"","timestamp":"","timezone":"","uinteger":"","url":"","usmall":"","uuid":"","year":""};
     },
-        methods: {
-        changedFile(name, event) {
-            console.log(name, event);
-            const input = event.target;
-            const files = input.files;
-            if (files && files[0]) {
-                // input.preview = window.URL.createObjectURL(files[0]);
-            }
-        }
-    }        
+    methods: {
+        {{methods}}
+    }
 });
   </script>
 </div>
