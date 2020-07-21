@@ -201,12 +201,13 @@ class Framework extends \Formularium\Framework
         foreach ($m->getFields() as $field) {
             if ($field->getRenderable(self::VUE_PROP, true)) { // TODO
                 $p = [
+                    'name' => $field->getName(),
                     'type' => $this->mapType($field->getDatatype()),
                 ];
                 if ($field->getRenderable(Datatype::REQUIRED, false)) {
                     $p['required'] = true;
                 }
-                $props[$field->getName()] = $p;
+                $props[] = $p;
             }
         }
         return $props;
@@ -214,9 +215,9 @@ class Framework extends \Formularium\Framework
 
     protected function serializeProps(array $props): string
     {
-        $s = array_map(function ($name, $p) {
-            return "'$name': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
-        }, array_keys($props), $props);
+        $s = array_map(function ($p) {
+            return "'{$p['name']}': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
+        }, $props);
         return "{\n        " . implode(",\n        ", $s) . "\n    }\n";
     }
 
