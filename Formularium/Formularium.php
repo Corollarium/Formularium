@@ -100,7 +100,7 @@ final class Formularium
                 /**
                  * @var Datatype $d
                  */
-                $d = new $class();
+                $d = new $class(); // TODO: factory would be better
 
                 $datatypes[$class] = $d->getName();
             }
