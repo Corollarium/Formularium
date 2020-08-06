@@ -68,7 +68,7 @@ class Table extends Element
                         'tr',
                         ['class' => 'formularium-table__headrow'],
                         $headrows
-                    ),
+                    )
                 ),
                 HTMLNode::factory(
                     'tfoot',
@@ -77,7 +77,7 @@ class Table extends Element
                         'tr',
                         ['class' => 'formularium-table__footrow'],
                         $footrows
-                    ),
+                    )
                 ),
                 HTMLNode::factory(
                     'tbody',
