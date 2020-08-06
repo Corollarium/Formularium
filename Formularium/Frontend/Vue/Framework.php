@@ -56,6 +56,13 @@ class Framework extends \Formularium\Framework
      */
     protected $editableTemplate = null;
 
+    /**
+     * Appended to the field variable names to handle models stored in an object field.
+     *
+     * @var string
+     */
+    protected $fieldModelVariable = '';
+
     public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
@@ -403,5 +410,29 @@ EOF;
             $template
         );
         return $template;
+    }
+
+    /**
+     * Get appended to the field variable names to handle models stored in an object field.
+     *
+     * @return  string
+     */
+    public function getFieldModelVariable(): string
+    {
+        return $this->fieldModelVariable;
+    }
+
+    /**
+     * Set appended to the field variable names to handle models stored in an object field.
+     *
+     * @param  string  $fieldModelVariable  Appended to the field variable names to handle models stored in an object field.
+     *
+     * @return  self
+     */
+    public function setFieldModelVariable(string $fieldModelVariable): self
+    {
+        $this->fieldModelVariable = $fieldModelVariable;
+
+        return $this;
     }
 }
