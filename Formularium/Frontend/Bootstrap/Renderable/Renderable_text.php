@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Bootstrap\Renderable;
 
@@ -21,6 +21,13 @@ class Renderable_text extends Renderable_string
         $previous->get('textarea')[0]->setAttributes([
             'class' => 'form-control',
         ]);
+        $comment = $previous->get('.formularium-comment');
+        if (!empty($comment)) {
+            $comment[0]->setTag('small')->addAttributes([
+                'class' => 'form-text text-muted',
+            ]);
+        }
+
         return $previous;
     }
 }
