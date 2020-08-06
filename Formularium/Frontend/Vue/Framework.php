@@ -380,7 +380,6 @@ const app_$id = new Vue({
         return $jsonData;
     },
     methods: {
-        {{methods}}
     }
 });
 EOF;
