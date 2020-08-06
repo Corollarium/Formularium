@@ -9,6 +9,7 @@ use Formularium\Formularium;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Element\Button;
 use Formularium\Frontend\HTML\Element\Pagination;
+use Formularium\Frontend\HTML\Element\Table;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Model;
@@ -100,7 +101,14 @@ function kitchenSink($frameworkName, string $templateName)
             Button::COLOR => Button::COLOR_PRIMARY
         ]
     );
-
+    $table = $framework->element(
+        'Table',
+        [
+            Table::ROW_NAMES => ['First', 'Second', 'Third'],
+            Table::ROW_DATA => [ ['a', 'b', 'c'], [ 'd', 'e', 'f'] ],
+            Table::STRIPED => true
+        ]
+    );
     $pagination = $framework->element(
         'Pagination',
         [
@@ -135,6 +143,7 @@ function kitchenSink($frameworkName, string $templateName)
             '{{title}}' => $title,
             '{{head}}' => $head,
             '{{basicDemoEditable}}' => $basicDemoEditable,
+            '{{table}}' => $table,
             '{{pagination}}' => $pagination,
             '{{submitButton}}' => $submitButton,
             '{{modelViewable}}' => $modelViewable,
