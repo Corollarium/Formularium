@@ -102,9 +102,9 @@ class FrameworkComposer
      *
      * @param string $elementName
      * @param array $parameters
-     * @return string The rendered HTML
+     * @return HTMLNode The element HTMLNode
      */
-    public function element(string $elementName, array $parameters = []): string
+    public function nodeElement(string $elementName, array $parameters = []): HTMLNode
     {
         $node = new HTMLNode('');
         foreach ($this->getFrameworks() as $framework) {
@@ -115,7 +115,19 @@ class FrameworkComposer
                 continue; // element default
             }
         }
-        return $node->getRenderHTML();
+        return $node;
+    }
+
+    /**
+     * Renders an element to a string
+     *
+     * @param string $elementName
+     * @param array $parameters
+     * @return string The rendered HTML
+     */
+    public function element(string $elementName, array $parameters = []): string
+    {
+        return $this->nodeElement($elementName, $parameters)->getRenderHTML();
     }
 
     /**
