@@ -134,9 +134,13 @@ class FrameworkComposer
      * Renders a Model with the loaded frameworks.
      *
      * @param Model $m
-     * @return string
+     * @param array $modelData Actual data for the fields to render. Can be empty.
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return HTMLNode[]
      */
-    public function viewable(Model $m, array $modelData): string
+    public function viewableNodes(Model $m, array $modelData, $restrictFields = null): array
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
@@ -153,6 +157,22 @@ class FrameworkComposer
             }
             $elements[$field->getName()] = $html;
         }
+        return $elements;
+    }
+
+    /**
+     * Renders a Model with the loaded frameworks.
+     *
+     * @param Model $m
+     * @param array $modelData Actual data for the fields to render. Can be empty.
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return string
+     */
+    public function viewable(Model $m, array $modelData, $restrictFields = null): string
+    {
+        $elements = $this->viewableNodes($m, $modelData, $restrictFields);
         $output = '';
         foreach ($this->getFrameworks() as $framework) {
             $output = $framework->viewableCompose($m, $elements, $output);
@@ -160,10 +180,26 @@ class FrameworkComposer
         return $output;
     }
 
-    public function editable(Model $m, array $modelData): string
+    /**
+     * Renders a Model as an editable form with the loaded frameworks.
+     *
+     * @param Model $m
+     * @param array $modelData Actual data for the fields to render. Can be empty.
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return HTMLNode[]
+     */
+    public function editableNodes(Model $m, array $modelData, $restrictFields = null): array
     {
         $elements = [];
         foreach ($m->getFields() as $field) {
+            if (is_array($restrictFields) && !in_array($field->getName(), $restrictFields)) {
+                continue;
+            } elseif (is_callable($restrictFields) && !$restrictFields($field, $m, $modelData)) {
+                continue;
+            }
+
             $value = $modelData[$field->getName()] ?? $field->getDataType()->getDefault(); // TODO: values?
             $html = new HTMLNode('');
             foreach ($this->getFrameworks() as $framework) {
@@ -176,6 +212,22 @@ class FrameworkComposer
             }
             $elements[$field->getName()] = $html;
         }
+        return $elements;
+    }
+
+    /**
+     * Renders a Model as an editable form with the loaded frameworks.
+     *
+     * @param Model $m
+     * @param array $modelData Actual data for the fields to render. Can be empty.
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return string
+     */
+    public function editable(Model $m, array $modelData, $restrictFields = null): string
+    {
+        $elements = $this->editableNodes($m, $modelData, $restrictFields);
         $output = '';
         foreach ($this->getFrameworks() as $framework) {
             $output = $framework->editableCompose($m, $elements, $output);

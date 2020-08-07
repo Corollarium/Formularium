@@ -287,13 +287,34 @@ class Model
      * Renders a readonly view of the model with given data.
      *
      * @param FrameworkComposer $composer
-     * @param array $modelData
-     * @return string
+     * @param array $modelData Actual data for the fields to render. Can be empty.
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return HTMLNode[]
      */
-    public function viewable(FrameworkComposer $composer, array $modelData): string
+    public function viewableNodes(FrameworkComposer $composer, array $modelData, $restrictFields = null): array
     {
         $this->_data = $modelData;
-        $r = $composer->viewable($this, $modelData);
+        $r = $composer->viewableNodes($this, $modelData, $restrictFields);
+        $this->_data = [];
+        return $r;
+    }
+
+    /**
+     * Renders a readonly view of the model with given data.
+     *
+     * @param FrameworkComposer $composer
+     * @param array $modelData Actual data for the fields to render. Can be empty.
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return string
+     */
+    public function viewable(FrameworkComposer $composer, array $modelData, $restrictFields = null): string
+    {
+        $this->_data = $modelData;
+        $r = $composer->viewable($this, $modelData, $restrictFields);
         $this->_data = [];
         return $r;
     }
@@ -303,12 +324,33 @@ class Model
      *
      * @param FrameworkComposer $composer
      * @param array $modelData
-     * @return string
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return HTMLNode[]
      */
-    public function editable(FrameworkComposer $composer, array $modelData = []): string
+    public function editableNodes(FrameworkComposer $composer, array $modelData = [], $restrictFields = null): array
     {
         $this->_data = $modelData;
-        $r = $composer->editable($this, $modelData);
+        $r = $composer->editableNodes($this, $modelData, $restrictFields);
+        $this->_data = [];
+        return $r;
+    }
+
+    /**
+     * Renders a form view of the model with given data.
+     *
+     * @param FrameworkComposer $composer
+     * @param array $modelData
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * @return string
+     */
+    public function editable(FrameworkComposer $composer, array $modelData = [], $restrictFields = null): string
+    {
+        $this->_data = $modelData;
+        $r = $composer->editable($this, $modelData, $restrictFields);
         $this->_data = [];
         return $r;
     }
