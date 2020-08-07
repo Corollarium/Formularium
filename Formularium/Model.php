@@ -32,7 +32,7 @@ class Model
 
     /**
      * Model data being processed.
-     * @var string[]|callable
+     * @var string[]|callable|null
      */
     protected $_restrictFields = null;
 
@@ -343,7 +343,7 @@ class Model
     {
         $this->_data = $modelData;
         $this->_restrictFields = $restrictFields;
-        $r = $composer->viewableNodes($this, $modelData, $restrictFields);
+        $r = $composer->viewableNodes($this, $modelData);
         $this->_data = [];
         $this->_restrictFields = null;
         return $r;
@@ -363,7 +363,7 @@ class Model
     {
         $this->_data = $modelData;
         $this->_restrictFields = $restrictFields;
-        $r = $composer->viewable($this, $modelData, $restrictFields);
+        $r = $composer->viewable($this, $modelData);
         $this->_data = [];
         $this->_restrictFields = null;
         return $r;
@@ -383,7 +383,7 @@ class Model
     {
         $this->_data = $modelData;
         $this->_restrictFields = $restrictFields;
-        $r = $composer->editableNodes($this, $modelData, $restrictFields);
+        $r = $composer->editableNodes($this, $modelData);
         $this->_data = [];
         $this->_restrictFields = null;
         return $r;
@@ -403,7 +403,7 @@ class Model
     {
         $this->_data = $modelData;
         $this->_restrictFields = $restrictFields;
-        $r = $composer->editable($this, $modelData, $restrictFields);
+        $r = $composer->editable($this, $modelData);
         $this->_data = [];
         $this->_restrictFields = null;
         return $r;
