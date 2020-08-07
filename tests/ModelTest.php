@@ -7,8 +7,11 @@ use Formularium\Datatype\Datatype_integer;
 use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\Model;
+use Formularium\Renderable;
 use Formularium\Validator\Max;
+use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
+use Formularium\Validator\MinLength;
 use PHPUnit\Framework\TestCase;
 
 final class ModelTest extends TestCase
@@ -302,5 +305,50 @@ EOF;
         $this->assertEquals(1, count($r));
         $this->assertArrayHasKey('someInteger', $r);
         $this->assertEquals('someInteger', $r['someInteger']->getName());
+    }
+
+    public function testToGraphql()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someInteger' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true,
+                        ]
+                    ]
+                ],
+                'someOther' => [
+                    'datatype' => 'string',
+                    'validators' => [
+                        MinLength::class => [
+                            'value' => 4,
+                        ],
+                        MaxLength::class => [
+                            'value' => 30,
+                        ],
+                    ],
+                    'renderable' => [
+                        Renderable::LABEL => 'Some other'
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // required
+        $t = $model->toGraphqlTypeDefinition();
+        $t = preg_replace('/\s+/', ' ', $t); // remove multiple white space
+        $this->assertContains('someInteger: Int', $t);
+        $this->assertContains('someOther: String!', $t);
+        $this->assertContains('@renderable( label: "Some other" )', $t);
     }
 }

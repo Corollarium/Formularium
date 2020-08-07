@@ -45,6 +45,11 @@ class Datatype_bool extends \Formularium\Datatype
         throw new ValidatorException('Invalid boolean value');
     }
 
+    public function getGraphqlType(): string
+    {
+        return 'Boolean';
+    }
+
     public function getSQLType(string $database = '', array $options = []): string
     {
         switch ($database) {

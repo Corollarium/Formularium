@@ -40,6 +40,11 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
         throw new ValidatorException('Invalid float value');
     }
 
+    public function getGraphqlType(): string
+    {
+        return 'Float';
+    }
+
     public function getSQLType(string $database = '', array $options = []): string
     {
         return 'FLOAT';

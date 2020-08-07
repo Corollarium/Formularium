@@ -67,6 +67,27 @@ abstract class Datatype
     abstract public function getRandom(array $validators = []);
 
     /**
+     * Returns the Graphql query for this datatype.
+     *
+     * @return string
+     */
+    public function getGraphqlType(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Returns the Graphql query for this datatype.
+     *
+     * @param string $name The field name
+     * @return string
+     */
+    public function getGraphqlField(string $name): string
+    {
+        return $name;
+    }
+
+    /**
      * Returns the suggested SQL type for this datatype, such as 'TEXT'.
      *
      * @param string $database The database

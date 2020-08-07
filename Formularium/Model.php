@@ -318,6 +318,17 @@ class Model
         return $t;
     }
 
+    public function toGraphqlTypeDefinition(): string
+    {
+        $defs = [];
+        foreach ($this->getFields() as $field) {
+            $defs[] = $field->toGraphqlTypeDefinition();
+        }
+        return 'type ' . $this->getName() . " {\n  " .
+            str_replace("\n", "\n  ", join("", $defs)) .
+            "\n}\n\n";
+    }
+
     /**
      * Renders a readonly view of the model with given data.
      *
@@ -398,10 +409,15 @@ class Model
         return $r;
     }
 
+    /**
+     * Generates random data for this model
+     *
+     * @return array An associative array field name => data.
+     */
     public function getRandom(): array
     {
         $data = [];
-        foreach ($this->fields as $f) {
+        foreach ($this->getFields() as $f) {
             $data[$f->getName()] = $f->getDatatype()->getRandom();
         }
         return $data;
@@ -415,7 +431,7 @@ class Model
     public function getDefault(): array
     {
         $data = [];
-        foreach ($this->fields as $f) {
+        foreach ($this->getFields() as $f) {
             $data[$f->getName()] = $f->getDatatype()->getDefault();
         }
         return $data;

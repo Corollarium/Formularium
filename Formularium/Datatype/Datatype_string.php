@@ -47,6 +47,11 @@ class Datatype_string extends \Formularium\Datatype
         return $text;
     }
 
+    public function getGraphqlType(): string
+    {
+        return 'String';
+    }
+
     public function getSQLType(string $database = '', array $options = []): string
     {
         return 'VARCHAR(' . $this->MAX_STRING_SIZE . ')';
