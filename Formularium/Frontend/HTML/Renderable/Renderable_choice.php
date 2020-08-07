@@ -30,7 +30,7 @@ class Renderable_choice extends Renderable
     
     public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $formatted = $field->getDatatype()->format($value, $field);
+        $formatted = $field->getDatatype()->format($value);
 
         return $this->_viewable($formatted, $field, $previous);
     }

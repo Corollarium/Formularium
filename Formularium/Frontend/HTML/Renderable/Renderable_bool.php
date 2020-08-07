@@ -1,4 +1,4 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\HTML\Renderable;
 
@@ -20,7 +20,7 @@ class Renderable_bool extends Renderable
     
     public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $formatted = $field->getDatatype()->format($value, $field);
+        $formatted = $field->getDatatype()->format($value);
 
         return $this->_viewable($formatted, $field, $previous);
     }

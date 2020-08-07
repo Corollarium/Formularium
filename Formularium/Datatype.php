@@ -39,7 +39,6 @@ abstract class Datatype
      *
      * @codeCoverageIgnore
      * @param mixed $value
-     * @param Field $field
      * @return mixed
      */
     public function format($value)
