@@ -8,6 +8,7 @@ use Formularium\Exception\ClassNotFoundException;
 use Formularium\Formularium;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Element\Button;
+use Formularium\Frontend\HTML\Element\Card;
 use Formularium\Frontend\HTML\Element\Pagination;
 use Formularium\Frontend\HTML\Element\Table;
 use Formularium\Frontend\HTML\Renderable\Renderable_choice;
@@ -17,6 +18,46 @@ use Formularium\Renderable;
 use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
+
+function elements(FrameworkComposer $framework)
+{
+    $submitButton = $framework->element(
+        'Button',
+        [
+            Element::LABEL => 'Save',
+            Button::COLOR => Button::COLOR_PRIMARY
+        ]
+    );
+    $table = $framework->element(
+        'Table',
+        [
+            Table::ROW_NAMES => ['First', 'Second', 'Third'],
+            Table::ROW_DATA => [ ['a', 'b', 'c'], [ 'd', 'e', 'f'] ],
+            Table::STRIPED => true
+        ]
+    );
+    $pagination = $framework->element(
+        'Pagination',
+        [
+            Pagination::CURRENT => 21,
+            Pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
+            Pagination::TOTAL_ITEMS => 253,
+        ]
+    );
+    $card = $framework->element(
+        'Card',
+        [
+            Card::TITLE => 'Card title',
+            Card::IMAGE => 'https://via.placeholder.com/150',
+            Card::CONTENT => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+        ]
+    );
+
+    return '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
+        '<h3 class="kitchen">Table</h3>' .  $table . "\n" .
+        '<h3 class="kitchen">Pagination</h3>' .  $pagination . "\n" .
+        '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n";
+}
 
 function kitchenSink($frameworkName, string $templateName)
 {
@@ -94,30 +135,6 @@ function kitchenSink($frameworkName, string $templateName)
     );
     $basicDemoEditable = $basicModel->editable($framework, []);
 
-    $submitButton = $framework->element(
-        'Button',
-        [
-            Element::LABEL => 'Save',
-            Button::COLOR => Button::COLOR_PRIMARY
-        ]
-    );
-    $table = $framework->element(
-        'Table',
-        [
-            Table::ROW_NAMES => ['First', 'Second', 'Third'],
-            Table::ROW_DATA => [ ['a', 'b', 'c'], [ 'd', 'e', 'f'] ],
-            Table::STRIPED => true
-        ]
-    );
-    $pagination = $framework->element(
-        'Pagination',
-        [
-            Pagination::CURRENT => 21,
-            Pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
-            Pagination::TOTAL_ITEMS => 253,
-        ]
-    );
-    
     // generate kitchen sink model
     $model = Model::fromStruct(
         [
@@ -143,9 +160,7 @@ function kitchenSink($frameworkName, string $templateName)
             '{{title}}' => $title,
             '{{head}}' => $head,
             '{{basicDemoEditable}}' => $basicDemoEditable,
-            '{{table}}' => $table,
-            '{{pagination}}' => $pagination,
-            '{{submitButton}}' => $submitButton,
+            '{{elements}}' => elements($framework),
             '{{modelViewable}}' => $modelViewable,
             '{{modelEditable}}' => $modelEditable,
             '{{footer}}' => $footer,
