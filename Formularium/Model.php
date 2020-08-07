@@ -318,13 +318,48 @@ class Model
         return $t;
     }
 
+    public function toGraphqlQuery(): string
+    {
+        $defs = [];
+        foreach ($this->getFields() as $field) {
+            /**
+             * @var Field $field
+             */
+            $defs[] = $field->toGraphqlQuery();
+        }
+        return join("\n", $defs);
+    }
+
+    /**
+     * Generates a Graphql Type definition for this model.
+     *
+     * @return string
+     */
     public function toGraphqlTypeDefinition(): string
     {
         $defs = [];
         foreach ($this->getFields() as $field) {
+            /**
+             * @var Field $field
+             */
             $defs[] = $field->toGraphqlTypeDefinition();
         }
-        return 'type ' . $this->getName() . " {\n  " .
+        $renderables = $this->getRenderables();
+        $r = array_map(
+            function ($name, $value) {
+                $v = $value;
+                if (is_string($value)) {
+                    $v = '"' . str_replace('"', '\\"', $value) . '"';
+                }
+                return ' ' . $name . ': ' . $v;
+            },
+            array_keys($renderables),
+            $renderables
+        );
+
+        return 'type ' . $this->getName() .
+            ($this->renderable ? join("\n", $r) : '') .
+            " {\n  " .
             str_replace("\n", "\n  ", join("", $defs)) .
             "\n}\n\n";
     }

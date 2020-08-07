@@ -24,7 +24,7 @@ class Datatype_bool extends \Formularium\Datatype
         return (bool)rand(0, 1);
     }
 
-    public function format($value, Field $f)
+    public function format($value)
     {
         return $value == true ? 'True' : 'False';
     }
