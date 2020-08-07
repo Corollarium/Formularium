@@ -9,7 +9,8 @@ trait RenderableViewableTrait
 {
     public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $tag = $field->getRenderable(Renderable::VIEWABLE_TAG, 'span');
+        $isTitle = $field->getRenderable(Renderable::TITLE, false);
+        $tag = $field->getRenderable(Renderable::VIEWABLE_TAG, $isTitle ? 'h1' : 'span');
         $atts = [
             'class' => 'formularium-viewable'
         ];
