@@ -31,6 +31,12 @@ class Model
     protected $_data = [];
 
     /**
+     * Model data being processed.
+     * @var string[]|callable
+     */
+    protected $_restrictFields = null;
+
+    /**
      *
      * @param string $name
      * @throws Exception
@@ -108,9 +114,38 @@ class Model
         return $this->name;
     }
 
-    public function getFields(): array
+    public function getAllFields(): array
     {
         return $this->fields;
+    }
+
+    /**
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * @return array
+     */
+    public function getFields($restrictFields = null): array
+    {
+        if ($restrictFields === null) {
+            $restrictFields = $this->_restrictFields;
+        }
+        if ($restrictFields === null) {
+            return $this->fields;
+        }
+        
+        $fields = [];
+        foreach ($this->fields as $field) {
+            /**
+             * @var Field $field
+             */
+            if (is_array($restrictFields) && !in_array($field->getName(), $restrictFields)) {
+                continue;
+            } elseif (is_callable($restrictFields) && !$restrictFields($field, $this)) {
+                continue;
+            }
+            $fields[$field->getName()] = $field;
+        }
+        return $fields;
     }
 
     public function getData(): array
@@ -296,8 +331,10 @@ class Model
     public function viewableNodes(FrameworkComposer $composer, array $modelData, $restrictFields = null): array
     {
         $this->_data = $modelData;
+        $this->_restrictFields = $restrictFields;
         $r = $composer->viewableNodes($this, $modelData, $restrictFields);
         $this->_data = [];
+        $this->_restrictFields = null;
         return $r;
     }
 

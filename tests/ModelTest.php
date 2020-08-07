@@ -217,4 +217,90 @@ EOF;
         $this->assertArrayHasKey('someInteger', $r);
         $this->assertEquals('someInteger', $r['someInteger']->getName());
     }
+
+    public function testGetFieldCallable()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someInteger' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true,
+                        ]
+                    ]
+                ],
+                'someOther' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // required
+        $r = $model->getFields(
+            function (Field $field) {
+                return $field->getValidator(Datatype::REQUIRED, false);
+            }
+        );
+        $this->assertEquals(1, count($r));
+        $this->assertArrayHasKey('someInteger', $r);
+        $this->assertEquals('someInteger', $r['someInteger']->getName());
+    }
+
+    public function testGetFieldArray()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someInteger' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true,
+                        ]
+                    ]
+                ],
+                'someOther' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // required
+        $r = $model->getFields(['someInteger']);
+        $this->assertEquals(1, count($r));
+        $this->assertArrayHasKey('someInteger', $r);
+        $this->assertEquals('someInteger', $r['someInteger']->getName());
+    }
 }
