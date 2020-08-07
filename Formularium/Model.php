@@ -351,8 +351,10 @@ class Model
     public function viewable(FrameworkComposer $composer, array $modelData, $restrictFields = null): string
     {
         $this->_data = $modelData;
+        $this->_restrictFields = $restrictFields;
         $r = $composer->viewable($this, $modelData, $restrictFields);
         $this->_data = [];
+        $this->_restrictFields = null;
         return $r;
     }
 
@@ -369,8 +371,10 @@ class Model
     public function editableNodes(FrameworkComposer $composer, array $modelData = [], $restrictFields = null): array
     {
         $this->_data = $modelData;
+        $this->_restrictFields = $restrictFields;
         $r = $composer->editableNodes($this, $modelData, $restrictFields);
         $this->_data = [];
+        $this->_restrictFields = null;
         return $r;
     }
 
@@ -387,8 +391,10 @@ class Model
     public function editable(FrameworkComposer $composer, array $modelData = [], $restrictFields = null): string
     {
         $this->_data = $modelData;
+        $this->_restrictFields = $restrictFields;
         $r = $composer->editable($this, $modelData, $restrictFields);
         $this->_data = [];
+        $this->_restrictFields = null;
         return $r;
     }
 
