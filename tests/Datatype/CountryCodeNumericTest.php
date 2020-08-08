@@ -13,7 +13,7 @@ class CountryCodeNumericTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('countrycodeNumeric');
+        return \Formularium\DatatypeFactory::factory('countrycodenumeric');
     }
 
     /**
