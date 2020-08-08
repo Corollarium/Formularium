@@ -2,12 +2,12 @@
 
 namespace Formularium\Datatype;
 
-class Datatype_countrycodeISO3 extends \Formularium\Datatype\Datatype_countrycode
+class Datatype_countrycodenumeric extends \Formularium\Datatype\Datatype_countrycode
 {
-    public function __construct(string $typename = 'countrycodeISO3', string $basetype = 'choice')
+    public function __construct(string $typename = 'countrycodenumeric', string $basetype = 'choice')
     {
         parent::__construct($typename, $basetype);
-        $this->setChoices(self::ISO_ALPHA3);
+        $this->setChoices(self::ISO_NUMERIC);
     }
 
     public function getSQLType(string $database = '', array $options = []): string

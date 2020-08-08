@@ -2,21 +2,21 @@
 
 namespace Formularium\Datatype;
 
-class Datatype_countrycodeNumeric extends \Formularium\Datatype\Datatype_countrycode
+class Datatype_countrycodeiso2 extends \Formularium\Datatype\Datatype_countrycode
 {
-    public function __construct(string $typename = 'countrycodeNumeric', string $basetype = 'choice')
+    public function __construct(string $typename = 'countrycodeiso2', string $basetype = 'choice')
     {
         parent::__construct($typename, $basetype);
-        $this->setChoices(self::ISO_NUMERIC);
+        $this->setChoices(self::ISO_ALPHA2);
     }
 
     public function getSQLType(string $database = '', array $options = []): string
     {
-        return 'CHAR(3)';
+        return 'CHAR(2)';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "char($name, 3)";
+        return "char($name, 2)";
     }
 }
