@@ -19,7 +19,7 @@ use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
 
-function elements(FrameworkComposer $framework)
+function elements(FrameworkComposer $framework): string
 {
     $submitButton = $framework->element(
         'Button',
