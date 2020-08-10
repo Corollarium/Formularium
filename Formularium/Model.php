@@ -304,6 +304,7 @@ class Model
         );
         $model = [
             'name' => $this->name,
+            'renderable' => $this->renderable,
             'fields' => $fields
         ];
         return $model;

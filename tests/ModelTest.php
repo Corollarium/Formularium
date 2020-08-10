@@ -58,6 +58,9 @@ EOF;
         $json = <<<'EOF'
 { 
     "name": "ModelTest", 
+    "renderable": {
+        "title": "Title"
+    },
     "fields": {
         "name": {
             "datatype": "string",
@@ -85,7 +88,12 @@ EOF;
         $m = Model::fromJSON($json);
         $this->assertEquals('ModelTest', $m->getName());
         $this->assertIsArray($m->getFields());
+        $this->assertIsArray($m->getAllFields());
+        $this->assertEquals(['name'], array_keys($m->getAllFields()));
+        $this->assertEquals(['name'], array_keys($m->getFields()));
         $this->assertJsonStringEqualsJsonString($json, $m->toJSON());
+        $this->assertEquals("Title", $m->getRenderable('title', 'x'));
+        $this->assertEquals("x", $m->getRenderable('asdfkasdf', 'x'));
     }
 
     public function testValidate()
