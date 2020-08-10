@@ -107,13 +107,18 @@ class FrameworkComposer
     public function nodeElement(string $elementName, array $parameters = []): HTMLNode
     {
         $node = new HTMLNode('');
+        $found = false;
         foreach ($this->getFrameworks() as $framework) {
             try {
                 $element = $framework->getElement($elementName);
+                $found = true;
                 $node = $element->render($parameters, $node);
             } catch (ClassNotFoundException $e) {
                 continue; // element default
             }
+        }
+        if (!$found) {
+            throw new ClassNotFoundException("Element $elementName not found");
         }
         return $node;
     }
