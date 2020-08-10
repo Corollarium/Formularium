@@ -72,7 +72,7 @@
   <label for="countrycodeselect243" class="formularium-label">
     Country code - select choice
   </label>
-  <select id="countrycodeselect243" name="countrycodeselect" class=" custom-select" data-attribute="countrycodeselect" data-datatype="countrycodeiso3" data-basetype="choice" title="Country code - select choice">
+  <select id="countrycodeselect243" name="countrycodeselect" class=" custom-select" data-attribute="countrycodeselect" data-datatype="countrycodeiso3" data-basetype="choice" title="Country code - select choice" v-model="countrycodeselect">
     <option value="AND">
       Andorra
     </option>
@@ -1148,7 +1148,7 @@
       Type countrycodeiso2
     </span>
     <span class="formularium-value">
-      YT
+      {{countrycodeiso2}}
     </span>
   </span>
 </div>
@@ -1159,7 +1159,7 @@
       Type countrycodeiso3
     </span>
     <span class="formularium-value">
-      BOL
+      {{countrycodeiso3}}
     </span>
   </span>
 </div>
@@ -1170,7 +1170,7 @@
       Type countrycodenumeric
     </span>
     <span class="formularium-value">
-      591
+      {{countrycodenumeric}}
     </span>
   </span>
 </div>
@@ -1192,7 +1192,7 @@
       Type currency
     </span>
     <span class="formularium-value">
-      EUR
+      {{currency}}
     </span>
   </span>
 </div>
@@ -1335,7 +1335,7 @@
       Type language
     </span>
     <span class="formularium-value">
-      iu
+      {{language}}
     </span>
   </span>
 </div>
@@ -1379,7 +1379,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      06:41:04
+      07:05:48
     </span>
   </span>
 </div>
@@ -1401,7 +1401,7 @@
       Type timezone
     </span>
     <span class="formularium-value">
-      Australia/Currie
+      {{timezone}}
     </span>
   </span>
 </div>
@@ -1466,7 +1466,7 @@
   <script>
     const app_vueapp4 = new Vue({
     el: '#vueapp4',
-    data: {"alpha":"RjSgVM","alphanum":"Rxm1bw7abMs","alphanumdash":"R5efg39szr","bool":true,"boolean":true,"cnpj":"18.792.105\/0001-96","color":"#D2581D","constant":"","countrycodeiso2":"YT","countrycodeiso3":"BOL","countrycodenumeric":591,"cpf":"262.953.611-45","currency":"EUR","date":"2013-08-28","datetime":"2017-03-31T13:18:41+0000","domain":"corkery.com","email":"heathcote.tiffany@cole.com","file":"","float":0.677,"html":"<p>HTML <span>Vitae culpa est sed consequatur. Doloribus atque porro ad iusto minima reprehenderit fugit. Quis consequuntur laborum atque veniam quaerat. Deserunt repudiandae et tempora aspernatur vitae.<\/span>Tenetur fugiat non sed labore perspiciatis ratione pariatur. Maiores voluptatem voluptas repellendus eaque minima excepturi. Et deserunt occaecati impedit explicabo. Illum qui ullam soluta sunt amet.<\/p>","integer":-778384373,"ip":"224.168.230.122","ipv4":"120.85.108.122","ipv6":"20f1:c7:d188:b9e9:30d0:2f66:3fc8:f3ad","json":"{\"version\":369821797,\"data\":{\"string\":\"RcD6pIG7YF\",\"float\":0.074}}","language":"iu","phone":"+6160980631076","string":"RjWhd6","text":"Et odio aspernatur numquam. Velit a velit cumque cum dolores magni dolorem necessitatibus. Aut voluptatem rerum facilis blanditiis.","time":"06:41:04","timestamp":"2016-03-23T15:39:31+0000","timezone":"Australia\/Currie","uinteger":1273362058,"url":"https:\/\/www.miller.com\/soluta-voluptatem-id-et-placeat-ipsam-blanditiis","usmall":62313,"uuid":"e7048ab6-9407-482a-a88b-020837c5973d","year":-247622951}
+    data: {"alpha":"RTJcKWjk","alphanum":"R7Wue4G","alphanumdash":"RHRQX","bool":true,"boolean":true,"cnpj":"57.615.334\/0001-97","color":"#37D37C","constant":"","countrycodeiso2":"JO","countrycodeiso3":"FRO","countrycodenumeric":233,"cpf":"564.112.770-10","currency":"VND","date":"2019-09-15","datetime":"2019-06-09T03:12:48+0000","domain":"dooley.com","email":"ian69@gmail.com","file":"","float":0.666,"html":"<p>HTML <span>Qui dolorem eligendi et voluptas ratione. Possimus enim commodi eum dolore esse facilis. Quis quibusdam molestiae qui id. Consequatur architecto blanditiis omnis magni consequatur.<\/span>Aut iste dicta accusamus illum. Ut qui quia nam repellendus quo. Ratione vel sequi similique ut recusandae fuga eos. Eum officia eveniet unde expedita reiciendis veniam.<\/p>","integer":-965596740,"ip":"45.170.69.214","ipv4":"91.45.217.7","ipv6":"5481:d6f6:8371:d11f:7ac1:942b:1b40:6eb4","json":"{\"version\":1625553933,\"data\":{\"string\":\"RFzqFm\",\"float\":0.977}}","language":"lv","phone":"+9061260734262","string":"RnRBX3FBQ5B","text":"Odio animi minus quae. Ab praesentium sed quis omnis vero et. Sit quos eum laborum tempore est.","time":"07:05:48","timestamp":"2014-01-18T05:22:22+0000","timezone":"Africa\/Casablanca","uinteger":1417039814,"url":"http:\/\/mcglynn.com\/non-dolore-unde-id-tempora-perferendis","usmall":30073,"uuid":"669621c0-5262-470f-8d8c-b2798870062a","year":1176625515}
 });
   </script>
 </div>
@@ -1548,7 +1548,7 @@
   <label for="countrycodeiso2251" class="formularium-label">
     Type countrycodeiso2
   </label>
-  <select id="countrycodeiso2251" name="countrycodeiso2" class=" custom-select" data-attribute="countrycodeiso2" data-datatype="countrycodeiso2" data-basetype="choice" title="Type countrycodeiso2">
+  <select id="countrycodeiso2251" name="countrycodeiso2" class=" custom-select" data-attribute="countrycodeiso2" data-datatype="countrycodeiso2" data-basetype="choice" title="Type countrycodeiso2" v-model="countrycodeiso2">
     <option value="AD">
       Andorra
     </option>
@@ -2378,7 +2378,7 @@
   <label for="countrycodeiso3252" class="formularium-label">
     Type countrycodeiso3
   </label>
-  <select id="countrycodeiso3252" name="countrycodeiso3" class=" custom-select" data-attribute="countrycodeiso3" data-datatype="countrycodeiso3" data-basetype="choice" title="Type countrycodeiso3">
+  <select id="countrycodeiso3252" name="countrycodeiso3" class=" custom-select" data-attribute="countrycodeiso3" data-datatype="countrycodeiso3" data-basetype="choice" title="Type countrycodeiso3" v-model="countrycodeiso3">
     <option value="AND">
       Andorra
     </option>
@@ -3223,7 +3223,7 @@
   <label for="countrycodenumeric253" class="formularium-label">
     Type countrycodenumeric
   </label>
-  <select id="countrycodenumeric253" name="countrycodenumeric" class=" custom-select" data-attribute="countrycodenumeric" data-datatype="countrycodenumeric" data-basetype="choice" title="Type countrycodenumeric">
+  <select id="countrycodenumeric253" name="countrycodenumeric" class=" custom-select" data-attribute="countrycodenumeric" data-datatype="countrycodenumeric" data-basetype="choice" title="Type countrycodenumeric" v-model="countrycodenumeric">
     <option value="020">
       Andorra
     </option>
@@ -4033,7 +4033,7 @@
   <label for="currency255" class="formularium-label">
     Type currency
   </label>
-  <select id="currency255" name="currency" class=" custom-select" data-attribute="currency" data-datatype="currency" data-basetype="choice" title="Type currency">
+  <select id="currency255" name="currency" class=" custom-select" data-attribute="currency" data-datatype="currency" data-basetype="choice" title="Type currency" v-model="currency">
     <option value="XUA">
       ADB Unit of Account
     </option>
@@ -4676,7 +4676,7 @@
   <label for="language268" class="formularium-label">
     Type language
   </label>
-  <select id="language268" name="language" class=" custom-select" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language">
+  <select id="language268" name="language" class=" custom-select" data-attribute="language" data-datatype="language" data-basetype="choice" title="Type language" v-model="language">
     <option value="aa">
       Afaraf
     </option>
@@ -5323,7 +5323,7 @@
   <label for="timezone274" class="formularium-label">
     Type timezone
   </label>
-  <select id="timezone274" name="timezone" class=" custom-select" data-attribute="timezone" data-datatype="timezone" data-basetype="choice" title="Type timezone">
+  <select id="timezone274" name="timezone" class=" custom-select" data-attribute="timezone" data-datatype="timezone" data-basetype="choice" title="Type timezone" v-model="timezone">
     <option value="Africa/Abidjan">
       Africa/Abidjan
     </option>
