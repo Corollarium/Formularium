@@ -17,4 +17,11 @@ final class DatatypeTest extends TestCase
         $this->assertEquals('color', $d->getName());
         $this->assertEquals('string', $d->getBasetype());
     }
+
+    public function testGraphql()
+    {
+        $d = DatatypeFactory::factory('integer');
+        $this->assertEquals('Int', $d->getGraphqlType());
+        $this->assertEquals('some', $d->getGraphqlField('some'));
+    }
 }
