@@ -17,6 +17,6 @@ class Datatype_countrycodenumeric extends \Formularium\Datatype\Datatype_country
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "char($name, 3)";
+        return "char('$name', 3)";
     }
 }

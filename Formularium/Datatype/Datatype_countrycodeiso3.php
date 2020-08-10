@@ -17,6 +17,6 @@ class Datatype_countrycodeiso3 extends \Formularium\Datatype\Datatype_countrycod
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "char($name, 3)";
+        return "char('$name', 3)";
     }
 }
