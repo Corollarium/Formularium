@@ -15,7 +15,7 @@ Creates a button
 
 ### type (string)
 
-Button type, like "submit", "reset" or "button" . Default: "button"
+Button type. These values are treated: "anchor", "submit", "reset" or "button". Any other value is considered the element name. Default: "button"
 
 ### readonly (boolean)
 
