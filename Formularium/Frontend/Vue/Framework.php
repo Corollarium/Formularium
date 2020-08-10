@@ -5,6 +5,7 @@ namespace Formularium\Frontend\Vue;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_bool;
 use Formularium\Datatype\Datatype_number;
+use Formularium\Exception\Exception;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
@@ -12,9 +13,7 @@ class Framework extends \Formularium\Framework
 {
     const VUE_MODE_SINGLE_FILE = 'VUE_MODE_SINGLE_FILE';
     const VUE_MODE_EMBEDDED = 'VUE_MODE_EMBEDDED';
-
     const VUE_PROP = 'VUE_PROP';
-
     const VUE_VARS = 'VUE_VARS';
 
     /**
@@ -59,9 +58,24 @@ class Framework extends \Formularium\Framework
     /**
      * Appended to the field variable names to handle models stored in an object field.
      *
+     * Allows you to declare the model like this:
+     *
+     * data() {
+     *   return {
+     *       model: model,
+     *   };
+     * },
+     *
      * @var string
      */
     protected $fieldModelVariable = '';
+
+    /**
+     * Extra props.
+     *
+     * @var array
+     */
+    protected $extraProps = [];
 
     public function __construct(string $name = 'Vue')
     {
@@ -206,7 +220,7 @@ class Framework extends \Formularium\Framework
     {
         $props = [];
         foreach ($m->getFields() as $field) {
-            if ($field->getRenderable(self::VUE_PROP, true)) { // TODO
+            if ($field->getRenderable(self::VUE_PROP, true)) {
                 $p = [
                     'name' => $field->getName(),
                     'type' => $this->mapType($field->getDatatype()),
@@ -217,6 +231,13 @@ class Framework extends \Formularium\Framework
                 $props[] = $p;
             }
         }
+        foreach ($this->extraProps as $p) {
+            if (!array_key_exists('name', $p)) {
+                throw new Exception('Missing prop name');
+            }
+            $props[] = $p;
+        }
+        
         return $props;
     }
 
@@ -431,6 +452,40 @@ EOF;
     public function setFieldModelVariable(string $fieldModelVariable): self
     {
         $this->fieldModelVariable = $fieldModelVariable;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getExtraPropos(): array
+    {
+        return $this->extraProps;
+    }
+
+    /**
+     *
+     * @param array $extraProps
+     *
+     * @return  self
+     */
+    public function setExtraProps(array $extraProps): self
+    {
+        $this->extraProps = $extraProps;
+
+        return $this;
+    }
+
+    /**
+     *
+     * @param array $extraProps
+     *
+     * @return  self
+     */
+    public function appendExtraProp(array $extra): self
+    {
+        $this->extraProps[] = $extra;
 
         return $this;
     }
