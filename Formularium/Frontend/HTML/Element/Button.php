@@ -21,13 +21,30 @@ class Button extends Element
 
     public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
-        $node = new HTMLNode('button');
+        $type = $parameters[self::TYPE] ?? 'button';
+        $buttonTypes = ["submit", "reset", "button"];
+        if (in_array($type, $buttonTypes)) {
+            $buttonElement = 'button';
+            $atts = [
+                'type' => $type,
+                'class' => '',
+            ];
+        } elseif ($type === 'anchor') {
+            $buttonElement = 'a';
+            $atts = [
+                'class' => '',
+            ];
+        } else {
+            $buttonElement = $type;
+            $atts = [
+                'class' => '',
+            ];
+        }
 
-        $node->setAttributes([
-            'type' => $parameters[self::TYPE] ?? 'button',
-            'class' => '',
-        ]);
+        $node = new HTMLNode($buttonElement);
 
+        $node->setAttributes($parameters[self::ATTRIBUTES] ?? []);
+        $node->setAttributes($atts);
         $node->setContent($parameters[self::LABEL] ?? '');
 
         foreach ([static::DISABLED, static::READONLY] as $v) {
@@ -48,7 +65,7 @@ class Button extends Element
                 new MetadataParameter(
                     static::TYPE,
                     'string',
-                    'Button type, like "submit", "reset" or "button" . Default: "button"'
+                    'Button type. These values are treated: "anchor", "submit", "reset" or "button". Any other value is considered the element name. Default: "button"'
                 ),
                 new MetadataParameter(
                     static::READONLY,

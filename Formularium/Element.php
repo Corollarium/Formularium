@@ -11,6 +11,11 @@ use Formularium\HTMLNode;
 abstract class Element implements RenderableParameter
 {
     /**
+     * extra attributes added directly to the base element.
+     */
+    const ATTRIBUTES = 'attributes';
+
+    /**
      * Factory.
      *
      * @param string $elementName
