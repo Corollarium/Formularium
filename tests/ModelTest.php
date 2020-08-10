@@ -156,6 +156,24 @@ EOF;
         $this->assertEmpty($v['errors']);
     }
 
+    public function testDefault()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someString' => [
+                    'datatype' => 'string',
+                    'validators' => [
+                        \Formularium\Validator\Filled::class => ['value' => true],
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        $this->assertEquals(['someString' => ''], $model->getDefault());
+    }
+
     public function testRandom()
     {
         $modelData = [
