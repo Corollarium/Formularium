@@ -479,7 +479,7 @@ EOF;
 
     /**
      *
-     * @param array $extraProps
+     * @param array $extra Array of props. 'name' and 'type' keys are required for each element.
      *
      * @return  self
      */
