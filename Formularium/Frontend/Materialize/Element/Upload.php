@@ -48,8 +48,8 @@ class Upload extends Element
                             'class' => 'file-path validate',
                             'type' => 'text'
                         ]
-                    ),
-                ),
+                    )
+                )
             ]
         );
     }
