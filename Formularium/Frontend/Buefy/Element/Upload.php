@@ -9,7 +9,7 @@ use Formularium\Frontend\HTML\Framework as HTMLFramework;
 use Formularium\Metadata;
 use Formularium\MetadataParameter;
 
-class Button extends Element
+class Upload extends Element
 {
     public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
