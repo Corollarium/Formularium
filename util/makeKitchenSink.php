@@ -21,6 +21,11 @@ use Formularium\Validator\MinLength;
 
 function elements(FrameworkComposer $framework): string
 {
+    $upload = $framework->element(
+        'Upload',
+        [
+        ]
+    );
     $submitButton = $framework->element(
         'Button',
         [
@@ -53,7 +58,8 @@ function elements(FrameworkComposer $framework): string
         ]
     );
 
-    return '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
+    return '<h3 class="kitchen">Upload</h3>' . $upload . "\n" .
+        '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
         '<h3 class="kitchen">Table</h3>' .  $table . "\n" .
         '<h3 class="kitchen">Pagination</h3>' .  $pagination . "\n" .
         '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n";
