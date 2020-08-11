@@ -1,11 +1,12 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 FRAMEWORK=$1
-DATATYPES=${2:-`ls Formularium/Datatype/`}
+DATATYPES=${2:-`ls $DIR/Formularium/Datatype/`}
 
-mkdir -p Formularium/Frontend/$FRAMEWORK/Renderable
+mkdir -p $DIR/Formularium/Frontend/$FRAMEWORK/Renderable
 
-FILENAME="Formularium/Frontend/$FRAMEWORK/Framework.php" 
+FILENAME="$DIR/Formularium/Frontend/$FRAMEWORK/Framework.php" 
 if [ ! -f "$FILENAME" ]
 then 
     cat > "$FILENAME" <<EOF
@@ -26,11 +27,6 @@ fi
 
 for datatype in $DATATYPES
 do
-    if [ ! -f "Formularium/Datatype/$FILENAME" ]
-    then
-        echo "Cannot find Formularium/Datatype/$datatype. Try using the full filename: Datatype_xxx.php"
-        continue;
-    fi
     RENDERABLENAME=$((sed 's|\.php$||i' <<< "$datatype") | sed 's/Datatype/Renderable/')
     FILENAME="Formularium/Frontend/$FRAMEWORK/Renderable/$RENDERABLENAME.php"
 
