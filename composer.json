@@ -3,7 +3,7 @@
     "description": "Form validation and generation for PHP with custom frontend generators",
     "type": "library",
     "license": "MIT",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "keywords": [
         "form"
     ],
