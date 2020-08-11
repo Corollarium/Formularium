@@ -6,9 +6,11 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/corollarium/formularium.svg?style=flat-square)](https://packagist.org/packages/corollarium/formularium)
 [![License](https://img.shields.io/packagist/l/corollarium/formularium.svg?style=flat-square)](https://packagist.org/packages/corollarium/formularium)
 
-This is a general form generator and validator for PHP. It hosts a number of generators for different CSS and JS frameworks, as well as validators for backend and frontend. The main feature is that it provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for datatype creation, validation and form generation. Your fields **are not strings**, stop treating them as such.
+This is a general HTML form/element generator and validator for PHP. It hosts a number of generators for different CSS and JS frameworks, as well as validators for backend and frontend, abstracting code.
 
-Same code generating frontends in Bootstrap, Bulma, Materialize and Buefy. Click on the images to see a live HTML.
+Formularium provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for datatype creation, validation and form generation. Your fields **are not strings**, stop treating them as such.
+
+Examples of the same PHP code generating frontends in Bootstrap, Bulma, Materialize and Buefy. Click on the images to see a live HTML.
 
 <a href="https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html"><img src="https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png" width="400" height="616"></a>
 <a href="https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html"><img src="https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png" width="400" height="616"></a>
@@ -17,7 +19,7 @@ Same code generating frontends in Bootstrap, Bulma, Materialize and Buefy. Click
 
 Forms are generated from a simple structure describing its fields, each one with a datatype and information for the HTML generator. Model descriptions can be serialized as JSON. It's easy to create new datatypes, either from zero or extending the base types provided. The generated HTML code can be used as is or manually customized for those pesky cases that no tool ever gets right.
 
-If you are looking for [a fully integrated backend/frontend scaffolding and validation, Modelarium](https://github.com/Corollarium/modelarium) is what you want. Formularium is the low-level generator.
+If you are looking for [a fully integrated backend/frontend scaffolding and validation, Modelarium](https://github.com/Corollarium/modelarium) is what you want. Formularium is the low-level generator used by Modelarium.
 
 ## Getting started
 
@@ -36,9 +38,9 @@ Check the:
 - component validators: add new validators for your datatypes easily.
 - abstraction: abstract your CSS frameworks for simple element generation from code, like buttons or badges.
 - Graphql: declare your models in Graphql SDL and get the scaffolding for free. Works even better with [Modelarium](https://github.com/Corollarium/modelarium).
-- generate frontend scaffolding: stop writing verbose HTML and have manual labor to generate forms/cards/etc. Let this tool do all the basic work for you.
+- quickly generate frontend scaffolding: stop writing verbose HTML and have manual labor to generate forms/cards/etc. Let this tool do all the basic work for you and just refine the design if necessary.
 - component generation: generate React and Vue components with the corresponding HTML template.
-- SQL/Laravel typing: convert datatypes to your database generation with SQL and Laravel types.
+- SQL/Graphql/JS/Laravel typing: convert datatypes to your database with SQL and Laravel types, or quickly generate Graphql and JS code.
 
 ## Sponsors
 
@@ -138,6 +140,7 @@ Formularium is built in a way that generators can be chained, so you can combine
   - [Bulma](https://bulma.io)
   - [Materialize](https://materializecss.com/)
   - [Buefy](https://buefy.github.io/)
+  - [Bootstrapvue](https://bootstrap-vue.org/)
 - JS/PHP Frameworks:
   - [Vue](https://vuejs.org)
   - [React](https://reactjs.org)
