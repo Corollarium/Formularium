@@ -63,6 +63,11 @@ class Button extends Element
             'Creates a button',
             [
                 new MetadataParameter(
+                    static::LABEL,
+                    'string',
+                    'Label for this button'
+                ),
+                new MetadataParameter(
                     static::TYPE,
                     'string',
                     'Button type. These values are treated: "anchor", "submit", "reset" or "button". Any other value is considered the element name. Default: "button"'
