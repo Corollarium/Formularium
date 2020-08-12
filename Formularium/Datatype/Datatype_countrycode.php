@@ -327,6 +327,7 @@ abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choic
     protected function setChoices(string $code): void
     {
         $this->choices = array_column(self::COUNTRY_CODES, self::SET_INDEXES[self::ISO_NAME], self::SET_INDEXES[$code]);
+        sort($this->choices);
     }
 
     public function __construct(string $typename = 'countrycode', string $basetype = 'choice')
