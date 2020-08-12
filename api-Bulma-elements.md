@@ -13,6 +13,10 @@ Creates a badge field
 
 Creates a button
 
+### label (string)
+
+Label for this button
+
 ### type (string)
 
 Button type. These values are treated: "anchor", "submit", "reset" or "button". Any other value is considered the element name. Default: "button"
@@ -74,4 +78,17 @@ Is this table striped?
 ### bordered (bool)
 
 Is this table bordered?
+
+
+## Upload
+
+Creates an upload field
+
+### label (string)
+
+Label for this upload field
+
+### comment (string)
+
+Comment for this upload field
 

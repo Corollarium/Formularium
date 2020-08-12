@@ -53,7 +53,25 @@ Value
 
 Maximum value
 
-### value (Int)
+### value (Int|Float)
+
+Value
+
+
+## MaxDate
+
+Maximum date value
+
+### value (Date)
+
+Value
+
+
+## MaxDatetime
+
+Maximum datetime value
+
+### value (Datetime)
 
 Value
 
@@ -71,7 +89,25 @@ Value
 
 Minimum value
 
-### value (Int)
+### value (Int|Float)
+
+Value
+
+
+## MinDate
+
+Minimum value for dates
+
+### value (Date)
+
+Value
+
+
+## MinDatetime
+
+Minimum value for datetimes
+
+### value (Datetime)
 
 Value
 
