@@ -37,7 +37,7 @@ class Upload extends Element
                                 'type' => 'file'
                             ]
                         ),
-                    ],
+                    ]
                 ),
                 HTMLNode::factory(
                     'div',
