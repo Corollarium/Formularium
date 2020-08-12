@@ -28,7 +28,6 @@ class MinLengthTest extends TestCase
         $v = ValidatorFactory::class('MinLength')::validate(
             'asdfasdfasdf',
             $model->getField('someString')->getValidator(MinLength::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('asdfasdfasdf', $v);
@@ -54,7 +53,6 @@ class MinLengthTest extends TestCase
         $v = ValidatorFactory::class('MinLength')::validate(
             'x',
             $model->getField('someString')->getValidator(MinLength::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }

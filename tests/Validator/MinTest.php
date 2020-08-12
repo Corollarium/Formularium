@@ -28,7 +28,6 @@ class MinTest extends TestCase
         $v = ValidatorFactory::class('Min')::validate(
             6,
             $model->getField('someNumber')->getValidator(Min::class),
-            DatatypeFactory::factory('integer'),
             $model
         );
         $this->assertEquals(6, $v);
@@ -54,7 +53,6 @@ class MinTest extends TestCase
         $v = ValidatorFactory::class('Min')::validate(
             3,
             $model->getField('someNumber')->getValidator(Min::class),
-            DatatypeFactory::factory('integer'),
             $model
         );
     }

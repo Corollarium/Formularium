@@ -13,7 +13,7 @@ use Formularium\Metadata;
  */
 class Filled implements ValidatorInterface
 {
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
         // must be filled?
         if (empty($value)) {

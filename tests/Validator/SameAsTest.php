@@ -15,7 +15,6 @@ class SameAsTest extends TestCase
         $v = ValidatorFactory::class('SameAs')::validate(
             "b",
             [],
-            DatatypeFactory::factory('string'),
             null
         );
     }

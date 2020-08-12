@@ -117,7 +117,6 @@ class ${name}Test extends TestCase
         \$v = ValidatorFactory::class('$name')::validate(
             \$expected,
             \$model->getField('someField')->getValidator($name::class),
-            DatatypeFactory::factory('string'),
             \$model
         );
         \$this->assertEquals(\$expected, \$v);

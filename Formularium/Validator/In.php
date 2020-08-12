@@ -11,7 +11,7 @@ use Formularium\MetadataParameter;
 
 class In implements ValidatorInterface
 {
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
         if (!in_array($value, $options['value'])) {
             throw new ValidatorException('Value is not in list of acceptable values');

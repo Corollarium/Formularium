@@ -4,35 +4,36 @@ namespace Formularium\Validator;
 
 use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
-use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\Metadata;
 use Formularium\MetadataParameter;
+use Respect\Validation\Validator as Respect;
 
-class MaxLength implements ValidatorInterface
+class MinDate implements ValidatorInterface
 {
     public static function validate($value, array $options = [], ?Model $model = null)
     {
-        if (!is_string($value)) {
-            throw new ValidatorException('Expected a string.');
+        $min = $options['value'];
+        // TODO: now
+        $val = Respect::date('Y-m-d');
+        $val->min($min);
+        if (!$val->validate($value)) {
+            throw new ValidatorException('Value is too small.');
         }
-        $maxlength = $options['value'];
-        if (mb_strlen($value) > $maxlength) {
-            throw new ValidatorException('String is too long.');
-        }
+
         return $value;
     }
 
     public static function getMetadata(): Metadata
     {
         return new Metadata(
-            'MaxLength',
-            "Maximum string length",
+            'MinDate',
+            "Minimum value for dates",
             [
                 new MetadataParameter(
                     'value',
-                    'Int',
+                    'Date',
                     'Value'
                 )
             ]

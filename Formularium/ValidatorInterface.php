@@ -19,7 +19,7 @@ interface ValidatorInterface
      * @throws ValidatorException Thrown if invalid, with the message.
      * @return mixed The $value, with possible changes from the validation.
      */
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null);
+    public static function validate($value, array $options = [], ?Model $model = null);
 
     /**
      * Documents this validator.

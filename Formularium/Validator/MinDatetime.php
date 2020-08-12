@@ -4,35 +4,35 @@ namespace Formularium\Validator;
 
 use Formularium\Datatype;
 use Formularium\Exception\ValidatorException;
-use Formularium\Field;
 use Formularium\Model;
 use Formularium\ValidatorInterface;
 use Formularium\Metadata;
 use Formularium\MetadataParameter;
 
-class MaxLength implements ValidatorInterface
+class MinDatetime implements ValidatorInterface
 {
     public static function validate($value, array $options = [], ?Model $model = null)
     {
-        if (!is_string($value)) {
-            throw new ValidatorException('Expected a string.');
+        $min = $options['value'];
+        // TODO: now
+        $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);
+        $min = \DateTime::createFromFormat(\DateTime::ISO8601, $min);
+        if ($dt < $min) {
+            throw new ValidatorException('Value is too small.');
         }
-        $maxlength = $options['value'];
-        if (mb_strlen($value) > $maxlength) {
-            throw new ValidatorException('String is too long.');
-        }
+
         return $value;
     }
 
     public static function getMetadata(): Metadata
     {
         return new Metadata(
-            'MaxLength',
-            "Maximum string length",
+            'MinDatetime',
+            "Minimum value for datetimes",
             [
                 new MetadataParameter(
                     'value',
-                    'Int',
+                    'Datetime',
                     'Value'
                 )
             ]

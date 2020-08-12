@@ -17,14 +17,13 @@ class Password implements ValidatorInterface
      *
      * @param mixed $value
      * @param array $options The options passed to the validator
-     * @param Datatype $datatype The datatype being validator.
      * @param Model $model The entire model, if you your field depends on other things of the model. may be null.
      * @throws ValidatorException If invalid, with the message.
      * @return mixed
      */
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
-        MinLength::validate($value, ['value' => $options['minLength'] ?? 6], $datatype, $model);
+        MinLength::validate($value, ['value' => $options['minLength'] ?? 6], $model);
 
         $entropy = 0;
         $size = mb_strlen($value);

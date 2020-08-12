@@ -15,7 +15,7 @@ use Formularium\MetadataParameter;
  */
 class RequiredWith implements ValidatorInterface
 {
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
         if (!$model) {
             throw new ValidatorException("RequiredWith needs a model");

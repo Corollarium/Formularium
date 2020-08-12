@@ -25,7 +25,6 @@ class ValidatorFilledTest extends TestCase
         $v = ValidatorFactory::class('Filled')::validate(
             'x',
             $model->getField('someString')->getValidator(Filled::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('x', $v);
@@ -48,7 +47,6 @@ class ValidatorFilledTest extends TestCase
         $v =  ValidatorFactory::class('Filled')::validate(
             'x',
             $model->getField('someString')->getValidator(Filled::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('x', $v);

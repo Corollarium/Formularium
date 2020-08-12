@@ -16,12 +16,10 @@ class Regex implements ValidatorInterface
      *
      * @param mixed $value
      * @param array $options The options passed to the validator
-     * @param Datatype $datatype The datatype being validator.
-     * @param Model $model The entire model, if you your field depends on other things of the model. may be null.
      * @throws ValidatorException If invalid, with the message.
      * @return mixed
      */
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
         $ret = 0;
         try {

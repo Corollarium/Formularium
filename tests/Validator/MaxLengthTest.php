@@ -28,7 +28,6 @@ class MaxLengthTest extends TestCase
         $v = ValidatorFactory::class('MaxLength')::validate(
             'asdf',
             $model->getField('someString')->getValidator(MaxLength::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals('asdf', $v);
@@ -54,7 +53,6 @@ class MaxLengthTest extends TestCase
         $v = ValidatorFactory::class('MaxLength')::validate(
             'asdfasdfasdf',
             $model->getField('someString')->getValidator(MaxLength::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }

@@ -244,7 +244,6 @@ class Model
                     $validate[$name] = ValidatorFactory::class($validatorName)::validate(
                         $validate[$name],
                         $options,
-                        $field->getDatatype(),
                         $this
                     );
                 } catch (Exception $e) {
@@ -269,10 +268,9 @@ class Model
                     }
 
                     try {
-                        $v = ValidatorFactory::class($validatorName)::validate(
+                        ValidatorFactory::class($validatorName)::validate(
                             null,
                             $options,
-                            $field->getDatatype(),
                             $this
                         );
                     } catch (Exception $e) {

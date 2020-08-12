@@ -31,7 +31,6 @@ class RegexTest extends TestCase
         $v = ValidatorFactory::class('Regex')::validate(
             $expected,
             $model->getField('someField')->getValidator(Regex::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals($expected, $v);
@@ -58,7 +57,6 @@ class RegexTest extends TestCase
         $v = ValidatorFactory::class('Regex')::validate(
             $expected,
             $model->getField('someField')->getValidator(Regex::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }
@@ -84,7 +82,6 @@ class RegexTest extends TestCase
         $v = ValidatorFactory::class('Regex')::validate(
             $expected,
             $model->getField('someField')->getValidator(Regex::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }

@@ -54,8 +54,8 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
         } elseif (!V::intVal()->validate($value)) {
             throw new ValidatorException("Invalid integer value");
         }
-        $value = Min::validate($value, ['value' => $this->minvalue], $this);
-        $value = Max::validate($value, ['value' => $this->maxvalue], $this);
+        $value = Min::validate($value, ['value' => $this->minvalue]);
+        $value = Max::validate($value, ['value' => $this->maxvalue]);
 
         return $value;
     }

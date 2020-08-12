@@ -30,7 +30,6 @@ class PasswordTest extends TestCase
         $v = ValidatorFactory::class('Password')::validate(
             $expected,
             $model->getField('someField')->getValidator(Password::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals($expected, $v);
@@ -56,7 +55,6 @@ class PasswordTest extends TestCase
         $v = ValidatorFactory::class('Password')::validate(
             $expected,
             $model->getField('someField')->getValidator(Password::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }
@@ -81,7 +79,6 @@ class PasswordTest extends TestCase
         $v = ValidatorFactory::class('Password')::validate(
             $expected,
             $model->getField('someField')->getValidator(Password::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }

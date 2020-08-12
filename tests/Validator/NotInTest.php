@@ -29,7 +29,6 @@ class NotInTest extends TestCase
         $v = ValidatorFactory::class('NotIn')::validate(
             $expected,
             $model->getField('someString')->getValidator(NotIn::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals($expected, $v);
@@ -55,7 +54,6 @@ class NotInTest extends TestCase
         $v = ValidatorFactory::class('NotIn')::validate(
             "b",
             $model->getField('someString')->getValidator(NotIn::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }

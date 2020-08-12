@@ -112,9 +112,9 @@ class File implements ValidatorInterface
         }
     }
 
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
-        if ($datatype->getBasetype() !== 'file') {
+        if (!file_exists($value)) {
             throw new ValidatorException(
                 'Not a file'
             );

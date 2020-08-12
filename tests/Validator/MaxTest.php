@@ -28,7 +28,6 @@ class MaxTest extends TestCase
         $v = ValidatorFactory::class('Max')::validate(
             3,
             $model->getField('someNumber')->getValidator(Max::class),
-            DatatypeFactory::factory('integer'),
             $model
         );
         $this->assertEquals(3, $v);
@@ -54,7 +53,6 @@ class MaxTest extends TestCase
         $v = ValidatorFactory::class('Max')::validate(
             30,
             $model->getField('someNumber')->getValidator(Max::class),
-            DatatypeFactory::factory('integer'),
             $model
         );
     }

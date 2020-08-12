@@ -29,7 +29,6 @@ class InTest extends TestCase
         $v = ValidatorFactory::class('In')::validate(
             $expected,
             $model->getField('someString')->getValidator(In::class),
-            DatatypeFactory::factory('string'),
             $model
         );
         $this->assertEquals($expected, $v);
@@ -55,7 +54,6 @@ class InTest extends TestCase
         $v = ValidatorFactory::class('In')::validate(
             "c",
             $model->getField('someString')->getValidator(In::class),
-            DatatypeFactory::factory('string'),
             $model
         );
     }

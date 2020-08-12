@@ -42,7 +42,7 @@ class Datatype_string extends \Formularium\Datatype
         }
         $text = preg_replace('/<[^>]*>/', '', $data);
 
-        $value = MaxLength::validate($value, ['value' => $this->MAX_STRING_SIZE], $this);
+        $value = MaxLength::validate($value, ['value' => $this->MAX_STRING_SIZE]);
 
         return $text;
     }

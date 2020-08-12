@@ -12,31 +12,11 @@ use Respect\Validation\Validator as Respect;
 
 class Max implements ValidatorInterface
 {
-    public static function validate($value, array $options = [], Datatype $datatype, ?Model $model = null)
+    public static function validate($value, array $options = [], ?Model $model = null)
     {
         $max = $options['value'];
-        if ($datatype->getBasetype() === 'number' || $datatype->getBasetype() === 'integer') {
-            if ($value > $max) {
-                throw new ValidatorException('Value is too large.');
-            }
-        } elseif (
-            $datatype->getBasetype() === 'date'
-        ) {
-            $val = Respect::date('Y-m-d');
-            $val->max($max);
-            if (!$val->validate($value)) {
-                throw new ValidatorException('Value is too large.');
-            }
-        } elseif (
-            $datatype->getBasetype() === 'datetime'
-        ) {
-            $dt = \DateTime::createFromFormat(\DateTime::ISO8601, $value);
-            $max = \DateTime::createFromFormat(\DateTime::ISO8601, $max);
-            if ($dt > $max) {
-                throw new ValidatorException('Value is too small.');
-            }
-        } else {
-            throw new ValidatorException('Type not supported in min validator: ' . $datatype->getBasetype());
+        if ($value > $max) {
+            throw new ValidatorException('Value is too large.');
         }
 
         return $value;
@@ -50,7 +30,7 @@ class Max implements ValidatorInterface
             [
                 new MetadataParameter(
                     'value',
-                    'Int', // TODO: Mixed
+                    'Int|Float', // TODO: Mixed
                     'Value'
                 )
             ]
