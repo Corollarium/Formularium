@@ -189,7 +189,7 @@ EOF;
         $retval = [];
         $filename =  $path . "/Datatype_{$codeData['datatypeLower']}.php";
         if (!file_exists($filename)) {
-            $retval['code'] = "Created {$datatype}.";
+            $retval['code'] = "Created {$datatype} at {$filename}.";
             file_put_contents($filename, $codeData['code']);
         } else {
             $retval['code'] = "Filename $filename already exists.";
@@ -198,7 +198,7 @@ EOF;
         if ($testpath) {
             $testFilename = $testpath . "/{$datatype}Test.php";
             if (!file_exists($testFilename)) {
-                $retval['test'] = "Created ${datatype} test.";
+                $retval['test'] = "Created ${datatype} test at {$testFilename}.";
                 file_put_contents($testFilename, $codeData['test']);
             } else {
                 $retval['test'] = "Filename test $testFilename already exists.";

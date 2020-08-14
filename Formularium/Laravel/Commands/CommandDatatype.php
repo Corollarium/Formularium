@@ -16,7 +16,7 @@ class CommandDatatype extends Command
     protected $signature = 'formularium:datatype
         {name : The datatype name}
         {--basetype= : the basetype it inherits from ("string"), if there is one.}
-        {--namespace= : the class namespace. Defaults to "\\App\\Datatypes"}
+        {--namespace= : the class namespace. Defaults to "App\\Datatypes"}
         {--path= : path to save the file. Defaults to "basepath("app\\Datatypes") }
         {--test-path= : path to save the file. Defaults to "basepath("tests/Unit") }
     ';
@@ -47,7 +47,7 @@ class CommandDatatype extends Command
     {
         $code = DatatypeFactory::generate(
             // @phpstan-ignore-next-line
-            (string)$this->parameter('name'),
+            (string)$this->argument('name'),
             // @phpstan-ignore-next-line
             (string)$this->option('basetype'),
             // @phpstan-ignore-next-line
