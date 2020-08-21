@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/travis/build/Corollarium/Formularium/Formularium/Exception</title>
+  <title>Dashboard for /home/travis/build/Corollarium/Formularium/Formularium/Factory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">/home/travis/build/Corollarium/Formularium/Formularium</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Exception</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Factory</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -58,6 +58,9 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="DatatypeFactory.php.html#10">Formularium\Factory\DatatypeFactory</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="RenderableFactory.php.html#10">Formularium\Factory\RenderableFactory</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ElementFactory.php.html#10">Formularium\Factory\ElementFactory</a></td><td class="text-right">77%</td></tr>
 
        </tbody>
       </table>
@@ -74,6 +77,9 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="DatatypeFactory.php.html#10">Formularium\Factory\DatatypeFactory</a></td><td class="text-right">43</td></tr>
+       <tr><td><a href="RenderableFactory.php.html#10">Formularium\Factory\RenderableFactory</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ElementFactory.php.html#10">Formularium\Factory\ElementFactory</a></td><td class="text-right">4</td></tr>
 
        </tbody>
       </table>
@@ -111,6 +117,10 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="DatatypeFactory.php.html#59"><abbr title="Formularium\Factory\DatatypeFactory::registerFactory">registerFactory</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DatatypeFactory.php.html#33"><abbr title="Formularium\Factory\DatatypeFactory::factory">factory</abbr></a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="RenderableFactory.php.html#26"><abbr title="Formularium\Factory\RenderableFactory::factory">factory</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="ElementFactory.php.html#27"><abbr title="Formularium\Factory\ElementFactory::factory">factory</abbr></a></td><td class="text-right">77%</td></tr>
 
        </tbody>
       </table>
@@ -127,6 +137,9 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="DatatypeFactory.php.html#33"><abbr title="Formularium\Factory\DatatypeFactory::factory">factory</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="RenderableFactory.php.html#26"><abbr title="Formularium\Factory\RenderableFactory::factory">factory</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="ElementFactory.php.html#27"><abbr title="Formularium\Factory\ElementFactory::factory">factory</abbr></a></td><td class="text-right">3</td></tr>
 
        </tbody>
       </table>
@@ -155,7 +168,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,3], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,1,0,2,0,0,2], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -173,7 +186,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .datum(getCoverageDistributionData([1,0,0,0,0,0,1,0,2,0,0,11], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -223,7 +236,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,0,"<a href=\"ClassNotFoundException.php.html#5\">Formularium\\Exception\\ClassNotFoundException<\/a>"],[100,0,"<a href=\"Exception.php.html#5\">Formularium\\Exception\\Exception<\/a>"],[100,0,"<a href=\"ValidatorException.php.html#5\">Formularium\\Exception\\ValidatorException<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[50,15,"<a href=\"DatatypeFactory.php.html#10\">Formularium\\Factory\\DatatypeFactory<\/a>"],[77.77777777777779,4,"<a href=\"ElementFactory.php.html#10\">Formularium\\Factory\\ElementFactory<\/a>"],[100,3,"<a href=\"FrameworkFactory.php.html#12\">Formularium\\Factory\\FrameworkFactory<\/a>"],[75,6,"<a href=\"RenderableFactory.php.html#10\">Formularium\\Factory\\RenderableFactory<\/a>"],[100,10,"<a href=\"ValidatorFactory.php.html#13\">Formularium\\Factory\\ValidatorFactory<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -247,7 +260,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"DatatypeFactory.php.html#22\">Formularium\\Factory\\DatatypeFactory::__construct<\/a>"],[58.333333333333336,6,"<a href=\"DatatypeFactory.php.html#33\">Formularium\\Factory\\DatatypeFactory::factory<\/a>"],[0,1,"<a href=\"DatatypeFactory.php.html#59\">Formularium\\Factory\\DatatypeFactory::registerFactory<\/a>"],[100,2,"<a href=\"DatatypeFactory.php.html#74\">Formularium\\Factory\\DatatypeFactory::generate<\/a>"],[100,5,"<a href=\"DatatypeFactory.php.html#190\">Formularium\\Factory\\DatatypeFactory::generateFile<\/a>"],[100,1,"<a href=\"ElementFactory.php.html#15\">Formularium\\Factory\\ElementFactory::__construct<\/a>"],[77.77777777777779,3,"<a href=\"ElementFactory.php.html#27\">Formularium\\Factory\\ElementFactory::factory<\/a>"],[100,1,"<a href=\"FrameworkFactory.php.html#17\">Formularium\\Factory\\FrameworkFactory::__construct<\/a>"],[100,2,"<a href=\"FrameworkFactory.php.html#21\">Formularium\\Factory\\FrameworkFactory::factory<\/a>"],[100,1,"<a href=\"RenderableFactory.php.html#15\">Formularium\\Factory\\RenderableFactory::__construct<\/a>"],[75,5,"<a href=\"RenderableFactory.php.html#26\">Formularium\\Factory\\RenderableFactory::factory<\/a>"],[100,1,"<a href=\"ValidatorFactory.php.html#18\">Formularium\\Factory\\ValidatorFactory::__construct<\/a>"],[100,3,"<a href=\"ValidatorFactory.php.html#22\">Formularium\\Factory\\ValidatorFactory::class<\/a>"],[100,1,"<a href=\"ValidatorFactory.php.html#43\">Formularium\\Factory\\ValidatorFactory::generate<\/a>"],[100,5,"<a href=\"ValidatorFactory.php.html#150\">Formularium\\Factory\\ValidatorFactory::generateFile<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
