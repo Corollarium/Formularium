@@ -1005,45 +1005,24 @@
 
 <h3 class="kitchen">Pagination</h3><nav class="formularium-pagination-wrapper" aria-label="Page navigation">
   <ul class="formularium-pagination pagination">
-    <li class="formularium-pagination-item  page-item">
-      <a class="formularium-pagination-link page-link" href="?begin=0&amp;total=20">
+    <li class="formularium-pagination-item page-item" v-show="currentPage > pagesAround" @click="$emit('page', 1)">
+      <a class="formularium-pagination-link page-link" :href="basePath + '/1'" @click.prevent="">
         1
       </a>
     </li>
-    <li class="formularium-pagination-item formularium-pagination-current page-item disabled">
-      <a class="formularium-pagination-link page-link" href="">
-        2
+    <li class="formularium-pagination-item page-item" v-show="currentPage > pagesAround">
+      ...
+    </li>
+    <li class="formularium-pagination-item page-item" v-for="p in pages" v-bind:key="p.page" @click="$emit('page', p.page)">
+      <a v-if="p.page == currentPage" class="formularium-pagination-link formularium-pagination-current page-link active" :href="basePath + '/' + p.page" @click.prevent="">
+        {{p.page}}
+      </a>
+      <a v-else class="formularium-pagination-link page-link" :href="basePath + '/' + p.page" @click.prevent="">
+        {{p.page}}
       </a>
     </li>
-    <li class="formularium-pagination-item  page-item">
-      <a class="formularium-pagination-link page-link" href="?begin=40&amp;total=20">
-        3
-      </a>
-    </li>
-    <li class="formularium-pagination-item  page-item">
-      <a class="formularium-pagination-link page-link" href="?begin=60&amp;total=20">
-        4
-      </a>
-    </li>
-    <li class="formularium-pagination-item  page-item">
-      <a class="formularium-pagination-link page-link" href="?begin=80&amp;total=20">
-        5
-      </a>
-    </li>
-    <li class="formularium-pagination-item  page-item">
-      <a class="formularium-pagination-link page-link" href="?begin=100&amp;total=20">
-        6
-      </a>
-    </li>
-    <li class="formularium-pagination-item  page-item">
-      <a class="formularium-pagination-link page-link" href="?begin=120&amp;total=20">
-        7
-      </a>
-    </li>
-    <li class="formularium-pagination-item formularium-ellipsis page-item">
-      <a class="formularium-pagination-link page-link" href="">
-        ...
-      </a>
+    <li class="formularium-pagination-item page-item" v-show="lastPage > currentPage + pagesAround">
+      ...
     </li>
   </ul>
 </nav>
@@ -1389,7 +1368,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      15:47:37
+      22:02:02
     </span>
   </span>
 </div>
@@ -1476,7 +1455,7 @@
   <script>
     const app_vueapp7 = new Vue({
     el: '#vueapp7',
-    data: {"alpha":"RUjwwbnCsPQweg","alphanum":"RBdbr","alphanumdash":"RM2QiqNNiq","bool":true,"boolean":true,"cnpj":"68.694.804\/0001-71","color":"#173D84","constant":"","countrycodeiso2":"MU","countrycodeiso3":"MAC","countrycodenumeric":"060","cpf":"521.577.148-04","currency":"XBB","date":"2016-11-25","datetime":"2021-09-23T21:12:24+0000","domain":"hansen.com","email":"cleveland.pfeffer@gmail.com","file":"","float":0.517,"html":"<p>HTML <span>Pariatur ducimus dolorum et porro minus iusto ut a. Voluptas beatae a veritatis nobis eos magnam perferendis. Esse voluptates similique assumenda vel.<\/span>Sunt aperiam minus laudantium soluta adipisci et. Sit nobis eius dolorum repellat. Sit consequatur cumque porro ratione. Blanditiis dolore quo cumque voluptas rerum sint dolores.<\/p>","integer":-1177201086,"ip":"64.191.175.17","ipv4":"15.175.34.41","ipv6":"f784:4102:698c:78db:a217:23fc:94a5:2118","json":"{\"version\":-1701544548,\"data\":{\"string\":\"RmEzPm\",\"float\":0.327}}","language":"no","phone":"+3204500053099","string":"RXs2agoQ7","text":"Est nobis eveniet quam porro dolorem consectetur. Sequi dolor ea magni enim. Asperiores expedita numquam nobis assumenda fugit. Numquam non accusamus error perferendis repellat et voluptatibus.","time":"15:47:37","timestamp":"2021-08-28T01:58:53+0000","timezone":"Africa\/Maputo","uinteger":3101328067,"url":"http:\/\/weissnat.com\/quod-fuga-vitae-maxime.html","usmall":29983,"uuid":"9c567522-2450-44b7-8538-6367b43a3cee","year":-321981847}
+    data: {"alpha":"RJaqpEFVcvCkAS","alphanum":"RWiFKmgkVTbWjJ","alphanumdash":"RUG-ZE","bool":false,"boolean":false,"cnpj":"65.670.122\/0001-30","color":"#651889","constant":"","countrycodeiso2":"MY","countrycodeiso3":"FRA","countrycodenumeric":300,"cpf":"868.025.894-60","currency":"IQD","date":"2022-06-06","datetime":"2012-02-18T15:18:57+0000","domain":"lindgren.com","email":"ebeer@gerhold.org","file":"","float":0.991,"html":"<p>HTML <span>Distinctio possimus dolorem quisquam ipsam itaque. Libero unde molestiae eveniet ipsam fugit alias quas. Et eveniet et facere nisi. Reiciendis nihil maiores ducimus dolorem iste in qui.<\/span>Rerum sed quia qui accusantium consequuntur aut aliquam blanditiis. Sunt eos odio enim qui quis sed aut. Dolores corrupti quos et eius tempora voluptatibus itaque. Eum omnis iusto doloribus saepe.<\/p>","integer":-1964434276,"ip":"247.92.166.60","ipv4":"73.1.90.175","ipv6":"7ad5:34a3:d389:94d:f079:3b01:51e5:4547","json":"{\"version\":-1890111425,\"data\":{\"string\":\"RNi00cnGZa3AW6v\",\"float\":0.977}}","language":"eo","phone":"+4574989814490","string":"RJ45cEEiV9tbLjh","text":"Harum illum harum autem quia ut sed ullam. Sed et ullam quam corrupti expedita et excepturi vel. In iste enim deserunt tenetur corporis.","time":"22:02:02","timestamp":"2024-11-21T00:47:09+0000","timezone":"Asia\/Sakhalin","uinteger":479713995,"url":"https:\/\/treutel.com\/placeat-dolores-enim-optio.html","usmall":26403,"uuid":"66467b79-c2b0-489a-8c9f-7726fe849310","year":795780880}
 });
   </script>
 </div>

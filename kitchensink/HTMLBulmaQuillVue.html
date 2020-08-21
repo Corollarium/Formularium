@@ -8,7 +8,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"/>
-  <script defer="" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js">
   </script>
   <script src="https://cdn.quilljs.com/1.3.6/quill.min.js">
   </script>
@@ -1025,45 +1025,24 @@
 
 <h3 class="kitchen">Pagination</h3><nav class="formularium-pagination-wrapper pagination" aria-label="Page navigation">
   <ul class="formularium-pagination pagination-list">
-    <li class="formularium-pagination-item ">
-      <a class="formularium-pagination-link pagination-link" href="?begin=0&amp;total=20">
+    <li class="formularium-pagination-item" v-show="currentPage > pagesAround" @click="$emit('page', 1)">
+      <a class="formularium-pagination-link pagination-link" :href="basePath + '/1'" @click.prevent="">
         1
       </a>
     </li>
-    <li class="formularium-pagination-item formularium-pagination-current">
-      <a class="formularium-pagination-link pagination-link is-current" href="">
-        2
+    <li class="formularium-pagination-item" v-show="currentPage > pagesAround">
+      ...
+    </li>
+    <li class="formularium-pagination-item" v-for="p in pages" v-bind:key="p.page" @click="$emit('page', p.page)">
+      <a v-if="p.page == currentPage" class="formularium-pagination-link formularium-pagination-current pagination-link is-current" :href="basePath + '/' + p.page" @click.prevent="">
+        {{p.page}}
+      </a>
+      <a v-else class="formularium-pagination-link pagination-link" :href="basePath + '/' + p.page" @click.prevent="">
+        {{p.page}}
       </a>
     </li>
-    <li class="formularium-pagination-item ">
-      <a class="formularium-pagination-link pagination-link" href="?begin=40&amp;total=20">
-        3
-      </a>
-    </li>
-    <li class="formularium-pagination-item ">
-      <a class="formularium-pagination-link pagination-link" href="?begin=60&amp;total=20">
-        4
-      </a>
-    </li>
-    <li class="formularium-pagination-item ">
-      <a class="formularium-pagination-link pagination-link" href="?begin=80&amp;total=20">
-        5
-      </a>
-    </li>
-    <li class="formularium-pagination-item ">
-      <a class="formularium-pagination-link pagination-link" href="?begin=100&amp;total=20">
-        6
-      </a>
-    </li>
-    <li class="formularium-pagination-item ">
-      <a class="formularium-pagination-link pagination-link" href="?begin=120&amp;total=20">
-        7
-      </a>
-    </li>
-    <li class="formularium-pagination-item formularium-ellipsis">
-      <span class="pagination-ellipsis" href="">
-        ...
-      </span>
+    <li class="formularium-pagination-item" v-show="lastPage > currentPage + pagesAround">
+      ...
     </li>
   </ul>
 </nav>
@@ -1415,7 +1394,7 @@
       Type time
     </span>
     <span class="formularium-value">
-      14:29:08
+      01:35:15
     </span>
   </span>
 </div>
@@ -1502,7 +1481,7 @@
   <script>
     const app_vueapp4 = new Vue({
     el: '#vueapp4',
-    data: {"alpha":"RfDWCaam","alphanum":"RUn4OK","alphanumdash":"RQ-IvD3cRwV","bool":false,"boolean":false,"cnpj":"07.688.294\/0001-35","color":"#61A8F8","constant":"","countrycodeiso2":"FX","countrycodeiso3":"SGS","countrycodenumeric":710,"cpf":"763.261.788-43","currency":"NOK","date":"2025-11-05","datetime":"2021-05-21T13:32:46+0000","domain":"koss.org","email":"dakota.effertz@paucek.com","file":"","float":0.591,"html":"<p>HTML <span>Culpa sit vel nesciunt quos perferendis minima omnis. Quas beatae dolores dolorem eius nihil cupiditate in.<\/span>Esse cumque saepe accusantium aut natus. Beatae harum magnam soluta aut saepe ut eos. Corrupti culpa eos aspernatur sunt iure cumque.<\/p>","integer":2127346572,"ip":"ce25:9b93:4842:6cd9:d41e:8db3:346:eadf","ipv4":"195.206.126.43","ipv6":"2975:8f0b:2772:bdd0:ac8:53f8:f07e:2a80","json":"{\"version\":-1178448928,\"data\":{\"string\":\"RnfVWcvW7NmOv\",\"float\":0.532}}","language":"si","phone":"+7021076423172","string":"R29y6X9J5o3","text":"Consequatur repellat qui quas nemo doloribus voluptatem odio. Voluptatem temporibus atque corporis culpa asperiores sunt enim. Aut neque quibusdam quo. Ut provident ullam unde iste ut sit velit.","time":"14:29:08","timestamp":"2028-06-09T15:10:29+0000","timezone":"America\/Rio_Branco","uinteger":2849793962,"url":"http:\/\/collier.biz\/autem-nihil-atque-voluptas-aut-laborum.html","usmall":35250,"uuid":"02a2bda4-9c9f-43f2-837e-2f18e11811f7","year":1731478610}
+    data: {"alpha":"RELIyqoShfg","alphanum":"RowUqF","alphanumdash":"RUN1MX","bool":false,"boolean":true,"cnpj":"24.224.093\/0001-04","color":"#DAC46F","constant":"","countrycodeiso2":"TL","countrycodeiso3":"PCI","countrycodenumeric":"032","cpf":"535.060.261-60","currency":"MZN","date":"2019-08-16","datetime":"2015-02-26T12:34:25+0000","domain":"frami.com","email":"nader.gerardo@gmail.com","file":"","float":0.891,"html":"<p>HTML <span>Laborum molestias iure quasi sit corrupti et. Rerum ex earum dolorem incidunt accusamus ut. Et accusantium nihil est consequatur.<\/span>Vitae est dolorem esse et autem. In adipisci aut reprehenderit minus quia nostrum dolore. Asperiores laborum qui nam perspiciatis id amet commodi.<\/p>","integer":1389425486,"ip":"145.188.187.52","ipv4":"224.105.133.176","ipv6":"7adc:de7d:4bba:d701:a13c:a4a4:fb93:c369","json":"{\"version\":-324045275,\"data\":{\"string\":\"RgMpee\",\"float\":0.668}}","language":"kw","phone":"+5352155465220","string":"RLoF3PR2Yh2","text":"Accusantium quis facere rerum laboriosam commodi neque modi. Impedit ipsam atque dolor perspiciatis sunt maiores. Illo deserunt fugiat culpa quasi. Totam voluptatum totam perferendis nihil.","time":"01:35:15","timestamp":"2014-03-12T09:14:37+0000","timezone":"Atlantic\/Canary","uinteger":536353082,"url":"http:\/\/www.zboncak.com\/eveniet-ducimus-omnis-voluptatum-fugit-ut.html","usmall":5501,"uuid":"dc85105e-4e69-4991-8660-01893833ec5b","year":-1461399853}
 });
   </script>
 </div>
