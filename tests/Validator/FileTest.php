@@ -80,4 +80,53 @@ class FileTest extends TestCase
         );
         $this->assertEquals($file, $v);
     }
+
+    public function testAcceptImage()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someFile' => [
+                    'datatype' => 'file',
+                    'validators' => [
+                        File::class => [
+                            File::ACCEPT => File::ACCEPT_IMAGE
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+        $file = __DIR__ . "/../files/logo-horizontal-400px.png";
+        $v = ValidatorFactory::class('File')::validate(
+            $file,
+            $model->getField('someFile')->getValidator(File::class),
+            $model
+        );
+        $this->assertEquals($file, $v);
+    }
+
+    public function testAcceptFail()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someFile' => [
+                    'datatype' => 'file',
+                    'validators' => [
+                        File::class => [
+                            File::ACCEPT => File::ACCEPT_AUDIO
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+        $this->expectException(ValidatorException::class);
+        $v = ValidatorFactory::class('File')::validate(
+            __DIR__ . "/../files/logo-horizontal-400px.png",
+            $model->getField('someFile')->getValidator(File::class),
+            $model
+        );
+    }
 }
