@@ -12,7 +12,7 @@ class BoolTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('bool');
+        return \Formularium\Factory\DatatypeFactory::factory('bool');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Formularium;
+namespace Formularium\Factory;
 
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
@@ -12,6 +12,13 @@ use Formularium\Exception\ValidatorException;
  */
 final class ValidatorFactory
 {
+    /**
+     * @codeCoverageIgnore
+     */
+    private function __construct()
+    {
+    }
+
     public static function class(string $validatorName): string
     {
         $class = "Formularium\\Validator\\$validatorName";
@@ -89,8 +96,8 @@ EOF;
 namespace FormulariumTests\Validator;
 
 use Formularium\\Model;
-use Formularium\DatatypeFactory;
-use Formularium\ValidatorFactory;
+use Formularium\Factory\DatatypeFactory;
+use Formularium\Factory\ValidatorFactory;
 use $namespace\\{$name};
 use PHPUnit\\Framework\\TestCase;
 

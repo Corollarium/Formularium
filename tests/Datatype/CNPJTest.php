@@ -12,7 +12,7 @@ class CNPJTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('cnpj');
+        return \Formularium\Factory\DatatypeFactory::factory('cnpj');
     }
 
     /**

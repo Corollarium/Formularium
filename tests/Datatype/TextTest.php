@@ -13,7 +13,7 @@ class TextTest extends DatatypeBaseTestCase
      */
     public function getDataType($framework = ''): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('text', $framework);
+        return \Formularium\Factory\DatatypeFactory::factory('text', $framework);
     }
 
     /**

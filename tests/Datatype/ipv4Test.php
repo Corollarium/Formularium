@@ -12,7 +12,7 @@ class ipv4Test extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('ipv4');
+        return \Formularium\Factory\DatatypeFactory::factory('ipv4');
     }
 
     /**

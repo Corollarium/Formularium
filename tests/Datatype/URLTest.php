@@ -13,7 +13,7 @@ class URLTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('url');
+        return \Formularium\Factory\DatatypeFactory::factory('url');
     }
 
     /**

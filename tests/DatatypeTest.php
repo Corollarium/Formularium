@@ -2,7 +2,7 @@
 
 namespace FormulariumTests;
 
-use Formularium\DatatypeFactory;
+use Formularium\Factory\DatatypeFactory;
 use PHPUnit\Framework\TestCase;
 
 final class DatatypeTest extends TestCase

@@ -16,37 +16,19 @@ abstract class Element implements RenderableParameter
     const ATTRIBUTES = 'attributes';
 
     /**
-     * Factory.
-     *
-     * @param string $elementName
-     * @param Framework $framework
-     * @return Element
-     */
-    public static function factory(string $elementName, Framework $framework): Element
-    {
-        // TODO: use reflection like Datatype
-        $frameworkClassname = get_class($framework);
-        $lastpos = strrpos($frameworkClassname, '\\');
-        if ($lastpos === false) {
-            $ns = '';
-        } else {
-            $ns = '\\' . substr($frameworkClassname, 0, $lastpos);
-        }
-        $class = "$ns\\Element\\$elementName";
-        if (!class_exists($class)) {
-            throw new ClassNotFoundException("Invalid element $elementName for {$framework->getName()}");
-        }
-        return new $class($framework);
-    }
-
-    /**
      * @var Framework
      */
     protected $framework;
 
-    public function __construct(Framework $framework)
+    /**
+     * @var FrameworkComposer
+     */
+    protected $composer;
+
+    public function __construct(Framework $framework, FrameworkComposer $composer = null)
     {
         $this->framework = $framework;
+        $this->composer = $composer;
     }
 
     /**

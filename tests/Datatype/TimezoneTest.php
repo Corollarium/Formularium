@@ -12,7 +12,7 @@ class TimezoneTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('timezone');
+        return \Formularium\Factory\DatatypeFactory::factory('timezone');
     }
 
     /**

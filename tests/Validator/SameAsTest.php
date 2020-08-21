@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Formularium\DatatypeFactory;
+use Formularium\Factory\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
-use Formularium\ValidatorFactory;
+use Formularium\Factory\ValidatorFactory;
 use Formularium\Validator\SameAs;
 use PHPUnit\Framework\TestCase;
 

@@ -2,7 +2,7 @@
 
 namespace Formularium\Laravel\Commands;
 
-use Formularium\ValidatorFactory;
+use Formularium\Factory\ValidatorFactory;
 use Formularium\Exception\Exception;
 use Illuminate\Console\Command;
 

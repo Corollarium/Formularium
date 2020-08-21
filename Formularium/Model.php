@@ -3,6 +3,7 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
+use Formularium\Factory\ValidatorFactory;
 
 /**
  * Model class, representing a whole object.

@@ -14,7 +14,7 @@ class IntegerTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('integer');
+        return \Formularium\Factory\DatatypeFactory::factory('integer');
     }
 
     /**

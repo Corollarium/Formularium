@@ -4,9 +4,9 @@ namespace FormulariumTests\Validator;
 
 use Formularium\Model;
 use Formularium\Datatype\Regex;
-use Formularium\DatatypeFactory;
+use Formularium\Factory\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
-use Formularium\ValidatorFactory;
+use Formularium\Factory\ValidatorFactory;
 use PHPUnit\Framework\TestCase;
 
 class RegexTest extends TestCase

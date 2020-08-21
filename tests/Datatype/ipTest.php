@@ -12,7 +12,7 @@ class ipTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('ip');
+        return \Formularium\Factory\DatatypeFactory::factory('ip');
     }
 
     /**

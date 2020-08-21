@@ -3,7 +3,7 @@
 namespace FormulariumTests;
 
 use Formularium\Exception\Exception;
-use Formularium\ValidatorFactory;
+use Formularium\Factory\ValidatorFactory;
 use Formularium\Validator\SameAs;
 use Formularium\ValidatorInterface;
 use PHPUnit\Framework\TestCase;

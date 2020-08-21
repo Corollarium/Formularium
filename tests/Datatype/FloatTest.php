@@ -12,7 +12,7 @@ class FloatTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('float');
+        return \Formularium\Factory\DatatypeFactory::factory('float');
     }
 
     /**

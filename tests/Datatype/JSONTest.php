@@ -12,7 +12,7 @@ class JSONTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('json');
+        return \Formularium\Factory\DatatypeFactory::factory('json');
     }
 
     /**

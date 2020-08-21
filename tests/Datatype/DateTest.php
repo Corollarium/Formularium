@@ -12,7 +12,7 @@ class DateTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('date');
+        return \Formularium\Factory\DatatypeFactory::factory('date');
     }
 
     /**

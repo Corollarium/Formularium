@@ -2,7 +2,7 @@
 
 namespace Formularium\Datatype;
 
-use Formularium\DatatypeFactory;
+use Formularium\Factory\DatatypeFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;

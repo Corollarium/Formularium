@@ -13,7 +13,7 @@ class ColorTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('color');
+        return \Formularium\Factory\DatatypeFactory::factory('color');
     }
 
     /**

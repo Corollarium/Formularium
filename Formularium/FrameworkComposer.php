@@ -3,6 +3,7 @@
 namespace Formularium;
 
 use Formularium\Exception\ClassNotFoundException;
+use Formularium\Factory\FrameworkFactory;
 use Formularium\HTMLNode;
 
 class FrameworkComposer
@@ -71,7 +72,7 @@ class FrameworkComposer
      */
     public function append($framework)
     {
-        $this->frameworks[] = ($framework instanceof Framework ? $framework : Framework::factory($framework));
+        $this->frameworks[] = ($framework instanceof Framework ? $framework : FrameworkFactory::factory($framework));
     }
 
     /**

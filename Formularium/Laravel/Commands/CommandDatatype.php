@@ -2,7 +2,7 @@
 
 namespace Formularium\Laravel\Commands;
 
-use Formularium\DatatypeFactory;
+use Formularium\Factory\DatatypeFactory;
 use Formularium\Exception\Exception;
 use Illuminate\Console\Command;
 

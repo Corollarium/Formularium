@@ -3,8 +3,7 @@
 namespace FormulariumTests;
 
 use Formularium\Exception\ClassNotFoundException;
-use Formularium\Exception\Exception;
-use Formularium\Framework;
+use Formularium\Factory\FrameworkFactory;
 use PHPUnit\Framework\TestCase;
 
 final class FrameworkTest extends TestCase
@@ -12,12 +11,12 @@ final class FrameworkTest extends TestCase
     public function testFactoryFail()
     {
         $this->expectException(ClassNotFoundException::class);
-        Framework::factory("nanana");
+        FrameworkFactory::factory("nanana");
     }
 
     public function testFactory()
     {
-        $f = Framework::factory("HTML");
+        $f = FrameworkFactory::factory("HTML");
         $this->assertEquals('HTML', $f->getName());
     }
 }

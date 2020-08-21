@@ -4,6 +4,8 @@ namespace Formularium;
 
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
+use Formularium\Factory\ElementFactory;
+use Formularium\Factory\RenderableFactory;
 use Formularium\HTMLNode;
 
 /**
@@ -28,23 +30,14 @@ abstract class Framework
         $this->name = $name;
     }
 
-    public static function factory(string $framework = ''): Framework
-    {
-        $class = "\\Formularium\\Frontend\\$framework\\Framework";
-        if (!class_exists($class)) {
-            throw new ClassNotFoundException("Invalid framework $framework");
-        }
-        return new $class();
-    }
-
     public function getRenderable(Datatype $datatype): Renderable
     {
-        return Renderable::factory($datatype, $this);
+        return RenderableFactory::factory($datatype, $this);
     }
 
-    public function getElement(string $name): Element
+    public function getElement(string $name, FrameworkComposer $composer = null): Element
     {
-        return Element::factory($name, $this);
+        return ElementFactory::factory($name, $this, $composer);
     }
 
     public function getName(): string

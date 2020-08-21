@@ -3,8 +3,8 @@
 namespace FormulariumTests\Validator;
 
 use Formularium\Model;
-use Formularium\DatatypeFactory;
-use Formularium\ValidatorFactory;
+use Formularium\Factory\DatatypeFactory;
+use Formularium\Factory\ValidatorFactory;
 use Formularium\Exception\ValidatorException;
 use Formularium\Datatype\Password;
 use PHPUnit\Framework\TestCase;

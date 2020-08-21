@@ -1,7 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Formularium;
+namespace Formularium\Factory;
 
+use Formularium\Formularium;
+use Formularium\Datatype;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 
@@ -66,10 +68,15 @@ final class DatatypeFactory
      * @param string $datatype The new datatype name.
      * @param string $basetype The base type, if any.
      * @param string $namespace The namespace for the new file.
+     * @param string $testNamespace The namespace for the test file.
      * @return array ['code' => code string, 'test' => test case string]
      */
-    public static function generate(string $datatype, string $basetype = null, string $namespace = '\\Formularium\\Datatype'): array
-    {
+    public static function generate(
+        string $datatype,
+        string $basetype = null,
+        string $namespace = 'Formularium\\Datatype',
+        string $testNamespace = 'Tests\Unit'
+    ): array {
         $datatypeLower = mb_strtolower($datatype);
         $basetypeClass = $basetype ? '\\Formularium\\Datatype\\Datatype_' . $basetype : '\\Formularium\\Datatype';
         $basetype = $basetype ?? $datatypeLower;
@@ -119,9 +126,10 @@ EOF;
         $testCode = <<<EOF
 <?php declare(strict_types=1); 
 
-namespace FormulariumTests\Datatype;
+namespace $testNamespace;
 
 use Formularium\Datatype;
+use Formularium\Factory\DatatypeFactory;
 
 class ${datatype}Test extends DatatypeBaseTestCase
 {
@@ -129,9 +137,9 @@ class ${datatype}Test extends DatatypeBaseTestCase
     /**
      * @return DataType
      */
-    public function getDataType(): \Formularium\Datatype
+    public function getDataType(): Datatype
     {
-        return \Formularium\Datatype::factory('${datatypeLower}');
+        return DatatypeFactory::factory('${datatypeLower}');
     }
 
     /**

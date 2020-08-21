@@ -12,7 +12,7 @@ class CPFTest extends DatatypeBaseTestCase
      */
     public function getDataType(): \Formularium\Datatype
     {
-        return \Formularium\DatatypeFactory::factory('cpf');
+        return \Formularium\Factory\DatatypeFactory::factory('cpf');
     }
 
     /**
