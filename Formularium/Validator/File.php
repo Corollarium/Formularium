@@ -116,7 +116,7 @@ class File implements ValidatorInterface
     {
         if (!file_exists($value)) {
             throw new ValidatorException(
-                'Not a file'
+                'Not a file' . $value
             );
         }
 
