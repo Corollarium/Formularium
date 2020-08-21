@@ -2,7 +2,6 @@
 
 namespace Formularium;
 
-use Formularium\Exception\ClassNotFoundException;
 use Formularium\HTMLNode;
 
 /**
@@ -29,6 +28,11 @@ abstract class Element implements RenderableParameter
     {
         $this->framework = $framework;
         $this->composer = $composer;
+    }
+
+    public function getName(): string
+    {
+        return (new \ReflectionClass($this))->getShortName();
     }
 
     /**
