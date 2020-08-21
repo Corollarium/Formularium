@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Frontend\HTML\Element;
+namespace Formularium\Frontend\Vue\Element;
 
 use Formularium\Element;
 use Formularium\Exception\ClassNotFoundException;
@@ -29,19 +29,23 @@ class Pagination extends Element
                         ],
                         HTMLNode::factory(
                             'a',
-                            ["class" => "formularium-pagination-link",
-                             ":href" => "basePath + '/1'",
-                            "@click.prevent" => ""
-                        ],
-                            "1"
+                            [
+                                "class" => "formularium-pagination-link",
+                                ":href" => "basePath + '/1'",
+                                "@click.prevent" => ""
+                            ],
+                            "1",
+                            true
                         )
                     ),
                     HTMLNode::factory(
                         'li',
-                        ["class" => "formularium-pagination-item",
-                        "v-show" => "currentPage > pagesAround"
-                    ],
-                        "..."
+                        [
+                            "class" => "formularium-pagination-item",
+                            "v-show" => "currentPage > pagesAround"
+                        ],
+                        "...",
+                        true
                     ),
                     HTMLNode::factory(
                         'li',
@@ -51,15 +55,28 @@ class Pagination extends Element
                             "v-bind:key" => "p.page",
                             "@click" => "\$emit('page', p.page)"
                         ],
-                        HTMLNode::factory(
-                            'a',
-                            [
-                                "class" => "formularium-pagination-link",
-                                ":href" => "basePath + /' + p.page",
-                                "@click.prevent" => ""
-                            ],
-                            "{{p.page}}"
-                        ),
+                        [
+                            HTMLNode::factory(
+                                'a',
+                                [
+                                    "v-if" => "p.page == currentPage",
+                                    "class" => ["formularium-pagination-link", "formularium-pagination-current"],
+                                    ":href" => "basePath + '/' + p.page",
+                                    "@click.prevent" => ""
+                                ],
+                                "{{p.page}}"
+                            ),
+                            HTMLNode::factory(
+                                'a',
+                                [
+                                    "v-else" => null,
+                                    "class" => "formularium-pagination-link",
+                                    ":href" => "basePath + '/' + p.page",
+                                    "@click.prevent" => ""
+                                ],
+                                "{{p.page}}"
+                            ),
+                        ]
                     ),
                     HTMLNode::factory(
                         'li',

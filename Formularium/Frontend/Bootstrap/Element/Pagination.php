@@ -25,7 +25,7 @@ class Pagination extends Element
             $e->addAttribute('class', 'page-link');
         }
         foreach ($previous->get('.formularium-pagination-current') as $e) {
-            $e->addAttribute('class', 'disabled');
+            $e->addAttribute('class', 'active');
         }
         foreach ($previous->get('.formularium-pagination') as $e) {
             $e->addAttribute('class', 'pagination');

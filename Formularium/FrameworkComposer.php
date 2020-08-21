@@ -111,7 +111,7 @@ class FrameworkComposer
         $found = false;
         foreach ($this->getFrameworks() as $framework) {
             try {
-                $element = $framework->getElement($elementName);
+                $element = $framework->getElement($elementName, $this);
                 $found = true;
                 $node = $element->render($parameters, $node);
             } catch (ClassNotFoundException $e) {
