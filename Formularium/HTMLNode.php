@@ -450,8 +450,8 @@ class HTMLNode
                 '<' . htmlspecialchars($this->tag);
 
             // render tag attributes
-            foreach ($this->attributes as $atrib => $value) {
-                $open[] = $atrib . '="' . htmlspecialchars(implode(' ', $value)) . '"';
+            foreach ($this->attributes as $attrib => $value) {
+                $open[] = $attrib . ($value === [null] ? '' : ('="' . strtr(implode(' ', $value), '"', '\"') . '"'));
             }
             $data[] = join(' ', $open) . (in_array($this->tag, self::STANDALONE_TAGS) ? '/>' : '>');
         }
