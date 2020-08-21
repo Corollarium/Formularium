@@ -6,6 +6,7 @@ use Formularium\Element;
 use Formularium\HTMLNode;
 use Formularium\Frontend\HTML\Element\Pagination as HTMLPagination;
 use Formularium\Metadata;
+use PHP_CodeSniffer\Generators\HTML;
 
 class Pagination extends Element
 {
@@ -27,8 +28,11 @@ class Pagination extends Element
             $e->addAttribute('class', 'pagination-link');
         }
         foreach ($previous->get('.formularium-pagination-current') as $e) {
+            $e->addAttribute('class', 'is-current');
             foreach ($e->getContent() as $e2) {
-                $e2->addAttribute('class', 'is-current');
+                if ($e2 instanceof HTMLNode) {
+                    $e2->addAttribute('class', 'is-current');
+                }
             }
         }
         foreach ($previous->get('.formularium-pagination') as $e) {
