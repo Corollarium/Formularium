@@ -59,6 +59,12 @@ Items per page. Default: 20
 Total items found by query.
 
 
+## Spinner
+
+Creates a spinner
+
+
+
 ## Table
 
 Creates a table
