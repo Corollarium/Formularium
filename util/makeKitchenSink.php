@@ -57,12 +57,18 @@ function elements(FrameworkComposer $framework): string
             Card::CONTENT => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
         ]
     );
+    $spinner = $framework->element(
+        'Spinner',
+        [
+        ]
+    );
 
     return '<h3 class="kitchen">Upload</h3>' . $upload . "\n" .
         '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
         '<h3 class="kitchen">Table</h3>' .  $table . "\n" .
         '<h3 class="kitchen">Pagination</h3>' .  $pagination . "\n" .
-        '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n";
+        '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n" .
+        '<h3 class="kitchen">Spinner</h3><div>'. $spinner . "</div>\n";
 }
 
 function kitchenSink($frameworkName, string $templateName)
