@@ -75,7 +75,7 @@ class Pagination extends Element
                                     "@click.prevent" => ""
                                 ],
                                 "{{p.page}}"
-                            ),
+                            )
                         ]
                     ),
                     HTMLNode::factory(
