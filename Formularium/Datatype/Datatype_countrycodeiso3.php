@@ -19,4 +19,9 @@ class Datatype_countrycodeiso3 extends \Formularium\Datatype\Datatype_countrycod
     {
         return "char('$name', 3)";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Country names represented by ISO 3-letter codes.';
+    }
 }

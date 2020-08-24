@@ -31,4 +31,9 @@ class Datatype_alphanumdash extends \Formularium\Datatype\Datatype_string
         }
         return $value;
     }
+
+    public function getDocumentation(): string
+    {
+        return 'String with only alphabetical ASCII letters, numbers, underscore _ and dash -.';
+    }
 }

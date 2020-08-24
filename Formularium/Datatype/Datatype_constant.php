@@ -5,6 +5,7 @@ namespace Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\Exception\ValidatorException;
+use Formularium\Metadata;
 
 /**
  * Constant field. For injection of HTML. Any data is rejected
@@ -34,5 +35,14 @@ class Datatype_constant extends \Formularium\Datatype
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         throw new ValidatorException('Constant field.');
+    }
+
+    public function getMetadata(): Metadata
+    {
+        return new Metadata(
+            $this->getName(),
+            $this->getDocumentation(),
+            []
+        );
     }
 }

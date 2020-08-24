@@ -63,4 +63,9 @@ class Datatype_datetime extends \Formularium\Datatype
     {
         return "datetime('$name')";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datetimes in ISO8601 format.';
+    }
 }

@@ -30,4 +30,9 @@ class Datatype_phone extends Datatype_string
     {
         return static::faker()->e164PhoneNumber;
     }
+
+    public function getDocumentation(): string
+    {
+        return "A phone number in E164 format";
+    }
 }

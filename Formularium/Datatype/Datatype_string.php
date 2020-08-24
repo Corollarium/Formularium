@@ -61,4 +61,9 @@ class Datatype_string extends \Formularium\Datatype
     {
         return "string('$name', {$this->MAX_STRING_SIZE})";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Strings in UTF-8 and sanitized, up to {$this->MAX_STRING_SIZE} characters (which might be more than its bytes).";
+    }
 }

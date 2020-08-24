@@ -5,6 +5,7 @@ namespace Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\Exception\ValidatorException;
+use Formularium\Metadata;
 
 class Datatype_file extends \Formularium\Datatype
 {
@@ -40,5 +41,14 @@ class Datatype_file extends \Formularium\Datatype
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         throw new ValidatorException('File field.');
+    }
+
+    public function getMetadata(): Metadata
+    {
+        return new Metadata(
+            $this->getName(),
+            $this->getDocumentation(),
+            []
+        );
     }
 }

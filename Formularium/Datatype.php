@@ -120,4 +120,21 @@ abstract class Datatype
     {
         return $this->basetype;
     }
+
+    public function getDocumentation(): string
+    {
+        return '';
+    }
+
+    public function getMetadata(): Metadata
+    {
+        return new Metadata(
+            $this->getName(),
+            $this->getDocumentation() .
+                "\n\nRandom value example: " . var_export($this->getRandom(), true) .
+                "\n\nSQL datatype: " . $this->getSQLType() .
+                "\n\nLaravel SQL datatype: " . $this->getLaravelSQLType('name'),
+            []
+        );
+    }
 }

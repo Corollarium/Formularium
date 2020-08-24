@@ -29,4 +29,9 @@ class Datatype_ipv4 extends \Formularium\Datatype\Datatype_string
             'Invalid IPV4'
         );
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for IPs in IPV4 format';
+    }
 }

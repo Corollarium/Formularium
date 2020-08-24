@@ -29,4 +29,9 @@ class Datatype_domain extends Datatype_string
     {
         return static::faker()->domainName;
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Internet domain names.';
+    }
 }

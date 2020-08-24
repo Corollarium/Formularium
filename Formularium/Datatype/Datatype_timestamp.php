@@ -18,4 +18,9 @@ class Datatype_timestamp extends Datatype_datetime
     {
         return "timestamp('$name')";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Timestamps. Just like datetime, but might be a different type in your database.";
+    }
 }

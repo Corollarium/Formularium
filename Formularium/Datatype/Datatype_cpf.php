@@ -39,4 +39,9 @@ class Datatype_cpf extends \Formularium\Datatype\Datatype_string
     {
         return "string($name, 13)";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for Brazilian CPF document numbers.';
+    }
 }

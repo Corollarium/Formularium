@@ -48,4 +48,9 @@ class Datatype_uuid extends Datatype_string
     {
         return "uuid('$name')";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for uuid values.';
+    }
 }

@@ -25,4 +25,9 @@ class Datatype_text extends Datatype_string
     {
         return "text('$name')";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Strings in UTF-8 and sanitized, up to {$this->MAX_STRING_SIZE} characters (which might be more than its bytes).";
+    }
 }

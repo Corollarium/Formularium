@@ -224,4 +224,9 @@ class Datatype_language extends \Formularium\Datatype\Datatype_choice
     {
         return "string($name, 10)";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Languages. Names are in the actual language. Codes follow ISO 639-1 codes.";
+    }
 }

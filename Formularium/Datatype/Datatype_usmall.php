@@ -21,4 +21,9 @@ class Datatype_usmall extends Datatype_integer
     {
         return "smallInteger(\"$name\")->unsigned()";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Datatype for unsigned small integers, between {$this->minvalue} and {$this->maxvalue}.";
+    }
 }

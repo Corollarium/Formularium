@@ -69,4 +69,9 @@ class Datatype_bool extends \Formularium\Datatype
     {
         return "boolean($name)";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for boolean values. Accepts actual boolean values, "true"/"false" strings and 0/1 numbers.';
+    }
 }

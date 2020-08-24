@@ -88,4 +88,9 @@ class Datatype_url extends \Formularium\Datatype
     {
         return "string('$name', 256)";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Datatype for URLs";
+    }
 }

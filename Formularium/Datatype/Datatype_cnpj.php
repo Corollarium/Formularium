@@ -28,4 +28,9 @@ class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
         }
         throw new ValidatorException('Invalid CNPJ');
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for Brazilian CNPJ document numbers.';
+    }
 }

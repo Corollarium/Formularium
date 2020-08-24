@@ -29,4 +29,9 @@ class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
             'Invalid IPV6'
         );
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for IPs in IPV6 format';
+    }
 }

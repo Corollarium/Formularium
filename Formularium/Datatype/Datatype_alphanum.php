@@ -31,4 +31,9 @@ class Datatype_alphanum extends \Formularium\Datatype\Datatype_string
         }
         return $value;
     }
+
+    public function getDocumentation(): string
+    {
+        return 'String with only alphabetical ASCII letters and numbers.';
+    }
 }

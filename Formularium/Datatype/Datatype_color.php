@@ -29,4 +29,9 @@ class Datatype_color extends Datatype_string
         }
         return $value;
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Datatype for RGB colors in hexadecimeal format, starting with #.';
+    }
 }

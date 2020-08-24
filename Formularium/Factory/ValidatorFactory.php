@@ -39,7 +39,7 @@ final class ValidatorFactory extends AbstractFactory
     {
         return [
             'name' => $reflection->getName(),
-            'object' => $reflection->getShortName()
+            'value' => $reflection->getShortName()
         ];
     }
 

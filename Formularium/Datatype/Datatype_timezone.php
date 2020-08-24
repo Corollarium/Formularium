@@ -22,4 +22,9 @@ class Datatype_timezone extends \Formularium\Datatype\Datatype_choice
     {
         return "string($name, 50)";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Timezones. Follows PHP timezone_identifiers_list().";
+    }
 }

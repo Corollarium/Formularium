@@ -19,4 +19,9 @@ class Datatype_countrycodeiso2 extends \Formularium\Datatype\Datatype_countrycod
     {
         return "char('$name', 2)";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Country names represented by ISO 2-letter codes.';
+    }
 }

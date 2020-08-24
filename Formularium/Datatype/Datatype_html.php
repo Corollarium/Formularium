@@ -40,4 +40,9 @@ class Datatype_html extends Datatype_text
 
         return $clean_html;
     }
+
+    public function getDocumentation(): string
+    {
+        return 'HTML, validated and sanitized with HTMLPurifier.';
+    }
 }

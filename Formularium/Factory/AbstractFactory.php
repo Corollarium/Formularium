@@ -98,9 +98,18 @@ abstract class AbstractFactory
     /**
      * Returns a list class name => object.
      *
-     * @return array<string, string>
+     * @return array<string, Mixed>
      */
     public static function getNames(): array
+    {
+        return static::map(
+            function (\ReflectionClass $reflection) {
+                return static::getNamePair($reflection);
+            }
+        );
+    }
+
+    public static function map(callable $c): array
     {
         $classes = [];
 
@@ -118,11 +127,10 @@ abstract class AbstractFactory
                     continue;
                 }
 
-                $pair = static::getNamePair($reflection);
-                $classes[(string)$pair['name']] = $pair['object'];
+                $pair = $c($reflection);
+                $classes[(string)$pair['name']] = $pair['value'];
             }
         }
-
         return $classes;
     }
 }

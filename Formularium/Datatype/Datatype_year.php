@@ -18,4 +18,9 @@ class Datatype_year extends \Formularium\Datatype\Datatype_integer
     {
         return "year('$name')";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Valid years. May create a special field in the database.';
+    }
 }

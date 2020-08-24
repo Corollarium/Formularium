@@ -44,4 +44,9 @@ class Datatype_json extends Datatype_text
         }
         throw new ValidatorException('Invalid json value');
     }
+
+    public function getDocumentation(): string
+    {
+        return "Valid JSON data";
+    }
 }

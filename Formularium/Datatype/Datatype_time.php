@@ -50,4 +50,9 @@ class Datatype_time extends \Formularium\Datatype
     {
         return "time('$name', 0)";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Time (HH:MM:SS).";
+    }
 }

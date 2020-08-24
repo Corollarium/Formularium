@@ -21,4 +21,9 @@ class Datatype_uinteger extends \Formularium\Datatype\Datatype_integer
     {
         return "integer(\"$name\")->unsigned()";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Datatype for unsigned integers, between {$this->minvalue} and {$this->maxvalue}.";
+    }
 }

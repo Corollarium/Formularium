@@ -34,9 +34,31 @@ List of validators and its parameters generated automatically.
 
 function datatypes()
 {
-    $datatypes = DatatypeFactory::getNames();
+    $markdown = DatatypeFactory::map(
+        function (\ReflectionClass $reflection): array {
+            $class = $reflection->getName();
+    
+            /**
+             * @var Datatype $d
+             */
+            $d = new $class(); // TODO: factory would be better
+            return [
+                'name' => $class,
+                'value' => $d->getMetadata()->toMarkdown()
+            ];
+        }
+    );
 
-    $markdown = [];
+    ksort($markdown);
+
+    $datatypeAPI = '
+# Datatypes
+
+List of validators and its parameters generated automatically.
+
+' . join("\n", $markdown);
+
+    file_put_contents(__DIR__ . '/../docs/api-datatypes.md', $datatypeAPI);
 }
 
 function elements()
@@ -83,5 +105,6 @@ List of elements for $framework and its parameters.
     }
 }
 
+datatypes();
 validators();
 elements();

@@ -54,4 +54,9 @@ class Datatype_float extends \Formularium\Datatype\Datatype_number
     {
         return "float('$name')";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Floating point numbers.';
+    }
 }

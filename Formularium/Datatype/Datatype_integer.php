@@ -74,4 +74,9 @@ class Datatype_integer extends \Formularium\Datatype\Datatype_number
     {
         return "integer(\"$name\")";
     }
+
+    public function getDocumentation(): string
+    {
+        return "Datatype for integers, between {$this->minvalue} and {$this->maxvalue}.";
+    }
 }

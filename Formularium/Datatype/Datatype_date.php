@@ -73,4 +73,9 @@ class Datatype_date extends \Formularium\Datatype
     {
         return 'date';
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Dates in ISO format: YYYY-MM-DD.';
+    }
 }

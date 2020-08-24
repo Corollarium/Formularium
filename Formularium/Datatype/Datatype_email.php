@@ -29,4 +29,9 @@ class Datatype_email extends Datatype_string
         }
         throw new ValidatorException('Invalid email: ' . $value);
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Emails (hopefully, but we use Respect for validation)';
+    }
 }
