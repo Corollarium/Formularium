@@ -19,7 +19,7 @@ use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
 
-function elements(FrameworkComposer $framework): string
+function renderElements(FrameworkComposer $framework): string
 {
     $upload = $framework->element(
         'Upload',
@@ -172,7 +172,7 @@ function kitchenSink($frameworkName, string $templateName)
             '{{title}}' => $title,
             '{{head}}' => $head,
             '{{basicDemoEditable}}' => $basicDemoEditable,
-            '{{elements}}' => elements($framework),
+            '{{elements}}' => renderElements($framework),
             '{{modelViewable}}' => $modelViewable,
             '{{modelEditable}}' => $modelEditable,
             '{{footer}}' => $footer,
