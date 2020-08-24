@@ -63,7 +63,7 @@ final class FrameworkFactory extends AbstractFactory
 
         return [
             'name' => $class,
-            'object' => $d->getName()
+            'value' => $d->getName()
         ];
     }
 

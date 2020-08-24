@@ -36,7 +36,7 @@ final class DatatypeFactory extends AbstractFactory
 
         return [
             'name' => $class,
-            'object' => $d->getName()
+            'value' => $d->getName()
         ];
     }
 
