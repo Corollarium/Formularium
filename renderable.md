@@ -13,7 +13,7 @@ You often will want to use an existing basetype to inherit and just alter the HT
 Remember to register your namespace in your application so they can be autoloaded:
 
 ```php
-Formularium::appendRenderableNamespace('MyApp\\Renderable');
+RenderableFactory::appendNamespace('MyApp\\Renderable');
 ```
 
 ## Parameters

@@ -21,7 +21,8 @@ You often will want to use an existing basetype to inherit from existing datatyp
 Remember to register your datatype namespace in your application so they can be autoloaded:
 
 ```php
-Formularium::appendDatatypeNamespace('MyApp\\Datatypes');
+use Formularium\Factory\DatatypeFactory;
+DatatypeFactory::appendNamespace('MyApp\\Datatypes');
 ```
 
 ---

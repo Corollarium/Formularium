@@ -42,7 +42,8 @@ This will generate a file `Mine.php` with all the scaffolding. Fill the `getMeta
 Remember to register your datatype namespace in your application so they can be autoloaded:
 
 ```php
-Formularium::appendValidatorNamespace('MyApp\\Validators');
+use Formularium\Factory\ValidatorFactory;
+ValidatorFactory::appendNamespace('MyApp\\Validators');
 ```
 
 ---
