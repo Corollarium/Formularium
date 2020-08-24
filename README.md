@@ -8,7 +8,7 @@
 
 This is a general HTML form/element generator and validator for PHP. It hosts a number of generators for different CSS and JS frameworks, as well as validators for backend and frontend, abstracting code.
 
-Formularium provides high level data types, allowing you to specify exactly what you expect of each field in a unified way for datatype creation, validation and form generation. Your fields **are not strings**, stop treating them as such.
+Formularium provides [high level data types](https://corollarium.github.io/Formularium/api-datatypes.html), allowing you to specify exactly what you expect of each field in a unified way for datatype creation, validation and form generation. Your fields **are not strings**, stop treating them as such.
 
 Examples of the same PHP code generating frontends in Bootstrap, Bulma, Materialize and Buefy. Click on the images to see a live HTML.
 
@@ -35,8 +35,8 @@ Check the:
 
 - typed data system: change the datatype and reflect it on your data.
 - automatic validation: validate your data automatically and safely.
-- component validators: add new validators for your datatypes easily.
-- abstraction: abstract your CSS frameworks for simple element generation from code, like buttons or badges.
+- component validators: create new datatypes and add new validators easily.
+- HTML abstraction: abstract your CSS frameworks for simple element generation from code, like buttons or tables.
 - Graphql: declare your models in Graphql SDL and get the scaffolding for free. Works even better with [Modelarium](https://github.com/Corollarium/modelarium).
 - quickly generate frontend scaffolding: stop writing verbose HTML and have manual labor to generate forms/cards/etc. Let this tool do all the basic work for you and just refine the design if necessary.
 - component generation: generate React and Vue components with the corresponding HTML template.

@@ -37,6 +37,11 @@ class Datatype_constant extends \Formularium\Datatype
         throw new ValidatorException('Constant field.');
     }
 
+    public function getDocumentation(): string
+    {
+        return 'Constant values';
+    }
+    
     public function getMetadata(): Metadata
     {
         return new Metadata(
