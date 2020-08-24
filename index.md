@@ -29,7 +29,7 @@ Check:
 ### Reference
 
 - [all validators and their parameters](api-validators.md)
-- all datatypes: TODO
+- [all datatypes](api-datatypes.md)
 - elements and their parameters:
   - [Bootstrap](api-Bootstrap-elements.md)
   - [Buefy](api-Buefy-elements.md)
