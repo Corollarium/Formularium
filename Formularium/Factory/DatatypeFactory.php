@@ -7,20 +7,42 @@ use Formularium\Datatype;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 
-final class DatatypeFactory
+final class DatatypeFactory extends AbstractFactory
 {
-    /**
-     * External factories.
-     *
-     * @var array
-     */
-    private static $factories = [];
+    protected static $namespaces = [
+        'Formularium\\Datatype'
+    ];
 
     /**
      * @codeCoverageIgnore
      */
     private function __construct()
     {
+    }
+
+    public static function getClassName(string $name): string
+    {
+        return "Datatype_$name";
+    }
+
+    protected static function getNamePair(\ReflectionClass $reflection): array
+    {
+        $class = $reflection->getName();
+
+        /**
+         * @var Datatype $d
+         */
+        $d = new $class(); // TODO: factory would be better
+
+        return [
+            'name' => $class,
+            'object' => $d->getName()
+        ];
+    }
+
+    public static function isValidClass(\ReflectionClass $reflection): bool
+    {
+        return $reflection->isSubclassOf(Datatype::class);
     }
 
     /**
@@ -32,33 +54,7 @@ final class DatatypeFactory
      */
     public static function factory(string $datatype): Datatype
     {
-        foreach (Formularium::getDatatypeNamespaces() as $ns) {
-            $class = $ns . "\\Datatype_$datatype";
-            if (class_exists($class)) {
-                return new $class();
-            }
-        }
-
-        // base namespace
-        if (class_exists("\\Datatype_$datatype")) {
-            $class = "\\Datatype_$datatype";
-            return new $class();
-        }
-
-        // external factories
-        foreach (self::$factories as $f) {
-            try {
-                return $f($datatype);
-            } catch (ClassNotFoundException $e) {
-                continue;
-            }
-        }
-        throw new ClassNotFoundException("Invalid datatype $datatype");
-    }
-
-    public static function registerFactory(callable $factory): void
-    {
-        self::$factories[] = $factory;
+        return parent::factory($datatype);
     }
 
     /**

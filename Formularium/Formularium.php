@@ -2,6 +2,8 @@
 
 namespace Formularium;
 
+use Formularium\Factory\DatatypeFactory;
+use Formularium\Factory\ValidatorFactory;
 use HaydenPierce\ClassFinder\ClassFinder;
 
 /**
@@ -11,22 +13,6 @@ use HaydenPierce\ClassFinder\ClassFinder;
 final class Formularium
 {
     /**
-     *
-     * @var string[]
-     */
-    private static $validatorNamespaces = [
-        'Formularium\\Validator'
-    ];
-
-    /**
-     *
-     * @var string[]
-     */
-    private static $datatypeNamespaces = [
-        'Formularium\\Datatype'
-    ];
-
-    /**
      * @codeCoverageIgnore
      */
     private function __construct()
@@ -34,115 +20,9 @@ final class Formularium
         // empty
     }
 
-    /**
-     * @param string $ns The namespace to add
-     * @return void
-     * @codeCoverageIgnore
-     */
-    public static function appendDatatypeNamespace(string $ns): void
-    {
-        self::$datatypeNamespaces[] = $ns;
-    }
-
-    /**
-     * Get the value of datatypeNamespaces
-     *
-     * @return  string[]
-     */
-    public static function getDatatypeNamespaces(): array
-    {
-        return self::$datatypeNamespaces;
-    }
-    
-    /**
-     * @param string $ns The namespace to add
-     * @return void
-     * @codeCoverageIgnore
-     */
-    public static function appendValidatorNamespace(string $ns): void
-    {
-        self::$validatorNamespaces[] = $ns;
-    }
-
-    /**
-     * Get the value of validatorNamespaces
-     *
-     * @return  string[]
-     */
-    public static function getValidatorNamespaces(): array
-    {
-        return self::$validatorNamespaces;
-    }
-
-    /**
-     * Returns a list class name => datatype.
-     *
-     * @return array<string, string>
-     */
-    public static function getDatatypeNames(): array
-    {
-        $datatypes = [];
-
-        foreach (self::$datatypeNamespaces as $datatypeNamespace) {
-            /** @var array<class-string> $classesInNamespace */
-            $classesInNamespace = ClassFinder::getClassesInNamespace($datatypeNamespace);
-
-            foreach ($classesInNamespace as $class) {
-                $reflection = new \ReflectionClass($class);
-                if (!$reflection->isInstantiable()) {
-                    continue;
-                }
-
-                if (!is_a($class, Datatype::class, true)) {
-                    continue;
-                }
-
-                /**
-                 * @var Datatype $d
-                 */
-                $d = new $class(); // TODO: factory would be better
-
-                $datatypes[$class] = $d->getName();
-            }
-        }
-
-        return $datatypes;
-    }
-
-    /**
-     * Returns a list classname => validator
-     *
-     * @return array<string, string>
-     */
-    public static function getValidatorNames(): array
-    {
-        $validators = [];
-
-        foreach (self::$validatorNamespaces as $validatorNamespace) {
-            /** @var array<class-string> $classesInNamespace */
-            $classesInNamespace = ClassFinder::getClassesInNamespace($validatorNamespace);
-
-            foreach ($classesInNamespace as $class) {
-                $reflection = new \ReflectionClass($class);
-                if (!$reflection->isInstantiable()) {
-                    continue;
-                }
-
-                if (!is_a($class, ValidatorInterface::class, true)) {
-                    continue;
-                }
-
-                $name = mb_substr($class, strrpos($class, '\\') + 1);
-                $validators[$class] = $name;
-            }
-        }
-
-        return $validators;
-    }
-
     public static function scalarGraphqlDirectives(): string
     {
-        $classes = static::getDatatypeNames();
+        $classes = DatatypeFactory::getNames();
         $graphql = [];
         foreach ($classes as $className => $name) {
             $graphql[] = "scalar $name @scalar(class: \"{$className}\")";
@@ -157,7 +37,7 @@ final class Formularium
 
     public static function validatorGraphqlDirectives(): string
     {
-        $classes = static::getValidatorNames();
+        $classes = ValidatorFactory::getNames();
         $graphql = [];
         foreach ($classes as $className => $name) {
             $graphql[] = $className::getMetadata()->toGraphql();

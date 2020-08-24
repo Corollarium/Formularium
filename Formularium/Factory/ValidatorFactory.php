@@ -5,13 +5,18 @@ namespace Formularium\Factory;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
+use Formularium\ValidatorInterface;
 
 /**
  * Utility class to validate data in composition to the validation in
  * datatypes.
  */
-final class ValidatorFactory
+final class ValidatorFactory extends AbstractFactory
 {
+    protected static $namespaces = [
+        'Formularium\\Validator'
+    ];
+
     /**
      * @codeCoverageIgnore
      */
@@ -19,17 +24,22 @@ final class ValidatorFactory
     {
     }
 
-    public static function class(string $validatorName): string
+    public static function getClassName(string $name): string
     {
-        $class = "Formularium\\Validator\\$validatorName";
-        // TODO: Formularium::Diretories()
-        if (!class_exists($class)) {
-            $class = $validatorName;
-            if (!class_exists($class)) {
-                throw new ClassNotFoundException("Invalid datatype validator: $validatorName");
-            }
-        }
-        return $class;
+        return $name;
+    }
+
+    public static function isValidClass(\ReflectionClass $reflection): bool
+    {
+        return $reflection->implementsInterface(ValidatorInterface::class);
+    }
+
+    protected static function getNamePair(\ReflectionClass $reflection): array
+    {
+        return [
+            'name' => $reflection->getName(),
+            'object' => $reflection->getShortName()
+        ];
     }
 
     /**

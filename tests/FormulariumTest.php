@@ -7,13 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 final class FormulariumTest extends TestCase
 {
-    public function testDatatypes()
-    {
-        $names = Formularium::getDatatypeNames();
-        $this->assertIsArray($names);
-        $this->assertContains('string', $names);
-    }
-
     public function testValidatorGraphqlDirectives()
     {
         $names = Formularium::validatorGraphqlDirectives();
