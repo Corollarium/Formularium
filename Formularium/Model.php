@@ -133,7 +133,7 @@ class Model
         if ($restrictFields === null) {
             return $this->fields;
         }
-        
+
         $fields = [];
         foreach ($this->fields as $field) {
             /**
@@ -177,7 +177,7 @@ class Model
     /**
      * filter operation for fields that return true for callable.
      *
-     * @param callable $function
+     * @param callable $function. Receives a Field as argument.
      * @return Field[]
      */
     public function filterField(callable $function): array
@@ -447,14 +447,19 @@ class Model
     /**
      * Generates random data for this model
      *
+     * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
+     * be an array of strings (field names) or a callback which is called for each field.
+     * Callable signature: (Field $field, Model $m, array $modelData): boolean
      * @return array An associative array field name => data.
      */
-    public function getRandom(): array
+    public function getRandom($restrictFields = null): array
     {
+        $this->_restrictFields = $restrictFields;
         $data = [];
         foreach ($this->getFields() as $f) {
             $data[$f->getName()] = $f->getDatatype()->getRandom();
         }
+        $this->_restrictFields = null;
         return $data;
     }
 
