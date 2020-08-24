@@ -204,4 +204,9 @@ class Datatype_currency extends \Formularium\Datatype\Datatype_choice
     {
         return "char($name, 3)";
     }
+
+    public function getDocumentation(): string
+    {
+        return 'Currency names, with their 3-letter codes.';
+    }
 }
