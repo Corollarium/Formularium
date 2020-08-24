@@ -9,6 +9,7 @@ use Formularium\Framework;
 
 final class ElementFactory
 {
+    
     /**
      * @codeCoverageIgnore
      */
@@ -36,6 +37,7 @@ final class ElementFactory
         }
         $class = "$ns\\Element\\$elementName";
         if (!class_exists($class)) {
+            // TODO: namespaces
             throw new ClassNotFoundException("Invalid element $elementName for {$framework->getName()}");
         }
         return new $class($framework, $composer);

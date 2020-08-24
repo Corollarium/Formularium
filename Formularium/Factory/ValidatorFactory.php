@@ -6,6 +6,7 @@ use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 use Formularium\Exception\ValidatorException;
 use Formularium\ValidatorInterface;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * Utility class to validate data in composition to the validation in
@@ -40,6 +41,18 @@ final class ValidatorFactory extends AbstractFactory
             'name' => $reflection->getName(),
             'object' => $reflection->getShortName()
         ];
+    }
+
+    /**
+     * Factory.
+     *
+     * @param string $datatype
+     * @return Validator
+     * @throws ClassNotFoundException
+     */
+    public static function factory(string $datatype): Validator
+    {
+        return parent::factory($datatype);
     }
 
     /**

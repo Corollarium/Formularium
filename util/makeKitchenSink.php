@@ -81,7 +81,7 @@ function kitchenSink($frameworkName, string $templateName)
      * kitchen sink fields
      */
     $fields = [];
-    $datatypes = Formularium::getDatatypeNames();
+    $datatypes = DatatypeFactory::getNames();
 
     // make a default for all types
     foreach ($datatypes as $d) {

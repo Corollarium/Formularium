@@ -3,6 +3,8 @@
 require('vendor/autoload.php');
 
 use Formularium\Element;
+use Formularium\Factory\DatatypeFactory;
+use Formularium\Factory\ValidatorFactory;
 use Formularium\Formularium;
 use HaydenPierce\ClassFinder\ClassFinder;
 
@@ -10,7 +12,7 @@ use function Safe\file_put_contents;
 
 function validators()
 {
-    $validators = Formularium::getValidatorNames();
+    $validators = ValidatorFactory::getNames();
 
     $markdown = [];
 
@@ -32,7 +34,7 @@ List of validators and its parameters generated automatically.
 
 function datatypes()
 {
-    $datatypes = Formularium::getDatatypeNames();
+    $datatypes = DatatypeFactory::getNames();
 
     $markdown = [];
 }

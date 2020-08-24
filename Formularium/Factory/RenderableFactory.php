@@ -45,6 +45,7 @@ final class RenderableFactory
             $class = "$ns\\Renderable\\Renderable_$basetype";
         }
         if (!class_exists($class)) {
+            // TODO: namespaces
             throw new ClassNotFoundException("Invalid datatype '$datatypeName' for {$framework->getName()}");
         }
         return new $class($framework);

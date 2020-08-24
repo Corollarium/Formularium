@@ -8,19 +8,7 @@ use Formularium\Exception\Exception;
 
 abstract class AbstractFactory
 {
-    /**
-     * Namespaces to search
-     *
-     * @var string[]
-     */
-    protected static $namespaces = [];
-
-    /**
-     * External factory functions.
-     *
-     * @var callable[]
-     */
-    protected static $factories = [];
+    use NamespaceTrait;
 
     /**
      * @codeCoverageIgnore
@@ -58,9 +46,8 @@ abstract class AbstractFactory
 
         // TODO: registerFactory
 
-        throw new ClassNotFoundException("Invalid datatype $name");
+        throw new ClassNotFoundException("Invalid class $name");
     }
-
 
     /**
      * Factory.
@@ -88,22 +75,7 @@ abstract class AbstractFactory
         }
         throw new ClassNotFoundException("Invalid datatype $name");
     }
-
-    public static function registerFactory(callable $factory): void
-    {
-        static::$factories[] = $factory;
-    }
-
-    /**
-     * @param string $ns The namespace to add
-     * @return void
-     * @codeCoverageIgnore
-     */
-    public static function appendNamespace(string $ns): void
-    {
-        static::$namespaces[] = $ns;
-    }
-
+    
     /**
      * Checks if a class is valid for getNames()
      *
