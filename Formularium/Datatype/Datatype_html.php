@@ -10,7 +10,7 @@ use HTMLPurifier_Config;
 
 class Datatype_html extends Datatype_text
 {
-    protected $MAX_STRING_SIZE = 1024000;
+    protected $MAX_STRING_LENGTH = 1024000;
 
     public function __construct(string $typename = 'html', string $basetype = 'text')
     {

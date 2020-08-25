@@ -13,7 +13,11 @@ trait DatatypeRandomTrait
      * @param string $source
      * @return string
      */
-    public static function getRandomString(int $minLetters = 5, int $maxletters = 15, string $source = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"): string
+    public static function getRandomString(
+        int $minLetters = 5,
+        int $maxletters = 15,
+        string $source = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    ): string
     {
         $pattern = 'R';
         $sourceLen = mb_strlen($source);

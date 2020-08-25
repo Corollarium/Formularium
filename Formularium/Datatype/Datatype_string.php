@@ -61,16 +61,16 @@ class Datatype_string extends \Formularium\Datatype
 
     public function getSQLType(string $database = '', array $options = []): string
     {
-        return 'VARCHAR(' . $this->MAX_STRING_SIZE . ')';
+        return 'VARCHAR(' . $this->MAX_STRING_LENGTH . ')';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return "string('$name', {$this->MAX_STRING_SIZE})";
+        return "string('$name', {$this->MAX_STRING_LENGTH})";
     }
 
     public function getDocumentation(): string
     {
-        return "Strings in UTF-8 and sanitized, up to {$this->MAX_STRING_SIZE} characters (which might be more than its bytes).";
+        return "Strings in UTF-8 and sanitized, up to {$this->MAX_STRING_LENGTH} characters (which might be more than its bytes).";
     }
 }

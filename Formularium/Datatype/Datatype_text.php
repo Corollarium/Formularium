@@ -4,7 +4,7 @@ namespace Formularium\Datatype;
 
 class Datatype_text extends Datatype_string
 {
-    protected $MAX_STRING_SIZE = 1024000;
+    protected $MAX_STRING_LENGTH = 1024000;
 
     public function __construct(string $typename = 'text', string $basetype = 'string')
     {
@@ -28,6 +28,6 @@ class Datatype_text extends Datatype_string
 
     public function getDocumentation(): string
     {
-        return "Strings in UTF-8 and sanitized, up to {$this->MAX_STRING_SIZE} characters (which might be more than its bytes).";
+        return "Long text in UTF-8 and sanitized, up to {$this->MAX_STRING_LENGTH} characters (which might be more than its bytes).";
     }
 }
