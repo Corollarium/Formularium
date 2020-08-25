@@ -6,6 +6,7 @@ use Formularium\Exception\ValidatorException;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\Validator\MaxLength;
+use Formularium\Validator\MinLength;
 
 class Datatype_string extends \Formularium\Datatype
 {
@@ -15,7 +16,12 @@ class Datatype_string extends \Formularium\Datatype
     /**
      *  @var integer
      */
-    protected $MAX_STRING_SIZE = 256;
+    protected $MIN_STRING_LENGTH = 0;
+
+    /**
+     *  @var integer
+     */
+    protected $MAX_STRING_LENGTH = 256;
 
     public function __construct(string $typename = 'string', string $basetype = 'string')
     {
@@ -24,8 +30,8 @@ class Datatype_string extends \Formularium\Datatype
 
     public function getRandom(array $params = [])
     {
-        $min = $params[static::MIN_LENGTH]['value'] ?? 5;
-        $max = $params[static::MAX_LENGTH]['value'] ?? 15;
+        $min = $params[static::MIN_LENGTH]['value'] ?? $this->MIN_STRING_LENGTH;
+        $max = $params[static::MAX_LENGTH]['value'] ?? $this->MAX_STRING_LENGTH;
         return static::getRandomString($min, $max);
     }
 
@@ -42,7 +48,8 @@ class Datatype_string extends \Formularium\Datatype
         }
         $text = preg_replace('/<[^>]*>/', '', $data);
 
-        $value = MaxLength::validate($value, ['value' => $this->MAX_STRING_SIZE]);
+        $value = MinLength::validate($value, ['value' => $this->MIN_STRING_LENGTH]);
+        $value = MaxLength::validate($value, ['value' => $this->MAX_STRING_LENGTH]);
 
         return $text;
     }
