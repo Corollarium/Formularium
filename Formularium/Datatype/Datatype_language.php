@@ -227,6 +227,6 @@ class Datatype_language extends \Formularium\Datatype\Datatype_choice
 
     public function getDocumentation(): string
     {
-        return "Languages. Names are in the actual language. Codes follow ISO 639-1 codes.";
+        return "Languages. Names are in the actual language. This follows wikipedia, prefer 'languageiso2' for an ISO standard.";
     }
 }
