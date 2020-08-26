@@ -61,6 +61,9 @@ EOF;
     "renderable": {
         "title": "Title"
     },
+    "metadata": {
+        "some": "data"
+    },
     "fields": {
         "name": {
             "datatype": "string",
@@ -80,6 +83,9 @@ EOF;
                     "en": "Your full name",
                     "pt": "Seu nome completo"
                 }
+            },
+            "metadata": {
+                "other": "stuff"
             }
         }
     } 

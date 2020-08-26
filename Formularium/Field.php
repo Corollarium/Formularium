@@ -27,6 +27,11 @@ class Field
      */
     protected $validators;
 
+    /**
+     * @var array
+     */
+    protected $metadata;
+
     public static function getFromData(string $name, array $data) : Field
     {
         if (!$name) {
@@ -35,7 +40,7 @@ class Field
         if (!array_key_exists('datatype', $data)) {
             throw new Exception("Missing type in field data for $name");
         }
-        return new Field($name, $data['datatype'], $data['renderable'] ?? [], $data['validators'] ?? []);
+        return new Field($name, $data['datatype'], $data['renderable'] ?? [], $data['validators'] ?? [], $data['metadata'] ?? []);
     }
 
     /**
@@ -43,8 +48,9 @@ class Field
      * @param string|Datatype $datatype
      * @param array $renderable
      * @param array $validators
+     * @param array $metadata
      */
-    public function __construct(string $name, $datatype, array $renderable = [], array $validators = [])
+    public function __construct(string $name, $datatype, array $renderable = [], array $validators = [], array $metadata = [])
     {
         $this->name = $name;
         if ($datatype instanceof Datatype) {
@@ -54,6 +60,7 @@ class Field
         }
         $this->renderable = $renderable;
         $this->validators = $validators;
+        $this->metadata = $metadata;
         foreach ($this->validators as $name => $data) {
             if (!is_array($data)) {
                 throw new Exception("Validator data for $name must be an array");
@@ -68,9 +75,9 @@ class Field
      * @param array $validators
      * @return self
      */
-    public function create(string $name, $datatype, array $renderable = [], array $validators = []): self
+    public static function create(string $name, $datatype, array $renderable = [], array $validators = [], array $metadata = []): self
     {
-        return new self($name, $datatype, $renderable, $validators);
+        return new self($name, $datatype, $renderable, $validators, $metadata);
     }
 
     public function getName(): string
@@ -140,6 +147,34 @@ class Field
         return $this->renderable[$name] ?? $default;
     }
 
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getMetadataValue(string $name, $default)
+    {
+        return $this->metadata[$name] ?? $default;
+    }
+
+    /**
+     * Sets an option value
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return self
+     */
+    public function setMetadataValue(string $name, $value): self
+    {
+        $this->metaata[$name] = $value;
+        return $this;
+    }
+
     public function toGraphqlQuery(): string
     {
         return $this->datatype->getGraphqlField($this->getName());
@@ -172,7 +207,8 @@ class Field
             'name' => $this->name,
             'datatype' => $this->datatype->getName(),
             'validators' => $this->validators,
-            'renderable' => $this->renderable
+            'renderable' => $this->renderable,
+            'metadata' => $this->metadata,
         ];
     }
 }

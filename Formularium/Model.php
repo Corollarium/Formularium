@@ -26,6 +26,11 @@ class Model
     protected $renderable = [];
 
     /**
+     * @var array
+     */
+    protected $metadata = [];
+
+    /**
      * Model data being processed.
      * @var array
      */
@@ -160,6 +165,16 @@ class Model
     }
 
     /**
+     * Returns metadata associated to the model.
+     *
+     * @return array
+     */
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    /**
      * @param string $name
      * @param mixed $default
      * @return mixed
@@ -186,6 +201,19 @@ class Model
             $this->fields,
             $function
         );
+    }
+
+    /**
+     * @param callable $mapFields
+     * @return array
+     */
+    public function mapFields(callable $function): array
+    {
+        $data = [];
+        foreach ($this->fields as $field) {
+            $data[] = $function($field);
+        }
+        return $data;
     }
 
     public function appendField(Field $f): self
@@ -296,7 +324,8 @@ class Model
                 return [
                     'datatype' => $f->getDatatype()->getName(),
                     'validators' => $f->getValidators(),
-                    'renderable' => $f->getRenderables()
+                    'renderable' => $f->getRenderables(),
+                    'metadata' => $f->getMetadata()
                 ];
             },
             $this->fields
@@ -304,6 +333,7 @@ class Model
         $model = [
             'name' => $this->name,
             'renderable' => $this->renderable,
+            'metadata' => $this->metadata,
             'fields' => $fields
         ];
         return $model;
@@ -498,9 +528,15 @@ class Model
         }
         if (array_key_exists('renderable', $data)) {
             if (!is_array($data['renderable'])) {
-                throw new Exception('Model extension must be an array');
+                throw new Exception('Model renderable must be an array');
             }
             $this->renderable = $data['renderable'];
+        }
+        if (array_key_exists('metadata', $data)) {
+            if (!is_array($data['metadata'])) {
+                throw new Exception('Model metadata must be an array');
+            }
+            $this->metadata = $data['metadata'];
         }
     }
 }
