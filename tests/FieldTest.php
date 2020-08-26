@@ -23,8 +23,13 @@ final class FieldTest extends TestCase
             'renderable' => [
                 Renderable::PLACEHOLDER => 'blabla'
             ],
-            'metadata' => [
-                'someitem' => 'somevalue'
+            'extradata' => [
+                [
+                    'name' => 'someitem',
+                    'args' => [
+                        ['name' => 'someparameter', 'value' => 'somevalue' ]
+                    ]
+                ]
             ]
         ];
         $field = Field::getFromData($name, $data);
@@ -32,11 +37,11 @@ final class FieldTest extends TestCase
         $this->assertInstanceOf(Datatype_string::class, $field->getDatatype());
         $this->assertEquals($data['validators'], $field->getValidators());
         $this->assertEquals($data['renderable'], $field->getRenderables());
-        $this->assertEquals($data['metadata'], $field->getMetadata());
         $this->assertEquals($data['renderable'][Renderable::PLACEHOLDER], $field->getRenderable('placeholder', 'x'));
         $this->assertEquals('xxx', $field->getRenderable('lalal', 'xxx'));
-        $this->assertEquals($data['metadata']['someitem'], $field->getMetadataValue('someitem', null));
-        $this->assertEquals('xxx', $field->getMetadataValue('someasdf', 'xxx'));
+        
+        $this->assertEquals('somevalue', $field->getExtradataValue('someitem', 'someparameter'));
+        $this->assertEquals('xxx', $field->getExtradataValue('someasdf', 'somevasfd', 'xxx'));
     }
 
     public function testMissingName()

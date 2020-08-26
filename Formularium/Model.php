@@ -10,6 +10,8 @@ use Formularium\Factory\ValidatorFactory;
  */
 class Model
 {
+    use ExtradataTrait;
+
     /**
      * @var string
      */
@@ -24,11 +26,6 @@ class Model
      * @var array
      */
     protected $renderable = [];
-
-    /**
-     * @var array
-     */
-    protected $metadata = [];
 
     /**
      * Model data being processed.
@@ -162,16 +159,6 @@ class Model
     public function getRenderables(): array
     {
         return $this->renderable;
-    }
-
-    /**
-     * Returns metadata associated to the model.
-     *
-     * @return array
-     */
-    public function getMetadata(): array
-    {
-        return $this->metadata;
     }
 
     /**
@@ -320,12 +307,12 @@ class Model
     public function serialize(): array
     {
         $fields = array_map(
-            function ($f) {
+            function (Field $f) {
                 return [
                     'datatype' => $f->getDatatype()->getName(),
                     'validators' => $f->getValidators(),
                     'renderable' => $f->getRenderables(),
-                    'metadata' => $f->getMetadata()
+                    'extradata' => $f->getExtradataSerialize()
                 ];
             },
             $this->fields
@@ -333,7 +320,7 @@ class Model
         $model = [
             'name' => $this->name,
             'renderable' => $this->renderable,
-            'metadata' => $this->metadata,
+            'extradata' => $this->getExtradataSerialize(),
             'fields' => $fields
         ];
         return $model;
@@ -532,11 +519,13 @@ class Model
             }
             $this->renderable = $data['renderable'];
         }
-        if (array_key_exists('metadata', $data)) {
-            if (!is_array($data['metadata'])) {
-                throw new Exception('Model metadata must be an array');
+        if (array_key_exists('extradata', $data)) {
+            if (!is_array($data['extradata'])) {
+                throw new Exception('Model extradata must be an array');
             }
-            $this->metadata = $data['metadata'];
+            foreach ($data['extradata'] as $mData) {
+                $this->extradata[] = new Extradata($mData['name'], $mData['args']);
+            }
         }
     }
 }

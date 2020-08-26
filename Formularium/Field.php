@@ -7,6 +7,8 @@ use Formularium\Factory\DatatypeFactory;
 
 class Field
 {
+    use ExtradataTrait;
+
     /**
      * @var string
      */
@@ -27,11 +29,6 @@ class Field
      */
     protected $validators;
 
-    /**
-     * @var array
-     */
-    protected $metadata;
-
     public static function getFromData(string $name, array $data) : Field
     {
         if (!$name) {
@@ -40,7 +37,7 @@ class Field
         if (!array_key_exists('datatype', $data)) {
             throw new Exception("Missing type in field data for $name");
         }
-        return new Field($name, $data['datatype'], $data['renderable'] ?? [], $data['validators'] ?? [], $data['metadata'] ?? []);
+        return new Field($name, $data['datatype'], $data['renderable'] ?? [], $data['validators'] ?? [], $data['extradata'] ?? []);
     }
 
     /**
@@ -48,9 +45,9 @@ class Field
      * @param string|Datatype $datatype
      * @param array $renderable
      * @param array $validators
-     * @param array $metadata
+     * @param array $extradata
      */
-    public function __construct(string $name, $datatype, array $renderable = [], array $validators = [], array $metadata = [])
+    public function __construct(string $name, $datatype, array $renderable = [], array $validators = [], array $extradata = [])
     {
         $this->name = $name;
         if ($datatype instanceof Datatype) {
@@ -60,11 +57,13 @@ class Field
         }
         $this->renderable = $renderable;
         $this->validators = $validators;
-        $this->metadata = $metadata;
         foreach ($this->validators as $name => $data) {
             if (!is_array($data)) {
                 throw new Exception("Validator data for $name must be an array");
             }
+        }
+        foreach ($extradata as $n => $d) {
+            $this->extradata[] = ($d instanceof Extradata) ? $d : new Extradata($d['name'], $d['args']);
         }
     }
 
@@ -75,9 +74,9 @@ class Field
      * @param array $validators
      * @return self
      */
-    public static function create(string $name, $datatype, array $renderable = [], array $validators = [], array $metadata = []): self
+    public static function create(string $name, $datatype, array $renderable = [], array $validators = [], array $extradata = []): self
     {
-        return new self($name, $datatype, $renderable, $validators, $metadata);
+        return new self($name, $datatype, $renderable, $validators, $extradata);
     }
 
     public function getName(): string
@@ -147,34 +146,6 @@ class Field
         return $this->renderable[$name] ?? $default;
     }
 
-    public function getMetadata(): array
-    {
-        return $this->metadata;
-    }
-
-    /**
-     * @param string $name
-     * @param mixed $default
-     * @return mixed
-     */
-    public function getMetadataValue(string $name, $default)
-    {
-        return $this->metadata[$name] ?? $default;
-    }
-
-    /**
-     * Sets an option value
-     *
-     * @param string $name
-     * @param mixed $value
-     * @return self
-     */
-    public function setMetadataValue(string $name, $value): self
-    {
-        $this->metadata[$name] = $value;
-        return $this;
-    }
-
     public function toGraphqlQuery(): string
     {
         return $this->datatype->getGraphqlField($this->getName());
@@ -208,7 +179,7 @@ class Field
             'datatype' => $this->datatype->getName(),
             'validators' => $this->validators,
             'renderable' => $this->renderable,
-            'metadata' => $this->metadata,
+            'extradata' => $this->extradata,
         ];
     }
 }

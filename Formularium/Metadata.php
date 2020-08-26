@@ -2,6 +2,8 @@
 
 namespace Formularium;
 
+use Formularium\Exception\Exception;
+
 /**
  * Class to store information about a validator, datatype, renderable or element
  * and its parameters.
@@ -22,6 +24,17 @@ final class Metadata
      * @var MetadataParameter[]
      */
     public $args;
+
+    public static function getFromData(string $name = null, array $data) : Metadata
+    {
+        if (!$name) {
+            $name = $data['name'] ?? null;
+        }
+        if (!$name) {
+            throw new Exception("Missing name in fields");
+        }
+        return new Metadata($name, $data['comment'] ?? '', $data['args'] ?? []);
+    }
 
     public function __construct(string $name, string $comment, array $args = [])
     {
@@ -100,5 +113,53 @@ EOF;
             }
         }
         return null;
+    }
+
+    /**
+     * Get the value of name
+     *
+     * @return  string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @param  string  $name
+     *
+     * @return  self
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of comment
+     *
+     * @return  string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set the value of comment
+     *
+     * @param  string  $comment
+     *
+     * @return  self
+     */
+    public function setComment(string $comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
     }
 }

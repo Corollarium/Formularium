@@ -61,9 +61,17 @@ EOF;
     "renderable": {
         "title": "Title"
     },
-    "metadata": {
-        "some": "data"
-    },
+    "extradata": [
+        {
+            "name": "some",
+            "args": [
+                {
+                    "name": "xlo",
+                    "value": "data"
+                }
+            ]
+        }
+    ],
     "fields": {
         "name": {
             "datatype": "string",
@@ -84,9 +92,17 @@ EOF;
                     "pt": "Seu nome completo"
                 }
             },
-            "metadata": {
-                "other": "stuff"
-            }
+            "extradata": [
+                {
+                    "name": "other",
+                    "args": [
+                        {
+                            "name": "data",
+                            "value": "data"
+                        }
+                    ]
+                }
+            ]
         }
     } 
 }
