@@ -9,12 +9,13 @@ trait ExtradataTrait
      */
     protected $extradata = [];
 
-    public function setExtradata(array $data)
+    public function setExtradata(array $data): self
     {
         $this->extradata = [];
         foreach ($data as $d) {
             $this->extradata[] = ($d instanceof Extradata) ? $d : Extradata::getFromData(null, $d);
         }
+        return $this;
     }
 
     /**
@@ -50,9 +51,9 @@ trait ExtradataTrait
 
     /**
      * @param string $name
-     * @return Extradata
+     * @return Extradata|null
      */
-    public function getExtradata(string $name)
+    public function getExtradata(string $name): ?Extradata
     {
         foreach ($this->extradata as $m) {
             if ($m->getName() === $name) {
