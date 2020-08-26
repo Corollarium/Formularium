@@ -204,7 +204,7 @@ class Model
     }
 
     /**
-     * @param callable $mapFields
+     * @param callable $function
      * @return array
      */
     public function mapFields(callable $function): array

@@ -171,7 +171,7 @@ class Field
      */
     public function setMetadataValue(string $name, $value): self
     {
-        $this->metaata[$name] = $value;
+        $this->metadata[$name] = $value;
         return $this;
     }
 
