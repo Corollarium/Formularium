@@ -132,8 +132,8 @@ abstract class Datatype
             $this->getName(),
             $this->getDocumentation() .
                 "\n\nRandom value example: " . var_export($this->getRandom(), true) .
-                "\n\nSQL datatype: " . $this->getSQLType() .
-                "\n\nLaravel SQL datatype: " . $this->getLaravelSQLType('name'),
+                "\n\nSQL datatype: `" . $this->getSQLType() . "`" .
+                "\n\nLaravel SQL datatype: `" . $this->getLaravelSQLType('name')  . "`",
             []
         );
     }
