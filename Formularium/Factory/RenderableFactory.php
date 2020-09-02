@@ -7,8 +7,12 @@ use Formularium\Framework;
 use Formularium\Renderable;
 use Formularium\Exception\ClassNotFoundException;
 
-final class RenderableFactory
+final class RenderableFactory extends AbstractRenderableFactory
 {
+    protected static $namespaces = [
+        'Formularium\\Frontend',
+    ];
+
     /**
      * @codeCoverageIgnore
      */
@@ -32,22 +36,29 @@ final class RenderableFactory
             $datatype = DatatypeFactory::factory($datatypeName);
         }
 
-        $frameworkClassname = get_class($framework);
-        $lastpos = strrpos($frameworkClassname, '\\');
-        if ($lastpos === false) {
-            $ns = '';
-        } else {
-            $ns = '\\' . substr($frameworkClassname, 0, $lastpos);
-        }
-        $class = "$ns\\Renderable\\Renderable_$datatypeName";
-        if (!class_exists($class)) {
+        $frameworkClassname = $framework->getName();
+        foreach (static::$namespaces as $ns) {
+            $class = "$ns\\$frameworkClassname\\Renderable\\Renderable_$datatypeName";
+            if (class_exists($class)) {
+                return new $class($framework);
+            }
             $basetype = $datatype->getBasetype();
-            $class = "$ns\\Renderable\\Renderable_$basetype";
+            $class = "$ns\\$frameworkClassname\\Renderable\\Renderable_$basetype";
+            if (class_exists($class)) {
+                return new $class($framework);
+            }
         }
-        if (!class_exists($class)) {
-            // TODO: namespaces
-            throw new ClassNotFoundException("Invalid datatype '$datatypeName' for {$framework->getName()}");
+
+        // external factories
+        foreach (static::$factories as $f) {
+            try {
+                return $f($datatype, $framework);
+            } catch (ClassNotFoundException $e) {
+                continue;
+            }
         }
-        return new $class($framework);
+
+        // TODO: namespaces
+        throw new ClassNotFoundException("Invalid datatype '$datatypeName' for {$framework->getName()}");
     }
 }
