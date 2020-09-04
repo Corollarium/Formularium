@@ -77,6 +77,20 @@ class Framework extends \Formularium\Framework
      */
     protected $extraProps = [];
 
+    /**
+     * extra data fields
+     *
+     * @var string[]
+     */
+    protected $extraData = [];
+
+    /**
+     * The list of imports to add: import 'key' from 'value'
+     *
+     * @var string[]
+     */
+    protected $imports = [];
+
     public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
@@ -249,10 +263,17 @@ class Framework extends \Formularium\Framework
         return "{\n        " . implode(",\n        ", $s) . "\n    }\n";
     }
 
-    public function viewableCompose(Model $m, array $elements, string $previousCompose): string
+    /**
+     * Generates template data for rendering
+     *
+     * @param Model $m
+     * @param array $elements
+     * @return array
+     */
+    protected function getTemplateData(Model $m, array $elements): array
     {
         $data = array_merge($m->getDefault(), $m->getData());
-        $viewableForm = join('', $elements);
+        $form = join('', $elements);
         $jsonData = json_encode($data);
         $props = $this->props($m);
         $propsBind = array_map(
@@ -262,13 +283,32 @@ class Framework extends \Formularium\Framework
             array_keys($props)
         );
         $templateData = [
-            'containerTag' => $this->getViewableContainerTag(),
-            'form' => $viewableForm,
+            'form' => $form,
             'jsonData' => $jsonData,
             'props' => $props,
             'propsCode' => $this->serializeProps($props),
-            'propsBind' => implode(' ', $propsBind)
+            'propsBind' => implode(' ', $propsBind),
+            'imports' => implode(
+                "\n",
+                array_map(function ($key, $value) {
+                    return "import $key from \"$value\";";
+                }, array_keys($this->imports), $this->imports)
+            ),
+            'extraData' => implode(
+                "\n",
+                array_map(function ($key, $value) {
+                    return "  $key: $value,";
+                }, array_keys($this->extraData), $this->extraData)
+            )
         ];
+
+        return $templateData;
+    }
+
+    public function viewableCompose(Model $m, array $elements, string $previousCompose): string
+    {
+        $templateData = $this->getTemplateData($m, $elements);
+        $templateData['containerTag'] = $this->getViewableContainerTag();
 
         if (is_callable($this->viewableTemplate)) {
             return call_user_func(
@@ -304,11 +344,11 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $viewableForm, true);
+            $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $$templateData['form'], true);
             $script = <<<EOF
 const app_$id = new Vue({
     el: '#$id',
-    data: $jsonData
+    data: {$templateData['jsonData']}
 });
 EOF;
             $s = new HTMLNode('script', [], $script, true);
@@ -318,26 +358,10 @@ EOF;
 
     public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
-        $data = array_merge($m->getDefault(), $m->getData());
-        $editableContainerTag = $this->getEditableContainerTag();
-        $editableForm = join('', $elements);
-        $jsonData = json_encode($data);
-        $props = $this->props($m);
-        $propsBind = array_map(
-            function ($p) {
-                return 'v-bind:' . $p . '="model.' . $p . '"';
-            },
-            array_keys($props)
-        );
-        $templateData = [
-            'containerTag' => $editableContainerTag,
-            'form' => $editableForm,
-            'jsonData' => $jsonData,
-            'props' => $props,
-            'propsCode' => $this->serializeProps($props),
-            'propsBind' => implode(' ', $propsBind),
-            'methods' => [
-                'changedFile' => <<<EOF
+        $templateData = $this->getTemplateData($m, $elements);
+        $templateData['containerTag'] = $this->getEditableContainerTag();
+        $templateData['methods'] = [
+            'changedFile' => <<<EOF
 changedFile(name, event) {
     console.log(name, event);
     const input = event.target;
@@ -347,7 +371,6 @@ changedFile(name, event) {
     }
 }
 EOF
-            ]
         ];
 
         if (is_callable($this->editableTemplate)) {
@@ -371,6 +394,7 @@ EOF
 </{{containerTag}}>
 </template>
 <script>
+{{imports}}
 module.exports = {
     data: function () {
         return {{jsonData}};
@@ -393,12 +417,12 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLNode($editableContainerTag, ['id' => $id], $editableForm, true);
+            $t = new HTMLNode($templateData['containerTag'], ['id' => $id], $templateData['form'], true);
             $script = <<<EOF
 const app_$id = new Vue({
     el: '#$id',
     data: function () {
-        return $jsonData;
+        return {$templateData['jsonData']};
     },
     methods: {
     }
@@ -459,7 +483,7 @@ EOF;
     /**
      * @return array
      */
-    public function getExtraPropos(): array
+    public function getExtraProps(): array
     {
         return $this->extraProps;
     }
@@ -486,6 +510,33 @@ EOF;
     public function appendExtraProp(array $extra): self
     {
         $this->extraProps[] = $extra;
+
+        return $this;
+    }
+
+    /**
+     * Appends to the `data` field.
+     *
+     * @param string $name
+     * @param string $value
+     * @return self
+     */
+    public function appendExtraData(string $name, string $value): self
+    {
+        $this->extraData[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * The list of imports to add: import 'key' from 'value'
+     *
+     * @param string $key
+     * @param string $value
+     * @return self
+     */
+    public function appendImport(string $key, string $value): self
+    {
+        $this->imports[$key] = $value;
 
         return $this;
     }
