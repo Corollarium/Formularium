@@ -8,9 +8,16 @@ use Formularium\Frontend\HTML\Renderable;
 
 trait RenderableBootstrapWrapperTrait
 {
+    /**
+     *
+     *
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLNode $previous
+     * @return HTMLNode
+     */
     public function wrapper($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        /** @var HTMLNode $base */
         $previous->addAttributes([
             'class' => "form-group",
             'data-attribute' => $field->getName(),
@@ -28,7 +35,7 @@ trait RenderableBootstrapWrapperTrait
      * @param HTMLNode $previous
      * @return HTMLNode
      */
-    public function bootstrapify($value, Field $field, HTMLNode $previous, $tag = 'input'): HTMLNode
+    public function bootstrapify($value, Field $field, HTMLNode $previous, string $tag = 'input'): HTMLNode
     {
         // add extra classes
         $input = $previous->get($tag)[0];
