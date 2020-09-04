@@ -399,4 +399,56 @@ EOF;
         $this->assertContains('someOther: String!', $t);
         $this->assertContains('@renderable( label: "Some other" )', $t);
     }
+
+    public function testFirstField()
+    {
+        $modelData = [
+            'name' => 'TestModel',
+            'fields' => [
+                'someInteger' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true,
+                        ]
+                    ]
+                ],
+                'someOther' => [
+                    'datatype' => 'integer',
+                    'validators' => [
+                        Min::class => [
+                            'value' => 4,
+                        ],
+                        Max::class => [
+                            'value' => 30,
+                        ],
+                    ]
+                ]
+            ]
+        ];
+        $model = Model::fromStruct($modelData);
+
+        // required
+        $r = $model->firstField(
+            function (Field $field) {
+                return $field->getValidator(Datatype::REQUIRED, false);
+            }
+        );
+        $this->assertInstanceOf(Field::class, $r);
+        $this->assertEquals('someInteger', $r->getName());
+
+        // required
+        $r = $model->firstField(
+            function (Field $field) {
+                return false;
+            }
+        );
+        $this->assertNull($r);
+    }
 }
