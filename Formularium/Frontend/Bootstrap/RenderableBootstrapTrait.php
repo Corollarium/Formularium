@@ -7,6 +7,8 @@ use Formularium\HTMLNode;
 
 trait RenderableBootstrapTrait
 {
+    use RenderableBootstrapWrapperTrait;
+    
     /**
      * Subcall of wrapper editable() from RenderableMaterializeTrait
      *
@@ -19,14 +21,6 @@ trait RenderableBootstrapTrait
 
     public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        /** @var HTMLNode $base */
-        $base = $this->_editable($value, $field, $previous);
-        $base->addAttributes([
-            'class' => "form-group",
-            'data-attribute' => $field->getName(),
-            'data-datatype' => $field->getDatatype()->getName(),
-            'data-basetype' => $field->getDatatype()->getBasetype()
-        ]);
-        return $base;
+        return $this->wrapper($value, $field, $this->_editable($value, $field, $previous));
     }
 }
