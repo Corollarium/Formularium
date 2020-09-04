@@ -177,6 +177,22 @@ class Model
     }
 
     /**
+     * Returns the first field matching a function.
+     *
+     * @param callable $function. Receives a Field as argument.
+     * @return Field
+     */
+    public function firstField(callable $function): ?Field
+    {
+        foreach ($this->getFields() as $f) {
+            if ($function($f)) {
+                return $f;
+            }
+        }
+        return null;
+    }
+
+    /**
      * filter operation for fields that return true for callable.
      *
      * @param callable $function. Receives a Field as argument.
