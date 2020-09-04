@@ -344,7 +344,7 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $$templateData['form'], true);
+            $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $templateData['form'], true);
             $script = <<<EOF
 const app_$id = new Vue({
     el: '#$id',
