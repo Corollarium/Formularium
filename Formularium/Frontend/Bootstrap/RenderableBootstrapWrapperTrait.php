@@ -38,7 +38,11 @@ trait RenderableBootstrapWrapperTrait
     public function bootstrapify($value, Field $field, HTMLNode $previous, string $tag = 'input'): HTMLNode
     {
         // add extra classes
-        $input = $previous->get($tag)[0];
+        $input = $previous->get($tag);
+        if (!$input) {
+            return $previous;
+        }
+        $input = $input[0];
         $input->addAttributes([
             'class' => 'form-control',
         ]);
