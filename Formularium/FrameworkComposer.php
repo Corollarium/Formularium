@@ -14,7 +14,7 @@ class FrameworkComposer
     protected $frameworks = [];
 
     /**
-     * @param Framework[] $frameworks
+     * @param Framework[]|string[] $frameworks
      */
     public function __construct(array $frameworks = [])
     {
@@ -22,7 +22,7 @@ class FrameworkComposer
     }
 
     /**
-     * @param Framework[] $frameworks
+     * @param Framework[]|string[] $frameworks
      */
     public static function create(array $frameworks = []): FrameworkComposer
     {
@@ -53,7 +53,7 @@ class FrameworkComposer
     }
 
     /**
-     * @param Framework[] $frameworks
+     * @param Framework[]|string[] $frameworks
      * @return void
      */
     public function setFrameworks(array $frameworks = [])
