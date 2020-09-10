@@ -79,9 +79,11 @@ abstract class Datatype
      * Returns the Graphql query for this datatype.
      *
      * @param string $name The field name
+     * @param array $params User supplied list of parameters, which may be used
+     * to control behavior (like recursion)
      * @return string
      */
-    public function getGraphqlField(string $name): string
+    public function getGraphqlField(string $name, array $params = []): string
     {
         return $name;
     }

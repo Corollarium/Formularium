@@ -351,14 +351,21 @@ class Model
         return $t;
     }
 
-    public function toGraphqlQuery(): string
+    /**
+     * Generates a GraphQL query for this model.
+     *
+     * @param array $params User supplied list of parameters, which may be used
+     * to control behavior (like recursion).
+     * @return string
+     */
+    public function toGraphqlQuery(array $params = []): string
     {
         $defs = [];
         foreach ($this->getFields() as $field) {
             /**
              * @var Field $field
              */
-            $defs[] = $field->toGraphqlQuery();
+            $defs[] = $field->toGraphqlQuery($params);
         }
         return join("\n", $defs);
     }
