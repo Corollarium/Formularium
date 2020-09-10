@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use Formularium\Factory\ValidatorFactory;
+
 require('vendor/autoload.php');
 
 $shortopts = "v:p::t::";
@@ -20,11 +22,11 @@ $namespace = $options['namespace'] ?? 'Formularium\\Validator';
 $path = $options['path'] ?? "Formularium/Validator/" ;
 $testpath = $options['testpath'] ?? "tests/Validator" ;
 
-$code = \Formularium\ValidatorFactory::generate(
+$code = ValidatorFactory::generate(
     $validator,
     $namespace
 );
-$retval = \Formularium\ValidatorFactory::generateFile(
+$retval = ValidatorFactory::generateFile(
     $code,
     $path,
     $testpath

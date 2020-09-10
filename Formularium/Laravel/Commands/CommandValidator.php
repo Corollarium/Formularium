@@ -46,7 +46,7 @@ class CommandValidator extends Command
     {
         $code = ValidatorFactory::generate(
             // @phpstan-ignore-next-line
-            (string)$this->parameter('name'),
+            (string)$this->argument('name'),
             // @phpstan-ignore-next-line
             $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Validators'
         );

@@ -39,7 +39,7 @@ trait RenderableBootstrapWrapperTrait
     {
         // add extra classes
         $input = $previous->get($tag);
-        if (!$input) {
+        if (empty($input)) {
             return $previous;
         }
         $input = $input[0];
