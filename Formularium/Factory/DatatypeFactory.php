@@ -126,6 +126,7 @@ namespace $testNamespace;
 
 use Formularium\Datatype;
 use Formularium\Factory\DatatypeFactory;
+use FormulariumTests\Datatype\DatatypeBaseTestCase;
 
 class ${datatype}Test extends DatatypeBaseTestCase
 {
