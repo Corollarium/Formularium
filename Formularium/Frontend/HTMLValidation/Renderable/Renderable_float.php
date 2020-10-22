@@ -4,6 +4,8 @@ namespace Formularium\Frontend\HTMLValidation\Renderable;
 
 use Formularium\Field;
 use Formularium\HTMLNode;
+use Formularium\Validator\Max;
+use Formularium\Validator\Min;
 
 class Renderable_float extends Renderable_number
 {
@@ -11,15 +13,13 @@ class Renderable_float extends Renderable_number
     {
         $validators = $field->getValidators();
         /**
-         * @var HTMLNode $element
+         * @var HTMLNode|null $element
          */
         $element = $this->getInput($previous);
         if (!$element) {
             return $previous;
         }
 
-        /** @var Datatype_integer $datatype */
-        $datatype = $field->getDatatype();
         $element->setAttribute('min', $field->getValidatorOption(Min::class, 'value', ''));
         $element->setAttribute('max', $field->getValidatorOption(Max::class, 'value', ''));
 

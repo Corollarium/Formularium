@@ -14,7 +14,7 @@ class Renderable_integer extends Renderable_number
     {
         $validators = $field->getValidators();
         /**
-         * @var HTMLNode $element
+         * @var HTMLNode|null $element
          */
         $element = $this->getInput($previous);
         if (!$element) {
