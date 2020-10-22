@@ -3,6 +3,7 @@
 namespace Formularium;
 
 use Formularium\Exception\Exception;
+use Formularium\Exception\NoRandomException;
 use Formularium\Factory\ValidatorFactory;
 
 /**
@@ -411,7 +412,7 @@ class Model
      * @param array $modelData Actual data for the fields to render. Can be empty.
      * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
      * be an array of strings (field names) or a callback which is called for each field.
-     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * Callable signature: (Field $field, Model $m): boolean
      * @return HTMLNode[]
      */
     public function viewableNodes(FrameworkComposer $composer, array $modelData, $restrictFields = null): array
@@ -489,17 +490,34 @@ class Model
      *
      * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
      * be an array of strings (field names) or a callback which is called for each field.
-     * Callable signature: (Field $field, Model $m, array $modelData): boolean
+     * If a list of strings, only process the field names present in that list.
+     * If it's a callable, throw `NoRandomException` to ignore a field, and a random value otherwise
+     * (you can call `$field->getDatatype()->getRandom()` for the default).
+     * Callable signature: (Field $field, Model $m): mixed
      * @return array An associative array field name => data.
      */
     public function getRandom($restrictFields = null): array
     {
-        $this->_restrictFields = $restrictFields;
         $data = [];
-        foreach ($this->getFields() as $f) {
-            $data[$f->getName()] = $f->getDatatype()->getRandom();
+
+        foreach ($this->fields as $field) {
+            /**
+             * @var Field $field
+             */
+            if (is_array($restrictFields) && !in_array($field->getName(), $restrictFields)) {
+                continue;
+            } elseif (is_callable($restrictFields)) {
+                try {
+                    $data[$field->getName()] = $restrictFields($field, $this);
+                }
+                catch (NoRandomException $e) {
+                    // pass
+                }
+            }
+            else {
+                $data[$field->getName()] = $field->getDatatype()->getRandom();
+            }
         }
-        $this->_restrictFields = null;
         return $data;
     }
 
