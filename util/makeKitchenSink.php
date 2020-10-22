@@ -161,8 +161,8 @@ function kitchenSink($frameworkName, string $templateName)
             $randomData[$f->getName()] = $f->getDatatype()->getRandom();
         }
     }
-    $modelViewable = $model->viewable($framework, $randomData);
-    $modelEditable = $model->editable($framework);
+    $modelViewable = ''; // TODO $model->viewable($framework, $randomData);
+    $modelEditable = ''; // TODO $model->editable($framework);
 
     $title = join('/', $frameworkName);
     $template = file_get_contents(__DIR__ . '/kitchentemplates/' . $templateName);
