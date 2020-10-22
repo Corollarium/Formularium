@@ -17,10 +17,17 @@ abstract class Renderable implements RenderableParameter
      */
     protected $framework;
 
-    public function __construct(Framework $framework)
+    /**
+     * @var FrameworkComposer
+     */
+    protected $composer;
+
+    public function __construct(Framework $framework, FrameworkComposer $composer = null)
     {
         $this->framework = $framework;
+        $this->composer = $composer;
     }
+
     /**
      * Renders a view-only version of this renderable.
      *

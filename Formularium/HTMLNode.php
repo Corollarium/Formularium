@@ -40,6 +40,13 @@ class HTMLNode
     protected $renderIfEmpty = true;
 
     /**
+     * Extra data stored with this node that might be used by the frameworks.
+     *
+     * @var Metadata
+     */
+    protected $metadata = null;
+
+    /**
      * Create a HTML Element
      * @param string $tag The tag name of Element
      * @param array $attributes The attribute with values
@@ -52,6 +59,7 @@ class HTMLNode
     public function __construct(string $tag, array $attributes = [], $content = '', $raw = false)
     {
         $this->tag = $tag;
+        $this->metadata = new Metadata('HTMLNode', '', []);
 
         $this->setAttributes($attributes);
 
@@ -87,6 +95,15 @@ class HTMLNode
     {
         $this->renderIfEmpty = $val;
         return $this;
+    }
+
+    /**
+     * Gets metadata.
+     * @return Metadata
+     */
+    public function getMetadata(): Metadata
+    {
+        return $this->metadata;
     }
 
     /**

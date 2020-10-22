@@ -99,7 +99,7 @@ class Pagination extends Element
                 continue;
             }
             try {
-                $element = $framework->getElement($this->getName());
+                $element = $framework->getElement($this->getName(), $this->composer);
                 $node = $element->render($parameters, $node);
             } catch (ClassNotFoundException $e) {
                 continue; // element default

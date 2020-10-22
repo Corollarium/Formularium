@@ -15,6 +15,7 @@ class Framework extends \Formularium\Framework
     const VUE_MODE_EMBEDDED = 'VUE_MODE_EMBEDDED';
     const VUE_PROP = 'VUE_PROP';
     const VUE_VARS = 'VUE_VARS';
+    const VUE_CODE = 'VUE_CODE';
 
     /**
      * @var string
@@ -71,29 +72,14 @@ class Framework extends \Formularium\Framework
     protected $fieldModelVariable = '';
 
     /**
-     * Extra props.
-     *
-     * @var array
+     * @var VueCode
      */
-    protected $extraProps = [];
-
-    /**
-     * extra data fields
-     *
-     * @var string[]
-     */
-    protected $extraData = [];
-
-    /**
-     * The list of imports to add: import 'key' from 'value'
-     *
-     * @var string[]
-     */
-    protected $imports = [];
+    protected $vueCode = null;
 
     public function __construct(string $name = 'Vue')
     {
         parent::__construct($name);
+        $this->vueCode = new VueCode();
     }
 
     /**
@@ -220,95 +206,13 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    public function mapType(Datatype $type): string
-    {
-        if ($type instanceof Datatype_number) {
-            return 'Number';
-        } elseif ($type instanceof Datatype_bool) {
-            return 'Boolean';
-        }
-        return 'String';
-    }
-
-    public function props(Model $m): array
-    {
-        $props = [];
-        foreach ($m->getFields() as $field) {
-            if ($field->getRenderable(self::VUE_PROP, true)) {
-                $p = [
-                    'name' => $field->getName(),
-                    'type' => $this->mapType($field->getDatatype()),
-                ];
-                if ($field->getRenderable(Datatype::REQUIRED, false)) {
-                    $p['required'] = true;
-                }
-                $props[] = $p;
-            }
-        }
-        foreach ($this->extraProps as $p) {
-            if (!array_key_exists('name', $p)) {
-                throw new Exception('Missing prop name');
-            }
-            $props[] = $p;
-        }
-        
-        return $props;
-    }
-
-    protected function serializeProps(array $props): string
-    {
-        $s = array_map(function ($p) {
-            return "'{$p['name']}': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
-        }, $props);
-        return "{\n        " . implode(",\n        ", $s) . "\n    }\n";
-    }
-
-    /**
-     * Generates template data for rendering
-     *
-     * @param Model $m
-     * @param array $elements
-     * @return array
-     */
-    protected function getTemplateData(Model $m, array $elements): array
-    {
-        $data = array_merge($m->getDefault(), $m->getData());
-        $form = join('', $elements);
-        $jsonData = json_encode($data);
-        $props = $this->props($m);
-        $propsBind = array_map(
-            function ($p) {
-                return 'v-bind:' . $p . '="model.' . $p . '"';
-            },
-            array_keys($props)
-        );
-        $templateData = [
-            'form' => $form,
-            'jsonData' => $jsonData,
-            'props' => $props,
-            'propsCode' => $this->serializeProps($props),
-            'propsBind' => implode(' ', $propsBind),
-            'imports' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "import $key from \"$value\";";
-                }, array_keys($this->imports), $this->imports)
-            ),
-            'extraData' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "  $key: $value,";
-                }, array_keys($this->extraData), $this->extraData)
-            )
-        ];
-
-        return $templateData;
-    }
-
     public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
-        $templateData = $this->getTemplateData($m, $elements);
-        $templateData['containerTag'] = $this->getViewableContainerTag();
+        $templateData = [
+            'containerTag' => $this->getViewableContainerTag(),
+            'form' => join('', $elements),
+            'script' => $this->vueCode->toScript($m, $elements)
+        ];
 
         if (is_callable($this->viewableTemplate)) {
             return call_user_func(
@@ -325,13 +229,7 @@ class Framework extends \Formularium\Framework
 </{{containerTag}}>
 </template>
 <script>
-module.exports = {
-    data: function () {
-        return {{jsonData}};
-    },
-    methods: {
-    }
-};
+{{{script}}}
 </script>
 <style>
 </style>
@@ -343,14 +241,12 @@ EOF;
                 $m
             );
         } else {
+            // TODO: this is likely broken
             $id = 'vueapp' . static::counter();
             $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $templateData['form'], true);
-            $script = <<<EOF
-const app_$id = new Vue({
-    el: '#$id',
-    data: {$templateData['jsonData']}
-});
-EOF;
+            $vars = $this->vueCode->toVariable($m, $elements);
+            $this->vueCode->appendOther('el', "#$id");
+            $script = "const app_$id = new Vue({$vars});";
             $s = new HTMLNode('script', [], $script, true);
             return HTMLNode::factory('div', [], [$t, $s])->getRenderHTML();
         }
@@ -358,21 +254,12 @@ EOF;
 
     public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
-        $templateData = $this->getTemplateData($m, $elements);
-        $templateData['containerTag'] = $this->getEditableContainerTag();
-        $templateData['methods'] = [
-            'changedFile' => <<<EOF
-changedFile(name, event) {
-    console.log(name, event);
-    const input = event.target;
-    const files = input.files;
-    if (files && files[0]) {
-        // input.preview = window.URL.createObjectURL(files[0]);
-    }
-}
-EOF
+        $templateData = [
+            'containerTag' => $this->getEditableContainerTag(),
+            'form' => join('', $elements),
+            'script' => $this->vueCode->toScript($m, $elements)
         ];
-
+        
         if (is_callable($this->editableTemplate)) {
             return call_user_func(
                 $this->editableTemplate,
@@ -394,18 +281,7 @@ EOF
 </{{containerTag}}>
 </template>
 <script>
-{{imports}}
-module.exports = {
-    data: function () {
-        return {{jsonData}};
-    },
-    props: {
-        {{propsCode}}
-    },
-    methods: {
-        {{methods}}
-    }
-};
+{{{script}}}
 </script>
 <style>
 </style>
@@ -418,16 +294,9 @@ EOF;
         } else {
             $id = 'vueapp' . static::counter();
             $t = new HTMLNode($templateData['containerTag'], ['id' => $id], $templateData['form'], true);
-            $script = <<<EOF
-const app_$id = new Vue({
-    el: '#$id',
-    data: function () {
-        return {$templateData['jsonData']};
-    },
-    methods: {
-    }
-});
-EOF;
+            $this->vueCode->appendOther('el', "#$id");
+            $vars = $this->vueCode->toVariable($m, $elements);
+            $script = "const app_$id = new Vue({{$vars}});";
             $s = new HTMLNode('script', [], $script, true);
             return HTMLNode::factory('div', [], [$t, $s])->getRenderHTML();
         }
@@ -481,63 +350,12 @@ EOF;
     }
 
     /**
-     * @return array
+     * Get the value of vueCode
+     *
+     * @return  VueCode
      */
-    public function getExtraProps(): array
+    public function getVueCode()
     {
-        return $this->extraProps;
-    }
-
-    /**
-     *
-     * @param array $extraProps
-     *
-     * @return  self
-     */
-    public function setExtraProps(array $extraProps): self
-    {
-        $this->extraProps = $extraProps;
-
-        return $this;
-    }
-
-    /**
-     *
-     * @param array $extra Array of props. 'name' and 'type' keys are required for each element.
-     *
-     * @return  self
-     */
-    public function appendExtraProp(array $extra): self
-    {
-        $this->extraProps[] = $extra;
-
-        return $this;
-    }
-
-    /**
-     * Appends to the `data` field.
-     *
-     * @param string $name
-     * @param string $value
-     * @return self
-     */
-    public function appendExtraData(string $name, string $value): self
-    {
-        $this->extraData[$name] = $value;
-        return $this;
-    }
-
-    /**
-     * The list of imports to add: import 'key' from 'value'
-     *
-     * @param string $key
-     * @param string $value
-     * @return self
-     */
-    public function appendImport(string $key, string $value): self
-    {
-        $this->imports[$key] = $value;
-
-        return $this;
+        return $this->vueCode;
     }
 }

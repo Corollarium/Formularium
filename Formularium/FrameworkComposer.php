@@ -151,9 +151,8 @@ class FrameworkComposer
             $html = new HTMLNode('');
             foreach ($this->getFrameworks() as $framework) {
                 try {
-                    $r = $framework->getRenderable($field->getDatatype());
-                    $x = $r->viewable($value, $field, $html);
-                    $html = $x;
+                    $r = $framework->getRenderable($field->getDatatype(), $this);
+                    $html = $r->viewable($value, $field, $html);
                 } catch (ClassNotFoundException $e) {
                     continue; // renderable default
                 }
@@ -195,7 +194,7 @@ class FrameworkComposer
             $html = new HTMLNode('');
             foreach ($this->getFrameworks() as $framework) {
                 try {
-                    $r = $framework->getRenderable($field->getDatatype());
+                    $r = $framework->getRenderable($field->getDatatype(), $this);
                     $html = $r->editable($value, $field, $html);
                 } catch (ClassNotFoundException $e) {
                     continue; // renderable default

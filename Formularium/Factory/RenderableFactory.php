@@ -6,6 +6,7 @@ use Formularium\Datatype;
 use Formularium\Framework;
 use Formularium\Renderable;
 use Formularium\Exception\ClassNotFoundException;
+use Formularium\FrameworkComposer;
 
 final class RenderableFactory extends AbstractRenderableFactory
 {
@@ -27,7 +28,7 @@ final class RenderableFactory extends AbstractRenderableFactory
      * @param Framework $framework
      * @return Renderable
      */
-    public static function factory($datatype, Framework $framework): Renderable
+    public static function factory($datatype, Framework $framework, FrameworkComposer $composer = null): Renderable
     {
         if ($datatype instanceof Datatype) {
             $datatypeName = $datatype->getName();
@@ -40,19 +41,19 @@ final class RenderableFactory extends AbstractRenderableFactory
         foreach (static::$namespaces as $ns) {
             $class = "$ns\\$frameworkClassname\\Renderable\\Renderable_$datatypeName";
             if (class_exists($class)) {
-                return new $class($framework);
+                return new $class($framework, $composer);
             }
             $basetype = $datatype->getBasetype();
             $class = "$ns\\$frameworkClassname\\Renderable\\Renderable_$basetype";
             if (class_exists($class)) {
-                return new $class($framework);
+                return new $class($framework, $composer);
             }
         }
 
         // external factories
         foreach (static::$factories as $f) {
             try {
-                return $f($datatype, $framework);
+                return $f($datatype, $framework, $composer);
             } catch (ClassNotFoundException $e) {
                 continue;
             }

@@ -132,7 +132,8 @@ The output is a nice HTML that you can use as basis for your forms. See the gene
 Formularium is built in a way that generators can be chained, so you can combine a basic HTML form generator, with a CSS framework and a JS validator, or possibly get the form into a Vue or React component. We provide a number of frontend plugins and you can easily extend with your own (and submit a PR!).
 
 - Base generators:
-  - Pure HTML
+  - HTML: Pure HTML
+  - HTMLValidation: Form Validation in pure HTML (no js)
   - Future: Nativescript
   - Future: React Native
 - CSS Frameworks:

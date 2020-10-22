@@ -45,20 +45,20 @@ class Renderable extends \Formularium\Renderable
         return $previous;
     }
 
+    /**
+     * @param HTMLNode $previous
+     * @return HTMLNode|null
+     */
     protected function getInput(HTMLNode $previous): ?HTMLNode
     {
-        /**
-         * @var HTMLNode $element
-         */
-        $element = null;
         $input = $previous->get('input');
         if (count($input)) {
             return $input[0];
         }
         $input = $previous->get('textarea');
         if (count($input)) {
-            $element = $input[0];
+            return $input[0];
         }
-        return $element;
+        return null;
     }
 }

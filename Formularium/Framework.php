@@ -30,9 +30,9 @@ abstract class Framework
         $this->name = $name;
     }
 
-    public function getRenderable(Datatype $datatype): Renderable
+    public function getRenderable(Datatype $datatype, FrameworkComposer $composer = null): Renderable
     {
-        return RenderableFactory::factory($datatype, $this);
+        return RenderableFactory::factory($datatype, $this, $composer);
     }
 
     public function getElement(string $name, FrameworkComposer $composer = null): Element
