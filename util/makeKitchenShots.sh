@@ -1,16 +1,16 @@
 #!/bin/sh
 
 declare -A URLS
-URLS[HTMLBootstrapQuill]=HTMLBootstrapQuill.html
-URLS[HTMLBootstrapQuillParsley]=HTMLBootstrapQuillParsley.html
-URLS[HTMLBootstrapReact]=HTMLBootstrapReact.html
-URLS[HTMLBootstrapVue]=HTMLBootstrapVue.html
-URLS[HTMLBuefyVue]=HTMLBuefyVue.html
-URLS[HTMLBulmaQuill]=HTMLBulmaQuill.html
-URLS[HTMLBulmaQuillVue]=HTMLBulmaQuillVue.html
-URLS[HTMLMaterialize]=HTMLMaterialize.html
-URLS[HTMLQuill]=HTMLQuill.html
-URLS[HTMLReact]=HTMLReact.html
+URLS[HTMLBootstrapQuill]=HTMLHTMLValidationBootstrapQuill.html
+URLS[HTMLBootstrapQuillParsley]=HTMLHTMLValidationBootstrapQuillParsley.html
+URLS[HTMLBootstrapReact]=HTMLHTMLValidationBootstrapReact.html
+URLS[HTMLBootstrapVue]=HTMLHTMLValidationBootstrapVue.html
+URLS[HTMLBuefyVue]=HTMLHTMLValidationBuefyVue.html
+URLS[HTMLBulmaQuill]=HTMLHTMLValidationBulmaQuill.html
+URLS[HTMLBulmaQuillVue]=HTMLHTMLValidationBulmaQuillVue.html
+URLS[HTMLMaterialize]=HTMLHTMLValidationMaterialize.html
+URLS[HTMLQuill]=HTMLHTMLValidationQuill.html
+URLS[HTMLReact]=HTMLHTMLValidationReact.html
 
 for key in "${!URLS[@]}"
 do

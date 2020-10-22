@@ -12,10 +12,10 @@ Check:
 
 ### Same code, different frontend frameworks
 
-[![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapQuill.html)
-[![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBulmaQuill.html)
-[![Materialize](https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLMaterialize.html)
-[![Buefy](https://corollarium.github.io/Formularium/shots/HTMLBuefyVue.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLBootstrapVue.html)
+[![Bootstrap](https://corollarium.github.io/Formularium/shots/HTMLBootstrapQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLHTMLValidationBootstrapQuill.html)
+[![Bulma](https://corollarium.github.io/Formularium/shots/HTMLBulmaQuill.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLHTMLValidationBulmaQuill.html)
+[![Materialize](https://corollarium.github.io/Formularium/shots/HTMLMaterialize.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLHTMLValidationMaterialize.html)
+[![Buefy](https://corollarium.github.io/Formularium/shots/HTMLBuefyVue.png)](https://corollarium.github.io/Formularium/kitchensink/HTMLHTMLValidationBootstrapVue.html)
 
 ## Documentation
 

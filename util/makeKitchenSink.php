@@ -217,16 +217,16 @@ $index = <<<EOF
 EOF;
 $frameworks = [
     ['framework' => ['HTML', 'HTMLValidation', 'Quill'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Bulma', 'Quill'], 'template' => 'bulma.html'],
-    ['framework' => ['HTML', 'Bootstrap', 'Quill'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Bootstrapvue', 'Vue'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Materialize'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma.html'],
-    ['framework' => ['HTML', 'Bootstrap', 'Vue'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Buefy', 'Vue'], 'template' => 'bulma.html'],
-    ['framework' => ['HTML', 'React'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'Bootstrap', 'React'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrapvue', 'Vue'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Materialize'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Buefy', 'Vue'], 'template' => 'bulma.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'React'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'React'], 'template' => 'base.html'],
 ];
 foreach ($frameworks as $f) {
     $name = join('', $f['framework']);

@@ -18,13 +18,11 @@ class Renderable_integer extends Renderable_number
          */
         $element = $this->getInput($previous);
         if (!$element) {
-            var_dump("no element");
             return $previous;
         }
 
         /** @var Datatype_integer $datatype */
         $datatype = $field->getDatatype();
-        var_dump('max', $field->getValidators(), Max::class, $field->getValidatorOption(Max::class, 'value', $datatype->getMaxValue()));
         $element->setAttribute('min', $field->getValidatorOption(Min::class, 'value', $datatype->getMinValue()));
         $element->setAttribute('max', $field->getValidatorOption(Max::class, 'value', $datatype->getMaxValue()));
 
