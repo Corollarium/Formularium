@@ -19,6 +19,7 @@ final class FrameworkFactory extends AbstractFactory
         'Formularium\\Frontend\\Buefy',
         'Formularium\\Frontend\\Bulma',
         'Formularium\\Frontend\\HTML',
+        'Formularium\\Frontend\\HTMLValidation',
         'Formularium\\Frontend\\Materialize',
         'Formularium\\Frontend\\Parsley',
         'Formularium\\Frontend\\Quill',

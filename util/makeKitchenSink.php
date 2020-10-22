@@ -15,6 +15,7 @@ use Formularium\Frontend\HTML\Renderable\Renderable_choice;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Model;
 use Formularium\Renderable;
+use Formularium\Validator\Max;
 use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
@@ -215,7 +216,7 @@ $index = <<<EOF
 <ul>
 EOF;
 $frameworks = [
-    ['framework' => ['HTML', 'Quill'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Quill'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'Bulma', 'Quill'], 'template' => 'bulma.html'],
     ['framework' => ['HTML', 'Bootstrap', 'Quill'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],

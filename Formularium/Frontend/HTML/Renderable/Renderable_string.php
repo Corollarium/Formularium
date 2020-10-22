@@ -51,14 +51,6 @@ class Renderable_string extends Renderable
             }
         }
 
-        $min = $field->getValidatorOption(MinLength::class);
-        if ($min) {
-            $input->setAttribute('minlength', $min);
-        }
-        $max = $field->getValidatorOption(MaxLength::class);
-        if ($max) {
-            $input->setAttribute('maxlength', $max);
-        }
         if (isset($renderable[static::NO_AUTOCOMPLETE])) {
             $input->setAttribute('autocomplete', 'off');
         }
