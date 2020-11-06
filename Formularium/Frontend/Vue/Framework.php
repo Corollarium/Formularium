@@ -42,7 +42,7 @@ class Framework extends \Formularium\Framework
      * The following variables are replaced:
      *
      * {{form}}
-     * {{jsonData}}
+     * {{script}}
      * {{containerTag}}
      *
      * @var string|callable|null
@@ -357,5 +357,10 @@ EOF;
     public function getVueCode()
     {
         return $this->vueCode;
+    }
+
+    public function resetVueCode(): void
+    {
+        $this->vueCode = new VueCode();
     }
 }

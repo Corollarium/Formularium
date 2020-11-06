@@ -12,6 +12,22 @@ use Formularium\Model;
 
 class VueCode
 {
+
+    /**
+     * Appended to the field variable names to handle models stored in an object field.
+     *
+     * Allows you to declare the model like this:
+     *
+     * data() {
+     *   return {
+     *       model: model,
+     *   };
+     * },
+     *
+     * @var string
+     */
+    protected $fieldModelVariable = '';
+
     /**
      * Extra props.
      *
@@ -33,6 +49,11 @@ class VueCode
      */
     protected $imports = [];
     
+    /**
+     * @var string[]
+     */
+    protected $computed = [];
+
     /**
      * @var string[]
      */
@@ -127,6 +148,44 @@ class VueCode
     }
 
     /**
+     * The list of computed to add: $ke() => $code
+     *
+     * @param string $key
+     * @param string $code
+     * @return self
+     */
+    public function appendComputed(string $key, string $code): self
+    {
+        $this->computed[$key] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get appended to the field variable names to handle models stored in an object field.
+     *
+     * @return  string
+     */
+    public function getFieldModelVariable(): string
+    {
+        return $this->fieldModelVariable;
+    }
+
+    /**
+     * Set appended to the field variable names to handle models stored in an object field.
+     *
+     * @param  string  $fieldModelVariable  Appended to the field variable names to handle models stored in an object field.
+     *
+     * @return  self
+     */
+    public function setFieldModelVariable(string $fieldModelVariable): self
+    {
+        $this->fieldModelVariable = $fieldModelVariable;
+
+        return $this;
+    }
+
+    /**
      * Converts a Datatype to a JS type
      *
      * @param Datatype $type
@@ -213,6 +272,13 @@ class VueCode
                     return "import $key from \"$value\";";
                 }, array_keys($this->imports), $this->imports)
             ),
+            'computedCode' => implode(
+                "\n",
+                array_map(function ($key, $value) {
+                    // TODO: array
+                    return "$key() { $value },";
+                }, array_keys($this->computed), $this->computed)
+            ),
             'otherData' => implode(
                 "\n",
                 array_map(function ($key, $value) {
@@ -227,7 +293,6 @@ class VueCode
                 }, array_keys($this->extraData), $this->extraData)
             )
         ];
-        var_dump($templateData);
 
         return $templateData;
     }
@@ -269,11 +334,12 @@ class VueCode
         $viewableTemplate = <<<EOF
 {{imports}}
 
-module.exports = {
+export default {
     {{otherData}}
     data: function () {
         return {{jsonData}};
     },
+    computed: { {{computedCode}} },
     props: {{propsCode}},
     methods: {{methodsCode}}
 };
@@ -302,6 +368,7 @@ EOF;
     data() {
         return {{jsonData}};
     },
+    computed: { {{computedCode}} },
     props: {{propsCode}},
     methods: {{methodsCode}}
 EOF;

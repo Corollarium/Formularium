@@ -10,7 +10,7 @@ trait RenderableVueTrait
     public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         /* @phpstan-ignore-next-line */
-        $mvar = $this->framework->getFieldModelVariable();
+        $mvar = $this->framework->getVueCode()->getFieldModelVariable();
         $elements = $previous->get('.formularium-value');
         foreach ($elements as &$e) {
             $e->setContent('{{' . $mvar . $field->getName() . '}}');
@@ -22,7 +22,7 @@ trait RenderableVueTrait
     public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         /* @phpstan-ignore-next-line */
-        $mvar = $this->framework->getFieldModelVariable();
+        $mvar = $this->framework->getVueCode()->getFieldModelVariable();
         foreach ($previous->get('input') as $input) {
             $input->setAttribute('v-model', $mvar . $field->getName())
                 ->removeAttribute('value');
