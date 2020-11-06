@@ -1,15 +1,24 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Frontend\HTMLValidation;
+namespace Formularium\Frontend\Vuelidate;
 
+use Formularium\Datatype;
 use Formularium\Extradata;
 use Formularium\Field;
 use Formularium\Frontend\Vue\Framework as FrameworkVue;
 use Formularium\Frontend\Vue\VueCode;
 use Formularium\HTMLNode;
+use Formularium\Validator\Equals;
+use Formularium\Validator\Filled;
+use Formularium\Validator\In;
+use Formularium\Validator\Max;
 use Formularium\Validator\MaxLength;
+use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
+use Formularium\Validator\NotIn;
+use Formularium\Validator\Password;
 use Formularium\Validator\Regex;
+use Formularium\Validator\SameAs;
 
 class Renderable extends \Formularium\Renderable
 {
@@ -22,27 +31,81 @@ class Renderable extends \Formularium\Renderable
     {
         $validators = $field->getValidators();
 
-        $vueCode = $this->getVueCode();
+
         foreach ($validators as $validator => $data) {
             switch ($validator) {
-            case MinLength::class:
+            case Datatype::REQUIRED:
+            case Filled::class:
                 $this->setValidations(
-                    $vueCode,
                     $field,
-                    'minLength',
-                    'minLength(' . $field->getValidatorOption($validator, 'value', '') . ')'
+                    'required',
+                    'required'
                 );
                 break;
+            case Equals::class:
+                // TODO
+                break;
+
+            case In::class:
+                // TODO
+                break;
+
+            case Max::class:
+                $this->setValidations(
+                    $field,
+                    'maxValue',
+                    'maxValue(' . $field->getValidatorOption($validator, 'value', '') . ')'
+                );
+                break;
+            case Min::class:
+                $this->setValidations(
+                    $field,
+                    'minValue',
+                    'minValue(' . $field->getValidatorOption($validator, 'value', '') . ')'
+                );
+                break;
+
             case MaxLength::class:
                 $this->setValidations(
-                    $vueCode,
                     $field,
                     'maxLength',
                     'maxLength(' . $field->getValidatorOption($validator, 'value', '') . ')'
                 );
                 break;
-            case Regex::class:
+            case MinLength::class:
+                $this->setValidations(
+                    $field,
+                    'minLength',
+                    'minLength(' . $field->getValidatorOption($validator, 'value', '') . ')'
+                );
+                break;
+
+            case NotIn::class:
                 // TODO
+                break;
+
+            case Password::class:
+                // TODO
+                break;
+
+            case Regex::class:
+                $name = 'regex' . mt_rand();
+                $this->setValidations(
+                    $field,
+                    $name,
+                    'helpers.regex(\'' . $name . '\', /' . $field->getValidatorOption($validator, 'value', '') . '/)',
+                    'helpers'
+                );
+                break;
+                        
+            case SameAs::class:
+                $target = $field->getValidatorOption($validator, 'value', '');
+                $locator = $target;// TODO
+                $this->setValidations(
+                    $field,
+                    'sameAs',
+                    'sameAs(' . $locator . ')'
+                );
                 break;
             default:
                 break;
@@ -62,16 +125,18 @@ class Renderable extends \Formularium\Renderable
     }
 
     /**
-     * Undocumented function
+     * Sets validation
      *
-     * @param VueCode $vueCode
      * @param Field $field
      * @param string $name
      * @param string $value
+     * @param string $import
      * @return void
      */
-    protected function setValidations(VueCode $vueCode, Field $field, $name, $value): void
+    protected function setValidations(Field $field, $name, $value, $import = ''): void
     {
+        $vueCode = $this->getVueCode();
+        $vueCode->appendImport($import ? $import : $name, 'vuelidate/lib/validators');
         $other = &$vueCode->getOther();
         $other['validations']['form'][$field->getName()][$name] = $value;
     }

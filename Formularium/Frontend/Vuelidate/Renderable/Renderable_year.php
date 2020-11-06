@@ -4,15 +4,8 @@ namespace Formularium\Frontend\Vuelidate\Renderable;
 
 use Formularium\Field;
 use Formularium\HTMLNode;
+use Formularium\Frontend\Vuelidate\Renderable;
 
-class Renderable_year extends \Formularium\Renderable
+class Renderable_year extends Renderable
 {
-    public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
-    {
-        return $previous;
-    }
-    public function editable($value, Field $field, HTMLNode $previous): HTMLNode
-    {
-        return $previous;
-    }
 }
