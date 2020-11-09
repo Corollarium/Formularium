@@ -33,7 +33,7 @@ class Renderable extends \Formularium\Renderable
         
         // get the tag
         /**
-         * @var HTMLNode $validationNode
+         * @var HTMLNode|null $validationNode
          */
         $validationNode = null;
         $input = $previous->get('input');
@@ -123,6 +123,14 @@ class Renderable extends \Formularium\Renderable
         return $previous;
     }
 
+    /**
+     * Other rules to add
+     *
+     * @param mixed $value
+     * @param Field $field
+     * @param HTMLNode $input
+     * @return array
+     */
     protected function rules($value, Field $field, HTMLNode $input): array
     {
         return [];

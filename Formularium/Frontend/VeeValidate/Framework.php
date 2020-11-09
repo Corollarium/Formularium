@@ -30,7 +30,7 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    public function setImports()
+    public function setImports(): void
     {
         /* TODO
 import * as rules from 'vee-validate/dist/rules';
