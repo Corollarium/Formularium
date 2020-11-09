@@ -147,9 +147,11 @@ Formularium is built in a way that generators can be chained, so you can combine
   - [React](https://reactjs.org)
   - [Laravel Blade](https://laravel.com)
   - Future: Angular
-- JS renderable
+- JS extensions
   - [Parsley](https://parsleyjs.org/)
   - [Quill editor](https://quilljs.com/)
+  - [Vuelidate](https://vuelidate.js.org/) partially implemented
+  - [VeeValidate](https://logaretm.github.io/vee-validate/) partially implemented
 
 ## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Corollarium/formularium/issues)
 

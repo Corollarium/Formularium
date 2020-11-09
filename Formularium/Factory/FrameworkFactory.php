@@ -24,6 +24,7 @@ final class FrameworkFactory extends AbstractFactory
         'Formularium\\Frontend\\Parsley',
         'Formularium\\Frontend\\Quill',
         'Formularium\\Frontend\\React',
+        'Formularium\\Frontend\\VeeValidate',
         'Formularium\\Frontend\\Vue',
         'Formularium\\Frontend\\Vuelidate',
     ];
