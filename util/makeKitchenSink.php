@@ -220,6 +220,7 @@ $frameworks = [
     ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill'], 'template' => 'bulma.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue', 'Vuelidate'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'Bootstrapvue', 'Vue'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'Materialize'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma.html'],

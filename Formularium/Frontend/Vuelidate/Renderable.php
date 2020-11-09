@@ -97,7 +97,7 @@ class Renderable extends \Formularium\Renderable
                     'helpers'
                 );
                 break;
-                        
+
             case SameAs::class:
                 $target = $field->getValidatorOption($validator, 'value', '');
                 $locator = $target;// TODO

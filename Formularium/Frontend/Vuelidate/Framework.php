@@ -2,8 +2,6 @@
 
 namespace Formularium\Frontend\Vuelidate;
 
-namespace Formularium\Frontend\Vue\VueCode;
-
 class Framework extends \Formularium\Framework
 {
     public function __construct(string $name = 'Vuelidate')
