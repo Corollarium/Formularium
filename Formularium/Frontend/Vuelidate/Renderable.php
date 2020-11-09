@@ -30,7 +30,15 @@ class Renderable extends \Formularium\Renderable
     public function editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $validators = $field->getValidators();
-
+        
+        // add extra classes
+        $input = $previous->get('input');
+        if (count($input)) {
+            $input[0]->setAttributes([
+                // TODO ':class' => 'status($v.text)',
+                'v-model' => '$v.' . implode('.', $input[0]->getAttribute('v-model')) . '.$model'
+            ]);
+        }
 
         foreach ($validators as $validator => $data) {
             switch ($validator) {
@@ -133,11 +141,12 @@ class Renderable extends \Formularium\Renderable
      * @param string $import
      * @return void
      */
-    protected function setValidations(Field $field, $name, $value, $import = ''): void
+    protected function setValidations(Field $field, $name, $value = null, $import = ''): void
     {
         $vueCode = $this->getVueCode();
+        // TODO: does not work with in-file, only SFC
         $vueCode->appendImport($import ? $import : $name, 'vuelidate/lib/validators');
         $other = &$vueCode->getOther();
-        $other['validations']['form'][$field->getName()][$name] = $value;
+        $other['validations'][$field->getName()][$name] = $value;
     }
 }

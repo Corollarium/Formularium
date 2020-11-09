@@ -12,7 +12,6 @@ class Renderable_integer extends Renderable
     {
         $this->setValidations(
             $field,
-            'integer',
             'integer'
         );
 

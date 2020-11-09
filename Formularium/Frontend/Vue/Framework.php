@@ -202,7 +202,10 @@ class Framework extends \Formularium\Framework
     public function htmlHead(HTMLNode &$head)
     {
         $head->prependContent(
-            HTMLNode::factory('script', ['src' => "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"])
+            [
+                HTMLNode::factory('script', ['src' => "https://vuejs.org/js/vue.js"]),
+                HTMLNode::factory('script', [], 'Vue.config.devtools = true')
+            ],
         );
     }
 
@@ -294,7 +297,7 @@ EOF;
         } else {
             $id = 'vueapp' . static::counter();
             $t = new HTMLNode($templateData['containerTag'], ['id' => $id], $templateData['form'], true);
-            $this->vueCode->appendOther('el', "#$id");
+            $this->vueCode->appendOther('el', "'#$id'");
             $vars = $this->vueCode->toVariable($m, $elements);
             $script = "const app_$id = new Vue({{$vars}});";
             $s = new HTMLNode('script', [], $script, true);

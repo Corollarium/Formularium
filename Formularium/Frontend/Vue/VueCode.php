@@ -10,6 +10,26 @@ use Formularium\Field;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
+/**
+ * Converts an array to a JS object. Unlike JSON this does serialize
+ * data to strings, and allow functions, etc. If you need to add
+ * strings they are expected to be previously quoted with " or '
+ *
+ * @param array $data
+ * @return array
+ */
+function expandJS(array $data): array
+{
+    return array_map(function ($key, $value) {
+        return "$key" .
+            (
+                is_array($value) ?
+                ': {' . implode(",\n", expandJS($value)) . '}' :
+                ($value ? ':' . $value : '')
+            );
+    }, array_keys($data), $data);
+}
+
 class VueCode
 {
 
@@ -240,7 +260,7 @@ class VueCode
         $s = array_map(function ($p) {
             return "'{$p['name']}': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
         }, $props);
-        return "{\n        " . implode(",\n        ", $s) . "\n    }\n";
+        return "{\n        " . implode(",\n        ", $s) . "\n    }";
     }
 
     /**
@@ -261,6 +281,7 @@ class VueCode
             },
             array_keys($props)
         );
+
         $templateData = [
             'jsonData' => $jsonData,
             'propsCode' => $this->serializeProps($props),
@@ -280,11 +301,9 @@ class VueCode
                 }, array_keys($this->computed), $this->computed)
             ),
             'otherData' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "$key: " . json_encode($value) . ",\n";
-                }, array_keys($this->other), $this->other)
-            ),
+                ",\n",
+                expandJS($this->other)
+            ) . ",\n",
             'methodsCode' => '{}', // TODO
             'extraData' => implode(
                 "\n",
