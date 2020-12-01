@@ -9,6 +9,15 @@ class Datatype_year extends \Formularium\Datatype\Datatype_integer
         parent::__construct($typename, $basetype);
     }
 
+    public function getRandom(array $params = [])
+    {
+        $c = (int)date('Y');
+        var_dump($c, $params);
+        $min = $params[static::MIN]['value'] ?? $c - 30;
+        $max = $params[static::MAX]['value'] ?? $c;
+        return mt_rand($min, $max);
+    }
+
     public function getSQLType(string $database = '', array $options = []): string
     {
         return 'INT';
