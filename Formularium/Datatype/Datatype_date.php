@@ -71,7 +71,7 @@ class Datatype_date extends \Formularium\Datatype
 
     public function getLaravelSQLType(string $name, array $options = []): string
     {
-        return 'date';
+        return "date('$name')";
     }
 
     public function getDocumentation(): string
