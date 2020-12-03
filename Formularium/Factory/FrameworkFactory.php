@@ -2,9 +2,9 @@
 
 namespace Formularium\Factory;
 
-use Illuminate\Support\Str;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Framework;
+use Formularium\StringUtil;
 
 /**
  * Abstract base class for frameworks. Each framework should have a class inheriting
@@ -40,7 +40,7 @@ final class FrameworkFactory extends AbstractFactory
     {
         $classname = static::getClassName($name);
         foreach (static::$namespaces as $ns) {
-            if (Str::endsWith($ns, $name)) {
+            if (StringUtil::endsWith($ns, $name)) {
                 return $ns . "\\Framework";
             }
         }
