@@ -93,6 +93,40 @@ class Framework extends \Formularium\Framework
         return $counter++;
     }
 
+    protected function getContainerAttributes(Model $m): array
+    {
+        // TODO: this replicates code from HTML::Framework. See if there's a cleaner way to handle this.
+        $atts = [
+            'class' => 'formularium-base'
+        ];
+        $schemaItemScope = $this->getOption('itemscope', $m->getRenderable('itemscope', false));
+        if ($schemaItemScope) {
+            $atts['itemscope'] = '';
+        }
+        $schemaItemType = $this->getOption('itemtype', $m->getRenderable('itemtype', null));
+        if ($schemaItemType) {
+            $atts['itemtype'] = $schemaItemType;
+            $atts['itemscope'] = '';
+        }
+        return $atts;
+    }
+
+    /**
+     * Collapses an array into a HTML list of attributes. Not particularly
+     * safe function, but data goes through htmlspecialchars()
+     *
+     * @param array $f
+     * @return string
+     */
+    protected function collapseHTMLAttributes(array $f): string
+    {
+        $x = [];
+        foreach ($f as $k => $v) {
+            $x[] = htmlspecialchars($k) . '="' . htmlspecialchars($v) . '"';
+        }
+        return join(' ', $x);
+    }
+
     /**
      * Get the tag used as container for fields in viewable()
      *
@@ -208,11 +242,13 @@ class Framework extends \Formularium\Framework
             ]
         );
     }
-
+   
     public function viewableCompose(Model $m, array $elements, string $previousCompose): string
     {
+        $containerAtts = $this->getContainerAttributes($m);
         $templateData = [
             'containerTag' => $this->getViewableContainerTag(),
+            'containerAtts' => $this->collapseHTMLAttributes($containerAtts),
             'form' => join('', $elements),
             'script' => $this->vueCode->toScript($m, $elements)
         ];
@@ -227,7 +263,7 @@ class Framework extends \Formularium\Framework
         } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
             $viewableTemplate = $this->viewableTemplate ? $this->viewableTemplate : <<<EOF
 <template>
-<{{containerTag}}>
+<{{containerTag}} {{containerAtts}}>
     {{form}}
 </{{containerTag}}>
 </template>
@@ -246,7 +282,13 @@ EOF;
         } else {
             // TODO: this is likely broken
             $id = 'vueapp' . static::counter();
-            $t = new HTMLNode($this->getViewableContainerTag(), ['id' => $id], $templateData['form'], true);
+            $containerAtts['id'] = $id;
+            $t = new HTMLNode(
+                $this->getViewableContainerTag(),
+                $containerAtts,
+                $templateData['form'],
+                true
+            );
             $vars = $this->vueCode->toVariable($m, $elements);
             $this->vueCode->appendOther('el', "#$id");
             $script = "const app_$id = new Vue({$vars});";
@@ -257,8 +299,10 @@ EOF;
 
     public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
+        $containerAtts = $this->getContainerAttributes($m);
         $templateData = [
             'containerTag' => $this->getEditableContainerTag(),
+            'containerAtts' => $this->collapseHTMLAttributes($containerAtts),
             'form' => join('', $elements),
             'script' => $this->vueCode->toScript($m, $elements)
         ];
@@ -279,7 +323,7 @@ EOF;
         } elseif ($this->mode === self::VUE_MODE_SINGLE_FILE) {
             $editableTemplate = <<<EOF
 <template>
-<{{containerTag}}>
+<{{containerTag}} {{containerAtts}}>
     {{form}}
 </{{containerTag}}>
 </template>
@@ -296,7 +340,13 @@ EOF;
             );
         } else {
             $id = 'vueapp' . static::counter();
-            $t = new HTMLNode($templateData['containerTag'], ['id' => $id], $templateData['form'], true);
+            $containerAtts['id'] = $id;
+            $t = new HTMLNode(
+                $templateData['containerTag'],
+                $containerAtts,
+                $templateData['form'],
+                true
+            );
             $this->vueCode->appendOther('el', "'#$id'");
             $vars = $this->vueCode->toVariable($m, $elements);
             $script = "const app_$id = new Vue({{$vars}});";
