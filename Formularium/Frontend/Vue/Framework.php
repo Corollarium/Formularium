@@ -205,7 +205,7 @@ class Framework extends \Formularium\Framework
             [
                 HTMLNode::factory('script', ['src' => "https://vuejs.org/js/vue.js"]),
                 HTMLNode::factory('script', [], 'Vue.config.devtools = true')
-            ],
+            ]
         );
     }
 
