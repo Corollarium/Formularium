@@ -313,7 +313,7 @@ class VueCode
             )
         ];
         if ($templateData['otherData']) {
-            $templateData['otherData'] .= "nn,\n";
+            $templateData['otherData'] .= ",\n";
         }
 
         return $templateData;
