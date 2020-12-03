@@ -54,11 +54,6 @@ abstract class Datatype_enum extends \Formularium\Datatype
         throw new ValidatorException('Invalid enum value set: ' . htmlspecialchars((string)$value));
     }
 
-    public function getGraphqlType(): string
-    {
-        return $this->typename;
-    }
-
     public function getSQLType(string $database = '', array $options = []): string
     {
         return 'VARCHAR(32)';
