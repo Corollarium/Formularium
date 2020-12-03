@@ -6,6 +6,7 @@ use Formularium\Formularium;
 use Formularium\Datatype;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
+use Nette\PhpGenerator\PhpNamespace;
 
 final class DatatypeFactory extends AbstractFactory
 {
@@ -65,59 +66,64 @@ final class DatatypeFactory extends AbstractFactory
      * @param string $basetype The base type, if any.
      * @param string $namespace The namespace for the new file.
      * @param string $testNamespace The namespace for the test file.
+     * @param callable $classCallback if present, called with the Nette\PhpGenerator\ClassType
+     * to customize the class
      * @return array ['code' => code string, 'test' => test case string]
      */
     public static function generate(
         string $datatype,
         string $basetype = null,
         string $namespace = 'Formularium\\Datatype',
-        string $testNamespace = 'Tests\Unit'
+        string $testNamespace = 'Tests\\Unit',
+        callable $classCallback = null
     ): array {
         $datatypeLower = mb_strtolower($datatype);
         $basetypeClass = $basetype ? '\\Formularium\\Datatype\\Datatype_' . $basetype : '\\Formularium\\Datatype';
         $basetype = $basetype ?? $datatypeLower;
 
-        $datatypeCode = <<<EOF
-<?php declare(strict_types=1); 
+        $namespace = new PhpNamespace($namespace);
+        $namespace->addUse('\\Formularium\\Model');
+        $namespace->addUse('\\Formularium\\Exception\\ValidatorException');
 
-namespace $namespace;
+        $class = $namespace->addClass("Datatype_${datatypeLower}")
+            ->setExtends($basetypeClass);
 
-use Formularium\Model;
-use Formularium\Exception\ValidatorException;
+        $constructor = $class->addMethod('__construct')
+            ->setBody("parent::__construct(\$typename, \$basetype);\n");
+        $constructor->addParameter('typename', $datatypeLower)->setType('string');
+        $constructor->addParameter('basetype', $basetype)->setType('string');
+        
+        $class->addMethod('getRandom')
+            ->setComment('
+Returns a random valid value for this datatype, considering the validators
 
-class Datatype_${datatypeLower} extends ${basetypeClass}
-{
-    public function __construct(string \$typename = '${datatypeLower}', string \$basetype = '$basetype')
-    {
-        parent::__construct(\$typename, \$basetype);
-    }
+@param array \$validators
+@throws Exception If cannot generate a random value.
+@return mixed')
+            ->setBody("throw new ValidatorException('Not implemented');")
+            ->addParameter('validators', [])
+            ->setType('array');
+            
+        $validateMethod = $class->addMethod('validate')
+            ->setComment('
+Checks if \$value is a valid value for this datatype considering the validators.
 
-    /**
-     * Returns a random valid value for this datatype, considering the validators
-     *
-     * @param array \$validators
-     * @throws Exception If cannot generate a random value.
-     * @return mixed
-     */
-    public function getRandom(array \$validators = [])
-    {
-        throw new ValidatorException('Not implemented');
-    }
+@param mixed \$value The value you are checking.
+@param Model \$model The entire model, if your field depends on other things of the model. may be null.
+@throws Exception If invalid, with the message.
+@return mixed The validated value.')
+             ->setBody("throw new ValidatorException('Not implemented');");
+        
+        $validateMethod->addParameter('value');
+        $validateMethod->addParameter('model', null)
+             ->setType('\Formularium\Model');
 
-    /**
-     * Checks if \$value is a valid value for this datatype considering the validators.
-     *
-     * @param mixed \$value The value you are checking.
-     * @param Model \$model The entire model, if your field depends on other things of the model. may be null.
-     * @throws Exception If invalid, with the message.
-     * @return mixed The validated value.
-     */
-    public function validate(\$value, Model \$model = null)
-    {
-        throw new ValidatorException('Not implemented');
-    }
-}
-EOF;
+        if ($classCallback) {
+            $classCallback($class);
+        }
+
+        $printer = new \Nette\PhpGenerator\PsrPrinter;
+        $datatypeCode = "<?php declare(strict_types=1);\n" . $printer->printNamespace($namespace);
         
         $testCode = <<<EOF
 <?php declare(strict_types=1); 
@@ -181,7 +187,8 @@ EOF;
      * @codeCoverageIgnore
      * @param array $codeData The data returned from self::generate()
      * @param string $path The
-     * @return string[] With two keys: 'code' and 'test', human messages of what was done.
+     * @return string[] With keys: 'code' and 'test', human messages of what was done, and
+     * 'filename' and 'testfilename' with the paths.
      * @throws Exception If errors.
      */
     public static function generateFile(array $codeData, string $path, string $testpath = null): array
@@ -192,7 +199,7 @@ EOF;
     
         $datatype = $codeData['datatype'];
         $retval = [];
-        $filename =  $path . "/Datatype_{$codeData['datatypeLower']}.php";
+        $filename = $retval['filename'] = $path . "/Datatype_{$codeData['datatypeLower']}.php";
         if (!file_exists($filename)) {
             $retval['code'] = "Created {$datatype} at {$filename}.";
             file_put_contents($filename, $codeData['code']);
@@ -201,7 +208,7 @@ EOF;
         }
 
         if ($testpath) {
-            $testFilename = $testpath . "/{$datatype}Test.php";
+            $testFilename = $retval['testfilename'] = $testpath . "/{$datatype}Test.php";
             if (!file_exists($testFilename)) {
                 $retval['test'] = "Created ${datatype} test at {$testFilename}.";
                 file_put_contents($testFilename, $codeData['test']);
