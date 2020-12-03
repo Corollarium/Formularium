@@ -6,7 +6,7 @@ use Formularium\Field;
 use Formularium\Frontend\Buefy\RenderableBuefyInputTrait;
 use Formularium\HTMLNode;
 
-class Renderable_choice extends \Formularium\Renderable
+class Renderable_enum extends \Formularium\Renderable
 {
     use RenderableBuefyInputTrait;
 }

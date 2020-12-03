@@ -4,6 +4,6 @@ namespace Formularium\Frontend\HTMLValidation\Renderable;
 
 use Formularium\Frontend\HTMLValidation\Renderable;
 
-class Renderable_choice extends Renderable
+class Renderable_enum extends Renderable
 {
 }

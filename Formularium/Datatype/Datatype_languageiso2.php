@@ -2,7 +2,7 @@
 
 namespace Formularium\Datatype;
 
-class Datatype_languageiso2 extends Datatype_choice
+class Datatype_languageiso2 extends Datatype_enum
 {
     const LANGUAGES = [
         'aa' => 'Afaraf',
@@ -191,7 +191,7 @@ class Datatype_languageiso2 extends Datatype_choice
         'zu' => 'isiZulu',
     ];
 
-    public function __construct(string $typename = 'languageiso2', string $basetype = 'choice')
+    public function __construct(string $typename = 'languageiso2', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
         $this->choices = self::LANGUAGES;

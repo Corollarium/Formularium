@@ -6,7 +6,7 @@ use Formularium\Field;
 use Formularium\Frontend\Vue\RenderableVueTrait;
 use Formularium\HTMLNode;
 
-class Renderable_choice extends \Formularium\Renderable
+class Renderable_enum extends \Formularium\Renderable
 {
     use RenderableVueTrait;
 }

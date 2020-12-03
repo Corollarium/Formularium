@@ -6,7 +6,7 @@ use Formularium\Field;
 use Formularium\Exception\ValidatorException;
 use Formularium\Model;
 
-abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choice
+abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_enum
 {
     /**
      * The ISO representation of a country code.
@@ -330,7 +330,7 @@ abstract class Datatype_countrycode extends \Formularium\Datatype\Datatype_choic
         asort($this->choices);
     }
 
-    public function __construct(string $typename = 'countrycode', string $basetype = 'choice')
+    public function __construct(string $typename = 'countrycode', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
     }

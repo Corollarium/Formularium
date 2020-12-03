@@ -2,13 +2,13 @@
 
 namespace Formularium\Frontend\Bootstrap\Renderable;
 
-use Formularium\Datatype\Datatype_choice;
+use Formularium\Datatype\Datatype_enum;
 use Formularium\Field;
 use Formularium\Frontend\Bootstrap\RenderableBootstrapTrait;
-use Formularium\Frontend\HTML\Renderable\Renderable_choice as HTMLRenderable_choice;
+use Formularium\Frontend\HTML\Renderable\Renderable_enum as HTMLRenderable_enum;
 use Formularium\HTMLNode;
 
-class Renderable_choice extends \Formularium\Renderable
+class Renderable_enum extends \Formularium\Renderable
 {
     use RenderableBootstrapTrait;
     
@@ -27,9 +27,9 @@ class Renderable_choice extends \Formularium\Renderable
      */
     public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
-        $format = $field->getRenderable(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
+        $format = $field->getRenderable(HTMLRenderable_enum::FORMAT_CHOOSER, HTMLRenderable_enum::FORMAT_CHOOSER_SELECT);
         
-        if ($format == HTMLRenderable_choice::FORMAT_CHOOSER_RADIO) {
+        if ($format == HTMLRenderable_enum::FORMAT_CHOOSER_RADIO) {
             // add extra classes
             foreach ($previous->get('[type=radio]') as $input) {
                 $input->addAttribute('class', 'custom-control-input');
@@ -38,7 +38,7 @@ class Renderable_choice extends \Formularium\Renderable
                 $label->addAttribute('class', 'custom-control-label');
             }
             $radioClass = 'custom-control custom-radio';
-            if ($field->getRenderable(HTMLRenderable_choice::LAYOUT_RADIO, HTMLRenderable_choice::LAYOUT_RADIO_INLINE)) {
+            if ($field->getRenderable(HTMLRenderable_enum::LAYOUT_RADIO, HTMLRenderable_enum::LAYOUT_RADIO_INLINE)) {
                 $radioClass = 'custom-control custom-radio custom-control-inline';
             }
             foreach ($previous->get('[class=formularium-radio-item]') as $group) {

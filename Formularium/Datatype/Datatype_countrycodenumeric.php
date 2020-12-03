@@ -4,7 +4,7 @@ namespace Formularium\Datatype;
 
 class Datatype_countrycodenumeric extends \Formularium\Datatype\Datatype_countrycode
 {
-    public function __construct(string $typename = 'countrycodenumeric', string $basetype = 'choice')
+    public function __construct(string $typename = 'countrycodenumeric', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
         $this->setChoices(self::ISO_NUMERIC);

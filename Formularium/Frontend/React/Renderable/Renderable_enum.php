@@ -4,7 +4,7 @@ namespace Formularium\Frontend\React\Renderable;
 
 use Formularium\Frontend\React\RenderableReactTrait;
 
-class Renderable_choice extends \Formularium\Renderable
+class Renderable_enum extends \Formularium\Renderable
 {
     use RenderableReactTrait;
 }

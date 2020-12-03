@@ -5,9 +5,9 @@ namespace Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Exception\ValidatorException;
 
-class Datatype_language extends \Formularium\Datatype\Datatype_choice
+class Datatype_language extends \Formularium\Datatype\Datatype_enum
 {
-    public function __construct(string $typename = 'language', string $basetype = 'choice')
+    public function __construct(string $typename = 'language', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
         $this->choices = [

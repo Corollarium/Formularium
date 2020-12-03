@@ -4,10 +4,10 @@ namespace Formularium\Frontend\Materialize\Renderable;
 
 use Formularium\Field;
 use Formularium\HTMLNode;
-use Formularium\Frontend\HTML\Renderable\Renderable_choice as HTMLRenderable_choice;
+use Formularium\Frontend\HTML\Renderable\Renderable_enum as HTMLRenderable_enum;
 use Formularium\Frontend\Materialize\RenderableMaterializeTrait;
 
-class Renderable_choice extends \Formularium\Renderable
+class Renderable_enum extends \Formularium\Renderable
 {
     use RenderableMaterializeTrait;
     
@@ -27,9 +27,9 @@ class Renderable_choice extends \Formularium\Renderable
     public function _editable($value, Field $field, HTMLNode $previous): HTMLNode
     {
         $newContent = [];
-        $format = $field->getRenderable(HTMLRenderable_choice::FORMAT_CHOOSER, HTMLRenderable_choice::FORMAT_CHOOSER_SELECT);
+        $format = $field->getRenderable(HTMLRenderable_enum::FORMAT_CHOOSER, HTMLRenderable_enum::FORMAT_CHOOSER_SELECT);
 
-        if ($format == HTMLRenderable_choice::FORMAT_CHOOSER_RADIO) {
+        if ($format == HTMLRenderable_enum::FORMAT_CHOOSER_RADIO) {
             $labels = [];
             // add extra classes
             foreach ($previous->get('.formularium-radio-item') as $container) {

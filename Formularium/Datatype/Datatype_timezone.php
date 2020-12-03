@@ -4,9 +4,9 @@ namespace Formularium\Datatype;
 
 use Formularium\Exception\Exception;
 
-class Datatype_timezone extends \Formularium\Datatype\Datatype_choice
+class Datatype_timezone extends \Formularium\Datatype\Datatype_enum
 {
-    public function __construct(string $typename = 'timezone', string $basetype = 'choice')
+    public function __construct(string $typename = 'timezone', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
         $l = timezone_identifiers_list();

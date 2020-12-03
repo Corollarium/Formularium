@@ -3,13 +3,13 @@
 namespace Formularium\Frontend\HTML\Renderable;
 
 use Formularium\Datatype;
-use Formularium\Datatype\Datatype_choice;
+use Formularium\Datatype\Datatype_enum;
 use Formularium\Field;
 use Formularium\Frontend\HTML\Framework;
 use Formularium\Frontend\HTML\Renderable;
 use Formularium\HTMLNode;
 
-class Renderable_choice extends Renderable
+class Renderable_enum extends Renderable
 {
     public const FORMAT_CHOOSER = 'format_chooser';
     public const FORMAT_CHOOSER_SELECT = 'format_chooser_select';
@@ -63,7 +63,7 @@ class Renderable_choice extends Renderable
         $element = new HTMLNode($this->framework->getEditableContainerTag(), ['class' => 'formularium-radio-group']);
 
         /**
-         * @var Datatype_choice $datatype
+         * @var Datatype_enum $datatype
          */
         $datatype = $field->getDatatype();
         foreach ($datatype->getChoices() as $v => $label) {
@@ -132,7 +132,7 @@ class Renderable_choice extends Renderable
 
         $optionEmpty = new HTMLNode('option', ['value' => ''], '', true);
         /**
-         * @var Datatype_choice $datatype
+         * @var Datatype_enum $datatype
          */
         $datatype = $field->getDatatype();
 

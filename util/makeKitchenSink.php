@@ -11,7 +11,7 @@ use Formularium\Frontend\HTML\Element\Button;
 use Formularium\Frontend\HTML\Element\Card;
 use Formularium\Frontend\HTML\Element\Pagination;
 use Formularium\Frontend\HTML\Element\Table;
-use Formularium\Frontend\HTML\Renderable\Renderable_choice;
+use Formularium\Frontend\HTML\Renderable\Renderable_enum;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
 use Formularium\Model;
 use Formularium\Renderable;
@@ -133,7 +133,7 @@ function kitchenSink($frameworkName, string $templateName)
         'countrycodeselect' => [
             'datatype' => 'countrycodeISO3',
             'renderable' => [
-                Renderable_choice::FORMAT_CHOOSER => Renderable_choice::FORMAT_CHOOSER_SELECT,
+                Renderable_enum::FORMAT_CHOOSER => Renderable_enum::FORMAT_CHOOSER_SELECT,
                 Renderable::LABEL => 'Country code - select choice'
             ],
         ],
