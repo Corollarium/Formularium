@@ -175,7 +175,7 @@ class Model
     /**
      * @param string $name
      * @param mixed $value
-     * @return mixed
+     * @return self
      */
     public function appendRenderable(string $name, $value): self
     {
