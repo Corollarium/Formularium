@@ -104,11 +104,14 @@ class Framework extends \Formularium\Framework
         $atts = [
             'class' => 'formularium-base'
         ];
-        if ($this->getOption('itemscope')) {
+        $schemaItemScope = $this->getOption('itemscope', $m->getRenderable('itemscope', false));
+        if ($schemaItemScope) {
             $atts['itemscope'] = '';
         }
-        if ($this->getOption('itemtype')) {
-            $atts['itemtype'] = $this->getOption('itemtype');
+        $schemaItemType = $this->getOption('itemtype', $m->getRenderable('itemtype', null));
+        if ($schemaItemType) {
+            $atts['itemtype'] = $schemaItemType;
+            $atts['itemscope'] = '';
         }
         
         return HTMLNode::factory(

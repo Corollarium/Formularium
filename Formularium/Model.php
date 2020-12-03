@@ -172,6 +172,17 @@ class Model
         return $this->renderable[$name] ?? $default;
     }
 
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return mixed
+     */
+    public function appendRenderable(string $name, $value): self
+    {
+        $this->renderable[$name] = $value;
+        return $this;
+    }
+
     public function getField(string $name): Field
     {
         return $this->fields[$name];
@@ -509,12 +520,10 @@ class Model
             } elseif (is_callable($restrictFields)) {
                 try {
                     $data[$field->getName()] = $restrictFields($field, $this);
-                }
-                catch (NoRandomException $e) {
+                } catch (NoRandomException $e) {
                     // pass
                 }
-            }
-            else {
+            } else {
                 $data[$field->getName()] = $field->getDatatype()->getRandom();
             }
         }
