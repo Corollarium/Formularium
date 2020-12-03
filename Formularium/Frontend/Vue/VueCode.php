@@ -303,7 +303,7 @@ class VueCode
             'otherData' => implode(
                 ",\n",
                 expandJS($this->other)
-            ) . ",\n",
+            ),
             'methodsCode' => '{}', // TODO
             'extraData' => implode(
                 "\n",
@@ -312,6 +312,9 @@ class VueCode
                 }, array_keys($this->extraData), $this->extraData)
             )
         ];
+        if ($templateData['otherData']) {
+            $templateData['otherData'] .= "nn,\n";
+        }
 
         return $templateData;
     }
