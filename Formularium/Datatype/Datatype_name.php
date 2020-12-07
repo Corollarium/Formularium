@@ -11,13 +11,6 @@ class Datatype_name extends Datatype_string
         parent::__construct($typename, $basetype);
     }
 
-    /**
-     * Returns a random valid value for this datatype, considering the validators
-     *
-     * @param array \$validators
-     * @throws Exception If cannot generate a random value.
-     * @return mixed
-     */
     public function getRandom(array $validators = [])
     {
         return static::faker()->name;

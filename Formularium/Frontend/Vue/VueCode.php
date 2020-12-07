@@ -211,7 +211,7 @@ class VueCode
      * @param Datatype $type
      * @return string
      */
-    public function mapType(Datatype $type): string
+    public function mapTypeToJS(Datatype $type): string
     {
         if ($type instanceof Datatype_number) {
             return 'Number';
@@ -231,7 +231,7 @@ class VueCode
             if ($field->getRenderable(Framework::VUE_PROP, false)) {
                 $p = [
                     'name' => $field->getName(),
-                    'type' => $this->mapType($field->getDatatype()),
+                    'type' => $this->mapTypeToJS($field->getDatatype()),
                 ];
                 if ($field->getRenderable(Datatype::REQUIRED, false)) {
                     $p['required'] = true;
@@ -272,15 +272,41 @@ class VueCode
      */
     protected function getTemplateData(Model $m, array $elements): array
     {
-        $data = array_merge($m->getDefault(), $m->getData());
-        $jsonData = json_encode($data);
+        // get the props array with all js data
         $props = $this->props($m);
+        // get only props names
+        $propsNames = array_map(
+            function ($p) {
+                return $p['name'];
+            },
+            $props
+        );
+        /**
+         * @var array $propsNames
+         */
+        $propsNames = array_combine($propsNames, $propsNames);
+        // get the binding
         $propsBind = array_map(
             function ($p) {
                 return 'v-bind:' . $p . '="model.' . $p . '"';
             },
             array_keys($props)
         );
+
+        // get data, and avoid anything that is already declared in props
+        $data = [];
+        foreach (array_merge($m->getDefault(), $m->getData()) as $k => $v) {
+            if (array_key_exists($k, $propsNames)) {
+                continue;
+            }
+            $data[$k] = $v;
+        }
+        // ensure it's a dict even if empty
+        if ($data === []) {
+            $jsonData = '{}';
+        } else {
+            $jsonData = json_encode($data);
+        }
 
         $templateData = [
             'jsonData' => $jsonData,
