@@ -315,14 +315,12 @@ class VueCode
             'imports' => implode(
                 "\n",
                 array_map(function ($key, $value) {
-                    // TODO: array
                     return "import $key from \"$value\";";
                 }, array_keys($this->imports), $this->imports)
             ),
             'computedCode' => implode(
                 "\n",
                 array_map(function ($key, $value) {
-                    // TODO: array
                     return "$key() { $value },";
                 }, array_keys($this->computed), $this->computed)
             ),
