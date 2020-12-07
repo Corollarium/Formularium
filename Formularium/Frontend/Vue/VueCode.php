@@ -358,7 +358,7 @@ class VueCode
 
 export default {
     {{otherData}}
-    data: function () {
+    data() {
         return {{jsonData}};
     },
     computed: { {{computedCode}} },
