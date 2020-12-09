@@ -7,7 +7,7 @@ List of validators and its parameters generated automatically.
 
 String with only alphabetical ASCII letters.
 
-Random value example: 'Ricvdaqk'
+Random value example: 'RytRwbYDZsx'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -19,7 +19,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 String with only alphabetical ASCII letters and numbers.
 
-Random value example: 'RdKfG5soz'
+Random value example: 'R4mxYXNVI8S3B'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -31,7 +31,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 String with only alphabetical ASCII letters, numbers, underscore _ and dash -.
 
-Random value example: 'RVNNJw8K2S'
+Random value example: 'R4_bswi1EiqY0kA'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -43,7 +43,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Datatype for boolean values. Accepts actual boolean values, "true"/"false" strings and 0/1 numbers.
 
-Random value example: true
+Random value example: false
 
 SQL datatype: `INT`
 
@@ -55,7 +55,7 @@ Laravel SQL datatype: `boolean(name)`
 
 Datatype for boolean values. Accepts actual boolean values, "true"/"false" strings and 0/1 numbers.
 
-Random value example: false
+Random value example: true
 
 SQL datatype: `INT`
 
@@ -67,7 +67,7 @@ Laravel SQL datatype: `boolean(name)`
 
 Datatype for Brazilian CNPJ document numbers.
 
-Random value example: '52.993.171/0001-62'
+Random value example: '05.703.901/0001-63'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -79,7 +79,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Datatype for RGB colors in hexadecimeal format, starting with #.
 
-Random value example: '#AB874B'
+Random value example: '#1A36DD'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -97,7 +97,7 @@ Constant values
 
 Country names represented by ISO 2-letter codes.
 
-Random value example: 'OM'
+Random value example: 'US'
 
 SQL datatype: `CHAR(2)`
 
@@ -109,7 +109,7 @@ Laravel SQL datatype: `char('name', 2)`
 
 Country names represented by ISO 3-letter codes.
 
-Random value example: 'TCD'
+Random value example: 'WSM'
 
 SQL datatype: `CHAR(3)`
 
@@ -121,7 +121,7 @@ Laravel SQL datatype: `char('name', 3)`
 
 Country names represented by ISO numeric codes.
 
-Random value example: 376
+Random value example: 438
 
 SQL datatype: `CHAR(3)`
 
@@ -133,7 +133,7 @@ Laravel SQL datatype: `char('name', 3)`
 
 Datatype for Brazilian CPF document numbers.
 
-Random value example: '850.242.501-33'
+Random value example: '847.291.224-88'
 
 SQL datatype: `VARCHAR(13)`
 
@@ -145,7 +145,7 @@ Laravel SQL datatype: `string(name, 13)`
 
 Currency names, with their 3-letter codes.
 
-Random value example: 'BBD'
+Random value example: 'KMF'
 
 SQL datatype: `CHAR(3)`
 
@@ -157,7 +157,7 @@ Laravel SQL datatype: `char(name, 3)`
 
 Dates in ISO format: YYYY-MM-DD.
 
-Random value example: '2024-09-26'
+Random value example: '2023-12-12'
 
 SQL datatype: `DATE`
 
@@ -169,7 +169,7 @@ Laravel SQL datatype: `date('name')`
 
 Datetimes in ISO8601 format.
 
-Random value example: '2023-08-22T21:40:20+0000'
+Random value example: '2023-07-28T22:49:26+0000'
 
 SQL datatype: `DATETIME`
 
@@ -181,7 +181,7 @@ Laravel SQL datatype: `datetime('name')`
 
 Internet domain names.
 
-Random value example: 'klocko.com'
+Random value example: 'sipes.com'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -193,7 +193,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Emails (hopefully, but we use Respect for validation)
 
-Random value example: 'valentina66@gmail.com'
+Random value example: 'willie30@mertz.net'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -211,7 +211,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Floating point numbers.
 
-Random value example: 0.101
+Random value example: 0.955
 
 SQL datatype: `FLOAT`
 
@@ -223,7 +223,7 @@ Laravel SQL datatype: `float('name')`
 
 HTML, validated and sanitized with HTMLPurifier.
 
-Random value example: '<p>HTML <span>Omnis totam voluptates dolorem explicabo qui provident velit et. Consequatur consequuntur quia voluptatem aliquid.</span>Aliquid aspernatur veniam est ratione odio eum est. Omnis laudantium excepturi quos quae doloribus a repellendus. Culpa sapiente labore ea eos suscipit rerum. Unde aut fugit non rerum sint.</p>'
+Random value example: '<p>HTML <span>Esse animi sit iure libero aliquid aut eligendi aut. Quisquam alias ut consequatur rem nulla ipsa corporis. Sequi velit aperiam voluptatem. Commodi ab nisi rerum accusantium non.</span>Sint adipisci sunt dolores omnis. Sint aut reiciendis est iste laborum atque. Reiciendis magnam temporibus omnis sed et rerum vel.</p>'
 
 SQL datatype: `TEXT`
 
@@ -235,7 +235,7 @@ Laravel SQL datatype: `text('name')`
 
 Datatype for integers, between -2147483648 and 2147483647.
 
-Random value example: 1413195216
+Random value example: 1912554212
 
 SQL datatype: `INT`
 
@@ -247,7 +247,7 @@ Laravel SQL datatype: `integer("name")`
 
 Strings in UTF-8 and sanitized, up to 256 characters (which might be more than its bytes).
 
-Random value example: 'fbc1:9a2b:2592:58f7:2323:3720:599c:11f9'
+Random value example: 'cd39:751b:7a4e:ea2d:c48b:af32:c4fe:5352'
 
 SQL datatype: `VARCHAR(39)`
 
@@ -259,7 +259,7 @@ Laravel SQL datatype: `ipAdddress('name')`
 
 Datatype for IPs in IPV4 format
 
-Random value example: '71.120.167.167'
+Random value example: '204.19.58.111'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -271,7 +271,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Datatype for IPs in IPV6 format
 
-Random value example: '7dc8:c2df:ca13:e9ea:d396:c949:15c5:890a'
+Random value example: 'a8:3250:34ff:5dc7:a451:b4fd:38b4:3b45'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -283,7 +283,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Valid JSON data
 
-Random value example: '{"version":-1535056355,"data":{"string":"RPnLL4lquInLyBYxB1G0RKBPVCDjz7EaEm43IoAJKOMs4ieFJETJOH9EPNwi9lRaABWiQXu7HEGp3j6cygOhH4teWEuLJnicsPBk9DquGgPyTVVedhjexDmxe1v3VtFdu0YPBKfR8EBJJme857CSdNV1OVV75","float":0.449}}'
+Random value example: '{"version":1640175061,"data":{"string":"Rw42hMdlocUT0g7CKPJudyVIu7A2kcnTxiQyJnC3Erj1yKhplyJjwY4XqRoWDQMLCn6e3Pm13hmYkOPyISAomYaH6Eg4gbUTtuNJcAz91GMy4TNuFaxaGsGK5iXilgByNLdyzISeUo8J","float":0.333}}'
 
 SQL datatype: `TEXT`
 
@@ -295,7 +295,7 @@ Laravel SQL datatype: `text('name')`
 
 Languages. Names are in the actual language. This follows wikipedia, prefer 'languageiso2' for an ISO standard.
 
-Random value example: 'pt'
+Random value example: 'ha'
 
 SQL datatype: `VARCHAR(10)`
 
@@ -307,7 +307,7 @@ Laravel SQL datatype: `string(name, 10)`
 
 Languages represented by ISO630-1 2-letter codes.
 
-Random value example: 'ch'
+Random value example: 'he'
 
 SQL datatype: `CHAR(2)`
 
@@ -319,7 +319,7 @@ Laravel SQL datatype: `char('name', 2)`
 
 Just a plain string, but that expects a name. Generates good random names.
 
-Random value example: 'Arlie Swaniawski'
+Random value example: 'Dr. Gaston Stark'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -331,7 +331,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 A phone number in E164 format
 
-Random value example: '+6367306952760'
+Random value example: '+8064956460929'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -343,7 +343,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Strings in UTF-8 and sanitized, up to 256 characters (which might be more than its bytes).
 
-Random value example: 'RlXtpkIDMIx5Ex1guxFuIBagw3HbfjY4XiR1aN8eltlqZbBWNwWOlb5yxDjPqqRtaSynfQh9CAfU0UWS2rP2virRlHhuB014jZz39ghlqfMdXp33p2n9O4bkokfyGtpl5itLYEIZCpJmv3eXdYAoi6siLqCO8ty3OziUj9mjkJLTicW5ItCbG7ixDU5fNAVKEHK5vjP8sd7vkRQL5Tj3CeFqkDs8yXB7bOkm4KJufnnUBDI1fG'
+Random value example: 'RW7HwAqJAvoVbrrKWV8Te3jjNatTPVpYVYyu1rPyGhY6Y5gokakAbcBBRnv'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -355,7 +355,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Long text in UTF-8 and sanitized, up to 1024000 characters (which might be more than its bytes).
 
-Random value example: 'Et facere fugit voluptatem. Sunt ut praesentium sequi. Nobis dolorum consectetur voluptatem molestias aperiam. At qui quisquam rem.'
+Random value example: 'Est qui possimus recusandae vero vero. Veritatis velit odit aut velit. Voluptas possimus facilis et in voluptatibus id dolorum. Veritatis quo ratione iure eum cum ut.'
 
 SQL datatype: `TEXT`
 
@@ -367,7 +367,7 @@ Laravel SQL datatype: `text('name')`
 
 Time (HH:MM:SS).
 
-Random value example: '23:52:11'
+Random value example: '04:33:43'
 
 SQL datatype: `TIME`
 
@@ -379,7 +379,7 @@ Laravel SQL datatype: `time('name', 0)`
 
 Timestamps. Just like datetime, but might be a different type in your database.
 
-Random value example: '2016-05-28T18:11:13+0000'
+Random value example: '2018-08-24T05:34:31+0000'
 
 SQL datatype: `TIMESTAMP`
 
@@ -391,7 +391,7 @@ Laravel SQL datatype: `timestamp('name')`
 
 Timezones. Follows PHP timezone_identifiers_list().
 
-Random value example: 'Asia/Famagusta'
+Random value example: 'Africa/Ceuta'
 
 SQL datatype: `VARCHAR(50)`
 
@@ -403,7 +403,7 @@ Laravel SQL datatype: `string(name, 50)`
 
 Datatype for unsigned integers, between 0 and 4294967296.
 
-Random value example: 1996847184
+Random value example: 1048609167
 
 SQL datatype: `INT UNSIGNED`
 
@@ -415,7 +415,7 @@ Laravel SQL datatype: `integer("name")->unsigned()`
 
 Datatype for URLs
 
-Random value example: 'http://www.yundt.com/nemo-delectus-itaque-quibusdam-facere-expedita-eaque-eligendi'
+Random value example: 'https://wintheiser.net/blanditiis-sed-quis-molestias.html'
 
 SQL datatype: `VARCHAR(256)`
 
@@ -427,7 +427,7 @@ Laravel SQL datatype: `string('name', 256)`
 
 Datatype for unsigned small integers, between 0 and 65536.
 
-Random value example: 49624
+Random value example: 8206
 
 SQL datatype: `SMALLINT UNSIGNED`
 
@@ -439,7 +439,7 @@ Laravel SQL datatype: `smallInteger("name")->unsigned()`
 
 Datatype for uuid values.
 
-Random value example: '5bf04670-e46e-456d-9044-b425ad421992'
+Random value example: 'e10087f2-c60a-4d98-91b6-beceb3a92356'
 
 SQL datatype: `CHAR(16)`
 
@@ -451,7 +451,7 @@ Laravel SQL datatype: `uuid('name')`
 
 Valid years. May create a special field in the database.
 
-Random value example: 2014
+Random value example: 2002
 
 SQL datatype: `INT`
 
