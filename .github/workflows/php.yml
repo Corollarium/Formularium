@@ -58,7 +58,7 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Quality assurance
+    - name: Run coverage
       env:
         CODE_COVERAGE: yes
       run: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
@@ -85,9 +85,19 @@ jobs:
         DOCUMENTATION: yes
       run: composer apidoc
     
+    - name: list
+      run: ls -al
+
     - name: Nojekyll
       run: touch docs/coverage-report/.nojekyll
 
+#     - name: Deploy 🚀
+#       uses: JamesIves/github-pages-deploy-action@3.7.1
+#       with:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         BRANCH: gh-pages # The branch the action should deploy to.
+#         FOLDER: docs/ # The folder the action should deploy.
+#         CLEAN: true # Automatically remove deleted files from the deploy branch
 #     - name: Publish pages
 #       deploy:
 #         provider: pages:git
