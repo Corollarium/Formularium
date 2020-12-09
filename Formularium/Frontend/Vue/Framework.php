@@ -57,21 +57,6 @@ class Framework extends \Formularium\Framework
     protected $editableTemplate = null;
 
     /**
-     * Appended to the field variable names to handle models stored in an object field.
-     *
-     * Allows you to declare the model like this:
-     *
-     * data() {
-     *   return {
-     *       model: model,
-     *   };
-     * },
-     *
-     * @var string
-     */
-    protected $fieldModelVariable = '';
-
-    /**
      * @var VueCode
      */
     protected $vueCode = null;
@@ -377,31 +362,7 @@ EOF;
         );
         return $template;
     }
-
-    /**
-     * Get appended to the field variable names to handle models stored in an object field.
-     *
-     * @return  string
-     */
-    public function getFieldModelVariable(): string
-    {
-        return $this->fieldModelVariable;
-    }
-
-    /**
-     * Set appended to the field variable names to handle models stored in an object field.
-     *
-     * @param  string  $fieldModelVariable  Appended to the field variable names to handle models stored in an object field.
-     *
-     * @return  self
-     */
-    public function setFieldModelVariable(string $fieldModelVariable): self
-    {
-        $this->fieldModelVariable = $fieldModelVariable;
-
-        return $this;
-    }
-
+    
     /**
      * Get the value of vueCode
      *
