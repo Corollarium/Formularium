@@ -43,7 +43,7 @@ jobs:
     - name: Quality assurance
       env:
         CODE_COVERAGE: yes
-      run: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Modelarium --coverage-clover ./clover.xml tests/
+      run: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
 
     # For code coverage report we are uploading our code coverage report to scrutinizer
     - name: Downloading scrutinizer ocular.phar
@@ -56,14 +56,21 @@ jobs:
     - name: Quality assurance
       env: 
         STATIC_ANALYSIS: yes
-      run: vendor/bin/phpstan analyze Modelarium
+      run: vendor/bin/phpstan analyze Formularium
 
-#     - name: Publish documentation
-#       env:
-#         - DOCUMENTATION=yes
-#       before_deploy:
-#         - composer apidoc
-#       script: skip
+    - name: Make kitchen sink
+      run: php util/makeKitchenSink.php
+
+    - name: Create api doc
+      env:
+        CODE_COVERAGE: yes
+        DOCUMENTATION: yes
+      run: composer apidoc
+    
+    - name: Nojekyll
+      run: touch docs/coverage-report/.nojekyll
+
+#     - name: Publish pages
 #       deploy:
 #         provider: pages:git
 #         token: ${GITHUB_TOKEN}
