@@ -58,7 +58,7 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Run coverage
+    - name: Generate coverage clover
       env:
         CODE_COVERAGE: yes
       run: vendor/bin/phpunit --bootstrap vendor/autoload.php --whitelist Formularium --coverage-clover ./clover.xml tests/
@@ -74,10 +74,15 @@ jobs:
     - name: Quality assurance
       env: 
         STATIC_ANALYSIS: yes
-      run: vendor/bin/phpstan analyze Formularium
+      run: composer stan
 
     - name: Make kitchen sink
       run: php util/makeKitchenSink.php
+
+    - name: Coverage html
+      env: 
+        STATIC_ANALYSIS: yes
+      run: composer coverage
 
     - name: Create api doc
       env:
