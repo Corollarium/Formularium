@@ -18,7 +18,10 @@ class Pagination extends Element
             ['class' => 'formularium-pagination-wrapper', 'aria-label' => "Page navigation"],
             HTMLNode::factory(
                 'ul',
-                ['class' => 'formularium-pagination'],
+                [
+                    'class' => 'formularium-pagination',
+                    'v-if' => 'lastPage > 1'
+                ],
                 [
                     HTMLNode::factory(
                         'li',
