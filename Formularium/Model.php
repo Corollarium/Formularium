@@ -279,6 +279,9 @@ class Model
 
             // call class validators.
             foreach ($field->getValidators() as $validatorName => $options) {
+                /**
+                 * @var string $validatorName
+                 */
                 // special case
                 if ($validatorName === Datatype::REQUIRED) {
                     continue;
@@ -302,6 +305,9 @@ class Model
             if (!array_key_exists($name, $data)) {
                 // call class validators.
                 foreach ($field->getValidators() as $validatorName => $options) {
+                    /**
+                     * @var string $validatorName
+                     */
                     if ($validatorName === Datatype::REQUIRED) {
                         if (!array_key_exists($name, $validate)
                             && !array_key_exists($name, $errors)
