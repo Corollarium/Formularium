@@ -61,7 +61,7 @@ class Pagination extends Element
                                 [
                                     "v-if" => "p.page == currentPage",
                                     "class" => ["formularium-pagination-link", "formularium-pagination-current"],
-                                    ":href" => "basePath + '/' + p.page",
+                                    ":href" => "baseLink + p.page",
                                     "@click.prevent" => ""
                                 ],
                                 "{{p.page}}"
@@ -71,7 +71,7 @@ class Pagination extends Element
                                 [
                                     "v-else" => null,
                                     "class" => "formularium-pagination-link",
-                                    ":href" => "basePath + '/' + p.page",
+                                    ":href" => "baseLink + p.page",
                                     "@click.prevent" => ""
                                 ],
                                 "{{p.page}}"
@@ -116,7 +116,7 @@ export default {
     props: {
         basePath: {
             type: String,
-            default: "/post"
+            default: ""
         },
         currentPage: {
             type: Number,
@@ -149,6 +149,12 @@ export default {
                 pages.push({page: i});
             }
             return pages;
+        },
+        baseLink() {
+            if (this.basePath.indexOf('?') === -1) {
+                return this.basePath + '?page=';
+            }
+            return this.basePath + '&page=';
         }
     }
 }
