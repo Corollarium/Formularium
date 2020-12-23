@@ -17,7 +17,11 @@ final class ExtradataParameter
      */
     public $value;
 
-    public function __construct(string $name, string $value)
+    /**
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __construct(string $name, $value)
     {
         $this->name = $name;
         $this->value = $value;
