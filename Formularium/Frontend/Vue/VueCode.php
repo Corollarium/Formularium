@@ -9,6 +9,7 @@ use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\HTMLNode;
 use Formularium\Model;
+use Modelarium\Datatypes\Datatype_relationship;
 
 /**
  * Converts an array to a JS object. Unlike JSON this does serialize
@@ -217,6 +218,8 @@ class VueCode
             return 'Number';
         } elseif ($type instanceof Datatype_bool) {
             return 'Boolean';
+        } elseif ($type instanceof Datatype_relationship) {
+            return 'Object';
         }
         return 'String';
     }

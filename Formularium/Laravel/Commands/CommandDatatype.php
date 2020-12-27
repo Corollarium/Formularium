@@ -26,7 +26,7 @@ class CommandDatatype extends Command
      *
      * @var string
      */
-    protected $description = 'Creates scaffolding using Modelarium';
+    protected $description = 'Creates scaffolding for a datatype';
 
     /**
      * Create a new command instance.

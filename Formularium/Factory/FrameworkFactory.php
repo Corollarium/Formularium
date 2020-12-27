@@ -73,12 +73,28 @@ final class FrameworkFactory extends AbstractFactory
     /**
      * Factory.
      *
-     * @param string $datatype
+     * @param string $name
      * @return Framework
      * @throws ClassNotFoundException
      */
-    public static function factory(string $datatype): Framework
+    public static function factory(string $name): Framework
     {
-        return parent::factory($datatype);
+        return parent::factory($name);
+    }
+
+    /**
+     * Returns all frameworks.
+     *
+     * @return Framework[]
+     */
+    public static function factoryAll(): array
+    {
+        return array_map(
+            function ($f) {
+                $fName = $f . '\\Framework';
+                return new $fName();
+            },
+            self::$namespaces
+        );
     }
 }

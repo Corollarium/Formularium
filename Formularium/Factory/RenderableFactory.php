@@ -7,6 +7,8 @@ use Formularium\Framework;
 use Formularium\Renderable;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\FrameworkComposer;
+use Formularium\HTMLNode;
+use Nette\PhpGenerator\PhpNamespace;
 
 final class RenderableFactory extends AbstractRenderableFactory
 {
