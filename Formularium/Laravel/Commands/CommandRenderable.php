@@ -52,6 +52,9 @@ class CommandRenderable extends Command
         if (is_string($frameworkNames)) {
             $frameworkNames = [$frameworkNames];
         }
+        /**
+         * @var array $frameworkNames
+         */
         if (in_array('*', $frameworkNames)) {
             $frameworks = FrameworkFactory::factoryAll();
         } else {
@@ -60,9 +63,26 @@ class CommandRenderable extends Command
                 $frameworkNames
             );
         }
-        $datatype = DatatypeFactory::factory((string)$this->argument('name'));
+
+        $name = $this->argument('name');
+        if (!is_string($name)) {
+            $this->error('Name must be a string');
+            return;
+        }
+        $datatype = DatatypeFactory::factory($name);
         $datatypeLower = mb_strtolower($datatype->getName());
-        $baseNamespace = (string)$this->option('namespace');
+        $baseNamespace = $this->option('namespace');
+        if (!is_string($baseNamespace)) {
+            $this->error('namespace must be a string');
+            return;
+        }
+
+        $basePath = $this->option('path');
+        if (!is_string($basePath)) {
+            $this->error('path must be a string');
+            return;
+        }
+
         $printer = new \Nette\PhpGenerator\PsrPrinter();
 
         foreach ($frameworks as $framework) {
@@ -71,7 +91,7 @@ class CommandRenderable extends Command
              */
             $phpns = $framework->generateRenderable($datatype, $baseNamespace);
             $code = "<?php declare(strict_types=1);\n" . $printer->printNamespace($phpns);
-            $basepath = (string)$this->option('path') . '/' . $framework->getName() . '/Renderable/';
+            $basepath = $basePath . '/' . $framework->getName() . '/Renderable/';
             if (!is_dir($basepath)) {
                 \Safe\mkdir($basepath, 0777, true);
             }

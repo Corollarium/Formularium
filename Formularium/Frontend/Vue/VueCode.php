@@ -218,7 +218,7 @@ class VueCode
             return 'Number';
         } elseif ($type instanceof Datatype_bool) {
             return 'Boolean';
-        } elseif ($type instanceof Datatype_relationship) {
+        } elseif ($type->getBasetype() == 'relationship') { // TODO this is crappy, comes from modelarium
             return 'Object';
         }
         return 'String';
