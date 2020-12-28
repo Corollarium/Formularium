@@ -145,7 +145,7 @@ export default {
 
     computed: {
         pages() {
-            let first = Math.max(1, this.currentPage - this.pagesAround);
+            let first = Math.max(1, this.currentPage - this.pagesAround + 1);
             let last = Math.min(this.lastPage, this.currentPage + this.pagesAround);
             let pages = [];
             for (let i = first; i <= last; i++) {
