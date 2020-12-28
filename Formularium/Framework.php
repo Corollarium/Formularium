@@ -143,7 +143,7 @@ abstract class Framework
         $frameworkName = $this->getName();
 
         $baseClass = '\\Formularium\\Renderable';
-        $ns = "{$baseNamespace}\\{$frameworkName}\\Renderable\Datatype_{$datatypeLower}";
+        $ns = "{$baseNamespace}\\{$frameworkName}\\Renderable";
 
         $namespace = new PhpNamespace($ns);
         $namespace->addUse('\\Formularium\\Field');
