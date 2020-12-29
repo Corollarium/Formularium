@@ -236,7 +236,7 @@ class Framework extends \Formularium\Framework
             'containerAtts' => $this->collapseHTMLAttributes($containerAtts),
             'form' => join('', $elements),
             'script' => $this->vueCode->toScript($m, $elements)
-        ];
+        ] + $this->vueCode->getTemplateData($m, $elements);
 
         if (is_callable($this->viewableTemplate)) {
             return call_user_func(
@@ -285,12 +285,13 @@ EOF;
     public function editableCompose(Model $m, array $elements, string $previousCompose): string
     {
         $containerAtts = $this->getContainerAttributes($m);
+
         $templateData = [
             'containerTag' => $this->getEditableContainerTag(),
             'containerAtts' => $this->collapseHTMLAttributes($containerAtts),
             'form' => join('', $elements),
-            'script' => $this->vueCode->toScript($m, $elements)
-        ];
+            'script' => $this->vueCode->toScript($m, $elements),
+        ] + $this->vueCode->getTemplateData($m, $elements);
         
         if (is_callable($this->editableTemplate)) {
             return call_user_func(

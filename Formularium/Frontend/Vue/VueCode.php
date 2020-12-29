@@ -273,7 +273,7 @@ class VueCode
      * @param HTMLNode[] $elements $elements
      * @return array
      */
-    protected function getTemplateData(Model $m, array $elements): array
+    public function getTemplateData(Model $m, array $elements): array
     {
         // get the props array with all js data
         $props = $this->props($m);
