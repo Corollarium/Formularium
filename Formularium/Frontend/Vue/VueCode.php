@@ -130,13 +130,14 @@ class VueCode
 
     /**
      *
+     * @param string $name The prop name.
      * @param array $extra Array of props. 'name' and 'type' keys are required for each element.
      *
      * @return  self
      */
-    public function appendExtraProp(array $extra): self
+    public function appendExtraProp(string $name, array $extra): self
     {
-        $this->extraProps[] = $extra;
+        $this->extraProps[$name] = $extra;
 
         return $this;
     }
@@ -331,7 +332,12 @@ class VueCode
                 ",\n",
                 expandJS($this->other)
             ),
-            'methodsCode' => '{}', // TODO
+            'methodsCode' => implode(
+                "\n",
+                array_map(function ($key, $value) {
+                    return "$key { $value },";
+                }, array_keys($this->methods), $this->methods)
+            ),
             'extraData' => implode(
                 "\n",
                 array_map(function ($key, $value) {
@@ -390,7 +396,7 @@ export default {
     },
     computed: { {{computedCode}} },
     props: {{propsCode}},
-    methods: {{methodsCode}}
+    methods: { {{methodsCode}} }
 };
 EOF;
             
