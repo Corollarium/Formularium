@@ -31,7 +31,7 @@ class Datatype_time extends \Formularium\Datatype
             if (count($matches) == 3) {
                 $matches[3] = 0;
             }
-            if ($matches[1] < 24 && $matches[2] < 60 && $matches[3] < 60) {
+            if ((int)$matches[1] < 24 && (int)$matches[2] < 60 && (int)$matches[3] < 60) {
                 return $value;
             }
         }
