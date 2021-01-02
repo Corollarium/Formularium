@@ -508,9 +508,11 @@ class Model
      * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
      * be an array of strings (field names) or a callback which is called for each field.
      * If a list of strings, only process the field names present in that list.
-     * If it's a callable, throw `NoRandomException` to ignore a field, and a random value otherwise
-     * (you can call `$field->getDatatype()->getRandom()` for the default).
-     * Callable signature: (Field $field, Model $m): mixed
+     * If it's a callable, it may fill `$data` with a random value
+     * (you can call `$field->getDatatype()->getRandom()` for the default). The entire $data
+     * array is provided (note it should be a reference in the callable parameter!) so you
+     * can use a different key than `$field->getName()` or fill more than one value.
+     * Callable signature: (Field $field, Model $m, array &$data): void
      * @return array An associative array field name => data.
      */
     public function getRandom($restrictFields = null): array
@@ -525,7 +527,7 @@ class Model
                 continue;
             } elseif (is_callable($restrictFields)) {
                 try {
-                    $data[$field->getName()] = $restrictFields($field, $this);
+                    $restrictFields($field, $this, $data);
                 } catch (NoRandomException $e) {
                     // pass
                 }
