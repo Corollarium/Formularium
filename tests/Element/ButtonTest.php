@@ -12,6 +12,6 @@ class ButtonTest extends \PHPUnit\Framework\TestCase
     {
         $composer = FrameworkComposer::create(['HTML']);
         $string = $composer->element('Button', [Element::LABEL => 'Submit']);
-        $this->assertContains('<button', $string);
+        $this->assertStringContainsString('<button', $string);
     }
 }

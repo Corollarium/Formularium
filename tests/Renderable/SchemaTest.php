@@ -49,9 +49,9 @@ class SchemaTest extends RenderableBaseTestCase
             FrameworkHTML::SCHEMA_ITEMSCOPE => true
         ]);
         $modelViewable = $model->viewable($frameworkComposer, ['myString' => 'Testing']);
-        $this->assertContains('itemprop="name"', $modelViewable);
-        $this->assertContains('itemscope=""', $modelViewable);
-        $this->assertContains('itemtype="http://schema.org/Movie"', $modelViewable);
+        $this->assertStringContainsString('itemprop="name"', $modelViewable);
+        $this->assertStringContainsString('itemscope=""', $modelViewable);
+        $this->assertStringContainsString('itemtype="http://schema.org/Movie"', $modelViewable);
     }
 
     public function testItemprop2()
@@ -93,8 +93,8 @@ class SchemaTest extends RenderableBaseTestCase
             ]
         );
         $modelViewable = $model->viewable($frameworkComposer, ['myString' => 'Testing']);
-        $this->assertContains('itemprop="name"', $modelViewable);
-        $this->assertContains('itemscope=""', $modelViewable);
-        $this->assertContains('itemtype="http://schema.org/Movie"', $modelViewable);
+        $this->assertStringContainsString('itemprop="name"', $modelViewable);
+        $this->assertStringContainsString('itemscope=""', $modelViewable);
+        $this->assertStringContainsString('itemtype="http://schema.org/Movie"', $modelViewable);
     }
 }

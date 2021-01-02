@@ -28,7 +28,7 @@ final class FrameworkComposerTest extends TestCase
     public function testHeadFooter()
     {
         $f = FrameworkComposer::create(["Bootstrap"]);
-        $this->assertContains('bootstrap', $f->htmlHead());
-        $this->assertContains('script', $f->htmlFooter());
+        $this->assertStringContainsString('bootstrap', $f->htmlHead());
+        $this->assertStringContainsString('script', $f->htmlFooter());
     }
 }

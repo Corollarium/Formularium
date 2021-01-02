@@ -11,14 +11,14 @@ final class FormulariumTest extends TestCase
     {
         $names = Formularium::validatorGraphqlDirectives();
         $this->assertIsString($names);
-        $this->assertContains('directive @Min(', $names);
-        $this->assertNotContains('directive @required', $names);
+        $this->assertStringContainsString('directive @Min(', $names);
+        $this->assertStringNotContainsString('directive @required', $names);
     }
 
     public function testScalarGraphqlDirectives()
     {
         $names = Formularium::scalarGraphqlDirectives();
         $this->assertIsString($names);
-        $this->assertContains('scalar year @scalar(', $names);
+        $this->assertStringContainsString('scalar year @scalar(', $names);
     }
 }

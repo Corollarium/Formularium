@@ -460,3 +460,7 @@ composer.lock
 *.css.map
 *.sass.map
 *.scss.map
+
+
+##### PHPunit
+.phpunit.result.cache

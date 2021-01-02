@@ -395,9 +395,9 @@ EOF;
         // required
         $t = $model->toGraphqlTypeDefinition();
         $t = preg_replace('/\s+/', ' ', $t); // remove multiple white space
-        $this->assertContains('someInteger: Int', $t);
-        $this->assertContains('someOther: String!', $t);
-        $this->assertContains('@renderable( label: "Some other" )', $t);
+        $this->assertStringContainsString('someInteger: Int', $t);
+        $this->assertStringContainsString('someOther: String!', $t);
+        $this->assertStringContainsString('@renderable( label: "Some other" )', $t);
     }
 
     public function testFirstField()
