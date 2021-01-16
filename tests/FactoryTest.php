@@ -12,13 +12,13 @@ final class FactoryTest extends TestCase
     {
         $names = DatatypeFactory::getNames();
         $this->assertIsArray($names);
-        $this->assertStringContainsString('string', $names);
+        $this->assertContains('string', $names);
     }
     
     public function testFrameworks()
     {
         $names = FrameworkFactory::getNames();
         $this->assertIsArray($names);
-        $this->assertStringContainsString('Bulma', $names);
+        $this->assertContains('string', $names);
     }
 }
