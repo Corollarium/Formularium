@@ -135,7 +135,7 @@ class Renderable_bool extends Renderable
             $optionFalse->setAttribute('selected', 'selected');
         }
 
-        if ($field->getValidators()[Datatype::REQUIRED] ?? false) {
+        if (!$field->getValidatorOption(Datatype::REQUIRED, 'value', false)) {
             $element->addContent($optionEmpty);
         }
         $element->addContent($optionFalse);
