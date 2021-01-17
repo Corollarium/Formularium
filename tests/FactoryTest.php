@@ -19,6 +19,6 @@ final class FactoryTest extends TestCase
     {
         $names = FrameworkFactory::getNames();
         $this->assertIsArray($names);
-        $this->assertContains('string', $names);
+        $this->assertContains('Bulma', $names);
     }
 }
