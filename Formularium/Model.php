@@ -16,17 +16,17 @@ class Model
     /**
      * @var string
      */
-    protected $name;
+    public $name;
 
     /**
      * @var Field[]
      */
-    protected $fields = [];
+    public $fields = [];
 
     /**
      * @var array
      */
-    protected $renderable = [];
+    public $renderable = [];
 
     /**
      * Model data being processed.
@@ -126,7 +126,7 @@ class Model
     /**
      * @param string[]|callable $restrictFields If present, restrict rendered fields. Can either
      * be an array of strings (field names) or a callback which is called for each field.
-     * @return array
+     * @return Field[]
      */
     public function getFields($restrictFields = null): array
     {

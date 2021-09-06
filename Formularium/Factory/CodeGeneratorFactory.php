@@ -2,27 +2,15 @@
 
 namespace Formularium\Factory;
 
+use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Framework;
 use Formularium\StringUtil;
 
-final class FrameworkFactory extends AbstractFactory
+final class CodeGeneratorFactory extends AbstractFactory
 {
     protected static $namespaces = [
-        'Formularium\\Frontend\\Blade',
-        'Formularium\\Frontend\\Bootstrap',
-        'Formularium\\Frontend\\Bootstrapvue',
-        'Formularium\\Frontend\\Buefy',
-        'Formularium\\Frontend\\Bulma',
-        'Formularium\\Frontend\\HTML',
-        'Formularium\\Frontend\\HTMLValidation',
-        'Formularium\\Frontend\\Materialize',
-        'Formularium\\Frontend\\Parsley',
-        'Formularium\\Frontend\\Quill',
-        'Formularium\\Frontend\\React',
-        'Formularium\\Frontend\\VeeValidate',
-        'Formularium\\Frontend\\Vue',
-        'Formularium\\Frontend\\Vuelidate',
+        'Formularium\\CodeGenerator\\Typescript'
     ];
 
     /**
@@ -37,18 +25,18 @@ final class FrameworkFactory extends AbstractFactory
         $classname = static::getClassName($name);
         foreach (static::$namespaces as $ns) {
             if (StringUtil::endsWith($ns, $name)) {
-                return $ns . "\\Framework";
+                return $ns . "\\CodeGenerator";
             }
         }
 
         // TODO: registerFactory
 
-        throw new ClassNotFoundException("Invalid framework $name");
+        throw new ClassNotFoundException("Invalid code generator $name");
     }
 
     public static function isValidClass(\ReflectionClass $reflection): bool
     {
-        return $reflection->isSubclassOf(Framework::class);
+        return $reflection->isSubclassOf(CodeGenerator::class);
     }
     
     protected static function getNamePair(\ReflectionClass $reflection): array
@@ -56,7 +44,7 @@ final class FrameworkFactory extends AbstractFactory
         $class = $reflection->getName();
 
         /**
-         * @var Framework $d
+         * @var CodeGenerator $d
          */
         $d = new $class();
 
@@ -70,10 +58,10 @@ final class FrameworkFactory extends AbstractFactory
      * Factory.
      *
      * @param string $name
-     * @return Framework
+     * @return CodeGenerator
      * @throws ClassNotFoundException
      */
-    public static function factory(string $name): Framework
+    public static function factory(string $name): CodeGenerator
     {
         return parent::factory($name);
     }
@@ -81,13 +69,13 @@ final class FrameworkFactory extends AbstractFactory
     /**
      * Returns all frameworks.
      *
-     * @return Framework[]
+     * @return CodeGenerator[]
      */
     public static function factoryAll(): array
     {
         return array_map(
             function ($f) {
-                $fName = $f . '\\Framework';
+                $fName = $f . '\\CodeGenerator';
                 return new $fName();
             },
             self::$namespaces

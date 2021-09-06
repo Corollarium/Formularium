@@ -146,18 +146,6 @@ class Field
         return $this->renderable[$name] ?? $default;
     }
 
-    /**
-     * Generates a GraphQL query for this field.
-     *
-     * @param array $params User supplied list of parameters, which may be used
-     * to control behavior (like recursion)
-     * @return string
-     */
-    public function toGraphqlQuery(array $params = []): string
-    {
-        return $this->datatype->getGraphqlField($this->getName(), $params);
-    }
-
     public function toGraphqlTypeDefinition(): string
     {
         $renderable = array_map(
