@@ -65,7 +65,12 @@ final class DatatypeGeneratorFactory
     {
         $reflection = new ReflectionClass($codeGenerator);
         $classes = ClassFinder::getClassesInNamespace($reflection->getNamespaceName());
-        return array_map(fn ($c) => new $c(), $classes);
+        return array_map(
+            function ($c) {
+                return new $c();
+            },
+            $classes
+        );
     }
 
     public static function getDatatypeName(DatatypeGenerator $dg): string

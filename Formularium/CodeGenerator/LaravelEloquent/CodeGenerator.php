@@ -17,7 +17,9 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
         return implode(
             ";\n",
             array_map(
-                fn ($f) => '$table->' . $f,
+                function ($f) {
+                    return '$table->' . $f;
+                },
                 $this->fields($model)
             )
         );

@@ -25,10 +25,14 @@ abstract class CodeGenerator
     {
         $classes = DatatypeGeneratorFactory::factoryAll($this);
         $declarations = array_map(
-            fn ($c) => $c->datatypeDeclaration(),
+            function ($c) {
+                return $c->datatypeDeclaration();
+            },
             $classes
         );
-        $cleanDeclarations = array_filter($declarations, fn ($d) => $d);
+        $cleanDeclarations = array_filter($declarations, function ($d) {
+            return $d;
+        });
         return join("\n", $cleanDeclarations);
     }
 
