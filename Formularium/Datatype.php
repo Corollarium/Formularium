@@ -72,13 +72,6 @@ abstract class Datatype
     }
 
     /**
-     * Returns the suggested Laravel Database type for this datatype.
-     *
-     * @return string
-     */
-    abstract public function getLaravelSQLType(string $name, array $options = []): string;
-
-    /**
      * Returns a default value. Used to build new editable forms, for example.
      *
      * @return mixed

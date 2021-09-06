@@ -18,7 +18,7 @@ class DatatypeGenerator_float extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             'FLOAT',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

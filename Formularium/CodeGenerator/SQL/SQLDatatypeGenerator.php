@@ -18,8 +18,8 @@ abstract class SQLDatatypeGenerator implements DatatypeGenerator
         return '';
     }
 
-    protected function getSQL(string $fieldName, string $qualifier, bool $nullable = true) : string
+    protected function getSQL(string $fieldName, string $qualifier, bool $required = false) : string
     {
-        return $fieldName . ($qualifier ? ' ' . $qualifier : '') . ($nullable ? '' : ' NOT NULL');
+        return $fieldName . ($qualifier ? ' ' . $qualifier : '') . ($required ? ' NOT NULL' : '');
     }
 }

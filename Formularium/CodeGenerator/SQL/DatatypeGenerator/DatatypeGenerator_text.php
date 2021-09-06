@@ -18,7 +18,7 @@ class DatatypeGenerator_text extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             'TEXT',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

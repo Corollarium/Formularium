@@ -5,7 +5,7 @@ namespace Formularium\CodeGenerator\GraphQL;
 use Formularium\Field;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\CodeGenerator;
-use Formularium\CodeGenerator\Typescript\CodeGenerator as TypescriptCodeGenerator;
+use Formularium\CodeGenerator\GraphQL\CodeGenerator as GraphQLCodeGenerator;
 use Formularium\Datatype;
 use Formularium\Factory\DatatypeGeneratorFactory;
 
@@ -16,7 +16,7 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
         return ucwords(DatatypeGeneratorFactory::getDatatypeName($this));
     }
 
-    public function getDatatypeName(TypescriptCodeGenerator $generator): string
+    public function getDatatypeName(GraphQLCodeGenerator $generator): string
     {
         return $generator->getDatatypeNamespace() . $this->getDatatypeBasename();
     }
@@ -36,6 +36,9 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
 
     public function field(CodeGenerator $generator, Field $field)
     {
+        /**
+         * @var TypescriptCodeGenerator $generator
+         */
         $renderable = array_map(
             function ($name, $value) {
                 $v = $value;
@@ -48,8 +51,8 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
             $field->getRenderables()
         );
 
-        return $field->getName() . ': ' . $this->getBasetype() .
-            ($field->getValidator(Datatype::REQUIRED, false) ? '' : '!') .
+        return $field->getName() . ': ' . $this->getDatatypeName($generator)  .
+            ($field->getValidatorOption(Datatype::REQUIRED, 'value', false) ? '!' : '') .
             // TODO: validators
             ($field->getRenderables() ? " @renderable(\n" . join("\n", $renderable) . "\n)" : '') .
             "\n";

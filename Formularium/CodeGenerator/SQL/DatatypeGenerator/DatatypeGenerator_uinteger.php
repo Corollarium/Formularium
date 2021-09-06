@@ -19,7 +19,7 @@ class DatatypeGenerator_uinteger extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             'INT UNSIGNED',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

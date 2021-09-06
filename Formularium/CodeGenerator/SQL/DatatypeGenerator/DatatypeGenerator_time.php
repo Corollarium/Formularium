@@ -18,7 +18,7 @@ class DatatypeGenerator_time extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             'TIME',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

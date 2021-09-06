@@ -9,12 +9,7 @@ class Datatype_countrycodeiso2 extends \Formularium\Datatype\Datatype_countrycod
         parent::__construct($typename, $basetype);
         $this->setChoices(self::ISO_ALPHA2);
     }
-
-    public function getLaravelSQLType(string $name, array $options = []): string
-    {
-        return "char('$name', 2)";
-    }
-
+    
     public function getDocumentation(): string
     {
         return 'Country names represented by ISO 2-letter codes.';

@@ -19,7 +19,7 @@ class DatatypeGenerator_integer extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             'INT',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

@@ -18,7 +18,7 @@ class DatatypeGenerator_timestamp extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             'TIMESTAMP',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

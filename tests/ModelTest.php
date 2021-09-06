@@ -261,7 +261,7 @@ EOF;
         // required
         $r = $model->filterField(
             function (Field $field) {
-                return $field->getValidator(Datatype::REQUIRED, false);
+                return $field->getValidatorOption(Datatype::REQUIRED, 'value', false);
             }
         );
         $this->assertEquals(1, count($r));
@@ -306,7 +306,7 @@ EOF;
         // required
         $r = $model->getFields(
             function (Field $field) {
-                return $field->getValidator(Datatype::REQUIRED, false);
+                return $field->getValidatorOption(Datatype::REQUIRED, 'value', false);
             }
         );
         $this->assertEquals(1, count($r));
@@ -392,7 +392,7 @@ EOF;
         // required
         $r = $model->firstField(
             function (Field $field) {
-                return $field->getValidator(Datatype::REQUIRED, false);
+                return $field->getValidatorOption(Datatype::REQUIRED, 'value', false);
             }
         );
         $this->assertInstanceOf(Field::class, $r);

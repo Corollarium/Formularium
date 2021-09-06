@@ -32,7 +32,7 @@ class DatatypeGenerator_string extends SQLDatatypeGenerator
         return $this->getSQL(
             $field->getName(),
             $this->basetype . '(' . $this->maxLength() . ')',
-            $field->getValidator(Datatype::REQUIRED, false)
+            $field->getValidatorOption(Datatype::REQUIRED, 'value', false)
         );
     }
 }

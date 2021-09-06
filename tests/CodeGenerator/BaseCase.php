@@ -1,15 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace FormulariumTests;
+namespace FormulariumTests\CodeGenerator;
 
 use Formularium\Frontend\HTML\Renderable;
 use Formularium\Model;
-use Formularium\CodeGenerator\Typescript\CodeGenerator as TypescriptCodeGenerator;
+use Formularium\CodeGenerator\GraphQL\CodeGenerator as GraphQLCodeGenerator;
+use Formularium\Datatype;
 use PHPUnit\Framework\TestCase;
 
-final class TypescriptTest extends TestCase
+class BaseCase extends TestCase
 {
-    public function testBase()
+    protected function getBaseModel(): Model
     {
         /*
          * basic demo fiels
@@ -18,9 +19,12 @@ final class TypescriptTest extends TestCase
             'myAlpha' => [
                 'datatype' => 'alpha',
                 'validators' => [
+                    Datatype::REQUIRED => [
+                        'value' => true,
+                    ]
                 ],
                 'renderable' => [
-                    Renderable::LABEL => 'Name',
+                    Renderable::LABEL => 'My Alpha',
                     Renderable::SCHEMA_ITEMPROP => 'name',
                 ],
             ],
@@ -51,8 +55,8 @@ final class TypescriptTest extends TestCase
                     Renderable::SCHEMA_ITEMPROP => 'name',
                 ],
             ],
-            'myDescriptionString' => [
-                'datatype' => 'string',
+            'myDescriptionText' => [
+                'datatype' => 'text',
                 'validators' => [
                 ],
                 'renderable' => [
@@ -60,6 +64,16 @@ final class TypescriptTest extends TestCase
                     Renderable::SCHEMA_ITEMPROP => 'description',
                 ],
             ],
+            'myIpv4' => [
+                'datatype' => 'ipv4',
+                'validators' => [
+                ],
+                'renderable' => [
+                    Renderable::LABEL => 'Ipv4',
+                    Renderable::SCHEMA_ITEMPROP => 'name',
+                ],
+            ],
+            
         ];
 
         // generate basic model
@@ -69,12 +83,6 @@ final class TypescriptTest extends TestCase
                 'fields' => $basicFields
             ]
         );
-
-        $codeGenerator = new TypescriptCodeGenerator();
-        $fields = $codeGenerator->type($model);
-        $this->assertStringContainsString('myAlpha: alpha', $fields);
-        $this->assertStringContainsString('myBool: boolean', $fields);
-        $this->assertStringContainsString('myBoolean: boolean', $fields);
-        $this->assertStringContainsString('myInt: integer', $fields);
+        return $model;
     }
 }
