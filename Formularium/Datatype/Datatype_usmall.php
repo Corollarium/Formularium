@@ -12,11 +12,6 @@ class Datatype_usmall extends Datatype_integer
         parent::__construct($typename, $basetype);
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'SMALLINT UNSIGNED';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "smallInteger(\"$name\")->unsigned()";

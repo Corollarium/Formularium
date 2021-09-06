@@ -2,6 +2,7 @@
 
 namespace Formularium;
 
+use Formularium\CodeGenerator\GraphQL\CodeGenerator;
 use Formularium\Exception\Exception;
 use Formularium\Factory\DatatypeFactory;
 
@@ -146,27 +147,6 @@ class Field
         return $this->renderable[$name] ?? $default;
     }
 
-    public function toGraphqlTypeDefinition(): string
-    {
-        $renderable = array_map(
-            function ($name, $value) {
-                $v = $value;
-                if (is_string($value)) {
-                    $v = '"' . str_replace('"', '\\"', $value) . '"';
-                }
-                return ' ' . $name . ': ' . $v;
-            },
-            array_keys($this->renderable),
-            $this->renderable
-        );
-
-        return $this->getName() . ': ' . $this->datatype->getGraphqlType() .
-            ($this->getValidator(Datatype::REQUIRED, false) ? '' : '!') .
-            // TODO: validators
-            ($this->renderable ? " @renderable(\n" . join("\n", $renderable) . "\n)" : '') .
-            "\n";
-    }
-
     public function toArray(): array
     {
         return [
@@ -176,5 +156,10 @@ class Field
             'renderable' => $this->renderable,
             'extradata' => $this->extradata,
         ];
+    }
+
+    public function getCodeGeneratorFieldDeclaration(CodeGenerator $codeGenerator): string
+    {
+        return $codeGenerator->field($this);
     }
 }

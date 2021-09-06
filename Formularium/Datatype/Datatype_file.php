@@ -33,11 +33,6 @@ class Datatype_file extends \Formularium\Datatype
         return $value;
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        throw new ValidatorException('File field.');
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         throw new ValidatorException('File field.');

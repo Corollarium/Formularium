@@ -9,12 +9,7 @@ class Datatype_countrycodeiso3 extends \Formularium\Datatype\Datatype_countrycod
         parent::__construct($typename, $basetype);
         $this->setChoices(self::ISO_ALPHA3);
     }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'CHAR(3)';
-    }
-
+    
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "char('$name', 3)";

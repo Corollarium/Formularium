@@ -67,4 +67,11 @@ final class DatatypeGeneratorFactory
         $classes = ClassFinder::getClassesInNamespace($reflection->getNamespaceName());
         return array_map(fn ($c) => new $c(), $classes);
     }
+
+    public static function getDatatypeName(DatatypeGenerator $dg): string
+    {
+        $className = get_class($dg);
+        $datatypeName = mb_substr($className, mb_strrpos($className, '_') + 1);
+        return $datatypeName;
+    }
 }

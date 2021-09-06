@@ -27,11 +27,6 @@ class Datatype_constant extends \Formularium\Datatype
         throw new ValidatorException('Constant field.');
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        throw new ValidatorException('Constant field.');
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         throw new ValidatorException('Constant field.');

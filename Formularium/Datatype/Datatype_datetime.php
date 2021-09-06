@@ -54,11 +54,6 @@ class Datatype_datetime extends \Formularium\Datatype
         return $dt->format(\DateTime::ISO8601);
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'DATETIME';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "datetime('$name')";

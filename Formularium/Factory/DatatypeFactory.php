@@ -2,11 +2,13 @@
 
 namespace Formularium\Factory;
 
+use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\Formularium;
 use Formularium\Datatype;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 use Nette\PhpGenerator\PhpNamespace;
+use ReflectionClass;
 
 final class DatatypeFactory extends AbstractFactory
 {

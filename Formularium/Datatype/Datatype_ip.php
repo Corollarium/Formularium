@@ -9,6 +9,11 @@ use Respect\Validation\Validator as v;
 
 class Datatype_ip extends \Formularium\Datatype\Datatype_string
 {
+    /**
+     *  @var integer
+     */
+    protected $MAX_STRING_LENGTH = 39;
+
     public function __construct(string $typename = 'ip', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
@@ -28,11 +33,6 @@ class Datatype_ip extends \Formularium\Datatype\Datatype_string
         throw new ValidatorException(
             'Invalid IP'
         );
-    }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(39)';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string

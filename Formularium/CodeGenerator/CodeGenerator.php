@@ -2,6 +2,7 @@
 
 namespace Formularium\CodeGenerator;
 
+use Formularium\Datatype;
 use Formularium\Factory\DatatypeGeneratorFactory;
 use Formularium\Field;
 use Formularium\Model;
@@ -32,6 +33,18 @@ abstract class CodeGenerator
     }
 
     /**
+     * Returns a single declaration for a specific datatype.
+     *
+     * @param Datatype $datatype
+     * @return string
+     */
+    public function datatypeDeclaration(Datatype $datatype): string
+    {
+        $generator = DatatypeGeneratorFactory::factory($datatype, $this);
+        return $generator->datatypeDeclaration($this);
+    }
+
+    /**
      * Generates fields code for this model.
      *
      * @return mixed[]
@@ -40,10 +53,20 @@ abstract class CodeGenerator
     {
         $defs = [];
         foreach ($model->getFields() as $field) {
-            $dg = DatatypeGeneratorFactory::factory($field->getDatatype(), $this);
-            $defs[$field->getName()] = $dg->field($this, $field);
+            $defs[$field->getName()] = $this->field($field);
         }
         return $defs;
+    }
+
+    /**
+     * Generates fields code for this model.
+     *
+     * @return string
+     */
+    public function field(Field $field): string
+    {
+        $dg = DatatypeGeneratorFactory::factory($field->getDatatype(), $this);
+        return $dg->field($this, $field);
     }
 
     abstract public function type(Model $model): string;

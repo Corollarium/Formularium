@@ -16,11 +16,6 @@ class Datatype_text extends Datatype_string
         return static::faker()->text(); // TODO: params
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'TEXT';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "text('$name')";

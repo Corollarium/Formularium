@@ -54,11 +54,6 @@ abstract class Datatype_enum extends \Formularium\Datatype
         throw new ValidatorException('Invalid enum value set: ' . htmlspecialchars((string)$value));
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(32)';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "string('$name', 32)";

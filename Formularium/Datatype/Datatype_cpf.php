@@ -10,6 +10,8 @@ use Respect\Validation\Validator as Respect;
 
 class Datatype_cpf extends \Formularium\Datatype\Datatype_string
 {
+    protected $MAX_STRING_LENGTH = '13';
+
     public function __construct(string $typename = 'cpf', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);
@@ -28,11 +30,6 @@ class Datatype_cpf extends \Formularium\Datatype\Datatype_string
             return $value;
         }
         throw new ValidatorException('Invalid CPF');
-    }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(13)';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string

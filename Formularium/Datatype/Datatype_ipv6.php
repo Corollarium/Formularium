@@ -9,6 +9,11 @@ use Respect\Validation\Validator as v;
 
 class Datatype_ipv6 extends \Formularium\Datatype\Datatype_string
 {
+    /**
+     *  @var integer
+     */
+    protected $MAX_STRING_LENGTH = 39;
+
     public function __construct(string $typename = 'ipv6', string $basetype = 'string')
     {
         parent::__construct($typename, $basetype);

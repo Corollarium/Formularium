@@ -79,11 +79,6 @@ class Datatype_url extends \Formularium\Datatype
         }
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(256)';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "string('$name', 256)";

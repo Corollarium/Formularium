@@ -7,6 +7,11 @@ use Formularium\Exception\ValidatorException;
 
 class Datatype_language extends \Formularium\Datatype\Datatype_enum
 {
+    /**
+     *  @var integer
+     */
+    protected $MAX_STRING_LENGTH = 10;
+
     public function __construct(string $typename = 'language', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
@@ -214,12 +219,7 @@ class Datatype_language extends \Formularium\Datatype\Datatype_enum
             'zu' => 'isiZulu'
         ];
     }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(10)';
-    }
-
+    
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "string($name, 10)";

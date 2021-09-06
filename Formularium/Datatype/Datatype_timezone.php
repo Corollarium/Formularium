@@ -6,18 +6,18 @@ use Formularium\Exception\Exception;
 
 class Datatype_timezone extends \Formularium\Datatype\Datatype_enum
 {
+    /**
+     *  @var integer
+     */
+    protected $MAX_STRING_LENGTH = 50;
+
     public function __construct(string $typename = 'timezone', string $basetype = 'enum')
     {
         parent::__construct($typename, $basetype);
         $l = timezone_identifiers_list();
         $this->choices = (array)array_combine($l, $l);
     }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(50)';
-    }
-
+    
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "string($name, 50)";

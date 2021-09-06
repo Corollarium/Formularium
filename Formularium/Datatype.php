@@ -2,6 +2,7 @@
 
 namespace Formularium;
 
+use Formularium\CodeGenerator\GraphQL\CodeGenerator;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Exception\Exception;
 
@@ -65,36 +66,10 @@ abstract class Datatype
      */
     abstract public function getRandom(array $validators = []);
 
-    /**
-     * Returns the Graphql query for this datatype.
-     *
-     * @return string
-     */
-    public function getGraphqlType(): string
+    public function getCodeGeneratorDatatypeDeclaration(CodeGenerator $codeGenerator): string
     {
-        return $this->name;
+        return $codeGenerator->datatypeDeclaration($this);
     }
-
-    /**
-     * Returns the Graphql query for this datatype.
-     *
-     * @param string $name The field name
-     * @param array $params User supplied list of parameters, which may be used
-     * to control behavior (like recursion)
-     * @return string
-     */
-    public function getGraphqlField(string $name, array $params = []): string
-    {
-        return $name;
-    }
-
-    /**
-     * Returns the suggested SQL type for this datatype, such as 'TEXT'.
-     *
-     * @param string $database The database
-     * @return string
-     */
-    abstract public function getSQLType(string $database = '', array $options = []): string;
 
     /**
      * Returns the suggested Laravel Database type for this datatype.

@@ -38,12 +38,7 @@ class Datatype_uuid extends Datatype_string
         }
         throw new Exception('Invalid uuid value: ' . $value);
     }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'CHAR(16)';
-    }
-
+    
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "uuid('$name')";

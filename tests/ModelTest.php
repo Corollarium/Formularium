@@ -355,51 +355,6 @@ EOF;
         $this->assertEquals('someInteger', $r['someInteger']->getName());
     }
 
-    public function testToGraphql()
-    {
-        $modelData = [
-            'name' => 'TestModel',
-            'fields' => [
-                'someInteger' => [
-                    'datatype' => 'integer',
-                    'validators' => [
-                        Min::class => [
-                            'value' => 4,
-                        ],
-                        Max::class => [
-                            'value' => 30,
-                        ],
-                        Datatype::REQUIRED => [
-                            'value' => true,
-                        ]
-                    ]
-                ],
-                'someOther' => [
-                    'datatype' => 'string',
-                    'validators' => [
-                        MinLength::class => [
-                            'value' => 4,
-                        ],
-                        MaxLength::class => [
-                            'value' => 30,
-                        ],
-                    ],
-                    'renderable' => [
-                        Renderable::LABEL => 'Some other'
-                    ]
-                ]
-            ]
-        ];
-        $model = Model::fromStruct($modelData);
-
-        // required
-        $t = $model->toGraphqlTypeDefinition();
-        $t = preg_replace('/\s+/', ' ', $t); // remove multiple white space
-        $this->assertStringContainsString('someInteger: Int', $t);
-        $this->assertStringContainsString('someOther: String!', $t);
-        $this->assertStringContainsString('@renderable( label: "Some other" )', $t);
-    }
-
     public function testFirstField()
     {
         $modelData = [

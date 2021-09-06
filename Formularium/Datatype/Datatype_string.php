@@ -28,6 +28,11 @@ class Datatype_string extends \Formularium\Datatype
         parent::__construct($typename, $basetype);
     }
 
+    public function getMaxStringLength(): int
+    {
+        return $this->MAX_STRING_LENGTH;
+    }
+
     public function getRandom(array $params = [])
     {
         $min = $params[static::MIN_LENGTH]['value'] ?? $this->MIN_STRING_LENGTH;
@@ -52,16 +57,6 @@ class Datatype_string extends \Formularium\Datatype
         $value = MaxLength::validate($value, ['value' => $this->MAX_STRING_LENGTH]);
 
         return $text;
-    }
-
-    public function getGraphqlType(): string
-    {
-        return 'String';
-    }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'VARCHAR(' . $this->MAX_STRING_LENGTH . ')';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string

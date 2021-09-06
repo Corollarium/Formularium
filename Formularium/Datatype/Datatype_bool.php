@@ -45,26 +45,6 @@ class Datatype_bool extends \Formularium\Datatype
         throw new ValidatorException('Invalid boolean value');
     }
 
-    public function getGraphqlType(): string
-    {
-        return 'Boolean';
-    }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        switch ($database) {
-            case DatabaseEnum::MYSQL:
-                return 'BIT';
-            case DatabaseEnum::POSTGRESQL:
-                return 'BOOLEAN';
-            case DatabaseEnum::ORACLE:
-                return 'NUMBER(1)';
-            case DatabaseEnum::SQLSERVER:
-                return 'BIT';
-        }
-        return 'INT';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "boolean($name)";

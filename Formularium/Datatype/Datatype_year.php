@@ -17,11 +17,6 @@ class Datatype_year extends \Formularium\Datatype\Datatype_integer
         return mt_rand($min, $max);
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'INT';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "year('$name')";

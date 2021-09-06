@@ -4,6 +4,11 @@ namespace Formularium\Datatype;
 
 class Datatype_languageiso2 extends Datatype_enum
 {
+    /**
+     *  @var integer
+     */
+    protected $MAX_STRING_LENGTH = 2;
+
     const LANGUAGES = [
         'aa' => 'Afaraf',
         'ab' => 'аҧсуа бызшәа, аҧсшәа',
@@ -195,11 +200,6 @@ class Datatype_languageiso2 extends Datatype_enum
     {
         parent::__construct($typename, $basetype);
         $this->choices = self::LANGUAGES;
-    }
-
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'CHAR(2)';
     }
 
     public function getLaravelSQLType(string $name, array $options = []): string

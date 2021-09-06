@@ -10,11 +10,6 @@ class Datatype_countrycodeiso2 extends \Formularium\Datatype\Datatype_countrycod
         $this->setChoices(self::ISO_ALPHA2);
     }
 
-    public function getSQLType(string $database = '', array $options = []): string
-    {
-        return 'CHAR(2)';
-    }
-
     public function getLaravelSQLType(string $name, array $options = []): string
     {
         return "char('$name', 2)";
