@@ -9,7 +9,10 @@ use Formularium\CodeGenerator\LaravelEloquent\CodeGenerator as LaravelEloquentCo
 
 class DatatypeGenerator_currency extends DatatypeGenerator_string
 {
-    protected string $basetype = 'char';
+    /**
+     * @var string
+     */
+    protected $basetype = 'char';
 
     protected function maxLength(): int
     {

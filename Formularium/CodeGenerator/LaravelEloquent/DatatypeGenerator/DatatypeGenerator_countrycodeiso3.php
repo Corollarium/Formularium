@@ -4,7 +4,10 @@ namespace Formularium\CodeGenerator\LaravelEloquent\DatatypeGenerator;
 
 class DatatypeGenerator_countrycodeiso3 extends DatatypeGenerator_string
 {
-    protected string $basetype = 'char';
+    /**
+     * @var string
+     */
+    protected $basetype = 'char';
 
     protected function maxLength(): int
     {

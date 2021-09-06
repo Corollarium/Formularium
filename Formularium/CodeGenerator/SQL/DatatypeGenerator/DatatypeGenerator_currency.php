@@ -9,7 +9,10 @@ use Formularium\CodeGenerator\SQL\CodeGenerator as SQLCodeGenerator;
 
 class DatatypeGenerator_currency extends DatatypeGenerator_string
 {
-    protected string $basetype = 'CHAR';
+    /**
+     * @var string
+     */
+    protected $basetype = 'CHAR';
 
     protected function maxLength(): int
     {

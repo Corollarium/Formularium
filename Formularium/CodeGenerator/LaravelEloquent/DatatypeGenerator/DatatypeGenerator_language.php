@@ -4,5 +4,8 @@ namespace Formularium\CodeGenerator\LaravelEloquent\DatatypeGenerator;
 
 class DatatypeGenerator_language extends DatatypeGenerator_string
 {
-    protected string $basetype = 'char';
+    /**
+     * @var string
+     */
+    protected $basetype = 'char';
 }

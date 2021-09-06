@@ -28,8 +28,8 @@ abstract class CodeGenerator
     {
         $classes = DatatypeGeneratorFactory::factoryAll($this);
         $declarations = array_map(
-            function ($c) {
-                return $c->datatypeDeclaration();
+            function (DatatypeGenerator $c) {
+                return $c->datatypeDeclaration($this);
             },
             $classes
         );

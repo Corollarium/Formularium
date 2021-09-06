@@ -9,5 +9,8 @@ use Formularium\CodeGenerator\SQL\CodeGenerator as SQLCodeGenerator;
 
 class DatatypeGenerator_languageiso2 extends DatatypeGenerator_string
 {
-    protected string $basetype = 'CHAR';
+    /**
+     * @var string
+     */
+    protected $basetype = 'CHAR';
 }

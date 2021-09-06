@@ -13,7 +13,10 @@ use Formularium\Factory\DatatypeGeneratorFactory;
 
 class DatatypeGenerator_string extends SQLDatatypeGenerator
 {
-    protected string $basetype = 'VARCHAR';
+    /**
+     * @var string
+     */
+    protected $basetype = 'VARCHAR';
 
     protected function maxLength(): int
     {

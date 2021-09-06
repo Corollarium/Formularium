@@ -13,7 +13,7 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
     /**
      * Prefixes datatypes with a namespace
      *
-     * @param string $name
+     * @var string
      */
     public $datatypeNamespace = '';
 

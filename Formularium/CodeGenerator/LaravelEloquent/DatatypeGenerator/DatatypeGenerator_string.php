@@ -8,12 +8,16 @@ use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\LaravelEloquent\CodeGenerator as LaravelEloquentCodeGenerator;
 use Formularium\CodeGenerator\LaravelEloquent\LaravelEloquentDatatypeGenerator;
 use Formularium\Datatype;
+use Formularium\Datatype\Datatype_string;
 use Formularium\Factory\DatatypeFactory;
 use Formularium\Factory\DatatypeGeneratorFactory;
 
 class DatatypeGenerator_string extends LaravelEloquentDatatypeGenerator
 {
-    protected string $basetype = 'string';
+    /**
+     * @var string
+     */
+    protected $basetype = 'string';
 
     protected function maxLength(): int
     {

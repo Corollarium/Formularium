@@ -4,7 +4,10 @@ namespace Formularium\CodeGenerator\SQL\DatatypeGenerator;
 
 class DatatypeGenerator_countrycodeiso2 extends DatatypeGenerator_string
 {
-    protected string $basetype = 'CHAR';
+    /**
+     * @var string
+     */
+    protected $basetype = 'CHAR';
 
     protected function maxLength(): int
     {

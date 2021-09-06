@@ -29,7 +29,7 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
     public function datatypeDeclaration(CodeGenerator $generator)
     {
         /**
-         * @var TypescriptCodeGenerator $generator
+         * @var GraphQLCodeGenerator $generator
          */
         return 'scalar ' . $this->getDatatypeName($generator) . ' @scalar(class: "Modelarium\\Types\\' . get_class($this) . '"';
     }
@@ -37,7 +37,7 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
     public function field(CodeGenerator $generator, Field $field)
     {
         /**
-         * @var TypescriptCodeGenerator $generator
+         * @var GraphQLCodeGenerator $generator
          */
         $renderable = array_map(
             function ($name, $value) {
