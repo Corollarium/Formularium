@@ -5,7 +5,7 @@ namespace Formularium\CodeGenerator\SQL;
 use Formularium\Field;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\CodeGenerator;
-use Formularium\CodeGenerator\Typescript\CodeGenerator as TypescriptCodeGenerator;
+use Formularium\CodeGenerator\SQL\CodeGenerator as SQLCodeGenerator;
 use Formularium\Datatype;
 
 abstract class SQLDatatypeGenerator implements DatatypeGenerator

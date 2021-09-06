@@ -2,7 +2,7 @@
 
 namespace Formularium;
 
-use Formularium\CodeGenerator\GraphQL\CodeGenerator;
+use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\Exception\Exception;
 use Formularium\Factory\DatatypeFactory;
 

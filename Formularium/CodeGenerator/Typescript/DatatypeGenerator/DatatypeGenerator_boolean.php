@@ -9,9 +9,6 @@ class DatatypeGenerator_boolean extends TypescriptDatatypeGenerator
 {
     public function datatypeDeclaration(CodeGenerator $generator)
     {
-        /**
-         * @var TypescriptCodeGenerator $generator
-         */
         return null;
     }
 }

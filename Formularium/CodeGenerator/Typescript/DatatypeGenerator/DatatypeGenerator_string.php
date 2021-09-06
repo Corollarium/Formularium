@@ -9,9 +9,6 @@ class DatatypeGenerator_string extends TypescriptDatatypeGenerator
 {
     public function datatypeDeclaration(CodeGenerator $generator)
     {
-        /**
-         * @var TypescriptCodeGenerator $generator
-         */
         return null;
     }
 }

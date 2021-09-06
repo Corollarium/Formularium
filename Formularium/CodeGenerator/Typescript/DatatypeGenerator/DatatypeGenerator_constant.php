@@ -11,9 +11,6 @@ class DatatypeGenerator_constant extends TypescriptDatatypeGenerator
 {
     public function field(CodeGenerator $generator, Field $field)
     {
-        /**
-         * @var SQLCodeGenerator $generator
-         */
         throw new ValidatorException('File field.');
     }
 }
