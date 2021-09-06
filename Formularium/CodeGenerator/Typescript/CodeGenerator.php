@@ -32,7 +32,7 @@ $fields
 EOD;
     }
 
-    public function fieldDeclaration(string $datatype, string $name)
+    public function fieldDeclaration(string $datatype, string $name): string
     {
         return self::TAB . $name . ': ' . $datatype . ';';
     }
