@@ -9,7 +9,10 @@ use Formularium\Model;
 
 abstract class CodeGenerator
 {
-    public string $name;
+    /**
+     * @var string
+     */
+    public $name;
     
     public function __construct(string $name)
     {

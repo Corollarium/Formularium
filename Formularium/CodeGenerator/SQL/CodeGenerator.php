@@ -7,7 +7,12 @@ use Formularium\Model;
 
 class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
 {
-    public string $database = DatabaseEnum::MYSQL;
+    /**
+     * The database type
+     *
+     * @var string
+     */
+    public $database = DatabaseEnum::MYSQL;
 
     public function __construct(string $name = 'SQL')
     {

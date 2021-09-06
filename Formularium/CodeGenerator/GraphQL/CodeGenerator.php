@@ -11,7 +11,7 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
      *
      * @param string $name
      */
-    public string $datatypeNamespace = '';
+    public $datatypeNamespace = '';
 
     public function __construct(string $name = 'GraphQL')
     {
