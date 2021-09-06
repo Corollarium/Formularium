@@ -23,7 +23,7 @@ final class DatatypeGeneratorFactory
     /**
      * Factory.
      *
-     * @param string $datatypeGeneratorName
+     * @param string|Datatype $datatypeName
      * @param CodeGenerator $codeGenerator
      * @return DatatypeGenerator
      */

@@ -10,7 +10,7 @@ use Formularium\DatabaseEnum;
 
 class DatatypeGenerator_bool extends SQLSQLDatatypeGenerator
 {
-    protected function _type(CodeGenerator $generator)
+    protected function _type(CodeGenerator $generator): string
     {
         /**
          * @var SQLCodeGenerator $generator

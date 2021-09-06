@@ -14,7 +14,11 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
         parent::__construct($name);
     }
 
-    public function setDatabase($database): self
+    /**
+     * @param string $database See DatabaseEnum
+     * @return self
+     */
+    public function setDatabase(string $database): self
     {
         $this->database = $database;
         return $this;

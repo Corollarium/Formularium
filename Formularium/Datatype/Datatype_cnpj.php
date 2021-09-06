@@ -9,7 +9,7 @@ use Respect\Validation\Validator as Respect;
 
 class Datatype_cnpj extends \Formularium\Datatype\Datatype_string
 {
-    protected $MAX_STRING_LENGTH = '18';
+    protected $MAX_STRING_LENGTH = 18;
 
     public function __construct(string $typename = 'cnpj', string $basetype = 'string')
     {

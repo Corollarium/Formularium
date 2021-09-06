@@ -10,7 +10,7 @@ use Respect\Validation\Validator as Respect;
 
 class Datatype_cpf extends \Formularium\Datatype\Datatype_string
 {
-    protected $MAX_STRING_LENGTH = '13';
+    protected $MAX_STRING_LENGTH = 13;
 
     public function __construct(string $typename = 'cpf', string $basetype = 'string')
     {
