@@ -15,7 +15,7 @@ class DatatypeGenerator_float extends LaravelEloquentDatatypeGenerator
         /**
          * @var LaravelEloquentCodeGenerator $generator
          */
-        return "floar('{$field->getName()}')" .
+        return "float('{$field->getName()}')" .
             ($field->getValidatorOption(Datatype::REQUIRED, 'value', false) ? '' : '->nullable()');
     }
 }
