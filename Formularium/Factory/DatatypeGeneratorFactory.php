@@ -31,12 +31,14 @@ final class DatatypeGeneratorFactory
     {
         $datatypeClass = '';
         if (is_string($datatypeName)) {
-            $datatypeClass = '';
+            $datatypeClass = 'DatatypeGenerator_' . $datatypeName;
         } elseif (is_a($datatypeName, Datatype::class)) {
             /**
              * @var Datatype $datatypeName
              */
             $datatypeClass = 'DatatypeGenerator_' . $datatypeName->getName();
+        } else {
+            throw new ClassNotFoundException("Invalid datatypeName argument type for DatatypeGeneratorFactory");
         }
 
         // TODO: use reflection like Datatype
