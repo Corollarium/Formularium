@@ -14,6 +14,8 @@ Formularium is a typed code generator for PHP from a uniform model description. 
 
 Formularium already implements a number of generators for different languages and CSS/JS frameworks, as well as validators for backend and frontend, abstracting code for you. It's easily extensible to target your favorite language or framework as well.
 
+If you are looking for [a fully integrated backend/frontend scaffolding and validation, Modelarium](https://github.com/Corollarium/modelarium) is what you want. Formularium is the low-level generator used by Modelarium.
+
 ## Philosophy
 
 Formularium is based on two principles.
