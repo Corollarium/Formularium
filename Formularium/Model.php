@@ -45,7 +45,7 @@ class Model
      * @param string $name
      * @throws Exception
      */
-    protected function __construct(string $name = '')
+    public function __construct(string $name = '')
     {
         $this->name = $name;
     }
