@@ -52,12 +52,20 @@ abstract class AbstractFactory
     /**
      * Factory.
      *
-     * @param string $name
+     * @param string $name The datatype name ("string") or its FQCN
      * @return Mixed
      * @throws ClassNotFoundException
      */
     public static function factory(string $name)
     {
+        if (mb_strpos($name, '\\')) {
+            try {
+                return new $name();
+            } catch (ClassNotFoundException $e) {
+                // pass
+            }
+        }
+    
         try {
             $className = static::class($name);
             return new $className();

@@ -44,6 +44,32 @@ final class FieldTest extends TestCase
         $this->assertEquals('xxx', $field->getExtradataValue('someasdf', 'somevasfd', 'xxx'));
     }
 
+    public function testFromDatatypeClassName()
+    {
+        $name = 'test string';
+        $data = [
+            'datatype' => Datatype_string::class,
+            'validators' => [
+                MaxLength::class => [
+                    'value' => 30
+                ]
+            ],
+            'renderable' => [
+                Renderable::PLACEHOLDER => 'blabla'
+            ],
+            'extradata' => [
+                [
+                    'name' => 'someitem',
+                    'args' => [
+                        ['name' => 'someparameter', 'value' => 'somevalue' ]
+                    ]
+                ]
+            ]
+        ];
+        $field = Field::getFromData($name, $data);
+        $this->assertInstanceOf(Datatype_string::class, $field->getDatatype());
+    }
+
     public function testMissingName()
     {
         $this->expectException(Exception::class);
