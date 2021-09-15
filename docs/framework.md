@@ -1,6 +1,6 @@
 # Framework
 
-Formularium supports extension with your favorite frameworks by composition. This means that the frameworks are run in a pipeline, making it easy to compose a CSS framework with a validator framework, for example. Each framework in the pipeline alters the HTML from the previous step.
+Formularium supports extending itself with your favorite frameworks by composition. This means that the frameworks are run in a pipeline, making it easy to compose a CSS framework with a validator framework, for example. Each framework in the pipeline alters the HTML from the previous step.
 
 To implement your own framework you'll have to implement the `Renderable_[datatype]` classes. There's a script that will generate the scaffolding for you:
 
