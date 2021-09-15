@@ -5,6 +5,6 @@ namespace Formularium\CodeGenerator\LaravelEloquent\DatatypeGenerator;
 use Formularium\Field;
 use Formularium\CodeGenerator\CodeGenerator;
 
-class DatatypeGenerator_countrycodenumeric extends DatatypeGenerator_usmall
+class DatatypeGenerator_countrycodenumeric extends DatatypeGenerator_enum
 {
 }

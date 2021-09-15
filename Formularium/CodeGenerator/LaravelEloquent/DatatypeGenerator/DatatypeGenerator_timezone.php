@@ -7,6 +7,6 @@ use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\LaravelEloquent\CodeGenerator as LaravelEloquentCodeGenerator;
 
-class DatatypeGenerator_timezone extends DatatypeGenerator_string
+class DatatypeGenerator_timezone extends DatatypeGenerator_enum
 {
 }

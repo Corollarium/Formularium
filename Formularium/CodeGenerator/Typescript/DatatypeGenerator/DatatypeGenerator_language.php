@@ -4,6 +4,6 @@ namespace Formularium\CodeGenerator\Typescript\DatatypeGenerator;
 
 use Formularium\CodeGenerator\Typescript\TypescriptDatatypeGenerator;
 
-class DatatypeGenerator_language extends TypescriptDatatypeGenerator
+class DatatypeGenerator_language extends DatatypeGenerator_enum
 {
 }

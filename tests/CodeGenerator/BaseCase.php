@@ -73,7 +73,15 @@ class BaseCase extends TestCase
                     Renderable::SCHEMA_ITEMPROP => 'name',
                 ],
             ],
-            
+            'myLanguage' => [
+                'datatype' => 'language',
+                'validators' => [
+                ],
+                'renderable' => [
+                    Renderable::LABEL => 'Language',
+                    Renderable::SCHEMA_ITEMPROP => 'name',
+                ],
+            ],
         ];
 
         // generate basic model

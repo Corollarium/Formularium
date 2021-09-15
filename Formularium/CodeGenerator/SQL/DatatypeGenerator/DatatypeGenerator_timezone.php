@@ -7,6 +7,10 @@ use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\SQL\CodeGenerator as SQLCodeGenerator;
 
-class DatatypeGenerator_timezone extends DatatypeGenerator_string
+class DatatypeGenerator_timezone extends DatatypeGenerator_enum
 {
+    protected function maxLength(): int
+    {
+        return 32;
+    }
 }

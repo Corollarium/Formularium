@@ -2,9 +2,9 @@
 
 namespace FormulariumTests\CodeGenerator;
 
-use Formularium\Frontend\HTML\Renderable;
 use Formularium\Model;
 use Formularium\CodeGenerator\GraphQL\CodeGenerator as GraphQLCodeGenerator;
+use Formularium\CodeGenerator\GraphQL\DatatypeGenerator\DatatypeGenerator_language;
 use Formularium\Datatype;
 
 final class GraphQLTest extends BaseCase
@@ -25,5 +25,16 @@ final class GraphQLTest extends BaseCase
 
         $t = preg_replace('/\s+/', ' ', $fields); // remove multiple white space
         $this->assertStringContainsString('@renderable( label: "My Alpha" ', $t);
+    }
+
+    public function testEnum()
+    {
+        $codeGenerator = new GraphQLCodeGenerator();
+        $dg = new DatatypeGenerator_language();
+        $declaration = $dg->datatypeDeclaration($codeGenerator);
+        $this->assertStringStartsWith("enum Language {\n  aa\n  ab", $declaration);
+        $this->assertStringEndsWith("zu\n}", $declaration);
+        $model = $this->getBaseModel();
+        $fields = $codeGenerator->type($model);
     }
 }

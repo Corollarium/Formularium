@@ -6,6 +6,8 @@ use Formularium\Field;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\Typescript\CodeGenerator as TypescriptCodeGenerator;
+use Formularium\Datatype;
+use Formularium\Factory\DatatypeFactory;
 use Formularium\Factory\DatatypeGeneratorFactory;
 
 abstract class TypescriptDatatypeGenerator implements DatatypeGenerator
@@ -15,7 +17,12 @@ abstract class TypescriptDatatypeGenerator implements DatatypeGenerator
         return DatatypeGeneratorFactory::getDatatypeName($this);
     }
 
-    public function getDatatype(TypescriptCodeGenerator $generator): string
+    protected function getDatatype(): Datatype
+    {
+        return DatatypeFactory::factory(DatatypeGeneratorFactory::getDatatypeName($this));
+    }
+
+    public function getDatatypeName(TypescriptCodeGenerator $generator): string
     {
         return $generator->getDatatypeNamespace() . $this->getDatatypeBasename();
     }
@@ -30,7 +37,7 @@ abstract class TypescriptDatatypeGenerator implements DatatypeGenerator
         /**
          * @var TypescriptCodeGenerator $generator
          */
-        return 'type ' . $this->getDatatype($generator) . ' = ' . $this->getBasetype() . ';';
+        return 'type ' . $this->getDatatypeName($generator) . ' = ' . $this->getBasetype() . ';';
     }
 
     public function field(CodeGenerator $generator, Field $field)

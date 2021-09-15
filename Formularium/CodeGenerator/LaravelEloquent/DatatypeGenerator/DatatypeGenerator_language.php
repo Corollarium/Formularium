@@ -2,10 +2,15 @@
 
 namespace Formularium\CodeGenerator\LaravelEloquent\DatatypeGenerator;
 
-class DatatypeGenerator_language extends DatatypeGenerator_string
+class DatatypeGenerator_language extends DatatypeGenerator_enum
 {
     /**
      * @var string
      */
     protected $basetype = 'char';
+
+    protected function maxLength(): int
+    {
+        return 12;
+    }
 }

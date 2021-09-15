@@ -7,6 +7,7 @@ use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\GraphQL\CodeGenerator as GraphQLCodeGenerator;
 use Formularium\Datatype;
+use Formularium\Factory\DatatypeFactory;
 use Formularium\Factory\DatatypeGeneratorFactory;
 
 abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
@@ -14,6 +15,11 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
     protected function getDatatypeBasename(): string
     {
         return ucwords(DatatypeGeneratorFactory::getDatatypeName($this));
+    }
+
+    protected function getDatatype(): Datatype
+    {
+        return DatatypeFactory::factory(DatatypeGeneratorFactory::getDatatypeName($this));
     }
 
     public function getDatatypeName(GraphQLCodeGenerator $generator): string

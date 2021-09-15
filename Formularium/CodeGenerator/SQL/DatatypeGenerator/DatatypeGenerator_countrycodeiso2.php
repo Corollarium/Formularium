@@ -2,7 +2,7 @@
 
 namespace Formularium\CodeGenerator\SQL\DatatypeGenerator;
 
-class DatatypeGenerator_countrycodeiso2 extends DatatypeGenerator_string
+class DatatypeGenerator_countrycodeiso2 extends DatatypeGenerator_enum
 {
     /**
      * @var string

@@ -7,7 +7,7 @@ use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\LaravelEloquent\CodeGenerator as LaravelEloquentCodeGenerator;
 
-class DatatypeGenerator_currency extends DatatypeGenerator_string
+class DatatypeGenerator_currency extends DatatypeGenerator_enum
 {
     /**
      * @var string

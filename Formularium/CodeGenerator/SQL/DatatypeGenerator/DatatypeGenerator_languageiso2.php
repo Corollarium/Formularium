@@ -7,10 +7,15 @@ use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\SQL\CodeGenerator as SQLCodeGenerator;
 
-class DatatypeGenerator_languageiso2 extends DatatypeGenerator_string
+class DatatypeGenerator_languageiso2 extends DatatypeGenerator_enum
 {
     /**
      * @var string
      */
     protected $basetype = 'CHAR';
+
+    protected function maxLength(): int
+    {
+        return 2;
+    }
 }

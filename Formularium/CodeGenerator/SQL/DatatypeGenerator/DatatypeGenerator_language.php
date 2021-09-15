@@ -2,10 +2,15 @@
 
 namespace Formularium\CodeGenerator\SQL\DatatypeGenerator;
 
-class DatatypeGenerator_language extends DatatypeGenerator_string
+class DatatypeGenerator_language extends DatatypeGenerator_enum
 {
     /**
      * @var string
      */
     protected $basetype = 'CHAR';
+
+    protected function maxLength(): int
+    {
+        return 10;
+    }
 }
