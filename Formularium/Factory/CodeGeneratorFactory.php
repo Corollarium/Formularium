@@ -10,6 +10,9 @@ use Formularium\StringUtil;
 final class CodeGeneratorFactory extends AbstractFactory
 {
     protected static $namespaces = [
+        'Formularium\\CodeGenerator\\GraphQL',
+        'Formularium\\CodeGenerator\\LaravelEloquent',
+        'Formularium\\CodeGenerator\\SQL',
         'Formularium\\CodeGenerator\\Typescript'
     ];
 

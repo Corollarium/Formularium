@@ -54,13 +54,18 @@ abstract class CodeGenerator
     /**
      * Generates fields code for this model.
      *
-     * @return mixed[]
+     * @return string[]
      */
     public function fields(Model $model): array
     {
         $defs = [];
         foreach ($model->getFields() as $field) {
-            $defs[$field->getName()] = $this->field($field);
+            $d = $this->field($field);
+            if (is_array($d)) {
+                $defs += $d;
+            } elseif (is_string($d)) {
+                $defs[$field->getName()] = $d;
+            }
         }
         return $defs;
     }

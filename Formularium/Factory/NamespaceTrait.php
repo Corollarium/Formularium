@@ -32,4 +32,13 @@ trait NamespaceTrait
     {
         static::$namespaces[] = $ns;
     }
+
+    /**
+     * @return string[]
+     * @codeCoverageIgnore
+     */
+    public static function getNamespaces(): array
+    {
+        return static::$namespaces;
+    }
 }

@@ -12,7 +12,8 @@ use ReflectionClass;
 
 final class DatatypeGeneratorFactory
 {
-    
+    use NamespaceTrait;
+
     /**
      * @codeCoverageIgnore
      */
@@ -29,31 +30,50 @@ final class DatatypeGeneratorFactory
      */
     public static function factory($datatypeName, CodeGenerator $codeGenerator): DatatypeGenerator
     {
-        $datatypeClass = '';
+        /**
+         * @var Datatype $datatypeClass
+         */
+        $datatypeClass = null;
+        $datatypeClassName = '';
+        
         if (is_string($datatypeName)) {
-            $datatypeClass = 'DatatypeGenerator_' . $datatypeName;
+            $datatypeClass = DatatypeFactory::factory($datatypeName);
+            $datatypeClassName = 'DatatypeGenerator_' . $datatypeName;
         } elseif (is_a($datatypeName, Datatype::class)) {
-            /**
-             * @var Datatype $datatypeName
-             */
-            $datatypeClass = 'DatatypeGenerator_' . $datatypeName->getName();
+            $datatypeClass = $datatypeName;
+            $datatypeClassName = 'DatatypeGenerator_' . $datatypeClass->getName();
         } else {
             throw new ClassNotFoundException("Invalid datatypeName argument type for DatatypeGeneratorFactory");
         }
 
-        // TODO: use reflection like Datatype
-        $codeGeneratorClassname = get_class($codeGenerator);
-        $lastpos = strrpos($codeGeneratorClassname, '\\');
-        if ($lastpos === false) {
-            $ns = '';
-        } else {
-            $ns = '\\' . substr($codeGeneratorClassname, 0, $lastpos);
+        $class = null;
+        $namespaces = array_merge(static::$namespaces, ['Formularium\\CodeGenerator']);
+        foreach ($namespaces as $ns) {
+            $codeGeneratorClassname = $codeGenerator->getName();
+            $class = "$ns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassName";
+            if (class_exists($class)) {
+                break;
+            }
         }
-        $class = "$ns\\DatatypeGenerator\\$datatypeClass";
+
         if (!class_exists($class)) {
-            // TODO: namespaces
-            throw new ClassNotFoundException("Invalid DatatypeGenerator $datatypeClass for {$codeGenerator->getName()}");
+            // try the base datatype then
+            $datatypeName = $datatypeClass->getBasetype();
+            $datatypeClassName = 'DatatypeGenerator_' . $datatypeName;
+
+            foreach ($namespaces as $ns) {
+                $codeGeneratorClassname = $codeGenerator->getName();
+                $class = "$ns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassName";
+                if (class_exists($class)) {
+                    break;
+                }
+            }
+
+            if (!class_exists($class)) {
+                throw new ClassNotFoundException("Invalid DatatypeGenerator $datatypeClassName for {$codeGenerator->getName()}");
+            }
         }
+
         return new $class($codeGenerator);
     }
 

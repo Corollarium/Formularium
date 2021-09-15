@@ -20,7 +20,7 @@ interface DatatypeGenerator
      *
      * @param CodeGenerator $generator
      * @param Field $field
-     * @return mixed
+     * @return string|string[]
      */
     public function field(CodeGenerator $generator, Field $field);
 }
