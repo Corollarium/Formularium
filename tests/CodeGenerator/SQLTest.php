@@ -23,4 +23,13 @@ final class SQLTest extends BaseCase
         $this->assertStringContainsString('myDescriptionText TEXT,', $fields);
         $this->assertStringContainsString('myIpv4 VARCHAR(15)', $fields);
     }
+
+    public function testExhaustive()
+    {
+        $model = $this->getExhaustiveModel();
+
+        $codeGenerator = new SQLCodeGenerator();
+        $fields = $codeGenerator->type($model);
+        $this->assertNotNull($fields); // If it didn't explode we're happy here
+    }
 }

@@ -37,4 +37,13 @@ final class GraphQLTest extends BaseCase
         $model = $this->getBaseModel();
         $fields = $codeGenerator->type($model);
     }
+
+    public function testExhaustive()
+    {
+        $model = $this->getExhaustiveModel();
+
+        $codeGenerator = new GraphQLCodeGenerator();
+        $fields = $codeGenerator->type($model);
+        $this->assertNotNull($fields); // If it didn't explode we're happy here
+    }
 }

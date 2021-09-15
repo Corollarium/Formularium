@@ -21,4 +21,13 @@ final class LaravelEloquentTest extends BaseCase
         $this->assertStringContainsString('$table->text(\'myDescriptionText\')', $fields);
         $this->assertStringContainsString('$table->string(\'myIpv4\', 15)', $fields);
     }
+
+    public function testExhaustive()
+    {
+        $model = $this->getExhaustiveModel();
+
+        $codeGenerator = new LaravelEloquentCodeGenerator();
+        $fields = $codeGenerator->type($model);
+        $this->assertNotNull($fields); // If it didn't explode we're happy here
+    }
 }

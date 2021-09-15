@@ -15,6 +15,6 @@ class DatatypeGenerator_constant extends SQLDatatypeGenerator
         /**
          * @var SQLCodeGenerator $generator
          */
-        throw new ValidatorException('File field.');
+        throw new ValidatorException('Constant field.');
     }
 }

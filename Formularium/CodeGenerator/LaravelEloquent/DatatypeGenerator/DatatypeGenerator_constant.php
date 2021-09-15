@@ -15,6 +15,6 @@ class DatatypeGenerator_constant extends LaravelEloquentDatatypeGenerator
         /**
          * @var LaravelEloquentCodeGenerator $generator
          */
-        throw new ValidatorException('File field.');
+        throw new ValidatorException('Constant field.');
     }
 }

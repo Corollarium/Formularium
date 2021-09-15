@@ -9,4 +9,8 @@ use Formularium\CodeGenerator\SQL\CodeGenerator as SQLCodeGenerator;
 
 class DatatypeGenerator_url extends DatatypeGenerator_string
 {
+    protected function maxLength(): int
+    {
+        return 256;
+    }
 }
