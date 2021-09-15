@@ -158,7 +158,13 @@ class Field
         ];
     }
 
-    public function getCodeGeneratorFieldDeclaration(CodeGenerator $codeGenerator): string
+    /**
+     * Generates code for this field given a code generator.
+     *
+     * @param CodeGenerator $codeGenerator
+     * @return string|string[]
+     */
+    public function getCodeGeneratorFieldDeclaration(CodeGenerator $codeGenerator)
     {
         return $codeGenerator->field($this);
     }
