@@ -25,6 +25,7 @@ Check:
 - [how to create your own renderables](renderable.md)
 - [how to create your own elements](element.md)
 - [how to add support to your own frontend framework](framework.md)
+- [how to add support to your own code generator targets](codegenerator.md)
 
 ### Reference
 
@@ -120,6 +121,12 @@ echo $model->editable($data);
 
 // render a view
 echo $model->viewable($data);
+
+// generate a typescript interface, like `type TestModel { ... }`
+$codeGenerator = new \Formularium\CodeGenerator\Typescript\CodeGenerator();
+$fields = $codeGenerator->type($model);
+
+
 ```
 
 ## Sponsors
