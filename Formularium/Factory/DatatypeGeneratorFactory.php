@@ -59,11 +59,11 @@ final class DatatypeGeneratorFactory
         if (!class_exists($class)) {
             // try the base datatype then
             $datatypeName = $datatypeClass->getBasetype();
-            $datatypeClassName = 'DatatypeGenerator_' . $datatypeName;
+            $datatypeClassNameBase = 'DatatypeGenerator_' . $datatypeName;
 
             foreach ($namespaces as $ns) {
                 $codeGeneratorClassname = $codeGenerator->getName();
-                $class = "$ns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassName";
+                $class = "$ns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassNameBase";
                 if (class_exists($class)) {
                     break;
                 }
