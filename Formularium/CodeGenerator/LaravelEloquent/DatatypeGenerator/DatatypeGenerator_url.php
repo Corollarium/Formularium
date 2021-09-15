@@ -9,4 +9,8 @@ use Formularium\CodeGenerator\LaravelEloquent\CodeGenerator as LaravelEloquentCo
 
 class DatatypeGenerator_url extends DatatypeGenerator_string
 {
+    protected function maxLength(): int
+    {
+        return 256;
+    }
 }
