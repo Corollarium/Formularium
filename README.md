@@ -172,6 +172,11 @@ echo $model->editable($data);
 
 // render a view
 echo $model->viewable($data);
+
+// generate a typescript interface, like `type TestModel { ... }`
+$codeGenerator = new \Formularium\CodeGenerator\Typescript\CodeGenerator();
+echo  $codeGenerator->type($model);
+
 ```
 
 The output is a nice HTML that you can use as basis for your forms. See the generated HTML on the [kitchen sink examples](https://corollarium.github.io/Formularium/kitchensink).
