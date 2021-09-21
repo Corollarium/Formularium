@@ -135,7 +135,7 @@ use Formularium\Datatype;
 use Formularium\Factory\DatatypeFactory;
 use FormulariumTests\Datatype\DatatypeBaseTestCase;
 
-class ${datatype}Test extends DatatypeBaseTestCase
+class ${datatypeName}Test extends DatatypeBaseTestCase
 {
 
     /**
@@ -175,8 +175,7 @@ class ${datatype}Test extends DatatypeBaseTestCase
 }
 EOF;
         return [
-            'datatype' => $datatype,
-            'datatypeName' => $datatypeName,
+            'datatype' => $datatypeName,
             'code' => $datatypeCode,
             'test' => $testCode
         ];
@@ -200,7 +199,7 @@ EOF;
     
         $datatype = $codeData['datatype'];
         $retval = [];
-        $filename = $retval['filename'] = $path . "/Datatype_{$codeData['datatypeName']}.php";
+        $filename = $retval['filename'] = $path . "/Datatype_{$datatype}.php";
         if (!file_exists($filename)) {
             $retval['code'] = "Created {$datatype} at {$filename}.";
             file_put_contents($filename, $codeData['code']);
