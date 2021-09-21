@@ -139,7 +139,7 @@ abstract class Framework
         Datatype $datatype,
         string $baseNamespace
     ): PhpNamespace {
-        $datatypeLower = mb_strtolower($datatype->getName());
+        $datatypeName = $datatype->getName();
         $frameworkName = $this->getName();
 
         $baseClass = '\\Formularium\\Renderable';
@@ -149,7 +149,7 @@ abstract class Framework
         $namespace->addUse('\\Formularium\\Field');
         $namespace->addUse('\\Formularium\\HTMLNode');
 
-        $class = $namespace->addClass("Renderable_${datatypeLower}")
+        $class = $namespace->addClass("Renderable_${datatypeName}")
             ->setExtends($baseClass);
 
         $viewable = $class->addMethod('viewable')

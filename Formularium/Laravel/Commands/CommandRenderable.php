@@ -70,7 +70,6 @@ class CommandRenderable extends Command
             return;
         }
         $datatype = DatatypeFactory::factory($name);
-        $datatypeLower = mb_strtolower($datatype->getName());
         $baseNamespace = $this->option('namespace');
         if (!is_string($baseNamespace)) {
             $this->error('namespace must be a string');
@@ -96,7 +95,7 @@ class CommandRenderable extends Command
                 \Safe\mkdir($basepath, 0777, true);
             }
     
-            $filename = $basepath . 'Renderable_' . $datatypeLower . '.php';
+            $filename = $basepath . 'Renderable_' . $datatype->getName() . '.php';
             if (!file_exists($filename)) {
                 $this->info("Created renderable at {$filename}.");
                 file_put_contents($filename, $code);

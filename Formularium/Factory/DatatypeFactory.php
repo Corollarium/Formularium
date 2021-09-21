@@ -73,26 +73,25 @@ final class DatatypeFactory extends AbstractFactory
      * @return array ['code' => code string, 'test' => test case string]
      */
     public static function generate(
-        string $datatype,
+        string $datatypeName,
         string $basetype = null,
         string $namespace = 'Formularium\\Datatype',
         string $testNamespace = 'Tests\\Unit',
         callable $classCallback = null
     ): array {
-        $datatypeLower = mb_strtolower($datatype);
         $basetypeClass = $basetype ? '\\Formularium\\Datatype\\Datatype_' . $basetype : '\\Formularium\\Datatype';
-        $basetype = $basetype ?? $datatypeLower;
+        $basetype = $basetype ?? $datatypeName;
 
         $namespace = new PhpNamespace($namespace);
         $namespace->addUse('\\Formularium\\Model');
         $namespace->addUse('\\Formularium\\Exception\\ValidatorException');
 
-        $class = $namespace->addClass("Datatype_${datatypeLower}")
+        $class = $namespace->addClass("Datatype_${datatypeName}")
             ->setExtends($basetypeClass);
 
         $constructor = $class->addMethod('__construct')
             ->setBody("parent::__construct(\$typename, \$basetype);\n");
-        $constructor->addParameter('typename', $datatypeLower)->setType('string');
+        $constructor->addParameter('typename', $datatypeName)->setType('string');
         $constructor->addParameter('basetype', $basetype)->setType('string');
         
         $class->addMethod('getRandom')
@@ -144,7 +143,7 @@ class ${datatype}Test extends DatatypeBaseTestCase
      */
     public function getDataType(): Datatype
     {
-        return DatatypeFactory::factory('${datatypeLower}');
+        return DatatypeFactory::factory('${datatypeName}');
     }
 
     /**
@@ -177,7 +176,7 @@ class ${datatype}Test extends DatatypeBaseTestCase
 EOF;
         return [
             'datatype' => $datatype,
-            'datatypeLower' => $datatypeLower,
+            'datatypeName' => $datatypeName,
             'code' => $datatypeCode,
             'test' => $testCode
         ];
@@ -201,7 +200,7 @@ EOF;
     
         $datatype = $codeData['datatype'];
         $retval = [];
-        $filename = $retval['filename'] = $path . "/Datatype_{$codeData['datatypeLower']}.php";
+        $filename = $retval['filename'] = $path . "/Datatype_{$codeData['datatypeName']}.php";
         if (!file_exists($filename)) {
             $retval['code'] = "Created {$datatype} at {$filename}.";
             file_put_contents($filename, $codeData['code']);

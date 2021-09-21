@@ -31,7 +31,7 @@ if ($framework === '*') {
 }
 $printer = new \Nette\PhpGenerator\PsrPrinter();
 $datatype = DatatypeFactory::factory($renderable);
-$datatypeLower = mb_strtolower($datatype->getName());
+$datatypeName = $datatype->getName();
 
 foreach ($frameworks as $framework) {
     /**
@@ -44,7 +44,7 @@ foreach ($frameworks as $framework) {
         \Safe\mkdir($basepath, 0777, true);
     }
 
-    $filename = $basepath . 'Renderable_' . $datatypeLower . '.php';
+    $filename = $basepath . 'Renderable_' . $datatypeName . '.php';
     if (!file_exists($filename)) {
         echo "Created renderable at {$filename}.";
         file_put_contents($filename, $code);
