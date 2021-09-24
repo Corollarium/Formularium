@@ -30,6 +30,23 @@ Is it readonly?
 Is it disabled?
 
 
+## Card
+
+Creates a card
+
+### title (string)
+
+Card title.
+
+### image (string)
+
+Card image.
+
+### link (string)
+
+Card link
+
+
 ## Pagination
 
 Creates a pagination element

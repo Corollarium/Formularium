@@ -34,6 +34,23 @@ Is it disabled?
 Button color. Supports HTMLButton::COLOR_PRIMARY, HTMLButton::COLOR_LINK, HTMLButton::COLOR_INFO, HTMLButton::COLOR_SUCCESS, HTMLButton::COLOR_WARNING, HTMLButton::COLOR_ERROR and any Bootstrap button color classes. Default: primary.
 
 
+## Card
+
+Creates a card
+
+### title (string)
+
+Card title.
+
+### image (string)
+
+Card image.
+
+### link (string)
+
+Card link
+
+
 ## Pagination
 
 Creates a pagination element
