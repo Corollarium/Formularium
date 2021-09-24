@@ -15,6 +15,7 @@ use Formularium\Frontend\HTML\Element\Pagination;
 use Formularium\Frontend\HTML\Element\Table;
 use Formularium\Frontend\HTML\Renderable\Renderable_enum;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
+use Formularium\HTMLNode;
 use Formularium\Model;
 use Formularium\Renderable;
 use Formularium\Validator\Max;
@@ -109,7 +110,7 @@ function generateBase(array $frameworkNames, string $templateName)
             'fields' => $basicFields
         ]
     );
-    $submitButton = $frameworkComposer->element(
+    $submitButton = $frameworkComposer->nodeElement(
         'Button',
         [
             Element::LABEL => 'Save',
@@ -118,19 +119,32 @@ function generateBase(array $frameworkNames, string $templateName)
         ]
     );
 
+    $frameworkComposer->appendFooterElement($submitButton);
     $basicDemoEditable = $basicModel->editable($frameworkComposer, []);
-    return templatify($frameworkComposer, $templateName, $basicDemoEditable . $submitButton, 'Basic demo');
+    return templatify($frameworkComposer, $templateName, $basicDemoEditable, 'Basic demo');
 }
 
 function generateElements(array $frameworkNames, string $templateName)
 {
     $frameworkComposer = FrameworkComposer::create($frameworkNames);
-    $upload = $frameworkComposer->element(
+    $wrapNode = function (string $title, HTMLNode $node) use ($frameworkComposer) {
+        $frameworkComposer->appendFooterElement(
+            new HTMLNode(
+                'section',
+                [ "class" => "spaced" ],
+                [new HTMLNode('h3', [], $title), $node ]
+            )
+        );
+    };
+
+    $upload = $frameworkComposer->nodeElement(
         'Upload',
         [
         ]
     );
-    $submitButton = $frameworkComposer->element(
+    $wrapNode('Upload', $upload);
+
+    $submitButton = $frameworkComposer->nodeElement(
         'Button',
         [
             Element::LABEL => 'Save',
@@ -138,7 +152,9 @@ function generateElements(array $frameworkNames, string $templateName)
             Button::TYPE => 'submit'
         ]
     );
-    $table = $frameworkComposer->element(
+    $wrapNode('Button', $submitButton);
+
+    $table = $frameworkComposer->nodeElement(
         'Table',
         [
             Table::ROW_NAMES => ['First', 'Second', 'Third'],
@@ -146,15 +162,19 @@ function generateElements(array $frameworkNames, string $templateName)
             Table::STRIPED => true
         ]
     );
-    $pagination = $frameworkComposer->element(
+    $wrapNode('Table', $table);
+
+    $pagination = $frameworkComposer->nodeElement(
         'Pagination',
         [
             Pagination::CURRENT => 21,
             Pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
-            Pagination::TOTAL_ITEMS => 253,
+            Pagination::TOTAL_ITEMS => 203,
         ]
     );
-    $card = $frameworkComposer->element(
+    $wrapNode('Pagination', $pagination);
+
+    $card = $frameworkComposer->nodeElement(
         'Card',
         [
             Card::TITLE => 'Card title',
@@ -162,20 +182,34 @@ function generateElements(array $frameworkNames, string $templateName)
             Card::CONTENT => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
         ]
     );
-    $spinner = $frameworkComposer->element(
+    $wrapNode('Card', $card);
+    
+    $spinner = $frameworkComposer->nodeElement(
         'Spinner',
         [
         ]
     );
+    $wrapNode('Spinner', $spinner);
 
-    $contents = '<h3 class="kitchen">Upload</h3>' . $upload . "\n" .
-        '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
-        '<h3 class="kitchen">Table</h3>' .  $table . "\n" .
-        '<h3 class="kitchen">Pagination</h3>' .  $pagination . "\n" .
-        '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n" .
-        '<h3 class="kitchen">Spinner</h3><div>'. $spinner . "</div>\n";
+    $basicModel = Model::fromStruct(
+        [
+            'name' => 'BasicModel',
+            'fields' => []
+        ]
+    );
+    
+    $vue = $frameworkComposer->getByName('Vue');
+    if ($vue) {
+        /**
+         * @var \Formularium\Frontend\Vue\Framework $vue
+         */
+        $vue->getVueCode()->appendExtraData('file', '');
+        $vue->getVueCode()->appendExtraData('paginator', [ "currentPage" => 1, "totalItems" => 203 ]);
+    }
 
-    return templatify($frameworkComposer, $templateName, $contents, 'Elements');
+    $html = $basicModel->editable($frameworkComposer, []);
+    
+    return templatify($frameworkComposer, $templateName, $html, 'Elements');
 }
 
 function kitchenSink(array $frameworks, string $templateName)
@@ -219,7 +253,10 @@ function kitchenSink(array $frameworks, string $templateName)
     $modelViewable = $model->viewable($frameworkComposer, $randomData);
     $modelEditable = $model->editable($frameworkComposer);
 
-    return templatify($frameworkComposer, $templateName, $modelEditable, 'Model editable');
+    return [
+        templatify($frameworkComposer, $templateName, $modelViewable, 'Model Viewable'),
+        templatify($frameworkComposer, $templateName, $modelEditable, 'Model editable')
+    ];
 }
 
 function main()
@@ -289,12 +326,15 @@ EOF;
         $html = generateElements($f['framework'], $f['template'] . '_demo.html');
         $filename = __DIR__ . '/../docs/kitchensink/elements_' . $name . '.html';
         file_put_contents($filename, $html);
-        $index .= "<li><a href='{$filename}'>Elements</a></li>";
+        $index .= "<li><a href='{$filename}'>Basic elements</a></li>";
 
         $html = kitchenSink($f['framework'], $f['template'] . '_demo.html');
         $filename = __DIR__ . '/../docs/kitchensink/editable_' . $name . '.html';
-        file_put_contents($filename, $html);
-        $index .= "<li><a href='{$filename}'>Editable (all types)</a></li>";
+        file_put_contents($filename, $html[0]);
+        $index .= "<li><a href='{$filename}'>Viewable (all data types)</a></li>";
+        $filename = __DIR__ . '/../docs/kitchensink/editable_' . $name . '.html';
+        file_put_contents($filename, $html[1]);
+        $index .= "<li><a href='{$filename}'>Editable (all data types)</a></li>";
 
         // $html = kitchenSink($f['framework'], $f['template']);
         // file_put_contents(__DIR__ . '/../docs/kitchensink/' . $name . '.html', $html);
@@ -303,7 +343,7 @@ EOF;
     }
     $index .= "</div>
 <footer>
-    <a href='https://github.com/Corollarium/Formularium/'>Source code</a> and <a href='https://corollarium.github.io/Formularium/'>Documentation</a>
+    <a href='https://github.com/Corollarium/Formularium/'>Formularium Source code</a> and <a href='https://corollarium.github.io/Formularium/'>Documentation</a>
 </footer>
 </div>
 </body></html>";

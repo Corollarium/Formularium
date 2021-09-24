@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\Blade;
 
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
@@ -34,7 +35,7 @@ class Framework extends \Formularium\Framework
 EOF;
     }
 
-    public function editableCompose(Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         $editableForm = join('', $elements);
         $templateData = [

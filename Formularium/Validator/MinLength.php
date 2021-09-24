@@ -13,6 +13,10 @@ class MinLength implements ValidatorInterface
 {
     public static function validate($value, array $options = [], ?Model $model = null)
     {
+        if ($value === null) {
+            return $value;
+        }
+
         if (!is_string($value)) {
             throw new ValidatorException('Expected a string.');
         }

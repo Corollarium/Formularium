@@ -11,6 +11,8 @@ use Formularium\HTMLNode;
 use Formularium\Model;
 use Modelarium\Datatypes\Datatype_relationship;
 
+use function Safe\json_encode;
+
 /**
  * Converts an array to a JS object. Unlike JSON this does serialize
  * data to strings, and allow functions, etc. If you need to add
@@ -146,10 +148,10 @@ class VueCode
      * Appends to the `data` field.
      *
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      * @return self
      */
-    public function appendExtraData(string $name, string $value): self
+    public function appendExtraData(string $name, $value): self
     {
         $this->extraData[$name] = $value;
         return $this;
@@ -299,7 +301,7 @@ class VueCode
 
         // get data, and avoid anything that is already declared in props
         $data = [];
-        foreach (array_merge($m->getDefault(), $m->getData()) as $k => $v) {
+        foreach (array_merge($m->getDefault(), $m->getData(), $this->extraData) as $k => $v) {
             if (array_key_exists($k, $propsNames)) {
                 continue;
             }
@@ -338,12 +340,6 @@ class VueCode
                     return "$key { $value },";
                 }, array_keys($this->methods), $this->methods)
             ),
-            'extraData' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "  $key: $value,";
-                }, array_keys($this->extraData), $this->extraData)
-            )
         ];
         if ($templateData['otherData']) {
             $templateData['otherData'] .= ",\n";

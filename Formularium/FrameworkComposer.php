@@ -14,6 +14,18 @@ class FrameworkComposer
     protected $frameworks = [];
 
     /**
+     *
+     * @param HTMLNode[]
+     */
+    protected $headerElements = [];
+
+    /**
+     *
+     * @param HTMLNode[]
+     */
+    protected $footerElements = [];
+
+    /**
      * @param Framework[]|string[] $frameworks
      */
     public function __construct(array $frameworks = [])
@@ -171,7 +183,11 @@ class FrameworkComposer
      */
     public function viewable(Model $m, array $modelData): string
     {
-        $elements = $this->viewableNodes($m, $modelData);
+        $elements = array_merge(
+            $this->headerElements,
+            $this->viewableNodes($m, $modelData),
+            $this->footerElements
+        );
         $output = '';
         foreach ($this->getFrameworks() as $framework) {
             $output = $framework->viewableCompose($m, $elements, $output, $this);
@@ -214,11 +230,82 @@ class FrameworkComposer
      */
     public function editable(Model $m, array $modelData): string
     {
-        $elements = $this->editableNodes($m, $modelData);
+        $elements = array_merge(
+            $this->headerElements,
+            $this->editableNodes($m, $modelData),
+            $this->footerElements
+        );
+
         $output = '';
+
         foreach ($this->getFrameworks() as $framework) {
             $output = $framework->editableCompose($m, $elements, $output, $this);
         }
         return $output;
+    }
+
+    /**
+     * Get the value of footerElements
+     * @return HTMLNode[]
+     */
+    public function getFooterElements(): array
+    {
+        return $this->footerElements;
+    }
+
+    /**
+     * Set the value of footerElements
+     *
+     * @param HTMLNode[] $footerElements
+     * @return  self
+     */
+    public function setFooterElements(array $footerElements): self
+    {
+        $this->footerElements = $footerElements;
+
+        return $this;
+    }
+
+    /**
+     * Appends an element to the footer
+     *
+     * @return self
+     */
+    public function appendFooterElement(HTMLNode $node): self
+    {
+        $this->footerElements[] = $node;
+        return $this;
+    }
+
+    /**
+     * Get the value of headerElements
+     * @return HTMLNode[]
+     */
+    public function getHeaderElements(): array
+    {
+        return $this->headerElements;
+    }
+
+    /**
+     * Set the value of headerElements
+     * @param HTMLNode[] $footerElements
+     * @return  self
+     */
+    public function setHeaderElements($headerElements)
+    {
+        $this->headerElements = $headerElements;
+
+        return $this;
+    }
+
+    /**
+     * Appends an element to the footer
+     *
+     * @return self
+     */
+    public function appendHeaderElement(HTMLNode $node): self
+    {
+        $this->headerElements[] = $node;
+        return $this;
     }
 }

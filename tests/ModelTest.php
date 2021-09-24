@@ -79,10 +79,10 @@ EOF;
                 "required": {
                     "value": true
                 },
-                "minlength": {
+                "Formularium\\Validator\\MinLength": {
                     "value": 30
                 },
-                "maxlength": {
+                "Formularium\\Validator\\MaxLength": {
                     "value": 40
                 }
             },
