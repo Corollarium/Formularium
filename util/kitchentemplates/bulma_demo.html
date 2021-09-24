@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    {{head}}
+    <style>
+        h1.kitchen {
+            font-size: 2.5rem;
+        }
+
+        h2.kitchen {
+            font-size: 2.0rem;
+        }
+
+        h3.kitchen {
+            font-size: 1.5rem;
+        }
+
+        h1.kitchen,
+        h2.kitchen,
+        h3.kitchen {
+            margin-bottom: .5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="kitchen">{{frameworkNames}}</h1>
+            <h2 class="kitchen">{{title}}</h2>
+        </div>
+
+        <div class="container">
+            <form>
+                {{contents}}
+            </form>
+        </div>
+    </section>
+
+    <footer style="margin-top: 2em; font-size: small">
+        Generated with <a href="https://github.com/Corollarium/Formularium/">Formularium</a>.
+    </footer>
+    {{footer}}
+</body>
+
+</html>

@@ -6,6 +6,7 @@ use Formularium\Factory\DatatypeFactory;
 use Formularium\Element;
 use Formularium\Exception\ClassNotFoundException;
 use Formularium\Formularium;
+use Formularium\Framework;
 use Formularium\FrameworkComposer;
 use Formularium\Frontend\HTML\Element\Button;
 use Formularium\Frontend\HTML\Element\Card;
@@ -20,84 +21,38 @@ use Formularium\Validator\MaxLength;
 use Formularium\Validator\Min;
 use Formularium\Validator\MinLength;
 
-function renderElements(FrameworkComposer $framework): string
+function templatify(FrameworkComposer $frameworkComposer, string $templateName, string $contents, string $title)
 {
-    $upload = $framework->element(
-        'Upload',
-        [
-        ]
-    );
-    $submitButton = $framework->element(
-        'Button',
-        [
-            Element::LABEL => 'Save',
-            Button::COLOR => Button::COLOR_PRIMARY
-        ]
-    );
-    $table = $framework->element(
-        'Table',
-        [
-            Table::ROW_NAMES => ['First', 'Second', 'Third'],
-            Table::ROW_DATA => [ ['a', 'b', 'c'], [ 'd', 'e', 'f'] ],
-            Table::STRIPED => true
-        ]
-    );
-    $pagination = $framework->element(
-        'Pagination',
-        [
-            Pagination::CURRENT => 21,
-            Pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
-            Pagination::TOTAL_ITEMS => 253,
-        ]
-    );
-    $card = $framework->element(
-        'Card',
-        [
-            Card::TITLE => 'Card title',
-            Card::IMAGE => 'https://via.placeholder.com/150',
-            Card::CONTENT => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-        ]
-    );
-    $spinner = $framework->element(
-        'Spinner',
-        [
-        ]
-    );
+    $head = $frameworkComposer->htmlHead();
+    $footer = $frameworkComposer->htmlFooter();
 
-    return '<h3 class="kitchen">Upload</h3>' . $upload . "\n" .
-        '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
-        '<h3 class="kitchen">Table</h3>' .  $table . "\n" .
-        '<h3 class="kitchen">Pagination</h3>' .  $pagination . "\n" .
-        '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n" .
-        '<h3 class="kitchen">Spinner</h3><div>'. $spinner . "</div>\n";
+    $frameworkNames = join(
+        '/',
+        array_map(
+            function (Framework $f) {
+                return $f->getName();
+            },
+            $frameworkComposer->getFrameworks()
+        )
+    );
+    $template = file_get_contents(__DIR__ . '/kitchentemplates/' . $templateName);
+
+    $template = strtr(
+        $template,
+        [
+            '{{frameworkNames}}' => $frameworkNames,
+            '{{title}}' => $title,
+            '{{head}}' => $head,
+            '{{contents}}' => $contents,
+            '{{footer}}' => $footer,
+        ]
+    );
+    return $template;
 }
 
-function kitchenSink($frameworkName, string $templateName)
+function generateBase(array $frameworkNames, string $templateName)
 {
-    $framework = FrameworkComposer::create($frameworkName);
-    $head = $framework->htmlHead();
-    $footer = $framework->htmlFooter();
-
-    /*
-     * kitchen sink fields
-     */
-    $fields = [];
-    $datatypes = DatatypeFactory::getNames();
-
-    // make a default for all types
-    foreach ($datatypes as $d) {
-        try {
-            DatatypeFactory::factory($d);
-            $fields[$d] = [
-                'datatype' => $d,
-                'renderable' => [
-                    Renderable::LABEL => 'Type ' . $d
-                ],
-            ];
-        } catch (ClassNotFoundException $e) {
-            // Abstract class
-        }
-    }
+    $frameworkComposer = FrameworkComposer::create($frameworkNames);
 
     /*
      * basic demo fiels
@@ -131,7 +86,7 @@ function kitchenSink($frameworkName, string $templateName)
             ],
         ],
         'countrycodeselect' => [
-            'datatype' => 'countrycodeISO3',
+            'datatype' => 'countrycodeiso3',
             'renderable' => [
                 Renderable_enum::FORMAT_CHOOSER => Renderable_enum::FORMAT_CHOOSER_SELECT,
                 Renderable::LABEL => 'Country code - select choice'
@@ -146,7 +101,89 @@ function kitchenSink($frameworkName, string $templateName)
             'fields' => $basicFields
         ]
     );
-    $basicDemoEditable = $basicModel->editable($framework, []);
+    $basicDemoEditable = $basicModel->editable($frameworkComposer, []);
+    return templatify($frameworkComposer, $templateName, $basicDemoEditable, 'Basic demo');
+}
+
+function generateElements(array $frameworkNames, string $templateName)
+{
+    $frameworkComposer = FrameworkComposer::create($frameworkNames);
+    $upload = $frameworkComposer->element(
+        'Upload',
+        [
+        ]
+    );
+    $submitButton = $frameworkComposer->element(
+        'Button',
+        [
+            Element::LABEL => 'Save',
+            Button::COLOR => Button::COLOR_PRIMARY
+        ]
+    );
+    $table = $frameworkComposer->element(
+        'Table',
+        [
+            Table::ROW_NAMES => ['First', 'Second', 'Third'],
+            Table::ROW_DATA => [ ['a', 'b', 'c'], [ 'd', 'e', 'f'] ],
+            Table::STRIPED => true
+        ]
+    );
+    $pagination = $frameworkComposer->element(
+        'Pagination',
+        [
+            Pagination::CURRENT => 21,
+            Pagination::CURRENT_PAGE => 2, // should have only CURRENT or CURRENT_PAGE, but depends on framework
+            Pagination::TOTAL_ITEMS => 253,
+        ]
+    );
+    $card = $frameworkComposer->element(
+        'Card',
+        [
+            Card::TITLE => 'Card title',
+            Card::IMAGE => 'https://via.placeholder.com/150',
+            Card::CONTENT => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+        ]
+    );
+    $spinner = $frameworkComposer->element(
+        'Spinner',
+        [
+        ]
+    );
+
+    $contents = '<h3 class="kitchen">Upload</h3>' . $upload . "\n" .
+        '<h3 class="kitchen">Button</h3>' . $submitButton . "\n" .
+        '<h3 class="kitchen">Table</h3>' .  $table . "\n" .
+        '<h3 class="kitchen">Pagination</h3>' .  $pagination . "\n" .
+        '<h3 class="kitchen">Card</h3><div style="width: 180px">' .  $card . "</div>\n" .
+        '<h3 class="kitchen">Spinner</h3><div>'. $spinner . "</div>\n";
+
+    return templatify($frameworkComposer, $templateName, $contents, 'Elements');
+}
+
+function kitchenSink(array $frameworks, string $templateName)
+{
+    $frameworkComposer = FrameworkComposer::create($frameworks);
+
+    /*
+     * kitchen sink fields
+     */
+    $fields = [];
+    $datatypes = DatatypeFactory::getNames();
+
+    // make a default for all types
+    foreach ($datatypes as $d) {
+        try {
+            DatatypeFactory::factory($d);
+            $fields[$d] = [
+                'datatype' => $d,
+                'renderable' => [
+                    Renderable::LABEL => 'Type ' . $d
+                ],
+            ];
+        } catch (ClassNotFoundException $e) {
+            // Abstract class
+        }
+    }
 
     // generate kitchen sink model
     $model = Model::fromStruct(
@@ -161,37 +198,24 @@ function kitchenSink($frameworkName, string $templateName)
             $randomData[$f->getName()] = $f->getDatatype()->getRandom();
         }
     }
-    $modelViewable = ''; // TODO $model->viewable($framework, $randomData);
-    $modelEditable = ''; // TODO $model->editable($framework);
+    $modelViewable = $model->viewable($frameworkComposer, $randomData);
+    $modelEditable = $model->editable($frameworkComposer);
 
-    $title = join('/', $frameworkName);
-    $template = file_get_contents(__DIR__ . '/kitchentemplates/' . $templateName);
-
-    $template = strtr(
-        $template,
-        [
-            '{{title}}' => $title,
-            '{{head}}' => $head,
-            '{{basicDemoEditable}}' => $basicDemoEditable,
-            '{{elements}}' => renderElements($framework),
-            '{{modelViewable}}' => $modelViewable,
-            '{{modelEditable}}' => $modelEditable,
-            '{{footer}}' => $footer,
-        ]
-    );
-    return $template;
+    return templatify($frameworkComposer, $templateName, $modelEditable, 'Model editable');
 }
 
-@mkdir(__DIR__ . '/../docs/');
-@mkdir(__DIR__ . '/../docs/kitchensink/');
-$path = __DIR__ . '/../Formularium/Frontend/';
-$dir = scandir($path);
-if ($dir === false) {
-    echo 'Cannot find frontend';
-    return 1;
-}
-$frameworks = array_diff($dir, array('.', '..'));
-$index = <<<EOF
+function main()
+{
+    @mkdir(__DIR__ . '/../docs/');
+    @mkdir(__DIR__ . '/../docs/kitchensink/');
+    $path = __DIR__ . '/../Formularium/Frontend/';
+    $dir = scandir($path);
+    if ($dir === false) {
+        echo 'Cannot find frontend';
+        return 1;
+    }
+    $frameworks = array_diff($dir, array('.', '..'));
+    $index = <<<EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -212,35 +236,60 @@ $index = <<<EOF
 </head>
 <body>
 <div class="container">
-<h1>Formularium Kitchen Sink</h1>
-<ul>
+<h1>Formularium Examples</h1>
+<p>These files are all automatically generated from the same data models, using different frameworks.</p>
+
+<div>
 EOF;
-$frameworks = [
-    ['framework' => ['HTML', 'HTMLValidation', 'Quill'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill'], 'template' => 'bulma.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue', 'Vuelidate'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrapvue', 'Vue'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Materialize'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Buefy', 'Vue'], 'template' => 'bulma.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'React'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'React'], 'template' => 'base.html'],
-    ['framework' => ['HTML', 'HTMLValidation', 'Vuetify', 'Vue'], 'template' => 'vuetify.html'],
-];
-foreach ($frameworks as $f) {
-    $name = join('', $f['framework']);
-    echo "Building $name...\n";
-    $html = kitchenSink($f['framework'], $f['template']);
-    file_put_contents(__DIR__ . '/../docs/kitchensink/' . $name . '.html', $html);
-    $index .= "<li><a href='{$name}.html'>" . join('+', $f['framework']) . '</a></li>';
-}
-$index .= "</ul>
+    $frameworks = [
+        ['framework' => ['HTML', 'HTMLValidation', 'Quill'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill'], 'template' => 'bulma'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue', 'Vuelidate'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrapvue', 'Vue'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Materialize'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Buefy', 'Vue'], 'template' => 'bulma'],
+        ['framework' => ['HTML', 'HTMLValidation', 'React'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'React'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Vuetify', 'Vue'], 'template' => 'base'],
+    ];
+    foreach ($frameworks as $f) {
+        $name = join('', $f['framework']);
+        $prettyName = join(' + ', array_slice($f['framework'], 2));
+        echo "Building $name...\n";
+        
+        $index .= "<h2>$prettyName</h2><ul>";
+
+        $html = generateBase($f['framework'], $f['template'] . '_demo.html');
+        $filename = __DIR__ . '/../docs/kitchensink/demo_' . $name . '.html';
+        file_put_contents($filename, $html);
+        $index .= "<li><a href='{$filename}'>Basic example</a></li>";
+
+        $html = generateElements($f['framework'], $f['template'] . '_demo.html');
+        $filename = __DIR__ . '/../docs/kitchensink/elements_' . $name . '.html';
+        file_put_contents($filename, $html);
+        $index .= "<li><a href='{$filename}'>Elements</a></li>";
+
+        $html = kitchenSink($f['framework'], $f['template'] . '_demo.html');
+        $filename = __DIR__ . '/../docs/kitchensink/editable_' . $name . '.html';
+        file_put_contents($filename, $html);
+        $index .= "<li><a href='{$filename}'>Editable (all types)</a></li>";
+
+        // $html = kitchenSink($f['framework'], $f['template']);
+        // file_put_contents(__DIR__ . '/../docs/kitchensink/' . $name . '.html', $html);
+
+        $index .= "</ul>";
+    }
+    $index .= "</div>
 <footer>
     <a href='https://github.com/Corollarium/Formularium/'>Source code</a> and <a href='https://corollarium.github.io/Formularium/'>Documentation</a>
 </footer>
 </div>
 </body></html>";
-file_put_contents(__DIR__ . '/../docs/kitchensink/index.html', $index);
+    file_put_contents(__DIR__ . '/../docs/kitchensink/index.html', $index);
+}
+
+main();
