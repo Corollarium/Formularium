@@ -4,6 +4,8 @@ namespace Formularium;
 
 use PHP_CodeSniffer\Generators\HTML;
 
+use function Safe\substr;
+
 /**
  * Class that encapsule DOM node elements. Similar to PHP DOMElement but more flexible.
  * This is not used for parsing, but to build HTML.
@@ -468,7 +470,7 @@ class HTMLNode
 
             // render tag attributes
             foreach ($this->attributes as $attrib => $value) {
-                $open[] = $attrib . ($value === [null] ? '' : ('="' . strtr(implode(' ', $value), '"', '\"') . '"'));
+                $open[] = $attrib . ($value === [null] ? '' : ('="' . htmlspecialchars(implode(' ', $value)) . '"'));
             }
             $data[] = join(' ', $open) . (in_array($this->tag, self::STANDALONE_TAGS) ? '/>' : '>');
         }
