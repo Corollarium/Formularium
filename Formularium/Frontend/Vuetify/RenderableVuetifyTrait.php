@@ -23,17 +23,6 @@ trait RenderableVuetifyTrait
         /** @var HTMLNode $base */
         $base = $this->_editable($value, $field, $previous);
 
-        $renderable = $field->getRenderables();
-
-        if (array_key_exists(Renderable::LABEL, $renderable)) {
-            $base->setAttribute('label', $renderable[Renderable::LABEL]);
-        }
-        if (array_key_exists(Renderable::COMMENT, $renderable)) {
-            $base->setAttribute(
-                'messages',
-                $renderable[Renderable::COMMENT]
-            );
-        }
         $base->filter(function ($e) {
             if ($e instanceof HTMLNode) {
                 if ($e->getTag() === 'label') {
