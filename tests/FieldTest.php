@@ -6,6 +6,7 @@ use Formularium\Datatype\Datatype_string;
 use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\Renderable;
+use Formularium\Validator\MaxLength;
 use PHPUnit\Framework\TestCase;
 
 final class FieldTest extends TestCase

@@ -5,6 +5,8 @@ namespace Formularium\Datatype;
 use Formularium\Model;
 
 use Formularium\Exception\ValidatorException;
+use Formularium\Validator\MaxLength;
+use Formularium\Validator\MinLength;
 use Respect\Validation\Validator as Respect;
 
 class Datatype_cnpj extends \Formularium\Datatype\Datatype_string

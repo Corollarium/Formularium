@@ -5,6 +5,7 @@ namespace Formularium\Datatype;
 use Formularium\Field;
 use Formularium\Model;
 use Formularium\Exception\ValidatorException;
+use Formularium\Validator\Regex;
 
 /**
  * Validates value contains only alphabetic characters.
