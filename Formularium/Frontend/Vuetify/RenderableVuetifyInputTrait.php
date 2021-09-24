@@ -35,10 +35,10 @@ trait RenderableVuetifyInputTrait
                             $e->setTag('v-radio')
                                 ->setAttribute('label', $e->getAttribute('title'));
                         } else {
-                            $e->setTag('v-text-input');
+                            $e->setTag('v-text-field');
                         }
                     } elseif ($e->getTag() === 'select') {
-                        $e->setTag('v-select');
+                        $this->processSelect($e);
                     } elseif ($e->getTag() === 'textarea') {
                         $e->setTag('v-textarea');
                     } else {
@@ -58,16 +58,29 @@ trait RenderableVuetifyInputTrait
                     /* TODO
                     $icon = $field->getRenderable(Renderable::ICON, '');
                     if ($icon) {
-                        $e->addAttribute('icon', str_replace('v-', '', $icon));
-                    }
-                    $iconPack = $field->getRenderable(Renderable::ICON_PACK, '');
-                    if ($iconPack) {
-                        $e->addAttribute('icon-pack', $iconPack);
+                        $e->append(new HTMLNode('v-icon', str_replace('v-', '', $icon)));
                     }
                     */
                 }
             }
         );
         return $previous;
+    }
+
+    protected function processSelect(HTMLNode $select)
+    {
+        $select->setTag('v-select');
+
+        $options = [];
+        $select->walk(
+            function (HTMLNode $e) use ($options) {
+                if ($e->getTag() == 'option') {
+                    // $e->getAttribute('value')]
+                    $options[] = $e->getContent();
+                }
+            }
+        );
+        $select->clearContent();
+        $select->addAttribute(':items', json_encode($options));
     }
 }

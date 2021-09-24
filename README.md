@@ -201,6 +201,7 @@ Formularium is built in a way that generators can be chained, so you can combine
   - [Materialize](https://materializecss.com/)
   - [Buefy](https://buefy.github.io/)
   - [Bootstrapvue](https://bootstrap-vue.org/)
+  - [Vuetify](https://vuetifyjs.com/)
 - JS/PHP Frameworks:
   - [Vue](https://vuejs.org)
   - [React](https://reactjs.org) (partial support)

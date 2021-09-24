@@ -228,6 +228,7 @@ $frameworks = [
     ['framework' => ['HTML', 'HTMLValidation', 'Buefy', 'Vue'], 'template' => 'bulma.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'React'], 'template' => 'base.html'],
     ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'React'], 'template' => 'base.html'],
+    ['framework' => ['HTML', 'HTMLValidation', 'Vuetify', 'Vue'], 'template' => 'vuetify.html'],
 ];
 foreach ($frameworks as $f) {
     $name = join('', $f['framework']);

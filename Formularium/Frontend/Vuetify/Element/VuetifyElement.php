@@ -19,6 +19,10 @@ abstract class VuetifyElement extends Element
     public function color(array $parameters, HTMLNode $node): HTMLNode
     {
         $color = $parameters[self::COLOR] ?? '';
+        if (!$color) {
+            return $node;
+        }
+
         $colorMap = [
             self::COLOR_PRIMARY => 'primary',
             self::COLOR_LINK => 'anchor',
@@ -43,7 +47,7 @@ abstract class VuetifyElement extends Element
                 'warning',
             ];
             if (!in_array($color, $colors)) {
-                throw new Exception('Invalid button color.');
+                throw new Exception('Invalid button color: ' . $color);
             }
         }
         if ($color) {

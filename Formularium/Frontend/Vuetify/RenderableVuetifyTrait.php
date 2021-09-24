@@ -29,12 +29,9 @@ trait RenderableVuetifyTrait
             $base->setAttribute('label', $renderable[Renderable::LABEL]);
         }
         if (array_key_exists(Renderable::COMMENT, $renderable)) {
-            $base->appendContent(
-                HTMLNode::factory(
-                    'messages',
-                    [],
-                    $renderable[Renderable::COMMENT]
-                )
+            $base->setAttribute(
+                'messages',
+                $renderable[Renderable::COMMENT]
             );
         }
         $base->filter(function ($e) {

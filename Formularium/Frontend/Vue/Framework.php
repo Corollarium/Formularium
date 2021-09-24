@@ -6,6 +6,7 @@ use Formularium\Datatype;
 use Formularium\Datatype\Datatype_bool;
 use Formularium\Datatype\Datatype_number;
 use Formularium\Exception\Exception;
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
@@ -228,7 +229,7 @@ class Framework extends \Formularium\Framework
         );
     }
    
-    public function viewableCompose(Model $m, array $elements, string $previousCompose): string
+    public function viewableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $frameworkComposer): string
     {
         $containerAtts = $this->getContainerAttributes($m);
         $templateData = [
@@ -282,7 +283,7 @@ EOF;
         }
     }
 
-    public function editableCompose(Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $frameworkComposer): string
     {
         $containerAtts = $this->getContainerAttributes($m);
 
