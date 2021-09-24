@@ -188,7 +188,7 @@ class HTMLNode
      * @param mixed $value Can be a string or array of string
      * @return HTMLNode Itself
      */
-    public function addAttribute(string $name, $value): HTMLNode
+    public function addAttribute(string $name, $value = null): HTMLNode
     {
         $this->setAttributes([$name => $value], false);
         return $this;

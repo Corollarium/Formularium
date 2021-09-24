@@ -21,23 +21,23 @@ class Card extends Element
     public static function getMetadata(): Metadata
     {
         return new Metadata(
-            'Table',
-            'Creates a table',
+            'Card',
+            'Creates a card',
             [
                 new MetadataParameter(
                     static::TITLE,
-                    'array',
-                    'Is it disabled?'
+                    'string',
+                    'Card title.'
                 ),
                 new MetadataParameter(
                     static::IMAGE,
-                    'bool',
-                    'Is this table striped?'
+                    'string',
+                    'Card image.'
                 ),
                 new MetadataParameter(
                     static::LINK,
-                    'bool',
-                    'Is this table bordered?'
+                    'string',
+                    'Card link'
                 )
             ]
         );
