@@ -26,7 +26,9 @@ class Field
     protected $renderable;
 
     /**
-     * @var ValidatorInterface[]
+     * Array classname => options
+     *
+     * @var array
      */
     protected $validators;
 

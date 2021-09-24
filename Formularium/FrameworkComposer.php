@@ -15,13 +15,13 @@ class FrameworkComposer
 
     /**
      *
-     * @param HTMLNode[]
+     * @var HTMLNode[]
      */
     protected $headerElements = [];
 
     /**
      *
-     * @param HTMLNode[]
+     * @var HTMLNode[]
      */
     protected $footerElements = [];
 
@@ -288,10 +288,11 @@ class FrameworkComposer
 
     /**
      * Set the value of headerElements
-     * @param HTMLNode[] $footerElements
+     *
+     * @param HTMLNode[] $headerElements
      * @return  self
      */
-    public function setHeaderElements($headerElements)
+    public function setHeaderElements(array $headerElements)
     {
         $this->headerElements = $headerElements;
 

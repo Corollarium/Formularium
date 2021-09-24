@@ -5,6 +5,7 @@ namespace Formularium\CodeGenerator\Typescript\DatatypeGenerator;
 use Formularium\CodeGenerator\CodeGenerator;
 use Formularium\CodeGenerator\Typescript\CodeGenerator as TypescriptCodeGenerator;
 use Formularium\CodeGenerator\Typescript\TypescriptDatatypeGenerator;
+use Formularium\Datatype\Datatype_enum;
 
 class DatatypeGenerator_enum extends TypescriptDatatypeGenerator
 {
@@ -24,7 +25,6 @@ class DatatypeGenerator_enum extends TypescriptDatatypeGenerator
         return 'enum ' . $this->getDatatypeName($generator) . " {\n  " .
             implode("\n  ", array_keys($choices)) .
             "\n}";
-        return $this->getBasetype() . ' ' . $this->getDatatypeName($generator) . ' { };';
     }
 
     public function getBasetype(): string

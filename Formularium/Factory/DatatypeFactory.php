@@ -64,7 +64,7 @@ final class DatatypeFactory extends AbstractFactory
      * Generates scaffolding, with a child class for Datatype and a test case.
      *
      * @codeCoverageIgnore
-     * @param string $datatype The new datatype name.
+     * @param string $datatypeName The new datatype name.
      * @param string $basetype The base type, if any.
      * @param string $namespace The namespace for the new file.
      * @param string $testNamespace The namespace for the test file.

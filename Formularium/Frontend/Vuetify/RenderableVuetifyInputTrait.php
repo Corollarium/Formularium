@@ -68,7 +68,7 @@ trait RenderableVuetifyInputTrait
         return $previous;
     }
 
-    protected function setBaseAttributes(HTMLNode $e, Field $field)
+    protected function setBaseAttributes(HTMLNode $e, Field $field): void
     {
         $renderable = $field->getRenderables();
 
@@ -83,7 +83,7 @@ trait RenderableVuetifyInputTrait
         }
     }
 
-    protected function processSelect(HTMLNode $select, Field $field)
+    protected function processSelect(HTMLNode $select, Field $field): void
     {
         $select->setTag('v-select');
 
