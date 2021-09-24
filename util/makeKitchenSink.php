@@ -2,6 +2,7 @@
 
 require(__DIR__ . '/../vendor/autoload.php');
 
+use Formularium\Datatype;
 use Formularium\Factory\DatatypeFactory;
 use Formularium\Element;
 use Formularium\Exception\ClassNotFoundException;
@@ -61,16 +62,17 @@ function generateBase(array $frameworkNames, string $templateName)
         'myString' => [
             'datatype' => 'string',
             'validators' => [
-                MinLength::class => [ 'value' => 3],
-                MaxLength::class => [ 'value' => 30],
+                MinLength::class => [ 'value' => 3 ],
+                MaxLength::class => [ 'value' => 30 ],
+                Datatype::REQUIRED => [ 'value' => true ],
             ],
             'renderable' => [
                 Renderable::LABEL => 'Type string',
-                Renderable::COMMENT => 'Some text explaining this field',
+                Renderable::COMMENT => 'Some text explaining this field. Must be between 3 and 30 characters.',
                 Renderable::PLACEHOLDER => "Type here",
                 Renderable::SIZE => Renderable::SIZE_LARGE,
                 Renderable::ICON_PACK => 'fas',
-                Renderable::ICON => 'fa-check'
+                Renderable::ICON => 'fa-check',
             ],
         ],
         'myInteger' => [
@@ -81,8 +83,14 @@ function generateBase(array $frameworkNames, string $templateName)
             ],
             'renderable' => [
                 Renderable_number::STEP => 2,
-                Renderable::LABEL => 'Type integer',
+                Renderable::LABEL => 'Type integer (between 4 and 40)',
                 Renderable::PLACEHOLDER => "Type here"
+            ],
+        ],
+        'ipv4example' => [
+            'datatype' => 'ipv4',
+            'renderable' => [
+                Renderable::LABEL => 'An IP, such as 192.168.0.1'
             ],
         ],
         'countrycodeselect' => [
@@ -101,8 +109,17 @@ function generateBase(array $frameworkNames, string $templateName)
             'fields' => $basicFields
         ]
     );
+    $submitButton = $frameworkComposer->element(
+        'Button',
+        [
+            Element::LABEL => 'Save',
+            Button::COLOR => Button::COLOR_PRIMARY,
+            Button::TYPE => 'submit'
+        ]
+    );
+
     $basicDemoEditable = $basicModel->editable($frameworkComposer, []);
-    return templatify($frameworkComposer, $templateName, $basicDemoEditable, 'Basic demo');
+    return templatify($frameworkComposer, $templateName, $basicDemoEditable . $submitButton, 'Basic demo');
 }
 
 function generateElements(array $frameworkNames, string $templateName)
@@ -117,7 +134,8 @@ function generateElements(array $frameworkNames, string $templateName)
         'Button',
         [
             Element::LABEL => 'Save',
-            Button::COLOR => Button::COLOR_PRIMARY
+            Button::COLOR => Button::COLOR_PRIMARY,
+            Button::TYPE => 'submit'
         ]
     );
     $table = $frameworkComposer->element(
