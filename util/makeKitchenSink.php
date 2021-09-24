@@ -110,6 +110,7 @@ function generateBase(array $frameworkNames, string $templateName)
             'fields' => $basicFields
         ]
     );
+
     $submitButton = $frameworkComposer->nodeElement(
         'Button',
         [
@@ -329,7 +330,7 @@ EOF;
         $index .= "<li><a href='{$filename}'>Basic elements</a></li>";
 
         $html = kitchenSink($f['framework'], $f['template'] . '_demo.html');
-        $filename = __DIR__ . '/../docs/kitchensink/editable_' . $name . '.html';
+        $filename = __DIR__ . '/../docs/kitchensink/viewable_' . $name . '.html';
         file_put_contents($filename, $html[0]);
         $index .= "<li><a href='{$filename}'>Viewable (all data types)</a></li>";
         $filename = __DIR__ . '/../docs/kitchensink/editable_' . $name . '.html';
