@@ -30,7 +30,6 @@ trait RenderableVuetifyInputTrait
             function ($e) use ($field) {
                 if ($e instanceof HTMLNode) {
                     if ($e->getTag() === 'input') {
-                        // TODO: form-group
                         if (($e->getAttribute('type')[0] ?? '') === 'radio') {
                             $e->setTag('v-radio')
                                 ->setAttribute('label', $e->getAttribute('title'));
@@ -90,15 +89,17 @@ trait RenderableVuetifyInputTrait
 
         $options = [];
         $select->walk(
-            function (HTMLNode $e) use ($options) {
+            function (HTMLNode $e) use (&$options) {
                 if ($e->getTag() == 'option') {
-                    // $e->getAttribute('value')]
-                    $options[] = $e->getContent();
+                    $idx = $e->getAttribute('value')[0] ?? '';
+                    $options[] = ['value' => $idx, 'text' => $e->getContent()[0]];
                 }
             }
         );
         $select->clearContent();
         $select->addAttribute(':items', json_encode($options));
+        $select->addAttribute('item-value', "value");
+        $select->addAttribute('item-text', "text");
         $this->setBaseAttributes($select, $field);
     }
 }
