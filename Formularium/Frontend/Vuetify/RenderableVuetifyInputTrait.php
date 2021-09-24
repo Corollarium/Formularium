@@ -36,11 +36,13 @@ trait RenderableVuetifyInputTrait
                                 ->setAttribute('label', $e->getAttribute('title'));
                         } else {
                             $e->setTag('v-text-field');
+                            $this->setBaseAttributes($e, $field);
                         }
                     } elseif ($e->getTag() === 'select') {
-                        $this->processSelect($e);
+                        $this->processSelect($e, $field);
                     } elseif ($e->getTag() === 'textarea') {
                         $e->setTag('v-textarea');
+                        $this->setBaseAttributes($e, $field);
                     } else {
                         return;
                     }
@@ -67,7 +69,22 @@ trait RenderableVuetifyInputTrait
         return $previous;
     }
 
-    protected function processSelect(HTMLNode $select)
+    protected function setBaseAttributes(HTMLNode $e, Field $field)
+    {
+        $renderable = $field->getRenderables();
+
+        if (array_key_exists(Renderable::LABEL, $renderable)) {
+            $e->setAttribute('label', $renderable[Renderable::LABEL]);
+        }
+        if (array_key_exists(Renderable::COMMENT, $renderable)) {
+            $e->setAttribute(
+                'messages',
+                $renderable[Renderable::COMMENT]
+            );
+        }
+    }
+
+    protected function processSelect(HTMLNode $select, Field $field)
     {
         $select->setTag('v-select');
 
@@ -82,5 +99,6 @@ trait RenderableVuetifyInputTrait
         );
         $select->clearContent();
         $select->addAttribute(':items', json_encode($options));
+        $this->setBaseAttributes($select, $field);
     }
 }
