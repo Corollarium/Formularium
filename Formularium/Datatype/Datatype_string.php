@@ -59,6 +59,18 @@ class Datatype_string extends \Formularium\Datatype
         return $text;
     }
 
+    public function getValidators(): array
+    {
+        return [
+            MinLength::class => [
+                'value' => $this->MIN_STRING_LENGTH
+            ],
+            MaxLength::class => [
+                'value' => $this->MAX_STRING_LENGTH
+            ],
+        ];
+    }
+
     public function getDocumentation(): string
     {
         return "Strings in UTF-8 and sanitized, up to {$this->MAX_STRING_LENGTH} characters (which might be more than its bytes).";

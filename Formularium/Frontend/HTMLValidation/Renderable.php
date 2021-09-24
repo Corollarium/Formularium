@@ -24,8 +24,6 @@ class Renderable extends \Formularium\Renderable
             return $previous;
         }
 
-        $datatype = $field->getDatatype();
-
         foreach ($validators as $validator => $data) {
             switch ($validator) {
             case MinLength::class:
@@ -33,9 +31,14 @@ class Renderable extends \Formularium\Renderable
                 break;
             case MaxLength::class:
                 $element->setAttribute('maxlength', $field->getValidatorOption($validator, 'value', ''));
+                $element->setAttribute('mgmvlength', 'xxxxxxxxxxx');
                 break;
             case Regex::class:
-                $element->setAttribute('pattern', $field->getValidatorOption($validator, 'value', ''));
+                $pattern = $field->getValidatorOption($validator, 'value', '');
+                if ($pattern[0] === '/' && $pattern[-1] === '/') {
+                    $pattern = mb_substr($pattern, 1, mb_strlen($pattern) - 2);
+                }
+                $element->setAttribute('pattern', $pattern);
                 break;
             default:
                 break;

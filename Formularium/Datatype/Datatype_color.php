@@ -8,6 +8,7 @@ use Formularium\Model;
 
 class Datatype_color extends Datatype_string
 {
+    protected $MIN_STRING_LENGTH = 7;
     protected $MAX_STRING_LENGTH = 7;
 
     public function __construct(string $typename = 'color', string $basetype = 'string')

@@ -71,6 +71,14 @@ abstract class Datatype
     }
 
     /**
+     * @var ValidatorInterface[]
+     */
+    public function getValidators(): array
+    {
+        return [];
+    }
+
+    /**
      * Returns a default value. Used to build new editable forms, for example.
      *
      * @return mixed

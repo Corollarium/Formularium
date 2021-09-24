@@ -5,7 +5,7 @@ namespace Formularium\Frontend\HTML\Renderable;
 use Formularium\Field;
 use Formularium\HTMLNode;
 
-class Renderable_cnpj extends Renderable_string
+class Renderable_cpf extends Renderable_string
 {
-    public const MAX_STRING_SIZE = 18;
+    public const MAX_STRING_SIZE = 14;
 }
