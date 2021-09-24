@@ -425,7 +425,7 @@ EOF;
     },
     computed: { {{computedCode}} },
     props: {{propsCode}},
-    methods: {{methodsCode}}
+    methods: { {{methodsCode}} }
 EOF;
             
         return $this->fillTemplate(

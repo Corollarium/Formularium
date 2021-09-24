@@ -1,14 +1,30 @@
 <?php declare(strict_types=1);
 
-namespace Formularium\Frontend\Bootstrapvue;
+namespace Formularium\Frontend\Vuetify;
 
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
+use Formularium\Frontend\Vue\Framework as FrameworkVue;
+use Formularium\Frontend\Vue\VueCode;
 
 class Framework extends \Formularium\Framework
 {
     public function __construct(string $name = 'Vuetify')
     {
         parent::__construct($name);
+    }
+
+    protected function addToVue(FrameworkComposer $composer): void
+    {
+        /**
+         * @var FrameworkVue $vue
+         */
+        $vue = $composer->getByName('Vue');
+        $vueCode = $vue->getVueCode();
+        
+        $vueCode->appendOther('vuetify', 'new Vuetify()');
+        $vue->setEditableContainerTag('v-app');
+        $vue->setViewableContainerTag('v-app');
     }
 
     public function htmlHead(HTMLNode &$head)
@@ -41,13 +57,15 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
+        $this->addToVue($composer);
         return $previousCompose;
     }
 
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
+        $this->addToVue($composer);
         return $previousCompose;
     }
 }

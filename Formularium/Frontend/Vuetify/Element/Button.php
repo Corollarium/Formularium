@@ -27,7 +27,7 @@ class Button extends VuetifyElement
                 break;
         }
 
-        if ($parameters[self::ICON]) {
+        if ($parameters[self::ICON] ?? '') {
             $previous->addContent('<v-icon>' . $parameters[self::ICON] . '</v-icon>');
         }
 

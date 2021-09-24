@@ -174,7 +174,7 @@ class FrameworkComposer
         $elements = $this->viewableNodes($m, $modelData);
         $output = '';
         foreach ($this->getFrameworks() as $framework) {
-            $output = $framework->viewableCompose($m, $elements, $output);
+            $output = $framework->viewableCompose($m, $elements, $output, $this);
         }
         return $output;
     }
@@ -217,7 +217,7 @@ class FrameworkComposer
         $elements = $this->editableNodes($m, $modelData);
         $output = '';
         foreach ($this->getFrameworks() as $framework) {
-            $output = $framework->editableCompose($m, $elements, $output);
+            $output = $framework->editableCompose($m, $elements, $output, $this);
         }
         return $output;
     }

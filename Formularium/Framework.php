@@ -110,7 +110,7 @@ abstract class Framework
      * @param string $previousCompose
      * @return string
      */
-    public function editableCompose(Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return $previousCompose;
     }
@@ -121,7 +121,7 @@ abstract class Framework
      * @param string $previousCompose
      * @return string
      */
-    public function viewableCompose(Model $m, array $elements, string $previousCompose): string
+    public function viewableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return $previousCompose;
     }

@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\HTML;
 
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
@@ -99,7 +100,7 @@ class Framework extends \Formularium\Framework
         return $counter++;
     }
 
-    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         $atts = [
             'class' => 'formularium-base'
@@ -127,7 +128,7 @@ class Framework extends \Formularium\Framework
         )->__toString();
     }
 
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return join('', array_map(function ($e) {
             return $e->__toString();

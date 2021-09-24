@@ -2,6 +2,7 @@
 
 namespace Formularium\Frontend\React;
 
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
@@ -31,7 +32,7 @@ class Framework extends \Formularium\Framework
         ]);
     }
 
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         $data = [];
         foreach ($m->getFields() as $name => $field) {

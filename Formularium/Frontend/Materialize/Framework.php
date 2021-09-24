@@ -1,7 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Materialize;
 
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 
 class Framework extends \Formularium\Framework
@@ -33,12 +34,12 @@ class Framework extends \Formularium\Framework
         );
     }
 
-    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return '<section class="section"><div class="container">' . $previousCompose . '</div></section>';
     }
 
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return '<section class="section"><div class="container">' . $previousCompose . '</div></section>';
     }

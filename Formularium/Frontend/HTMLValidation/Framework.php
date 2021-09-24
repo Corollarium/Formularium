@@ -2,6 +2,8 @@
 
 namespace Formularium\Frontend\HTMLValidation;
 
+use Formularium\FrameworkComposer;
+
 class Framework extends \Formularium\Framework
 {
     public function __construct(string $name = 'HTMLValidation')
@@ -9,12 +11,12 @@ class Framework extends \Formularium\Framework
         parent::__construct($name);
     }
 
-    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function viewableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return $previousCompose;
     }
 
-    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(\Formularium\Model $m, array $elements, string $previousCompose, FrameworkComposer $composer): string
     {
         return $previousCompose;
     }

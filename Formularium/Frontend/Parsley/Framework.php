@@ -1,7 +1,8 @@
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace Formularium\Frontend\Parsley;
 
+use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
@@ -20,7 +21,7 @@ class Framework extends \Formularium\Framework
         ]);
     }
  
-    public function editableCompose(Model $m, array $elements, string $previousCompose): string
+    public function editableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $frameworkComposer): string
     {
         // TODO: these are bootstrap classes
         $atts = [

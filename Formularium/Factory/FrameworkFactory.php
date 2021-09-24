@@ -23,6 +23,7 @@ final class FrameworkFactory extends AbstractFactory
         'Formularium\\Frontend\\VeeValidate',
         'Formularium\\Frontend\\Vue',
         'Formularium\\Frontend\\Vuelidate',
+        'Formularium\\Frontend\\Vuetify',
     ];
 
     /**
