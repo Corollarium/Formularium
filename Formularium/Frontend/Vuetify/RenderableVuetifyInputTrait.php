@@ -92,7 +92,8 @@ trait RenderableVuetifyInputTrait
             function (HTMLNode $e) use (&$options) {
                 if ($e->getTag() == 'option') {
                     $idx = $e->getAttribute('value')[0] ?? '';
-                    $options[] = ['value' => $idx, 'text' => $e->getContent()[0]];
+                    $text = $e->getContent()[0] ?? '';
+                    $options[] = ['value' => $idx, 'text' => $text];
                 }
             }
         );

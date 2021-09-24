@@ -6,10 +6,11 @@ use Formularium\Field;
 use Formularium\Frontend\Vue\RenderableVueTrait;
 use Formularium\HTMLNode;
 use Formularium\Frontend\Vuetify\RenderableVuetifyInputTrait;
+use Formularium\Frontend\Vuetify\RenderableVuetifyTrait;
 
 class Renderable_color extends \Formularium\Renderable
 {
-    use RenderableVueTrait;
+    use RenderableVuetifyTrait;
 
     public function viewable($value, Field $field, HTMLNode $previous): HTMLNode
     {
