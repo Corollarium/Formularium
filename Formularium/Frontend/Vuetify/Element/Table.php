@@ -12,14 +12,14 @@ class Table extends VuetifyElement
 {
     public function render(array $parameters, HTMLNode $previous): HTMLNode
     {
-        $node = HTMLNode::factory(
-            'v-simple-table',
-            [
-                // TODO
-            ]
+        $node = new HTMLNode(
+            'template',
+            ['template v-slot:default' => ''],
+            $previous->getContent()
         );
-
-        return $node;
+        $previous->setTag('v-simple-table');
+        $previous->setContent($node);
+        return $previous;
     }
 
     public static function getMetadata(): Metadata

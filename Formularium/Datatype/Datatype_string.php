@@ -61,14 +61,18 @@ class Datatype_string extends \Formularium\Datatype
 
     public function getValidators(): array
     {
-        return [
-            MinLength::class => [
+        $validator = [];
+        if ($this->MIN_STRING_LENGTH) {
+            $validator[MinLength::class] = [
                 'value' => $this->MIN_STRING_LENGTH
-            ],
-            MaxLength::class => [
+            ];
+        }
+        if ($this->MAX_STRING_LENGTH) {
+            $validator[MaxLength::class] = [
                 'value' => $this->MAX_STRING_LENGTH
-            ],
-        ];
+            ];
+        }
+        return $validator;
     }
 
     public function getDocumentation(): string
