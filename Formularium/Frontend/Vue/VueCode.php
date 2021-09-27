@@ -9,7 +9,6 @@ use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\HTMLNode;
 use Formularium\Model;
-use Modelarium\Datatypes\Datatype_relationship;
 
 use function Safe\json_encode;
 
@@ -71,7 +70,7 @@ class VueCode
      * @var string[]
      */
     protected $imports = [];
-    
+
     /**
      * @var string[]
      */
@@ -251,7 +250,7 @@ class VueCode
             }
             $props[] = $p;
         }
-        
+
         return $props;
     }
 
@@ -395,7 +394,7 @@ export default {
     methods: { {{methodsCode}} }
 };
 EOF;
-            
+
         return $this->fillTemplate(
             $viewableTemplate,
             $templateData,
@@ -423,7 +422,7 @@ EOF;
     props: {{propsCode}},
     methods: { {{methodsCode}} }
 EOF;
-            
+
         return $this->fillTemplate(
             $viewableTemplate,
             $templateData,
