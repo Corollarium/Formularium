@@ -15,7 +15,7 @@ class Card extends VuetifyElement
             'class' => 'formularium-card'
         ];
 
-        $contents = [];
+        $contents = $previous->getContent();
 
         if ($parameters[HTMLCard::IMAGE] ?? '') {
             $contents[] = new HTMLNode(
@@ -34,14 +34,18 @@ class Card extends VuetifyElement
             );
         }
 
-        return new HTMLNode(
-            'v-card',
-            $atts,
-            new HTMLNode(
+        if ($parameters[HTMLCard::CONTENT] ?? '') {
+            $contents[] = new HTMLNode(
                 'v-card-text',
                 [],
                 $parameters[HTMLCard::CONTENT] ?? ''
-            )
+            );
+        }
+
+        return new HTMLNode(
+            'v-card',
+            $atts,
+            $contents
         );
     }
 
