@@ -9,7 +9,7 @@ use Formularium\Model;
 class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
 {
     const TAB = '  ';
-    
+
     /**
      * Prefixes datatypes with a namespace
      *
@@ -26,10 +26,15 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
     {
         $fields = implode("\n", $this->fields($model));
         return <<<EOD
-type {$model->getName()} {
+export interface {$model->getName()} {
 $fields
 }
 EOD;
+    }
+
+    public function typeFilename(Model $model): string
+    {
+        return $model->getName() . '.ts';
     }
 
     public function fieldDeclaration(string $datatype, string $name): string

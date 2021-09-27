@@ -24,4 +24,9 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
             )
         );
     }
+
+    public function typeFilename(Model $model): string
+    {
+        return $model->getName() . '.php';
+    }
 }

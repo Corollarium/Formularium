@@ -42,6 +42,11 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
             "\n}\n\n";
     }
 
+    public function typeFilename(Model $model): string
+    {
+        return $model->getName() . '.graphql';
+    }
+
     public function getDatatypeNamespace(): string
     {
         return $this->datatypeNamespace;

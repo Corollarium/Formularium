@@ -82,4 +82,6 @@ abstract class CodeGenerator
     }
 
     abstract public function type(Model $model): string;
+
+    abstract public function typeFilename(Model $model): string;
 }
