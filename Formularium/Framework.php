@@ -33,12 +33,12 @@ abstract class Framework
 
     public function getRenderable(Datatype $datatype, FrameworkComposer $composer = null): Renderable
     {
-        return RenderableFactory::factory($datatype, $this, $composer);
+        return RenderableFactory::specializedFactory($datatype, $this, $composer);
     }
 
     public function getElement(string $name, FrameworkComposer $composer = null): Element
     {
-        return ElementFactory::factory($name, $this, $composer);
+        return ElementFactory::specializedFactory($name, $this, $composer);
     }
 
     public function getName(): string

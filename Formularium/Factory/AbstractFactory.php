@@ -10,11 +10,58 @@ abstract class AbstractFactory
 {
     use NamespaceTrait;
 
+    public static $specializations = [];
+
     /**
      * @codeCoverageIgnore
      */
     private function __construct()
     {
+    }
+
+    /**
+     * Returns a pair with the name and the instantiated object given the reflection class.
+     * This adds some flexibility to parse class names or provide arguments.
+     *
+     * @param \ReflectionClass $reflection
+     * @return array ['name' => string, 'object' => Mixed ]
+     */
+    abstract protected static function getNamePair(\ReflectionClass $reflection): array;
+
+    /**
+     * Returns the sub-namespace, that is, the sub-directory in the main namespace we'll
+     * find the classes for this specific factory.
+     * Example: "Datatype", for "\\Formularium\\Datatype"
+     *
+     * @return string
+     */
+    abstract public static function getSubNamespace(): string;
+
+    /**
+     * Returns the sub-namespace classname, that is, the sub-directory in the main namespace we'll
+     * find the classes for this specific factory.
+     * Example: "Framework", for "\\Formularium\\Frontend\\HTML"
+     *
+     * @return string
+     */
+    public static function getSubNamespaceClassName(): string
+    {
+        return static::getSubNamespace();
+    }
+
+    /**
+     * Returns specializations, such as the framework names.
+     *
+     * @return string[]
+     */
+    public static function getSpecializations(): array
+    {
+        return static::$specializations;
+    }
+
+    public static function appendSpecialization(string $name)
+    {
+        static::$specializations[] = $name;
     }
 
     /**
@@ -28,11 +75,18 @@ abstract class AbstractFactory
         return $name;
     }
 
+    /**
+     * Converts a base name (such as "integer") to a class name.
+     *
+     * @param string $name
+     * @return string
+     */
     public static function class(string $name): string
     {
         $classname = static::getClassName($name);
-        foreach (static::$namespaces as $ns) {
-            $class = "$ns\\$classname";
+        $subns = static::getSubNamespace();
+        foreach (static::$baseNamespaces as $ns) {
+            $class = "$ns\\$subns\\$classname";
             if (class_exists($class)) {
                 return $class;
             }
@@ -52,7 +106,7 @@ abstract class AbstractFactory
     /**
      * Factory.
      *
-     * @param string $name The datatype name ("string") or its FQCN
+     * @param string $name The name ("string") or its FQCN
      * @return Mixed
      * @throws ClassNotFoundException
      */
@@ -81,7 +135,8 @@ abstract class AbstractFactory
                 continue;
             }
         }
-        throw new ClassNotFoundException("Invalid datatype $name");
+        $subns = static::getSubNamespace();
+        throw new ClassNotFoundException("Invalid factory for $subns: $name");
     }
     
     /**
@@ -96,14 +151,6 @@ abstract class AbstractFactory
     }
 
     /**
-     * Undocumented function
-     *
-     * @param \ReflectionClass $reflection
-     * @return array ['name' => string, 'object' => Mixed ]
-     */
-    abstract protected static function getNamePair(\ReflectionClass $reflection): array;
-
-    /**
      * Returns a list class name => object.
      *
      * @return array<string, Mixed>
@@ -116,29 +163,64 @@ abstract class AbstractFactory
             }
         );
     }
-
+    
+    /**
+     * Runs a map function on the classes this factory handles.
+     *
+     * @param callable $c
+     * @return array
+     */
     public static function map(callable $c): array
     {
         $classes = [];
+        $subns = static::getSubNamespace();
+        $specializations = static::getSpecializations() ?: [""];
 
-        foreach (static::$namespaces as $namespace) {
-            /** @var array<class-string> $classesInNamespace */
-            $classesInNamespace = ClassFinder::getClassesInNamespace($namespace);
+        foreach (static::getBaseNamespaces() as $namespace) {
+            foreach ($specializations as $specialization) {
+                $n = $namespace . ($subns ? '\\' . $subns : '') . ($specialization ? '\\' . $specialization : '');
+                /** @var array<class-string> $classesInNamespace */
+                $classesInNamespace = ClassFinder::getClassesInNamespace($n);
 
-            foreach ($classesInNamespace as $class) {
-                $reflection = new \ReflectionClass($class);
-                if (!$reflection->isInstantiable()) {
-                    continue;
+                foreach ($classesInNamespace as $class) {
+                    $reflection = new \ReflectionClass($class);
+                    if (!$reflection->isInstantiable()) {
+                        continue;
+                    }
+
+
+                    if (!static::isValidClass($reflection)) {
+                        continue;
+                    }
+
+                    $pair = $c($reflection);
+                    $classes[(string)$pair['name']] = $pair['value'];
                 }
-
-                if (!static::isValidClass($reflection)) {
-                    continue;
-                }
-
-                $pair = $c($reflection);
-                $classes[(string)$pair['name']] = $pair['value'];
             }
         }
         return $classes;
+    }
+
+    /**
+     * Returns all frameworks.
+     *
+     * @return Mixed[]
+     */
+    public static function factoryAll(): array
+    {
+        $all = [];
+        $subns = static::getSubNamespace();
+        foreach (static::getBaseNamespaces() as $ns) {
+            $base = $ns . $subns;
+            $x = array_map(
+                function ($f) use ($base) {
+                    $fName = "$base\\$f\\CodeGenerator";
+                    return new $fName();
+                },
+                self::getSpecializations()
+            );
+            $all = array_merge($all, $x);
+        }
+        return $all;
     }
 }

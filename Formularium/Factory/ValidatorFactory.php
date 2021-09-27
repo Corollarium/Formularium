@@ -14,20 +14,16 @@ use Illuminate\Contracts\Validation\Validator;
  */
 final class ValidatorFactory extends AbstractFactory
 {
-    protected static $namespaces = [
-        'Formularium\\Validator'
-    ];
-
+    public static function getSubNamespace(): string
+    {
+        return 'Validator';
+    }
+    
     /**
      * @codeCoverageIgnore
      */
     private function __construct()
     {
-    }
-
-    public static function getClassName(string $name): string
-    {
-        return $name;
     }
 
     public static function isValidClass(\ReflectionClass $reflection): bool

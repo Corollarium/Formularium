@@ -10,11 +10,12 @@ use Formularium\FrameworkComposer;
 use Formularium\HTMLNode;
 use Nette\PhpGenerator\PhpNamespace;
 
-final class RenderableFactory extends AbstractRenderableFactory
+final class RenderableFactory extends AbstractSpecializationFactory
 {
-    protected static $namespaces = [
-        'Formularium\\Frontend',
-    ];
+    public static function getSubNamespace(): string
+    {
+        return 'Frontend';
+    }
 
     /**
      * @codeCoverageIgnore
@@ -30,7 +31,7 @@ final class RenderableFactory extends AbstractRenderableFactory
      * @param Framework $framework
      * @return Renderable
      */
-    public static function factory($datatype, Framework $framework, FrameworkComposer $composer = null): Renderable
+    public static function specializedFactory($datatype, object $framework, $composer = null): Renderable
     {
         if ($datatype instanceof Datatype) {
             $datatypeName = $datatype->getName();
@@ -40,13 +41,14 @@ final class RenderableFactory extends AbstractRenderableFactory
         }
 
         $frameworkClassname = $framework->getName();
-        foreach (static::$namespaces as $ns) {
-            $class = "$ns\\$frameworkClassname\\Renderable\\Renderable_$datatypeName";
+        $subNS = FrameworkFactory::getSubNamespace();
+        foreach (static::getBaseNamespaces() as $ns) {
+            $class = "$ns\\$subNS\\$frameworkClassname\\Renderable\\Renderable_$datatypeName";
             if (class_exists($class)) {
                 return new $class($framework, $composer);
             }
             $basetype = $datatype->getBasetype();
-            $class = "$ns\\$frameworkClassname\\Renderable\\Renderable_$basetype";
+            $class = "$ns\\$subNS\\$frameworkClassname\\Renderable\\Renderable_$basetype";
             if (class_exists($class)) {
                 return new $class($framework, $composer);
             }
@@ -62,6 +64,6 @@ final class RenderableFactory extends AbstractRenderableFactory
         }
 
         // TODO: namespaces
-        throw new ClassNotFoundException("Invalid datatype '$datatypeName' for {$framework->getName()}");
+        throw new ClassNotFoundException("Invalid renderable '$datatypeName' for {$framework->getName()}");
     }
 }

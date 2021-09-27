@@ -13,13 +13,13 @@ final class RenderableTest extends TestCase
 {
     public function testFactory()
     {
-        $r = RenderableFactory::factory('string', FrameworkFactory::factory('HTML'));
+        $r = RenderableFactory::specializedFactory('string', FrameworkFactory::factory('HTML'));
         $this->assertInstanceOf(Renderable::class, $r);
     }
     
     public function testFactoryTypes()
     {
-        $r = RenderableFactory::factory(DatatypeFactory::factory('string'), FrameworkFactory::factory('HTML'));
+        $r = RenderableFactory::specializedFactory(DatatypeFactory::factory('string'), FrameworkFactory::factory('HTML'));
         $this->assertInstanceOf(Renderable::class, $r);
     }
     

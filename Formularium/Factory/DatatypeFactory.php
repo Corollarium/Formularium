@@ -12,10 +12,6 @@ use ReflectionClass;
 
 final class DatatypeFactory extends AbstractFactory
 {
-    protected static $namespaces = [
-        'Formularium\\Datatype'
-    ];
-
     /**
      * @codeCoverageIgnore
      */
@@ -26,6 +22,11 @@ final class DatatypeFactory extends AbstractFactory
     public static function getClassName(string $name): string
     {
         return "Datatype_$name";
+    }
+
+    public static function getSubNamespace(): string
+    {
+        return "Datatype";
     }
 
     protected static function getNamePair(\ReflectionClass $reflection): array

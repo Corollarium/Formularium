@@ -7,34 +7,28 @@ use Formularium\Exception\ClassNotFoundException;
 use Formularium\Framework;
 use Formularium\StringUtil;
 
-final class CodeGeneratorFactory extends AbstractFactory
+final class CodeGeneratorFactory extends AbstractBaseSpecializationFactory
 {
-    protected static $namespaces = [
-        'Formularium\\CodeGenerator\\GraphQL',
-        'Formularium\\CodeGenerator\\LaravelEloquent',
-        'Formularium\\CodeGenerator\\SQL',
-        'Formularium\\CodeGenerator\\Typescript'
-    ];
+    public static function getSubNamespace(): string
+    {
+        return "CodeGenerator";
+    }
+
+    protected static function getSpecializations(): array
+    {
+        return [
+            'GraphQL',
+            'LaravelEloquent',
+            'SQL',
+            'Typescript'
+        ];
+    }
 
     /**
      * @codeCoverageIgnore
      */
     private function __construct()
     {
-    }
-
-    public static function class(string $name): string
-    {
-        $classname = static::getClassName($name);
-        foreach (static::$namespaces as $ns) {
-            if (StringUtil::endsWith($ns, $name)) {
-                return $ns . "\\CodeGenerator";
-            }
-        }
-
-        // TODO: registerFactory
-
-        throw new ClassNotFoundException("Invalid code generator $name");
     }
 
     public static function isValidClass(\ReflectionClass $reflection): bool
@@ -76,12 +70,6 @@ final class CodeGeneratorFactory extends AbstractFactory
      */
     public static function factoryAll(): array
     {
-        return array_map(
-            function ($f) {
-                $fName = $f . '\\CodeGenerator';
-                return new $fName();
-            },
-            self::$namespaces
-        );
+        return parent::factoryAll();
     }
 }

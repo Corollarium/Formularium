@@ -7,9 +7,13 @@ use Formularium\Exception\ClassNotFoundException;
 use Formularium\FrameworkComposer;
 use Formularium\Framework;
 
-final class ElementFactory
+final class ElementFactory extends AbstractSpecializationFactory
 {
-    
+    public static function getSubNamespace(): string
+    {
+        return "Framework";
+    }
+
     /**
      * @codeCoverageIgnore
      */
@@ -25,7 +29,7 @@ final class ElementFactory
      * @param FrameworkComposer $composer
      * @return Element
      */
-    public static function factory(string $elementName, Framework $framework, FrameworkComposer $composer = null): Element
+    public static function specializedFactory($elementName, object $framework, $composer = null): Element
     {
         // TODO: use reflection like Datatype
         $frameworkClassname = get_class($framework);
