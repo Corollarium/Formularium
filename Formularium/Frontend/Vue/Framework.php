@@ -140,7 +140,7 @@ class Framework extends \Formularium\Framework
     {
         return $this->editableContainerTag;
     }
-    
+
     /**
      * @param string $tag
      * @return self
@@ -172,7 +172,7 @@ class Framework extends \Formularium\Framework
 
         return $this;
     }
-    
+
     /**
      * Get viewable template
      *
@@ -196,7 +196,7 @@ class Framework extends \Formularium\Framework
 
         return $this;
     }
-    
+
     /**
      * Sets the vue render mode, single file component or embedded
      *
@@ -228,7 +228,7 @@ class Framework extends \Formularium\Framework
             ]
         );
     }
-   
+
     public function viewableCompose(Model $m, array $elements, string $previousCompose, FrameworkComposer $frameworkComposer): string
     {
         $containerAtts = $this->getContainerAttributes($m);
@@ -259,25 +259,24 @@ class Framework extends \Formularium\Framework
 <style>
 </style>
 EOF;
-            
+
             return $this->fillTemplate(
                 $viewableTemplate,
                 $templateData,
                 $m
             );
         } else {
-            // TODO: this is likely broken
             $id = 'vueapp' . static::counter();
             $containerAtts['id'] = $id;
             $t = new HTMLNode(
-                $this->getViewableContainerTag(),
+                $templateData['containerTag'],
                 $containerAtts,
                 $templateData['form'],
                 true
             );
+            $this->vueCode->appendOther('el', "'#$id'");
             $vars = $this->vueCode->toVariable($m, $elements);
-            $this->vueCode->appendOther('el', "#$id");
-            $script = "const app_$id = new Vue({$vars});";
+            $script = "const app_$id = new Vue({{$vars}});";
             $s = new HTMLNode('script', [], $script, true);
             return HTMLNode::factory('div', [], [$t, $s])->getRenderHTML();
         }
@@ -293,7 +292,7 @@ EOF;
             'form' => join('', $elements),
             'script' => $this->vueCode->toScript($m, $elements),
         ] + $this->vueCode->getTemplateData($m, $elements);
-        
+
         if (is_callable($this->editableTemplate)) {
             return call_user_func(
                 $this->editableTemplate,
@@ -364,7 +363,7 @@ EOF;
         );
         return $template;
     }
-    
+
     /**
      * Get the value of vueCode
      *
