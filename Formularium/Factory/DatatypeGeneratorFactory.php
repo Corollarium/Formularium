@@ -10,9 +10,12 @@ use Formularium\Exception\ClassNotFoundException;
 use HaydenPierce\ClassFinder\ClassFinder;
 use ReflectionClass;
 
-final class DatatypeGeneratorFactory
+final class DatatypeGeneratorFactory extends AbstractSpecializationFactory
 {
-    use NamespaceTrait;
+    public static function getSubNamespace(): string
+    {
+        return "CodeGenerator";
+    }
 
     /**
      * @codeCoverageIgnore
@@ -26,9 +29,10 @@ final class DatatypeGeneratorFactory
      *
      * @param string|Datatype $datatypeName
      * @param CodeGenerator $codeGenerator
+     * @param mixed $composer Not used here.
      * @return DatatypeGenerator
      */
-    public static function factory($datatypeName, CodeGenerator $codeGenerator): DatatypeGenerator
+    public static function specializedFactory($datatypeName, object $codeGenerator, $composer = null)
     {
         /**
          * @var Datatype $datatypeClass
@@ -47,10 +51,10 @@ final class DatatypeGeneratorFactory
         }
 
         $class = null;
-        $namespaces = array_merge(static::$namespaces, ['Formularium\\CodeGenerator']);
-        foreach ($namespaces as $ns) {
+        $subns = static::getSubNamespace();
+        foreach (static::getBaseNamespaces() as $ns) {
             $codeGeneratorClassname = $codeGenerator->getName();
-            $class = "$ns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassName";
+            $class = "$ns\\$subns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassName";
             if (class_exists($class)) {
                 break;
             }
@@ -61,9 +65,9 @@ final class DatatypeGeneratorFactory
             $datatypeName = $datatypeClass->getBasetype();
             $datatypeClassNameBase = 'DatatypeGenerator_' . $datatypeName;
 
-            foreach ($namespaces as $ns) {
+            foreach (static::getBaseNamespaces() as $ns) {
                 $codeGeneratorClassname = $codeGenerator->getName();
-                $class = "$ns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassNameBase";
+                $class = "$ns\\$subns\\$codeGeneratorClassname\\DatatypeGenerator\\$datatypeClassNameBase";
                 if (class_exists($class)) {
                     break;
                 }
@@ -83,7 +87,7 @@ final class DatatypeGeneratorFactory
      * @param CodeGenerator $codeGenerator
      * @return DatatypeGenerator[]
      */
-    public static function factoryAll(CodeGenerator $codeGenerator): array
+    public static function specializedFactoryAll(CodeGenerator $codeGenerator): array
     {
         $reflection = new ReflectionClass($codeGenerator);
         $classes = ClassFinder::getClassesInNamespace($reflection->getNamespaceName());

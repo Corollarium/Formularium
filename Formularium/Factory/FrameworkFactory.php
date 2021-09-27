@@ -6,45 +6,41 @@ use Formularium\Exception\ClassNotFoundException;
 use Formularium\Framework;
 use Formularium\StringUtil;
 
-final class FrameworkFactory extends AbstractFactory
+final class FrameworkFactory extends AbstractBaseSpecializationFactory
 {
-    protected static $namespaces = [
-        'Formularium\\Frontend\\Blade',
-        'Formularium\\Frontend\\Bootstrap',
-        'Formularium\\Frontend\\Bootstrapvue',
-        'Formularium\\Frontend\\Buefy',
-        'Formularium\\Frontend\\Bulma',
-        'Formularium\\Frontend\\HTML',
-        'Formularium\\Frontend\\HTMLValidation',
-        'Formularium\\Frontend\\Materialize',
-        'Formularium\\Frontend\\Parsley',
-        'Formularium\\Frontend\\Quill',
-        'Formularium\\Frontend\\React',
-        'Formularium\\Frontend\\VeeValidate',
-        'Formularium\\Frontend\\Vue',
-        'Formularium\\Frontend\\Vuelidate',
-        'Formularium\\Frontend\\Vuetify',
+    public static $specializations = [
+            'Blade',
+            'Bootstrap',
+            'Bootstrapvue',
+            'Buefy',
+            'Bulma',
+            'HTML',
+            'HTMLValidation',
+            'Materialize',
+            'Parsley',
+            'Quill',
+            'React',
+            'VeeValidate',
+            'Vue',
+            'Vuelidate',
+            'Vuetify',
     ];
+        
+    public static function getSubNamespace(): string
+    {
+        return "Frontend";
+    }
+
+    public static function getSubNamespaceClassName(): string
+    {
+        return "Framework";
+    }
 
     /**
      * @codeCoverageIgnore
      */
     private function __construct()
     {
-    }
-
-    public static function class(string $name): string
-    {
-        $classname = static::getClassName($name);
-        foreach (static::$namespaces as $ns) {
-            if (StringUtil::endsWith($ns, $name)) {
-                return $ns . "\\Framework";
-            }
-        }
-
-        // TODO: registerFactory
-
-        throw new ClassNotFoundException("Invalid framework $name");
     }
 
     public static function isValidClass(\ReflectionClass $reflection): bool
@@ -86,12 +82,6 @@ final class FrameworkFactory extends AbstractFactory
      */
     public static function factoryAll(): array
     {
-        return array_map(
-            function ($f) {
-                $fName = $f . '\\Framework';
-                return new $fName();
-            },
-            self::$namespaces
-        );
+        return parent::factoryAll();
     }
 }

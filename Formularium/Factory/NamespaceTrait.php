@@ -9,7 +9,9 @@ trait NamespaceTrait
      *
      * @var string[]
      */
-    protected static $namespaces = [];
+    protected static $baseNamespaces = [
+        'Formularium'
+    ];
 
     /**
      * External factory functions.
@@ -28,17 +30,17 @@ trait NamespaceTrait
      * @return void
      * @codeCoverageIgnore
      */
-    public static function appendNamespace(string $ns): void
+    public static function appendBaseNamespace(string $ns): void
     {
-        static::$namespaces[] = $ns;
+        static::$baseNamespaces[] = $ns;
     }
 
     /**
      * @return string[]
      * @codeCoverageIgnore
      */
-    public static function getNamespaces(): array
+    public static function getBaseNamespaces(): array
     {
-        return static::$namespaces;
+        return static::$baseNamespaces;
     }
 }

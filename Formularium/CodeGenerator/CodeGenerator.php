@@ -77,7 +77,7 @@ abstract class CodeGenerator
      */
     public function field(Field $field)
     {
-        $dg = DatatypeGeneratorFactory::factory($field->getDatatype(), $this);
+        $dg = DatatypeGeneratorFactory::specializedFactory($field->getDatatype(), $this);
         return $dg->field($this, $field);
     }
 
