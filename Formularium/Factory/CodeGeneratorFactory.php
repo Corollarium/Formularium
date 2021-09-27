@@ -9,19 +9,16 @@ use Formularium\StringUtil;
 
 final class CodeGeneratorFactory extends AbstractBaseSpecializationFactory
 {
+    public static $specializations = [
+        'GraphQL',
+        'LaravelEloquent',
+        'SQL',
+        'Typescript'
+    ];
+
     public static function getSubNamespace(): string
     {
         return "CodeGenerator";
-    }
-
-    protected static function getSpecializations(): array
-    {
-        return [
-            'GraphQL',
-            'LaravelEloquent',
-            'SQL',
-            'Typescript'
-        ];
     }
 
     /**
@@ -35,7 +32,7 @@ final class CodeGeneratorFactory extends AbstractBaseSpecializationFactory
     {
         return $reflection->isSubclassOf(CodeGenerator::class);
     }
-    
+
     protected static function getNamePair(\ReflectionClass $reflection): array
     {
         $class = $reflection->getName();

@@ -25,7 +25,7 @@ final class FrameworkFactory extends AbstractBaseSpecializationFactory
             'Vuelidate',
             'Vuetify',
     ];
-        
+
     public static function getSubNamespace(): string
     {
         return "Frontend";
