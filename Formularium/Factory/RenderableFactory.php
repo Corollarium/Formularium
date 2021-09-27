@@ -63,7 +63,15 @@ final class RenderableFactory extends AbstractSpecializationFactory
             }
         }
 
-        // TODO: namespaces
         throw new ClassNotFoundException("Invalid renderable '$datatypeName' for {$framework->getName()}");
+    }
+
+    protected static function getNamePair(\ReflectionClass $reflection): array
+    {
+        $class = $reflection->getName();
+        return [
+            'name' => $class,
+            'value' => $reflection->getShortName()
+        ];
     }
 }

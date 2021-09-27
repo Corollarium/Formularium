@@ -47,7 +47,7 @@ final class FrameworkFactory extends AbstractBaseSpecializationFactory
     {
         return $reflection->isSubclassOf(Framework::class);
     }
-    
+
     protected static function getNamePair(\ReflectionClass $reflection): array
     {
         $class = $reflection->getName();

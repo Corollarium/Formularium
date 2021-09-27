@@ -13,7 +13,7 @@ abstract class CodeGenerator
      * @var string
      */
     public $name;
-    
+
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -26,7 +26,7 @@ abstract class CodeGenerator
 
     public function datatypeDeclarations(): string
     {
-        $classes = DatatypeGeneratorFactory::factoryAll($this);
+        $classes = DatatypeGeneratorFactory::specializedFactoryAll($this);
         $declarations = array_map(
             function (DatatypeGenerator $c) {
                 return $c->datatypeDeclaration($this);
@@ -47,7 +47,7 @@ abstract class CodeGenerator
      */
     public function datatypeDeclaration(Datatype $datatype): string
     {
-        $generator = DatatypeGeneratorFactory::factory($datatype, $this);
+        $generator = DatatypeGeneratorFactory::specializedFactory($datatype, $this);
         return $generator->datatypeDeclaration($this);
     }
 
