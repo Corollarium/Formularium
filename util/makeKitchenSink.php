@@ -252,8 +252,7 @@ function kitchenSink(array $frameworks, string $templateName)
         }
     }
     $modelViewable = $model->viewable($frameworkComposer, $randomData);
-    $modelEditable = ''; // $model->editable($frameworkComposer);
-    echo($modelViewable);
+    $modelEditable = $model->editable($frameworkComposer);
 
     return [
         templatify($frameworkComposer, $templateName, $modelViewable, 'Model Viewable'),
@@ -299,18 +298,18 @@ function main()
 <div>
 EOF;
     $frameworks = [
-        // ['framework' => ['HTML', 'HTMLValidation', 'Quill'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill'], 'template' => 'bulma'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue', 'Vuelidate'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bootstrapvue', 'Vue'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Materialize'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Buefy', 'Vue'], 'template' => 'bulma'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'React'], 'template' => 'base'],
-        // ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'React'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Quill'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill'], 'template' => 'bulma'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Quill', 'Parsley'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue', 'Vuelidate'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrapvue', 'Vue'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Materialize'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bulma', 'Quill', 'Vue'], 'template' => 'bulma'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'Vue'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Buefy', 'Vue'], 'template' => 'bulma'],
+        ['framework' => ['HTML', 'HTMLValidation', 'React'], 'template' => 'base'],
+        ['framework' => ['HTML', 'HTMLValidation', 'Bootstrap', 'React'], 'template' => 'base'],
         ['framework' => ['HTML', 'HTMLValidation', 'Vuetify', 'Vue'], 'template' => 'base'],
     ];
     foreach ($frameworks as $f) {
