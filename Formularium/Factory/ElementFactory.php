@@ -46,4 +46,19 @@ final class ElementFactory extends AbstractSpecializationFactory
         }
         return new $class($framework, $composer);
     }
+
+    protected static function getNamePair(\ReflectionClass $reflection): array
+    {
+        $class = $reflection->getName();
+
+        /**
+         * @var Element
+         */
+        $d = new $class();
+
+        return [
+            'name' => $class,
+            'value' => $d->getName()
+        ];
+    }
 }

@@ -10,20 +10,9 @@ abstract class AbstractSpecializationFactory extends AbstractFactory
 {
     /**
      * @param mixed $datatypeName
-     * @param mixed $baseSpecialization
+     * @param object $baseSpecialization
+     * @param object $composer
      * @return mixed
      */
-    abstract public static function specializedFactory($datatypeName, object $baseSpecialization, $composer = null);
-
-    protected static function getNamePair(\ReflectionClass $reflection): array
-    {
-        $class = $reflection->getName();
-
-        $d = new $class();
-
-        return [
-            'name' => $class,
-            'value' => $d->getName()
-        ];
-    }
+    abstract public static function specializedFactory($datatypeName, object $baseSpecialization, object $composer = null);
 }

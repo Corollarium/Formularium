@@ -39,7 +39,7 @@ final class DatatypeGeneratorFactory extends AbstractSpecializationFactory
          */
         $datatypeClass = null;
         $datatypeClassName = '';
-        
+
         if (is_string($datatypeName)) {
             $datatypeClass = DatatypeFactory::factory($datatypeName);
             $datatypeClassName = 'DatatypeGenerator_' . $datatypeName;
@@ -104,5 +104,15 @@ final class DatatypeGeneratorFactory extends AbstractSpecializationFactory
         $className = get_class($dg);
         $datatypeName = mb_substr($className, mb_strrpos($className, '_') + 1);
         return $datatypeName;
+    }
+
+    protected static function getNamePair(\ReflectionClass $reflection): array
+    {
+        $class = $reflection->getName();
+
+        return [
+            'name' => $class,
+            'value' => $reflection->getShortName()
+        ];
     }
 }

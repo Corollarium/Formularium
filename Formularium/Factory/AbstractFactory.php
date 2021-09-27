@@ -10,6 +10,11 @@ abstract class AbstractFactory
 {
     use NamespaceTrait;
 
+    /**
+     * Specializations: the subdirectories for "Framework" or "CodeGenerator".
+     *
+     * @var string[]
+     */
     public static $specializations = [];
 
     /**
@@ -59,7 +64,7 @@ abstract class AbstractFactory
         return static::$specializations;
     }
 
-    public static function appendSpecialization(string $name)
+    public static function appendSpecialization(string $name): void
     {
         static::$specializations[] = $name;
     }
@@ -119,7 +124,7 @@ abstract class AbstractFactory
                 // pass
             }
         }
-    
+
         try {
             $className = static::class($name);
             return new $className();
@@ -138,7 +143,7 @@ abstract class AbstractFactory
         $subns = static::getSubNamespace();
         throw new ClassNotFoundException("Invalid factory for $subns: $name");
     }
-    
+
     /**
      * Checks if a class is valid for getNames()
      *
@@ -163,7 +168,7 @@ abstract class AbstractFactory
             }
         );
     }
-    
+
     /**
      * Runs a map function on the classes this factory handles.
      *
