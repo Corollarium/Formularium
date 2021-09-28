@@ -31,12 +31,13 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
 
     public function type(Model $model): string
     {
-        $fields = implode(",\n", $this->fields($model));
+        $fields = implode(",\n  ", $this->fields($model));
         $indices = '';
         return <<<EOD
 CREATE TABLE {$model->getName()} (
-$fields
-$indices
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+  $fields
+  $indices
 )
 EOD;
     }

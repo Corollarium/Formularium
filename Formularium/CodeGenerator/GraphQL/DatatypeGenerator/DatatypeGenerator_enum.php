@@ -11,19 +11,31 @@ class DatatypeGenerator_enum extends GraphQLDatatypeGenerator
 {
     public function datatypeDeclaration(CodeGenerator $generator)
     {
-        /**
+        try {
+            /**
          * @var Datatype_enum $datatype
          */
-        $datatype = $this->getDatatype();
+            $datatype = $this->getDatatype();
 
-        /**
-         * @var GraphQLCodeGenerator $generator
-         */
+            /**
+             * @var GraphQLCodeGenerator $generator
+             */
 
-        $choices = $datatype->getChoices();
+            $choices = $datatype->getChoices();
 
-        return 'enum ' . $this->getDatatypeName($generator) . " {\n  " .
-            implode("\n  ", array_keys($choices)) .
-            "\n}";
+            $choicesEscaped = array_map(
+                function ($c) {
+                    $c = preg_replace("/[^A-Za-z0-9]+/s", "_", $c);
+                    return ((ctype_alpha($c[0]) || $c[0] === '_') ? $c : '_' . $c);
+                },
+                array_keys($choices)
+            );
+
+            return 'enum ' . $this->getDatatypeName($generator) . " {\n  " .
+                implode("\n  ", $choicesEscaped) .
+                "\n}";
+        } catch (\Throwable $e) {
+            return '';
+        }
     }
 }

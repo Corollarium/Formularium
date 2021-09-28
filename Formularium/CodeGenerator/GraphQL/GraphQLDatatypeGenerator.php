@@ -37,8 +37,15 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
         /**
          * @var GraphQLCodeGenerator $generator
          */
-        return 'scalar ' . $this->getDatatypeName($generator) . ' @scalar(class: "Modelarium\\Types\\' . get_class($this) . '"';
+        try {
+            $className = get_class($this->getDatatype());
+            $escapedClassName = str_replace("\\", "\\\\", $className);
+            return 'scalar ' . $this->getDatatypeName($generator) . ' @scalar(class: "'. $escapedClassName . '")';
+        } catch (\Throwable $e) {
+            return '';
+        }
     }
+
 
     public function field(CodeGenerator $generator, Field $field)
     {

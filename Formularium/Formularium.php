@@ -25,7 +25,8 @@ final class Formularium
         $classes = DatatypeFactory::getNames();
         $graphql = [];
         foreach ($classes as $className => $name) {
-            $graphql[] = "scalar $name @scalar(class: \"{$className}\")";
+            $escapedClassName = str_replace("\\", "\\\\", $className);
+            $graphql[] = "scalar $name @scalar(class: \"{$escapedClassName}\")";
         }
 
         return '
