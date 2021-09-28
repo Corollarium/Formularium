@@ -17,6 +17,11 @@ final class DatatypeGeneratorFactory extends AbstractSpecializationFactory
         return "CodeGenerator";
     }
 
+    public static function baseclassName(): string
+    {
+        return "DatatypeGenerator";
+    }
+
     /**
      * @codeCoverageIgnore
      */
@@ -79,24 +84,6 @@ final class DatatypeGeneratorFactory extends AbstractSpecializationFactory
         }
 
         return new $class($codeGenerator);
-    }
-
-    /**
-     * Undocumented function
-     *
-     * @param CodeGenerator $codeGenerator
-     * @return DatatypeGenerator[]
-     */
-    public static function specializedFactoryAll(CodeGenerator $codeGenerator): array
-    {
-        $reflection = new ReflectionClass($codeGenerator);
-        $classes = ClassFinder::getClassesInNamespace($reflection->getNamespaceName());
-        return array_map(
-            function ($c) {
-                return new $c();
-            },
-            $classes
-        );
     }
 
     public static function getDatatypeName(DatatypeGenerator $dg): string

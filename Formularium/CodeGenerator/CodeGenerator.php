@@ -36,7 +36,7 @@ abstract class CodeGenerator
         $cleanDeclarations = array_filter($declarations, function ($d) {
             return $d;
         });
-        return join("\n", $cleanDeclarations);
+        return join("\n\n", $cleanDeclarations);
     }
 
     /**
@@ -83,5 +83,5 @@ abstract class CodeGenerator
 
     abstract public function type(Model $model): string;
 
-    abstract public function typeFilename(Model $model): string;
+    abstract public function getFilename(string $base): string;
 }

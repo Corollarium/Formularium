@@ -11,20 +11,30 @@ class DatatypeGenerator_enum extends TypescriptDatatypeGenerator
 {
     public function datatypeDeclaration(CodeGenerator $generator)
     {
-        /**
-         * @var Datatype_enum $datatype
-         */
-        $datatype = $this->getDatatype();
+        try {
+            /**
+             * @var Datatype_enum $datatype
+             */
+            $datatype = $this->getDatatype();
 
-        /**
-         * @var TypescriptCodeGenerator $generator
-         */
+            /**
+             * @var TypescriptCodeGenerator $generator
+             */
 
-        $choices = $datatype->getChoices();
+            $choices = $datatype->getChoices();
 
-        return 'enum ' . $this->getDatatypeName($generator) . " {\n  " .
-            implode("\n  ", array_keys($choices)) .
-            "\n}";
+            $choicesTS = array_map(
+                function ($c) {
+                    return "  \"$c\" = \"$c\"";
+                },
+                array_keys($choices)
+            );
+            return 'enum ' . $this->getDatatypeName($generator) . " {\n" .
+                implode(",\n", $choicesTS) .
+                "\n}";
+        } catch (\Throwable $e) {
+            return '';
+        }
     }
 
     public function getBasetype(): string

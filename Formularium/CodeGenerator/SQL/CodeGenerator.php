@@ -41,8 +41,8 @@ $indices
 EOD;
     }
 
-    public function typeFilename(Model $model): string
+    public function getFilename(string $base): string
     {
-        return $model->getName() . '.sql';
+        return $base . '.sql';
     }
 }

@@ -32,9 +32,9 @@ $fields
 EOD;
     }
 
-    public function typeFilename(Model $model): string
+    public function getFilename(string $base): string
     {
-        return $model->getName() . '.ts';
+        return $base . '.ts';
     }
 
     public function fieldDeclaration(string $datatype, string $name): string

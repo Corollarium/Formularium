@@ -17,6 +17,11 @@ final class RenderableFactory extends AbstractSpecializationFactory
         return 'Frontend';
     }
 
+    public static function baseclassName(): string
+    {
+        return "Renderable";
+    }
+
     /**
      * @codeCoverageIgnore
      */

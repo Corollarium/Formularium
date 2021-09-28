@@ -25,8 +25,8 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
         );
     }
 
-    public function typeFilename(Model $model): string
+    public function getFilename(string $base): string
     {
-        return $model->getName() . '.php';
+        return $base . '.php';
     }
 }

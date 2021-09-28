@@ -28,8 +28,8 @@ final class TypescriptTest extends BaseCase
         $codeGenerator = new TypescriptCodeGenerator();
         $dg = new DatatypeGenerator_language();
         $declaration = $dg->datatypeDeclaration($codeGenerator);
-        $this->assertStringStartsWith("enum language {\n  aa\n  ab", $declaration);
-        $this->assertStringEndsWith("zu\n}", $declaration);
+        $this->assertStringStartsWith("enum language {\n  \"aa\" = \"aa\",\n  \"ab", $declaration);
+        $this->assertStringEndsWith("\"zu\" = \"zu\"\n}", $declaration);
         $model = $this->getBaseModel();
         $fields = $codeGenerator->type($model);
     }

@@ -14,6 +14,11 @@ final class ElementFactory extends AbstractSpecializationFactory
         return "Framework";
     }
 
+    public static function baseclassName(): string
+    {
+        return "Element";
+    }
+
     /**
      * @codeCoverageIgnore
      */
