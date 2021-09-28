@@ -83,6 +83,9 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
             if (array_key_exists($k, $propsNames)) {
                 continue;
             }
+            if (!$v) { // TODO === false
+                $v = $m->getDefault()[$k] ?: '""';
+            }
             $data[$k] = $v;
         }
         $classData = [];
@@ -103,7 +106,7 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
             'computedCode' => implode(
                 "\n",
                 array_map(function ($key, $value) {
-                    return "get $key() { $value },";
+                    return "get $key() { $value }";
                 }, array_keys($this->vueCode->computed), $this->vueCode->computed)
             ),
             'otherData' => implode(
@@ -113,7 +116,7 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
             'methodsCode' => implode(
                 "\n",
                 array_map(function ($key, $value) {
-                    return "$key { $value },";
+                    return "$key { $value }";
                 }, array_keys($this->vueCode->methods), $this->vueCode->methods)
             ),
         ];
@@ -162,10 +165,7 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
 import { Component, Prop, Vue } from "vue-property-decorator";
 {{imports}}
 
-@Component({ components: { } })
 export default class {{className}} extends Vue {
-    @Prop({})
-
     {{otherData}}
 
     {{classData}}
