@@ -28,7 +28,7 @@ abstract class AbstractSpecializationFactory extends AbstractFactory
 
     /**
      * @param CodeGenerator $codeGenerator
-     * @return DatatypeGenerator[]
+     * @return array
      */
     public static function specializedFactoryAll(CodeGenerator $codeGenerator): array
     {

@@ -36,7 +36,7 @@
         "make:codegenerator": "bash ./util/makeCodeGenerator.sh",
         "makeKitchenSink": "php ./util/makeKitchenSink.php",
         "format": "vendor/bin/ecs check Formularium/ --level clean-code --fix && vendor/bin/ecs check Formularium/ --level psr12 --fix",
-        "stan": "vendor/bin/phpstan analyse Formularium",
+        "stan": "vendor/bin/phpstan analyse Formularium --error-format=raw",
         "apidoc": "php ./util/makeAPIDoc.php",
         "coverage": "./vendor/bin/phpunit --configuration phpunit.xml --coverage-html docs/coverage-report tests/",
         "test": "./vendor/bin/phpunit --configuration phpunit.xml tests/"

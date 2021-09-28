@@ -2,6 +2,7 @@
 
 namespace Formularium\CodeGenerator\GraphQL;
 
+use Exception;
 use Formularium\Field;
 use Formularium\CodeGenerator\DatatypeGenerator;
 use Formularium\CodeGenerator\CodeGenerator;
@@ -37,6 +38,9 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
         /**
          * @var GraphQLCodeGenerator $generator
          */
+        if (!is_a($generator, GraphQLCodeGenerator::class)) {
+            throw new Exception("You need to pass a GraphQL\\CodeGenerator instance");
+        }
         try {
             $className = get_class($this->getDatatype());
             $escapedClassName = str_replace("\\", "\\\\", $className);
