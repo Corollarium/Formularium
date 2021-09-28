@@ -5,8 +5,10 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/corollarium/formularium.svg?style=flat-square)](https://packagist.org/packages/corollarium/formularium)
 [![Total Downloads](https://img.shields.io/packagist/dt/corollarium/formularium.svg?style=flat-square)](https://packagist.org/packages/corollarium/formularium)
 [![License](https://img.shields.io/packagist/l/corollarium/formularium.svg?style=flat-square)](https://packagist.org/packages/corollarium/formularium)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Corollarium/Formularium/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Corollarium/Formularium/?branch=master)
 
-Formularium is a typed code generator for PHP from a uniform model description. Are you tired of updating code in multiple places whenever you change a model? Making typos and bugs, or forgetting to change that 8th file? Formularium will:
+Formularium is a typed code generator for PHP from a uniform model description
+. Are you tired of updating code in multiple places whenever you change a model? Making typos and bugs, or forgetting to change that 8th file? Formularium will:
 
 - generates HTML forms and elements with multiple target CSS frameworks
 - generate model descriptions (such as SQL tables, Typescript interfaces, GraphQL types)
