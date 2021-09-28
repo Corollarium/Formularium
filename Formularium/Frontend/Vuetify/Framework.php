@@ -20,9 +20,6 @@ class Framework extends \Formularium\Framework
          * @var FrameworkVue $vue
          */
         $vue = $composer->getByName('Vue');
-        $vueCode = $vue->getVueCode();
-        
-        $vueCode->appendOther('vuetify', 'new Vuetify()');
         $vue->setEditableContainerTag('v-app');
         $vue->setViewableContainerTag('v-app');
     }

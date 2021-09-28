@@ -15,6 +15,7 @@ use Formularium\Frontend\HTML\Element\Pagination;
 use Formularium\Frontend\HTML\Element\Table;
 use Formularium\Frontend\HTML\Renderable\Renderable_enum;
 use Formularium\Frontend\HTML\Renderable\Renderable_number;
+use Formularium\Frontend\Vue\Framework as VueFramework;
 use Formularium\HTMLNode;
 use Formularium\Model;
 use Formularium\Renderable;
@@ -52,9 +53,23 @@ function templatify(FrameworkComposer $frameworkComposer, string $templateName, 
     return $template;
 }
 
-function generateBase(array $frameworkNames, string $templateName)
+function buildComposer(array $frameworkNames): FrameworkComposer
 {
     $frameworkComposer = FrameworkComposer::create($frameworkNames);
+    if ($frameworkComposer->getByName('Vuetify')) {
+        /**
+         * @var VueFramework
+         */
+        $vue = $frameworkComposer->getByName('Vue');
+        $vue->getVueCode()
+            ->appendOther('vuetify', 'new Vuetify()');
+    }
+    return $frameworkComposer;
+}
+
+function generateBase(array $frameworkNames, string $templateName)
+{
+    $frameworkComposer = buildComposer($frameworkNames);
 
     /*
      * basic demo fiels
@@ -127,7 +142,8 @@ function generateBase(array $frameworkNames, string $templateName)
 
 function generateElements(array $frameworkNames, string $templateName)
 {
-    $frameworkComposer = FrameworkComposer::create($frameworkNames);
+    $frameworkComposer = buildComposer($frameworkNames);
+
     $wrapNode = function (string $title, HTMLNode $node) use ($frameworkComposer) {
         $frameworkComposer->appendFooterElement(
             new HTMLNode(
@@ -213,9 +229,9 @@ function generateElements(array $frameworkNames, string $templateName)
     return templatify($frameworkComposer, $templateName, $html, 'Elements');
 }
 
-function kitchenSink(array $frameworks, string $templateName)
+function kitchenSink(array $frameworkNames, string $templateName)
 {
-    $frameworkComposer = FrameworkComposer::create($frameworks);
+    $frameworkComposer = buildComposer($frameworkNames);
 
     /*
      * kitchen sink fields
