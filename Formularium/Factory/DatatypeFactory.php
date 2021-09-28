@@ -12,6 +12,8 @@ use ReflectionClass;
 
 final class DatatypeFactory extends AbstractFactory
 {
+    use RegisteredFactoryTrait;
+
     /**
      * @codeCoverageIgnore
      */
@@ -52,13 +54,37 @@ final class DatatypeFactory extends AbstractFactory
     /**
      * Factory.
      *
-     * @param string $datatype
+     * @param string $name
      * @return Datatype
      * @throws ClassNotFoundException
      */
-    public static function factory(string $datatype): Datatype
+    public static function factory(string $name): Datatype
     {
-        return parent::factory($datatype);
+        if (mb_strpos($name, '\\')) {
+            try {
+                return new $name();
+            } catch (ClassNotFoundException $e) {
+                // pass
+            }
+        }
+
+        try {
+            $className = static::class($name);
+            return new $className();
+        } catch (ClassNotFoundException $e) {
+            // pass
+        }
+
+        // external factories
+        foreach (static::$factories as $f) {
+            try {
+                return $f($name);
+            } catch (ClassNotFoundException $e) {
+                continue;
+            }
+        }
+        $subns = static::getSubNamespace();
+        throw new ClassNotFoundException("Invalid factory for $subns: $name");
     }
 
     /**
@@ -94,7 +120,7 @@ final class DatatypeFactory extends AbstractFactory
             ->setBody("parent::__construct(\$typename, \$basetype);\n");
         $constructor->addParameter('typename', $datatypeName)->setType('string');
         $constructor->addParameter('basetype', $basetype)->setType('string');
-        
+
         $class->addMethod('getRandom')
             ->setComment('
 Returns a random valid value for this datatype, considering the validators
@@ -105,7 +131,7 @@ Returns a random valid value for this datatype, considering the validators
             ->setBody("throw new ValidatorException('Not implemented');")
             ->addParameter('validators', [])
             ->setType('array');
-            
+
         $validateMethod = $class->addMethod('validate')
             ->setComment('
 Checks if \$value is a valid value for this datatype considering the validators.
@@ -115,7 +141,7 @@ Checks if \$value is a valid value for this datatype considering the validators.
 @throws Exception If invalid, with the message.
 @return mixed The validated value.')
              ->setBody("throw new ValidatorException('Not implemented');");
-        
+
         $validateMethod->addParameter('value');
         $validateMethod->addParameter('model', null)
              ->setType('\Formularium\Model');
@@ -126,9 +152,9 @@ Checks if \$value is a valid value for this datatype considering the validators.
 
         $printer = new \Nette\PhpGenerator\PsrPrinter;
         $datatypeCode = "<?php declare(strict_types=1);\n" . $printer->printNamespace($namespace);
-        
+
         $testCode = <<<EOF
-<?php declare(strict_types=1); 
+<?php declare(strict_types=1);
 
 namespace $testNamespace;
 
@@ -195,9 +221,9 @@ EOF;
     public static function generateFile(array $codeData, string $path, string $testpath = null): array
     {
         if (!is_dir($path)) {
-            \Safe\mkdir($path);
+            \Safe\mkdir($path, 0777, true);
         }
-    
+
         $datatype = $codeData['datatype'];
         $retval = [];
         $filename = $retval['filename'] = $path . "/Datatype_{$datatype}.php";

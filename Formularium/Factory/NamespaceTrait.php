@@ -14,18 +14,6 @@ trait NamespaceTrait
     ];
 
     /**
-     * External factory functions.
-     *
-     * @var callable[]
-     */
-    protected static $factories = [];
-
-    public static function registerFactory(callable $factory): void
-    {
-        static::$factories[] = $factory;
-    }
-
-    /**
      * @param string $ns The namespace to add
      * @return void
      * @codeCoverageIgnore

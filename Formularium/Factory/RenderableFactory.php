@@ -6,9 +6,6 @@ use Formularium\Datatype;
 use Formularium\Framework;
 use Formularium\Renderable;
 use Formularium\Exception\ClassNotFoundException;
-use Formularium\FrameworkComposer;
-use Formularium\HTMLNode;
-use Nette\PhpGenerator\PhpNamespace;
 
 final class RenderableFactory extends AbstractSpecializationFactory
 {
@@ -59,14 +56,14 @@ final class RenderableFactory extends AbstractSpecializationFactory
             }
         }
 
-        // external factories
-        foreach (static::$factories as $f) {
-            try {
-                return $f($datatype, $framework, $composer);
-            } catch (ClassNotFoundException $e) {
-                continue;
-            }
-        }
+        // TODO external factories
+        // foreach (static::$factories as $f) {
+        //     try {
+        //         return $f($datatype, $framework, $composer);
+        //     } catch (ClassNotFoundException $e) {
+        //         continue;
+        //     }
+        // }
 
         throw new ClassNotFoundException("Invalid renderable '$datatypeName' for {$framework->getName()}");
     }

@@ -132,14 +132,6 @@ abstract class AbstractFactory
             // pass
         }
 
-        // external factories
-        foreach (static::$factories as $f) {
-            try {
-                return $f($name);
-            } catch (ClassNotFoundException $e) {
-                continue;
-            }
-        }
         $subns = static::getSubNamespace();
         throw new ClassNotFoundException("Invalid factory for $subns: $name");
     }
