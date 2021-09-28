@@ -237,7 +237,7 @@ class Framework extends \Formularium\Framework
             'containerAtts' => $this->collapseHTMLAttributes($containerAtts),
             'form' => join('', $elements),
             'script' => $this->vueCode->toScript($m, $elements)
-        ] + $this->vueCode->getTemplateData($m, $elements);
+        ] + $this->vueCode->renderer->getTemplateData($m, $elements);
 
         if (is_callable($this->viewableTemplate)) {
             return call_user_func(
@@ -291,7 +291,7 @@ EOF;
             'containerAtts' => $this->collapseHTMLAttributes($containerAtts),
             'form' => join('', $elements),
             'script' => $this->vueCode->toScript($m, $elements),
-        ] + $this->vueCode->getTemplateData($m, $elements);
+        ] + $this->vueCode->renderer->getTemplateData($m, $elements);
 
         if (is_callable($this->editableTemplate)) {
             return call_user_func(

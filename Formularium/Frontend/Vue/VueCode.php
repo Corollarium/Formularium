@@ -48,43 +48,53 @@ class VueCode
      *
      * @var string
      */
-    protected $fieldModelVariable = '';
+    public $fieldModelVariable = '';
 
     /**
      * Extra props.
      *
      * @var array
      */
-    protected $extraProps = [];
+    public $extraProps = [];
 
     /**
      * extra data fields
      *
      * @var string[]
      */
-    protected $extraData = [];
+    public $extraData = [];
 
     /**
      * The list of imports to add: import 'key' from 'value'
      *
      * @var string[]
      */
-    protected $imports = [];
+    public $imports = [];
 
     /**
      * @var string[]
      */
-    protected $computed = [];
+    public $computed = [];
 
     /**
      * @var string[]
      */
-    protected $methods = [];
+    public $methods = [];
 
     /**
      * @var string[]
      */
-    protected $other = [];
+    public $other = [];
+
+    /**
+     * @var VueCodeAbstractRenderer
+     */
+    public $renderer;
+
+    public function __construct()
+    {
+        $this->renderer = new VueCodeDictRenderer($this);
+    }
 
     /**
      * @param string $name
@@ -226,150 +236,6 @@ class VueCode
         return 'String';
     }
 
-    public function props(Model $m): array
-    {
-        $props = [];
-        foreach ($m->getFields() as $field) {
-            /**
-             * @var Field $field
-             */
-            if ($field->getRenderable(Framework::VUE_PROP, false)) {
-                $p = [
-                    'name' => $field->getName(),
-                    'type' => $this->mapTypeToJS($field->getDatatype()),
-                ];
-                if ($field->getRenderable(Datatype::REQUIRED, false)) {
-                    $p['required'] = true;
-                }
-                $props[] = $p;
-            }
-        }
-        foreach ($this->extraProps as $p) {
-            if (!array_key_exists('name', $p)) {
-                throw new Exception('Missing prop name');
-            }
-            $props[] = $p;
-        }
-
-        return $props;
-    }
-
-    /**
-     * Generates valid JS code for the props.
-     *
-     * @param array $props
-     * @return string
-     */
-    protected function serializeProps(array $props): string
-    {
-        $s = array_map(function ($p) {
-            return "'{$p['name']}': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
-        }, $props);
-        return "{\n        " . implode(",\n        ", $s) . "\n    }";
-    }
-
-    /**
-     * Generates template data for rendering
-     *
-     * @param Model $m
-     * @param HTMLNode[] $elements $elements
-     * @return array
-     */
-    public function getTemplateData(Model $m, array $elements): array
-    {
-        // get the props array with all js data
-        $props = $this->props($m);
-        // get only props names
-        $propsNames = array_map(
-            function ($p) {
-                return $p['name'];
-            },
-            $props
-        );
-        /**
-         * @var array $propsNames
-         */
-        $propsNames = array_combine($propsNames, $propsNames);
-        // get the binding
-        $propsBind = array_map(
-            function ($p) {
-                return 'v-bind:' . $p . '="model.' . $p . '"';
-            },
-            array_keys($props)
-        );
-
-        // get data, and avoid anything that is already declared in props
-        $data = [];
-        foreach (array_merge($m->getDefault(), $m->getData(), $this->extraData) as $k => $v) {
-            if (array_key_exists($k, $propsNames)) {
-                continue;
-            }
-            $data[$k] = $v;
-        }
-        // ensure it's a dict even if empty
-        if ($data === []) {
-            $jsonData = '{}';
-        } else {
-            $jsonData = json_encode($data);
-        }
-
-        $templateData = [
-            'jsonData' => $jsonData,
-            'propsCode' => $this->serializeProps($props),
-            'propsBind' => implode(' ', $propsBind),
-            'imports' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "import $key from \"$value\";";
-                }, array_keys($this->imports), $this->imports)
-            ),
-            'computedCode' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "$key() { $value },";
-                }, array_keys($this->computed), $this->computed)
-            ),
-            'otherData' => implode(
-                ",\n",
-                expandJS($this->other)
-            ),
-            'methodsCode' => implode(
-                "\n",
-                array_map(function ($key, $value) {
-                    return "$key { $value },";
-                }, array_keys($this->methods), $this->methods)
-            ),
-        ];
-        if ($templateData['otherData']) {
-            $templateData['otherData'] .= ",\n";
-        }
-
-        return $templateData;
-    }
-
-    protected function fillTemplate(string $template, array $data, Model $m): string
-    {
-        foreach ($data as $name => $value) {
-            $template = str_replace(
-                '{{' . $name . '}}',
-                $value,
-                $template
-            );
-        }
-
-        $template = str_replace(
-            '{{modelName}}',
-            $m->getName(),
-            $template
-        );
-        $template = str_replace(
-            '{{modelNameLower}}',
-            mb_strtolower($m->getName()),
-            $template
-        );
-        return $template;
-    }
-
     /**
      * Generates the javascript code.
      *
@@ -379,27 +245,7 @@ class VueCode
      */
     public function toScript(Model $m, array $elements)
     {
-        $templateData = $this->getTemplateData($m, $elements);
-
-        $viewableTemplate = <<<EOF
-{{imports}}
-
-export default {
-    {{otherData}}
-    data() {
-        return {{jsonData}};
-    },
-    computed: { {{computedCode}} },
-    props: {{propsCode}},
-    methods: { {{methodsCode}} }
-};
-EOF;
-
-        return $this->fillTemplate(
-            $viewableTemplate,
-            $templateData,
-            $m
-        );
+        return $this->renderer->toScript($m, $elements);
     }
 
     /**
@@ -411,23 +257,7 @@ EOF;
      */
     public function toVariable(Model $m, array $elements)
     {
-        $templateData = $this->getTemplateData($m, $elements);
-
-        $viewableTemplate = <<<EOF
-    {{otherData}}
-    data() {
-        return {{jsonData}};
-    },
-    computed: { {{computedCode}} },
-    props: {{propsCode}},
-    methods: { {{methodsCode}} }
-EOF;
-
-        return $this->fillTemplate(
-            $viewableTemplate,
-            $templateData,
-            $m
-        );
+        return $this->renderer->toVariable($m, $elements);
     }
 
     /**
