@@ -1,0 +1,9 @@
+{
+  "name": "formularium",
+  "repository": "git@github.com:/Corollarium/Formularium.git",
+  "author": "Corollarium",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.4.1"
+  }
+}

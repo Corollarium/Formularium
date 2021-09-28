@@ -91,9 +91,9 @@ class VueCode
      */
     public $renderer;
 
-    public function __construct()
+    public function __construct(string $rendererClass = VueCodeDictRenderer::class)
     {
-        $this->renderer = new VueCodeDictRenderer($this);
+        $this->renderer = new $rendererClass($this);
     }
 
     /**
