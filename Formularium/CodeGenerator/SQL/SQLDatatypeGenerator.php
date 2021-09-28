@@ -22,4 +22,9 @@ abstract class SQLDatatypeGenerator implements DatatypeGenerator
     {
         return $fieldName . ($qualifier ? ' ' . $qualifier : '') . ($required ? ' NOT NULL' : '');
     }
+
+    public function variable(CodeGenerator $generator, Field $field): string
+    {
+        return '';
+    }
 }

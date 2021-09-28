@@ -2,6 +2,8 @@
 
 namespace Formularium\CodeGenerator\GraphQL;
 
+use Formularium\Factory\DatatypeGeneratorFactory;
+use Formularium\Field;
 use Formularium\Model;
 
 class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
@@ -40,6 +42,17 @@ class CodeGenerator extends \Formularium\CodeGenerator\CodeGenerator
             " {\n  " .
             str_replace("\n", "\n  ", join("", $defs)) .
             "\n}\n\n";
+    }
+
+    /**
+     * Generates fields code for this model.
+     *
+     * @return string
+     */
+    public function variable(Field $field): string
+    {
+        $dg = DatatypeGeneratorFactory::specializedFactory($field->getDatatype(), $this);
+        return $dg->variable($this, $field);
     }
 
     public function getFilename(string $base): string

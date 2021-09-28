@@ -83,4 +83,15 @@ trait ExtradataTrait
         $this->extradata[] = $m;
         return $this;
     }
+
+    public function removeExtraData(string $name): self
+    {
+        foreach ($this->extradata as $k => $m) {
+            if ($m->getName() === $name) {
+                unset($this->extradata[$k]);
+                break;
+            }
+        }
+        return $this;
+    }
 }

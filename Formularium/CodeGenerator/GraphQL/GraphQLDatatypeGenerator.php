@@ -50,7 +50,6 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
         }
     }
 
-
     public function field(CodeGenerator $generator, Field $field)
     {
         /**
@@ -73,5 +72,10 @@ abstract class GraphQLDatatypeGenerator implements DatatypeGenerator
             // TODO: validators
             ($field->getRenderables() ? " @renderable(\n" . join("\n", $renderable) . "\n)" : '') .
             "\n";
+    }
+
+    public function variable(CodeGenerator $generator, Field $field): string
+    {
+        return $field->getName() . "\n";
     }
 }

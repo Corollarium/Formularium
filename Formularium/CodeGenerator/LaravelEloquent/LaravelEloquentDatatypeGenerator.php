@@ -17,4 +17,9 @@ abstract class LaravelEloquentDatatypeGenerator implements DatatypeGenerator
          */
         return '';
     }
+
+    public function variable(CodeGenerator $generator, Field $field): string
+    {
+        return '';
+    }
 }

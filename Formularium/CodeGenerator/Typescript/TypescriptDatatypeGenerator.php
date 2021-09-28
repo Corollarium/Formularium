@@ -47,4 +47,9 @@ abstract class TypescriptDatatypeGenerator implements DatatypeGenerator
          */
         return $generator->fieldDeclaration($this->getDatatypeBasename(), $field->getName());
     }
+
+    public function variable(CodeGenerator $generator, Field $field): string
+    {
+        return '';
+    }
 }

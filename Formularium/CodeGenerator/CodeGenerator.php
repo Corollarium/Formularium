@@ -83,5 +83,11 @@ abstract class CodeGenerator
 
     abstract public function type(Model $model): string;
 
+    public function variable(Field $field): string
+    {
+        $dg = DatatypeGeneratorFactory::specializedFactory($field->getDatatype(), $this);
+        return $dg->variable($this, $field);
+    }
+
     abstract public function getFilename(string $base): string;
 }
