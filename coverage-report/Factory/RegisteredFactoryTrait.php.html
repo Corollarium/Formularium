@@ -2,12 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Code Coverage for /home/runner/work/Formularium/Formularium/Formularium/CodeGenerator/Typescript/DatatypeGenerator/DatatypeGenerator_usmall.php</title>
+  <title>Code Coverage for /home/runner/work/Formularium/Formularium/Formularium/Factory/RegisteredFactoryTrait.php</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../../../_css/octicons.css" rel="stylesheet" type="text/css">
-  <link href="../../../_css/style.css" rel="stylesheet" type="text/css">
-  <link href="../../../_css/custom.css" rel="stylesheet" type="text/css">
+  <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/octicons.css" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
  </head>
  <body>
   <header>
@@ -16,11 +16,9 @@
      <div class="col-md-12">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="../../../index.html">/home/runner/work/Formularium/Formularium/Formularium</a></li>
-         <li class="breadcrumb-item"><a href="../../index.html">CodeGenerator</a></li>
-         <li class="breadcrumb-item"><a href="../index.html">Typescript</a></li>
-         <li class="breadcrumb-item"><a href="index.html">DatatypeGenerator</a></li>
-         <li class="breadcrumb-item active">DatatypeGenerator_usmall.php</li>
+         <li class="breadcrumb-item"><a href="../index.html">/home/runner/work/Formularium/Formularium/Formularium</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Factory</a></li>
+         <li class="breadcrumb-item active">RegisteredFactoryTrait.php</li>
 
        </ol>
       </nav>
@@ -70,11 +68,11 @@
        </div>
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
-       <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
       </tr>
 
       <tr>
-       <td class="danger"><abbr title="Formularium\CodeGenerator\Typescript\DatatypeGenerator\DatatypeGenerator_usmall">DatatypeGenerator_usmall</abbr></td>
+       <td class="danger">RegisteredFactoryTrait</td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -99,11 +97,11 @@
        </div>
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
-       <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
       </tr>
 
       <tr>
-       <td class="danger" colspan="4">&nbsp;<a href="#9"><abbr title="getBasetype(): string">getBasetype</abbr></a></td>
+       <td class="danger" colspan="4">&nbsp;<a href="#14"><abbr title="registerFactory(callable $factory): void">registerFactory</abbr></a></td>
        <td class="danger big">       <div class="progress">
          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
            <span class="sr-only">0.00% covered (danger)</span>
@@ -120,7 +118,7 @@
        </div>
 </td>
        <td class="danger small"><div align="right">0.00%</div></td>
-       <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
       </tr>
 
 
@@ -131,17 +129,22 @@
     <tbody>
      <tr><td><div align="right"><a name="1"></a><a href="#1">1</a></div></td><td class="codeLine"><span class="default">&lt;?php&nbsp;</span><span class="default">declare</span><span class="keyword">(</span><span class="default">strict_types</span><span class="keyword">=</span><span class="default">1</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
      <tr><td><div align="right"><a name="2"></a><a href="#2">2</a></div></td><td class="codeLine"></td></tr>
-     <tr><td><div align="right"><a name="3"></a><a href="#3">3</a></div></td><td class="codeLine"><span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">Formularium</span><span class="default">\</span><span class="default">CodeGenerator</span><span class="default">\</span><span class="default">Typescript</span><span class="default">\</span><span class="default">DatatypeGenerator</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="3"></a><a href="#3">3</a></div></td><td class="codeLine"><span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">Formularium</span><span class="default">\</span><span class="default">Factory</span><span class="keyword">;</span></td></tr>
      <tr><td><div align="right"><a name="4"></a><a href="#4">4</a></div></td><td class="codeLine"></td></tr>
-     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">Formularium</span><span class="default">\</span><span class="default">CodeGenerator</span><span class="default">\</span><span class="default">Typescript</span><span class="default">\</span><span class="default">TypescriptDatatypeGenerator</span><span class="keyword">;</span></td></tr>
-     <tr><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"></td></tr>
-     <tr><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"><span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">DatatypeGenerator_usmall</span><span class="default">&nbsp;</span><span class="keyword">extends</span><span class="default">&nbsp;</span><span class="default">TypescriptDatatypeGenerator</span></td></tr>
-     <tr><td><div align="right"><a name="8"></a><a href="#8">8</a></div></td><td class="codeLine"><span class="keyword">{</span></td></tr>
-     <tr><td><div align="right"><a name="9"></a><a href="#9">9</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">getBasetype</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">:</span><span class="default">&nbsp;</span><span class="default">string</span></td></tr>
-     <tr><td><div align="right"><a name="10"></a><a href="#10">10</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">{</span></td></tr>
-     <tr class="danger"><td><div align="right"><a name="11"></a><a href="#11">11</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">'number'</span><span class="keyword">;</span></td></tr>
-     <tr class="warning"><td><div align="right"><a name="12"></a><a href="#12">12</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
-     <tr><td><div align="right"><a name="13"></a><a href="#13">13</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
+     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"><span class="keyword">trait</span><span class="default">&nbsp;</span><span class="default">RegisteredFactoryTrait</span></td></tr>
+     <tr><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"><span class="keyword">{</span></td></tr>
+     <tr><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span></td></tr>
+     <tr><td><div align="right"><a name="8"></a><a href="#8">8</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;External&nbsp;factory&nbsp;functions.</span></td></tr>
+     <tr><td><div align="right"><a name="9"></a><a href="#9">9</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></td></tr>
+     <tr><td><div align="right"><a name="10"></a><a href="#10">10</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;callable[]</span></td></tr>
+     <tr><td><div align="right"><a name="11"></a><a href="#11">11</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></td></tr>
+     <tr><td><div align="right"><a name="12"></a><a href="#12">12</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">protected</span><span class="default">&nbsp;</span><span class="keyword">static</span><span class="default">&nbsp;</span><span class="default">$factories</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">[</span><span class="keyword">]</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="13"></a><a href="#13">13</a></div></td><td class="codeLine"></td></tr>
+     <tr><td><div align="right"><a name="14"></a><a href="#14">14</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">static</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">registerFactory</span><span class="keyword">(</span><span class="keyword">callable</span><span class="default">&nbsp;</span><span class="default">$factory</span><span class="keyword">)</span><span class="keyword">:</span><span class="default">&nbsp;</span><span class="default">void</span></td></tr>
+     <tr><td><div align="right"><a name="15"></a><a href="#15">15</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">{</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="16"></a><a href="#16">16</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">static</span><span class="default">::</span><span class="default">$factories</span><span class="keyword">[</span><span class="keyword">]</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$factory</span><span class="keyword">;</span></td></tr>
+     <tr class="danger"><td><div align="right"><a name="17"></a><a href="#17">17</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+     <tr><td><div align="right"><a name="18"></a><a href="#18">18</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
 
     </tbody>
    </table>
@@ -161,9 +164,9 @@
     </a>
    </footer>
   </div>
-  <script src="../../../_js/jquery.min.js" type="text/javascript"></script>
-  <script src="../../../_js/popper.min.js" type="text/javascript"></script>
-  <script src="../../../_js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../../../_js/file.js" type="text/javascript"></script>
+  <script src="../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../_js/popper.min.js" type="text/javascript"></script>
+  <script src="../_js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../_js/file.js" type="text/javascript"></script>
  </body>
 </html>
