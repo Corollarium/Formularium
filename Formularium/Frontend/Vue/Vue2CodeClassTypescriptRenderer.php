@@ -107,16 +107,17 @@ class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
                     return "$key { $value }";
                 }, array_keys($this->vueCode->methods), $this->vueCode->methods)
             ),
+            'componentOptions' => ''
         ];
-        $componentOptions = array_filter([
-            'components' => [],
-        ]);
 
-        if ($componentOptions) {
-            $templateData['componentOptions'] = '(' . json_encode($componentOptions) . ')';
-        } else {
-            $templateData['componentOptions'] = '';
-        }
+        // TODO: fill with components.
+        // $componentOptions = array_filter([
+        //     'components' => [
+        //     ],
+        // ]);
+        // if ($componentOptions) {
+        //     $templateData['componentOptions'] = '(' . json_encode($componentOptions) . ')';
+        // }
 
         if ($templateData['otherData']) {
             $templateData['otherData'] .= ",\n";
