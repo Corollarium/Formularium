@@ -7,10 +7,11 @@ use Formularium\Exception\Exception;
 use Formularium\Field;
 use Formularium\HTMLNode;
 use Formularium\Model;
+use Formularium\RenderableParameter;
 
 use function Safe\json_encode;
 
-class VueCodeDictRenderer extends VueCodeAbstractRenderer
+class Vue2CodeDictRenderer extends VueCodeAbstractRenderer
 {
     public function props(Model $m): array
     {
@@ -27,12 +28,19 @@ class VueCodeDictRenderer extends VueCodeAbstractRenderer
                 if ($field->getRenderable(Datatype::REQUIRED, false)) {
                     $p['required'] = true;
                 }
+                $d = $field->getRenderable(RenderableParameter::DEFAULTVALUE, null);
+                if ($d !== null) {
+                    $p['default'] = $d;
+                }
                 $props[] = $p;
             }
         }
         foreach ($this->vueCode->extraProps as $p) {
             if (!array_key_exists('name', $p)) {
                 throw new Exception('Missing prop name');
+            }
+            if (array_key_exists('type', $p)) {
+                $p['type'] = $this->vueCode->mapTypeToJS($p['type']);
             }
             $props[] = $p;
         }
@@ -49,7 +57,11 @@ class VueCodeDictRenderer extends VueCodeAbstractRenderer
     protected function serializeProps(array $props): string
     {
         $s = array_map(function ($p) {
-            return "'{$p['name']}': { 'type': {$p['type']}" . ($p['required'] ?? false ? ", 'required': true" : '') . " } ";
+            return "'{$p['name']}': {\n".
+                "  'type': {$p['type']}" .
+                ($p['required'] ?? false ? ", 'required': true" : '') .
+                ($p['default'] ?? false ? ", 'default': " . $p['default'] : '') .
+                " } ";
         }, $props);
         return "{\n        " . implode(",\n        ", $s) . "\n    }";
     }

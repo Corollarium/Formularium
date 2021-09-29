@@ -10,7 +10,9 @@ use Formularium\Field;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
-class VueCodeClassRenderer extends VueCodeAbstractRenderer
+use function Safe\json_encode;
+
+class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
 {
     public function props(Model $m): array
     {
@@ -83,7 +85,7 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
             if (array_key_exists($k, $propsNames)) {
                 continue;
             }
-            if (!$v) { // TODO === false
+            if ($v === '') {
                 $v = $m->getDefault()[$k] ?: '""';
             }
             $data[$k] = $v;
@@ -120,6 +122,13 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
                 }, array_keys($this->vueCode->methods), $this->vueCode->methods)
             ),
         ];
+        $componentOptions = array_filter([
+            'components' => [],
+            'props' => []
+        ]);
+
+        $templateData['componentOptions'] = json_encode($componentOptions);
+
         if ($templateData['otherData']) {
             $templateData['otherData'] .= ",\n";
         }
@@ -165,6 +174,7 @@ class VueCodeClassRenderer extends VueCodeAbstractRenderer
 import { Component, Prop, Vue } from "vue-property-decorator";
 {{imports}}
 
+@Component{{componentOptions}}
 export default class {{className}} extends Vue {
     {{otherData}}
 

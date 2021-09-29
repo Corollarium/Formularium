@@ -65,9 +65,6 @@ class VueCodeRendererBaseTestCase extends \PHPUnit\Framework\TestCase
             $output = stream_get_contents($pipes[1]); //getting output of the script
             fclose($pipes[1]);
             $error = stream_get_contents($pipes[2]); //getting output of the script
-            if ($error) {
-                var_dump($error);
-            }
         } else {
             throw new Exception("cannot run prettier");
         }
