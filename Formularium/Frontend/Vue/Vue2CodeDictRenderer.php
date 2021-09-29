@@ -5,6 +5,8 @@ namespace Formularium\Frontend\Vue;
 use Formularium\Datatype;
 use Formularium\Exception\Exception;
 use Formularium\Field;
+use Formularium\Frontend\Vue\VueCode\Computed;
+use Formularium\Frontend\Vue\VueCode\Prop;
 use Formularium\HTMLNode;
 use Formularium\Model;
 use Formularium\RenderableParameter;
@@ -13,59 +15,6 @@ use function Safe\json_encode;
 
 class Vue2CodeDictRenderer extends VueCodeAbstractRenderer
 {
-    public function props(Model $m): array
-    {
-        $props = [];
-        foreach ($m->getFields() as $field) {
-            /**
-             * @var Field $field
-             */
-            if ($field->getRenderable(Framework::VUE_PROP, false)) {
-                $p = [
-                    'name' => $field->getName(),
-                    'type' => $this->vueCode->mapTypeToJS($field->getDatatype()),
-                ];
-                if ($field->getRenderable(Datatype::REQUIRED, false)) {
-                    $p['required'] = true;
-                }
-                $d = $field->getRenderable(RenderableParameter::DEFAULTVALUE, null);
-                if ($d !== null) {
-                    $p['default'] = $d;
-                }
-                $props[] = $p;
-            }
-        }
-        foreach ($this->vueCode->extraProps as $p) {
-            if (!array_key_exists('name', $p)) {
-                throw new Exception('Missing prop name');
-            }
-            if (array_key_exists('type', $p)) {
-                $p['type'] = $this->vueCode->mapTypeToJS($p['type']);
-            }
-            $props[] = $p;
-        }
-
-        return $props;
-    }
-
-    /**
-     * Generates valid JS code for the props.
-     *
-     * @param array $props
-     * @return string
-     */
-    protected function serializeProps(array $props): string
-    {
-        $s = array_map(function ($p) {
-            return "'{$p['name']}': {\n".
-                "  'type': {$p['type']}" .
-                ($p['required'] ?? false ? ", 'required': true" : '') .
-                ($p['default'] ?? false ? ", 'default': " . $p['default'] : '') .
-                " } ";
-        }, $props);
-        return "{\n        " . implode(",\n        ", $s) . "\n    }";
-    }
-
     /**
      * Generates template data for rendering
      *
@@ -76,11 +25,11 @@ class Vue2CodeDictRenderer extends VueCodeAbstractRenderer
     public function getTemplateData(Model $m, array $elements): array
     {
         // get the props array with all js data
-        $props = $this->props($m);
+        $props = $this->vueCode->props($m);
         // get only props names
         $propsNames = array_map(
             function ($p) {
-                return $p['name'];
+                return $p->name;
             },
             $props
         );
@@ -90,10 +39,10 @@ class Vue2CodeDictRenderer extends VueCodeAbstractRenderer
         $propsNames = array_combine($propsNames, $propsNames);
         // get the binding
         $propsBind = array_map(
-            function ($p) {
-                return 'v-bind:' . $p . '="model.' . $p . '"';
+            function (Prop $p) {
+                return $p->toBind();
             },
-            array_keys($props)
+            $props
         );
 
         // get data, and avoid anything that is already declared in props
@@ -113,7 +62,12 @@ class Vue2CodeDictRenderer extends VueCodeAbstractRenderer
 
         $templateData = [
             'jsonData' => $jsonData,
-            'propsCode' => $this->serializeProps($props),
+            'propsCode' => implode(
+                "\n",
+                array_map(function (Prop $p) {
+                    return $p->toStruct();
+                }, $props)
+            ),
             'propsBind' => implode(' ', $propsBind),
             'imports' => implode(
                 "\n",
@@ -123,9 +77,12 @@ class Vue2CodeDictRenderer extends VueCodeAbstractRenderer
             ),
             'computedCode' => implode(
                 "\n",
-                array_map(function ($key, $value) {
-                    return "$key() { $value },";
-                }, array_keys($this->vueCode->computed), $this->vueCode->computed)
+                array_map(
+                    function (Computed $c) {
+                        return $c->toStruct();
+                    },
+                    $this->vueCode->computed
+                )
             ),
             'otherData' => implode(
                 ",\n",
@@ -188,7 +145,7 @@ export default {
         return {{jsonData}};
     },
     computed: { {{computedCode}} },
-    props: {{propsCode}},
+    props: { {{propsCode}} },
     methods: { {{methodsCode}} }
 };
 EOF;

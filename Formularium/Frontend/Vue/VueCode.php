@@ -7,8 +7,11 @@ use Formularium\Datatype\Datatype_bool;
 use Formularium\Datatype\Datatype_number;
 use Formularium\Exception\Exception;
 use Formularium\Field;
+use Formularium\Frontend\Vue\VueCode\Computed;
+use Formularium\Frontend\Vue\VueCode\Prop;
 use Formularium\HTMLNode;
 use Formularium\Model;
+use Formularium\RenderableParameter;
 
 use function Safe\json_encode;
 
@@ -53,7 +56,7 @@ class VueCode
     /**
      * Extra props.
      *
-     * @var array
+     * @var Prop[]
      */
     public $extraProps = [];
 
@@ -72,7 +75,7 @@ class VueCode
     public $imports = [];
 
     /**
-     * @var string[]
+     * @var Computed[]
      */
     public $computed = [];
 
@@ -91,7 +94,7 @@ class VueCode
      */
     public $renderer;
 
-    public function __construct(string $rendererClass = VueCodeDictRenderer::class)
+    public function __construct(string $rendererClass = Vue2CodeDictRenderer::class)
     {
         $this->renderer = new $rendererClass($this);
     }
@@ -128,7 +131,7 @@ class VueCode
 
     /**
      *
-     * @param array $extraProps
+     * @param Prop[] $extraProps
      *
      * @return  self
      */
@@ -141,14 +144,13 @@ class VueCode
 
     /**
      *
-     * @param string $name The prop name.
-     * @param array $extra Array of props. 'name' and 'type' keys are required for each element.
+     * @param Prop $prop
      *
      * @return  self
      */
-    public function appendExtraProp(string $name, array $extra): self
+    public function appendExtraProp(Prop $prop): self
     {
-        $this->extraProps[$name] = $extra;
+        $this->extraProps[] = $prop;
 
         return $this;
     }
@@ -187,9 +189,9 @@ class VueCode
      * @param string $code
      * @return self
      */
-    public function appendComputed(string $key, string $code): self
+    public function appendComputed(Computed $computed): self
     {
-        $this->computed[$key] = $code;
+        $this->computed[] = $computed;
 
         return $this;
     }
@@ -224,7 +226,7 @@ class VueCode
      * @param Datatype|string $type
      * @return string
      */
-    public function mapTypeToJS($type): string
+    public static function mapTypeToJS($type): string
     {
         if ($type instanceof Datatype_number || $type === 'number') {
             return 'Number';
@@ -267,5 +269,32 @@ class VueCode
     public function &getOther(): array
     {
         return $this->other;
+    }
+
+    /**
+     * @param Model $m
+     * @return Prop[]
+     */
+    public function props(Model $m): array
+    {
+        $props = [];
+        foreach ($m->getFields() as $field) {
+            /**
+             * @var Field $field
+             */
+            if ($field->getRenderable(Framework::VUE_PROP, false)) {
+                $p = new Prop(
+                    $field->getName(),
+                    $field->getDatatype(),
+                );
+                if ($field->getRenderable(Datatype::REQUIRED, false)) {
+                    $p->required = true;
+                }
+                $p->default = $field->getRenderable(RenderableParameter::DEFAULTVALUE, null);
+                $props[] = $p;
+            }
+        }
+
+        return array_merge($props, $this->extraProps);
     }
 }

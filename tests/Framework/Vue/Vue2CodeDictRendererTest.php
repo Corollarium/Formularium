@@ -7,6 +7,7 @@ use Formularium\FrameworkComposer;
 use Formularium\Frontend\Blade\Framework;
 use Formularium\Frontend\Vue\Vue2CodeDictRenderer;
 use Formularium\Frontend\Vue\VueCode;
+use Formularium\Frontend\Vue\VueCode\Prop;
 use Formularium\Frontend\Vue\VueCodeClassRenderer;
 use Formularium\Frontend\Vue\VueCodeDictRenderer;
 
@@ -22,47 +23,66 @@ class Vue2CodeDictRendererTest extends VueCodeRendererBaseTestCase
 export default {
     data() {
         return {
-            someInteger: 10
+            "someInteger": 10
         };
     },
     computed: {
         plusOne() { return this.someInteger + 1; }
     },
-    props: {},
-    methods: {},
+    props: { },
+    methods: { }
 };
 EOF;
-        $this->assertEquals(
-            $this->prettier("<template><div></div></template><script>\n$expected\n</script>"),
-            $this->prettier("<template><div></div></template><script>\n$code\n</script>")
-        );
+        $this->assertVueCodeEquals($expected, $code);
     }
 
-    public function testProp()
+    public function testExtraProp()
     {
         $vueStruct = $this->getBase(self::RENDERER_CLASS);
         $vueStruct->vueCode->appendExtraProp(
-            'someProp',
-            [
-                'name' => 'someProp',
-                'type' => 'number',
-                'required' => true,
-                'default' => 30
-            ]
+            new Prop(
+                'someProp',
+                'number',
+                true,
+                30
+            )
         );
         $code = $vueStruct->vueCode->toScript($vueStruct->model, []);
         $expected = <<<EOF
 export default {
     data() {
         return {
-            someInteger: 10
+            "someInteger": 10
         };
     },
     computed: {
         plusOne() { return this.someInteger + 1; }
     },
     props: {
-        someProp: {
+        "someProp": {
+            type: Number,
+            required: true,
+            default: 30
+        }
+    },
+    methods: { }
+};
+EOF;
+        $this->assertVueCodeEquals($expected, $code);
+    }
+
+    public function testProp()
+    {
+        $this->markTestSkipped();
+        $vueStruct = $this->getBase(self::RENDERER_CLASS);
+        $code = $vueStruct->vueCode->toScript($vueStruct->model, []);
+        $expected = <<<EOF
+export default {
+    computed: {
+        plusOne() { return this.someInteger + 1; }
+    },
+    props: {
+        someInteger: {
             type: Number,
             required: true,
             default: 30
@@ -71,9 +91,6 @@ export default {
     methods: {},
 };
 EOF;
-        $this->assertEquals(
-            $this->prettier("<template><div></div></template><script>\n$expected\n</script>"),
-            $this->prettier("<template><div></div></template><script>\n$code\n</script>")
-        );
+        $this->assertVueCodeEquals($expected, $code);
     }
 }

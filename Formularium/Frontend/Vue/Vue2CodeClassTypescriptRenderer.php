@@ -7,6 +7,8 @@ use Formularium\Datatype\Datatype_bool;
 use Formularium\Datatype\Datatype_number;
 use Formularium\Exception\Exception;
 use Formularium\Field;
+use Formularium\Frontend\Vue\VueCode\Computed;
+use Formularium\Frontend\Vue\VueCode\Prop;
 use Formularium\HTMLNode;
 use Formularium\Model;
 
@@ -14,34 +16,6 @@ use function Safe\json_encode;
 
 class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
 {
-    public function props(Model $m): array
-    {
-        $props = [];
-        foreach ($m->getFields() as $field) {
-            /**
-             * @var Field $field
-             */
-            if ($field->getRenderable(Framework::VUE_PROP, false)) {
-                $p = [
-                    'name' => $field->getName(),
-                    'type' => $this->vueCode->mapTypeToJS($field->getDatatype()),
-                ];
-                if ($field->getRenderable(Datatype::REQUIRED, false)) {
-                    $p['required'] = true;
-                }
-                $props[] = $p;
-            }
-        }
-        foreach ($this->vueCode->extraProps as $p) {
-            if (!array_key_exists('name', $p)) {
-                throw new Exception('Missing prop name');
-            }
-            $props[] = $p;
-        }
-
-        return $props;
-    }
-
     /**
      * Generates valid JS code for the props.
      *
@@ -59,11 +33,11 @@ class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
     public function getTemplateData(Model $m, array $elements): array
     {
         // get the props array with all js data
-        $props = $this->props($m);
+        $props = $this->vueCode->props($m);
         // get only props names
         $propsNames = array_map(
-            function ($p) {
-                return $p['name'];
+            function (Prop $p) {
+                return $p->name;
             },
             $props
         );
@@ -71,13 +45,6 @@ class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
          * @var array $propsNames
          */
         $propsNames = array_combine($propsNames, $propsNames);
-        // get the binding
-        $propsBind = array_map(
-            function ($p) {
-                return 'v-bind:' . $p . '="model.' . $p . '"';
-            },
-            array_keys($props)
-        );
 
         // get data, and avoid anything that is already declared in props
         $data = [];
@@ -97,8 +64,24 @@ class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
 
         $templateData = [
             'classData' => implode("\n", $classData),
-            'propsCode' => $this->serializeProps($props),
-            'propsBind' => implode(' ', $propsBind),
+            'propsCode' => implode(
+                "\n",
+                array_map(
+                    function (Prop $p) {
+                        return $p->toDecorator();
+                    },
+                    $props
+                )
+            ),
+            'propsBind' => implode(
+                ' ',
+                array_map(
+                    function (Prop $p) {
+                        return $p->toBind();
+                    },
+                    $props
+                )
+            ),
             'imports' => implode(
                 "\n",
                 array_map(function ($key, $value) {
@@ -107,9 +90,12 @@ class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
             ),
             'computedCode' => implode(
                 "\n",
-                array_map(function ($key, $value) {
-                    return "get $key() { $value }";
-                }, array_keys($this->vueCode->computed), $this->vueCode->computed)
+                array_map(
+                    function (Computed $c) {
+                        return $c->toGetter();
+                    },
+                    $this->vueCode->computed
+                )
             ),
             'otherData' => implode(
                 ",\n",
@@ -124,10 +110,13 @@ class Vue2CodeClassTypescriptRenderer extends VueCodeAbstractRenderer
         ];
         $componentOptions = array_filter([
             'components' => [],
-            'props' => []
         ]);
 
-        $templateData['componentOptions'] = json_encode($componentOptions);
+        if ($componentOptions) {
+            $templateData['componentOptions'] = '(' . json_encode($componentOptions) . ')';
+        } else {
+            $templateData['componentOptions'] = '';
+        }
 
         if ($templateData['otherData']) {
             $templateData['otherData'] .= ",\n";
@@ -176,6 +165,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component{{componentOptions}}
 export default class {{className}} extends Vue {
+    {{propsCode}}
+
     {{otherData}}
 
     {{classData}}
