@@ -1,5 +1,10 @@
 
-# Elements for Bootstrap
+---
+parent: Reference
+nav_order: 3
+---
+
+# Reference: Elements for Bootstrap
 
 List of elements for Bootstrap and its parameters.
 

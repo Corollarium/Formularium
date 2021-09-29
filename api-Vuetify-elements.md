@@ -4,9 +4,9 @@ parent: Reference
 nav_order: 3
 ---
 
-# Reference: Elements for Bulma
+# Reference: Elements for Vuetify
 
-List of elements for Bulma and its parameters.
+List of elements for Vuetify and its parameters.
 
 ## Badge
 
@@ -36,7 +36,7 @@ Is it disabled?
 
 ### color (string)
 
-Button color. Supports HTMLButton::COLOR_PRIMARY, HTMLButton::COLOR_LINK, HTMLButton::COLOR_INFO, HTMLButton::COLOR_SUCCESS, HTMLButton::COLOR_WARNING, HTMLButton::COLOR_ERROR and any Bulma button color classes. Default: primary.
+Button color. Supports all vuetify colors. Default: primary.
 
 
 ## Card

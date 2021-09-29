@@ -1,4 +1,9 @@
-# Model
+---
+layout: default
+nav_order: 3
+---
+
+# Basics
 
 Formularium is defined on a few base class types:
 
@@ -37,6 +42,8 @@ $model = Model::create(
 ## From graphql
 
 TODO
+
+Meanwhile, see [Modelarium, a full backend/frontend scaffolding generator for PHP/Laravel](https://github.com/Corollarium/modelarium/).
 
 ## From data structure
 
@@ -86,11 +93,3 @@ $model = Model::fromJSON($modelData); // use a factory method to convert the str
 ```
 
 Once built, models can validate date, render a form or a read-only page.
-
----
-
-See also:
-
-- [list of validators](basevalidator.md)
-- [creating your own datatypes](datatype.md)
-- [creating your own framework and renderable classes](frontend.md)

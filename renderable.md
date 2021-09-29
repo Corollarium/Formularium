@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 8
+---
+
 # Renderable
 
 ## Creating your own renderable

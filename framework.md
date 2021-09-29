@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 9
+---
+
 # Framework
 
 Formularium supports extending itself with your favorite frameworks by composition. This means that the frameworks are run in a pipeline, making it easy to compose a CSS framework with a validator framework, for example. Each framework in the pipeline alters the HTML from the previous step.
@@ -20,3 +25,4 @@ See also:
 
 - [datatypes](datatype.md)
 - [renderable](renderable.md)
+- [element](element.md)

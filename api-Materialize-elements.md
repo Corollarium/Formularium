@@ -1,5 +1,10 @@
 
-# Elements for Materialize
+---
+parent: Reference
+nav_order: 3
+---
+
+# Reference: Elements for Materialize
 
 List of elements for Materialize and its parameters.
 

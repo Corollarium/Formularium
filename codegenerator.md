@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 8
+---
+
 # Code Generator
 
 The [Framework](framework.md) pipeline is oriented to HTML generation. It's not suitable for other types of code generation, such as SQL tables or TypeScript interfaces. To handle other, more general outputs that are not based on a HTML tree, use the `CodeGenerator` infrastructure.

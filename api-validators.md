@@ -1,5 +1,10 @@
 
-# Validators
+---
+parent: Reference
+nav_order: 2
+---
+
+# Validator reference
 
 List of validators and its parameters generated automatically.
 

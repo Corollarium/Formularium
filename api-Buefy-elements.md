@@ -1,5 +1,10 @@
 
-# Elements for Buefy
+---
+parent: Reference
+nav_order: 3
+---
+
+# Reference: Elements for Buefy
 
 List of elements for Buefy and its parameters.
 
