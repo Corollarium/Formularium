@@ -15,8 +15,8 @@ class CommandValidator extends Command
      */
     protected $signature = 'formularium:validator
         {name : The validator name}
-        {--namespace= : the class namespace. Defaults to "\\App\\Validators"}
-        {--path= : path to save the file. Defaults to "basepath("app\\Validators") }
+        {--namespace= : the class namespace. Defaults to "\\App\\Formularium\\Validators"}
+        {--path= : path to save the file. Defaults to "basepath("app/Formularium/Validators") }
         {--test-path= : path to save the file. Defaults to "basepath("tests/Unit") }
     ';
 
@@ -48,13 +48,13 @@ class CommandValidator extends Command
             // @phpstan-ignore-next-line
             (string)$this->argument('name'),
             // @phpstan-ignore-next-line
-            $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Validators'
+            $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Formularium\\Validator'
         );
 
         try {
             $retval = ValidatorFactory::generateFile(
                 $code,
-                $this->option('path') ? $this->option('path') : /** @scrutinizer ignore-call */ base_path('app/Validators'),
+                $this->option('path') ? $this->option('path') : /** @scrutinizer ignore-call */ base_path('app/Formularium/Validator'),
                 $this->option('test-path') ? $this->option('test-path') : /** @scrutinizer ignore-call */ base_path('tests/Unit/')
             );
 

@@ -23,7 +23,12 @@ function validators()
     ksort($markdown);
 
     $validatorAPI = '
-# Validators
+---
+parent: Reference
+nav_order: 2
+---
+
+# Validator reference
 
 List of validators and its parameters generated automatically.
 
@@ -37,7 +42,7 @@ function datatypes()
     $markdown = DatatypeFactory::map(
         function (\ReflectionClass $reflection): array {
             $class = $reflection->getName();
-    
+
             /**
              * @var Datatype $d
              */
@@ -52,9 +57,14 @@ function datatypes()
     ksort($markdown);
 
     $datatypeAPI = '
-# Datatypes
+---
+parent: Reference
+nav_order: 1
+---
 
-List of validators and its parameters generated automatically.
+# Datatype Reference
+
+List of datatypes and its parameters generated automatically.
 
 ' . join("\n", $markdown);
 
@@ -68,7 +78,8 @@ function elements()
         'Buefy',
         'Bulma',
         'HTML',
-        'Materialize'
+        'Materialize',
+        'Vuetify'
     ];
 
     foreach ($frameworks as $framework) {
@@ -89,18 +100,23 @@ function elements()
             }
 
             $metadata = $className::getMetadata();
-            
+
             $markdown[$metadata->name] = $metadata->toMarkdown();
         }
         ksort($markdown);
 
         $elementAPI = "
-# Elements for $framework
+---
+parent: Reference
+nav_order: 3
+---
+
+# Reference: Elements for $framework
 
 List of elements for $framework and its parameters.
 
 " . join("\n", $markdown);
-        
+
         file_put_contents(__DIR__ . "'/../docs/api-$framework-elements.md", $elementAPI);
     }
 }

@@ -20,8 +20,8 @@ class CommandRenderable extends Command
     protected $signature = 'formularium:renderable
         {name : The datatype name}
         {--framework=* : The frameworks to use. You can use this options several times. Use "*" for all.}
-        {--namespace=Formularium\\Frontend : base namespace. Defaults to Formularium\\Frontend }
-        {--path= : path to save the file. Defaults to base_path("app/Frontend") }
+        {--namespace=App\\Formularium\\Frontend : base namespace. Defaults to App\\Formularium\\Frontend }
+        {--path= : path to save the file. Defaults to base_path("app/Formularium/Frontend") }
     ';
 
     /**
@@ -94,7 +94,7 @@ class CommandRenderable extends Command
             if (!is_dir($basepath)) {
                 \Safe\mkdir($basepath, 0777, true);
             }
-    
+
             $filename = $basepath . 'Renderable_' . $datatype->getName() . '.php';
             if (!file_exists($filename)) {
                 $this->info("Created renderable at {$filename}.");

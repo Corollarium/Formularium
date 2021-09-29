@@ -16,8 +16,8 @@ class CommandDatatype extends Command
     protected $signature = 'formularium:datatype
         {name : The datatype name}
         {--basetype= : the basetype it inherits from ("string"), if there is one.}
-        {--namespace= : the class namespace. Defaults to "App\\Datatypes"}
-        {--path= : path to save the file. Defaults to "basepath("app\\Datatypes") }
+        {--namespace= : the class namespace. Defaults to "App\\Formularium\\Datatype"}
+        {--path= : path to save the file. Defaults to "basepath("app\\Formularium\\Datatype") }
         {--test-path= : path to save the file. Defaults to "basepath("tests/Unit") }
     ';
 
@@ -51,14 +51,14 @@ class CommandDatatype extends Command
             // @phpstan-ignore-next-line
             (string)$this->option('basetype'),
             // @phpstan-ignore-next-line
-            $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Datatypes'
+            $this->option('namespace') ? (string)$this->option('namespace') : 'App\\Formularium\\Datatypes'
         );
 
         try {
             $retval = DatatypeFactory::generateFile(
                 $code,
                 // @phpstan-ignore-next-line
-                $this->option('path') ? (string)$this->option('path') : /** @scrutinizer ignore-call */ base_path('app/Datatypes'),
+                $this->option('path') ? (string)$this->option('path') : /** @scrutinizer ignore-call */ base_path('app/Formularium/Datatypes'),
                 $this->option('test-path') ? $this->option('test-path') : /** @scrutinizer ignore-call */ base_path('tests/Unit/')
             );
 

@@ -31,7 +31,6 @@ class Renderable extends \Formularium\Renderable
                 break;
             case MaxLength::class:
                 $element->setAttribute('maxlength', $field->getValidatorOption($validator, 'value', ''));
-                $element->setAttribute('mgmvlength', 'xxxxxxxxxxx');
                 break;
             case Regex::class:
                 $pattern = $field->getValidatorOption($validator, 'value', '');
