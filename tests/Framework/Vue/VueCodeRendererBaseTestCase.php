@@ -68,14 +68,14 @@ class VueCodeRendererBaseTestCase extends \PHPUnit\Framework\TestCase
         return new VueStruct($vueCode, $model);
     }
 
-    public function getAsProp(string $renderer): VueStruct
+    public function getBaseAsProp(string $renderer): VueStruct
     {
         $vueCode = new VueCode($renderer);
         $vueCode->appendComputed(
             new Computed(
                 'plusOne',
                 'number',
-                'return this.someInteger + 1'
+                'return this.someInteger + 1;'
             )
         );
 
@@ -87,7 +87,7 @@ class VueCodeRendererBaseTestCase extends \PHPUnit\Framework\TestCase
                     'integer',
                     [
                         RenderableParameter::DEFAULTVALUE => 10,
-                        FrameworkVue::VUE_PROP
+                        FrameworkVue::VUE_PROP => true
                     ],
                     [
                         Min::class => [

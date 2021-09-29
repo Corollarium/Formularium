@@ -73,22 +73,21 @@ EOF;
 
     public function testProp()
     {
-        $this->markTestSkipped();
-        $vueStruct = $this->getBase(self::RENDERER_CLASS);
+        $vueStruct = $this->getBaseAsProp(self::RENDERER_CLASS);
         $code = $vueStruct->vueCode->toScript($vueStruct->model, []);
         $expected = <<<EOF
 export default {
+    data() { return {}; },
     computed: {
         plusOne() { return this.someInteger + 1; }
     },
     props: {
-        someInteger: {
+        "someInteger": {
             type: Number,
-            required: true,
-            default: 30
+            default: 10
         }
     },
-    methods: {},
+    methods: { }
 };
 EOF;
         $this->assertVueCodeEquals($expected, $code);

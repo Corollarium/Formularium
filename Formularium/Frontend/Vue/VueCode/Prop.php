@@ -15,14 +15,14 @@ class Prop
     public $name;
 
     /**
-     * @var string
-     */
-    public $code;
-
-    /**
      * @var string|Datatype
      */
     public $type = '';
+
+    /**
+     * @var bool
+     */
+    public $required;
 
     /**
      * @var mixed
