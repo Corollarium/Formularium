@@ -31,8 +31,8 @@ class Prop
 
     /**
      * @param string $name
-     * @param string $code
-     * @param string $type
+     * @param string|Datatype $type
+     * @param bool $required
      * @param mixed $default
      */
     public function __construct(string $name, $type = '', bool $required = false, $default = null)

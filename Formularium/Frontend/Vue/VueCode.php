@@ -5,7 +5,7 @@ namespace Formularium\Frontend\Vue;
 use Formularium\Datatype;
 use Formularium\Datatype\Datatype_bool;
 use Formularium\Datatype\Datatype_number;
-use Formularium\Exception\Exception;
+use Formularium\Datatype\Datatype_string;
 use Formularium\Field;
 use Formularium\Frontend\Vue\VueCode\Computed;
 use Formularium\Frontend\Vue\VueCode\Prop;
@@ -182,13 +182,6 @@ class VueCode
         return $this;
     }
 
-    /**
-     * The list of computed to add: $ke() => $code
-     *
-     * @param string $key
-     * @param string $code
-     * @return self
-     */
     public function appendComputed(Computed $computed): self
     {
         $this->computed[] = $computed;
@@ -232,6 +225,10 @@ class VueCode
             return 'Number';
         } elseif ($type instanceof Datatype_bool || $type === 'boolean') {
             return 'Boolean';
+        } elseif ($type instanceof Datatype_string || $type === 'string') {
+            return 'String';
+        } elseif (is_string($type)) {
+            return 'String';
         } elseif ($type->getBasetype() == 'relationship') { // TODO this is crappy, comes from modelarium
             return 'Object';
         }
