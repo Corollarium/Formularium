@@ -11,7 +11,7 @@ List of datatypes and its parameters generated automatically.
 
 String with only alphabetical ASCII letters.
 
-Random value example: 'RZTOCPdeHU'
+Random value example: 'RMxkpeKTedTinX'
 
 
 
@@ -19,7 +19,7 @@ Random value example: 'RZTOCPdeHU'
 
 String with only alphabetical ASCII letters and numbers.
 
-Random value example: 'Rjih2O'
+Random value example: 'R96Kju'
 
 
 
@@ -27,7 +27,7 @@ Random value example: 'Rjih2O'
 
 String with only alphabetical ASCII letters, numbers, underscore _ and dash -.
 
-Random value example: 'RsGJUk_Sowja_'
+Random value example: 'RhVtC-SCU'
 
 
 
@@ -51,7 +51,7 @@ Random value example: false
 
 Datatype for Brazilian CNPJ document numbers.
 
-Random value example: '68.029.166/0001-74'
+Random value example: '22.927.828/0001-22'
 
 
 
@@ -59,7 +59,7 @@ Random value example: '68.029.166/0001-74'
 
 Datatype for RGB colors in hexadecimeal format, starting with #.
 
-Random value example: '#1177AD'
+Random value example: '#D84BF6'
 
 
 
@@ -73,7 +73,7 @@ Constant values
 
 Country names represented by ISO 2-letter codes.
 
-Random value example: 'BD'
+Random value example: 'SY'
 
 
 
@@ -81,7 +81,7 @@ Random value example: 'BD'
 
 Country names represented by ISO 3-letter codes.
 
-Random value example: 'MEX'
+Random value example: 'BDI'
 
 
 
@@ -89,7 +89,7 @@ Random value example: 'MEX'
 
 Country names represented by ISO numeric codes.
 
-Random value example: 288
+Random value example: 858
 
 
 
@@ -97,7 +97,7 @@ Random value example: 288
 
 Datatype for Brazilian CPF document numbers.
 
-Random value example: '918.129.319-48'
+Random value example: '038.156.486-02'
 
 
 
@@ -105,7 +105,7 @@ Random value example: '918.129.319-48'
 
 Currency names, with their 3-letter codes.
 
-Random value example: 'BGN'
+Random value example: 'GTQ'
 
 
 
@@ -113,7 +113,7 @@ Random value example: 'BGN'
 
 Dates in ISO format: YYYY-MM-DD.
 
-Random value example: '2017-11-10'
+Random value example: '2024-11-03'
 
 
 
@@ -121,7 +121,7 @@ Random value example: '2017-11-10'
 
 Datetimes in ISO8601 format.
 
-Random value example: '2023-12-26T16:21:16+0000'
+Random value example: '2023-07-03T07:58:12+0000'
 
 
 
@@ -129,7 +129,7 @@ Random value example: '2023-12-26T16:21:16+0000'
 
 Internet domain names.
 
-Random value example: 'mckenzie.com'
+Random value example: 'schulist.org'
 
 
 
@@ -137,7 +137,7 @@ Random value example: 'mckenzie.com'
 
 Emails (hopefully, but we use Respect for validation)
 
-Random value example: 'sierra32@gmail.com'
+Random value example: 'deonte72@hotmail.com'
 
 
 
@@ -151,7 +151,7 @@ Random value example: 'sierra32@gmail.com'
 
 Floating point numbers.
 
-Random value example: 0.484
+Random value example: 0.801
 
 
 
@@ -159,7 +159,7 @@ Random value example: 0.484
 
 HTML, validated and sanitized with HTMLPurifier.
 
-Random value example: '<p>HTML <span>Ipsa tempore repudiandae et ut aut. Ea natus placeat quam necessitatibus asperiores. Et culpa dolorem voluptas magni voluptate incidunt nesciunt quia. Et ut dolor sint sapiente officia explicabo.</span>Ut inventore reiciendis voluptatem quam. Id perferendis aut voluptatem assumenda consequuntur sed id. Voluptates similique itaque qui perspiciatis. Sit corporis corrupti aut recusandae nobis.</p>'
+Random value example: '<p>HTML <span>Enim iure ipsa voluptatem est dolores sit quam. Nobis commodi magni corporis natus dolor quod. Et quia harum ut.</span>Dicta consectetur corporis rerum ut quia et qui. Dolore suscipit quo nihil natus quisquam porro. Quo at sequi et illum dolores. Et nemo et et aut voluptatum aut.</p>'
 
 
 
@@ -167,7 +167,7 @@ Random value example: '<p>HTML <span>Ipsa tempore repudiandae et ut aut. Ea natu
 
 Datatype for integers, between -2147483648 and 2147483647.
 
-Random value example: 973614157
+Random value example: 2038946749
 
 
 
@@ -175,7 +175,7 @@ Random value example: 973614157
 
 Strings in UTF-8 and sanitized, up to 39 characters (which might be more than its bytes).
 
-Random value example: '161.14.233.138'
+Random value example: '188.21.91.24'
 
 
 
@@ -183,7 +183,7 @@ Random value example: '161.14.233.138'
 
 Datatype for IPs in IPV4 format
 
-Random value example: '200.229.55.174'
+Random value example: '132.146.49.98'
 
 
 
@@ -191,7 +191,7 @@ Random value example: '200.229.55.174'
 
 Datatype for IPs in IPV6 format
 
-Random value example: '9d9b:b5ea:bed9:8981:4762:e151:3163:97b0'
+Random value example: '6408:19b:92d3:51bc:640e:b94c:fbf:999e'
 
 
 
@@ -199,7 +199,7 @@ Random value example: '9d9b:b5ea:bed9:8981:4762:e151:3163:97b0'
 
 Valid JSON data
 
-Random value example: '{"version":-1345548882,"data":{"string":"R3UI0dGRLqTTMj8dlCFviUF1YlPbBAov02nEhw3f91rrWWschTFglVTx9D6sw9kWnuBhwbkcp5tXlFOohVmaQY3UBNs6HzaGnfhVOebkQT0q4i1gNlXQSkc9EpvIcjeuuSq","float":0.992}}'
+Random value example: '{"version":-306303349,"data":{"string":"RG9SI","float":0.081}}'
 
 
 
@@ -207,7 +207,7 @@ Random value example: '{"version":-1345548882,"data":{"string":"R3UI0dGRLqTTMj8d
 
 Languages. Names are in the actual language. This follows wikipedia, prefer 'languageiso2' for an ISO standard.
 
-Random value example: 'ca'
+Random value example: 'rw'
 
 
 
@@ -215,7 +215,7 @@ Random value example: 'ca'
 
 Languages represented by ISO630-1 2-letter codes.
 
-Random value example: 'kr'
+Random value example: 'bm'
 
 
 
@@ -223,7 +223,7 @@ Random value example: 'kr'
 
 Just a plain string, but that expects a name. Generates good random names.
 
-Random value example: 'Dr. Reba Hoppe DVM'
+Random value example: 'Mathilde Sawayn Sr.'
 
 
 
@@ -231,7 +231,7 @@ Random value example: 'Dr. Reba Hoppe DVM'
 
 A phone number in E164 format
 
-Random value example: '+19898218117'
+Random value example: '+19370341783'
 
 
 
@@ -239,7 +239,7 @@ Random value example: '+19898218117'
 
 Strings in UTF-8 and sanitized, up to 256 characters (which might be more than its bytes).
 
-Random value example: 'RVJMlMPWzSEq7c5QgrrdtAOm5NBs9uOXoS4ogy4RphDLjEzPpPccstFAQbruVAYYojZeUp6PpFsZYk5px'
+Random value example: 'RVEy1orGNDjo8oPzXcQpE3S1SFCSmjm8LtvRjwJvzVzX34TshVfJwO'
 
 
 
@@ -247,7 +247,7 @@ Random value example: 'RVJMlMPWzSEq7c5QgrrdtAOm5NBs9uOXoS4ogy4RphDLjEzPpPccstFAQ
 
 Long text in UTF-8 and sanitized, up to 1024000 characters (which might be more than its bytes).
 
-Random value example: 'Id similique dolore culpa laboriosam ducimus. Quae officia aut autem id et. Sunt ab eum repellendus quis. Ut quis non veritatis cupiditate laudantium ut id modi.'
+Random value example: 'Est aut similique id repellendus. Doloremque explicabo dolores reprehenderit quam officia amet consequatur. Et tenetur sint odit rem voluptatem rerum. Quod repudiandae explicabo eius excepturi.'
 
 
 
@@ -255,7 +255,7 @@ Random value example: 'Id similique dolore culpa laboriosam ducimus. Quae offici
 
 Time (HH:MM:SS).
 
-Random value example: '12:54:26'
+Random value example: '03:03:30'
 
 
 
@@ -263,7 +263,7 @@ Random value example: '12:54:26'
 
 Timestamps. Just like datetime, but might be a different type in your database.
 
-Random value example: '2031-04-25T16:43:31+0000'
+Random value example: '2028-06-25T18:36:45+0000'
 
 
 
@@ -271,7 +271,7 @@ Random value example: '2031-04-25T16:43:31+0000'
 
 Timezones. Follows PHP timezone_identifiers_list().
 
-Random value example: 'America/Detroit'
+Random value example: 'Asia/Omsk'
 
 
 
@@ -279,7 +279,7 @@ Random value example: 'America/Detroit'
 
 Datatype for unsigned integers, between 0 and 4294967296.
 
-Random value example: 62532056
+Random value example: 1357959525
 
 
 
@@ -287,7 +287,7 @@ Random value example: 62532056
 
 Datatype for URLs
 
-Random value example: 'http://www.bogisich.com/sed-repellendus-ratione-blanditiis-veritatis-odio.html'
+Random value example: 'https://sporer.net/aspernatur-voluptatibus-iste-quo.html'
 
 
 
@@ -295,7 +295,7 @@ Random value example: 'http://www.bogisich.com/sed-repellendus-ratione-blanditii
 
 Datatype for unsigned small integers, between 0 and 65536.
 
-Random value example: 21302
+Random value example: 5973
 
 
 
@@ -303,7 +303,7 @@ Random value example: 21302
 
 Datatype for uuid values.
 
-Random value example: '5bb6f951-f2ab-42cb-8acd-0c98e4222192'
+Random value example: 'ddd4ad89-5a9c-418e-b68d-67355918a8e4'
 
 
 
@@ -311,6 +311,6 @@ Random value example: '5bb6f951-f2ab-42cb-8acd-0c98e4222192'
 
 Valid years. May create a special field in the database.
 
-Random value example: 1994
+Random value example: 1991
 
 
