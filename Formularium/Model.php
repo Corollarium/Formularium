@@ -494,7 +494,11 @@ class Model
     {
         $data = [];
         foreach ($this->getFields() as $f) {
-            $data[$f->getName()] = $f->getDatatype()->getDefault();
+            $d = $f->getDatatype()->getDefault();
+            if ($d === '' || $d === null) {
+                $d = $f->getRenderable(RenderableParameter::DEFAULTVALUE, null);
+            }
+            $data[$f->getName()] = $d;
         }
         return $data;
     }

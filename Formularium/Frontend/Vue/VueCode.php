@@ -221,14 +221,14 @@ class VueCode
     /**
      * Converts a Datatype to a JS type
      *
-     * @param Datatype $type
+     * @param Datatype|string $type
      * @return string
      */
-    public function mapTypeToJS(Datatype $type): string
+    public function mapTypeToJS($type): string
     {
-        if ($type instanceof Datatype_number) {
+        if ($type instanceof Datatype_number || $type === 'number') {
             return 'Number';
-        } elseif ($type instanceof Datatype_bool) {
+        } elseif ($type instanceof Datatype_bool || $type === 'boolean') {
             return 'Boolean';
         } elseif ($type->getBasetype() == 'relationship') { // TODO this is crappy, comes from modelarium
             return 'Object';
