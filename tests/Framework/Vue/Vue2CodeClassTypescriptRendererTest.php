@@ -57,8 +57,7 @@ EOF;
 
     public function testProp()
     {
-        $this->markTestSkipped();
-        $vueStruct = $this->getBase(self::RENDERER_CLASS);
+        $vueStruct = $this->getBaseAsProp(self::RENDERER_CLASS);
         $code = $vueStruct->vueCode->toScript($vueStruct->model, []);
         $expected = <<<EOF
 import { Component, Prop, Vue } from "vue-property-decorator";
@@ -66,8 +65,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class TestModel extends Vue {
     @Prop({
-        default: 10
-    }) readonly someInteger!;
+        "default": 10
+    }) readonly someInteger: integer;
 
     get plusOne() { return this.someInteger + 1; }
 };
