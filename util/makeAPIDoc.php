@@ -22,8 +22,7 @@ function validators()
 
     ksort($markdown);
 
-    $validatorAPI = '
----
+    $validatorAPI = '---
 parent: Reference
 nav_order: 2
 ---
@@ -56,8 +55,7 @@ function datatypes()
 
     ksort($markdown);
 
-    $datatypeAPI = '
----
+    $datatypeAPI = '---
 parent: Reference
 nav_order: 1
 ---
@@ -105,8 +103,7 @@ function elements()
         }
         ksort($markdown);
 
-        $elementAPI = "
----
+        $elementAPI = "---
 parent: Reference
 nav_order: 3
 ---
