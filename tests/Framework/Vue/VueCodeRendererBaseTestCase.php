@@ -5,18 +5,40 @@ namespace FormulariumTests\Framework\Vue;
 use Exception;
 use Formularium\Datatype;
 use Formularium\Field;
+use Formularium\Frontend\Vue\Framework as FrameworkVue;
 use Formularium\Frontend\Vue\VueCode;
+use Formularium\Frontend\Vue\VueCode\Computed;
 use Formularium\Model;
 use Formularium\RenderableParameter;
+use PHPUnit\Framework\Constraint\Constraint;
 
 class VueCodeRendererBaseTestCase extends \PHPUnit\Framework\TestCase
 {
+    public function assertVueCodeEquals($expected, $actual, $message = '')
+    {
+        return $this->assertEquals(
+            trim(preg_replace('/\s+/', ' ', $expected)),
+            trim(preg_replace('/\s+/', ' ', $actual)),
+            $message
+        );
+
+        // this is nicer but slower
+        // return $this->assertEquals(
+        //     $this->prettier("<template><div></div></template><script>\n$expected\n</script>"),
+        //     $this->prettier("<template><div></div></template><script>\n$actual\n</script>"),
+        //     $message
+        // );
+    }
+
     public function getBase(string $renderer): VueStruct
     {
         $vueCode = new VueCode($renderer);
         $vueCode->appendComputed(
-            'plusOne',
-            'return this.someInteger + 1'
+            new Computed(
+                'plusOne',
+                'number',
+                'return this.someInteger + 1;'
+            )
         );
 
         $model = new Model('TestModel');
@@ -45,6 +67,47 @@ class VueCodeRendererBaseTestCase extends \PHPUnit\Framework\TestCase
 
         return new VueStruct($vueCode, $model);
     }
+
+    public function getAsProp(string $renderer): VueStruct
+    {
+        $vueCode = new VueCode($renderer);
+        $vueCode->appendComputed(
+            new Computed(
+                'plusOne',
+                'number',
+                'return this.someInteger + 1'
+            )
+        );
+
+        $model = new Model('TestModel');
+        $model->appendFields(
+            [
+                new Field(
+                    'someInteger',
+                    'integer',
+                    [
+                        RenderableParameter::DEFAULTVALUE => 10,
+                        FrameworkVue::VUE_PROP
+                    ],
+                    [
+                        Min::class => [
+                            'value' => 4
+                        ],
+                        Max::class => [
+                            'value' => 30
+                        ],
+                        Datatype::REQUIRED => [
+                            'value' => true
+                        ],
+                    ],
+                )
+            ]
+        );
+
+        return new VueStruct($vueCode, $model);
+    }
+
+
 
     protected function prettier(string $code): string
     {

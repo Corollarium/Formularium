@@ -3,6 +3,7 @@
 namespace FormulariumTests\Framework\Vue;
 
 use Formularium\Frontend\Vue\Vue2CodeClassTypescriptRenderer;
+use Formularium\Frontend\Vue\VueCode\Prop;
 
 class Vue2CodeClassTypescriptRendererTest extends VueCodeRendererBaseTestCase
 {
@@ -15,47 +16,62 @@ class Vue2CodeClassTypescriptRendererTest extends VueCodeRendererBaseTestCase
         $expected = <<<EOF
 import { Component, Prop, Vue } from "vue-property-decorator";
 
+@Component
 export default class TestModel extends Vue {
-    someInteger = 10;
+  someInteger = 10;
 
-    get plusOne() { return this.someInteger + 1; }
+  get plusOne() { return this.someInteger + 1; }
 };
 EOF;
-        $this->assertEquals(
-            $this->prettier("<template><div></div></template><script>\n$expected\n</script>"),
-            $this->prettier("<template><div></div></template><script>\n$code\n</script>")
-        );
+        $this->assertVueCodeEquals($expected, $code);
     }
 
-    public function testProp()
+    public function testExtraProp()
     {
         $vueStruct = $this->getBase(self::RENDERER_CLASS);
         $vueStruct->vueCode->appendExtraProp(
-            'someProp',
-            [
-                'name' => 'someProp',
-                'type' => 'number',
-                'required' => true,
-                'default' => 30
-            ]
+            new Prop(
+                'someProp',
+                'number',
+                true,
+                30
+            )
         );
         $code = $vueStruct->vueCode->toScript($vueStruct->model, []);
         $expected = <<<EOF
 import { Component, Prop, Vue } from "vue-property-decorator";
 
+@Component
 export default class TestModel extends Vue {
-    someInteger = 10;
-
     @Prop({
-        default: 30
-    }) readonly someProp!;
+        "default": 30
+    }) readonly someProp!: number;
+
+    someInteger = 10;
 
     get plusOne() { return this.someInteger + 1; }
 };
 EOF;
-        $this->assertEquals(
-            $this->prettier("<template><div></div></template><script>\n$expected\n</script>"),
-            $this->prettier("<template><div></div></template><script>\n$code\n</script>")
-        );
+        $this->assertVueCodeEquals($expected, $code);
+    }
+
+    public function testProp()
+    {
+        $this->markTestSkipped();
+        $vueStruct = $this->getBase(self::RENDERER_CLASS);
+        $code = $vueStruct->vueCode->toScript($vueStruct->model, []);
+        $expected = <<<EOF
+import { Component, Prop, Vue } from "vue-property-decorator";
+
+@Component
+export default class TestModel extends Vue {
+    @Prop({
+        default: 10
+    }) readonly someInteger!;
+
+    get plusOne() { return this.someInteger + 1; }
+};
+EOF;
+        $this->assertVueCodeEquals($expected, $code);
     }
 }
